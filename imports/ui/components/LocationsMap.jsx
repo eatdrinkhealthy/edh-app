@@ -1,5 +1,6 @@
 import React, { PropTypes, PureComponent } from "react";
 import GoogleMap from "google-map-react";
+import { Meteor } from "meteor/meteor";
 
 export default class LocationsMap extends PureComponent {
   render() {
@@ -12,6 +13,7 @@ export default class LocationsMap extends PureComponent {
     return (
       <div style={mapStyle}>
         <GoogleMap
+          bootstrapURLKeys={{ key: Meteor.settings.public.googleMapsApiKey }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         />
