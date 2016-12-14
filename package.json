@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "lint": "./node_modules/.bin/eslint . --ignore-pattern 'packages/**'",
-    "start": "meteor run",
+    "start": "meteor run --settings settings.json",
     "test": "npm run unit-test && npm run integration-test-phantomjs",
     "unit-test": "./node_modules/.bin/mocha --require ./tests/unit-tests/setup.js --recursive ./tests/unit-tests --compilers js:babel-register,jsx:babel-register",
     "unit-test-w": "npm run unit-test -- -w",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "babel-runtime": "6.18.0",
+    "google-map-react": "^0.22.0",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
