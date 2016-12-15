@@ -10,14 +10,9 @@ export default class LocationsMap extends PureComponent {
   }
 
   render() {
-    const mapStyle = {
-      width: 500,
-      height: 300,
-      border: "1px solid black",
-    };
 
     return (
-      <div style={mapStyle}>
+      <div className="map-container">
         <GoogleMap
           bootstrapURLKeys={{ key: Meteor.settings.public.googleMapsApiKey }}
           defaultCenter={this.props.center}
