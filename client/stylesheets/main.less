@@ -8,6 +8,8 @@
 
 //generic – reset and/or normalize styles, box-sizing definition, etc. This is the first layer which generates actual CSS.
 @import "generic/normalize.import.less";
+@import "generic/skeleton.import.less";
+@import "generic/box-sizing.import.less";
 
 //elements – styling for bare HTML elements (like H1, A, etc.). These come with default styling from the browser so we can redefine them here.
 @import "elements/html.import.less";
@@ -16,3 +18,4 @@
 //components – specific UI components. This is where majority of our work takes place and our UI components are often composed of Objects and Components
 @import "components/map.import.less";
 @import "components/navbar.import.less";
+@import "components/sidebar.import.less";

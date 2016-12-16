@@ -9,6 +9,7 @@
 * using less css
 * TBD, may use Skeleton (very light grid system)
 * __TBD__, __may globally change box model__ via box-sizing (if so see box-sizing.import.less)
+* Initial version relies often on use of z-index
 
 ### google-map-react
 * the map seems to need to be in a div that has a specific height / width, ie 400px
