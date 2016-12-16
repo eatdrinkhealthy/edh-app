@@ -7,8 +7,8 @@
 
 ### Styling
 * using less css
-* TBD, may use Skeleton (very light grid system)
-* __TBD__, __may globally change box model__ via box-sizing (if so see box-sizing.import.less)
+* using Skeleton, very light grid system
+* __NOTE, currently using box-sizing to globally change box model__ (see box-sizing.import.less)
 * Initial version relies often on use of z-index
 
 ### google-map-react
