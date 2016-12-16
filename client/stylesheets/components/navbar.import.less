@@ -1,0 +1,48 @@
+.nav {
+  position: absolute;
+  height: 60px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  .gradient-bg;
+  opacity: 0.95;
+  &__title {
+    text-align: center;
+    color: white;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 60px;
+    @media (max-width: @mobile-portrait) {
+      font-size: 16px;
+    }
+  }
+}
+
+.toggle-sidebar,
+.toggle-filter {
+  position: absolute;
+  font-size: 18px;
+  top: 16px;
+  z-index: 2000;
+  color: white;
+  cursor: pointer;
+}
+.toggle-sidebar {
+  width: 60px;
+  height: 60px;
+  top: 0;
+  left: 0;
+  padding: 15px;
+  .burger {
+    height: 8px;
+    width: 20px;
+    background: url(images/menu-white.png) center center no-repeat;
+    background-size: contain;
+  }
+}
+.toggle-filter {
+  right: 0px;
+  top: 0;
+  padding: 15px;
+}
