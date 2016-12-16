@@ -6,6 +6,9 @@
 //tools - globally used mixins and functions. It’s important not to output any CSS in the first 2 layers.
 @import "tools/gradient-bg.import.less";
 
+//generic – reset and/or normalize styles, box-sizing definition, etc. This is the first layer which generates actual CSS.
+@import "generic/normalize.import.less";
+
 //elements – styling for bare HTML elements (like H1, A, etc.). These come with default styling from the browser so we can redefine them here.
 @import "elements/html.import.less";
 @import "elements/body.import.less";
