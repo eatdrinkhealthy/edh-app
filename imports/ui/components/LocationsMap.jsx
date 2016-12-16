@@ -17,6 +17,7 @@ export default class LocationsMap extends PureComponent {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
+          {/* add map markers here, as children of GoogleMap */}
         </GoogleMap>
       </div>
     );
@@ -25,7 +26,7 @@ export default class LocationsMap extends PureComponent {
 
 LocationsMap.defaultProps = {
   center: { lat: 32.789008, lng: -79.932115 },
-  zoom: 16,
+  zoom: 15,
 };
 
 LocationsMap.propTypes = {
