@@ -2,6 +2,7 @@
 
 
 ## Notes
+* using React.PureComponent for some map related components
 
 ### google-map-react
 * the map seems to need to be in a div that has a specific height / width, ie 400px
