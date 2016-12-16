@@ -1,7 +1,6 @@
 import React, { PropTypes, PureComponent } from "react";
 import GoogleMap from "google-map-react";
 import { Meteor } from "meteor/meteor";
-import Marker from "./Marker";
 
 /* global Geolocation  */
 
@@ -18,7 +17,6 @@ export default class LocationsMap extends PureComponent {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <Marker lat={32.789026} lng={-79.932028} text="Food" />
         </GoogleMap>
       </div>
     );
@@ -27,7 +25,7 @@ export default class LocationsMap extends PureComponent {
 
 LocationsMap.defaultProps = {
   center: { lat: 32.789008, lng: -79.932115 },
-  zoom: 9,
+  zoom: 16,
 };
 
 LocationsMap.propTypes = {
