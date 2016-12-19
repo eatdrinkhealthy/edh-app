@@ -26,7 +26,7 @@ export default class LocationsMap extends PureComponent {
 
 LocationsMap.defaultProps = {
   center: { lat: 32.789008, lng: -79.932115 },
-  zoom: 15,
+  zoom: 16,
 };
 
 LocationsMap.propTypes = {
