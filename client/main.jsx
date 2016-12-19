@@ -2,8 +2,8 @@ import React from "react";
 import { Meteor } from "meteor/meteor";
 import { render } from "react-dom";
 
-import AppContainer from "../imports/ui/containers/AppContainer.jsx";
+import routes from "../imports/config/routes";
 
 Meteor.startup(() => {
-  render(<AppContainer />, document.getElementById("render-target"));
+  render(routes, document.getElementById("render-target"));
 });
