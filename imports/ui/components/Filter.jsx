@@ -2,6 +2,7 @@ import React, {
   Component,
   PropTypes,
 } from "react";
+import { Link } from "react-router";
 
 class Filter extends Component {
   render() {
@@ -9,7 +10,9 @@ class Filter extends Component {
       <div>
         <div className="filter-header">
           <h4>Filter</h4>
-          <div className="close-filter toggle-filter" />
+          <Link to="/">
+            <div className="close-filter toggle-filter" />
+          </Link>
         </div>
         <div className="filter">
           <ul>

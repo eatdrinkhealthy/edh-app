@@ -13,7 +13,10 @@ const Navbar = () =>
     </Link>
 
     <div className="nav__title">Eat Drink Healthy</div>
-    <div className="toggle-filter">Filter</div>
+
+    <Link to="/filter">
+      <div className="toggle-filter">Filter</div>
+    </Link>
   </div>;
 
 export default Navbar;
