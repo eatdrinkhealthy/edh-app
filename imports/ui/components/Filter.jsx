@@ -6,10 +6,14 @@ import { Link } from "react-router";
 import { Filters } from "../../api/filters";
 
 class Filter extends Component {
-  renderFilter(filterItem) {
-
+  renderFilterItem(filterItem) {
     return (
-      <li>{filterItem.name}</li>
+      <div key={filterItem.value}>
+        <label htmlFor={filterItem.value}>
+          <input type="checkbox" id={filterItem.value} />
+          {filterItem.name}
+        </label>
+      </div>
     );
   }
 
@@ -23,9 +27,7 @@ class Filter extends Component {
           </Link>
         </div>
         <div className="filter">
-          <ul>
-            {Filters.map(this.renderFilter)}
-          </ul>
+          {Filters.map(this.renderFilterItem)}
         </div>
       </div>
     );
