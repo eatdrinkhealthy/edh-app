@@ -10,6 +10,11 @@
 * using Skeleton, very light grid system
 * __NOTE, currently using box-sizing to globally change box model__ (see box-sizing.import.less)
 * Initial version relies often on use of z-index
+#### Animation
+* __FIRST__ DETERMINE if CSS3 is being used in current version of app (and/or see what browser versions support it)
+* consider this component for animation sidebar & filter, [react-burger-menu](https://github.com/negomi/react-burger-menu)
+* potential component / page transition, [react-router-transition](https://www.npmjs.com/package/react-router-transition)
+    
 
 ### google-map-react
 * the map seems to need to be in a div that has a specific height / width, ie 400px
