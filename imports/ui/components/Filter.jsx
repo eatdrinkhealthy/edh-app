@@ -3,8 +3,16 @@ import React, {
   PropTypes,
 } from "react";
 import { Link } from "react-router";
+import { Filters } from "../../api/filters";
 
 class Filter extends Component {
+  renderFilter(filterItem) {
+
+    return (
+      <li>{filterItem.name}</li>
+    );
+  }
+
   render() {
     return (
       <div>
@@ -16,11 +24,7 @@ class Filter extends Component {
         </div>
         <div className="filter">
           <ul>
-            <li>filter 1</li>
-            <li>filter 2</li>
-            <li>filter 3</li>
-            <li>filter 4</li>
-            <li>filter 5</li>
+            {Filters.map(this.renderFilter)}
           </ul>
         </div>
       </div>
