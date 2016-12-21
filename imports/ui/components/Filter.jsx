@@ -3,15 +3,15 @@ import React, {
   PropTypes,
 } from "react";
 import { Link } from "react-router";
-import { Filters } from "../../api/filters";
+import { FilterList } from "../../api/filters";
 
 class Filter extends Component {
-  renderFilterItem(filterItem) {
+  renderFilterItem(key, filter) {
     return (
-      <div key={filterItem.value}>
-        <label htmlFor={filterItem.value}>
-          <input type="checkbox" id={filterItem.value} />
-          {filterItem.name}
+      <div key={key}>
+        <label htmlFor={key}>
+          <input type="checkbox" id={key} />
+          {filter.name}
         </label>
       </div>
     );
@@ -27,7 +27,7 @@ class Filter extends Component {
           </Link>
         </div>
         <div className="filter">
-          {Filters.map(this.renderFilterItem)}
+          {Object.keys(FilterList).map(key => this.renderFilterItem(key, FilterList[key]))}
         </div>
       </div>
     );
