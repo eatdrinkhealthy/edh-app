@@ -4,15 +4,15 @@ import React, {
 } from "react";
 import { Link } from "react-router";
 import { FilterList } from "../../api/filters";
+import Toggle from "react-toggle";
 
 class Filter extends Component {
-  renderFilterItem(key, filter) {
+  renderFilterItem(key, name) {
+    // TODO improve layout (more proper CSS)
     return (
       <div key={key}>
-        <label htmlFor={key}>
-          <input type="checkbox" id={key} />
-          {filter.name}
-        </label>
+        <span className="react-toggle-label">{name}</span>
+        <span className="react-toggle"> <Toggle id={key} /></span>
       </div>
     );
   }
@@ -27,7 +27,7 @@ class Filter extends Component {
           </Link>
         </div>
         <div className="filter">
-          {Object.keys(FilterList).map(key => this.renderFilterItem(key, FilterList[key]))}
+          {Object.keys(FilterList).map(key => this.renderFilterItem(key, FilterList[key].name))}
         </div>
       </div>
     );
