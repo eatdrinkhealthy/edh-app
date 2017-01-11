@@ -1,4 +1,7 @@
 // JSDOM setup for Mocha
+
+/* global document */
+
 const jsdom = require("jsdom").jsdom;
 
 global.document = jsdom("");
