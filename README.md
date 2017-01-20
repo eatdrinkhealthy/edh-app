@@ -26,3 +26,40 @@
     * setting position to absolute seems one step closer. it displays the map correctly, but will run in to problems eventually with z-index
         * note, google-map-react uses position absolute, and has it working somehow
         
+## Testing
+
+### Notes
+* The intention is to be able to use...
+    + 'jest / enzyme' for unit testing
+    + 'meteor test' for complex integration testing
+    + 'chimp' for end to end testing
+    
+### Test Runner File Naming Conventions
+
+#### Default test file naming conventions for Meteor and Jest
+* ['meteor test'](https://guide.meteor.com/testing.html#test-modes):  `"*.test[s].js[x]"` or `"*.spec[s].js[x]"`
+* ['meteor test --full-app'](https://guide.meteor.com/testing.html#test-modes): `"*.app-test[s].js"` or `"*.app-spec[s].js"`
+    +  NOTE: 'meteor build' and 'meteor test' ignore files in [any 'tests' directories](https://guide.meteor.com/testing.html#test-modes), so tests from other test runners can be kept within the project directory structure
+* [jest](http://facebook.github.io/jest/docs/configuration.html#testregex-string): `(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$)`
+
+#### Project test file naming convention
+ * The following convention allows you to keep all test file types in the same or an adjacent directory of the system under test, without the test runners picking up the incorrect test file
+    + place all meteor test files in the same directory as the module / system under test
+    + place all jest unit tests in 'tests' sub directory of the module / system under test
+        - [OPTIONAL] set [jest test filenames (testRegex)](http://facebook.github.io/jest/docs/configuration.html#testregex-string) to `(/__tests__/.*|(\\.|/)(test|spec|jest))\\.jsx?$`
+    + place all chimp tests in 'tests' sub directory of the project root
+        - NOTE: create additional sub directories in this directory to organize tests
+ * example:
+    + `<project-root>/.../system-under-test/tests/AppContainer.jest.jsx` (tests run by __jest__ only)
+    + `<project-root>/.../system-under-test/AppContainer.tests.jsx` (tests run by __'meteor test'__ only)
+    + `<project-root>/tests/calledMethods.app-tests.js` (tests run by __'meteor test --full-app'__ only)
+
+### Mocking Meteor packages
+* Many commonly used meteor packages were mocked, by creating mock modules, and using the moduleNameMapper configuration setting
+    + some details and light exmaples can be seen on this [meteor forum discussion](https://forums.meteor.com/t/mocking-meteor-package-imports-in-jest/27780/9)
+* Other helpful meteor mocking resources
+    + [jest configuration docs, moduleNameMapper](http://facebook.github.io/jest/docs/configuration.html#modulenamemapper-object-string-string)
+    + [example jest meteor mocks (some usable examples)](https://github.com/Astrocoders/jest-meteor-mocks)
+* One specific, complex example, was mocking SimpleSchema. It took some effort, and trial and error, to mimic being able to reference a returned function from an inline instantiated object
+    + eg  `const myValidator = new SimpleSchema({...}).validator();`
+    + see the aldeed:simple-schema.js mock for validator() 
