@@ -3,7 +3,6 @@ import React, {
   PropTypes,
 } from "react";
 import { Link } from "react-router";
-import { FilterList } from "../../api/filters";
 import Toggle from "react-toggle";
 
 class Filter extends Component {
@@ -18,6 +17,8 @@ class Filter extends Component {
   }
 
   render() {
+    const filterList = this.props.filterList || {};
+
     return (
       <div>
         <div className="filter-header">
@@ -27,14 +28,15 @@ class Filter extends Component {
           </Link>
         </div>
         <div className="filter">
-          {Object.keys(FilterList).map(key => this.renderFilterItem(key, FilterList[key].name))}
+          {Object.keys(filterList).map(key => this.renderFilterItem(key, filterList[key].name))}
         </div>
       </div>
     );
   }
 }
 
-Filter.propTypes = {};
-Filter.defaultProps = {};
+Filter.propTypes = {
+  filterList: PropTypes.object,  // eslint-disable-line react/forbid-prop-types
+};
 
 export default Filter;
