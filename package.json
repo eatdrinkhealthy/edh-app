@@ -24,14 +24,19 @@
     "react-toggle": "^2.2.0"
   },
   "devDependencies": {
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.16.0",
+    "babel-jest": "^18.0.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
     "babel-register": "^6.18.0",
+    "enzyme": "^2.7.0",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-meteor": "^4.0.1",
-    "eslint-plugin-react": "^6.7.1"
+    "eslint-plugin-react": "^6.7.1",
+    "jest": "^18.1.0",
+    "react-addons-test-utils": "^15.4.2",
+    "react-test-renderer": "^15.4.2"
   }
 }
