@@ -36,11 +36,12 @@
     
 ### Test Runner File Naming Conventions
 
-#### Default test file naming conventions for Meteor and Jest
+#### Default test file names / locations for Jest, Meteor, and Chimp
+* [jest](http://facebook.github.io/jest/docs/configuration.html#testregex-string): `(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$)`
 * ['meteor test'](https://guide.meteor.com/testing.html#test-modes):  `"*.test[s].js[x]"` or `"*.spec[s].js[x]"`
 * ['meteor test --full-app'](https://guide.meteor.com/testing.html#test-modes): `"*.app-test[s].js"` or `"*.app-spec[s].js"`
     +  NOTE: 'meteor build' and 'meteor test' ignore files in [any 'tests' directories](https://guide.meteor.com/testing.html#test-modes), so tests from other test runners can be kept within the project directory structure
-* [jest](http://facebook.github.io/jest/docs/configuration.html#testregex-string): `(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$)`
+* [chimp](https://chimp.readme.io/docs/command-line-options): cucumber tests from `./features`
 
 #### Project test file naming convention
  * The following convention allows you to keep all test file types in the same or an adjacent directory of the system under test, without the test runners picking up the incorrect test file
@@ -48,11 +49,13 @@
     + place all jest unit tests in 'tests' sub directory of the module / system under test
         - [OPTIONAL] set [jest test filenames (testRegex)](http://facebook.github.io/jest/docs/configuration.html#testregex-string) to `(/__tests__/.*|(\\.|/)(test|spec|jest))\\.jsx?$`
     + place all chimp tests in 'tests' sub directory of the project root
+        - set npm script for chimp to `chimp  --path=tests/end-to-end`
         - NOTE: create additional sub directories in this directory to organize tests
  * example:
     + `<project-root>/.../system-under-test/tests/AppContainer.jest.jsx` (tests run by __jest__ only)
     + `<project-root>/.../system-under-test/AppContainer.tests.jsx` (tests run by __'meteor test'__ only)
-    + `<project-root>/tests/calledMethods.app-tests.js` (tests run by __'meteor test --full-app'__ only)
+    + `<project-root>/.../system-under-test/calledMethods.app-tests.js` (tests run by __'meteor test --full-app'__ only)
+    + `<project-root>/tests/end-to-end/.../calledMethods.app-tests.js` (tests to be run by __'chimp'__)
 
 ### Mocking Meteor packages
 * Many commonly used meteor packages were mocked, by creating mock modules, and using the moduleNameMapper configuration setting
