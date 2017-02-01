@@ -37,13 +37,20 @@
 ### Test Runner File Naming Conventions
 
 #### Default test file names / locations for Jest, Meteor, and Chimp
-* [jest](http://facebook.github.io/jest/docs/configuration.html#testregex-string): `(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$)`
-* ['meteor test'](https://guide.meteor.com/testing.html#test-modes):  `"*.test[s].js[x]"` or `"*.spec[s].js[x]"`
-* ['meteor test --full-app'](https://guide.meteor.com/testing.html#test-modes): `"*.app-test[s].js"` or `"*.app-spec[s].js"`
-    +  NOTE: 'meteor build' and 'meteor test' ignore files in [any 'tests' directories](https://guide.meteor.com/testing.html#test-modes), so tests from other test runners can be kept within the project directory structure
-* [chimp](https://chimp.readme.io/docs/command-line-options): cucumber tests from `./features`
+* [jest](http://facebook.github.io/jest/docs/configuration.html#testregex-string):
+  - loads all test files: `(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$)`
+* ['meteor test'](https://guide.meteor.com/testing.html#test-modes):
+  - loads all test files: `"*.test[s].js[x]"` or `"*.spec[s].js[x]"`
+      + ignores any files in any `tests/` directory
+  - DOES NOT eagerly load application code, only modules imported by tests
+* ['meteor test --full-app'](https://guide.meteor.com/testing.html#test-modes): 
+  - loads all test files: `"*.app-test[s].js"` or `"*.app-spec[s].js"`
+      + ignores any files in any `tests/` directory
+  - DOES eagerly load application code, as meteor build normally would
+* [chimp](https://chimp.readme.io/docs/command-line-options):
+  - loads cucumber tests from: `./features`
 
-#### Project test file naming convention
+#### Project test file location and naming convention
  * The following convention allows you to keep all test file types in the same or an adjacent directory of the system under test, without the test runners picking up the incorrect test file
     + place all meteor test files in the same directory as the module / system under test
     + place all jest unit tests in 'tests' sub directory of the module / system under test
