@@ -5,19 +5,21 @@ import { Link } from "react-router";
 import Toggle from "react-toggle";
 
 
-const FilterItem = ({ filterKey, name }) => (
+const FilterItem = ({ filter }) => (
   <div>
-    <span className="react-toggle-label">{name}</span>
-    <span className="react-toggle"> <Toggle id={filterKey} /></span>
+    <span className="react-toggle-label">{filter.name}</span>
+    <span className="react-toggle"> <Toggle id={filter.id} /></span>
   </div>
 );
 
 FilterItem.propTypes = {
-  filterKey: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  filter: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
 };
 
-const Filter = ({ filterList = {} }) => (
+const Filter = ({ filterList = [] }) => (
   <div>
     <div className="filter-header">
       <h4>Filter</h4>
@@ -26,15 +28,15 @@ const Filter = ({ filterList = {} }) => (
       </Link>
     </div>
     <div className="filter">
-      {Object.keys(filterList).map(filterKey => (
-        <FilterItem key={filterKey} filterKey={filterKey} name={filterList[filterKey].name} />)
+      {filterList.map(filter => (
+        <FilterItem key={filter.id} filter={filter} />)
       )}
     </div>
   </div>
 );
 
 Filter.propTypes = {
-  filterList: PropTypes.object,  // eslint-disable-line react/forbid-prop-types
+  filterList: PropTypes.array,  // eslint-disable-line react/forbid-prop-types
 };
 
 export default Filter;
