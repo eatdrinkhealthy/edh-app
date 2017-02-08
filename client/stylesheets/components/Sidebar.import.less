@@ -1,0 +1,67 @@
+.sidebar {
+  background-color: white;
+  width: 400px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  z-index: 0;
+  overflow-y: auto;
+  @media (max-width: @mobile-portrait) {
+    width: 80vw;
+  }
+}
+
+.get-started {
+  font-family: "Montserrat";
+  padding-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #444;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.6);
+  display: block;
+  width: 226px;
+  margin: 0 auto;
+  @media (max-width: @mobile-portrait) {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.pitch {
+  padding-top: 30px;
+  font-size: 15px;
+  color: #444;
+  display: block;
+  width: 226px;
+  margin: 20px auto 0;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.6);
+  @media (max-width: @mobile-portrait) {
+    width: 95%;
+    text-align: center;
+  }
+  @media (max-height: 650px) {
+    margin-top: 0;
+  }
+}
+
+.logo {
+  background-image: url("/images/logo-color.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 226px;
+  height: 156px;
+  display: block;
+  margin: 60px auto 0;
+  @media (max-width: 300px) {
+    width: 113px;
+    height: 78px;
+  }
+  @media (max-height: 650px) {
+    margin: 30px auto 0;
+    width: 180px;
+  }
+}

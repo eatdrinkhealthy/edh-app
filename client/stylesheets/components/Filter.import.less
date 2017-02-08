@@ -1,0 +1,38 @@
+.filter-header {
+  height: 60px;
+  padding: 15px 20px;
+  width: 100%;
+  border-bottom: 1px solid white;
+  background-color: rgb(57, 121, 146);
+  backface-visibility: hidden;
+  h4 {
+    display: inline;
+    float: left;
+    margin-top: -5px;
+    margin-bottom: 0px;
+    color: white;
+  }
+  .close-filter {
+    width: 15px;
+    height: 15px;
+    background-image: url("/images/close-white.png");
+    float: right;
+    padding: 29px;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+}
+
+.filter {
+  .gradient-bg();
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 30px calc(~"50% - 200px");
+  color: white;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}

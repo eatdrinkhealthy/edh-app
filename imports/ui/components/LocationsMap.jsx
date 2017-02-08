@@ -10,19 +10,15 @@ export default class LocationsMap extends PureComponent {
   }
 
   render() {
-    const mapStyle = {
-      width: 500,
-      height: 300,
-      border: "1px solid black",
-    };
-
     return (
-      <div style={mapStyle}>
+      <div className="map-container">
         <GoogleMap
           bootstrapURLKeys={{ key: Meteor.settings.public.googleMapsApiKey }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
-        />
+        >
+          {/* add map markers here, as children of GoogleMap */}
+        </GoogleMap>
       </div>
     );
   }
@@ -30,7 +26,7 @@ export default class LocationsMap extends PureComponent {
 
 LocationsMap.defaultProps = {
   center: { lat: 32.789008, lng: -79.932115 },
-  zoom: 9,
+  zoom: 16,
 };
 
 LocationsMap.propTypes = {
