@@ -9,8 +9,8 @@
     "unit-test-w": "npm run unit-test -- --watchAll",
     "integration-test": "meteor test --driver-package practicalmeteor:mocha",
     "integration-test-w": "TEST_WATCH=1 meteor test --driver-package practicalmeteor:mocha",
-    "integration-test-phantomjs": "meteor test --once --driver-package dispatch:mocha-phantomjs",
-    "integration-test-phantomjs-w": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha-phantomjs",
+    "integration-test-phantomjs": "meteor test --once --port 4000 --driver-package dispatch:mocha-phantomjs",
+    "integration-test-phantomjs-w": "TEST_WATCH=1 meteor test --port 4000 --driver-package dispatch:mocha-phantomjs",
     "full-integration-test": "meteor test --full-app --driver-package practicalmeteor:mocha",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
