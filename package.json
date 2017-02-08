@@ -4,9 +4,9 @@
   "scripts": {
     "lint": "eslint . --ext .js,.jsx --ignore-pattern 'packages/**'",
     "start": "meteor run --settings settings.json",
-    "test": "npm run unit-test && npm run integration-test-phantomjs",
+    "test": "yarn run unit-test",
     "unit-test": "jest -c .jest-config.json",
-    "unit-test-w": "npm run unit-test -- --watchAll",
+    "unit-test-w": "yarn run unit-test -- --watchAll",
     "integration-test": "meteor test --driver-package practicalmeteor:mocha",
     "integration-test-w": "TEST_WATCH=1 meteor test --driver-package practicalmeteor:mocha",
     "integration-test-phantomjs": "meteor test --once --port 4000 --driver-package dispatch:mocha-phantomjs",
