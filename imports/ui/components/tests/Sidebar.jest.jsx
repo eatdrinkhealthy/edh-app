@@ -8,7 +8,7 @@ import Sidebar from "../Sidebar";
 
 describe("<Sidebar />", function () {
   it("matches render snapshot", function () {
-    const tree = renderer.create(<Sidebar />);
+    const tree = renderer.create(<Sidebar />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
