@@ -12,12 +12,12 @@ import LocationsMap from "../LocationsMap";
 describe("<LocationsMap />", function () {
   it.skip("matches render snapshot", function () {
     // TODO capture snapshot, currently generates an "Invariant Violation"
-    const tree = renderer.create(<LocationsMap/>);
+    const tree = renderer.create(<LocationsMap />);
     expect(tree).toMatchSnapshot();
   });
 
   it("renders a GoogleMap component", function () {
-    const wrapper = shallow(<LocationsMap/>);
+    const wrapper = shallow(<LocationsMap />);
     expect(wrapper.find("GoogleMap").length).toBe(1);
   });
 });
