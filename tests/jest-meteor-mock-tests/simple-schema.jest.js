@@ -1,5 +1,6 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions, import/imports-first */
+/* eslint-disable import/no-extraneous-dependencies, import/extensions */
 
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
 
