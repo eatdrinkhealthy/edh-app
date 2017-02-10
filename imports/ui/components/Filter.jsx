@@ -4,7 +4,6 @@ import React, {
 import { Link } from "react-router";
 import Toggle from "react-toggle";
 
-
 const FilterItem = ({ filter }) => (
   <div>
     <span className="react-toggle-label">{filter.name}</span>
