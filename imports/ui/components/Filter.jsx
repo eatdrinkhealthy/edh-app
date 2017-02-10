@@ -29,8 +29,8 @@ const Filter = ({ filterList = [] }) => (
     </div>
     <div className="filter">
       {filterList.map(filter => (
-        <FilterItem key={filter.id} filter={filter} />)
-      )}
+        <FilterItem key={filter.id} filter={filter} />))
+      }
     </div>
   </div>
 );
