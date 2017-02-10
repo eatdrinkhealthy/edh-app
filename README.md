@@ -52,10 +52,11 @@
   - loads cucumber tests from: `./features`
 
 #### Project test file location and naming convention
- * The following convention allows you to keep all test file types in the same or an adjacent directory of the system under test, without the test runners picking up the incorrect test file
+ * The following convention allows you to colocate test files in the same or sub directory of the system under test, without the test runners picking up the incorrect test file
     + place all meteor test files in the same directory as the module / system under test
     + place all jest unit tests in 'tests' sub directory of the module / system under test
-        - [OPTIONAL] set [jest test filenames (testRegex)](http://facebook.github.io/jest/docs/configuration.html#testregex-string) to `(/__tests__/.*|(\\.|/)(test|spec|jest))\\.jsx?$`
+        - set [jest test filenames (testRegex)](http://facebook.github.io/jest/docs/configuration.html#testregex-string) to `/tests/.*\\.jest\\.jsx?$`
+        - jest file name convention `filename.jest.js[x]`
     + place all chimp tests in 'tests' sub directory of the project root
         - set npm script for chimp to `chimp  --path=tests/end-to-end`
         - NOTE: create additional sub directories in this directory to organize tests
@@ -63,9 +64,12 @@
     + `<project-root>/.../system-under-test/tests/AppContainer.jest.jsx` (tests run by __jest__ only)
     + `<project-root>/.../system-under-test/AppContainer.tests.jsx` (tests run by __'meteor test'__ only)
     + `<project-root>/.../system-under-test/calledMethods.app-tests.js` (tests run by __'meteor test --full-app'__ only)
-    + `<project-root>/tests/end-to-end/.../calledMethods.app-tests.js` (tests to be run by __'chimp'__)
+    + `<project-root>/tests/end-to-end/.../featureName.feature or .js` (tests to be run by __'chimp'__)
+    
+  NOTE: placing all 'non meteor application' code, such as tests and storybook stories, in `tests/` directories prevents meteor server from restarting when in development mode
 
-### Mocking Meteor packages
+### Jest
+#### Mocking Meteor packages
 * Many commonly used meteor packages were mocked, by creating mock modules, and using the moduleNameMapper configuration setting
     + some details and light exmaples can be seen on this [meteor forum discussion](https://forums.meteor.com/t/mocking-meteor-package-imports-in-jest/27780/9)
 * Other helpful meteor mocking resources
@@ -74,3 +78,12 @@
 * One specific, complex example, was mocking SimpleSchema. It took some effort, and trial and error, to mimic being able to reference a returned function from an inline instantiated object
     + eg  `const myValidator = new SimpleSchema({...}).validator();`
     + see the aldeed:simple-schema.js mock for validator() 
+#### Snapshots
+* when initially creating, or even updating, __be sure to examine the contents of the snapshot file__
+    - it is possible to capture incorrect code or even 'undefined' in cases
+* snapshot files are to be kept in the default location, a `__snapshots__` subdirectory
+    
+## Storybook
+* Story file location and naming convention
+    - story file names are to follow the convetion `filename.stories.js`
+    - story files are to be placed in a `tests/__stories__/` subdirectory of the module / component      
