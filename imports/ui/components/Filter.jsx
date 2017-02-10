@@ -35,7 +35,10 @@ const Filter = ({ filterList = [] }) => (
 );
 
 Filter.propTypes = {
-  filterList: PropTypes.array,  // eslint-disable-line react/forbid-prop-types
+  filterList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })),
 };
 
 export default Filter;
