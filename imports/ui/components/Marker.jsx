@@ -25,7 +25,8 @@ const markerStyle = {
   padding: 4,
 };
 
-class Marker extends PureComponent {  // eslint-disable-line react/prefer-stateless-function
+// eslint-disable-next-line react/prefer-stateless-function
+class Marker extends PureComponent {
   render() {
     return (
       <div style={markerStyle}>
