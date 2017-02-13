@@ -8,14 +8,9 @@ import { shallow } from "enzyme";
 import AppContainer from "../AppContainer";
 
 describe("<AppContainer />", function () {
-  it.skip("matches render snapshot", function () {
+  it("matches render snapshot", function () {
     const tree = renderer.create(<AppContainer />).toJSON();
     expect(tree).toMatchSnapshot();
-  });
-
-  it("matches shallow html snapshot", function () {
-    const renderedHTML = shallow(<AppContainer />).html();
-    expect(renderedHTML).toMatchSnapshot();
   });
 
   it("renders Navbar and LocationsMap components", function () {
