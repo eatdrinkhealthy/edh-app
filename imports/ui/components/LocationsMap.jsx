@@ -5,10 +5,6 @@ import { Meteor } from "meteor/meteor";
 /* global Geolocation  */
 
 export default class LocationsMap extends PureComponent {
-  componentDidMount() {
-    console.log("current location:", Geolocation.latLng());
-  }
-
   render() {
     return (
       <div className="map-container">

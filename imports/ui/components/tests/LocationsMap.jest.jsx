@@ -3,21 +3,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React from "react";
-import renderer from "react-test-renderer";
 import {
   shallow,
 } from "enzyme";
+import toJson from "enzyme-to-json";
 import LocationsMap from "../LocationsMap";
 
 describe("<LocationsMap />", function () {
-  it.skip("matches render snapshot", function () {
-    // TODO capture snapshot, currently generates an "Invariant Violation"
-    const tree = renderer.create(<LocationsMap />);
-    expect(tree).toMatchSnapshot();
-  });
-
-  it("renders a GoogleMap component", function () {
+  it("matches render snapshot", function () {
+    // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
     const wrapper = shallow(<LocationsMap />);
-    expect(wrapper.find("GoogleMap").length).toBe(1);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

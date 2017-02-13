@@ -1,32 +1,13 @@
 exports[`<AppContainer /> matches render snapshot 1`] = `
 <div>
-  <div
-    className="nav">
-    <a
-      onClick={[Function]}
-      style={Object {}}>
-      <div
-        className="toggle-sidebar">
-        <div
-          className="burger" />
-        <div
-          className="burger" />
-        <div
-          className="burger" />
-      </div>
-    </a>
-    <div
-      className="nav__title">
-      Eat Drink Healthy
-    </div>
-    <a
-      onClick={[Function]}
-      style={Object {}}>
-      <div
-        className="toggle-filter">
-        Filter
-      </div>
-    </a>
-  </div>
+  <Navbar />
+  <LocationsMap
+    center={
+      Object {
+        "lat": 32.789008,
+        "lng": -79.932115,
+      }
+    }
+    zoom={16} />
 </div>
 `;
