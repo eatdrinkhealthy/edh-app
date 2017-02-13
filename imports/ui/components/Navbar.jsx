@@ -3,7 +3,6 @@ import { Link } from "react-router";
 
 const Navbar = () =>
   <div className="nav">
-
     <Link to="/sidebar">
       <div className="toggle-sidebar">
         <div className="burger" />
