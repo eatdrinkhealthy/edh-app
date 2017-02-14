@@ -3,7 +3,7 @@
 import React from "react";
 import { storiesOf } from "@kadira/storybook";
 
-import Filter from "../Filter";
+import Filter from "../../Filter";
 
 const testFilterList = [
   {
