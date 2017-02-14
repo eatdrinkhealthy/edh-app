@@ -6,6 +6,7 @@ import { withKnobs, text } from "@kadira/storybook-addon-knobs";
 
 import Filter, { FilterItem } from "../../Filter";
 import Navbar from "../../Navbar";
+import Sidebar from "../../Sidebar";
 
 const testFilterList = [
   {
@@ -43,4 +44,7 @@ storiesOf("Components", module)
   ))
   .add("Navbar", () => (
     <Navbar />
+  ))
+  .add("Sidebar", () => (
+    <Sidebar />
   ));
