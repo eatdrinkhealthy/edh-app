@@ -2,6 +2,7 @@
 
 import React from "react";
 import { storiesOf } from "@kadira/storybook";
+import { withKnobs, text } from "@kadira/storybook-addon-knobs";
 
 import Filter, { FilterItem } from "../../Filter";
 
@@ -24,7 +25,15 @@ const testFilterList = [
 ];
 
 storiesOf("Components", module)
-  .add("Filter Item", () => (<FilterItem filter={testFilterList[0]} />))
+  .addDecorator(withKnobs)
+  .add("Filter Item", () => {
+    const testFilterItem = {
+      id: "juicebar1",
+      name: text("Label", "Juice Bar"),
+    };
+
+    return (<FilterItem filter={testFilterItem} />);
+  })
   .add("Filter - no list", () => (
     <Filter />
   ))
