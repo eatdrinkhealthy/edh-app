@@ -3,7 +3,7 @@
 import React from "react";
 import { storiesOf } from "@kadira/storybook";
 
-import Filter from "../../Filter";
+import Filter, { FilterItem } from "../../Filter";
 
 const testFilterList = [
   {
@@ -23,10 +23,11 @@ const testFilterList = [
   },
 ];
 
-storiesOf("Filter", module)
-  .add("with no filter list", () => (
+storiesOf("Components", module)
+  .add("Filter Item", () => (<FilterItem filter={testFilterList[0]} />))
+  .add("Filter - no list", () => (
     <Filter />
   ))
-  .add("with sample filter list", () => (
+  .add("Filter - sample list", () => (
     <Filter filterList={testFilterList} />
   ));
