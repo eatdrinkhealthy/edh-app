@@ -40,7 +40,4 @@ storiesOf("Components", module)
   ))
   .add("Filter - sample list", () => (
     <Filter filterList={testFilterList} />
-  ))
-  .add("LocationsMap", () => (
-    <LocationsMap googleMapsApiKey={"testApiKey"} />
   ));
