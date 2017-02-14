@@ -5,6 +5,7 @@ import { storiesOf } from "@kadira/storybook";
 import { withKnobs, text } from "@kadira/storybook-addon-knobs";
 
 import Filter, { FilterItem } from "../../Filter";
+import LocationsMap from "../../LocationsMap";
 
 const testFilterList = [
   {
@@ -39,4 +40,7 @@ storiesOf("Components", module)
   ))
   .add("Filter - sample list", () => (
     <Filter filterList={testFilterList} />
+  ))
+  .add("LocationsMap", () => (
+    <LocationsMap googleMapsApiKey={"testApiKey"} />
   ));
