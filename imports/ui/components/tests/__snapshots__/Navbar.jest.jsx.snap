@@ -1,0 +1,30 @@
+exports[`<Navbar /> matches render snapshot 1`] = `
+<div
+  className="nav">
+  <a
+    onClick={[Function]}
+    style={Object {}}>
+    <div
+      className="toggle-sidebar">
+      <div
+        className="burger" />
+      <div
+        className="burger" />
+      <div
+        className="burger" />
+    </div>
+  </a>
+  <div
+    className="nav__title">
+    Eat Drink Healthy
+  </div>
+  <a
+    onClick={[Function]}
+    style={Object {}}>
+    <div
+      className="toggle-filter">
+      Filter
+    </div>
+  </a>
+</div>
+`;

@@ -1,0 +1,34 @@
+exports[`<LocationsMap /> matches render snapshot 1`] = `
+<div
+  className="map-container">
+  <GoogleMap
+    bootstrapURLKeys={
+      Object {
+        "key": "TestAPIKeyValue",
+      }
+    }
+    debounced={true}
+    defaultCenter={
+      Object {
+        "lat": 32.789008,
+        "lng": -79.932115,
+      }
+    }
+    defaultZoom={16}
+    distanceToMouse={[Function]}
+    googleMapLoader={[Function]}
+    hoverDistance={30}
+    layerTypes={Array []}
+    options={[Function]}
+    style={
+      Object {
+        "height": "100%",
+        "margin": 0,
+        "padding": 0,
+        "position": "relative",
+        "width": "100%",
+      }
+    }
+    yesIWantToUseGoogleMapApiInternals={false} />
+</div>
+`;

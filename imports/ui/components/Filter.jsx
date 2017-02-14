@@ -4,7 +4,6 @@ import React, {
 import { Link } from "react-router";
 import Toggle from "react-toggle";
 
-
 const FilterItem = ({ filter }) => (
   <div>
     <span className="react-toggle-label">{filter.name}</span>
@@ -29,14 +28,17 @@ const Filter = ({ filterList = [] }) => (
     </div>
     <div className="filter">
       {filterList.map(filter => (
-        <FilterItem key={filter.id} filter={filter} />)
-      )}
+        <FilterItem key={filter.id} filter={filter} />))
+      }
     </div>
   </div>
 );
 
 Filter.propTypes = {
-  filterList: PropTypes.array,  // eslint-disable-line react/forbid-prop-types
+  filterList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })),
 };
 
 export default Filter;

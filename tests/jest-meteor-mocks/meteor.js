@@ -14,6 +14,11 @@ const Meteor = {
   })),
   Error,
   userId: jest.fn(),
+  settings: {
+    public: {
+      googleMapsApiKey: "TestAPIKeyValue",
+    },
+  },
 };
 
 module.exports = { Meteor };

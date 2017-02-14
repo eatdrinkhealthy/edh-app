@@ -4,5 +4,5 @@
     "^meteor/(.*)$": "<rootDir>/tests/jest-meteor-mocks/$1.js"
   },
   "testPathIgnorePatterns": ["/node_modules/", "/.meteor/", "/public/"],
-  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec|jest))\\.jsx?$"
+  "testRegex": "/tests/.*\\.jest\\.jsx?$"
 }

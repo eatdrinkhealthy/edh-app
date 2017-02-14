@@ -1,14 +1,14 @@
-import React, { PropTypes, PureComponent } from "react";
+import React, {
+  PropTypes,
+  PureComponent,
+} from "react";
 import GoogleMap from "google-map-react";
 import { Meteor } from "meteor/meteor";
 
 /* global Geolocation  */
 
+// eslint-disable-next-line react/prefer-stateless-function
 export default class LocationsMap extends PureComponent {
-  componentDidMount() {
-    console.log("current location:", Geolocation.latLng());
-  }
-
   render() {
     return (
       <div className="map-container">

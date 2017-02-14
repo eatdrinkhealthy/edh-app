@@ -1,27 +1,60 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
+/* eslint-disable import/no-extraneous-dependencies */
 
 import React from "react";
 import renderer from "react-test-renderer";
+import {
+  mount,
+} from "enzyme";
 import Filter, { FilterItem } from "../Filter";
-import FILTER_LIST from "../../../api/filters";
 
-describe("<Filter />", function () {
-  it("renders correctly", function () {
-    const tree = renderer.create(<Filter filterList={FILTER_LIST} />).toJSON();
-    expect(tree).toMatchSnapshot();
+describe("Filter Components", function () {
+  const testFilterList = [
+    {
+      id: "juiceBar1",
+      name: "Juice Bar1",
+      fourSquareCategory: "1",
+    },
+    {
+      id: "juiceBar2",
+      name: "Juice Bar2",
+      fourSquareCategory: "2",
+    },
+    {
+      id: "juiceBar3",
+      name: "Juice Bar3",
+      fourSquareCategory: "3",
+    },
+  ];
+
+  describe("<Filter />", function () {
+    it("matches render snapshot, with a filter list", function () {
+      const tree = renderer.create(<Filter filterList={testFilterList} />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it("matches render snapshot, with no filter list", function () {
+      const tree = renderer.create(<Filter />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it("renders a toggle component for each filter in the list", function () {
+      const wrapper = mount(<Filter filterList={testFilterList} />);
+      expect(wrapper.find("Toggle").length).toBe(3);
+    });
+
+    it("renders no toggle components when no filter list provided", function () {
+      const wrapper = mount(<Filter />);
+      expect(wrapper.find("Toggle").length).toBe(0);
+      expect(wrapper.find("Toggle").length).toBe(0);
+    });
   });
 
-  it("renders a header and no toggle components for empty filter list", function () {
-    const tree = renderer.create(<Filter />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-});
-
-describe("<FilterItem />", function () {
-  it("renders correctly", function () {
-    const filterItem = FILTER_LIST[0];
-    const tree = renderer.create(<FilterItem filter={filterItem} />);
-    expect(tree).toMatchSnapshot();
+  describe("<FilterItem />", function () {
+    it("matches render snapshot", function () {
+      const tree = renderer.create(<FilterItem filter={testFilterList[0]} />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 });
