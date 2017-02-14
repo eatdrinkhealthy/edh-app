@@ -12,7 +12,7 @@
     "integration-test-phantomjs": "meteor test --once --port 4000 --driver-package dispatch:mocha-phantomjs",
     "integration-test-phantomjs-w": "TEST_WATCH=1 meteor test --port 4000 --driver-package dispatch:mocha-phantomjs",
     "full-integration-test": "meteor test --full-app --driver-package practicalmeteor:mocha",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -s ./public -p 9001 -c .storybook"
   },
   "dependencies": {
     "babel-runtime": "6.18.0",
@@ -31,6 +31,7 @@
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
     "babel-register": "^6.18.0",
+    "css-loader": "^0.26.1",
     "enzyme": "^2.7.0",
     "enzyme-to-json": "^1.4.5",
     "eslint": "^3.11.1",
@@ -40,7 +41,10 @@
     "eslint-plugin-meteor": "^4.0.1",
     "eslint-plugin-react": "^6.7.1",
     "jest": "^18.1.0",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
     "react-addons-test-utils": "^15.4.2",
-    "react-test-renderer": "^15.4.2"
+    "react-test-renderer": "^15.4.2",
+    "style-loader": "^0.13.1"
   }
 }
