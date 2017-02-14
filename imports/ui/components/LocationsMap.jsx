@@ -3,7 +3,6 @@ import React, {
   PureComponent,
 } from "react";
 import GoogleMap from "google-map-react";
-import { Meteor } from "meteor/meteor";
 
 /* global Geolocation  */
 
@@ -13,7 +12,7 @@ export default class LocationsMap extends PureComponent {
     return (
       <div className="map-container">
         <GoogleMap
-          bootstrapURLKeys={{ key: Meteor.settings.public.googleMapsApiKey }}
+          bootstrapURLKeys={{ key: this.props.googleMapsApiKey }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
@@ -35,4 +34,5 @@ LocationsMap.propTypes = {
     lng: PropTypes.number,
   }),
   zoom: PropTypes.number,
+  googleMapsApiKey: PropTypes.string.isRequired,
 };
