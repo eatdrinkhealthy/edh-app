@@ -87,3 +87,8 @@
 * Story file location and naming convention
     - story file names are to follow the convetion `filename.stories.js`
     - story files are to be placed in a `tests/__stories__/` subdirectory of the module / component      
+
+## Flow
+* flow package installed
+    - place 3rd party and custom created libdefs in `.types/`  (see setting in .flowconfig file)
+* list conventions here
