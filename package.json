@@ -2,8 +2,11 @@
   "name": "edh-app",
   "private": true,
   "scripts": {
-    "lint": "eslint . --ext .js,.jsx --ignore-pattern 'packages/**'",
     "start": "meteor run --settings settings.json",
+    "lint": "eslint . --ext .js,.jsx --ignore-pattern 'packages/**'",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "flow:check": "flow check",
+    "flow:stop": "flow stop",
     "test": "yarn run unit-test",
     "unit-test": "jest -c .jest-config.json",
     "unit-test-w": "yarn run unit-test -- --watchAll",

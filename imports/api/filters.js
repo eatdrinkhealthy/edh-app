@@ -1,3 +1,5 @@
+// @flow
+
 const FILTER_LIST = [
   {
     id: "juiceBar",
