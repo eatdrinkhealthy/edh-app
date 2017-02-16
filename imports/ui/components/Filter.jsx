@@ -1,22 +1,21 @@
+// @flow
 import React, {
   PropTypes,
 } from "react";
 import { Link } from "react-router";
 import Toggle from "react-toggle";
 
-const FilterItem = ({ filter }) => (
+type IFilterItem = {
+  label: string,
+  filterId: string,
+};
+
+const FilterItem = ({ label, filterId }: IFilterItem) => (
   <div>
-    <span className="react-toggle-label">{filter.name}</span>
-    <span className="react-toggle"> <Toggle id={filter.id} /></span>
+    <span className="react-toggle-label">{label}</span>
+    <span className="react-toggle"> <Toggle id={filterId} /></span>
   </div>
 );
-
-FilterItem.propTypes = {
-  filter: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }),
-};
 
 const Filter = ({ filterList = [] }) => (
   <div>
@@ -28,7 +27,7 @@ const Filter = ({ filterList = [] }) => (
     </div>
     <div className="filter">
       {filterList.map(filter => (
-        <FilterItem key={filter.id} filter={filter} />))
+        <FilterItem key={filter.id} label={filter.name} filterId={filter.id} />))
       }
     </div>
   </div>

@@ -53,7 +53,11 @@ describe("Filter Components", function () {
 
   describe("<FilterItem />", function () {
     it("matches render snapshot", function () {
-      const tree = renderer.create(<FilterItem filter={testFilterList[0]} />).toJSON();
+      const tree = renderer.create(
+        <FilterItem
+          label={testFilterList[0].name}
+          filterId={testFilterList[0].id}
+        />).toJSON();
       expect(tree).toMatchSnapshot();
     });
   });
