@@ -8,6 +8,7 @@
     "flow:check": "flow check",
     "flow:status": "flow status",
     "flow:stop": "flow stop",
+    "pretest": "yarn run lint && yarn run flow:check",
     "test": "yarn run unit-test",
     "unit-test": "jest -c .jest-config.json",
     "unit-test-w": "yarn run unit-test -- --watchAll",
