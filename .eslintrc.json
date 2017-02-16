@@ -1,12 +1,15 @@
 {
+  "parser": "babel-eslint",
   "plugins": [
     "meteor",
-    "react"
+    "react",
+    "flowtype"
   ],
   "extends": [
     "airbnb",
     "plugin:meteor/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended"
   ],
   "env": {
     "es6": true
@@ -27,7 +30,10 @@
       "meteor/meteor",
       "meteor/accounts-base",
       "meteor/mongo"
-    ]
+    ],
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
   },
   "rules": {
     "semi": "error",
