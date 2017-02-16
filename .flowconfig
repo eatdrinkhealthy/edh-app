@@ -1,3 +1,5 @@
+[include]
+
 [ignore]
 .*/node_modules/.*
 .*/\.meteor/.*
@@ -11,8 +13,6 @@
 .*/public/.*
 .*/scripts/.*
 .*/stylesheets/.*
-
-[include]
 
 [libs]
 .types/
