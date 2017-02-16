@@ -91,4 +91,6 @@
 ## Flow
 * flow package installed
     - place 3rd party and custom created libdefs in `.types/`  (see setting in .flowconfig file)
-* list conventions here
+* list notable flowtype conventions here
+* installed [eslint package for flowtype](https://github.com/gajus/eslint-plugin-flowtype)
+    - this generates flow type errors simply by linting (may make flow less or unnecessary?)

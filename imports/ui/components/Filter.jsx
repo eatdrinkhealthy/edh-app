@@ -5,12 +5,12 @@ import React, {
 import { Link } from "react-router";
 import Toggle from "react-toggle";
 
-type IFilterItem = {
+type FilterItemType = {
   label: string,
   filterId: string,
 };
 
-const FilterItem = ({ label, filterId }: IFilterItem) => (
+const FilterItem = ({ label, filterId }: FilterItemType) => (
   <div>
     <span className="react-toggle-label">{label}</span>
     <span className="react-toggle"> <Toggle id={filterId} /></span>
