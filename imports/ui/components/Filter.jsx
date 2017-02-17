@@ -10,7 +10,7 @@ type FilterItemType = {
   filterId: string,
 };
 
-const FilterItem = ({ label, filterId }: FilterItemType) => (
+const FilterItem = ({ label, filterId }: FilterItemType): React$Component => (
   <div>
     <span className="react-toggle-label">{label}</span>
     <span className="react-toggle"> <Toggle id={filterId} /></span>
@@ -26,9 +26,12 @@ const Filter = ({ filterList = [] }) => (
       </Link>
     </div>
     <div className="filter">
-      {filterList.map(filter => (
-        <FilterItem key={filter.id} label={filter.name} filterId={filter.id} />))
-      }
+      {filterList.map(filter =>
+        (<FilterItem
+          key={filter.id}
+          label={filter.name}
+          filterId={filter.id}
+        />))}
     </div>
   </div>
 );
