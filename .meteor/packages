@@ -21,4 +21,4 @@ static-html
 practicalmeteor:mocha
 dispatch:mocha-phantomjs
 mdg:geolocation
-less
+less@2.7.8
