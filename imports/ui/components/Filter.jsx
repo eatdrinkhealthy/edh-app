@@ -3,28 +3,28 @@ import React from "react";
 import { Link } from "react-router";
 import Toggle from "react-toggle";
 
-type FilterItemPropTypes = {
+type IFilterItemProps = {
   label: string,
   filterId: string,
 };
 
-const FilterItem = ({ label, filterId }: FilterItemPropTypes) => (
+const FilterItem = ({ label, filterId }: IFilterItemProps) => (
   <div>
     <span className="react-toggle-label">{label}</span>
     <span className="react-toggle"> <Toggle id={filterId} /></span>
   </div>
 );
 
-type FilterType = {
+type IFilter = {
   name: string,  // eslint-disable-line react/no-unused-prop-types
   id: string,    // eslint-disable-line react/no-unused-prop-types
 };
 
-type FilterPropTypes = {
-  filterList: FilterType[],
+type IFilterProps = {
+  filterList: IFilter[],
 };
 
-const Filter = ({ filterList = [] }: FilterPropTypes) => (
+const Filter = ({ filterList = [] }: IFilterProps) => (
   <div>
     <div className="filter-header">
       <h4>Filter</h4>
@@ -33,7 +33,7 @@ const Filter = ({ filterList = [] }: FilterPropTypes) => (
       </Link>
     </div>
     <div className="filter">
-      {filterList.map((filter: FilterType) =>
+      {filterList.map((filter: IFilter) =>
         (<FilterItem
           key={filter.id}
           label={filter.name}
