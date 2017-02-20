@@ -1,5 +1,6 @@
 // Hand creating react-toggle libdef
 // props and types listed at https://github.com/aaronshaf/react-toggle
+// TODO confirm (or fix), props typechecking is enforced
 type ReactToggle$Props = {
   checked?: boolean,
   defaultChecked?: boolean,
