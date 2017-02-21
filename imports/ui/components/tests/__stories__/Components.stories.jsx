@@ -31,6 +31,7 @@ storiesOf("Components", module)
   .addDecorator(withKnobs)
   .addDecorator(backgrounds([
     { name: "Light Steel Blue", value: "lightsteelblue" },
+    { name: "EDH Gradient", value: "-webkit-linear-gradient(-45deg, #048ec5 0%, #2ecc71 100%)" },
   ]))
   .add("Filter Item", () => {
     const testFilterItem = {
