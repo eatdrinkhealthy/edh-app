@@ -54,6 +54,7 @@
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
     "react-addons-test-utils": "^15.4.2",
+    "react-storybook-addon-backgrounds": "^0.0.7",
     "react-test-renderer": "^15.4.2",
     "style-loader": "^0.13.1"
   }

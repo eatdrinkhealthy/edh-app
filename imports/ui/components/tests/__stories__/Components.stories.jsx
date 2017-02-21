@@ -3,6 +3,7 @@
 import React from "react";
 import { storiesOf } from "@kadira/storybook";
 import { withKnobs, text } from "@kadira/storybook-addon-knobs";
+import backgrounds from "react-storybook-addon-backgrounds";
 
 import Filter, { FilterItem } from "../../Filter";
 import Navbar from "../../Navbar";
@@ -28,6 +29,9 @@ const testFilterList = [
 
 storiesOf("Components", module)
   .addDecorator(withKnobs)
+  .addDecorator(backgrounds([
+    { name: "Light Steel Blue", value: "lightsteelblue" },
+  ]))
   .add("Filter Item", () => {
     const testFilterItem = {
       id: "juicebar1",
