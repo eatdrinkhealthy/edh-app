@@ -87,3 +87,10 @@
 * Story file location and naming convention
     - story file names are to follow the convetion `filename.stories.js`
     - story files are to be placed in a `tests/__stories__/` subdirectory of the module / component      
+
+## Flow
+* flow package installed
+    - place 3rd party and custom created libdefs in `.types/`  (see setting in .flowconfig file)
+* list notable flowtype conventions here
+* installed [eslint package for flowtype](https://github.com/gajus/eslint-plugin-flowtype)
+    - this generates flow type errors simply by linting (may make flow less or unnecessary?)

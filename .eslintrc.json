@@ -1,12 +1,15 @@
 {
+  "parser": "babel-eslint",
   "plugins": [
     "meteor",
-    "react"
+    "react",
+    "flowtype"
   ],
   "extends": [
     "airbnb",
     "plugin:meteor/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended"
   ],
   "env": {
     "es6": true
@@ -27,7 +30,10 @@
       "meteor/meteor",
       "meteor/accounts-base",
       "meteor/mongo"
-    ]
+    ],
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
   },
   "rules": {
     "semi": "error",
@@ -37,6 +43,23 @@
     "react/no-danger": "warn",
     "react/react-in-jsx-scope": "off",
     "meteor/eventmap-params": ["error", { "templateInstanceParamName": "instance" }],
-    "import/no-unresolved": ["error", { "ignore": ["^meteor/"] }]
+    "import/no-unresolved": ["error", { "ignore": ["^meteor/"] }],
+    "flowtype/boolean-style": ["error", "boolean"],
+    "flowtype/define-flow-type": "warn",
+    "flowtype/generic-spacing": ["error", "never"],
+    "flowtype/no-primitive-constructor-types": "error",
+    "flowtype/no-weak-types": "error",
+    "flowtype/object-type-delimiter": ["error", "comma"],
+    "flowtype/require-parameter-type": "warn",
+    "flowtype/require-return-type": ["warn", "always", { "annotateUndefined": "never" }],
+    "flowtype/require-valid-file-annotation": "error",
+    "flowtype/semi": ["error", "always"],
+    "flowtype/space-after-type-colon": ["error", "always"],
+    "flowtype/space-before-generic-bracket": ["error", "never"],
+    "flowtype/space-before-type-colon": ["error", "never"],
+    "flowtype/type-id-match": ["error", "^I[A-Z][a-zA-Z0-9]+$"],
+    "flowtype/union-intersection-spacing": ["error", "always"],
+    "flowtype/use-flow-type": "warn",
+    "flowtype/valid-syntax": "warn"
   }
 }

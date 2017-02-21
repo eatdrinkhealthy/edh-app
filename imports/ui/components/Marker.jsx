@@ -1,6 +1,6 @@
+// @flow
 import React, {
   PureComponent,
-  PropTypes,
 } from "react";
 
 const MARKER_WIDTH = 40;
@@ -25,8 +25,16 @@ const markerStyle = {
   padding: 4,
 };
 
+type IMarker = {
+  text: string,
+};
+
 // eslint-disable-next-line react/prefer-stateless-function
 class Marker extends PureComponent {
+  static defaultProps = {};
+
+  props: IMarker;
+
   render() {
     return (
       <div style={markerStyle}>
@@ -35,10 +43,5 @@ class Marker extends PureComponent {
     );
   }
 }
-
-Marker.propTypes = {
-  text: PropTypes.string,
-};
-Marker.defaultProps = {};
 
 export default Marker;

@@ -1,24 +1,30 @@
-import React, {
-  PropTypes,
-} from "react";
+// @flow
+import React from "react";
 import { Link } from "react-router";
 import Toggle from "react-toggle";
 
-const FilterItem = ({ filter }) => (
+type IFilterItemProps = {
+  label: string,
+  filterId: string,
+};
+
+const FilterItem = ({ label, filterId }: IFilterItemProps) => (
   <div>
-    <span className="react-toggle-label">{filter.name}</span>
-    <span className="react-toggle"> <Toggle id={filter.id} /></span>
+    <span className="react-toggle-label">{label}</span>
+    <span className="react-toggle"> <Toggle id={filterId} /></span>
   </div>
 );
 
-FilterItem.propTypes = {
-  filter: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }),
+type IFilter = {
+  name: string,  // eslint-disable-line react/no-unused-prop-types
+  id: string,    // eslint-disable-line react/no-unused-prop-types
 };
 
-const Filter = ({ filterList = [] }) => (
+type IFilterProps = {
+  filterList: IFilter[],
+};
+
+const Filter = ({ filterList = [] }: IFilterProps) => (
   <div>
     <div className="filter-header">
       <h4>Filter</h4>
@@ -27,19 +33,15 @@ const Filter = ({ filterList = [] }) => (
       </Link>
     </div>
     <div className="filter">
-      {filterList.map(filter => (
-        <FilterItem key={filter.id} filter={filter} />))
-      }
+      {filterList.map((filter: IFilter) =>
+        (<FilterItem
+          key={filter.id}
+          label={filter.name}
+          filterId={filter.id}
+        />))}
     </div>
   </div>
 );
-
-Filter.propTypes = {
-  filterList: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  })),
-};
 
 export default Filter;
 
