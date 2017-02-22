@@ -21,7 +21,7 @@ type IFilter = {
 };
 
 type IFilterProps = {
-  filterList: IFilter[],
+  filterList?: IFilter[],
 };
 
 const Filter = ({ filterList = [] }: IFilterProps) => (
