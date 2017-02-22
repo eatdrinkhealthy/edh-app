@@ -51,3 +51,12 @@
 .soft {
     padding: 20px
 }
+
+.childrenBorder > * {
+    border-style: dashed;
+    border-width: 1px;
+}
+
+.childrenCenter {
+    text-align: center;
+}
