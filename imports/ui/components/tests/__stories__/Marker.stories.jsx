@@ -6,9 +6,13 @@ import React from "react";
 import {
   storiesOf,
 } from "@kadira/storybook";
-import { text } from "@kadira/storybook-addon-knobs";
+import { text, select } from "@kadira/storybook-addon-knobs";
 import Marker from "../../Marker";
 
 storiesOf("Map", module)
-  .add("Marker", () => (<Marker label={text("Label", "")} />))
-  .add("Marker top left", () => (<Marker origin="topLeft" />));
+  .add("Marker", () => (
+    <Marker
+      label={text("Label", "")}
+      origin={select("Origin", { center: "center", topLeft: "topLeft" }, "center")}
+    />
+  ));
