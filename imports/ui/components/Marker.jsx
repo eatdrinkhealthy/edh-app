@@ -25,7 +25,9 @@ const markerStyle = {
   padding: 4,
 };
 
-type IMarkerOrigin = "center" | "topLeft";
+type IMarkerOrigin =
+  | "center"
+  | "topLeft";
 
 type IMarkerProps = {
   label?: string,
@@ -34,10 +36,9 @@ type IMarkerProps = {
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Marker extends PureComponent {
-  static defaultProps = {
-    origin: "center",
-  };
-
+  // TODO - confirm that when an optional prop is not provided, and if a default value is not
+  //        provided, no ill side effects occur (ie it is okay to try to render an undefined prop)
+  //        (should defaultProps be set here?  -note, tests don't fail when label isn't provided)
   props: IMarkerProps;
 
   render() {
