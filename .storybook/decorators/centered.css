@@ -1,0 +1,53 @@
+.floating {
+    text-align: center
+}
+
+.floating:before {
+    display: inline-block;
+    height: 100%;
+    margin-right: -.25em;
+    content: "";
+    vertical-align: middle
+}
+
+.floating > .floating__item {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.floating:before {
+    margin-right: 0 !important
+}
+
+.locked-sides {
+    position: absolute;
+    right: 0;
+    left: 0
+}
+
+.locked-ends {
+    position: absolute;
+    top: 0;
+    bottom: 0
+}
+
+.scrollable {
+    overflow: hidden
+}
+
+.scrollable {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch
+}
+
+.one-whole {
+    width: 100%
+}
+
+.text-left {
+    text-align: left
+}
+
+.soft {
+    padding: 20px
+}

@@ -1,4 +1,3 @@
-// @flow
 
 /* eslint-disable import/no-extraneous-dependencies */
 
@@ -10,6 +9,14 @@ import backgrounds from "react-storybook-addon-backgrounds";
 import Filter, { FilterItem } from "../../Filter";
 import Navbar from "../../Navbar";
 import Sidebar from "../../Sidebar";
+
+const Center = ({ children }) => (
+  <div className="floating locked-sides locked-ends scrollable">
+    <div className="floating__item one-whole text-left soft">
+      { children }
+    </div>
+  </div>
+);
 
 const testFilterList = [
   {
@@ -35,9 +42,6 @@ storiesOf("Components", module)
     { name: "Light Steel Blue", value: "lightsteelblue" },
     { name: "EDH Gradient", value: "-webkit-linear-gradient(-45deg, #048ec5 0%, #2ecc71 100%)" },
   ]))
-  .add("Filter Item", () => (
-    <FilterItem label="Juice Bar" filterId="juicebar1" />
-  ))
   .add("Filter - no list", () => (
     <Filter />
   ))
@@ -49,4 +53,16 @@ storiesOf("Components", module)
   ))
   .add("Sidebar", () => (
     <Sidebar />
+  ));
+
+storiesOf("Components", module)
+  .addDecorator(withKnobs)
+  .addDecorator(backgrounds([
+    { name: "Light Steel Blue", value: "lightsteelblue" },
+    { name: "EDH Gradient", value: "-webkit-linear-gradient(-45deg, #048ec5 0%, #2ecc71 100%)" },
+  ]))
+  .add("Filter Item", () => (
+    <Center>
+      <FilterItem label="Juice Bar" filterId="juicebar1" />
+    </Center>
   ));

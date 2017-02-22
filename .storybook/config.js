@@ -1,6 +1,7 @@
 import { configure } from "@kadira/storybook";
 
 import "!style!css!less!../client/stylesheets/main.less";
+import "!style!css!less!./decorators/centered.css";
 
 // load settings as a Meteor application would (for API keys)
 Window.Meteor = {};
