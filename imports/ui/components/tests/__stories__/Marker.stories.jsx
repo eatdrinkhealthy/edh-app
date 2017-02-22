@@ -8,4 +8,4 @@ import { text } from "@kadira/storybook-addon-knobs";
 import Marker from "../../Marker";
 
 storiesOf("Map", module)
-  .add("Marker", () => (<Marker />));
+  .add("Marker", () => (<Marker label={text("Label", "")} />));

@@ -25,20 +25,30 @@ const markerStyle = {
   padding: 4,
 };
 
-type IMarker = {
-  text?: string,
+type IMarkerOrigin = "center" | "topLeft";
+
+type IMarkerProps = {
+  label?: string,
+  origin?: IMarkerOrigin,
 };
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Marker extends PureComponent {
-  static defaultProps = {};
+  static defaultProps = {
+    origin: "center",
+  };
 
-  props: IMarker;
+  props: IMarkerProps;
 
   render() {
+    if (this.props.origin === "topLeft") {
+      markerStyle.left = 0;
+      markerStyle.top = 0;
+    }
+
     return (
       <div style={markerStyle}>
-        {this.props.text}
+        {this.props.label}
       </div>
     );
   }
