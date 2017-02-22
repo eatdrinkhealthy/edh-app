@@ -2,8 +2,7 @@
 
 import React from "react";
 import { storiesOf } from "@kadira/storybook";
-import { withKnobs, text, boolean } from "@kadira/storybook-addon-knobs";
-import backgrounds from "react-storybook-addon-backgrounds";
+import { text, boolean } from "@kadira/storybook-addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 
 import Filter, { FilterItem } from "../../Filter";
@@ -29,11 +28,6 @@ const testFilterList = [
 ];
 
 storiesOf("Components", module)
-  .addDecorator(withKnobs)
-  .addDecorator(backgrounds([
-    { name: "Light Steel Blue", value: "lightsteelblue" },
-    { name: "EDH Gradient", value: "-webkit-linear-gradient(-45deg, #048ec5 0%, #2ecc71 100%)" },
-  ]))
   .add("Navbar", () => (
     <Navbar />
   ))
