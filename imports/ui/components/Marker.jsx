@@ -26,7 +26,7 @@ const markerStyle = {
 };
 
 type IMarker = {
-  text: string,
+  text?: string,
 };
 
 // eslint-disable-next-line react/prefer-stateless-function
