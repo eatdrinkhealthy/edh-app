@@ -1,43 +1,11 @@
 exports[`<Marker /> matches render snapshot, no text 1`] = `
 <div
-  style={
-    Object {
-      "backgroundColor": "white",
-      "border": "5px solid #f44336",
-      "borderRadius": 40,
-      "color": "#3f51b5",
-      "fontSize": 16,
-      "fontWeight": "bold",
-      "height": 40,
-      "left": -20,
-      "padding": 4,
-      "position": "absolute",
-      "textAlign": "center",
-      "top": -20,
-      "width": 40,
-    }
-  } />
+  className="markerStyle" />
 `;
 
 exports[`<Marker /> matches render snapshot, with text 1`] = `
 <div
-  style={
-    Object {
-      "backgroundColor": "white",
-      "border": "5px solid #f44336",
-      "borderRadius": 40,
-      "color": "#3f51b5",
-      "fontSize": 16,
-      "fontWeight": "bold",
-      "height": 40,
-      "left": -20,
-      "padding": 4,
-      "position": "absolute",
-      "textAlign": "center",
-      "top": -20,
-      "width": 40,
-    }
-  }>
+  className="markerStyle">
   Some Place Cool
 </div>
 `;

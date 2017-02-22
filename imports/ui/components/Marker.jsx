@@ -2,32 +2,11 @@
 import React, {
   PureComponent,
 } from "react";
-
-const MARKER_WIDTH = 40;
-const MARKER_HEIGHT = 40;
-
-const markerStyle = {
-  // initially any map object has left top corner at lat lng coordinates
-  // it"s on you to set object origin to 0,0 coordinates
-  position: "absolute",
-  width: MARKER_WIDTH,
-  height: MARKER_HEIGHT,
-  left: -MARKER_WIDTH / 2,
-  top: -MARKER_HEIGHT / 2,
-
-  border: "5px solid #f44336",
-  borderRadius: MARKER_HEIGHT,
-  backgroundColor: "white",
-  textAlign: "center",
-  color: "#3f51b5",
-  fontSize: 16,
-  fontWeight: "bold",
-  padding: 4,
-};
+import classNames from "classnames";
 
 type IMarkerOrigin =
   | "center"
-  | "topLeft";
+    | "topLeft";
 
 type IMarkerProps = {
   label?: string,
@@ -42,13 +21,13 @@ class Marker extends PureComponent {
   props: IMarkerProps;
 
   render() {
-    if (this.props.origin === "topLeft") {
-      markerStyle.left = 0;
-      markerStyle.top = 0;
-    }
+    const markerClass = classNames("markerStyle", {
+      markerCenterOrigin: this.props.origin === "center",
+      markerCenterTopLeft: this.props.origin === "topLeft",
+    });
 
     return (
-      <div style={markerStyle}>
+      <div className={markerClass}>
         {this.props.label}
       </div>
     );
