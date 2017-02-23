@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import LocationsMap from "../components/LocationsMap";
