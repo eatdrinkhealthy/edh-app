@@ -1,4 +1,3 @@
-// TODO confirm googleMapsApiKey type is being passed to flow checking (try with various types)
 type IMeteorSettings = {
   settings: {
     public: {
