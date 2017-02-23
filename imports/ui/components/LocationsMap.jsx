@@ -1,3 +1,4 @@
+// @flow
 import React, {
   PureComponent,
 } from "react";
@@ -16,7 +17,7 @@ type IProps = {
   center?: ILatLng,
   zoom?: number,
   googleMapsApiKey: string,
-  children?: React.Element,
+  children?: React.Element<*>,
 };
 
 type IDefaultProps = {

@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import Filter from "../components/Filter";
 import FILTER_LIST from "../../api/filters";
