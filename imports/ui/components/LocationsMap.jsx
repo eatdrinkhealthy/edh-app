@@ -36,4 +36,5 @@ LocationsMap.propTypes = {
   }),
   zoom: PropTypes.number,
   googleMapsApiKey: PropTypes.string.isRequired,
+  children: PropTypes.node,
 };
