@@ -3,15 +3,9 @@ import React, {
   PureComponent,
 } from "react";
 import GoogleMap from "google-map-react";
+import type { ILatLng } from "../../config/types";
 
 /* global Geolocation  */
-
-type ILatLng = {
-  // TODO  why does eslint show lat & lng as defined but not used?
-  // TODO  correct eslint error, and remove eslint-disable-line
-  lat: number,   // eslint-disable-line react/no-unused-prop-types
-  lng: number,   // eslint-disable-line react/no-unused-prop-types
-};
 
 type IProps = {
   center?: ILatLng,
