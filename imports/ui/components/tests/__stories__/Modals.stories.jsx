@@ -6,7 +6,6 @@ import { text, boolean } from "@kadira/storybook-addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 
 import Filter, { FilterItem } from "../../Filter";
-import Navbar from "../../Navbar";
 import Sidebar from "../../Sidebar";
 
 const testFilterList = [
@@ -27,10 +26,7 @@ const testFilterList = [
   },
 ];
 
-storiesOf("Components", module)
-  .add("Navbar", () => (
-    <Navbar />
-  ))
+storiesOf("Modals", module)
   .add("Sidebar", () => (
     <Sidebar />
   ))
