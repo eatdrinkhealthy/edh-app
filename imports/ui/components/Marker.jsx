@@ -6,7 +6,7 @@ import classNames from "classnames";
 
 type IMarkerOrigin =
   | "center"
-    | "topLeft";
+  | "topLeft";
 
 type IMarkerProps = {
   label?: string,
