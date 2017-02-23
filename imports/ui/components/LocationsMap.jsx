@@ -12,21 +12,26 @@ type ILatLng = {
   lng: number,   // eslint-disable-line react/no-unused-prop-types
 };
 
-type ILocationsMapProps = {
+type IProps = {
   center?: ILatLng,
   zoom?: number,
   googleMapsApiKey: string,
   children?: React.Element,
 };
 
+type IDefaultProps = {
+  center: ILatLng,
+  zoom: number,
+};
+
 // eslint-disable-next-line react/prefer-stateless-function
-export default class LocationsMap extends PureComponent {
-  static defaultProps: ILocationsMapProps = {
+export default class LocationsMap extends PureComponent<IDefaultProps, IProps, void> {
+  static defaultProps: IDefaultProps = {
     center: { lat: 32.789008, lng: -79.932115 },
     zoom: 16,
   }
 
-  props: ILocationsMapProps;
+  props: IProps;
 
   render() {
     return (
