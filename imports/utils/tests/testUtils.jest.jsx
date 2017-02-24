@@ -57,34 +57,34 @@ describe("testUtils", function () {
         `<div></div>` +
         `</div>`;
 
-      expect(htmlClassList(htmlString).length).toEqual(2);
+      expect(htmlClassList(htmlString)).toEqual(["c1", "c2"]);
     });
 
     it("finds multiple unique classes per single element", function () {
       const htmlString = `<div id="main"><h1 class="c1 c2">some text</h1></div>`;
-      expect(htmlClassList(htmlString).length).toEqual(2);
+      expect(htmlClassList(htmlString)).toEqual(["c1", "c2"]);
     });
 
     it("finds multiple unique classes per single element, even with extra spaces", function () {
       let htmlString = `<div id="main"><h1 class="c1 c2 ">some text</h1></div>`;
-      expect(htmlClassList(htmlString).length).toEqual(2);
+      expect(htmlClassList(htmlString)).toEqual(["c1", "c2"]);
 
       htmlString = `<div id="main"><h1 class=" c1 c2">some text</h1></div>`;
-      expect(htmlClassList(htmlString).length).toEqual(2);
+      expect(htmlClassList(htmlString)).toEqual(["c1", "c2"]);
 
       htmlString = `<div id="main"><h1 class=" c1 c2 ">some text</h1></div>`;
-      expect(htmlClassList(htmlString).length).toEqual(2);
+      expect(htmlClassList(htmlString)).toEqual(["c1", "c2"]);
 
       htmlString = `<div id="main"><h1 class=" c1  c2 ">some text</h1></div>`;
-      expect(htmlClassList(htmlString).length).toEqual(2);
+      expect(htmlClassList(htmlString)).toEqual(["c1", "c2"]);
     });
 
     it("does not add duplicate classes", function () {
       let htmlString = `<div class="c1"><div class="c1">some text</div></div>`;
-      expect(htmlClassList(htmlString).length).toEqual(1);
+      expect(htmlClassList(htmlString)).toEqual(["c1"]);
 
       htmlString = `<div class="c1"><div class="c2 c1">some text</div></div>`;
-      expect(htmlClassList(htmlString).length).toEqual(2);
+      expect(htmlClassList(htmlString)).toEqual(["c1", "c2"]);
 
       htmlString =
         `<div class="c1">` +
@@ -92,12 +92,12 @@ describe("testUtils", function () {
         `<div class="c1">Coming Soon</div>` +
         `<div class="c4 c3"></div>` +
         `</div>`;
-      expect(htmlClassList(htmlString).length).toEqual(4);
+      expect(htmlClassList(htmlString)).toEqual(["c1", "c2", "c3", "c4"]);
     });
 
     it("does not add duplicate classes, even if listed in same element twice", function () {
       const htmlString = `<div><h1 class="c1 c1">some text</h1></div>`;
-      expect(htmlClassList(htmlString).length).toEqual(1);
+      expect(htmlClassList(htmlString)).toEqual(["c1"]);
     });
   });
 
@@ -110,7 +110,7 @@ describe("testUtils", function () {
         </div>
       );
 
-      expect(componentClassNameList(<SimpleComponent />).length).toEqual(3);
+      expect(componentClassNameList(<SimpleComponent />)).toEqual(["c1", "c2", "c3"]);
     });
 
     it("includes class names from nested components", function () {
@@ -129,7 +129,8 @@ describe("testUtils", function () {
         </div>
       );
 
-      expect(componentClassNameList(<ComplexComponent />).length).toEqual(5);
+      expect(componentClassNameList(<ComplexComponent />))
+        .toEqual(["c1", "c2", "c3", "c4", "c5"]);
     });
 
     it("creates an empty array when no classNames are found", function () {
