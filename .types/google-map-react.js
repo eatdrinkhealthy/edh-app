@@ -1,14 +1,18 @@
 // Hand creating google-map-react libdef
 import type { ILatLng } from "../imports/config/types";
 
-// TODO confirm (or fix), props typechecking is enforced
-type GoogleMap$Props = {
-  defaultCenter?: ILatLng,
-  defaultZoom?: number,
-};
-
 declare module "google-map-react" {
-  declare export default class GoogleMap extends React$Component<any, GoogleMap$Props, any> {
-    props: GoogleMap$Props;
+  declare type IBootstrapURLKeys = {
+    key: string;
+  };
+
+  declare type GoogleMapProps = {
+    bootstrapURLKeys: IBootstrapURLKeys,
+    defaultCenter?: ILatLng,
+    defaultZoom?: number,
+  };
+
+  declare export default class GoogleMap extends React$Component {
+    props: GoogleMapProps;
   }
 }
