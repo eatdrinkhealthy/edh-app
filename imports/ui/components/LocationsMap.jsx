@@ -20,7 +20,7 @@ type IDefaultProps = {
 };
 
 // eslint-disable-next-line react/prefer-stateless-function
-export default class LocationsMap extends PureComponent<IDefaultProps, IProps, void> {
+export default class LocationsMap extends PureComponent {
   static defaultProps: IDefaultProps = {
     center: { lat: 32.789008, lng: -79.932115 },
     zoom: 16,
