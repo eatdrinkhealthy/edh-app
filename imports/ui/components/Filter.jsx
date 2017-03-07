@@ -11,7 +11,7 @@ type IFilterItemProps = {
 const FilterItem = ({ label, filterId }: IFilterItemProps) => (
   <div>
     <span className="react-toggle-label">{label}</span>
-    <span className="react-toggle"> <Toggle id={filterId} /></span>
+    <span className="react-toggle"><Toggle id={filterId} /></span>
   </div>
 );
 

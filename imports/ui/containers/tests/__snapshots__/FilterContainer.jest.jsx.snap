@@ -21,7 +21,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -79,7 +78,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -137,7 +135,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -195,7 +192,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -253,7 +249,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -311,7 +306,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -369,7 +363,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -427,7 +420,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -485,7 +477,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -543,7 +534,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -601,7 +591,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -659,7 +648,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -717,7 +705,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -775,7 +762,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
@@ -833,7 +819,6 @@ exports[`<FilterContainer /> matches render snapshot 1`] = `
       </span>
       <span
         className="react-toggle">
-         
         <div
           className="react-toggle"
           onClick={[Function]}
