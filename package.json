@@ -7,6 +7,7 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "flow:check": "flow check",
     "flow:status": "flow status",
+    "flow:status-c": "clear && flow status",
     "flow:stop": "flow stop",
     "pretest": "yarn run lint && yarn run flow:check",
     "test": "yarn run unit-test",
