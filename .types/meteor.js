@@ -1,11 +1,13 @@
-type IMeteorSettings = {
-  settings: {
+declare module "meteor/meteor" {
+
+  declare type IMeteorSettings = {
     public: {
       googleMapsApiKey: string,
     }
-  }
-};
+  };
 
-declare module "meteor/meteor" {
-  declare var Meteor: IMeteorSettings;
+  declare export var Meteor: {
+    settings: IMeteorSettings;
+    startup(): void;
+  }
 }
