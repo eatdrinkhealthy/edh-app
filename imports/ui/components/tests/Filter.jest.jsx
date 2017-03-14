@@ -9,22 +9,26 @@ import {
   mount,
 } from "enzyme";
 import Filter, { FilterItem } from "../Filter";
+import type { IFilterList } from "../../../data/state/data/defaultFilters";
 
 describe("Filter Components", function () {
-  const testFilterList = [
+  const testFilterList: IFilterList = [
     {
       id: "juiceBar1",
       name: "Juice Bar1",
+      on: true,
       fourSquareCategory: "1",
     },
     {
       id: "juiceBar2",
       name: "Juice Bar2",
+      on: false,
       fourSquareCategory: "2",
     },
     {
       id: "juiceBar3",
       name: "Juice Bar3",
+      on: false,
       fourSquareCategory: "3",
     },
   ];

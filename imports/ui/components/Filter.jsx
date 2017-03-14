@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router";
 import Toggle from "react-toggle";
+import type { IFilter, IFilterList } from "../../data/state/data/defaultFilters";
 
 type IFilterItemProps = {
   label: string,
@@ -15,13 +16,8 @@ const FilterItem = ({ label, filterId }: IFilterItemProps) => (
   </div>
 );
 
-type IFilter = {
-  name: string,  // eslint-disable-line react/no-unused-prop-types
-  id: string,    // eslint-disable-line react/no-unused-prop-types
-};
-
 type IFilterProps = {
-  filterList?: IFilter[],
+  filterList?: IFilterList,
 };
 
 const Filter = ({ filterList = [] }: IFilterProps) => (
