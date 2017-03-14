@@ -8,12 +8,12 @@ import {
   shallow,
 } from "enzyme";
 import toJson from "enzyme-to-json";
-import AppContainer from "../AppContainer";
+import LayoutContainer from "../LayoutContainer";
 
-describe("<AppContainer />", function () {
+describe("<LayoutContainer />", function () {
   it("matches render snapshot", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
-    const wrapper = shallow(<AppContainer />);
+    const wrapper = shallow(<LayoutContainer />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

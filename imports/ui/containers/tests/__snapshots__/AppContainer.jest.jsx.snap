@@ -1,4 +1,4 @@
-exports[`<AppContainer /> matches render snapshot 1`] = `
+exports[`<LayoutContainer /> matches render snapshot 1`] = `
 <div>
   <Navbar />
   <LocationsMap

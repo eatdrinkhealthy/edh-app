@@ -61,8 +61,8 @@
         - set npm script for chimp to `chimp  --path=tests/end-to-end`
         - NOTE: create additional sub directories in this directory to organize tests
  * example:
-    + `<project-root>/.../system-under-test/tests/AppContainer.jest.jsx` (tests run by __jest__ only)
-    + `<project-root>/.../system-under-test/AppContainer.tests.jsx` (tests run by __'meteor test'__ only)
+    + `<project-root>/.../system-under-test/tests/Navbar.jest.jsx` (tests run by __jest__ only)
+    + `<project-root>/.../system-under-test/Navbar.tests.jsx` (tests run by __'meteor test'__ only)
     + `<project-root>/.../system-under-test/calledMethods.app-tests.js` (tests run by __'meteor test --full-app'__ only)
     + `<project-root>/tests/end-to-end/.../featureName.feature or .js` (tests to be run by __'chimp'__)
     
