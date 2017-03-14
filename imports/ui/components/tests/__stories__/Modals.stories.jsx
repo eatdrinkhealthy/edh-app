@@ -12,16 +12,19 @@ const testFilterList = [
   {
     id: "juiceBar1",
     name: "Juice Bars 1",
+    on: true,
     fourSquareCategory: "1",
   },
   {
     id: "juiceBar2",
     name: "Juice Bars 2",
+    on: false,
     fourSquareCategory: "2",
   },
   {
     id: "juiceBar3",
     name: "Juice Bars 3",
+    on: false,
     fourSquareCategory: "3",
   },
 ];
