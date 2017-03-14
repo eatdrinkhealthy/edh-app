@@ -1,12 +1,5 @@
 // @flow
-export type IFilter = {
-  id: string,
-  name: string,
-  on: boolean,
-  fourSquareCategory: string,
-};
-
-export type IFilterList = Array<IFilter>;
+import type { IFilterList } from "./defaultFiltersTypes";
 
 const DEFAULT_FILTER_LIST: IFilterList = [
   {

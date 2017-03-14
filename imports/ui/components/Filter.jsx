@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router";
 import Toggle from "react-toggle";
-import type { IFilter, IFilterList } from "../../data/state/data/defaultFilters";
+import type { IFilter, IFilterList } from "../../data/state/data/defaultFiltersTypes";
 
 type IFilterItemProps = {
   label: string,
