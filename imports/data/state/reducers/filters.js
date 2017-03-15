@@ -1,8 +1,6 @@
 // @flow
 import DEFAULT_FILTER_LIST from "../data/defaultFilters";
-import {
-  TOGGLE_FILTER,
-} from "../actions/actionTypes";
+import TOGGLE_FILTER from "../actions/actionTypes";
 
 import type { IFilterAction } from "../actions/actionCreators";
 import type { IFilter, IFilterList } from "../data/defaultFiltersTypes";

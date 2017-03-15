@@ -4,7 +4,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import filtersReducer, { toggleFilter } from "../filters";
 import DEFAULT_FILTER_LIST from "../../data/defaultFilters";
-import { toggleFilter as toggleFilterAction } from "../../actions/actionCreators";
+import toggleFilterAction from "../../actions/actionCreators";
 
 describe("filters reducer", function () {
   const unknownAction = { type: "unknown", id: "a" };
