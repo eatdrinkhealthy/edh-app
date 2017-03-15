@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import LayoutContainer from "./LayoutContainer";
+import Layout from "../components/Layout";
 
 function mapStateToProps(state) {
   return {
@@ -8,6 +8,6 @@ function mapStateToProps(state) {
   };
 }
 
-const App = connect(mapStateToProps)(LayoutContainer);
+const App = connect(mapStateToProps)(Layout);
 
 export default App;

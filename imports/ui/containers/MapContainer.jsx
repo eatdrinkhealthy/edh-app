@@ -4,11 +4,11 @@ import { Meteor } from "meteor/meteor";
 import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
 
-const LayoutContainer = () => (
+const MapContainer = () => (
   <div>
     <Navbar />
     <LocationsMap googleMapsApiKey={Meteor.settings.public.googleMapsApiKey} />
   </div>
 );
 
-export default LayoutContainer;
+export default MapContainer;
