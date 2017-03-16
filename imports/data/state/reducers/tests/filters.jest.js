@@ -136,5 +136,27 @@ describe("filters reducer", function () {
     it("should not mutate previous state", function () {
       expect(previousState).toEqual(copyState);  // does not mutate previous state
     });
+
+    it("should return previous state if 'id' is not found", function () {
+      const originalState = {
+        filters: [
+          {
+            id: "1",
+            name: "Juice Bar 1",
+            on: true,
+            fourSquareCategory: "abc",
+          },
+          {
+            id: "2",
+            name: "Juice Bar 2",
+            on: false,
+            fourSquareCategory: "def",
+          },
+        ],
+      };
+      const toggleAction = toggleFilterAction("3");
+      const nextState = filtersReducer(originalState, toggleAction);
+      expect(nextState).toEqual(originalState);
+    });
   });
 });
