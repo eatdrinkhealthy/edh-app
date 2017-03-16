@@ -4,7 +4,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import filtersReducer, { setFilter } from "../filters";
 import DEFAULT_FILTER_LIST from "../../data/defaultFilters";
-import setFilterActionCreator from "../../actions/actionCreators";
+import { setFilter as setFilterActionCreator } from "../../actions/actionCreators";
 
 describe("filters reducer", function () {
   const unknownAction = { type: "unknown", id: "a", checked: false };

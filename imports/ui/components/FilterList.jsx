@@ -14,8 +14,7 @@ type IFilterItemProps = {
 class FilterItem extends Component {
   handleToggleChange(event: Event) {
     const target = (event.target: window.HTMLInputElement);  // TODO issue #37
-    console.log("checked:", target.id, target.checked);
-    // this.props.setFilterHandler("abc");
+    this.props.setFilterHandler(target.id, target.checked);
   }
 
   props: IFilterItemProps;
@@ -28,7 +27,7 @@ class FilterItem extends Component {
           <Toggle
             id={this.props.filterId}
             checked={this.props.filterOn}
-            onChange={this.handleToggleChange}
+            onChange={(event: Event): void => this.handleToggleChange(event)}
           />
         </span>
       </div>

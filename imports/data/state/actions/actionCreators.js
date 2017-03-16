@@ -7,10 +7,9 @@ export type IFilterAction = {
   checked: boolean,
 };
 
-const setFilter = (id: string, checked: boolean): IFilterAction => ({
+// eslint-disable-next-line import/prefer-default-export
+export const setFilter = (id: string, checked: boolean): IFilterAction => ({
   type: SET_FILTER,
   id,
   checked,
 });
-
-export default setFilter;
