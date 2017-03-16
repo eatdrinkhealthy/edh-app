@@ -39,29 +39,50 @@ describe("Filter List Components", function () {
         <FilterItem
           label={testFilterList[0].name}
           filterId={testFilterList[0].id}
+          filterOn={testFilterList[0].on}
+          setFilterHandler={jest.fn()}
         />).toJSON();
+
       expect(tree).toMatchSnapshot();
     });
   });
 
   describe("<FilterList />", function () {
     it("matches render snapshot, with a filter list", function () {
-      const tree = renderer.create(<FilterList filterList={testFilterList} />).toJSON();
+      const tree = renderer.create(
+        <FilterList
+          filterList={testFilterList}
+          setFilterHandler={jest.fn()}
+        />).toJSON();
+
       expect(tree).toMatchSnapshot();
     });
 
     it("matches render snapshot, with no filter list", function () {
-      const tree = renderer.create(<FilterList />).toJSON();
+      const tree = renderer.create(
+        <FilterList
+          setFilterHandler={jest.fn()}
+        />).toJSON();
+
       expect(tree).toMatchSnapshot();
     });
 
     it("renders a toggle component for each filter in the list", function () {
-      const wrapper = mount(<FilterList filterList={testFilterList} />);
+      const wrapper = mount(
+        <FilterList
+          filterList={testFilterList}
+          setFilterHandler={jest.fn()}
+        />);
+
       expect(wrapper.find("Toggle").length).toBe(3);
     });
 
     it("renders no toggle components when no filter list provided", function () {
-      const wrapper = mount(<FilterList />);
+      const wrapper = mount(
+        <FilterList
+          setFilterHandler={jest.fn()}
+        />);
+
       expect(wrapper.find("Toggle").length).toBe(0);
     });
   });

@@ -1,14 +1,16 @@
 // @flow
-import TOGGLE_FILTER from "./actionTypes";
+import SET_FILTER from "./actionTypes";
 
 export type IFilterAction = {
   type: string,
   id: string,
+  checked: boolean,
 };
 
-const toggleFilter = (id: string): IFilterAction => ({
-  type: TOGGLE_FILTER,
+const setFilter = (id: string, checked: boolean): IFilterAction => ({
+  type: SET_FILTER,
   id,
+  checked,
 });
 
-export default toggleFilter;
+export default setFilter;

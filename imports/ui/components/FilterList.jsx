@@ -12,8 +12,9 @@ type IFilterItemProps = {
 };
 
 class FilterItem extends Component {
-  handleToggleChange(event) {
-    console.log("checked:", event.target.id, event.target.checked);
+  handleToggleChange(event: Event) {
+    const target = (event.target: window.HTMLInputElement);  // TODO issue #37
+    console.log("checked:", target.id, target.checked);
     // this.props.setFilterHandler("abc");
   }
 
@@ -35,7 +36,7 @@ class FilterItem extends Component {
   }
 }
 
-type IFilterListProps = {
+export type IFilterListProps = {
   filterList?: IFilterList,
   setFilterHandler: () => void,
 };

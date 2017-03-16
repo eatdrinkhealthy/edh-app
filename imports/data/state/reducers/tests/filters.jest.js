@@ -2,12 +2,12 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
-import filtersReducer, { toggleFilter } from "../filters";
+import filtersReducer, { setFilter } from "../filters";
 import DEFAULT_FILTER_LIST from "../../data/defaultFilters";
-import toggleFilterAction from "../../actions/actionCreators";
+import setFilterActionCreator from "../../actions/actionCreators";
 
 describe("filters reducer", function () {
-  const unknownAction = { type: "unknown", id: "a" };
+  const unknownAction = { type: "unknown", id: "a", checked: false };
 
   it("should return an initial state of DEFAULT_FILTER_LIST", function () {
     const initialState = filtersReducer(undefined, unknownAction);
@@ -31,7 +31,7 @@ describe("filters reducer", function () {
     expect(nextState).toEqual(previousState);
   });
 
-  it("should handle TOGGLE_FILTER action", function () {
+  it("should handle SET_FILTER action", function () {
     const previousState = {
       filters: [
         {
@@ -54,7 +54,7 @@ describe("filters reducer", function () {
         },
       ],
     };
-    const goodResult = {
+    const expectedResult = {
       filters: [
         {
           id: "1",
@@ -76,13 +76,13 @@ describe("filters reducer", function () {
         },
       ],
     };
-    const toggleAction = toggleFilterAction("3");
-    const nextState = filtersReducer(previousState, toggleAction);
+    const setFilterAction = setFilterActionCreator("3", true);
+    const nextState = filtersReducer(previousState, setFilterAction);
 
-    expect(nextState).toEqual(goodResult);
+    expect(nextState).toEqual(expectedResult);
   });
 
-  describe("toggleFilter function", function () {
+  describe("setFilter function", function () {
     let previousState = { // eslint-disable-line prefer-const
       filters: [
         {
@@ -106,7 +106,7 @@ describe("filters reducer", function () {
       ],
     };
     const copyState = { ...previousState };
-    const newState = toggleFilter(previousState, "2");
+    const newState = setFilter(previousState, "2", true);
 
     it("should only toggle the 'on' property of indicated filter", function () {
       expect(newState).toEqual({
@@ -154,8 +154,8 @@ describe("filters reducer", function () {
           },
         ],
       };
-      const toggleAction = toggleFilterAction("3");
-      const nextState = filtersReducer(originalState, toggleAction);
+      const setFilterAction = setFilterActionCreator("3", true);
+      const nextState = filtersReducer(originalState, setFilterAction);
       expect(nextState).toEqual(originalState);
     });
   });

@@ -1,7 +1,7 @@
 // @flow
 
 // Filter actions
-const TOGGLE_FILTER: string = "TOGGLE_FILTER";
+const SET_FILTER: string = "SET_FILTER";
 
-export default TOGGLE_FILTER;
+export default SET_FILTER;
 
