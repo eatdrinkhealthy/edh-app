@@ -35,12 +35,12 @@ class FilterItem extends Component {
   }
 }
 
-type IFilterProps = {
+type IFilterListProps = {
   filterList?: IFilterList,
   setFilterHandler: () => void,
 };
 
-const Filter = ({ filterList = [], setFilterHandler }: IFilterProps) => (
+const FilterList = ({ filterList = [], setFilterHandler }: IFilterListProps) => (
   <div>
     <div className="filter-header">
       <h4>Filter</h4>
@@ -61,7 +61,7 @@ const Filter = ({ filterList = [], setFilterHandler }: IFilterProps) => (
   </div>
 );
 
-export default Filter;
+export default FilterList;
 
 export {
   FilterItem,

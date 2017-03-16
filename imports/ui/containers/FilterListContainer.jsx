@@ -1,7 +1,7 @@
-// @flow
+// TODO  add flow type checking
 import { connect } from "react-redux";
 import toggleFilter from "../../data/state/actions/actionCreators";
-import Filter from "../components/Filter";
+import FilterList from "../components/FilterList";
 import type { IState } from "../../data/state/reducers/filters";
 
 const mapStateToProps = (state: IState) => ({
@@ -12,6 +12,6 @@ const mapDispatchToProps = dispatch => ({
   setFilterHandler: (id: string) => (dispatch(toggleFilter(id))),
 });
 
-const FilterContainer = connect(mapStateToProps, mapDispatchToProps)(Filter);
+const FilterListContainer = connect(mapStateToProps, mapDispatchToProps)(FilterList);
 
-export default FilterContainer;
+export default FilterListContainer;

@@ -11,7 +11,7 @@ import App from "../ui/containers/App";
 import MapContainer from "../ui/containers/MapContainer";
 import Sidebar from "../ui/components/Sidebar";
 import PageNotFound from "../ui/pages/PageNotFound";
-import FilterContainer from "../ui/containers/FilterContainer";
+import FilterListContainer from "../ui/containers/FilterListContainer";
 
 const Routes = (
   <Provider store={store}>
@@ -19,7 +19,7 @@ const Routes = (
       <Route path="/" component={App}>
         <IndexRoute component={MapContainer} />
         <Route path="/sidebar" component={Sidebar} />
-        <Route path="/filter" component={FilterContainer} />
+        <Route path="/filter" component={FilterListContainer} />
         <Route path="*" component={PageNotFound} />
       </Route>
     </Router>

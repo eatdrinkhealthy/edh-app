@@ -5,7 +5,7 @@ import { storiesOf } from "@kadira/storybook";
 import { text, boolean } from "@kadira/storybook-addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 
-import Filter, { FilterItem } from "../../Filter";
+import FilterList, { FilterItem } from "../../FilterList";
 import Sidebar from "../../Sidebar";
 
 const testFilterList = [
@@ -33,7 +33,7 @@ storiesOf("Modals", module)
   .add("Sidebar", () => (
     <Sidebar />
   ))
-  .add("Filter Item", () => (
+  .add("FilterItem", () => (
     <CenterWrapper
       horizontalCenter={boolean("Horizontal Center", true)}
       border={boolean("Border", false)}
@@ -41,9 +41,9 @@ storiesOf("Modals", module)
       <FilterItem label={text("Label", "Fruity's Juice Bar")} filterId="juicebar1" />
     </CenterWrapper>
   ))
-  .add("Filter - no list", () => (
-    <Filter />
+  .add("FilterList - no list", () => (
+    <FilterList />
   ))
-  .add("Filter - sample list", () => (
-    <Filter filterList={testFilterList} />
+  .add("FilterList - sample list", () => (
+    <FilterList filterList={testFilterList} />
   ));

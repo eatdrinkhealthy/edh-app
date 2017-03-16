@@ -8,10 +8,10 @@ import renderer from "react-test-renderer";
 import {
   mount,
 } from "enzyme";
-import Filter, { FilterItem } from "../Filter";
+import FilterList, { FilterItem } from "../FilterList";
 import type { IFilterList } from "../../../data/state/data/defaultFiltersTypes";
 
-describe("Filter Components", function () {
+describe("Filter List Components", function () {
   const testFilterList: IFilterList = [
     {
       id: "juiceBar1",
@@ -33,29 +33,6 @@ describe("Filter Components", function () {
     },
   ];
 
-  describe("<Filter />", function () {
-    it("matches render snapshot, with a filter list", function () {
-      const tree = renderer.create(<Filter filterList={testFilterList} />).toJSON();
-      expect(tree).toMatchSnapshot();
-    });
-
-    it("matches render snapshot, with no filter list", function () {
-      const tree = renderer.create(<Filter />).toJSON();
-      expect(tree).toMatchSnapshot();
-    });
-
-    it("renders a toggle component for each filter in the list", function () {
-      const wrapper = mount(<Filter filterList={testFilterList} />);
-      expect(wrapper.find("Toggle").length).toBe(3);
-    });
-
-    it("renders no toggle components when no filter list provided", function () {
-      const wrapper = mount(<Filter />);
-      expect(wrapper.find("Toggle").length).toBe(0);
-      expect(wrapper.find("Toggle").length).toBe(0);
-    });
-  });
-
   describe("<FilterItem />", function () {
     it("matches render snapshot", function () {
       const tree = renderer.create(
@@ -64,6 +41,28 @@ describe("Filter Components", function () {
           filterId={testFilterList[0].id}
         />).toJSON();
       expect(tree).toMatchSnapshot();
+    });
+  });
+
+  describe("<FilterList />", function () {
+    it("matches render snapshot, with a filter list", function () {
+      const tree = renderer.create(<FilterList filterList={testFilterList} />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it("matches render snapshot, with no filter list", function () {
+      const tree = renderer.create(<FilterList />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it("renders a toggle component for each filter in the list", function () {
+      const wrapper = mount(<FilterList filterList={testFilterList} />);
+      expect(wrapper.find("Toggle").length).toBe(3);
+    });
+
+    it("renders no toggle components when no filter list provided", function () {
+      const wrapper = mount(<FilterList />);
+      expect(wrapper.find("Toggle").length).toBe(0);
     });
   });
 });
