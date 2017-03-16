@@ -1,10 +1,12 @@
 // @flow
-import React from "react";
+import { connect } from "react-redux";
 import Filter from "../components/Filter";
-import FILTER_LIST from "../../data/state/data/defaultFilters";
+import type { IState } from "../../data/state/reducers/filters";
 
-const FilterContainer = () => (
-  <Filter filterList={FILTER_LIST} />
-);
+const mapStateToProps = (state: IState) => ({
+  filterList: state.filters,
+});
+
+const FilterContainer = connect(mapStateToProps)(Filter);
 
 export default FilterContainer;

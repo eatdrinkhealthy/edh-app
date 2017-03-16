@@ -5,7 +5,7 @@ type IProps = {
   children: React.Element<*>,
 };
 
-const Layout = (props: IProps) => {
+const App = (props: IProps) => {
   const { children, ...otherProps } = props;
   const newChild = React.cloneElement(children, otherProps);
 
@@ -16,5 +16,5 @@ const Layout = (props: IProps) => {
   );
 };
 
-export default Layout;
+export default App;
 

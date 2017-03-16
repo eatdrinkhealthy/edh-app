@@ -5,7 +5,7 @@ import TOGGLE_FILTER from "../actions/actionTypes";
 import type { IFilterAction } from "../actions/actionCreators";
 import type { IFilter, IFilterList } from "../data/defaultFiltersTypes";
 
-type IState = {
+export type IState = {
   filters: IFilterList
 };
 

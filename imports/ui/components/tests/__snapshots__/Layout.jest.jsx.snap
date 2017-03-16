@@ -1,7 +1,0 @@
-exports[`<Layout /> matches render snapshot 1`] = `
-<div>
-  <p>
-    children
-  </p>
-</div>
-`;
