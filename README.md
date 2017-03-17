@@ -92,10 +92,14 @@
 * flow package installed
     - place 3rd party and custom created libdefs in `.types/`  (see setting in .flowconfig file)
 * list notable flowtype conventions here
-* installed [eslint package for flowtype](https://github.com/gajus/eslint-plugin-flowtype)
+    - React flow type definitions can be found in [Flow's lib](https://github.com/facebook/flow/blob/master/lib/react.js)
+    - In general, annotate return types of functions, arrow functions, class methods
+      + NOTE: the render method can be assumed to return a `React$Element<*>`, and you can disable the  flowtype/require-return-type warning for that line
+        - OPTION: there is an eslint flowtype rule setting, ["excludeMatching"](https://github.com/gajus/eslint-plugin-flowtype#require-return-type), that can exclude functions by file name pattern (as of 3/17/17, there was a [GH issue](https://github.com/gajus/eslint-plugin-flowtype/issues/189) where this setting does not work for class methods, but hopefully will be resolved, and can then be used)
+* Flowtype linting is done using an [eslint package for flowtype](https://github.com/gajus/eslint-plugin-flowtype)
     - this generates flow type errors simply by linting (may make flow less or unnecessary?)
-* Use flow-typed package to download community created libdefs and create generic libdefs for installed pacakges
+* Use `flow-typed` package to download community created libdefs and create generic libdefs for installed pacakges
     - flow-typed libdefs reside in `flow-typed/`, which is git ignored
     - copy or move libdefs from there to `.types/` and edit as needed
     - they can be checked in to the repo from `.types/`
-* NOTE, anytime you download libdefs in to `flow-typed/`, you need to nuke or hide that directory, else Meteor will see it and try to load it
+    - NOTE, anytime you download libdefs in to `flow-typed/`, you need to nuke or hide that directory, else Meteor will see it and try to load it

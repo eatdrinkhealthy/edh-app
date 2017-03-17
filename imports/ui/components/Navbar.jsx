@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router";
 
-const Navbar = () =>
+const Navbar = (): React$Element<*> =>
   <div className="nav">
     <Link to="/sidebar">
       <div className="toggle-sidebar">

@@ -10,7 +10,7 @@ import { text, select } from "@kadira/storybook-addon-knobs";
 import Marker from "../../Marker";
 
 storiesOf("Map", module)
-  .add("Marker", () => (
+  .add("Marker", (): React$Element<*> => (
     <Marker
       label={text("Label", "")}
       origin={select("Origin", { center: "center", topLeft: "topLeft" }, "center")}

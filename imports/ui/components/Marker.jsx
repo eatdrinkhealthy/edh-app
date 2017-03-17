@@ -20,7 +20,7 @@ class Marker extends PureComponent {
   //        (should defaultProps be set here?  -note, tests don't fail when label isn't provided)
   props: IMarkerProps;
 
-  render() {
+  render() {  // eslint-disable-line flowtype/require-return-type
     const markerClass = classNames("markerStyle", {
       markerCenterOrigin: this.props.origin === "center",
       markerCenterTopLeft: this.props.origin === "topLeft",

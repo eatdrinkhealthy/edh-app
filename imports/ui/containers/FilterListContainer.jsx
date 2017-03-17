@@ -18,7 +18,7 @@ type IDispatchFilterListProps = {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchFilterListProps => ({
-  setFilterHandler: (id: string, checked: boolean) => (dispatch(setFilter(id, checked))),
+  setFilterHandler: (id: string, checked: boolean): void => (dispatch(setFilter(id, checked))),
 });
 
 const FilterListContainer = connect(mapStateToProps, mapDispatchToProps)(FilterList);

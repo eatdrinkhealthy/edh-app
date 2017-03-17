@@ -8,7 +8,7 @@ type IFilterItemProps = {
   label: string,
   filterId: string,
   filterOn: boolean,
-  setFilterHandler: () => void,
+  setFilterHandler: (id: string, checked: boolean) => void,
 };
 
 class FilterItem extends Component {
@@ -19,7 +19,7 @@ class FilterItem extends Component {
 
   props: IFilterItemProps;
 
-  render() {
+  render() {  // eslint-disable-line flowtype/require-return-type
     return (
       <div>
         <span className="react-toggle-label">{this.props.label}</span>
@@ -40,7 +40,9 @@ export type IFilterListProps = {
   setFilterHandler: () => void,
 };
 
-const FilterList = ({ filterList = [], setFilterHandler }: IFilterListProps) => (
+const FilterList = (
+  { filterList = [], setFilterHandler }: IFilterListProps,
+): React$Element<*> => (
   <div>
     <div className="filter-header">
       <h4>Filter</h4>
@@ -49,7 +51,7 @@ const FilterList = ({ filterList = [], setFilterHandler }: IFilterListProps) => 
       </Link>
     </div>
     <div className="filter">
-      {filterList.map((filter: IFilter) =>
+      {filterList.map((filter: IFilter): React.Element<*> =>
         (<FilterItem
           key={filter.id}
           label={filter.name}

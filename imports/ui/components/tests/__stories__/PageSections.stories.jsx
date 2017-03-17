@@ -7,6 +7,6 @@ import { storiesOf } from "@kadira/storybook";
 import Navbar from "../../Navbar";
 
 storiesOf("Page Sections", module)
-  .add("Navbar", () => (
+  .add("Navbar", (): React$Element<*> => (
     <Navbar />
   ));

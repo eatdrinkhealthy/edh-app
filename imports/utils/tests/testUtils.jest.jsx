@@ -104,7 +104,7 @@ describe("testUtils", function () {
 
   describe("componentClassNameList", function () {
     it("returns an array of unique class names of given a component", function () {
-      const SimpleComponent = () => (
+      const SimpleComponent = (): React$Element<*> => (
         <div className="c1">
           <h1 className="c2">Title</h1>
           <p className="c3 c1">text</p>
@@ -115,14 +115,14 @@ describe("testUtils", function () {
     });
 
     it("includes class names from nested components", function () {
-      const NestedComponent = () => (
+      const NestedComponent = (): React$Element<*> => (
         <div className="c1">
           <h1 className="c4">Title</h1>
           <p className="c5 c1">text</p>
         </div>
       );
 
-      const ComplexComponent = () => (
+      const ComplexComponent = (): React$Element<*> => (
         <div className="c1">
           <h1 className="c2">Title</h1>
           <p className="c3 c2">text</p>
@@ -135,7 +135,7 @@ describe("testUtils", function () {
     });
 
     it("creates an empty array when no classNames are found", function () {
-      const SimpleComponent = () => (
+      const SimpleComponent = (): React$Element<*> => (
         <div>
           <h1>Title</h1>
           <p>text</p>
@@ -201,7 +201,7 @@ describe("testUtils", function () {
 
     describe("getAllComponentStyle", function () {
       it("returns an array of style objects for a given component", function () {
-        const SimpleComponent = () => (
+        const SimpleComponent = (): React$Element<*> => (
           <div>
             <h1 className="bigStyleHashName">Title</h1>
             <p className="littleStyleHashName">text</p>
@@ -217,7 +217,7 @@ describe("testUtils", function () {
       });
 
       it("returns an empty array when given component has no styles", function () {
-        const SimpleComponent = () => (
+        const SimpleComponent = (): React$Element<*> => (
           <div>
             <h1>Title</h1>
             <p>text</p>

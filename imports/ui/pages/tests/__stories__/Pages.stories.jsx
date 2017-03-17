@@ -8,4 +8,4 @@ import {
 import PageNotFound from "../../PageNotFound";
 
 storiesOf("Pages", module)
-  .add("Page Not Found", () => (<PageNotFound />));
+  .add("Page Not Found", (): React$Element<*> => (<PageNotFound />));

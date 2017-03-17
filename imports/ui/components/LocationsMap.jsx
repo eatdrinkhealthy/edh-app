@@ -11,7 +11,7 @@ type IProps = {
   center?: ILatLng,
   zoom?: number,
   googleMapsApiKey: string,
-  children?: React.Element<*>,
+  children?: React$Element<*>,
 };
 
 type IDefaultProps = {
@@ -20,7 +20,7 @@ type IDefaultProps = {
 };
 
 // eslint-disable-next-line react/prefer-stateless-function
-export default class LocationsMap extends PureComponent {
+export default class LocationsMap extends PureComponent<IDefaultProps, IProps, void> {
   static defaultProps: IDefaultProps = {
     center: { lat: 32.789008, lng: -79.932115 },
     zoom: 16,
@@ -28,7 +28,7 @@ export default class LocationsMap extends PureComponent {
 
   props: IProps;
 
-  render() {
+  render() {  // eslint-disable-line flowtype/require-return-type
     return (
       <div className="map-container">
         <GoogleMap
