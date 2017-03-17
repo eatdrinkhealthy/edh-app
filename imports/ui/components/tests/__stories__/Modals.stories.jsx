@@ -1,7 +1,8 @@
+// @flow
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React from "react";
-import { storiesOf } from "@kadira/storybook";
+import { storiesOf, action } from "@kadira/storybook";
 import { text, boolean } from "@kadira/storybook-addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 
@@ -29,21 +30,32 @@ const testFilterList = [
   },
 ];
 
+// NOTE without state, and en event handler that toggles 'filterOn'
+//      the toggle component will not visually toggle
+
 storiesOf("Modals", module)
-  .add("Sidebar", () => (
+  .add("Sidebar", (): React$Element<*> => (
     <Sidebar />
   ))
-  .add("FilterItem", () => (
+  .add("FilterItem", (): React$Element<*> => (
     <CenterWrapper
       horizontalCenter={boolean("Horizontal Center", true)}
       border={boolean("Border", false)}
     >
-      <FilterItem label={text("Label", "Fruity's Juice Bar")} filterId="juicebar1" />
+      <FilterItem
+        label={text("Label", "Fruity's Juice Bar")}
+        filterId="juicebar1"
+        filterOn={false}
+        setFilterHandler={action("clicked")}
+      />
     </CenterWrapper>
   ))
-  .add("FilterList - no list", () => (
-    <FilterList />
+  .add("FilterList - no list", (): React$Element<*> => (
+    <FilterList setFilterHandler={action("clicked")} />
   ))
-  .add("FilterList - sample list", () => (
-    <FilterList filterList={testFilterList} />
+  .add("FilterList - sample list", (): React$Element<*> => (
+    <FilterList
+      filterList={testFilterList}
+      setFilterHandler={action("clicked")}
+    />
   ));

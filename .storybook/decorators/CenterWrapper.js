@@ -23,6 +23,7 @@ const CenterWrapper = ({ horizontalCenter, border, children }) => {
 CenterWrapper.propTypes = {
   horizontalCenter: PropTypes.bool,
   border: PropTypes.bool,
+  children: PropTypes.node,
 };
 
 CenterWrapper.defaultProps = {
