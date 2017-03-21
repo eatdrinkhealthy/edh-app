@@ -108,7 +108,7 @@ describe("filters reducer", function () {
     const copyState = { ...previousState };
     const newState = setFilter(previousState, "2", true);
 
-    it("should only toggle the 'on' property of indicated filter", function () {
+    it("should only set the 'on' property of indicated filter", function () {
       expect(newState).toEqual({
         filters: [
           {

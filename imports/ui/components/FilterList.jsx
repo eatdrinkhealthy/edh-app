@@ -11,7 +11,7 @@ type IFilterItemProps = {
   setFilterHandler: (id: string, checked: boolean) => void,
 };
 
-class FilterItem extends Component {
+export class FilterItem extends Component {
   handleToggleChange(event: Event) {
     const target = (event.target: window.HTMLInputElement);  // TODO issue #37
     this.props.setFilterHandler(target.id, target.checked);
@@ -64,7 +64,3 @@ const FilterList = (
 );
 
 export default FilterList;
-
-export {
-  FilterItem,
-};

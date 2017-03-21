@@ -6,6 +6,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {
+  shallow,
   mount,
 } from "enzyme";
 import FilterList, { FilterItem } from "../FilterList";
@@ -44,6 +45,29 @@ describe("Filter List Components", function () {
         />).toJSON();
 
       expect(tree).toMatchSnapshot();
+    });
+
+    it("should call setFilter when clicked", function () {
+      const props = {
+        label: testFilterList[0].name,
+        filterId: testFilterList[0].id,
+        filterOn: testFilterList[0].on,
+        setFilterHandler: jest.fn(),
+      };
+
+      const wrapper = shallow(<FilterItem {...props} />);
+      const toggleComponent = wrapper.find("Toggle");
+      expect(toggleComponent.length).toEqual(1);
+
+      const event = {
+        target: {
+          id: "abc",
+          checked: true,
+        },
+      };
+
+      toggleComponent.props().onChange(event);
+      expect(props.setFilterHandler.mock.calls.length).toBe(1);
     });
   });
 
