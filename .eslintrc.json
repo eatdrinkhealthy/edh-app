@@ -29,7 +29,10 @@
     "import/core-modules": [
       "meteor/meteor",
       "meteor/accounts-base",
-      "meteor/mongo"
+      "meteor/mongo",
+      "meteor/mdg:validated-method",
+      "meteor/aldeed:simple-schema",
+      "meteor/practicalmeteor:chai"
     ],
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true
