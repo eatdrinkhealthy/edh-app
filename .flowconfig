@@ -9,7 +9,6 @@
 .*/\.git/.*
 .*/\.github/.*
 .*/\.remote/.*
-.*/\.storybook/.*
 .*/public/.*
 .*/scripts/.*
 .*/stylesheets/.*

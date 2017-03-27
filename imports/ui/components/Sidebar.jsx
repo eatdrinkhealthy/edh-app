@@ -1,7 +1,8 @@
+// @flow
 import React from "react";
 import { Link } from "react-router";
 
-const Sidebar = () =>
+const Sidebar = (): React$Element<*> =>
   <div className="sidebar">
     <Link to="/">Home</Link>
     <div className="logo" />

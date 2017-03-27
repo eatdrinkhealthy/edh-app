@@ -1,3 +1,4 @@
+// @flow
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -6,15 +7,18 @@ import cheerio from "cheerio";
 import _ from "lodash";
 import { mount } from "enzyme";
 
-export function formattedJSON(item) {
-  return JSON.stringify(item, null, 2);
-}
+export const formattedJSON = (item: mixed): string => JSON.stringify(item, null, 2);
 
-export function notFoundStatus(className) {
-  return Object.assign({ className }, { status: "not found" });
-}
+type IStatusObj = {
+  className: string,
+  status: string,
+};
 
-export function htmlClassList(htmlString) {
+export const notFoundStatus = (className: string): IStatusObj => (
+  { className, status: "not found" }
+);
+
+export const htmlClassList = (htmlString: string): string[] => {
   const $ = cheerio.load(htmlString);
   let classList = [];
 
@@ -26,23 +30,40 @@ export function htmlClassList(htmlString) {
   });
 
   return classList;
-}
+};
 
-export function componentClassNameList(currComponent) {
+export const componentClassNameList = (currComponent: React$Element<*>): string[] => {
   const mountedHTML = mount(currComponent).html(); // might be able to use shallow here
   return htmlClassList(mountedHTML);
-}
+};
 
-export function getStyleObject(className, stylesObj) {
-  const styleKey = _.findKey(stylesObj, obj => (obj.className === className));
-  return stylesObj[styleKey] || notFoundStatus(className);
-}
+type IStyleObj = {
+  rules: Object,      // eslint-disable-line flowtype/no-weak-types
+  className: string,
+};
 
-export function getStyleObjectList(classNameList, styles) {
-  return classNameList.map(className => (getStyleObject(className, styles)));
-}
+type IStylesObj = {
+  [id: string]: IStyleObj,
+};
 
-export function getAllComponentStyle(currComponent, styles) {
-  const classNameList = componentClassNameList(currComponent);
-  return getStyleObjectList(classNameList, styles);
-}
+export const getStyleObject =
+  (className: string, stylesObj: IStylesObj): IStyleObj | IStatusObj => {
+    // eslint-disable-next-line flowtype/require-parameter-type, flowtype/require-return-type
+    const styleKey: string | void = _.findKey(stylesObj, obj => (obj.className === className));
+
+    return styleKey ? stylesObj[styleKey] : notFoundStatus(className);
+  };
+
+type IStyleObjectList = Array<IStyleObj | IStatusObj>;
+
+export const getStyleObjectList =
+  (classNameList: string[], styles: IStylesObj): IStyleObjectList => (
+    // eslint-disable-next-line flowtype/require-parameter-type, flowtype/require-return-type
+    classNameList.map(className => (getStyleObject(className, styles)))
+  );
+
+export const getAllComponentStyle =
+  (currComponent: React$Element<*>, styles: IStylesObj): IStyleObjectList => {
+    const classNameList = componentClassNameList(currComponent);
+    return getStyleObjectList(classNameList, styles);
+  };

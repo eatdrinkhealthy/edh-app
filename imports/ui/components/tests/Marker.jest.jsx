@@ -1,3 +1,4 @@
+// @flow
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -13,7 +14,7 @@ describe("<Marker />", function () {
   });
 
   it("matches render snapshot, with text", function () {
-    const tree = renderer.create(<Marker text="Some Place Cool" />).toJSON();
+    const tree = renderer.create(<Marker label="Some Place Cool" />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
