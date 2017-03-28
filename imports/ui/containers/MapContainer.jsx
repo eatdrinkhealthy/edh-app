@@ -6,19 +6,34 @@ import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
 import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
-// import getNearbyPlaces from "../../api/methods";
+import { getNearbyPlaces } from "../../api/methods";
 import type { IState } from "../../data/state/reducers/filters";
 import type { IFilterList } from "../../data/state/data/defaultFiltersTypes";
 
+type IMapComponentProps = {
+  filterList: IFilterList,
+};
+
 export class MapComponent extends Component {
   componentWillMount() {
-    // call nearbyPlaces method (send filter list)
-    // getNearbyPlaces.call({
-    //   latitude: 0,
-    //   longitude: 0,
-    //   filterList:
-    // })
+    // TODO refactor, issue #39 - move method call to appropriate location in container
+
+    const selectedFilters = this.props.filterList.filter(filterItem => (filterItem.on));
+
+    getNearbyPlaces.call({
+      latitude: 0,
+      longitude: 0,
+      filterList: selectedFilters,
+    }, (err, res) => {
+      if (err) {
+        console.log("Error:", err);
+      } else {
+        console.log("MapComponent callback:", res);
+      }
+    });
   }
+
+  props: IMapComponentProps;
 
   render() { // eslint-disable-line flowtype/require-return-type
     return (
