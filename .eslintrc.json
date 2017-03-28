@@ -32,7 +32,8 @@
       "meteor/mongo",
       "meteor/mdg:validated-method",
       "meteor/aldeed:simple-schema",
-      "meteor/practicalmeteor:chai"
+      "meteor/practicalmeteor:chai",
+      "meteor/http"
     ],
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true
