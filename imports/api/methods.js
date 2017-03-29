@@ -1,7 +1,7 @@
 // @flow
-import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
+import foursquareApiSearch from "./foursquare/foursquareApi";
 import type { IFilter } from "../data/state/data/defaultFiltersTypes";
 
 export const collectSearchResults = (
@@ -11,31 +11,21 @@ export const collectSearchResults = (
 ) => {
   const searchResults = filterList.map(filter => (filter.name));
 
-  // if (!filterList.length) {
-    // send search results for no filter  (not filtered) restaurant? default filter?
-  // } else {
-    // send concat'd list for each filter
-  // }
 
-  const logLoc = Meteor.isServer ? "server" : "client";
-  console.log(`${logLoc} side, filterList:`, filterList); // eslint-disable-line no-console
+  // if (!filterList.length) {
+  // send search results for no filter  (not filtered) restaurant? default filter?
+  // } else {
+  // send concat'd list for each filter
+  // }
 
   return searchResults;
 };
 
 const FilterSchema = new SimpleSchema({
-  id: {
-    type: String,
-  },
-  name: {
-    type: String,
-  },
-  on: {
-    type: Boolean,
-  },
-  fourSquareCategory: {
-    type: String,
-  },
+  id: { type: String },
+  name: { type: String },
+  on: { type: Boolean },
+  foursquareCategory: { type: String },
 });
 
 export const getNearbyPlaces = new ValidatedMethod({

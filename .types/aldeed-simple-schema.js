@@ -3,5 +3,4 @@ declare module "meteor/aldeed:simple-schema" {
   declare export class SimpleSchema {
     validator(): Function;
   }
-  // declare var exports: any;
 }

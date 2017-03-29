@@ -17,19 +17,19 @@ describe("Filter List Components", function () {
       id: "juiceBar1",
       name: "Juice Bar1",
       on: true,
-      fourSquareCategory: "1",
+      foursquareCategory: "1",
     },
     {
       id: "juiceBar2",
       name: "Juice Bar2",
       on: false,
-      fourSquareCategory: "2",
+      foursquareCategory: "2",
     },
     {
       id: "juiceBar3",
       name: "Juice Bar3",
       on: false,
-      fourSquareCategory: "3",
+      foursquareCategory: "3",
     },
   ];
 

@@ -14,6 +14,15 @@ type IMapComponentProps = {
   filterList: IFilterList,
 };
 
+export const processMethodResponse = (err, res) => {
+  if (err) {
+    console.log("Error:", err);
+  } else {
+    console.log("Method Response:", res);
+    // TBD add business list (search results) to state? (displayed as markers on map)
+  }
+};
+
 export class MapComponent extends Component {
   componentWillMount() {
     // TODO refactor, issue #39 - move method call to appropriate location in container
@@ -24,13 +33,7 @@ export class MapComponent extends Component {
       latitude: 0,
       longitude: 0,
       filterList: selectedFilters,
-    }, (err, res) => {
-      if (err) {
-        console.log("Error:", err);
-      } else {
-        console.log("MapComponent callback:", res);
-      }
-    });
+    }, processMethodResponse);
   }
 
   props: IMapComponentProps;
