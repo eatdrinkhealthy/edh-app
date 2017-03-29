@@ -8,28 +8,38 @@ import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
 import { getNearbyPlaces } from "../../api/methods";
 import type { IState } from "../../data/state/reducers/filters";
-import type { IFilterList } from "../../data/state/data/defaultFiltersTypes";
+import type { IFilter } from "../../data/state/data/defaultFiltersTypes";
 
-type IMapComponentProps = {
-  filterList: IFilterList,
+type IError = {
+  // TODO define error type  (from a throw)
 };
 
-export const getNearbyPlacesResponse = (err, res) => {
-  if (err) {
-    console.log("Error:", err);
+type ISearchResults = {
+  // TODO define results type (parsed / formatted from foursquare api response)
+};
+
+export const getNearbyPlacesResponse = (error: IError, result: ISearchResults) => {
+  if (error) {
+    console.log("Error:", error);
   } else {
-    console.log("Method Response:", res);
+    console.log("Method Response:", result);
     // TBD add business list (search results) to state? (displayed as markers on map)
   }
+};
+
+type IMapComponentProps = {
+  filterList: Array<IFilter>,
 };
 
 export class MapComponent extends Component {
   componentWillMount() {
     // TODO refactor, issue #39 - move method call to appropriate location in container
 
-    const selectedFilters = this.props.filterList.filter(filterItem => (filterItem.on));
+    const selectedFilters = this.props.filterList.filter((filterItem: IFilter) => (filterItem.on));
 
     getNearbyPlaces.call({
+      // latitude: 0,  // TODO remove hardcoded coordinates, get real location
+      // longitude: 0,
       latitude: 32.789008,  // TODO remove hardcoded coordinates, get real location
       longitude: -79.932115,
       filterList: selectedFilters,
@@ -48,7 +58,7 @@ export class MapComponent extends Component {
   }
 }
 
-const mapStateToProps = (state: IState): { filterList: IFilterList } => ({
+const mapStateToProps = (state: IState): { filterList: Array<IFilter> } => ({
   filterList: state.filters,
 });
 

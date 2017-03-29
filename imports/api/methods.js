@@ -2,24 +2,34 @@
 import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
-import type { IFilter } from "../data/state/data/defaultFiltersTypes";
 import foursquareApiSearch from "./foursquare/foursquareApi";
+
+// eslint-disable-next-line no-duplicate-imports
+import type { IApiError, IFoursquareApiResult } from "./foursquare/foursquareApi";
+import type { IFilter } from "../data/state/data/defaultFiltersTypes";
 
 export const collectSearchResults = (
   latitude: number,
   longitude: number,
   filterList: Array<IFilter>,
-) => {
-  const categories = filterList.map(filter => (filter.foursquareCategory));
+): Array<string> => {
+  const categories = filterList.map((filter: IFilter): string => (filter.foursquareCategory));
 
   if (Meteor.isServer) {
-    foursquareApiSearch(categories[0], latitude, longitude, (error, result) => {
-      if (!error) {
-        console.log("result:", result);
-      } else {
-        console.log("error:", error);
-      }
-    });
+    foursquareApiSearch(categories[0], latitude, longitude,
+      (error: IApiError, result: IFoursquareApiResult) => {
+        if (!error) {
+          const JSONresponse = JSON.parse(result.content);
+          const venueList = JSONresponse.response.venues.map(venue => ({
+            id: venue.id,
+            name: venue.name,
+          }));
+          console.log("result:", venueList);
+        } else {
+          console.error("type:", typeof error);
+          console.log("error.message:", error.message);
+        }
+      });
   }
 
   return categories;

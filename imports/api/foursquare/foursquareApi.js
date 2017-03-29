@@ -2,11 +2,20 @@
 import { HTTP } from "meteor/http";
 import { Meteor } from "meteor/meteor";
 
+export type IApiError = {
+  message: string,
+};
+
+export type IFoursquareApiResult = {
+  statusCode: number,
+  content: string,
+};
+
 const foursquareApiSearch = (
   category: string,
   latitude: number,
   longitude: number,
-  cb: () => void,
+  cb: (error: IApiError, result: IFoursquareApiResult) => void,
 ) => {
   const latLng = `${latitude},${longitude}`;
 
