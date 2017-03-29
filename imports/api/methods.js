@@ -1,24 +1,28 @@
 // @flow
+import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
-import foursquareApiSearch from "./foursquare/foursquareApi";
 import type { IFilter } from "../data/state/data/defaultFiltersTypes";
+import foursquareApiSearch from "./foursquare/foursquareApi";
 
 export const collectSearchResults = (
   latitude: number,
   longitude: number,
   filterList: Array<IFilter>,
 ) => {
-  const searchResults = filterList.map(filter => (filter.name));
+  const categories = filterList.map(filter => (filter.foursquareCategory));
 
+  if (Meteor.isServer) {
+    foursquareApiSearch(categories[0], latitude, longitude, (error, result) => {
+      if (!error) {
+        console.log("result:", result);
+      } else {
+        console.log("error:", error);
+      }
+    });
+  }
 
-  // if (!filterList.length) {
-  // send search results for no filter  (not filtered) restaurant? default filter?
-  // } else {
-  // send concat'd list for each filter
-  // }
-
-  return searchResults;
+  return categories;
 };
 
 const FilterSchema = new SimpleSchema({
@@ -32,8 +36,8 @@ export const getNearbyPlaces = new ValidatedMethod({
   name: "getNearbyPlaces",
 
   validate: new SimpleSchema({
-    latitude: { type: Number },
-    longitude: { type: Number },
+    latitude: { type: Number, decimal: true },
+    longitude: { type: Number, decimal: true },
     filterList: { type: [FilterSchema] },
   }).validator(),
 

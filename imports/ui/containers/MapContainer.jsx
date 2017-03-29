@@ -14,7 +14,7 @@ type IMapComponentProps = {
   filterList: IFilterList,
 };
 
-export const processMethodResponse = (err, res) => {
+export const getNearbyPlacesResponse = (err, res) => {
   if (err) {
     console.log("Error:", err);
   } else {
@@ -30,10 +30,10 @@ export class MapComponent extends Component {
     const selectedFilters = this.props.filterList.filter(filterItem => (filterItem.on));
 
     getNearbyPlaces.call({
-      latitude: 0,
-      longitude: 0,
+      latitude: 32.789008,  // TODO remove hardcoded coordinates, get real location
+      longitude: -79.932115,
       filterList: selectedFilters,
-    }, processMethodResponse);
+    }, getNearbyPlacesResponse);
   }
 
   props: IMapComponentProps;
