@@ -12,12 +12,4 @@ describe("<Navbar />", function () {
     const tree = renderer.create(<Navbar />).toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-  it.skip("links to Sidebar", function () {
-    // TODO test route to Sidebar
-  });
-
-  it.skip("links to Filter", function () {
-    // TODO test route to Filter
-  });
 });
