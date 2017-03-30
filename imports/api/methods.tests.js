@@ -6,7 +6,7 @@ import { Meteor } from "meteor/meteor";
 
 if (Meteor.isServer) {
   describe("methods", function () {
-    describe("getFilteredFoursquarePlaces", function () {
+    describe("getNearbyPlaces", function () {
       it.skip("should list this test", function () {
         assert.equal(1, 1);
       });
