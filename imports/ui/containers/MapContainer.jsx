@@ -11,14 +11,14 @@ import type { IState } from "../../data/state/reducers/filters";
 import type { IFilter } from "../../data/state/data/defaultFiltersTypes";
 
 type IError = {
-  // TODO define error type  (from a throw)
+  // TODO define error type  (from a method throw OR api error response ?)
 };
 
 type ISearchResults = {
   // TODO define results type (parsed / formatted from foursquare api response)
 };
 
-export const getNearbyPlacesResponse = (error: IError, result: ISearchResults) => {
+export const getNearbyPlacesCB = (error: IError, result: ISearchResults) => {
   if (error) {
     console.log("Error:", error);
   } else {
@@ -27,23 +27,31 @@ export const getNearbyPlacesResponse = (error: IError, result: ISearchResults) =
   }
 };
 
+// TODO refactor, issue #39 - move method call to appropriate location in container
+//       (note, it is a top level function though for ease of testing)
+export const getNearbyPlacesMethod = (
+  lat: number,
+  lng: number,
+  selectedFilters: Array<IFilter>,
+) => {
+  getNearbyPlaces.call({
+    latitude: lat,
+    longitude: lng,
+    filterList: selectedFilters,
+  }, getNearbyPlacesCB);
+};
+
 type IMapComponentProps = {
   filterList: Array<IFilter>,
 };
 
 export class MapComponent extends Component {
   componentWillMount() {
-    // TODO refactor, issue #39 - move method call to appropriate location in container
-
-    const selectedFilters = this.props.filterList.filter((filterItem: IFilter) => (filterItem.on));
-
-    getNearbyPlaces.call({
-      // latitude: 0,  // TODO remove hardcoded coordinates, get real location
-      // longitude: 0,
-      latitude: 32.789008,  // TODO remove hardcoded coordinates, get real location
-      longitude: -79.932115,
-      filterList: selectedFilters,
-    }, getNearbyPlacesResponse);
+    const selectedFilters = this.props.filterList.filter(
+      (filterItem: IFilter): boolean => (filterItem.on),
+    );
+    // TODO remove hardcoded coordinates, get real location
+    getNearbyPlacesMethod(32.789008, -79.932115, selectedFilters);
   }
 
   props: IMapComponentProps;

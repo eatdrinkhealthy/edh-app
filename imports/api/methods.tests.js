@@ -5,7 +5,7 @@ import { assert } from "meteor/practicalmeteor:chai";
 import { Meteor } from "meteor/meteor";
 
 if (Meteor.isServer) {
-  describe("Foursquare API methods", function () {
+  describe("methods", function () {
     describe("getFilteredFoursquarePlaces", function () {
       it.skip("should list this test", function () {
         assert.equal(1, 1);
