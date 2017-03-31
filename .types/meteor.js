@@ -13,5 +13,6 @@ declare module "meteor/meteor" {
   declare export var Meteor: {
     settings: IMeteorSettings;
     startup(): void;
+    Error: {};
   }
 }
