@@ -14,9 +14,9 @@
     "test": "yarn run unit-test",
     "unit-test": "jest -c .jest-config.json",
     "unit-test-w": "yarn run unit-test -- --watchAll",
-    "integration-test": "meteor reset; meteor test --once --port 4000 --driver-package dispatch:mocha-phantomjs",
-    "integration-test-w-mocha": "TEST_WATCH=1 meteor test --driver-package practicalmeteor:mocha",
-    "integration-test-w-phantomjs": "TEST_WATCH=1 meteor test --port 4000 --driver-package dispatch:mocha-phantomjs",
+    "integration-test": "meteor reset; meteor test --settings settings.json --once --port 4000 --driver-package dispatch:mocha-phantomjs",
+    "integration-test-w-mocha": "TEST_WATCH=1 meteor test --settings settings.json --driver-package practicalmeteor:mocha",
+    "integration-test-w-phantomjs": "TEST_WATCH=1 meteor test --settings settings.json --port 4000 --driver-package dispatch:mocha-phantomjs",
     "full-integration-test": "meteor test --full-app --once --settings settings.json --driver-package dispatch:mocha-phantomjs",
     "full-integration-test-w-mocha": "meteor test --full-app --settings settings.json --driver-package practicalmeteor:mocha",
     "storybook": "start-storybook -s ./public -p 9001 -c .storybook"
