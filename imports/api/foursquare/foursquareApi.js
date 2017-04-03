@@ -2,14 +2,35 @@
 import { HTTP } from "meteor/http";
 import { Meteor } from "meteor/meteor";
 
+// eslint-disable-next-line no-duplicate-imports
+import type { IHttpResult } from "meteor/http";
+
+export type IFoursquareVenue = {
+  id: string,
+  name: string,
+  location: {},
+};
+
+export const parseFoursquareResponse = (response: IHttpResult): Array<IFoursquareVenue> => {
+  const JSONresponse = JSON.parse(response.content);
+
+  return JSONresponse.response.venues.map(
+    (venue: IFoursquareVenue): IFoursquareVenue => ({
+      id: venue.id,
+      name: venue.name,
+      location: venue.location,
+    }),
+  );
+};
+
 const foursquareApiSearch = (
   category: string,
   latitude: number,
   longitude: number,
-): string => {
+) => {
   const latLng = `${latitude},${longitude}`;
 
-  return HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", {
+  const response = HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", {
     params: {
       client_id: Meteor.settings.foursquare.client_id,
       client_secret: Meteor.settings.foursquare.client_secret,
@@ -21,6 +42,10 @@ const foursquareApiSearch = (
       categoryId: category,
     },
   });
+
+  const result = parseFoursquareResponse(response);
+
+  return result;
 };
 
 export default foursquareApiSearch;

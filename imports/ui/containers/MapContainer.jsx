@@ -8,16 +8,11 @@ import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
 import { getNearbyPlaces } from "../../api/methods";
 
-// eslint-disable-next-line no-duplicate-imports
-import type { IFoursquareVenue } from "../../api/methods";
+import type { IFoursquareVenue } from "../../api/foursquare/foursquareApi";
 import type { IState } from "../../data/state/reducers/filters";
 import type { IFilter } from "../../data/state/data/defaultFiltersTypes";
 
-type IError = {
-  // TODO define error type  (from a method throw OR api error response ?)
-};
-
-export const getNearbyPlacesCB = (error: IError, result: Array<IFoursquareVenue>) => {
+export const getNearbyPlacesCB = (error: Error, result: Array<IFoursquareVenue>) => {
   if (error) {
     console.log("Error:", error);
   } else {
