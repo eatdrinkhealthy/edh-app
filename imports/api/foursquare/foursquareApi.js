@@ -2,26 +2,14 @@
 import { HTTP } from "meteor/http";
 import { Meteor } from "meteor/meteor";
 
-export type IHttpError = {
-  message?: string,
-};
-
-export type IHttpResult = {
-  statusCode: number,
-  content: string,
-  data: {},
-  headers: {},
-};
-
 const foursquareApiSearch = (
   category: string,
   latitude: number,
   longitude: number,
-  cb: (error: IHttpError, result: IHttpResult) => void,
-) => {
+): string => {
   const latLng = `${latitude},${longitude}`;
 
-  HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", {
+  return HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", {
     params: {
       client_id: Meteor.settings.foursquare.client_id,
       client_secret: Meteor.settings.foursquare.client_secret,
@@ -32,7 +20,7 @@ const foursquareApiSearch = (
       radius: "1000", // in meters
       categoryId: category,
     },
-  }, cb);
+  });
 };
 
 export default foursquareApiSearch;

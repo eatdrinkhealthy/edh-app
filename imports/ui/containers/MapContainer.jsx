@@ -7,6 +7,9 @@ import { Meteor } from "meteor/meteor";
 import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
 import { getNearbyPlaces } from "../../api/methods";
+
+// eslint-disable-next-line no-duplicate-imports
+import type { IFoursquareVenue } from "../../api/methods";
 import type { IState } from "../../data/state/reducers/filters";
 import type { IFilter } from "../../data/state/data/defaultFiltersTypes";
 
@@ -14,16 +17,11 @@ type IError = {
   // TODO define error type  (from a method throw OR api error response ?)
 };
 
-type ISearchResults = {
-  // TODO define results type (parsed / formatted from foursquare api response)
-};
-
-export const getNearbyPlacesCB = (error: IError, result: ISearchResults) => {
+export const getNearbyPlacesCB = (error: IError, result: Array<IFoursquareVenue>) => {
   if (error) {
     console.log("Error:", error);
   } else {
     console.log("Method Response:", result);
-    // TBD add business list (search results) to state? (displayed as markers on map)
   }
 };
 
