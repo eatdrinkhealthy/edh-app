@@ -7,6 +7,7 @@ import { collectSearchResults } from "../methods";
 
 import type { IFilter } from "../../data/state/data/defaultFiltersTypes";
 
+// mock results of foursquareApiSearch(), called by collectSearchResults
 /* eslint-disable flowtype/require-return-type */
 jest.mock("../foursquare/foursquareApi", () => (
   jest.fn(() => ([{ id: "1", name: "testVenue1", location: {} }]))
@@ -22,11 +23,10 @@ jest.mock("../foursquare/foursquareApi", () => (
 ));
 /* eslint-enable flowtype/require-return-type */
 
-
 describe("Methods", function () {
   describe("getNearbyPlaces", function () {
     describe("collectSearchResults - helper function", function () {
-      const TEST_FILTERS: Array<IFilter> = [
+      const selectedTestFilters: Array<IFilter> = [
         {
           id: "saladPlace",
           name: "Salad Places",
@@ -60,7 +60,7 @@ describe("Methods", function () {
 
       it("should concat results from multiple foursquareApi calls", function () {
         // 3 test filters calls foursquareSearchApi 3x returning 1, 2, and 3 results.
-        const results = collectSearchResults(0, 0, TEST_FILTERS);
+        const results = collectSearchResults(0, 0, selectedTestFilters);
         expect(results.length).toBe(6);
       });
 
