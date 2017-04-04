@@ -32,8 +32,15 @@
 ### Notes
 * The intention is to be able to use...
     + 'jest / enzyme' for unit testing
+        - test logic, function and module results
+        - typically mocking systems not under test, 3rd party and meteor modules
     + 'meteor test' for complex integration testing
+        - test module integration
+        - test meteor / environment behavior (mocking APIs / modules as needed) 
+        - test behavior across client / server connection (mocking " " )
+        - test actual external API behavior as needed
     + 'chimp' for end to end testing
+        - test UI and application flow
     
 ### Test Runner File Naming Conventions
 

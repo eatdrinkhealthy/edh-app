@@ -35,7 +35,7 @@ if (Meteor.isServer) {
     ];
 
     describe("getNearbyPlaces", function () {
-      it("should get a foursquare API error when passing lat 0, lng 0", function () {
+      it("should throw when foursquareApi throws (lat 0, lng 0)", function () {
         const context = {};
         const args = {
           latitude: 0,
