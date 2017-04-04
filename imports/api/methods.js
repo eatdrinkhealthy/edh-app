@@ -13,12 +13,12 @@ export const collectSearchResults = (
   longitude: number,
   filterList: Array<IFilter>,
 ): Array<IFoursquareVenue> => {
-  const categories = filterList.map((filter: IFilter): string => (filter.foursquareCategory));
   let result = [];
 
   if (Meteor.isServer) {
-    // TODO this.unblock()  OR  should this be run asynchronously ?
-    result = foursquareApiSearch(categories[0], latitude, longitude);
+    filterList.forEach((filter: IFilter) => {
+      result = [...result, ...foursquareApiSearch(filter.foursquareCategory, latitude, longitude)];
+    });
   }
 
   return result;
@@ -42,6 +42,7 @@ export const getNearbyPlaces = new ValidatedMethod({
 
   // eslint-disable-next-line flowtype/require-parameter-type
   run({ latitude, longitude, filterList }): Array<IFoursquareVenue> {
+    // TODO this.unblock()  OR  should this be run asynchronously ?
     return collectSearchResults(latitude, longitude, filterList);
   },
 });

@@ -11,8 +11,10 @@ declare module "meteor/meteor" {
   };
 
   declare export var Meteor: {
-    settings: IMeteorSettings;
-    startup(): void;
-    Error: {};
+    settings: IMeteorSettings,
+    startup(): void,
+    Error: {},
+    isClient: boolean,
+    isServer: boolean,
   }
 }

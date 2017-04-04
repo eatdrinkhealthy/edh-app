@@ -10,8 +10,7 @@ const Meteor = {
   publish: jest.fn(),
   isClient: true,
   isServer: false,
-  wrapAsync: jest.fn(() => jest.fn(() => {
-  })),
+  wrapAsync: jest.fn(() => jest.fn(() => { })),
   Error,
   userId: jest.fn(),
   settings: {

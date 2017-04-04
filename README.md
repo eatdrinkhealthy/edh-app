@@ -68,6 +68,11 @@
     
   NOTE: placing all 'non meteor application' code, such as tests and storybook stories, in `tests/` directories prevents meteor server from restarting when in development mode
 
+#### Assertions
+Each testing framework comes with a default, or set of available assertion libraries. To avoid the confusion of mixing similar libraries (e.g., jest's jasmine based expect & practicalmeteor's chai based expect), use the assertion libraries specified for each test framework.
+* For unit / jest testing, use the jest provided assertions [(expect)](https://facebook.github.io/jest/docs/expect.html).
+* For integration testing (`meteor test`), use practicalmeteor:chai assert.
+
 ### Jest
 #### Mocking Meteor packages
 * Many commonly used meteor packages were mocked, by creating mock modules, and using the moduleNameMapper configuration setting

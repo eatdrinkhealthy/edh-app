@@ -11,7 +11,9 @@ export type IFoursquareVenue = {
   location: {},
 };
 
-export const parseFoursquareResponse = (response: IHttpResult): Array<IFoursquareVenue> => {
+export const parseFoursquareResponse = (
+  response: IHttpResult,
+): Array<IFoursquareVenue> => {
   const JSONresponse = JSON.parse(response.content);
 
   return JSONresponse.response.venues.map(
@@ -27,7 +29,7 @@ const foursquareApiSearch = (
   category: string,
   latitude: number,
   longitude: number,
-) => {
+): Array<IFoursquareVenue> => {
   const latLng = `${latitude},${longitude}`;
 
   const response = HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", {
@@ -43,9 +45,7 @@ const foursquareApiSearch = (
     },
   });
 
-  const result = parseFoursquareResponse(response);
-
-  return result;
+  return parseFoursquareResponse(response);
 };
 
 export default foursquareApiSearch;
