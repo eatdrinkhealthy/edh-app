@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
 import Toggle from "react-toggle";
-import type { IFilter, IFilterList } from "../../data/state/data/defaultFiltersTypes";
+import type { IFilter } from "../../data/state/data/defaultFilters";
 
 type IFilterItemProps = {
   label: string,
@@ -36,7 +36,7 @@ export class FilterItem extends Component {
 }
 
 export type IFilterListProps = {
-  filterList?: IFilterList,
+  filterList?: Array<IFilter>,
   setFilterHandler: () => void,
 };
 

@@ -9,10 +9,10 @@ import {
   mount,
 } from "enzyme";
 import FilterList, { FilterItem } from "../FilterList";
-import type { IFilterList } from "../../../data/state/data/defaultFiltersTypes";
+import type { IFilter } from "../../../data/state/data/defaultFilters";
 
 describe("Filter List Components", function () {
-  const testFilterList: IFilterList = [
+  const testFilterList: Array<IFilter> = [
     {
       id: "juiceBar1",
       name: "Juice Bar1",

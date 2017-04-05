@@ -1,7 +1,12 @@
 // @flow
-import type { IFilterList } from "./defaultFiltersTypes";
+export type IFilter = {
+  id: string,
+  name: string,
+  on: boolean,
+  foursquareCategory: string,
+};
 
-const DEFAULT_FILTER_LIST: IFilterList = [
+const DEFAULT_FILTER_LIST: Array<IFilter> = [
   {
     id: "juiceBar",
     name: "Juice Bars",

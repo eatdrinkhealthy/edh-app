@@ -10,10 +10,10 @@ import toJson from "enzyme-to-json";
 import {
   MapComponent,
 } from "../MapContainer";
-import type { IFilterList } from "../../../data/state/data/defaultFiltersTypes";
+import type { IFilter } from "../../../data/state/data/defaultFilters";
 
 describe("<MapComponent />", function () {
-  const testFilterList: IFilterList = [
+  const testFilterList: Array<IFilter> = [
     {
       id: "juiceBar1",
       name: "Juice Bar1",

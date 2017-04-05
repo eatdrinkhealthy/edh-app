@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { setFilter } from "../../data/state/actions/actionCreators";
 import FilterList from "../components/FilterList";
 import type { IState } from "../../data/state/reducers/filters";
-import type { IFilterList } from "../../data/state/data/defaultFiltersTypes";
+import type { IFilter } from "../../data/state/data/defaultFilters";
 
 type IStateFilterListProps = {
-  filterList: IFilterList,
+  filterList: Array<IFilter>,
 };
 
 const mapStateToProps = (state: IState): IStateFilterListProps => ({

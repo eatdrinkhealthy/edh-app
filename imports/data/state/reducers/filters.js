@@ -2,11 +2,12 @@
 import DEFAULT_FILTER_LIST from "../data/defaultFilters";
 import SET_FILTER from "../actions/actionTypes";
 
+// eslint-disable-next-line no-duplicate-imports
+import type { IFilter } from "../data/defaultFilters";
 import type { IFilterAction } from "../actions/actionCreators";
-import type { IFilter, IFilterList } from "../data/defaultFiltersTypes";
 
 export type IState = {
-  filters: IFilterList
+  filters: Array<IFilter>,
 };
 
 const initialState: IState = {

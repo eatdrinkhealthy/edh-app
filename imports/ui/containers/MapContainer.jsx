@@ -10,7 +10,7 @@ import { getNearbyPlaces } from "../../api/methods";
 
 import type { IFoursquareVenue } from "../../api/foursquare/foursquareApi";
 import type { IState } from "../../data/state/reducers/filters";
-import type { IFilter } from "../../data/state/data/defaultFiltersTypes";
+import type { IFilter } from "../../data/state/data/defaultFilters";
 
 export const getNearbyPlacesCB = (error: Error, result: Array<IFoursquareVenue>) => {
   if (error) {

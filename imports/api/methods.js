@@ -6,7 +6,7 @@ import foursquareApiSearch from "./foursquare/foursquareApi";
 
 // eslint-disable-next-line no-duplicate-imports
 import type { IFoursquareVenue } from "./foursquare/foursquareApi";
-import type { IFilter } from "../data/state/data/defaultFiltersTypes";
+import type { IFilter } from "../data/state/data/defaultFilters";
 
 export const collectSearchResults = (
   latitude: number,
