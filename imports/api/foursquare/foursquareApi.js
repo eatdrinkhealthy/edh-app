@@ -14,9 +14,9 @@ export type IFoursquareVenue = {
 export const parseFoursquareResponse = (
   response: IHttpResult,
 ): Array<IFoursquareVenue> => {
-  const JSONresponse = JSON.parse(response.content);
+  const contentObj = JSON.parse(response.content);
 
-  return JSONresponse.response.venues.map(
+  return contentObj.response.venues.map(
     (venue: IFoursquareVenue): IFoursquareVenue => ({
       id: venue.id,
       name: venue.name,
