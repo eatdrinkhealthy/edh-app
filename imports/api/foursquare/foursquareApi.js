@@ -25,11 +25,11 @@ export const parseFoursquareResponse = (
   );
 };
 
-const foursquareApiSearch = (
+export const httpCallFoursquareSearch = (
   category: string,
   latitude: number,
   longitude: number,
-): Array<IFoursquareVenue> => {
+): IHttpResult => {
   const latLng = `${latitude},${longitude}`;
 
   const response = HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", {
@@ -45,7 +45,17 @@ const foursquareApiSearch = (
     },
   });
 
-  return parseFoursquareResponse(response);
+  return response;
+};
+
+const foursquareApiSearch = (
+  category: string,
+  latitude: number,
+  longitude: number,
+): Array<IFoursquareVenue> => {
+  const httpResponse = httpCallFoursquareSearch(category, latitude, longitude);
+
+  return parseFoursquareResponse(httpResponse);
 };
 
 export default foursquareApiSearch;
