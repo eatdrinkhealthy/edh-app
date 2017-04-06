@@ -3,7 +3,9 @@ import React, {
   PureComponent,
 } from "react";
 import GoogleMap from "google-map-react";
-import type { ILatLng } from "../../config/types";
+
+// eslint-disable-next-line no-duplicate-imports
+import type { ILatLng } from "google-map-react";
 
 /* global Geolocation  */
 

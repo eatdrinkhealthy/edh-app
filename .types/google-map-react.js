@@ -1,9 +1,12 @@
 // Hand creating google-map-react libdef
-import type { ILatLng } from "../imports/config/types";
-
 declare module "google-map-react" {
   declare type IBootstrapURLKeys = {
     key: string;
+  };
+
+  declare export type ILatLng = {
+    lat: number,
+    lng: number,
   };
 
   declare type GoogleMapProps = {
