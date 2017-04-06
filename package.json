@@ -11,7 +11,7 @@
     "flow:status-c": "clear && flow status",
     "flow:stop": "flow stop",
     "pretest": "yarn run lint && yarn run flow:check",
-    "test": "yarn run unit-test",
+    "test": "yarn run unit-test && yarn run integration-test",
     "unit-test": "jest -c .jest-config.json",
     "unit-test-w": "yarn run unit-test -- --watchAll",
     "integration-test": "meteor reset; meteor test --settings settings.json --once --port 4000 --driver-package dispatch:mocha-phantomjs",
