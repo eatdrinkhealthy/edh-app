@@ -2,7 +2,7 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import * as actions from "../actionCreators";
-import SET_FILTER from "../actionTypes";
+import { SET_FILTER } from "../actionTypes";
 
 describe("actions", function () {
   it("should create a SET_FILTER action", function () {

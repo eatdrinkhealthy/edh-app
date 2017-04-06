@@ -1,5 +1,5 @@
 // @flow
-import SET_FILTER from "./actionTypes";
+import { SET_FILTER } from "./actionTypes";
 
 export type IFilterAction = {
   type: string,
