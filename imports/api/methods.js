@@ -42,7 +42,7 @@ export const getNearbyPlaces = new ValidatedMethod({
 
   // eslint-disable-next-line flowtype/require-parameter-type
   run({ latitude, longitude, filterList }): Array<IFoursquareVenue> {
-    // TODO this.unblock()  OR  should this be run asynchronously ?
+    this.unblock();
     return collectSearchResults(latitude, longitude, filterList);
   },
 });
