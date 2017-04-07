@@ -21,7 +21,11 @@ describe("<MapComponent />", function () {
 
   it("matches render snapshot", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
-    const wrapper = shallow(<MapComponent filterList={testFilterList} />);
+    const wrapper = shallow(<MapComponent
+      filterList={testFilterList}
+      searchResults={[]}
+      setSearchResultsHandler={() => {}}
+    />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

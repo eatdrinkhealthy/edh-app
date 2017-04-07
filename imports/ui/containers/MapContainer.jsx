@@ -7,35 +7,16 @@ import { Meteor } from "meteor/meteor";
 import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
 import { getNearbyPlaces } from "../../api/methods";
+import { setSearchResults } from "../../data/state/actions/actionCreators";
 
 import type { IFoursquareVenue } from "../../api/foursquare/foursquareApi";
 import type { IState } from "../../data/state/reducers";
 import type { IFilter } from "../../data/state/data/defaultFilters";
 
-export const getNearbyPlacesCB = (error: Error, result: Array<IFoursquareVenue>) => {
-  if (error) {
-    console.log("Error:", error);
-  } else {
-    console.log("Method Response:", result);
-  }
-};
-
-// TODO refactor, issue #39 - move method call to appropriate location in container
-//       (note, it is a top level function though for ease of testing)
-export const getNearbyPlacesMethod = (
-  lat: number,
-  lng: number,
-  selectedFilters: Array<IFilter>,
-) => {
-  getNearbyPlaces.call({
-    latitude: lat,
-    longitude: lng,
-    filterList: selectedFilters,
-  }, getNearbyPlacesCB);
-};
-
 type IMapComponentProps = {
   filterList: Array<IFilter>,
+  searchResults: Array<IFoursquareVenue>,
+  setSearchResultsHandler: () => void,
 };
 
 export class MapComponent extends Component {
@@ -43,8 +24,20 @@ export class MapComponent extends Component {
     const selectedFilters = this.props.filterList.filter(
       (filterItem: IFilter): boolean => (filterItem.on),
     );
-    // TODO remove hardcoded coordinates, get real location
-    getNearbyPlacesMethod(32.789008, -79.932115, selectedFilters);
+
+    getNearbyPlaces.call({
+      latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
+      longitude: -79.932115,
+      filterList: selectedFilters,
+    }, this.getNearbyPlacesCB);
+  }
+
+  getNearbyPlacesCB(error: Error, result: Array<IFoursquareVenue>) {
+    if (error) {
+      console.log("Error:", error);
+    } else {
+      console.log("Method Response:", result);
+    }
   }
 
   props: IMapComponentProps;
@@ -59,10 +52,26 @@ export class MapComponent extends Component {
   }
 }
 
-const mapStateToProps = (state: IState): { filterList: Array<IFilter> } => ({
+type IStateProps = {
+  filterList: Array<IFilter>,
+  searchResults: Array<IFoursquareVenue>,
+};
+
+const mapStateToProps = (state: IState): IStateProps => ({
   filterList: state.filters,
+  searchResults: state.searchResults,
 });
 
-const MapContainer = connect(mapStateToProps)(MapComponent);
+type IDispatchSetSearchResultsProps = {
+  setSearchResultsHandler: (searchResults: Array<IFoursquareVenue>) => void,
+};
+
+const mapDispatchToProps = (dispatch: Dispatch): IDispatchSetSearchResultsProps => ({
+  setSearchResultsHandler: (searchResults: Array<IFoursquareVenue>): void => (
+    dispatch(setSearchResults(searchResults))
+  ),
+});
+
+const MapContainer = connect(mapStateToProps, mapDispatchToProps)(MapComponent);
 
 export default MapContainer;
