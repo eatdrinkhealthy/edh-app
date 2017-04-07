@@ -42,7 +42,10 @@ export const getNearbyPlaces = new ValidatedMethod({
 
   // eslint-disable-next-line flowtype/require-parameter-type
   run({ latitude, longitude, filterList }): Array<IFoursquareVenue> {
-    this.unblock();
+    // TODO use unblock? (if so, confirm `meteor test` still passes)
+    // if (Meteor.isServer) {
+    //   this.unblock();
+    // }
     return collectSearchResults(latitude, longitude, filterList);
   },
 });

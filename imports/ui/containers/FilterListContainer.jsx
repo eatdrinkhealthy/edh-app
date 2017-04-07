@@ -2,14 +2,10 @@
 import { connect } from "react-redux";
 import { setFilter } from "../../data/state/actions/actionCreators";
 import FilterList from "../components/FilterList";
-import type { IState } from "../../data/state/reducers/filters";
+import type { IState } from "../../data/state/reducers";
 import type { IFilter } from "../../data/state/data/defaultFilters";
 
-type IStateFilterListProps = {
-  filterList: Array<IFilter>,
-};
-
-const mapStateToProps = (state: IState): IStateFilterListProps => ({
+const mapStateToProps = (state: IState): { filterList: Array<IFilter> } => ({
   filterList: state.filters,
 });
 
