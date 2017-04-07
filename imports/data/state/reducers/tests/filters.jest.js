@@ -11,19 +11,13 @@ describe("filters reducer", function () {
 
   it("should return an initial state of DEFAULT_FILTER_LIST", function () {
     const initialState = filtersReducer(undefined, unknownAction);
-
     expect(initialState.filters).toEqual(DEFAULT_FILTER_LIST);
   });
 
   it("should return the previous state for any unknown action", function () {
     const previousState = {
       filters: [
-        {
-          id: "1",
-          name: "Juice Bar 1",
-          on: true,
-          foursquareCategory: "abc",
-        },
+        { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
       ],
     };
 
@@ -34,75 +28,30 @@ describe("filters reducer", function () {
   it("should handle SET_FILTER action", function () {
     const previousState = {
       filters: [
-        {
-          id: "1",
-          name: "Juice Bar 1",
-          on: true,
-          foursquareCategory: "abc",
-        },
-        {
-          id: "2",
-          name: "Juice Bar 2",
-          on: false,
-          foursquareCategory: "def",
-        },
-        {
-          id: "3",
-          name: "Juice Bar 3",
-          on: false,
-          foursquareCategory: "ghi",
-        },
+        { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
+        { id: "2", name: "Juice Bar 2", on: false, foursquareCategory: "def" },
+        { id: "3", name: "Juice Bar 3", on: false, foursquareCategory: "ghi" },
       ],
     };
     const expectedResult = {
       filters: [
-        {
-          id: "1",
-          name: "Juice Bar 1",
-          on: true,
-          foursquareCategory: "abc",
-        },
-        {
-          id: "2",
-          name: "Juice Bar 2",
-          on: false,
-          foursquareCategory: "def",
-        },
-        {
-          id: "3",
-          name: "Juice Bar 3",
-          on: true,
-          foursquareCategory: "ghi",
-        },
+        { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
+        { id: "2", name: "Juice Bar 2", on: false, foursquareCategory: "def" },
+        { id: "3", name: "Juice Bar 3", on: true, foursquareCategory: "ghi" },
       ],
     };
+
     const setFilterAction = setFilterActionCreator("3", true);
     const nextState = filtersReducer(previousState, setFilterAction);
-
     expect(nextState).toEqual(expectedResult);
   });
 
   describe("setFilter function", function () {
     let previousState = { // eslint-disable-line prefer-const
       filters: [
-        {
-          id: "1",
-          name: "Juice Bar 1",
-          on: true,
-          foursquareCategory: "abc",
-        },
-        {
-          id: "2",
-          name: "Juice Bar 2",
-          on: false,
-          foursquareCategory: "def",
-        },
-        {
-          id: "3",
-          name: "Juice Bar 3",
-          on: false,
-          foursquareCategory: "ghi",
-        },
+        { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
+        { id: "2", name: "Juice Bar 2", on: false, foursquareCategory: "def" },
+        { id: "3", name: "Juice Bar 3", on: false, foursquareCategory: "ghi" },
       ],
     };
     const copyState = { ...previousState };
@@ -111,24 +60,9 @@ describe("filters reducer", function () {
     it("should only set the 'on' property of indicated filter", function () {
       expect(newState).toEqual({
         filters: [
-          {
-            id: "1",
-            name: "Juice Bar 1",
-            on: true,
-            foursquareCategory: "abc",
-          },
-          {
-            id: "2",
-            name: "Juice Bar 2",
-            on: true,
-            foursquareCategory: "def",
-          },
-          {
-            id: "3",
-            name: "Juice Bar 3",
-            on: false,
-            foursquareCategory: "ghi",
-          },
+          { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
+          { id: "2", name: "Juice Bar 2", on: true, foursquareCategory: "def" },
+          { id: "3", name: "Juice Bar 3", on: false, foursquareCategory: "ghi" },
         ],
       });
     });
@@ -140,20 +74,11 @@ describe("filters reducer", function () {
     it("should return previous state if 'id' is not found", function () {
       const originalState = {
         filters: [
-          {
-            id: "1",
-            name: "Juice Bar 1",
-            on: true,
-            foursquareCategory: "abc",
-          },
-          {
-            id: "2",
-            name: "Juice Bar 2",
-            on: false,
-            foursquareCategory: "def",
-          },
+          { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
+          { id: "2", name: "Juice Bar 2", on: false, foursquareCategory: "def" },
         ],
       };
+
       const setFilterAction = setFilterActionCreator("3", true);
       const nextState = filtersReducer(originalState, setFilterAction);
       expect(nextState).toEqual(originalState);
