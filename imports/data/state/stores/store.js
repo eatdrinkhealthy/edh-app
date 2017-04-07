@@ -8,7 +8,7 @@ import type { IState } from "../reducers";
 
 /* global window */
 
-const defaultState: IState = {
+export const defaultState: IState = {
   filters: DEFAULT_FILTER_LIST,
   searchResults: [],
 };
