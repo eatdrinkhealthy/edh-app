@@ -13,6 +13,8 @@ storiesOf("Map", module)
   .add("Marker", (): React$Element<*> => (
     <Marker
       label={text("Label", "")}
-      origin={select("Origin", { center: "center", topLeft: "topLeft" }, "center")}
+      origin={
+        select("Origin", { center: "center", topLeft: "topLeft", bottomCenter: "bottomCenter" }, "center")
+      }
     />
   ));
