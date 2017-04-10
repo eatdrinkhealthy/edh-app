@@ -32,17 +32,19 @@ export class MapComponent extends Component {
     }, this.getNearbyPlacesCB);
   }
 
-  getNearbyPlacesCB(error: Error, result: Array<IFoursquareVenue>) {
+  // NOTE: this is an ES6 class property arrow function (preserves this context)
+  getNearbyPlacesCB = (error: Error, result: Array<IFoursquareVenue>) => {
     if (error) {
       console.log("Error:", error);
     } else {
-      console.log("Method Response:", result);
+      this.props.setSearchResultsHandler(result);
     }
   }
 
   props: IMapComponentProps;
 
   render() { // eslint-disable-line flowtype/require-return-type
+    console.log("Search Results:", this.props.searchResults);
     return (
       <div>
         <Navbar />
@@ -75,3 +77,4 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchSetSearchResultsProps 
 const MapContainer = connect(mapStateToProps, mapDispatchToProps)(MapComponent);
 
 export default MapContainer;
+
