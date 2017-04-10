@@ -44,11 +44,13 @@ export class MapComponent extends Component {
   props: IMapComponentProps;
 
   render() { // eslint-disable-line flowtype/require-return-type
-    console.log("Search Results:", this.props.searchResults);
     return (
       <div>
         <Navbar />
-        <LocationsMap googleMapsApiKey={Meteor.settings.public.googleMapsApiKey} />
+        <LocationsMap
+          googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
+          venues={this.props.searchResults}
+        />
       </div>
     );
   }

@@ -8,7 +8,10 @@ import type { IHttpResult } from "meteor/http";
 export type IFoursquareVenue = {
   id: string,
   name: string,
-  location: {},
+  location: {
+    lat: number,
+    lng: number,
+  },
 };
 
 export const parseFoursquareResponse = (

@@ -3,29 +3,30 @@ import React, {
   PureComponent,
 } from "react";
 import GoogleMap from "google-map-react";
+import Marker from "./Marker";
 
-// eslint-disable-next-line no-duplicate-imports
+// eslint-disable-next-line no-duplicate-imports, import/first
 import type { ILatLng } from "google-map-react";
-
-/* global Geolocation  */
+import type { IFoursquareVenue } from "../../api/foursquare/foursquareApi";
 
 type IProps = {
   center?: ILatLng,
   zoom?: number,
   googleMapsApiKey: string,
-  children?: React$Element<*>,
+  venues: Array<IFoursquareVenue>, // TODO can't this be optional? (when so, produces flow error)
 };
 
 type IDefaultProps = {
   center: ILatLng,
   zoom: number,
+  venues: Array<IFoursquareVenue>,
 };
 
-// eslint-disable-next-line react/prefer-stateless-function
 export default class LocationsMap extends PureComponent {
   static defaultProps: IDefaultProps = {
     center: { lat: 32.789008, lng: -79.932115 },
     zoom: 16,
+    venues: [],
   }
 
   props: IProps;
@@ -38,8 +39,13 @@ export default class LocationsMap extends PureComponent {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          {/* add map markers here, as children of GoogleMap */}
-          {this.props.children}
+          {this.props.venues.map((venue: IFoursquareVenue): React$Element<*> => (
+            <Marker
+              key={venue.id}
+              lat={venue.location.lat}
+              lng={venue.location.lng}
+            />))
+          }
         </GoogleMap>
       </div>
     );

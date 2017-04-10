@@ -11,7 +11,7 @@ import type { ISearchResultsAction } from "../../actions/actionCreators";
 describe("searchResults reducer", function () {
   const unknownAction: ISearchResultsAction = {
     type: "unknown",
-    searchResults: [{ id: "a", name: "place", location: {} }],
+    searchResults: [{ id: "a", name: "place", location: { lat: 0, lng: 0 } }],
   };
 
   it("should return an initial state of an empty array (no search results)", function () {

@@ -20,7 +20,7 @@ describe("store - smoke test", function () {
   it("should return the initial state of the searchResults reducer", function () {
     const unknownAction = {
       type: "unknown",
-      searchResults: [{ id: "a", name: "place", location: {} }],
+      searchResults: [{ id: "a", name: "place", location: { lat: 0, lng: 0 } }],
     };
     expect(store.getState().searchResults).toEqual(searchResultsReducer(undefined, unknownAction));
   });
