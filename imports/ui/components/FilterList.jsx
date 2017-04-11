@@ -51,7 +51,7 @@ const FilterList = (
       </Link>
     </div>
     <div className="filter">
-      {filterList.map((filter: IFilter): React.Element<*> =>
+      {filterList.map((filter: IFilter): React$Element<*> =>
         (<FilterItem
           key={filter.id}
           label={filter.name}
