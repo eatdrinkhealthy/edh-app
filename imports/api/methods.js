@@ -2,6 +2,7 @@
 import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
+import _ from "lodash";
 import foursquareApiSearch from "./foursquare/foursquareApi";
 
 // eslint-disable-next-line no-duplicate-imports
@@ -17,7 +18,11 @@ export const collectSearchResults = (
 
   if (Meteor.isServer) {
     filterList.forEach((filter: IFilter) => {
-      result = [...result, ...foursquareApiSearch(filter.foursquareCategory, latitude, longitude)];
+      result = _.unionBy(
+        result,
+        foursquareApiSearch(filter.foursquareCategory, latitude, longitude),
+        "id",
+      );
     });
   }
 
