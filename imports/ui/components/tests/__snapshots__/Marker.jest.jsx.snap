@@ -1,20 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<Marker /> matches render snapshot, no text 1`] = `
 <div
-  className="markerStyle markerOriginBottomCenter">
+  className="markerStyle markerOriginBottomCenter"
+>
   <img
     alt="pin marker"
     className="markerImage"
-    src="images/pinMarker3x.png" />
+    src="images/pinMarker3x.png"
+  />
 </div>
 `;
 
 exports[`<Marker /> matches render snapshot, with text 1`] = `
 <div
-  className="markerStyle markerOriginBottomCenter">
+  className="markerStyle markerOriginBottomCenter"
+>
   Some Place Cool
   <img
     alt="pin marker"
     className="markerImage"
-    src="images/pinMarker3x.png" />
+    src="images/pinMarker3x.png"
+  />
 </div>
 `;

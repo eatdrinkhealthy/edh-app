@@ -1,6 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<LocationsMap /> matches render snapshot 1`] = `
 <div
-  className="map-container">
+  className="map-container"
+>
   <GoogleMap
     bootstrapURLKeys={
       Object {
@@ -29,6 +32,7 @@ exports[`<LocationsMap /> matches render snapshot 1`] = `
         "width": "100%",
       }
     }
-    yesIWantToUseGoogleMapApiInternals={false} />
+    yesIWantToUseGoogleMapApiInternals={false}
+  />
 </div>
 `;
