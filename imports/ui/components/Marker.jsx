@@ -18,7 +18,6 @@ type IMarkerDefaultProps = {
   origin: IMarkerOrigin,
 };
 
-// eslint-disable-next-line react/prefer-stateless-function
 class Marker extends PureComponent {
   static defaultProps: IMarkerDefaultProps = {
     origin: "bottomCenter",

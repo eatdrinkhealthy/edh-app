@@ -5,9 +5,7 @@
 
 import React from "react";
 import { Meteor } from "meteor/meteor";
-import {
-  shallow,
-} from "enzyme";
+import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import LocationsMap from "../LocationsMap";
 
