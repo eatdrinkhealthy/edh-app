@@ -7,7 +7,7 @@ exports[`<Marker /> matches render snapshot, no text 1`] = `
   <img
     alt="pin marker"
     className="markerImage"
-    src="images/pinMarker3x.png"
+    src="images/map_icon_std_darkgreen.svg"
   />
 </div>
 `;
@@ -20,7 +20,7 @@ exports[`<Marker /> matches render snapshot, with text 1`] = `
   <img
     alt="pin marker"
     className="markerImage"
-    src="images/pinMarker3x.png"
+    src="images/map_icon_std_darkgreen.svg"
   />
 </div>
 `;

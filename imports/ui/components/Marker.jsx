@@ -35,7 +35,7 @@ class Marker extends PureComponent {
     return (
       <div className={markerClass}>
         {this.props.label}
-        <img src="images/pinMarker3x.png" alt="pin marker" className="markerImage" />
+        <img src="images/map_icon_std_darkgreen.svg" alt="pin marker" className="markerImage" />
       </div>
     );
   }
