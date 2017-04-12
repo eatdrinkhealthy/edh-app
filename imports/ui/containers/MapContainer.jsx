@@ -79,4 +79,3 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchSetSearchResultsProps 
 const MapContainer = connect(mapStateToProps, mapDispatchToProps)(MapComponent);
 
 export default MapContainer;
-

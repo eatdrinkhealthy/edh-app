@@ -17,7 +17,13 @@
 * potential component / page transition, [react-router-transition](https://www.npmjs.com/package/react-router-transition)
     
 
-### google-map-react
+### Map
+#### Marker Location / Accuracy
+* Google Maps, Google Places API, gps-coordinates.org, Yelp lat lng values all place markers directly on business building
+* Foursquare, WHA lat lng values tend to place marker on street or a few meters away
+* Google Maps seems to round out to 6th decimal place for accurate placement when using Decimal Degrees
+* For the time being, the Foursquare coordinates seem accurate enough for use (typically within meters of Google coordinates). If users provide feedback / requests for greater accuracy (or consistancy with Google), consider sourcing address coordinates from Google.
+#### google-map-react
 * the map seems to need to be in a div that has a specific height / width, ie 400px
     * 100%, I don't have working yet
     * strangely, if you pass any style={someStyleObj} directly to the GoogleMap component, it will display 100% (and ignores any px)
