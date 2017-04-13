@@ -40,7 +40,8 @@ storiesOf("Modals", module)
   .add("FilterItem", (): React$Element<*> => (
     <CenterWrapper
       horizontalCenter={boolean("Horizontal Center", true)}
-      border={boolean("Border", false)}
+      verticalCenter={boolean("Vertical Center", true)}
+      childrenBorder={boolean("Children Border", false)}
     >
       <FilterItem
         label={text("Label", "Fruity's Juice Bar")}

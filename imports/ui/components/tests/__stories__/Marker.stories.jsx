@@ -6,15 +6,28 @@ import React from "react";
 import {
   storiesOf,
 } from "@kadira/storybook";
-import { text, select } from "@kadira/storybook-addon-knobs";
+import { text, select, boolean } from "@kadira/storybook-addon-knobs";
+import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 import Marker from "../../Marker";
 
 storiesOf("Map", module)
   .add("Marker", (): React$Element<*> => (
-    <Marker
-      label={text("Label", "")}
-      origin={
-        select("Origin", { center: "center", topLeft: "topLeft", bottomCenter: "bottomCenter" }, "center")
+    <CenterWrapper
+      childrenBorder={boolean("Children Border", false)}
+      hasBorder={boolean("Parent Border", false)}
+      background={
+        select(
+          "Parent Background",
+          { transparent: "transparent", lightblue: "lightblue", white: "white" },
+          "transparent",
+        )
       }
-    />
+    >
+      <Marker
+        label={text("Label", "")}
+        origin={
+          select("Origin", { center: "center", topLeft: "topLeft", bottomCenter: "bottomCenter" }, "center")
+        }
+      />
+    </CenterWrapper>
   ));
