@@ -69,6 +69,7 @@
     "flowtype/type-id-match": ["error", "^I[A-Z][a-zA-Z0-9]+$"],
     "flowtype/union-intersection-spacing": ["error", "always"],
     "flowtype/use-flow-type": "warn",
-    "flowtype/valid-syntax": "warn"
+    "flowtype/valid-syntax": "warn",
+    "jsx-a11y/no-static-element-interactions": "warn"
   }
 }
