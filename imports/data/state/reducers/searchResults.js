@@ -2,7 +2,7 @@
 import { SET_SEARCH_RESULTS } from "../actions/actionTypes";
 
 import type { IFoursquareVenue } from "../../../api/foursquare/foursquareApi";
-import type { ISearchResultsAction } from "../actions/actionCreators";
+import type { ISearchResultsAction } from "../actions/searchResultsActions";
 
 const searchResults = (
   state: Array<IFoursquareVenue> = [],

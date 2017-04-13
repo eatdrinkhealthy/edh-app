@@ -1,6 +1,6 @@
 // @flow
 import { connect } from "react-redux";
-import { setFilter } from "../../data/state/actions/actionCreators";
+import { setFilter } from "../../data/state/actions/filterActions";
 import FilterList from "../components/FilterList";
 import type { IState } from "../../data/state/reducers";
 import type { IFilter } from "../../data/state/data/defaultFilters";

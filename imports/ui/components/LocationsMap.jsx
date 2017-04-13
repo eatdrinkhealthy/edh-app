@@ -44,6 +44,7 @@ export default class LocationsMap extends PureComponent {
               key={venue.id}
               lat={venue.location.lat}
               lng={venue.location.lng}
+              selected={1 > 0}
             />))
           }
         </GoogleMap>

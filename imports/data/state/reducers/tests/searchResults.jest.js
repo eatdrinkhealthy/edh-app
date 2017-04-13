@@ -3,10 +3,10 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import searchResults from "../searchResults";
-import { setSearchResults } from "../../actions/actionCreators";
+import { setSearchResults } from "../../actions/searchResultsActions";
 
 // eslint-disable-next-line no-duplicate-imports
-import type { ISearchResultsAction } from "../../actions/actionCreators";
+import type { ISearchResultsAction } from "../../actions/searchResultsActions";
 
 describe("searchResults reducer", function () {
   const unknownAction: ISearchResultsAction = {

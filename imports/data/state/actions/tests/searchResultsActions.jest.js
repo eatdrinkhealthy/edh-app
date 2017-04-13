@@ -2,24 +2,10 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
-import * as actions from "../actionCreators";
-import { SET_FILTER, SET_SEARCH_RESULTS } from "../actionTypes";
+import * as actions from "../searchResultsActions";
+import { SET_SEARCH_RESULTS } from "../actionTypes";
 
-describe("actions", function () {
-  describe("setFilter", function () {
-    it("should create a SET_FILTER action", function () {
-      const id = "abc";
-      const checked = true;
-      const expectedAction = {
-        type: SET_FILTER,
-        id,
-        checked,
-      };
-
-      expect(actions.setFilter(id, checked)).toEqual(expectedAction);
-    });
-  });
-
+describe("Search Results Actions", function () {
   describe("setSearchResults", function () {
     it("should create a SET_SEARCH_RESULTS action, with no search results", function () {
       const expectedAction = {

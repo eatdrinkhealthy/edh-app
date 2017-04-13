@@ -7,7 +7,7 @@ import { Meteor } from "meteor/meteor";
 import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
 import { getNearbyPlaces } from "../../api/methods";
-import { setSearchResults } from "../../data/state/actions/actionCreators";
+import { setSearchResults } from "../../data/state/actions/searchResultsActions";
 
 import type { IFoursquareVenue } from "../../api/foursquare/foursquareApi";
 import type { IState } from "../../data/state/reducers";

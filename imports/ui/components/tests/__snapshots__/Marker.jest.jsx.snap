@@ -16,7 +16,6 @@ exports[`<Marker /> matches render snapshot, with text 1`] = `
 <div
   className="markerStyle markerOriginBottomCenter"
 >
-  Some Place Cool
   <img
     alt="pin marker"
     className="markerImage"

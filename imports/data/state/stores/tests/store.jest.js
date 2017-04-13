@@ -5,7 +5,8 @@
 import store, { defaultState } from "../store";
 import filtersReducer from "../../reducers/filters";
 import searchResultsReducer from "../../reducers/searchResults";
-import { setFilter, setSearchResults } from "../../actions/actionCreators";
+import { setSearchResults } from "../../actions/searchResultsActions";
+import { setFilter } from "../../actions/filterActions";
 
 describe("store - smoke test", function () {
   it("should return a default state", function () {

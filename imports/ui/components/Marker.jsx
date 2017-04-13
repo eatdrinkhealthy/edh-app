@@ -12,6 +12,7 @@ type IMarkerOrigin =
 type IMarkerProps = {
   label?: string,
   origin?: IMarkerOrigin,
+  selected?: boolean,
 };
 
 type IMarkerDefaultProps = {
@@ -26,7 +27,7 @@ class Marker extends PureComponent {
   props: IMarkerProps;
 
   handleOnClick = () => {
-    const display = this.props.label || "no label.";
+    const display = `${this.props.selected ? "selected: " : ""}${this.props.label || "no label."}`;
     alert(display);
   }
 
@@ -38,7 +39,7 @@ class Marker extends PureComponent {
     });
 
     return (
-      <div className={markerClass} onClick={this.handleOnClick}>
+      <div className={markerClass}>
         <img src="images/map_icon_std_darkgreen.svg" alt="pin marker" className="markerImage" />
       </div>
     );
