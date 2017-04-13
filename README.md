@@ -121,3 +121,9 @@ Each testing framework comes with a default, or set of available assertion libra
     - copy or move libdefs from there to `.types/` and edit as needed
     - they can be checked in to the repo from `.types/`
     - NOTE, anytime you download libdefs in to `flow-typed/`, you need to nuke or hide that directory, else Meteor will see it and try to load it
+    
+## Credits / Props / Inspirations
+* Work Hard Anywhere - many of the UI characteristics
+* google-map-react
+    - the map component
+    - marker balloon pop up behavior (see their main example online) 
