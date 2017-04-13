@@ -6,8 +6,6 @@ import DEFAULT_FILTER_LIST from "../data/defaultFilters";
 // eslint-disable-next-line no-duplicate-imports
 import type { IState } from "../reducers";
 
-/* global window */
-
 export const defaultState: IState = {
   filters: DEFAULT_FILTER_LIST,
   searchResults: [],
