@@ -25,6 +25,11 @@ class Marker extends PureComponent {
 
   props: IMarkerProps;
 
+  handleOnClick = () => {
+    const display = this.props.label || "no label.";
+    alert(display);
+  }
+
   render() {  // eslint-disable-line flowtype/require-return-type
     const markerClass = classNames("markerStyle", {
       markerOriginCenter: this.props.origin === "center",
@@ -33,8 +38,7 @@ class Marker extends PureComponent {
     });
 
     return (
-      <div className={markerClass}>
-        {this.props.label}
+      <div className={markerClass} onClick={this.handleOnClick}>
         <img src="images/map_icon_std_darkgreen.svg" alt="pin marker" className="markerImage" />
       </div>
     );
