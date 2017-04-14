@@ -8,6 +8,9 @@ import type { IFoursquareVenue } from "../../../api/foursquare/foursquareApi";
 export type IState = {
   filters: Array<IFilter>,
   searchResults: Array<IFoursquareVenue>,
+  map: {
+    selectedVenue: ?string,
+  }
 };
 
 const appReducer = combineReducers({
