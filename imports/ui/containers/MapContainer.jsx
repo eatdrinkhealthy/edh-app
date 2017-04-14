@@ -8,6 +8,7 @@ import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
 import { getNearbyPlaces } from "../../api/methods";
 import { setSearchResults } from "../../data/state/actions/searchResultsActions";
+import { setSelectedVenue } from "../../data/state/actions/mapDisplayActions";
 
 import type { IFoursquareVenue } from "../../api/foursquare/foursquareApi";
 import type { IState } from "../../data/state/stores/store";
@@ -17,6 +18,7 @@ type IMapComponentProps = {
   filterList: Array<IFilter>,
   searchResults: Array<IFoursquareVenue>,
   setSearchResultsHandler: () => void,
+  setSelectedVenueHandler: () => void,
 };
 
 export class MapComponent extends Component {
@@ -50,6 +52,7 @@ export class MapComponent extends Component {
         <LocationsMap
           googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
           venues={this.props.searchResults}
+          setSelectedVenueHandler={this.props.setSelectedVenueHandler}
         />
       </div>
     );
@@ -59,21 +62,25 @@ export class MapComponent extends Component {
 type IStateProps = {
   filterList: Array<IFilter>,
   searchResults: Array<IFoursquareVenue>,
+  selectedVenueId: ?string,
 };
 
 const mapStateToProps = (state: IState): IStateProps => ({
   filterList: state.filters,
   searchResults: state.searchResults,
+  selectedVenueId: state.mapDisplay.selectedVenueId,
 });
 
 type IDispatchSetSearchResultsProps = {
   setSearchResultsHandler: (searchResults: Array<IFoursquareVenue>) => void,
+  setSelectedVenueHandler: (venueId: string) => void,
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchSetSearchResultsProps => ({
   setSearchResultsHandler: (searchResults: Array<IFoursquareVenue>): void => (
     dispatch(setSearchResults(searchResults))
   ),
+  setSelectedVenueHandler: (venueId: string): void => (dispatch(setSelectedVenue(venueId))),
 });
 
 const MapContainer = connect(mapStateToProps, mapDispatchToProps)(MapComponent);

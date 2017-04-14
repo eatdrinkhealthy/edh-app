@@ -13,6 +13,7 @@ type IMarkerProps = {
   venueId: string,
   origin?: IMarkerOrigin,
   selected?: boolean,
+  setSelectedVenueHandler: (venueId: string) => void,
 };
 
 type IMarkerDefaultProps = {
@@ -29,6 +30,7 @@ class Marker extends PureComponent {
   handleOnClick = () => {
     const display = `venueId: ${this.props.venueId} selected: ${this.props.selected ? "true" : "false"}`;
     alert(display);
+    this.props.setSelectedVenueHandler(this.props.venueId);
   }
 
   render() {  // eslint-disable-line flowtype/require-return-type
