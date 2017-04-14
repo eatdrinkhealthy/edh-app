@@ -9,17 +9,17 @@ import Marker from "../Marker";
 
 describe("<Marker />", function () {
   it("matches render snapshot, no text", function () {
-    const tree = renderer.create(<Marker />).toJSON();
+    const tree = renderer.create(<Marker venueId={"abc"} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("matches render snapshot, with text", function () {
-    const tree = renderer.create(<Marker label="Some Place Cool" />).toJSON();
+    const tree = renderer.create(<Marker venueId={"abc"} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should have default style and origin classes", function () {
-    const wrapper = shallow(<Marker />);
+    const wrapper = shallow(<Marker venueId={"abc"} />);
     expect(wrapper.hasClass("markerStyle")).toBe(true);
     expect(wrapper.hasClass("markerOriginBottomCenter")).toBe(true);
   });

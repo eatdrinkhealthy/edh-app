@@ -3,6 +3,7 @@
 exports[`<Marker /> matches render snapshot, no text 1`] = `
 <div
   className="markerStyle markerOriginBottomCenter"
+  onClick={[Function]}
 >
   <img
     alt="pin marker"
@@ -15,6 +16,7 @@ exports[`<Marker /> matches render snapshot, no text 1`] = `
 exports[`<Marker /> matches render snapshot, with text 1`] = `
 <div
   className="markerStyle markerOriginBottomCenter"
+  onClick={[Function]}
 >
   <img
     alt="pin marker"

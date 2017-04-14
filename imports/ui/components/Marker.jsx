@@ -11,7 +11,6 @@ type IMarkerOrigin =
 
 type IMarkerProps = {
   venueId: string,
-  label?: string,
   origin?: IMarkerOrigin,
   selected?: boolean,
 };

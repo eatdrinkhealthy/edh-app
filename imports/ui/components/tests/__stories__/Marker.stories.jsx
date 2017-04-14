@@ -6,7 +6,7 @@ import React from "react";
 import {
   storiesOf,
 } from "@kadira/storybook";
-import { text, select, boolean } from "@kadira/storybook-addon-knobs";
+import { select, boolean } from "@kadira/storybook-addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 import Marker from "../../Marker";
 
@@ -24,7 +24,7 @@ storiesOf("Map", module)
       }
     >
       <Marker
-        label={text("Label", "")}
+        venueId={"abc"}
         origin={
           select("Origin", { center: "center", topLeft: "topLeft", bottomCenter: "bottomCenter" }, "center")
         }
