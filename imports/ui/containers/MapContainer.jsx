@@ -10,7 +10,7 @@ import { getNearbyPlaces } from "../../api/methods";
 import { setSearchResults } from "../../data/state/actions/searchResultsActions";
 
 import type { IFoursquareVenue } from "../../api/foursquare/foursquareApi";
-import type { IState } from "../../data/state/reducers";
+import type { IState } from "../../data/state/stores/store";
 import type { IFilter } from "../../data/state/data/defaultFilters";
 
 type IMapComponentProps = {
