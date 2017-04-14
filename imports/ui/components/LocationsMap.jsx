@@ -42,6 +42,7 @@ export default class LocationsMap extends PureComponent {
           {this.props.venues.map((venue: IFoursquareVenue): React$Element<*> => (
             <Marker
               key={venue.id}
+              venueId={venue.id}
               lat={venue.location.lat}
               lng={venue.location.lng}
               selected={1 > 0}
