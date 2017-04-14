@@ -9,6 +9,9 @@ import type { IState } from "../reducers";
 export const defaultState: IState = {
   filters: DEFAULT_FILTER_LIST,
   searchResults: [],
+  map: {
+    selectedVenue: null,
+  },
 };
 
 /* eslint-disable no-underscore-dangle */

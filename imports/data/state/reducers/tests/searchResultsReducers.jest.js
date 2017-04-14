@@ -2,7 +2,7 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
-import searchResults from "../searchResults";
+import searchResults from "../searchResultsReducers";
 import { setSearchResults } from "../../actions/searchResultsActions";
 
 // eslint-disable-next-line no-duplicate-imports

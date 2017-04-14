@@ -3,10 +3,10 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import store, { defaultState } from "../store";
-import filtersReducer from "../../reducers/filters";
-import searchResultsReducer from "../../reducers/searchResults";
+import filtersReducer from "../../reducers/filtersReducers";
+import searchResultsReducer from "../../reducers/searchResultsReducers";
 import { setSearchResults } from "../../actions/searchResultsActions";
-import { setFilter } from "../../actions/filterActions";
+import { setFilter } from "../../actions/filtersActions";
 
 describe("store - smoke test", function () {
   it("should return a default state", function () {

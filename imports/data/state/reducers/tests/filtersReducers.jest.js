@@ -2,9 +2,9 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
-import filtersReducer, { setFilter } from "../filters";
+import filtersReducer, { setFilter } from "../filtersReducers";
 import DEFAULT_FILTER_LIST from "../../data/defaultFilters";
-import { setFilter as setFilterActionCreator } from "../../actions/filterActions";
+import { setFilter as setFilterActionCreator } from "../../actions/filtersActions";
 
 describe("filters reducer", function () {
   const unknownAction = { type: "unknown", id: "a", checked: false };
