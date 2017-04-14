@@ -1,7 +1,7 @@
 // @flow
 import { SET_SELECTED_VENUE } from "./actionTypes";
 
-export type IMapAction = {
+export type IMapDisplayAction = {
   type: string,
   venueId: ?string,
 };
@@ -9,7 +9,7 @@ export type IMapAction = {
 // eslint-disable-next-line import/prefer-default-export
 export const setSelectedVenue = (
   venueId: ?string,
-): IMapAction => ({
+): IMapDisplayAction => ({
   type: SET_SELECTED_VENUE,
   venueId,
 });

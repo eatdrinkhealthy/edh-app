@@ -9,8 +9,8 @@ import type { IState } from "../reducers";
 export const defaultState: IState = {
   filters: DEFAULT_FILTER_LIST,
   searchResults: [],
-  map: {
-    selectedVenue: null,
+  mapDisplay: {
+    selectedVenueId: null,
   },
 };
 
@@ -20,6 +20,6 @@ const store = createStore(
   defaultState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
-/* eslint-enable */
+/* eslint-enable no-underscore-dangle */
 
 export default store;
