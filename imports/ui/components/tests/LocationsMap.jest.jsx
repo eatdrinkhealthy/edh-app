@@ -14,6 +14,7 @@ describe("<LocationsMap />", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
     const wrapper = shallow(<LocationsMap
       googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
+      setSelectedVenueHandler={() => {}}
     />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
