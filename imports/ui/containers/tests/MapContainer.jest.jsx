@@ -24,8 +24,9 @@ describe("<MapComponent />", function () {
     const wrapper = shallow(<MapComponent
       filterList={testFilterList}
       searchResults={[]}
-      setSearchResultsHandler={() => {}}
-      setSelectedVenueHandler={() => {}}
+      setSearchResultsHandler={jest.fn()}
+      setSelectedVenueHandler={jest.fn()}
+      selectedVenueId={null}
     />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });

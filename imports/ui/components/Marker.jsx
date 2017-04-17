@@ -36,6 +36,7 @@ class Marker extends PureComponent {
       markerOriginCenter: this.props.origin === "center",
       markerOriginTopLeft: this.props.origin === "topLeft",
       markerOriginBottomCenter: this.props.origin === "bottomCenter",
+      markerSelected: this.props.selected,
     });
 
     return (

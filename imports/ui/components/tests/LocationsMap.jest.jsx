@@ -15,6 +15,7 @@ describe("<LocationsMap />", function () {
     const wrapper = shallow(<LocationsMap
       googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
       setSelectedVenueHandler={jest.fn()}
+      selectedVenueId={null}
     />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -35,19 +36,10 @@ describe("<LocationsMap />", function () {
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={testVenues}
         setSelectedVenueHandler={selectVenue}
+        selectedVenueId={null}
       />);
 
       expect(wrapper.find("Marker").length).toBe(3);
-    });
-
-    it("should have no 'selected' markers when selectedVenueId not provided", function () {
-      const wrapper = shallow(<LocationsMap
-        googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
-        venues={testVenues}
-        setSelectedVenueHandler={selectVenue}
-      />);
-
-      expect(wrapper.find("Marker").findWhere(selectedPropTrue).length).toBe(0);
     });
 
     it("should have no 'selected' markers when selectedVenueId provided null", function () {

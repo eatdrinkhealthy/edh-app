@@ -19,6 +19,7 @@ type IMapComponentProps = {
   searchResults: Array<IFoursquareVenue>,
   setSearchResultsHandler: () => void,
   setSelectedVenueHandler: () => void,
+  selectedVenueId: ?string,
 };
 
 export class MapComponent extends Component {
@@ -53,6 +54,7 @@ export class MapComponent extends Component {
           googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
           venues={this.props.searchResults}
           setSelectedVenueHandler={this.props.setSelectedVenueHandler}
+          selectedVenueId={this.props.selectedVenueId}
         />
       </div>
     );
