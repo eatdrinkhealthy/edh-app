@@ -28,8 +28,6 @@ class Marker extends PureComponent {
   props: IMarkerProps;
 
   handleOnClick = () => {
-    const display = `venueId: ${this.props.venueId} selected: ${this.props.selected ? "true" : "false"}`;
-    alert(display);
     this.props.setSelectedVenueHandler(this.props.venueId);
   }
 
