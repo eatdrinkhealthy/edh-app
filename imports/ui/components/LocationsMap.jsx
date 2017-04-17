@@ -14,6 +14,7 @@ type IProps = {
   zoom?: number,
   googleMapsApiKey: string,
   venues: Array<IFoursquareVenue>, // TODO can't this be optional? (when so, produces flow error)
+  selectedVenueId?: ?string,
   setSelectedVenueHandler: (venueId: string) => void,
 };
 
@@ -47,7 +48,7 @@ export default class LocationsMap extends PureComponent {
               lat={venue.location.lat}
               lng={venue.location.lng}
               setSelectedVenueHandler={this.props.setSelectedVenueHandler}
-              selected={1 > 0}
+              selected={venue.id === this.props.selectedVenueId}
             />))
           }
         </GoogleMap>
