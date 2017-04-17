@@ -11,6 +11,7 @@ exports[`<MapComponent /> matches render snapshot 1`] = `
       }
     }
     googleMapsApiKey="TestAPIKeyValue"
+    setSelectedVenueHandler={[Function]}
     venues={Array []}
     zoom={16}
   />

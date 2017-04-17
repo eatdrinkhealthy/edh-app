@@ -1,11 +1,7 @@
 // @flow
-
 /* eslint-disable import/no-extraneous-dependencies */
-
 import React from "react";
-import {
-  storiesOf,
-} from "@kadira/storybook";
+import { storiesOf, action } from "@kadira/storybook";
 import { select, boolean } from "@kadira/storybook-addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 import Marker from "../../Marker";
@@ -28,6 +24,7 @@ storiesOf("Map", module)
         origin={
           select("Origin", { center: "center", topLeft: "topLeft", bottomCenter: "bottomCenter" }, "center")
         }
+        setSelectedVenueHandler={action("clicked")}
       />
     </CenterWrapper>
   ));

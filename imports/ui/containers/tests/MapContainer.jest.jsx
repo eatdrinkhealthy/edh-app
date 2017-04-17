@@ -25,6 +25,7 @@ describe("<MapComponent />", function () {
       filterList={testFilterList}
       searchResults={[]}
       setSearchResultsHandler={() => {}}
+      setSelectedVenueHandler={() => {}}
     />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });

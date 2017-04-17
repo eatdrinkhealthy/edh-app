@@ -1,8 +1,7 @@
 // @flow
 /* eslint-disable import/no-extraneous-dependencies */
-
 import React from "react";
-import { storiesOf } from "@kadira/storybook";
+import { storiesOf, action } from "@kadira/storybook";
 import LocationsMap from "../../LocationsMap";
 
 /* global Window */
@@ -15,11 +14,15 @@ const sampleVenues = [
 
 storiesOf("Map", module)
   .add("LocationsMap - no markers", (): React$Element<*> => (
-    <LocationsMap googleMapsApiKey={Window.Meteor.settings.public.googleMapsApiKey} />
+    <LocationsMap
+      googleMapsApiKey={Window.Meteor.settings.public.googleMapsApiKey}
+      setSelectedVenueHandler={action("clicked")}
+    />
   ))
   .add("LocationsMap - multiple markers", (): React$Element<*> => (
     <LocationsMap
       googleMapsApiKey={Window.Meteor.settings.public.googleMapsApiKey}
       venues={sampleVenues}
+      setSelectedVenueHandler={action("clicked")}
     />
   ));
