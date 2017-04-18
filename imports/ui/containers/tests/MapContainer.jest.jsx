@@ -71,9 +71,9 @@ describe("<MapContainer />", function () {
     </Provider>,
   );
 
-  it("should call getNearbyPlaces method with selected filters", function () {
+  it("should call getNearbyPlaces method with selected filters (on: true)", function () {
     expect(getNearbyPlaces.call.mock.calls[0][0].filterList)
-      .toEqual([{ id: "juiceBar", name: "Juice Bar", on: true, foursquareCategory: "1" }]);
+      .toEqual([testDefaultState.filters[0]]);
   });
 
   it("should set search results for MapComponent from state", function () {
