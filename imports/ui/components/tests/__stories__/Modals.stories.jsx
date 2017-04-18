@@ -10,24 +10,9 @@ import FilterList, { FilterItem } from "../../FilterList";
 import Sidebar from "../../Sidebar";
 
 const testFilterList = [
-  {
-    id: "juiceBar1",
-    name: "Juice Bars 1",
-    on: true,
-    foursquareCategory: "1",
-  },
-  {
-    id: "juiceBar2",
-    name: "Juice Bars 2",
-    on: false,
-    foursquareCategory: "2",
-  },
-  {
-    id: "juiceBar3",
-    name: "Juice Bars 3",
-    on: false,
-    foursquareCategory: "3",
-  },
+  { id: "juiceBar", name: "Juice Bar", on: true, foursquareCategory: "1" },
+  { id: "cafe", name: "Cafe", on: false, foursquareCategory: "2" },
+  { id: "market", name: "Market", on: false, foursquareCategory: "3" },
 ];
 
 // NOTE without state, and en event handler that toggles 'filterOn'
