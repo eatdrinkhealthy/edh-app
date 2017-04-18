@@ -2,7 +2,7 @@
 
 exports[`<Marker /> matches render snapshot 1`] = `
 <div
-  className="markerStyle markerOriginBottomCenter"
+  className="markerContainer markerOriginBottomCenter"
   onClick={[Function]}
 >
   <img

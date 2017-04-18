@@ -32,16 +32,21 @@ class Marker extends PureComponent {
   }
 
   render() {  // eslint-disable-line flowtype/require-return-type
-    const markerClass = classNames("markerStyle", {
+    const markerContainerClasses = classNames("markerContainer", {
       markerOriginCenter: this.props.origin === "center",
       markerOriginTopLeft: this.props.origin === "topLeft",
       markerOriginBottomCenter: this.props.origin === "bottomCenter",
       markerSelected: this.props.selected,
     });
 
+    const markerClasses = classNames("markerBase", {
+      markerUnselected: !this.props.selected,
+      markerSelected: this.props.selected,
+    });
+
     return (
-      <div className={markerClass} onClick={this.handleOnClick}>
-        <img src="images/map_icon_std_darkgreen.svg" alt="pin marker" className="markerImage" />
+      <div className={markerContainerClasses} onClick={this.handleOnClick}>
+        <div className={markerClasses} />
       </div>
     );
   }

@@ -21,7 +21,7 @@ describe("<Marker />", function () {
       venueId={"abc"}
       setSelectedVenueHandler={() => {}}
     />);
-    expect(wrapper.hasClass("markerStyle")).toBe(true);
+    expect(wrapper.hasClass("markerContainer")).toBe(true);
     expect(wrapper.hasClass("markerOriginBottomCenter")).toBe(true);
   });
 
@@ -32,7 +32,7 @@ describe("<Marker />", function () {
     };
 
     const wrapper = shallow(<Marker {...props} />);
-    wrapper.find("div.markerStyle").simulate("click");
+    wrapper.find("div.markerContainer").simulate("click");
     expect(props.setSelectedVenueHandler.mock.calls.length).toBe(1);
     expect(props.setSelectedVenueHandler.mock.calls[0][0]).toBe("abc123");
   });

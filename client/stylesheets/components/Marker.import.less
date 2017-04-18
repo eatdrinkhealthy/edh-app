@@ -1,23 +1,9 @@
-.markerStyle {
+.markerContainer {
   // initially any map object has left top corner at lat lng coordinates
   // it's on you to set object origin to 0,0 coordinates
   position: absolute;
   width: 40px;
   height: 40px;
-  text-align: center;
-  color: #3f51b5;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.markerSelected {
-  transform: scale(1.4, 1.4);
-  -webkit-transform: scale(1.4, 1.4);
-}
-
-.markerStyle img {
-  width: 100%;
-  height: 100%;
 }
 
 .markerOriginCenter {
@@ -33,4 +19,19 @@
 .markerOriginBottomCenter {
   left: -20px;
   top: -40px;
+}
+
+.markerBase {
+  width: 70%;
+  height: 70%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.markerUnselected {
+  background-image: url("/images/map_icon_std_darkgreen.svg");
+}
+
+.markerSelected {
+  background-image: url("/images/map_icon_std_wetasphalt.svg");
 }
