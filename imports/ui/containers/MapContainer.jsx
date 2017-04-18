@@ -73,12 +73,12 @@ const mapStateToProps = (state: IState): IStateProps => ({
   selectedVenueId: state.mapDisplay.selectedVenueId,
 });
 
-type IDispatchSetSearchResultsProps = {
+type IDispatchProps = {
   setSearchResultsHandler: (searchResults: Array<IFoursquareVenue>) => void,
   setSelectedVenueHandler: (venueId: string) => void,
 };
 
-const mapDispatchToProps = (dispatch: Dispatch): IDispatchSetSearchResultsProps => ({
+const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   setSearchResultsHandler: (searchResults: Array<IFoursquareVenue>): void => (
     dispatch(setSearchResults(searchResults))
   ),
