@@ -8,9 +8,18 @@ import renderer from "react-test-renderer";
 import Marker from "../Marker";
 
 describe("<Marker />", function () {
-  it("matches render snapshot", function () {
+  it("matches render snapshot, unselected", function () {
     const tree = renderer.create(<Marker
       venueId={"abc"}
+      setSelectedVenueHandler={() => {}}
+    />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("matches render snapshot, selected", function () {
+    const tree = renderer.create(<Marker
+      venueId={"abc"}
+      selected
       setSelectedVenueHandler={() => {}}
     />).toJSON();
     expect(tree).toMatchSnapshot();

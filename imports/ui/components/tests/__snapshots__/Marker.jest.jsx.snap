@@ -1,6 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Marker /> matches render snapshot 1`] = `
+exports[`<Marker /> matches render snapshot, selected 1`] = `
+<div
+  className="markerContainer markerOriginBottomCenter"
+  onClick={[Function]}
+>
+  <img
+    alt="map pin marker"
+    src="/images/map_marker_selected.svg"
+  />
+</div>
+`;
+
+exports[`<Marker /> matches render snapshot, unselected 1`] = `
 <div
   className="markerContainer markerOriginBottomCenter"
   onClick={[Function]}
