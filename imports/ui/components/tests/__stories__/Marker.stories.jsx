@@ -24,6 +24,7 @@ storiesOf("Map", module)
         origin={
           select("Origin", { center: "center", topLeft: "topLeft", bottomCenter: "bottomCenter" }, "center")
         }
+        selected={boolean("Selected", false)}
         setSelectedVenueHandler={action("clicked")}
       />
     </CenterWrapper>

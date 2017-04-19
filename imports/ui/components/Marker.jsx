@@ -42,8 +42,8 @@ class Marker extends PureComponent {
     );
 
     const markerImage = this.props.selected
-      ? "/images/map_icon_std_selected.svg"
-      : "/images/map_icon_std_unselected.svg";
+      ? "/images/map_marker_selected.svg"
+      : "/images/map_marker_unselected.svg";
 
     return (
       <div className={markerContainerClasses} onClick={this.handleOnClick}>
