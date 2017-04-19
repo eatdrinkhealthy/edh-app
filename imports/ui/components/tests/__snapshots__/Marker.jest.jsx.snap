@@ -6,9 +6,8 @@ exports[`<Marker /> matches render snapshot 1`] = `
   onClick={[Function]}
 >
   <img
-    alt="pin marker"
-    className="markerImage"
-    src="images/map_icon_std_darkgreen.svg"
+    alt="map pin marker"
+    src="/images/map_icon_std_unselected.svg"
   />
 </div>
 `;
