@@ -11,6 +11,7 @@
 * using Skeleton, very light grid system
 * __NOTE, currently using box-sizing to globally change box model__ (see box-sizing.import.less)
 * Initial version relies often on use of z-index
+* using npm package [html-hint](https://github.com/istarkov/html-hint) to display hints (balloons) for map markers
 #### Animation
 * __FIRST__ DETERMINE if CSS3 is being used in current version of app (and/or see what browser versions support it)
 * consider this component for animation sidebar & filter, [react-burger-menu](https://github.com/negomi/react-burger-menu)
@@ -22,7 +23,7 @@
 * Google Maps, Google Places API, gps-coordinates.org, Yelp lat lng values all place markers directly on business building
 * Foursquare, WHA lat lng values tend to place marker on street or a few meters away
 * Google Maps seems to round out to 6th decimal place for accurate placement when using Decimal Degrees
-* For the time being, the Foursquare coordinates seem accurate enough for use (typically within meters of Google coordinates). If users provide feedback / requests for greater accuracy (or consistancy with Google), consider sourcing address coordinates from Google.
+* For the time being, the Foursquare coordinates seem accurate enough for use (typically within meters of Google coordinates). If users provide feedback / requests for greater accuracy (or consistency with Google), consider sourcing address coordinates from Google.
 #### google-map-react
 * the map seems to need to be in a div that has a specific height / width, ie 400px
     * 100%, I don't have working yet
