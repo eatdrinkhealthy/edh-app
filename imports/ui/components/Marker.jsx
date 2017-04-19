@@ -36,8 +36,7 @@ class Marker extends PureComponent {
       "markerContainer",
       "hint",
       "hint--html",
-      "hint--info",
-      "hint--medium",
+      this.props.selected ? "hint--always" : "hint--hidden",
       {
         markerOriginCenter: this.props.origin === "center",
         markerOriginTopLeft: this.props.origin === "topLeft",
@@ -51,6 +50,7 @@ class Marker extends PureComponent {
 
     const hintClasses = classNames(
       "hint__content",
+      "hintContainer",
     );
 
     return (
