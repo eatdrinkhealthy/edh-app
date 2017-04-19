@@ -2,24 +2,34 @@
 
 exports[`<Marker /> matches render snapshot, selected 1`] = `
 <div
-  className="markerContainer markerOriginBottomCenter"
+  className="markerContainer hint hint--html hint--always markerOriginBottomCenter"
   onClick={[Function]}
 >
   <img
     alt="map pin marker"
     src="/images/map_marker_selected.svg"
   />
+  <div
+    className="hint__content hintContainer"
+  >
+    venueId: abc
+  </div>
 </div>
 `;
 
 exports[`<Marker /> matches render snapshot, unselected 1`] = `
 <div
-  className="markerContainer markerOriginBottomCenter"
+  className="markerContainer hint hint--html hint--hidden markerOriginBottomCenter"
   onClick={[Function]}
 >
   <img
     alt="map pin marker"
     src="/images/map_marker_unselected.svg"
   />
+  <div
+    className="hint__content hintContainer"
+  >
+    venueId: abc
+  </div>
 </div>
 `;
