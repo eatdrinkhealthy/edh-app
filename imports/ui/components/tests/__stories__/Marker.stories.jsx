@@ -9,6 +9,8 @@ import Marker from "../../Marker";
 storiesOf("Map", module)
   .add("Marker", (): React$Element<*> => (
     <CenterWrapper
+      width="50%"
+      height="50%"
       childrenBorder={boolean("Children Border", false)}
       hasBorder={boolean("Parent Border", false)}
       background={
@@ -22,7 +24,11 @@ storiesOf("Map", module)
       <Marker
         venueId={"abc"}
         origin={
-          select("Origin", { center: "center", topLeft: "topLeft", bottomCenter: "bottomCenter" }, "center")
+          select(
+            "Origin",
+            { center: "center", topLeft: "topLeft", bottomCenter: "bottomCenter" },
+            "bottomCenter",
+          )
         }
         selected={boolean("Selected", false)}
         setSelectedVenueHandler={action("clicked")}

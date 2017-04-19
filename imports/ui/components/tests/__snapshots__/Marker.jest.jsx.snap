@@ -7,7 +7,7 @@ exports[`<Marker /> matches render snapshot 1`] = `
 >
   <img
     alt="map pin marker"
-    src="/images/map_icon_std_unselected.svg"
+    src="/images/map_marker_unselected.svg"
   />
 </div>
 `;

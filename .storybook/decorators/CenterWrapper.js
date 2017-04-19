@@ -24,9 +24,9 @@ const CenterWrapper = (
   });
 
   const centerStyle = {
-    position: "fixed",
-    right: 0,
-    left: 0,
+    position: "relative",
+    top: "50%",
+    transform: "translateY(-50%)",
     marginRight: "auto",
     marginLeft: "auto",
     width: width,
@@ -34,7 +34,6 @@ const CenterWrapper = (
     borderWidth: hasBorder ? "2px" : "",
     borderStyle: hasBorder ? "solid" : "",
     background: background,
-    top: "50px",
   };
 
   return (
@@ -58,8 +57,8 @@ CenterWrapper.propTypes = {
 };
 
 CenterWrapper.defaultProps = {
-  width: "70%",
-  height: "70%",
+  width: "100%",
+  height: "100%",
   background: "transparent",
   hasBorder: false,
   horizontalCenter: false,
