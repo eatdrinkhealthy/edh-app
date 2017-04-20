@@ -25,7 +25,14 @@ class Marker extends PureComponent {
     origin: "bottomCenter",
   };
 
+  componentDidMount() {
+    console.log(this.props.venueId);
+    console.log("rel vp:", this.markerContainer.getBoundingClientRect());
+  }
+
   props: IMarkerProps;
+
+  markerContainer: HTMLDivElement;
 
   handleOnClick = () => {
     this.props.setSelectedVenueHandler(this.props.venueId);
@@ -56,7 +63,11 @@ class Marker extends PureComponent {
     );
 
     return (
-      <div className={markerContainerClasses} onClick={this.handleOnClick}>
+      <div
+        className={markerContainerClasses}
+        onClick={this.handleOnClick}
+        ref={(div: HTMLDivElement) => { this.markerContainer = div; }}
+      >
         <img src={markerImage} alt="map pin marker" />
         <div className={hintClasses}>
           {`venueId: ${this.props.venueId}`}
