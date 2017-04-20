@@ -37,7 +37,7 @@ class Marker extends PureComponent {
       "hint",
       "hint--html",
       "hint--info",
-      "hint--bottom",
+      "hint--bottom", // TODO calculate hint location, based on map w & h and marker position
       this.props.selected ? "hint--always" : "hint--hidden",
       {
         markerOriginCenter: this.props.origin === "center",

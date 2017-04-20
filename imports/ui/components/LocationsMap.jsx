@@ -31,11 +31,21 @@ export default class LocationsMap extends PureComponent {
     venues: [],
   }
 
+  componentDidMount() {
+    console.log("map container height:", this.mapContainer.clientHeight);
+    console.log("map container width:", this.mapContainer.clientWidth);
+  }
+
+  mapContainer: HTMLDivElement;
+
   props: IProps;
 
   render() {  // eslint-disable-line flowtype/require-return-type
     return (
-      <div className="map-container">
+      <div
+        className="map-container"
+        ref={(div: HTMLDivElement) => { this.mapContainer = div; }}
+      >
         <GoogleMap
           bootstrapURLKeys={{ key: this.props.googleMapsApiKey }}
           defaultCenter={this.props.center}
