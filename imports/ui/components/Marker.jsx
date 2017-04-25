@@ -30,8 +30,6 @@ class Marker extends PureComponent {
     console.log("rel vp:", this.markerContainer.getBoundingClientRect());
   }
 
-  // TODO - move this to a bound method, to try to clear jest test error
-  //           "Cannot read property getBoundingClientRect of Null"
   setRef = (div: HTMLDivElement) => {
     this.markerContainer = div;
   }

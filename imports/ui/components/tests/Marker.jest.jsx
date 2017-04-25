@@ -8,11 +8,25 @@ import renderer from "react-test-renderer";
 import Marker from "../Marker";
 
 describe("<Marker />", function () {
+  // Per a React blog post, when using renderer, must mock out refs
+  // https://facebook.github.io/react/blog/2016/11/16/react-v15.4.0.html#mocking-refs-for-snapshot-testing
+  // eslint-disable-next-line flowtype/no-weak-types
+  function createNodeMock(element: HTMLElement): ?Object {
+    if (element.type === "div") {
+      return {
+        getBoundingClientRect() {},
+      };
+    }
+    return null;
+  }
+
+  const options = { createNodeMock };
+
   it("matches render snapshot, unselected", function () {
     const tree = renderer.create(<Marker
       venueId={"abc"}
       setSelectedVenueHandler={() => {}}
-    />).toJSON();
+    />, options).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -21,7 +35,7 @@ describe("<Marker />", function () {
       venueId={"abc"}
       selected
       setSelectedVenueHandler={() => {}}
-    />).toJSON();
+    />, options).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
