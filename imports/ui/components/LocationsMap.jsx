@@ -25,6 +25,10 @@ type IDefaultProps = {
 };
 
 export default class LocationsMap extends PureComponent {
+  props: IProps;
+
+  mapContainer: HTMLDivElement;
+
   static defaultProps: IDefaultProps = {
     center: { lat: 32.789008, lng: -79.932115 },
     zoom: 16,
@@ -35,10 +39,6 @@ export default class LocationsMap extends PureComponent {
     console.log("map container height:", this.mapContainer.clientHeight);
     console.log("map container width:", this.mapContainer.clientWidth);
   }
-
-  mapContainer: HTMLDivElement;
-
-  props: IProps;
 
   render() {  // eslint-disable-line flowtype/require-return-type
     return (

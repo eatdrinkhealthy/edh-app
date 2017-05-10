@@ -23,6 +23,8 @@ type IMapComponentProps = {
 };
 
 export class MapComponent extends Component {
+  props: IMapComponentProps;
+
   componentWillMount() {
     const selectedFilters = this.props.filterList.filter(
       (filterItem: IFilter): boolean => (filterItem.on),
@@ -43,8 +45,6 @@ export class MapComponent extends Component {
       this.props.setSearchResultsHandler(result);
     }
   }
-
-  props: IMapComponentProps;
 
   render() { // eslint-disable-line flowtype/require-return-type
     return (

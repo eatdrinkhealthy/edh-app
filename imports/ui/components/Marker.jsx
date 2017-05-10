@@ -21,6 +21,10 @@ type IMarkerDefaultProps = {
 };
 
 class Marker extends PureComponent {
+  props: IMarkerProps;
+
+  markerContainer: HTMLDivElement;
+
   static defaultProps: IMarkerDefaultProps = {
     origin: "bottomCenter",
   };
@@ -33,10 +37,6 @@ class Marker extends PureComponent {
   setRef = (div: HTMLDivElement) => {
     this.markerContainer = div;
   }
-
-  props: IMarkerProps;
-
-  markerContainer: HTMLDivElement;
 
   handleOnClick = () => {
     this.props.setSelectedVenueHandler(this.props.venueId);

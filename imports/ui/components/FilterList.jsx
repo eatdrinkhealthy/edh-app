@@ -12,12 +12,12 @@ type IFilterItemProps = {
 };
 
 export class FilterItem extends Component {
+  props: IFilterItemProps;
+
   handleToggleChange(event: Event) {
     const target = (event.target: window.HTMLInputElement);  // TODO issue #37
     this.props.setFilterHandler(target.id, target.checked);
   }
-
-  props: IFilterItemProps;
 
   render() {  // eslint-disable-line flowtype/require-return-type
     return (
