@@ -6,7 +6,7 @@ exports[`<Marker /> matches render snapshot, selected 1`] = `
   onClick={[Function]}
 >
   <img
-    alt="map pin marker"
+    alt="this place map marker"
     src="/images/map_marker_selected.svg"
   />
   <div
@@ -23,7 +23,7 @@ exports[`<Marker /> matches render snapshot, unselected 1`] = `
   onClick={[Function]}
 >
   <img
-    alt="map pin marker"
+    alt="this place map marker"
     src="/images/map_marker_unselected.svg"
   />
   <div

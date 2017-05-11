@@ -22,9 +22,18 @@ describe("<Marker />", function () {
 
   const options = { createNodeMock };
 
+  const testVenue = {
+    id: "abc",
+    name: "this place",
+    location: {
+      lat: 0,
+      lng: 1,
+    },
+  };
+
   it("matches render snapshot, unselected", function () {
     const tree = renderer.create(<Marker
-      venueId={"abc"}
+      venue={testVenue}
       setSelectedVenueHandler={() => {}}
     />, options).toJSON();
     expect(tree).toMatchSnapshot();
@@ -32,7 +41,7 @@ describe("<Marker />", function () {
 
   it("matches render snapshot, selected", function () {
     const tree = renderer.create(<Marker
-      venueId={"abc"}
+      venue={testVenue}
       selected
       setSelectedVenueHandler={() => {}}
     />, options).toJSON();
@@ -41,7 +50,7 @@ describe("<Marker />", function () {
 
   it("should have default style and origin classes", function () {
     const wrapper = shallow(<Marker
-      venueId={"abc"}
+      venue={testVenue}
       setSelectedVenueHandler={() => {}}
     />);
     expect(wrapper.hasClass("markerContainer")).toBe(true);
@@ -50,13 +59,13 @@ describe("<Marker />", function () {
 
   it("should call setSelectedVenueHandler when clicked", function () {
     const props = {
-      venueId: "abc123",
+      venue: testVenue,
       setSelectedVenueHandler: jest.fn(),
     };
 
     const wrapper = shallow(<Marker {...props} />);
     wrapper.find("div.markerContainer").simulate("click");
     expect(props.setSelectedVenueHandler.mock.calls.length).toBe(1);
-    expect(props.setSelectedVenueHandler.mock.calls[0][0]).toBe("abc123");
+    expect(props.setSelectedVenueHandler.mock.calls[0][0]).toBe("abc");
   });
 });

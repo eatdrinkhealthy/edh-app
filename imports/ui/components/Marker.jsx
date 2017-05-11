@@ -3,6 +3,7 @@ import React, {
   PureComponent,
 } from "react";
 import classNames from "classnames";
+import type { IFoursquareVenue } from "../../api/foursquare/foursquareApi";
 
 type IMarkerOrigin =
   | "center"
@@ -10,7 +11,7 @@ type IMarkerOrigin =
   | "bottomCenter";
 
 type IMarkerProps = {
-  venueId: string,
+  venue: IFoursquareVenue,
   origin?: IMarkerOrigin,
   selected?: boolean,
   setSelectedVenueHandler: (venueId: string) => void,
@@ -30,7 +31,7 @@ class Marker extends PureComponent {
   };
 
   componentDidMount() {
-    console.log(this.props.venueId);
+    console.log(this.props.venue.id);
     console.log("rel vp:", this.markerContainer.getBoundingClientRect());
   }
 
@@ -39,7 +40,7 @@ class Marker extends PureComponent {
   }
 
   handleOnClick = () => {
-    this.props.setSelectedVenueHandler(this.props.venueId);
+    this.props.setSelectedVenueHandler(this.props.venue.id);
   }
 
   render() {  // eslint-disable-line flowtype/require-return-type
@@ -66,15 +67,17 @@ class Marker extends PureComponent {
       "hintContainer",
     );
 
+    const altStr = `${this.props.venue.name} map marker`;
+
     return (
       <div
         className={markerContainerClasses}
         onClick={this.handleOnClick}
         ref={this.setRef}
       >
-        <img src={markerImage} alt="map pin marker" />
+        <img src={markerImage} alt={altStr} />
         <div className={hintClasses}>
-          {`venueId: ${this.props.venueId}`}
+          {`venueId: ${this.props.venue.id}`}
         </div>
       </div>
     );
