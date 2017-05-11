@@ -12,7 +12,7 @@ exports[`<Marker /> matches render snapshot, selected 1`] = `
   <div
     className="hint__content hintContainer"
   >
-    venueId: abc
+    this place
   </div>
 </div>
 `;
@@ -29,7 +29,7 @@ exports[`<Marker /> matches render snapshot, unselected 1`] = `
   <div
     className="hint__content hintContainer"
   >
-    venueId: abc
+    this place
   </div>
 </div>
 `;
