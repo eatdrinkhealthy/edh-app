@@ -15,6 +15,7 @@
     - NOTE: istarkov (author of google-map-react), took a mixed use package, hint.css, and extended it to support html in the hint
         + Although html-hint is free, hint.css is a paid package for commercial use (which I will purchase)
     - TECH NOTE: html-hint package uses sass, I instead pulled the css build (html-hint.min.css) and added that to the project, then removed the html-hint package
+    - ANOTHER NOTE: I ended up forking html-hint to build [html-hint-marker](https://github.com/stevenjmarsh/html-hint), in order to add a white background to the hint (hint--color-white-override)
 #### Animation
 * __FIRST__ DETERMINE if CSS3 is being used in current version of app (and/or see what browser versions support it)
 * consider this component for animation sidebar & filter, [react-burger-menu](https://github.com/negomi/react-burger-menu)

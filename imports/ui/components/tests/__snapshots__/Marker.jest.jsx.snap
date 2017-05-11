@@ -2,7 +2,7 @@
 
 exports[`<Marker /> matches render snapshot, selected 1`] = `
 <div
-  className="markerContainer hint hint--html hint--info hint--bottom hint--always markerOriginBottomCenter"
+  className="markerContainer hint--color-white-override hint--html hint--info hint--bottom hint--always markerOriginBottomCenter"
   onClick={[Function]}
 >
   <img
@@ -21,7 +21,7 @@ exports[`<Marker /> matches render snapshot, selected 1`] = `
 
 exports[`<Marker /> matches render snapshot, unselected 1`] = `
 <div
-  className="markerContainer hint hint--html hint--info hint--bottom hint--hidden markerOriginBottomCenter"
+  className="markerContainer hint--color-white-override hint--html hint--info hint--bottom hint--hidden markerOriginBottomCenter"
   onClick={[Function]}
 >
   <img

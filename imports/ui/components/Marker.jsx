@@ -46,7 +46,7 @@ class Marker extends PureComponent {
   render() {  // eslint-disable-line flowtype/require-return-type
     const markerContainerClasses = classNames(
       "markerContainer",
-      "hint",
+      "hint--color-white-override", // modified html-hint-marker.min.css to add override, see README
       "hint--html",
       "hint--info",
       "hint--bottom", // TODO calculate hint location, based on map w & h and marker position
