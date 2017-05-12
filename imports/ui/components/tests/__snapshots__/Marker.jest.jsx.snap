@@ -12,9 +12,21 @@ exports[`<Marker /> matches render snapshot, selected 1`] = `
   <div
     className="hint__content hintContainer"
   >
-    <h6>
+    <div
+      className="hint-venue-name"
+    >
       this place
-    </h6>
+    </div>
+    <div
+      className="hint-venue-address"
+    >
+      address
+    </div>
+    <div
+      className="hint-venue-category"
+    >
+      category
+    </div>
   </div>
 </div>
 `;
@@ -31,9 +43,21 @@ exports[`<Marker /> matches render snapshot, unselected 1`] = `
   <div
     className="hint__content hintContainer"
   >
-    <h6>
+    <div
+      className="hint-venue-name"
+    >
       this place
-    </h6>
+    </div>
+    <div
+      className="hint-venue-address"
+    >
+      address
+    </div>
+    <div
+      className="hint-venue-category"
+    >
+      category
+    </div>
   </div>
 </div>
 `;

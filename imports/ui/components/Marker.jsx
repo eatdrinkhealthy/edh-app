@@ -77,7 +77,9 @@ class Marker extends PureComponent {
       >
         <img src={markerImage} alt={altStr} />
         <div className={hintClasses}>
-          <h6>{this.props.venue.name}</h6>
+          <div className="hint-venue-name">{this.props.venue.name}</div>
+          <div className="hint-venue-address">address</div>
+          <div className="hint-venue-category">category</div>
         </div>
       </div>
     );
