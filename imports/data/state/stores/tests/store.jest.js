@@ -9,6 +9,7 @@ import searchResultsReducer from "../../reducers/searchResultsReducers";
 import { setSearchResults } from "../../actions/searchResultsActions";
 import mapDisplayReducer from "../../reducers/mapDisplayReducers";
 import { setSelectedVenue } from "../../actions/mapDisplayActions";
+import sampleVenues from "./sampleVenueData";
 
 describe("store - smoke test", function () {
   it("should return a default state", function () {
@@ -31,7 +32,7 @@ describe("store - smoke test", function () {
     it("should return the initial state of the searchResults reducer", function () {
       const unknownAction = {
         type: "unknown",
-        searchResults: [{ id: "a", name: "place", location: { lat: 0, lng: 0 } }],
+        searchResults: [sampleVenues[0]],
       };
       expect(store.getState().searchResults)
         .toEqual(searchResultsReducer(undefined, unknownAction));
@@ -39,9 +40,9 @@ describe("store - smoke test", function () {
 
     it("should handle a setSearchResults action", function () {
       const nextState = [
-        { id: "1", name: "cafe1", location: { lat: 32.7842149282925, lng: -79.93963580270426 } },
-        { id: "2", name: "cafe2", location: { lat: 32.7842149282936, lng: -79.93963580270437 } },
-        { id: "3", name: "cafe3", location: { lat: 32.7842149282947, lng: -79.93963580270448 } },
+        sampleVenues[0],
+        sampleVenues[1],
+        sampleVenues[2],
       ];
 
       store.dispatch(setSearchResults(nextState));

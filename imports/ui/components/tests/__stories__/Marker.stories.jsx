@@ -5,15 +5,7 @@ import { storiesOf, action } from "@kadira/storybook";
 import { select, boolean } from "@kadira/storybook-addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 import Marker from "../../Marker";
-
-const sampleVenue = {
-  id: "abc123",
-  name: "Verde",
-  location: {
-    lat: 0,
-    lng: 1,
-  },
-};
+import sampleVenues from "../../../../data/state/stores/tests/sampleVenueData";
 
 storiesOf("Map", module)
   .add("Marker", (): React$Element<*> => (
@@ -31,7 +23,7 @@ storiesOf("Map", module)
       }
     >
       <Marker
-        venue={sampleVenue}
+        venue={sampleVenues[3]}
         origin={
           select(
             "Origin",

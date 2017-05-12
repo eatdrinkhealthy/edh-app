@@ -11,7 +11,11 @@ export type IFoursquareVenue = {
   location: {
     lat: number,
     lng: number,
+    address: string,
+    city: string,
+    postalCode: string,
   },
+  primaryCategory: string,
 };
 
 export const parseFoursquareResponse = (

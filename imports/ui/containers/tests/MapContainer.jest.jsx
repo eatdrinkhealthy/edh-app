@@ -9,6 +9,7 @@ import toJson from "enzyme-to-json";
 import { createStore } from "redux";
 import appReducer from "../../../data/state/reducers";
 import MapContainer, { MapComponent } from "../MapContainer";
+import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
 
 /* eslint-disable no-duplicate-imports */
 import type { IFilter } from "../../../data/state/data/defaultFilters";
@@ -53,9 +54,9 @@ describe("<MapContainer />", function () {
       { id: "market", name: "Market", on: false, foursquareCategory: "3" },
     ],
     searchResults: [
-      { id: "A", name: "testVenueA", location: { lat: 32.789008, lng: -79.932115 } },
-      { id: "B", name: "testVenueB", location: { lat: 32.789659, lng: -79.935796 } },
-      { id: "C", name: "testVenueC", location: { lat: 32.785699, lng: -79.935796 } },
+      sampleVenues[3],
+      sampleVenues[4],
+      sampleVenues[5],
     ],
     mapDisplay: { selectedVenueId: "B" },
   };

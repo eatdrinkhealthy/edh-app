@@ -6,6 +6,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import renderer from "react-test-renderer";
 import Marker from "../Marker";
+import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
 
 describe("<Marker />", function () {
   // Per a React blog post, when using renderer, must mock out refs
@@ -22,14 +23,7 @@ describe("<Marker />", function () {
 
   const options = { createNodeMock };
 
-  const testVenue = {
-    id: "abc",
-    name: "this place",
-    location: {
-      lat: 0,
-      lng: 1,
-    },
-  };
+  const testVenue = { ...sampleVenues[0] };  // create a copy of a sample venue object
 
   it("matches render snapshot, unselected", function () {
     const tree = renderer.create(<Marker
@@ -66,6 +60,6 @@ describe("<Marker />", function () {
     const wrapper = shallow(<Marker {...props} />);
     wrapper.find("div.markerContainer").simulate("click");
     expect(props.setSelectedVenueHandler.mock.calls.length).toBe(1);
-    expect(props.setSelectedVenueHandler.mock.calls[0][0]).toBe("abc");
+    expect(props.setSelectedVenueHandler.mock.calls[0][0]).toBe("1");
   });
 });

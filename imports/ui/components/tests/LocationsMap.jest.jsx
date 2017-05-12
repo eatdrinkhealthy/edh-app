@@ -8,6 +8,7 @@ import { Meteor } from "meteor/meteor";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import LocationsMap from "../LocationsMap";
+import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
 
 describe("<LocationsMap />", function () {
   it("matches render snapshot", function () {
@@ -22,9 +23,9 @@ describe("<LocationsMap />", function () {
 
   describe("LocationsMap markers", function () {
     const testVenues = [
-      { id: "A", name: "testVenueA", location: { lat: 32.789008, lng: -79.932115 } },
-      { id: "B", name: "testVenueB", location: { lat: 32.789659, lng: -79.935796 } },
-      { id: "C", name: "testVenueC", location: { lat: 32.785699, lng: -79.935796 } },
+      sampleVenues[0],
+      sampleVenues[1],
+      sampleVenues[2],
     ];
     const selectVenue = jest.fn();
 
@@ -58,7 +59,7 @@ describe("<LocationsMap />", function () {
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={testVenues}
         setSelectedVenueHandler={selectVenue}
-        selectedVenueId="A"
+        selectedVenueId="3"
       />);
 
       expect(wrapper.find("Marker").findWhere(selectedPropTrue).length).toBe(1);
