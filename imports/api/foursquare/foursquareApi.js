@@ -27,7 +27,14 @@ export const parseFoursquareResponse = (
     (venue: IFoursquareVenue): IFoursquareVenue => ({
       id: venue.id,
       name: venue.name,
-      location: venue.location,
+      location: {
+        lat: venue.location.lat,
+        lng: venue.location.lng,
+        address: venue.location.address,
+        city: venue.location.city,
+        postalCode: venue.location.postalCode,
+      },
+      // primaryCategory: venue.categories[0].name,
     }),
   );
 };
