@@ -10,24 +10,18 @@ type IMarkerOrigin =
   | "topLeft"
   | "bottomCenter";
 
-type IMarkerProps = {
-  venue: IVenue,
-  origin?: IMarkerOrigin,
-  selected?: boolean,
-  setSelectedVenueHandler: (venueId: string) => void,
-};
-
-type IMarkerDefaultProps = {
-  origin: IMarkerOrigin,
-};
-
 class Marker extends PureComponent {
-  props: IMarkerProps;
+  props: {
+    venue: IVenue,
+    origin: IMarkerOrigin,
+    selected: boolean,
+    setSelectedVenueHandler: (venueId: string) => void,
+  };
 
-  markerContainer: HTMLDivElement;
 
-  static defaultProps: IMarkerDefaultProps = {
+  static defaultProps = {
     origin: "bottomCenter",
+    selected: false,
   };
 
   componentDidMount() {
@@ -42,6 +36,8 @@ class Marker extends PureComponent {
   handleOnClick = () => {
     this.props.setSelectedVenueHandler(this.props.venue.id);
   }
+
+  markerContainer: HTMLDivElement;
 
   render() {  // eslint-disable-line flowtype/require-return-type
     const markerContainerClasses = classNames(
