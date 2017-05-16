@@ -63,7 +63,9 @@ class Marker extends PureComponent {
       "hintContainer",
     );
 
-    const altStr = `${this.props.venue.name} map marker`;
+    const venue = this.props.venue;
+
+    const altStr = `${venue.name} map marker`;
 
     return (
       <div
@@ -73,9 +75,9 @@ class Marker extends PureComponent {
       >
         <img src={markerImage} alt={altStr} />
         <div className={hintClasses}>
-          <div className="hint-venue-name">{this.props.venue.name}</div>
-          <div className="hint-venue-address">address</div>
-          <div className="hint-venue-category">category</div>
+          <div className="hint-venue-name">{venue.name}</div>
+          <div className="hint-venue-address">{venue.location.address}</div>
+          <div className="hint-venue-category">{venue.primaryCategory}</div>
         </div>
       </div>
     );

@@ -20,12 +20,12 @@ exports[`<Marker /> matches render snapshot, selected 1`] = `
     <div
       className="hint-venue-address"
     >
-      address
+      1 street
     </div>
     <div
       className="hint-venue-category"
     >
-      category
+      coffee shop
     </div>
   </div>
 </div>
@@ -51,12 +51,12 @@ exports[`<Marker /> matches render snapshot, unselected 1`] = `
     <div
       className="hint-venue-address"
     >
-      address
+      1 street
     </div>
     <div
       className="hint-venue-category"
     >
-      category
+      coffee shop
     </div>
   </div>
 </div>
