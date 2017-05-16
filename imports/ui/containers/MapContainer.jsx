@@ -12,7 +12,7 @@ import { setSelectedVenue } from "../../data/state/actions/mapDisplayActions";
 
 import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 import type { IState } from "../../data/state/stores/store";
-import type { IFilter } from "../../data/state/data/defaultFilters";
+import type { IFilter } from "../../data/state/reducers/filtersReducers";
 
 type IMapComponentProps = {
   filterList: Array<IFilter>,

@@ -7,7 +7,7 @@ import foursquareApiSearch from "./foursquare/foursquareApi";
 
 // eslint-disable-next-line no-duplicate-imports
 import type { IVenue } from "../data/state/reducers/searchResultsReducers";
-import type { IFilter } from "../data/state/data/defaultFilters";
+import type { IFilter } from "../data/state/reducers/filtersReducers";
 
 export const collectSearchResults = (
   latitude: number,

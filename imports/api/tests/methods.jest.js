@@ -5,7 +5,7 @@
 import { Meteor } from "meteor/meteor";
 import { collectSearchResults } from "../methods";
 
-import type { IFilter } from "../../data/state/data/defaultFilters";
+import type { IFilter } from "../../data/state/reducers/filtersReducers";
 
 // mock results of foursquareApiSearch(), called by collectSearchResults
 /* eslint-disable flowtype/require-return-type */

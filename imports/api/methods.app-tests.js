@@ -5,7 +5,7 @@ import { assert } from "meteor/practicalmeteor:chai";
 import { Meteor } from "meteor/meteor";
 import { getNearbyPlaces } from "./methods";
 
-import type { IFilter } from "../data/state/data/defaultFilters";
+import type { IFilter } from "../data/state/reducers/filtersReducers";
 
 if (Meteor.isClient) {
   describe("client method calls", function () {

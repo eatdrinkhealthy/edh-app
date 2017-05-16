@@ -1,10 +1,14 @@
 // @flow
 import DEFAULT_FILTER_LIST from "../data/defaultFilters";
 import { SET_FILTER } from "../actions/actionTypes";
-
-// eslint-disable-next-line no-duplicate-imports
-import type { IFilter } from "../data/defaultFilters";
 import type { IFilterAction } from "../actions/filtersActions";
+
+export type IFilter = {
+  id: string,
+  name: string,
+  on: boolean,
+  foursquareCategory: string,
+};
 
 export const setFilter = (state: Array<IFilter>, id: string, checked: boolean): Array<IFilter> => (
   state.map((filter: IFilter): IFilter => (

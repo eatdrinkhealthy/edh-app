@@ -12,7 +12,7 @@ import MapContainer, { MapComponent } from "../MapContainer";
 import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
 
 /* eslint-disable no-duplicate-imports */
-import type { IFilter } from "../../../data/state/data/defaultFilters";
+import type { IFilter } from "../../../data/state/reducers/filtersReducers";
 import type { IState } from "../../../data/state/stores/store";
 /* eslint-enable no-duplicate-imports */
 

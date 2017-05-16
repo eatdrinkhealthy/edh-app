@@ -1,10 +1,5 @@
 // @flow
-export type IFilter = {
-  id: string,
-  name: string,
-  on: boolean,
-  foursquareCategory: string,
-};
+import type { IFilter } from "../reducers/filtersReducers";
 
 const DEFAULT_FILTER_LIST: Array<IFilter> = [
   {
