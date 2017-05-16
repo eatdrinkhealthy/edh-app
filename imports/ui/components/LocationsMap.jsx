@@ -32,6 +32,11 @@ export default class LocationsMap extends PureComponent {
 
   mapContainer: HTMLDivElement;
 
+  handleClick = (event: Event) => {
+    console.log(event.event);
+    console.log("Clicked:", event.target);
+  }
+
   render() {  // eslint-disable-line flowtype/require-return-type
     return (
       <div
@@ -42,6 +47,7 @@ export default class LocationsMap extends PureComponent {
           bootstrapURLKeys={{ key: this.props.googleMapsApiKey }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
+          onClick={this.handleClick}
         >
           {this.props.venues.map((venue: IVenue): React$Element<*> => (
             <Marker
