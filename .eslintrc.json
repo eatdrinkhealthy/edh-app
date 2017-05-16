@@ -70,12 +70,18 @@
       "warn",
       {
         "order": [
-          "type-annotations",
+          "props",
           "static-methods",
           "lifecycle",
           "everything-else",
           "render"
-        ]
+        ],
+        "groups": {
+          "props": [
+            "props",
+            "defaultProps"
+          ]
+        }
       }
     ],
     "meteor/eventmap-params": [

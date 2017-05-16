@@ -9,27 +9,17 @@ import Marker from "./Marker";
 import type { ILatLng } from "google-map-react";
 import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 
-type IProps = {
-  center?: ILatLng,
-  zoom?: number,
-  googleMapsApiKey: string,
-  venues: Array<IVenue>, // TODO can't this be optional? (when so, produces flow error)
-  selectedVenueId: ?string,
-  setSelectedVenueHandler: (venueId: string) => void,
-};
-
-type IDefaultProps = {
-  center: ILatLng,
-  zoom: number,
-  venues: Array<IVenue>,
-};
-
 export default class LocationsMap extends PureComponent {
-  props: IProps;
+  props: {
+    center: ILatLng,
+    zoom: number,
+    googleMapsApiKey: string,
+    venues: Array<IVenue>, // TODO can't this be optional? (when so, produces flow error)
+    selectedVenueId: ?string,
+    setSelectedVenueHandler: (venueId: string) => void,
+  };
 
-  mapContainer: HTMLDivElement;
-
-  static defaultProps: IDefaultProps = {
+  static defaultProps = {
     center: { lat: 32.789008, lng: -79.932115 },
     zoom: 16,
     venues: [],
@@ -39,6 +29,8 @@ export default class LocationsMap extends PureComponent {
     console.log("map container height:", this.mapContainer.clientHeight);
     console.log("map container width:", this.mapContainer.clientWidth);
   }
+
+  mapContainer: HTMLDivElement;
 
   render() {  // eslint-disable-line flowtype/require-return-type
     return (
