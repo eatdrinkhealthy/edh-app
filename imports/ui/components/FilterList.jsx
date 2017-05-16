@@ -4,15 +4,13 @@ import { Link } from "react-router";
 import Toggle from "react-toggle";
 import type { IFilter } from "../../data/state/reducers/filtersReducers";
 
-type IFilterItemProps = {
-  label: string,
-  filterId: string,
-  filterOn: boolean,
-  setFilterHandler: (id: string, checked: boolean) => void,
-};
-
 export class FilterItem extends Component {
-  props: IFilterItemProps;
+  props: {
+    label: string,
+    filterId: string,
+    filterOn: boolean,
+    setFilterHandler: (id: string, checked: boolean) => void,
+  };
 
   handleToggleChange(event: Event) {
     const target = (event.target: window.HTMLInputElement);  // TODO issue #37
@@ -35,7 +33,7 @@ export class FilterItem extends Component {
   }
 }
 
-export type IFilterListProps = {
+type IFilterListProps = {
   filterList?: Array<IFilter>,
   setFilterHandler: () => void,
 };
