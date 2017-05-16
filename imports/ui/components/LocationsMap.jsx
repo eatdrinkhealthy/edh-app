@@ -7,13 +7,13 @@ import Marker from "./Marker";
 
 // eslint-disable-next-line no-duplicate-imports, import/first
 import type { ILatLng } from "google-map-react";
-import type { IFoursquareVenue } from "../../api/foursquare/foursquareApi";
+import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 
 type IProps = {
   center?: ILatLng,
   zoom?: number,
   googleMapsApiKey: string,
-  venues: Array<IFoursquareVenue>, // TODO can't this be optional? (when so, produces flow error)
+  venues: Array<IVenue>, // TODO can't this be optional? (when so, produces flow error)
   selectedVenueId: ?string,
   setSelectedVenueHandler: (venueId: string) => void,
 };
@@ -21,7 +21,7 @@ type IProps = {
 type IDefaultProps = {
   center: ILatLng,
   zoom: number,
-  venues: Array<IFoursquareVenue>,
+  venues: Array<IVenue>,
 };
 
 export default class LocationsMap extends PureComponent {
@@ -51,7 +51,7 @@ export default class LocationsMap extends PureComponent {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          {this.props.venues.map((venue: IFoursquareVenue): React$Element<*> => (
+          {this.props.venues.map((venue: IVenue): React$Element<*> => (
             <Marker
               key={venue.id}
               venue={venue}

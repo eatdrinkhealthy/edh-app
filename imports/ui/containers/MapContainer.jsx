@@ -10,13 +10,13 @@ import { getNearbyPlaces } from "../../api/methods";
 import { setSearchResults } from "../../data/state/actions/searchResultsActions";
 import { setSelectedVenue } from "../../data/state/actions/mapDisplayActions";
 
-import type { IFoursquareVenue } from "../../api/foursquare/foursquareApi";
+import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 import type { IState } from "../../data/state/stores/store";
 import type { IFilter } from "../../data/state/data/defaultFilters";
 
 type IMapComponentProps = {
   filterList: Array<IFilter>,
-  searchResults: Array<IFoursquareVenue>,
+  searchResults: Array<IVenue>,
   setSearchResultsHandler: () => void,
   setSelectedVenueHandler: () => void,
   selectedVenueId: ?string,
@@ -38,7 +38,7 @@ export class MapComponent extends Component {
   }
 
   // NOTE: this is an ES6 class property arrow function (preserves this context)
-  getNearbyPlacesCB = (error: Error, result: Array<IFoursquareVenue>) => {
+  getNearbyPlacesCB = (error: Error, result: Array<IVenue>) => {
     if (error) {
       console.log("Error:", error);
     } else {
@@ -63,7 +63,7 @@ export class MapComponent extends Component {
 
 type IStateProps = {
   filterList: Array<IFilter>,
-  searchResults: Array<IFoursquareVenue>,
+  searchResults: Array<IVenue>,
   selectedVenueId: ?string,
 };
 
@@ -74,15 +74,17 @@ const mapStateToProps = (state: IState): IStateProps => ({
 });
 
 type IDispatchProps = {
-  setSearchResultsHandler: (searchResults: Array<IFoursquareVenue>) => void,
+  setSearchResultsHandler: (searchResults: Array<IVenue>) => void,
   setSelectedVenueHandler: (venueId: string) => void,
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
-  setSearchResultsHandler: (searchResults: Array<IFoursquareVenue>): void => (
+  setSearchResultsHandler: (searchResults: Array<IVenue>): void => (
     dispatch(setSearchResults(searchResults))
   ),
-  setSelectedVenueHandler: (venueId: string): void => (dispatch(setSelectedVenue(venueId))),
+  setSelectedVenueHandler: (venueId: string): void => (
+    dispatch(setSelectedVenue(venueId))
+  ),
 });
 
 const MapContainer = connect(mapStateToProps, mapDispatchToProps)(MapComponent);

@@ -7,12 +7,12 @@ import { defaultMapDisplayState } from "../reducers/mapDisplayReducers";
 /* eslint-disable no-duplicate-imports */
 import type { IMapDisplayState } from "../reducers/mapDisplayReducers";
 import type { IFilter } from "../data/defaultFilters";
-import type { IFoursquareVenue } from "../../../api/foursquare/foursquareApi";
+import type { IVenue } from "../reducers/searchResultsReducers";
 /* eslint-enable no-duplicate-imports */
 
 export type IState = {
   filters: Array<IFilter>,
-  searchResults: Array<IFoursquareVenue>,
+  searchResults: Array<IVenue>,
   mapDisplay: IMapDisplayState,
 };
 

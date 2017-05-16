@@ -6,14 +6,14 @@ import _ from "lodash";
 import foursquareApiSearch from "./foursquare/foursquareApi";
 
 // eslint-disable-next-line no-duplicate-imports
-import type { IFoursquareVenue } from "./foursquare/foursquareApi";
+import type { IVenue } from "../data/state/reducers/searchResultsReducers";
 import type { IFilter } from "../data/state/data/defaultFilters";
 
 export const collectSearchResults = (
   latitude: number,
   longitude: number,
   filterList: Array<IFilter>,
-): Array<IFoursquareVenue> => {
+): Array<IVenue> => {
   let result = [];
 
   if (Meteor.isServer) {
@@ -46,7 +46,7 @@ export const getNearbyPlaces = new ValidatedMethod({
   }).validator(),
 
   // eslint-disable-next-line flowtype/require-parameter-type
-  run({ latitude, longitude, filterList }): Array<IFoursquareVenue> {
+  run({ latitude, longitude, filterList }): Array<IVenue> {
     // TODO use unblock? (if so, confirm `meteor test` still passes)
     // if (Meteor.isServer) {
     //   this.unblock();

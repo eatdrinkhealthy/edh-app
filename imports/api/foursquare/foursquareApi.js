@@ -5,7 +5,9 @@ import { Meteor } from "meteor/meteor";
 // eslint-disable-next-line no-duplicate-imports
 import type { IHttpResult } from "meteor/http";
 
-export type IFoursquareVenue = {
+import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
+
+type IFoursquareVenue = {
   id: string,
   name: string,
   location: {
@@ -15,16 +17,18 @@ export type IFoursquareVenue = {
     city: string,
     postalCode: string,
   },
-  primaryCategory: string,
+  categories: Array<{
+    name: string,
+  }>
 };
 
 export const parseFoursquareResponse = (
   response: IHttpResult,
-): Array<IFoursquareVenue> => {
-  const contentObj = JSON.parse(response.content);
+): Array<IVenue> => {
+  const content = JSON.parse(response.content);
 
-  return contentObj.response.venues.map(
-    (venue: IFoursquareVenue): IFoursquareVenue => ({
+  return content.response.venues.map(
+    (venue: IFoursquareVenue): IVenue => ({
       id: venue.id,
       name: venue.name,
       location: {
@@ -34,7 +38,7 @@ export const parseFoursquareResponse = (
         city: venue.location.city,
         postalCode: venue.location.postalCode,
       },
-      // primaryCategory: venue.categories[0].name,
+      primaryCategory: venue.categories[0].name,
     }),
   );
 };
@@ -46,7 +50,7 @@ export const httpCallFoursquareSearch = (
 ): IHttpResult => {
   const latLng = `${latitude},${longitude}`;
 
-  const response = HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", {
+  return HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", {
     params: {
       client_id: Meteor.settings.foursquare.client_id,
       client_secret: Meteor.settings.foursquare.client_secret,
@@ -58,15 +62,13 @@ export const httpCallFoursquareSearch = (
       categoryId: category,
     },
   });
-
-  return response;
 };
 
 const foursquareApiSearch = (
   category: string,
   latitude: number,
   longitude: number,
-): Array<IFoursquareVenue> => {
+): Array<IVenue> => {
   const httpResponse = httpCallFoursquareSearch(category, latitude, longitude);
 
   return parseFoursquareResponse(httpResponse);

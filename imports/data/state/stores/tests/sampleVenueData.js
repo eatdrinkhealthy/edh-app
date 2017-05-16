@@ -1,5 +1,7 @@
 // @flow
-const sampleVenues = [
+import type { IVenue } from "../../reducers/searchResultsReducers";
+
+const sampleVenues: Array<IVenue> = [
   {
     id: "1",
     name: "cafe1",

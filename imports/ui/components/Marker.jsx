@@ -3,7 +3,7 @@ import React, {
   PureComponent,
 } from "react";
 import classNames from "classnames";
-import type { IFoursquareVenue } from "../../api/foursquare/foursquareApi";
+import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 
 type IMarkerOrigin =
   | "center"
@@ -11,7 +11,7 @@ type IMarkerOrigin =
   | "bottomCenter";
 
 type IMarkerProps = {
-  venue: IFoursquareVenue,
+  venue: IVenue,
   origin?: IMarkerOrigin,
   selected?: boolean,
   setSelectedVenueHandler: (venueId: string) => void,

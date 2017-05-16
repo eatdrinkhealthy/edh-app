@@ -1,15 +1,15 @@
 // @flow
 import { SET_SEARCH_RESULTS } from "./actionTypes";
-import type { IFoursquareVenue } from "../../../api/foursquare/foursquareApi";
+import type { IVenue } from "../reducers/searchResultsReducers";
 
 export type ISearchResultsAction = {
   type: string,
-  searchResults: Array<IFoursquareVenue>,
+  searchResults: Array<IVenue>,
 };
 
 // eslint-disable-next-line import/prefer-default-export
 export const setSearchResults = (
-  searchResults: Array<IFoursquareVenue>,
+  searchResults: Array<IVenue>,
 ): ISearchResultsAction => ({
   type: SET_SEARCH_RESULTS,
   searchResults,
