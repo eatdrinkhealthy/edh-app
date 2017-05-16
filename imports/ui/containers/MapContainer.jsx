@@ -14,16 +14,14 @@ import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 import type { IState } from "../../data/state/stores/store";
 import type { IFilter } from "../../data/state/reducers/filtersReducers";
 
-type IMapComponentProps = {
-  filterList: Array<IFilter>,
-  searchResults: Array<IVenue>,
-  setSearchResultsHandler: () => void,
-  setSelectedVenueHandler: () => void,
-  selectedVenueId: ?string,
-};
-
 export class MapComponent extends Component {
-  props: IMapComponentProps;
+  props: {
+    filterList: Array<IFilter>,
+    searchResults: Array<IVenue>,
+    setSearchResultsHandler: () => void,
+    setSelectedVenueHandler: () => void,
+    selectedVenueId: ?string,
+  };
 
   componentWillMount() {
     const selectedFilters = this.props.filterList.filter(
