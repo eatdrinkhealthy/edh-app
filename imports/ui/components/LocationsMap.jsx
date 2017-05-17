@@ -6,7 +6,7 @@ import GoogleMap from "google-map-react";
 import Marker from "./Marker";
 
 // eslint-disable-next-line no-duplicate-imports, import/first
-import type { ILatLng, IGoogleMapsMouseEvent } from "google-map-react";
+import type { ILatLng } from "google-map-react";
 import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 
 export default class LocationsMap extends PureComponent {
@@ -32,10 +32,6 @@ export default class LocationsMap extends PureComponent {
 
   mapContainer: HTMLDivElement;
 
-  handleClick = (gmMouseEvent: IGoogleMapsMouseEvent) => {
-    console.log(gmMouseEvent);
-  }
-
   render() {  // eslint-disable-line flowtype/require-return-type
     return (
       <div
@@ -46,7 +42,6 @@ export default class LocationsMap extends PureComponent {
           bootstrapURLKeys={{ key: this.props.googleMapsApiKey }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
-          onClick={this.handleClick}
         >
           {this.props.venues.map((venue: IVenue): React$Element<*> => (
             <Marker
