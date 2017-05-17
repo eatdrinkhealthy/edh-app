@@ -6,7 +6,7 @@ import GoogleMap from "google-map-react";
 import Marker from "./Marker";
 
 // eslint-disable-next-line no-duplicate-imports, import/first
-import type { ILatLng } from "google-map-react";
+import type { ILatLng, IGoogleMapsMouseEvent } from "google-map-react";
 import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 
 export default class LocationsMap extends PureComponent {
@@ -32,9 +32,8 @@ export default class LocationsMap extends PureComponent {
 
   mapContainer: HTMLDivElement;
 
-  handleClick = (event: Event) => {
-    console.log(event.event);
-    console.log("Clicked:", event.target);
+  handleClick = (gmMouseEvent: IGoogleMapsMouseEvent) => {
+    console.log(gmMouseEvent);
   }
 
   render() {  // eslint-disable-line flowtype/require-return-type
