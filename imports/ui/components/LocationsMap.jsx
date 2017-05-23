@@ -16,7 +16,7 @@ export default class LocationsMap extends PureComponent {
     googleMapsApiKey: string,
     venues: Array<IVenue>, // TODO can't this be optional? (when so, produces flow error)
     selectedVenueId: ?string,
-    setSelectedVenueHandler: (venueId: string) => void,
+    setSelectedVenueHandler: (venueId: ?string) => void,
   };
 
   static defaultProps = {
@@ -26,8 +26,12 @@ export default class LocationsMap extends PureComponent {
   }
 
   componentDidMount() {
-    console.log("map container height:", this.mapContainer.clientHeight);
-    console.log("map container width:", this.mapContainer.clientWidth);
+    // console.log("map container height:", this.mapContainer.clientHeight);
+    // console.log("map container width:", this.mapContainer.clientWidth);
+  }
+
+  handleOnClick = () => {
+    this.props.setSelectedVenueHandler(null);
   }
 
   mapContainer: HTMLDivElement;
@@ -42,6 +46,7 @@ export default class LocationsMap extends PureComponent {
           bootstrapURLKeys={{ key: this.props.googleMapsApiKey }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
+          onClick={this.handleOnClick}
         >
           {this.props.venues.map((venue: IVenue): React$Element<*> => (
             <Marker

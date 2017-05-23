@@ -80,7 +80,7 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   setSearchResultsHandler: (searchResults: Array<IVenue>): void => (
     dispatch(setSearchResults(searchResults))
   ),
-  setSelectedVenueHandler: (venueId: string): void => (
+  setSelectedVenueHandler: (venueId: ?string): void => (
     dispatch(setSelectedVenue(venueId))
   ),
 });

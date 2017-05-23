@@ -15,7 +15,7 @@ describe("<LocationsMap />", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
     const wrapper = shallow(<LocationsMap
       googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
-      setSelectedVenueHandler={jest.fn()}
+      setSelectedVenueHandler={() => {}}
       selectedVenueId={null}
     />);
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -27,7 +27,6 @@ describe("<LocationsMap />", function () {
       sampleVenues[1],
       sampleVenues[2],
     ];
-    const selectVenue = jest.fn();
 
     // eslint-disable-next-line flowtype/require-return-type, flowtype/require-parameter-type
     const selectedPropTrue = node => node.props().selected === true;
@@ -36,7 +35,7 @@ describe("<LocationsMap />", function () {
       const wrapper = shallow(<LocationsMap
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={testVenues}
-        setSelectedVenueHandler={selectVenue}
+        setSelectedVenueHandler={() => {}}
         selectedVenueId={null}
       />);
 
@@ -47,7 +46,7 @@ describe("<LocationsMap />", function () {
       const wrapper = shallow(<LocationsMap
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={testVenues}
-        setSelectedVenueHandler={selectVenue}
+        setSelectedVenueHandler={() => {}}
         selectedVenueId={null}
       />);
 
@@ -58,11 +57,24 @@ describe("<LocationsMap />", function () {
       const wrapper = shallow(<LocationsMap
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={testVenues}
-        setSelectedVenueHandler={selectVenue}
+        setSelectedVenueHandler={() => {}}
         selectedVenueId="3"
       />);
 
       expect(wrapper.find("Marker").findWhere(selectedPropTrue).length).toBe(1);
+    });
+
+    it("should clear a selected marker when the map is clicked", function () {
+      const selectVenue = jest.fn();
+      const wrapper = shallow(<LocationsMap
+        googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
+        venues={testVenues}
+        setSelectedVenueHandler={selectVenue}
+        selectedVenueId="3"
+      />);
+
+      wrapper.find("GoogleMap").simulate("click");
+      expect(selectVenue).toHaveBeenCalledWith(null);
     });
   });
 });

@@ -22,6 +22,7 @@ exports[`<LocationsMap /> matches render snapshot 1`] = `
     googleMapLoader={[Function]}
     hoverDistance={30}
     layerTypes={Array []}
+    onClick={[Function]}
     options={[Function]}
     style={
       Object {
