@@ -25,8 +25,8 @@ class Marker extends PureComponent {
   };
 
   componentDidMount() {
-    // console.log(this.props.venue.id);
-    // console.log("rel vp:", this.markerContainer.getBoundingClientRect());
+    console.log(this.props.venue.name);
+    console.log("rel vp:", this.markerContainer.getBoundingClientRect());
   }
 
   setRef = (div: HTMLDivElement) => {

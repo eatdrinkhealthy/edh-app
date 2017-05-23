@@ -26,8 +26,8 @@ export default class LocationsMap extends PureComponent {
   }
 
   componentDidMount() {
-    // console.log("map container height:", this.mapContainer.clientHeight);
-    // console.log("map container width:", this.mapContainer.clientWidth);
+    console.log("map container height:", this.mapContainer.clientHeight);
+    console.log("map container width:", this.mapContainer.clientWidth);
   }
 
   handleOnClick = () => {
