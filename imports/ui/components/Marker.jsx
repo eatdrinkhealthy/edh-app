@@ -5,6 +5,22 @@ import React, {
 import classNames from "classnames";
 import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 
+export const calcHintPosition = (
+  vb: {
+    top: ?number,
+    right: ?number,
+    bottom: ?number,
+    left: ?number,
+  },
+): string => {
+  let hintPos = "hint--bottom";
+
+  if (vb.top || vb.bottom || vb.right || vb.left) {
+    hintPos = "hint--top";
+  }
+  return hintPos;
+};
+
 type IMarkerOrigin =
   | "center"
   | "topLeft"
@@ -16,11 +32,19 @@ class Marker extends PureComponent {
     origin: IMarkerOrigin,
     selected: boolean,
     setSelectedVenueHandler: (venueId: string) => void,
+    viewBoundaryTop: ?number,
+    viewBoundaryRight: ?number,
+    viewBoundaryBottom: ?number,
+    viewBoundaryLeft: ?number,
   };
 
   static defaultProps = {
     origin: "bottomCenter",
     selected: false,
+    viewBoundaryTop: null,
+    viewBoundaryRight: null,
+    viewBoundaryBottom: null,
+    viewBoundaryLeft: null,
   };
 
   state = {
@@ -38,6 +62,15 @@ class Marker extends PureComponent {
 
   handleOnClick = () => {
     this.props.setSelectedVenueHandler(this.props.venue.id);
+
+    const viewBoundary = {
+      top: this.props.viewBoundaryTop,
+      right: this.props.viewBoundaryRight,
+      bottom: this.props.viewBoundaryBottom,
+      left: this.props.viewBoundaryLeft,
+    };
+
+    this.setState({ hintPosition: calcHintPosition(viewBoundary) });
   }
 
   markerContainer: HTMLDivElement;

@@ -5,7 +5,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import renderer from "react-test-renderer";
-import Marker from "../Marker";
+import Marker, { calcHintPosition } from "../Marker";
 import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
 
 describe("<Marker />", function () {
@@ -61,5 +61,27 @@ describe("<Marker />", function () {
     wrapper.find("div.markerContainer").simulate("click");
     expect(props.setSelectedVenueHandler.mock.calls.length).toBe(1);
     expect(props.setSelectedVenueHandler.mock.calls[0][0]).toBe("1");
+  });
+
+  it("should have class hint--bottom if no view boundary props are passed", function () {
+    const wrapper = shallow(<Marker
+      venue={testVenue}
+      setSelectedVenueHandler={() => {}}
+    />);
+
+    expect(wrapper.hasClass("hint--bottom")).toBe(true);
+  });
+
+  describe("calcHintPosition", function () {
+    it("should return hint--bottom if all boundary values are null", function () {
+      const vb = {
+        top: null,
+        right: null,
+        bottom: null,
+        left: null,
+      };
+
+      expect(calcHintPosition(vb)).toBe("hint--bottom");
+    });
   });
 });
