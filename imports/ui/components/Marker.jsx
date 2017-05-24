@@ -18,10 +18,13 @@ class Marker extends PureComponent {
     setSelectedVenueHandler: (venueId: string) => void,
   };
 
-
   static defaultProps = {
     origin: "bottomCenter",
     selected: false,
+  };
+
+  state = {
+    hintPosition: "hint--bottom",
   };
 
   componentDidMount() {
@@ -42,10 +45,10 @@ class Marker extends PureComponent {
   render() {  // eslint-disable-line flowtype/require-return-type
     const markerContainerClasses = classNames(
       "markerContainer",
-      "hint--color-white-override", // modified html-hint-marker.min.css to add override, see README
+      "hint--color-white-override",
       "hint--html",
       "hint--info",
-      "hint--bottom", // TODO calculate hint location, based on map w & h and marker position
+      this.state.hintPosition,
       this.props.selected ? "hint--always" : "hint--hidden",
       {
         markerOriginCenter: this.props.origin === "center",
