@@ -63,7 +63,7 @@ describe("<Marker />", function () {
     expect(props.setSelectedVenueHandler.mock.calls[0][0]).toBe("1");
   });
 
-  it("should have class hint--bottom if no view boundary props are passed", function () {
+  it("should have class 'hint--bottom' if no viewBoundaryRect prop is passed", function () {
     const wrapper = shallow(<Marker
       venue={testVenue}
       setSelectedVenueHandler={() => {}}
@@ -73,15 +73,8 @@ describe("<Marker />", function () {
   });
 
   describe("calcHintPosition", function () {
-    it("should return hint--bottom if all boundary values are null", function () {
-      const vb = {
-        top: null,
-        right: null,
-        bottom: null,
-        left: null,
-      };
-
-      expect(calcHintPosition(vb)).toBe("hint--bottom");
+    it("should return 'hint--bottom' if viewBoundaryRect is null", function () {
+      expect(calcHintPosition(null)).toBe("hint--bottom");
     });
   });
 });
