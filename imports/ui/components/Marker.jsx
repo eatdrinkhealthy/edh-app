@@ -7,10 +7,11 @@ import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 
 export const calcHintPosition = (
   viewBoundaryRect: ?ClientRect,
+  displayItemRect: ?ClientRect,
 ): string => {
   let hintPos = "hint--bottom";
 
-  if (viewBoundaryRect) {
+  if (viewBoundaryRect || displayItemRect) {
     hintPos = "hint--top";
   }
   return hintPos;
@@ -40,22 +41,22 @@ class Marker extends PureComponent {
     hintPosition: "hint--bottom",
   };
 
-  componentDidMount() {
-    console.log(this.props.venue.name);
-    console.log("rel vp:", this.markerContainer.getBoundingClientRect());
-  }
-
-  setRef = (div: HTMLDivElement) => {
-    this.markerContainer = div;
+  setHintRef = (div: HTMLDivElement) => {
+    this.hintContainer = div;
   }
 
   handleOnClick = () => {
     this.props.setSelectedVenueHandler(this.props.venue.id);
 
-    this.setState({ hintPosition: calcHintPosition(this.props.viewBoundaryRect) });
+    this.setState({
+      hintPosition: calcHintPosition(
+        this.props.viewBoundaryRect,
+        this.hintContainer.getBoundingClientRect(),
+      ),
+    });
   }
 
-  markerContainer: HTMLDivElement;
+  hintContainer: HTMLDivElement;
 
   render() {  // eslint-disable-line flowtype/require-return-type
     const markerContainerClasses = classNames(
@@ -89,10 +90,12 @@ class Marker extends PureComponent {
       <div
         className={markerContainerClasses}
         onClick={this.handleOnClick}
-        ref={this.setRef}
       >
         <img src={markerImage} alt={altStr} />
-        <div className={hintClasses}>
+        <div
+          className={hintClasses}
+          ref={this.setHintRef}
+        >
           <div className="hint-venue-name">{venue.name}</div>
           <div className="hint-venue-address">{venue.location.address}</div>
           <div className="hint-venue-category">{venue.primaryCategory}</div>

@@ -3,7 +3,7 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 import renderer from "react-test-renderer";
 import Marker, { calcHintPosition } from "../Marker";
 import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
@@ -57,7 +57,7 @@ describe("<Marker />", function () {
       setSelectedVenueHandler: jest.fn(),
     };
 
-    const wrapper = shallow(<Marker {...props} />);
+    const wrapper = mount(<Marker {...props} />);
     wrapper.find("div.markerContainer").simulate("click");
     expect(props.setSelectedVenueHandler.mock.calls.length).toBe(1);
     expect(props.setSelectedVenueHandler.mock.calls[0][0]).toBe("1");
