@@ -25,8 +25,8 @@ type IMarkerOrigin =
 class Marker extends PureComponent {
   props: {
     venue: IVenue,
-    origin: IMarkerOrigin,
-    selected: boolean,
+    origin?: IMarkerOrigin,
+    selected?: boolean,
     setSelectedVenueHandler: (venueId: string) => void,
     viewBoundaryRect?: ClientRect,
   };
