@@ -120,6 +120,7 @@ Each testing framework comes with a default, or set of available assertion libra
     - In general, annotate return types of functions, arrow functions, class methods
       + NOTE: the render method can be assumed to return a `React$Element<*>`, and you can disable the  flowtype/require-return-type warning for that line
         - OPTION: there is an eslint flowtype rule setting, ["excludeMatching"](https://github.com/gajus/eslint-plugin-flowtype#require-return-type), that can exclude functions by file name pattern (as of 3/17/17, there was a [GH issue](https://github.com/gajus/eslint-plugin-flowtype/issues/189) where this setting does not work for class methods, but hopefully will be resolved, and can then be used)
+    - Explicitly show optional props as optional using '?' (note, flow can automatically determine it is optional if a default props value is set for the prop; however explicitly showing it is optional is more readable)
 * Flowtype linting is done using an [eslint package for flowtype](https://github.com/gajus/eslint-plugin-flowtype)
     - this generates flow type errors simply by linting (may make flow less or unnecessary?)
 * Use `flow-typed` package to download community created libdefs and create generic libdefs for installed pacakges
