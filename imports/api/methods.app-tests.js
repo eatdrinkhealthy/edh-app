@@ -26,7 +26,7 @@ if (Meteor.isClient) {
 
     describe("getNearbyPlaces", function () {
       it("should NOT throw but instead get callback err, when foursquareApi throws",
-        function (done: () => void) {
+        function (done: (Error | void) => void) {
           const args = {
             latitude: 0,
             longitude: 0,

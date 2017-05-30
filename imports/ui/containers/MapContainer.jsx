@@ -18,7 +18,7 @@ export class MapComponent extends Component {
   props: {
     filterList: Array<IFilter>,
     searchResults: Array<IVenue>,
-    setSearchResultsHandler: () => void,
+    setSearchResultsHandler: (searchResults: Array<IVenue>) => void,
     setSelectedVenueHandler: () => void,
     selectedVenueId: ?string,
   };
