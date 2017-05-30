@@ -7,11 +7,11 @@ import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 
 export const calcHintPosition = (
   viewBoundaryRect: ?ClientRect,
-  displayItemRect: ?ClientRect,
+  hintRect: ?ClientRect,
 ): string => {
   let hintPos = "hint--bottom";
 
-  if (viewBoundaryRect || displayItemRect) {
+  if (viewBoundaryRect && hintRect) {
     hintPos = "hint--top";
   }
   return hintPos;
@@ -28,13 +28,12 @@ class Marker extends PureComponent {
     origin: IMarkerOrigin,
     selected: boolean,
     setSelectedVenueHandler: (venueId: string) => void,
-    viewBoundaryRect: ?ClientRect,
+    viewBoundaryRect?: ClientRect,
   };
 
   static defaultProps = {
     origin: "bottomCenter",
     selected: false,
-    viewBoundaryRect: null,
   };
 
   state = {
