@@ -11,6 +11,10 @@ exports[`<MapComponent /> matches render snapshot 1`] = `
       }
     }
     googleMapsApiKey="TestAPIKeyValue"
+    hintPaddingBottom={0}
+    hintPaddingLeft={0}
+    hintPaddingRight={0}
+    hintPaddingTop={0}
     selectedVenueId={null}
     setSelectedVenueHandler={[Function]}
     venues={Array []}

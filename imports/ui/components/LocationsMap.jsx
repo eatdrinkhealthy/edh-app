@@ -11,19 +11,34 @@ import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 
 export default class LocationsMap extends PureComponent {
   props: {
-    center: ILatLng,
-    zoom: number,
+    center?: ILatLng,
+    zoom?: number,
     googleMapsApiKey: string,
-    venues: Array<IVenue>, // TODO can't this be optional? (when so, produces flow error)
+    venues: Array<IVenue>, // TODO can't this be optional with default? when so, produces flow error
     selectedVenueId: ?string,
     setSelectedVenueHandler: (venueId: ?string) => void,
+    hintPaddingTop?: number,
+    hintPaddingRight?: number,
+    hintPaddingBottom?: number,
+    hintPaddingLeft?: number,
   };
 
   static defaultProps = {
     center: { lat: 32.789008, lng: -79.932115 },
     zoom: 16,
     venues: [],
+    hintPaddingTop: 0,
+    hintPaddingRight: 0,
+    hintPaddingBottom: 0,
+    hintPaddingLeft: 0,
   }
+
+  state = {
+    hintBoundaryTop: this.props.hintPaddingTop,
+    hintBoundaryRight: this.props.hintPaddingRight,
+    hintBoundaryBottom: this.props.hintPaddingBottom,
+    hintBoundaryLeft: this.props.hintPaddingLeft,
+  };
 
   componentDidMount() {
     console.log("map container height:", this.mapContainer.clientHeight);
