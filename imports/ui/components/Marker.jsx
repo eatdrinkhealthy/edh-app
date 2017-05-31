@@ -8,11 +8,11 @@ import type { IViewArea } from "./LocationsMap";
 
 export const calcHintPosition = (
   hintViewArea: ?IViewArea,
-  hintRect: ?ClientRect,
+  hintArea: ?IViewArea,
 ): string => {
   let hintPos = "hint--bottom";
 
-  if (hintViewArea && hintRect) {
+  if (hintViewArea && hintArea) {
     hintPos = "hint--top";
   }
   return hintPos;
