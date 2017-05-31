@@ -4,23 +4,21 @@ import React, {
 } from "react";
 import classNames from "classnames";
 import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
+import type { IViewArea } from "./LocationsMap";
 
 export const calcHintPosition = (
-  viewBoundaryRect: ?ClientRect,
+  hintViewArea: ?IViewArea,
   hintRect: ?ClientRect,
 ): string => {
   let hintPos = "hint--bottom";
 
-  if (viewBoundaryRect && hintRect) {
+  if (hintViewArea && hintRect) {
     hintPos = "hint--top";
   }
   return hintPos;
 };
 
-type IMarkerOrigin =
-  | "center"
-  | "topLeft"
-  | "bottomCenter";
+type IMarkerOrigin = "center" | "topLeft" | "bottomCenter";
 
 class Marker extends PureComponent {
   props: {
@@ -28,7 +26,7 @@ class Marker extends PureComponent {
     origin?: IMarkerOrigin,
     selected?: boolean,
     setSelectedVenueHandler: (venueId: string) => void,
-    viewBoundaryRect?: ClientRect,
+    getHintViewArea?: () => IViewArea,
   };
 
   static defaultProps = {
@@ -40,22 +38,21 @@ class Marker extends PureComponent {
     hintPosition: "hint--bottom",
   };
 
-  setHintRef = (div: HTMLDivElement) => {
-    this.hintContainer = div;
+  setHintHolderRef = (div: HTMLDivElement) => {
+    this.hintHolder = div;
   }
 
   handleOnClick = () => {
     this.props.setSelectedVenueHandler(this.props.venue.id);
 
+    const hintViewArea = this.props.getHintViewArea ? this.props.getHintViewArea() : null;
+
     this.setState({
-      hintPosition: calcHintPosition(
-        this.props.viewBoundaryRect,
-        this.hintContainer.getBoundingClientRect(),
-      ),
+      hintPosition: calcHintPosition(hintViewArea, this.hintHolder.getBoundingClientRect()),
     });
   }
 
-  hintContainer: HTMLDivElement;
+  hintHolder: HTMLDivElement;
 
   render() {  // eslint-disable-line flowtype/require-return-type
     const markerContainerClasses = classNames(
@@ -93,7 +90,7 @@ class Marker extends PureComponent {
         <img src={markerImage} alt={altStr} />
         <div
           className={hintClasses}
-          ref={this.setHintRef}
+          ref={this.setHintHolderRef}
         >
           <div className="hint-venue-name">{venue.name}</div>
           <div className="hint-venue-address">{venue.location.address}</div>

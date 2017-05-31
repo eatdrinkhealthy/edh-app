@@ -9,6 +9,13 @@ import Marker from "./Marker";
 import type { ILatLng } from "google-map-react";
 import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 
+export type IViewArea = {
+  top: number,
+  right: number,
+  bottom: number,
+  left: number,
+};
+
 export default class LocationsMap extends PureComponent {
   props: {
     center?: ILatLng,
@@ -17,45 +24,43 @@ export default class LocationsMap extends PureComponent {
     venues: Array<IVenue>, // TODO can't this be optional with default? when so, produces flow error
     selectedVenueId: ?string,
     setSelectedVenueHandler: (venueId: ?string) => void,
-    hintPaddingTop?: number,
-    hintPaddingRight?: number,
-    hintPaddingBottom?: number,
-    hintPaddingLeft?: number,
   };
 
   static defaultProps = {
     center: { lat: 32.789008, lng: -79.932115 },
     zoom: 16,
     venues: [],
-    hintPaddingTop: 0,
-    hintPaddingRight: 0,
-    hintPaddingBottom: 0,
-    hintPaddingLeft: 0,
-  }
-
-  state = {
-    hintBoundaryTop: this.props.hintPaddingTop,
-    hintBoundaryRight: this.props.hintPaddingRight,
-    hintBoundaryBottom: this.props.hintPaddingBottom,
-    hintBoundaryLeft: this.props.hintPaddingLeft,
-  };
-
-  componentDidMount() {
-    console.log("map container height:", this.mapContainer.clientHeight);
-    console.log("map container width:", this.mapContainer.clientWidth);
   }
 
   handleOnClick = () => {
     this.props.setSelectedVenueHandler(null);
   }
 
-  mapContainer: HTMLDivElement;
+  mapHolder: HTMLDivElement;
+
+  setMapHolderRef = (div: HTMLDivElement) => {
+    this.mapHolder = div;
+  }
+
+  getHintViewArea = (): IViewArea => {
+    const mhRect = this.mapHolder.getBoundingClientRect();
+
+    const VIEW_AREA_HEADING_HEIGHT = 60;
+    const VIEW_AREA_PADDING = 10;
+
+    return {
+      top: mhRect.top + VIEW_AREA_HEADING_HEIGHT + VIEW_AREA_PADDING,
+      right: mhRect.right - VIEW_AREA_PADDING,
+      bottom: mhRect.bottom - VIEW_AREA_PADDING,
+      left: mhRect.left + VIEW_AREA_PADDING,
+    };
+  }
 
   render() {  // eslint-disable-line flowtype/require-return-type
     return (
       <div
         className="map-container"
-        ref={(div: HTMLDivElement) => { this.mapContainer = div; }}
+        ref={this.setMapHolderRef}
       >
         <GoogleMap
           bootstrapURLKeys={{ key: this.props.googleMapsApiKey }}
@@ -71,6 +76,7 @@ export default class LocationsMap extends PureComponent {
               lng={venue.location.lng}
               setSelectedVenueHandler={this.props.setSelectedVenueHandler}
               selected={venue.id === this.props.selectedVenueId}
+              getHintViewArea={this.getHintViewArea}
             />))
           }
         </GoogleMap>
