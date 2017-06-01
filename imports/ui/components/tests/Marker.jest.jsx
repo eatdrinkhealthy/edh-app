@@ -54,6 +54,15 @@ describe("<Marker />", function () {
     expect(wrapper.hasClass("markerOriginBottomCenter")).toBe(true);
   });
 
+  it("should have class 'hint--bottom' if no getHintViewArea prop is passed", function () {
+    const wrapper = shallow(<Marker
+      venue={testVenue}
+      setSelectedVenueHandler={stubFn}
+    />);
+
+    expect(wrapper.hasClass("hint--bottom")).toBe(true);
+  });
+
   it("should call setSelectedVenueHandler when clicked", function () {
     const props = {
       venue: testVenue,
@@ -64,15 +73,6 @@ describe("<Marker />", function () {
     wrapper.find("div.markerContainer").simulate("click");
     expect(props.setSelectedVenueHandler.mock.calls.length).toBe(1);
     expect(props.setSelectedVenueHandler.mock.calls[0][0]).toBe("1");
-  });
-
-  it("should have class 'hint--bottom' if no getHintViewArea prop is passed", function () {
-    const wrapper = shallow(<Marker
-      venue={testVenue}
-      setSelectedVenueHandler={stubFn}
-    />);
-
-    expect(wrapper.hasClass("hint--bottom")).toBe(true);
   });
 
   it.skip("should call calcHintPosition when clicked", function () {
