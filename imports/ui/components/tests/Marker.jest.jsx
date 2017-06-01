@@ -5,6 +5,7 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 import renderer from "react-test-renderer";
+import * as calcHintPosition from "../../../utils/calcHintPosition";
 import Marker from "../Marker";
 import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
 
@@ -27,6 +28,12 @@ describe("<Marker />", function () {
   const options = { createNodeMock };
 
   const testVenue = { ...sampleVenues[0] };  // create a copy of a sample venue object
+
+  const chpSpy = jest.spyOn(calcHintPosition, "default");
+
+  afterEach(function () {
+    chpSpy.mockClear();
+  });
 
   it("matches render snapshot, unselected", function () {
     const tree = renderer.create(<Marker
@@ -71,11 +78,11 @@ describe("<Marker />", function () {
 
     const wrapper = mount(<Marker {...props} />);
     wrapper.find("div.markerContainer").simulate("click");
-    expect(props.setSelectedVenueHandler.mock.calls.length).toBe(1);
-    expect(props.setSelectedVenueHandler.mock.calls[0][0]).toBe("1");
+    expect(props.setSelectedVenueHandler).toHaveBeenCalledTimes(1);
+    expect(props.setSelectedVenueHandler).toHaveBeenCalledWith("1"); // value from sampleVenueData
   });
 
-  it.skip("should call calcHintPosition when clicked", function () {
+  it("should call calcHintPosition when clicked", function () {
     const props = {
       venue: testVenue,
       setSelectedVenueHandler: jest.fn(),
@@ -83,6 +90,6 @@ describe("<Marker />", function () {
 
     const wrapper = mount(<Marker {...props} />);
     wrapper.find("div.markerContainer").simulate("click");
-    // expect(calcHintPosition.mock.calls.length).toBe(1);
+    expect(chpSpy).toHaveBeenCalledTimes(1);
   });
 });
