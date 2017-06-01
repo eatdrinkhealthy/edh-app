@@ -3,20 +3,10 @@ import React, {
   PureComponent,
 } from "react";
 import classNames from "classnames";
+import calcHintPosition from "../../utils/calcHintPosition";
+
 import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 import type { IViewArea } from "./LocationsMap";
-
-export const calcHintPosition = (
-  hintViewArea: ?IViewArea,
-  hintArea: ?IViewArea,
-): string => {
-  let hintPos = "hint--bottom";
-
-  if (hintViewArea && hintArea) {
-    hintPos = "hint--top";
-  }
-  return hintPos;
-};
 
 type IMarkerOrigin = "center" | "topLeft" | "bottomCenter";
 
