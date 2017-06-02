@@ -16,26 +16,16 @@ const calcHintPosition = (
     const fitsAnywhere = fitsTop && fitsRight && fitsBottom && fitsLeft;
     const fitsNowhere = !fitsTop && !fitsRight && !fitsBottom && !fitsLeft;
 
-    hintPos = "hint-";
-
-    if (fitsAnywhere || fitsNowhere) {
-      hintPos += "-bottom";
-    } else {
-      if (fitsBottom) {
-        hintPos += "-bottom";
-      } else if (fitsTop) {
-        hintPos += "-top";
+    if (!fitsAnywhere && !fitsNowhere) {
+      if (!fitsBottom && fitsTop) {
+        hintPos = "hint--top";
       }
 
-      if (fitsRight) {
+      if (!fitsLeft && fitsRight) {
         hintPos += "-right";
-      } else if (fitsLeft) {
+      } else if (!fitsRight && fitsLeft) {
         hintPos += "-left";
       }
-    }
-
-    if (hintPos.endsWith("-")) {
-      hintPos = "hint--bottom";     // if missed any cases, set to bottom
     }
   }
 
