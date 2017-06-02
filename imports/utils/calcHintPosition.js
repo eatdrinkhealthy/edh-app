@@ -8,25 +8,62 @@ const calcHintPosition = (
   let hintPos = "hint--bottom";
 
   if (hintViewArea && hintArea) {
-    const fitsTop = hintArea.top > hintViewArea.top;
-    const fitsRight = hintArea.right < hintViewArea.right;
-    const fitsBottom = hintArea.bottom < hintViewArea.bottom;
-    const fitsLeft = hintArea.left > hintViewArea.left;
+    /* eslint-disable no-bitwise */
+    let fitsBitmap = 0;
+    const TOP = 8;
+    const RIGHT = 4;
+    const BOTTOM = 2;
+    const LEFT = 1;
 
-    const fitsAnywhere = fitsTop && fitsRight && fitsBottom && fitsLeft;
-    const fitsNowhere = !fitsTop && !fitsRight && !fitsBottom && !fitsLeft;
+    if (hintArea.top > hintViewArea.top) { fitsBitmap |= TOP; }
+    if (hintArea.right < hintViewArea.right) { fitsBitmap |= RIGHT; }
+    if (hintArea.bottom < hintViewArea.bottom) { fitsBitmap |= BOTTOM; }
+    if (hintArea.left > hintViewArea.left) { fitsBitmap |= LEFT; }
 
-    if (!fitsAnywhere && !fitsNowhere) {
-      if (!fitsBottom && fitsTop) {
+    switch (fitsBitmap) {
+      case LEFT:
+        hintPos = "hint--left";
+        break;
+
+      case RIGHT:
+      case RIGHT | LEFT:
+        hintPos = "hint--right";
+        break;
+
+      case BOTTOM | LEFT:
+        hintPos = "hint--bottom-left";
+        break;
+
+      case TOP | BOTTOM | LEFT:
+        hintPos = "hint--left";
+        break;
+
+      case RIGHT | BOTTOM:
+        hintPos = "hint--bottom-right";
+        break;
+
+      case TOP | RIGHT | BOTTOM:
+        hintPos = "hint--right";
+        break;
+
+      case TOP:
+      case TOP | RIGHT | LEFT:
         hintPos = "hint--top";
-      }
+        break;
 
-      if (!fitsLeft && fitsRight) {
-        hintPos += "-right";
-      } else if (!fitsRight && fitsLeft) {
-        hintPos += "-left";
-      }
+      case TOP | LEFT:
+        hintPos = "hint--top-left";
+        break;
+
+      case TOP | RIGHT:
+        hintPos = "hint--top-right";
+        break;
+
+      default:
+        // all other locations, "hint--bottom"
+        break;
     }
+    /* eslint-enable no-bitwise */
   }
 
   return hintPos;

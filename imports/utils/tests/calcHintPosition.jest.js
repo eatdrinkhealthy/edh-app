@@ -20,7 +20,7 @@ describe("calcHintPosition in relation to Marker", function () {
     expect(calcHintPosition(hintViewArea, hintArea)).toBe("hint--bottom");
   });
 
-  it("should return 'hint--left' when fits top NO, right NO, bottom, NO, left YES", function () {
+  it("should return 'hint--left' when fits top NO, right NO, bottom NO, left YES", function () {
     const hintViewArea = { top: 10, right: 600, bottom: 600, left: 10 };
     const hintArea = { top: 10, right: 600, bottom: 600, left: 20 };
 
@@ -29,7 +29,7 @@ describe("calcHintPosition in relation to Marker", function () {
 
   it("should return 'hint--bottom' when fits top NO, right NO, bottom YES, left NO", function () {
     const hintViewArea = { top: 10, right: 600, bottom: 600, left: 10 };
-    const hintArea = { top: 9, right: 120, bottom: 601, left: 20 };
+    const hintArea = { top: 10, right: 600, bottom: 500, left: 10 };
 
     expect(calcHintPosition(hintViewArea, hintArea)).toBe("hint--bottom");
   });
@@ -90,11 +90,11 @@ describe("calcHintPosition in relation to Marker", function () {
     expect(calcHintPosition(hintViewArea, hintArea)).toBe("hint--bottom");
   });
 
-  it("should return 'hint--bottom-left' when fits top YES, right NO, bottom YES, left YES", function () {
+  it("should return 'hint--left' when fits top YES, right NO, bottom YES, left YES", function () {
     const hintViewArea = { top: 10, right: 600, bottom: 600, left: 10 };
     const hintArea = { top: 20, right: 600, bottom: 500, left: 20 };
 
-    expect(calcHintPosition(hintViewArea, hintArea)).toBe("hint--bottom-left");
+    expect(calcHintPosition(hintViewArea, hintArea)).toBe("hint--left");
   });
 
   it("should return 'hint--top-right' when fits top YES, right YES, bottom NO, left NO", function () {
@@ -111,11 +111,11 @@ describe("calcHintPosition in relation to Marker", function () {
     expect(calcHintPosition(hintViewArea, hintArea)).toBe("hint--top");
   });
 
-  it("should return 'hint--bottom' when fits top YES, right YES, bottom YES, left NO", function () {
+  it("should return 'hint--right' when fits top YES, right YES, bottom YES, left NO", function () {
     const hintViewArea = { top: 10, right: 600, bottom: 600, left: 10 };
     const hintArea = { top: 20, right: 120, bottom: 500, left: 10 };
 
-    expect(calcHintPosition(hintViewArea, hintArea)).toBe("hint--bottom");
+    expect(calcHintPosition(hintViewArea, hintArea)).toBe("hint--right");
   });
 
   it("should return 'hint--bottom' when fits top YES, right YES, bottom YES, left YES", function () {
