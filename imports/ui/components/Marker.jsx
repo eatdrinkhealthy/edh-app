@@ -32,17 +32,28 @@ class Marker extends PureComponent {
     this.hintHolder = div;
   }
 
+  setMarkerHolderRef = (div: HTMLDivElement) => {
+    this.markerHolder = div;
+  }
+
   handleOnClick = () => {
     this.props.setSelectedVenueHandler(this.props.venue.id);
 
     const hintViewArea = this.props.getHintViewArea ? this.props.getHintViewArea() : null;
 
     this.setState({
-      hintPosition: calcHintPosition(hintViewArea, this.hintHolder.getBoundingClientRect()),
+      hintPosition: calcHintPosition(
+        hintViewArea,
+        this.markerHolder.getBoundingClientRect(),
+        this.hintHolder.getBoundingClientRect().width,
+        this.hintHolder.getBoundingClientRect().height,
+      ),
     });
   }
 
   hintHolder: HTMLDivElement;
+
+  markerHolder: HTMLDivElement;
 
   render() {  // eslint-disable-line flowtype/require-return-type
     const markerContainerClasses = classNames(
@@ -75,6 +86,7 @@ class Marker extends PureComponent {
     return (
       <div
         className={markerContainerClasses}
+        ref={this.setMarkerHolderRef}
         onClick={this.handleOnClick}
       >
         <img src={markerImage} alt={altStr} />
