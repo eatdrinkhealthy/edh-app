@@ -41,12 +41,23 @@ class Marker extends PureComponent {
 
     const hintViewArea = this.props.getHintViewArea ? this.props.getHintViewArea() : null;
 
+    const {
+      paddingBottom: hintPaddingBottom,
+      paddingTop: hintPaddingTop,
+      paddingLeft: hintPaddingLeft,
+      paddingRight: hintPaddingRight,
+    } = window.getComputedStyle(this.hintHolder, null);  // TODO (TBD) confirm px, else convert
+
     this.setState({
       hintPosition: calcHintPosition(
         hintViewArea,
         this.markerHolder.getBoundingClientRect(),
         this.hintHolder.getBoundingClientRect().width,
         this.hintHolder.getBoundingClientRect().height,
+        parseInt(hintPaddingTop, 10),
+        parseInt(hintPaddingRight, 10),
+        parseInt(hintPaddingBottom, 10),
+        parseInt(hintPaddingLeft, 10),
       ),
     });
   }
