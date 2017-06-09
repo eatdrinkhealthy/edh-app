@@ -26,25 +26,38 @@ const hintSpacing = {
   paddingLeft: 10,
 };
 
+// When setting the values of the hintAreaView for testing
+// it is easiest to first assign which boundary you need
+// then add whether it fits or not for that property
+
 const TOP_BOUNDARY = 50;
 const MIDDLE_BOUNDARY = 65;
 const BOTTOM_BOUNDARY = 200;
 
 const LEFT_BOUNDARY = 50;
 const LEFT_CENTER_BOUNDARY = 65;   // fully centered does fit
-const CENTER_RIGHTSIDE_BOUNDARY = 150;   // fully centered does fit
-const CENTER_LEFTSIDE_BOUNDARY = 300;   // fully centered does fit
+const CENTER_LEFTSIDE_BOUNDARY = 150;   // fully centered does fit
+const CENTER_RIGHTSIDE_BOUNDARY = 300;   // fully centered does fit
 const RIGHT_CENTER_BOUNDARY = 385;  // fully centered does fit
 const RIGHT_BOUNDARY = 400;
+
+const FIT_TOP_YES = -5;
+const FIT_TOP_NO = 5;
+const FIT_RIGHT_YES = 5;
+const FIT_RIGHT_NO = -5;
+const FIT_BOTTOM_YES = 5;
+const FIT_BOTTOM_NO = -5;
+const FIT_LEFT_YES = -5;
+const FIT_LEFT_NO = 5;
 
 describe("calcHintPosition helpers", function () {
   describe("fitLocationsBitmap", function () {
     it("should return TOP when hint fits only at top", function () {
       const hintViewArea = {
-        top: TOP_BOUNDARY - 5,
-        right: RIGHT_CENTER_BOUNDARY - 5,
-        bottom: BOTTOM_BOUNDARY - 5,
-        left: LEFT_CENTER_BOUNDARY + 5,
+        top: TOP_BOUNDARY + FIT_TOP_YES,
+        right: RIGHT_CENTER_BOUNDARY + FIT_RIGHT_NO,
+        bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_NO,
+        left: LEFT_CENTER_BOUNDARY + FIT_LEFT_NO,
       };
 
       expect(fitLocationsBitmap(hintViewArea, markerRect, hintSpacing)).toBe(TOP);
@@ -52,26 +65,85 @@ describe("calcHintPosition helpers", function () {
 
     it("should return TOP_LEFT when hint fits only at top left", function () {
       const hintViewArea = {
-        top: TOP_BOUNDARY - 5,
-        right: CENTER_RIGHTSIDE_BOUNDARY - 5,
-        bottom: BOTTOM_BOUNDARY - 5,
-        left: LEFT_CENTER_BOUNDARY - 5,
+        top: TOP_BOUNDARY + FIT_TOP_YES,
+        right: CENTER_RIGHTSIDE_BOUNDARY + FIT_RIGHT_NO,
+        bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_NO,
+        left: LEFT_CENTER_BOUNDARY + FIT_LEFT_YES,
       };
 
       expect(fitLocationsBitmap(hintViewArea, markerRect, hintSpacing)).toBe(TOP_LEFT);
     });
 
+    it("should return TOP_RIGHT when hint fits only at top right", function () {
+      const hintViewArea = {
+        top: TOP_BOUNDARY + FIT_TOP_YES,
+        right: RIGHT_CENTER_BOUNDARY + FIT_RIGHT_YES,
+        bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_NO,
+        left: CENTER_LEFTSIDE_BOUNDARY + FIT_LEFT_NO,
+      };
+
+      expect(fitLocationsBitmap(hintViewArea, markerRect, hintSpacing)).toBe(TOP_RIGHT);
+    });
+
+    it("should return RIGHT when hint fits only at right", function () {
+      const hintViewArea = {
+        top: TOP_BOUNDARY + FIT_TOP_NO,
+        right: RIGHT_BOUNDARY + FIT_RIGHT_YES,
+        bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_NO,
+        left: CENTER_LEFTSIDE_BOUNDARY + FIT_LEFT_NO,
+      };
+
+      expect(fitLocationsBitmap(hintViewArea, markerRect, hintSpacing)).toBe(RIGHT);
+    });
+
+    it("should return LEFT when hint fits only at left", function () {
+      const hintViewArea = {
+        top: TOP_BOUNDARY + FIT_TOP_NO,
+        right: CENTER_RIGHTSIDE_BOUNDARY + FIT_RIGHT_NO,
+        bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_NO,
+        left: LEFT_BOUNDARY + FIT_LEFT_YES,
+      };
+
+      expect(fitLocationsBitmap(hintViewArea, markerRect, hintSpacing)).toBe(LEFT);
+    });
+
     it("should return BOTTOM when hint fits only at bottom", function () {
-      const hintViewArea = { top: 90, right: 305, bottom: 210, left: 145 };
+      const hintViewArea = {
+        top: MIDDLE_BOUNDARY + FIT_TOP_NO,
+        right: RIGHT_CENTER_BOUNDARY + FIT_RIGHT_NO,
+        bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_YES,
+        left: LEFT_CENTER_BOUNDARY + FIT_LEFT_NO,
+      };
 
       expect(fitLocationsBitmap(hintViewArea, markerRect, hintSpacing)).toBe(BOTTOM);
+    });
+
+    it("should return BOTTOM_LEFT when hint fits only at bottom left", function () {
+      const hintViewArea = {
+        top: MIDDLE_BOUNDARY + FIT_TOP_NO,
+        right: CENTER_RIGHTSIDE_BOUNDARY + FIT_RIGHT_NO,
+        bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_YES,
+        left: LEFT_CENTER_BOUNDARY + FIT_LEFT_YES,
+      };
+
+      expect(fitLocationsBitmap(hintViewArea, markerRect, hintSpacing)).toBe(BOTTOM_LEFT);
+    });
+
+    it("should return BOTTOM_RIGHT when hint fits only at bottom right", function () {
+      const hintViewArea = {
+        top: MIDDLE_BOUNDARY + FIT_TOP_NO,
+        right: RIGHT_CENTER_BOUNDARY + FIT_RIGHT_YES,
+        bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_YES,
+        left: CENTER_LEFTSIDE_BOUNDARY + FIT_LEFT_NO,
+      };
+
+      expect(fitLocationsBitmap(hintViewArea, markerRect, hintSpacing)).toBe(BOTTOM_RIGHT);
     });
   });
 });
 
 describe("calcHintPosition in relation to Marker", function () {
   it("should return 'hint--bottom' if first param, hintViewArea, is null", function () {
-
     expect(calcHintPosition(null, markerRect, hintSpacing)).toBe("hint--bottom");
   });
 
