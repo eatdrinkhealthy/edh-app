@@ -3,7 +3,7 @@ import React, {
   PureComponent,
 } from "react";
 import classNames from "classnames";
-import calcHintPosition from "../../utils/calcHintPosition";
+import { calcHintPosition } from "../../utils/calcHintPosition";
 
 import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 import type { IViewArea } from "./LocationsMap";

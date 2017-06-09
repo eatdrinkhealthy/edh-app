@@ -5,7 +5,7 @@
 import React from "react";
 import { mount, shallow } from "enzyme";
 import renderer from "react-test-renderer";
-import * as calcHintPosition from "../../../utils/calcHintPosition";
+import * as chpMod from "../../../utils/calcHintPosition";
 import Marker from "../Marker";
 import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
 
@@ -29,7 +29,7 @@ describe("<Marker />", function () {
 
   const testVenue = { ...sampleVenues[0] };  // create a copy of a sample venue object
 
-  const chpSpy = jest.spyOn(calcHintPosition, "default");
+  const chpSpy = jest.spyOn(chpMod, "calcHintPosition");
 
   afterEach(function () {
     chpSpy.mockClear();
