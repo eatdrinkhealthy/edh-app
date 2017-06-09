@@ -57,8 +57,14 @@ export const fitLocationsBitmap = (
   const fitsLeft = markerRect.left - hint.width > hintViewArea.left;
 
   // when centering, html-hint offsets the center by that sides padding amount
-  const fitsRightCenter = markerCenter + hint.paddingLeft + hint.width < hintViewArea.right;
-  const fitsLeftCenter = markerCenter - hint.paddingRight - hint.width > hintViewArea.left;
+
+  // TODO need write tests since move padding adjustment to other side of center
+  const fitsRightCenter = (markerCenter - hint.paddingLeft) + hint.width < hintViewArea.right &&
+    markerCenter - hint.paddingLeft > hintViewArea.left;
+
+  // TODO need write tests since move padding adjustment to other side of center
+  const fitsLeftCenter = (markerCenter + hint.paddingRight) - hint.width > hintViewArea.left &&
+    markerCenter + hint.paddingRight < hintViewArea.right;
 
   const fitsCenter = markerCenter - (hint.width / 2) > hintViewArea.left &&
     markerCenter + (hint.width / 2) < hintViewArea.right;
