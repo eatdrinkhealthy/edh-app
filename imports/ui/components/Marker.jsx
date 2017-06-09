@@ -3,7 +3,7 @@ import React, {
   PureComponent,
 } from "react";
 import classNames from "classnames";
-import { calcHintPosition } from "../../utils/calcHintPosition";
+import { calcHintPosition, getDivSpacing } from "../../utils/calcHintPosition";
 
 import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
 import type { IViewArea } from "./LocationsMap";
@@ -41,23 +41,11 @@ class Marker extends PureComponent {
 
     const hintViewArea = this.props.getHintViewArea ? this.props.getHintViewArea() : null;
 
-    const {
-      paddingBottom: hintPaddingBottom,
-      paddingTop: hintPaddingTop,
-      paddingLeft: hintPaddingLeft,
-      paddingRight: hintPaddingRight,
-    } = window.getComputedStyle(this.hintHolder, null);  // TODO (TBD) confirm px, else convert
-
     this.setState({
       hintPosition: calcHintPosition(
         hintViewArea,
         this.markerHolder.getBoundingClientRect(),
-        this.hintHolder.getBoundingClientRect().width,
-        this.hintHolder.getBoundingClientRect().height,
-        parseInt(hintPaddingTop, 10),
-        parseInt(hintPaddingRight, 10),
-        parseInt(hintPaddingBottom, 10),
-        parseInt(hintPaddingLeft, 10),
+        getDivSpacing(this.hintHolder),
       ),
     });
   }
