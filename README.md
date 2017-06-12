@@ -11,13 +11,25 @@
 * using Skeleton, very light grid system
 * __NOTE, currently using box-sizing to globally change box model__ (see box-sizing.import.less)
 * Initial version relies often on use of z-index
+* using npm package [html-hint](https://github.com/istarkov/html-hint) to display hints (balloons) for map markers
+    - NOTE: istarkov (author of google-map-react), took the hint.css package, and extended it to support html in the hint
+        + Although html-hint is free, hint.css is a paid package for commercial use (which I did purchase)
+    - TECH NOTE: html-hint package uses sass, I instead pulled the css build (html-hint.min.css) and added that to the project, instead of adding the html-hint package or sass
+    - ANOTHER NOTE: I did fork html-hint to be able to easily build [html-hin.min.css](https://github.com/stevenjmarsh/html-hint) (added some build scripts in package.json; can instead consider adding sass to project)
+    - Styling customizations for hint-html reside in a local project file, HtmlHintCustomization.import.less 
 #### Animation
 * __FIRST__ DETERMINE if CSS3 is being used in current version of app (and/or see what browser versions support it)
 * consider this component for animation sidebar & filter, [react-burger-menu](https://github.com/negomi/react-burger-menu)
 * potential component / page transition, [react-router-transition](https://www.npmjs.com/package/react-router-transition)
     
 
-### google-map-react
+### Map
+#### Marker Location / Accuracy
+* Google Maps, Google Places API, gps-coordinates.org, Yelp lat lng values all place markers directly on business building
+* Foursquare, WHA lat lng values tend to place marker on street or a few meters away
+* Google Maps seems to round out to 6th decimal place for accurate placement when using Decimal Degrees
+* For the time being, the Foursquare coordinates seem accurate enough for use (typically within meters of Google coordinates). If users provide feedback / requests for greater accuracy (or consistency with Google), consider sourcing address coordinates from Google.
+#### google-map-react
 * the map seems to need to be in a div that has a specific height / width, ie 400px
     * 100%, I don't have working yet
     * strangely, if you pass any style={someStyleObj} directly to the GoogleMap component, it will display 100% (and ignores any px)
@@ -32,8 +44,15 @@
 ### Notes
 * The intention is to be able to use...
     + 'jest / enzyme' for unit testing
+        - test logic, function and module results
+        - typically mocking systems not under test, 3rd party and meteor modules
     + 'meteor test' for complex integration testing
+        - test module integration
+        - test meteor / environment behavior (mocking APIs / modules as needed) 
+        - test behavior across client / server connection (mocking " " )
+        - test actual external API behavior as needed
     + 'chimp' for end to end testing
+        - test UI and application flow
     
 ### Test Runner File Naming Conventions
 
@@ -68,6 +87,11 @@
     
   NOTE: placing all 'non meteor application' code, such as tests and storybook stories, in `tests/` directories prevents meteor server from restarting when in development mode
 
+#### Assertions
+Each testing framework comes with a default, or set of available assertion libraries. To avoid the confusion of mixing similar libraries (e.g., jest's jasmine based expect & practicalmeteor's chai based expect), use the assertion libraries specified for each test framework.
+* For unit / jest testing, use the jest provided assertions [(expect)](https://facebook.github.io/jest/docs/expect.html).
+* For integration testing (`meteor test`), use practicalmeteor:chai assert.
+
 ### Jest
 #### Mocking Meteor packages
 * Many commonly used meteor packages were mocked, by creating mock modules, and using the moduleNameMapper configuration setting
@@ -96,6 +120,7 @@
     - In general, annotate return types of functions, arrow functions, class methods
       + NOTE: the render method can be assumed to return a `React$Element<*>`, and you can disable the  flowtype/require-return-type warning for that line
         - OPTION: there is an eslint flowtype rule setting, ["excludeMatching"](https://github.com/gajus/eslint-plugin-flowtype#require-return-type), that can exclude functions by file name pattern (as of 3/17/17, there was a [GH issue](https://github.com/gajus/eslint-plugin-flowtype/issues/189) where this setting does not work for class methods, but hopefully will be resolved, and can then be used)
+    - Explicitly show optional props as optional using '?' (note, flow can automatically determine it is optional if a default props value is set for the prop; however explicitly showing it is optional is more readable)
 * Flowtype linting is done using an [eslint package for flowtype](https://github.com/gajus/eslint-plugin-flowtype)
     - this generates flow type errors simply by linting (may make flow less or unnecessary?)
 * Use `flow-typed` package to download community created libdefs and create generic libdefs for installed pacakges
@@ -103,3 +128,9 @@
     - copy or move libdefs from there to `.types/` and edit as needed
     - they can be checked in to the repo from `.types/`
     - NOTE, anytime you download libdefs in to `flow-typed/`, you need to nuke or hide that directory, else Meteor will see it and try to load it
+    
+## Credits / Props / Inspirations
+* Work Hard Anywhere - many of the UI characteristics
+* google-map-react
+    - the map component
+    - marker balloon pop up behavior (see their main example online) 

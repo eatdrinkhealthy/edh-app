@@ -10,24 +10,9 @@ import FilterList, { FilterItem } from "../../FilterList";
 import Sidebar from "../../Sidebar";
 
 const testFilterList = [
-  {
-    id: "juiceBar1",
-    name: "Juice Bars 1",
-    on: true,
-    fourSquareCategory: "1",
-  },
-  {
-    id: "juiceBar2",
-    name: "Juice Bars 2",
-    on: false,
-    fourSquareCategory: "2",
-  },
-  {
-    id: "juiceBar3",
-    name: "Juice Bars 3",
-    on: false,
-    fourSquareCategory: "3",
-  },
+  { id: "juiceBar", name: "Juice Bar", on: true, foursquareCategory: "1" },
+  { id: "cafe", name: "Cafe", on: false, foursquareCategory: "2" },
+  { id: "market", name: "Market", on: false, foursquareCategory: "3" },
 ];
 
 // NOTE without state, and en event handler that toggles 'filterOn'
@@ -40,7 +25,8 @@ storiesOf("Modals", module)
   .add("FilterItem", (): React$Element<*> => (
     <CenterWrapper
       horizontalCenter={boolean("Horizontal Center", true)}
-      border={boolean("Border", false)}
+      verticalCenter={boolean("Vertical Center", true)}
+      childrenBorder={boolean("Children Border", false)}
     >
       <FilterItem
         label={text("Label", "Fruity's Juice Bar")}

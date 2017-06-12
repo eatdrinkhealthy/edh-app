@@ -2,7 +2,6 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
-
 import React from "react";
 import renderer from "react-test-renderer";
 import {
@@ -10,27 +9,27 @@ import {
   mount,
 } from "enzyme";
 import FilterList, { FilterItem } from "../FilterList";
-import type { IFilterList } from "../../../data/state/data/defaultFiltersTypes";
+import type { IFilter } from "../../../data/state/reducers/filtersReducers";
 
 describe("Filter List Components", function () {
-  const testFilterList: IFilterList = [
+  const testFilterList: Array<IFilter> = [
     {
       id: "juiceBar1",
       name: "Juice Bar1",
       on: true,
-      fourSquareCategory: "1",
+      foursquareCategory: "1",
     },
     {
       id: "juiceBar2",
       name: "Juice Bar2",
       on: false,
-      fourSquareCategory: "2",
+      foursquareCategory: "2",
     },
     {
       id: "juiceBar3",
       name: "Juice Bar3",
       on: false,
-      fourSquareCategory: "3",
+      foursquareCategory: "3",
     },
   ];
 

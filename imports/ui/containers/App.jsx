@@ -2,10 +2,10 @@
 import React from "react";
 
 type IProps = {
-  children: React.Element<*>,
+  children: React$Element<*>,
 };
 
-const App = (props: IProps): React.Element<*> => {
+const App = (props: IProps): React$Element<*> => {
   const { children, ...otherProps } = props;
   const newChild = React.cloneElement(children, otherProps);
 

@@ -22,3 +22,7 @@ practicalmeteor:mocha
 dispatch:mocha-phantomjs
 mdg:geolocation
 less@2.7.9
+mdg:validated-method
+aldeed:simple-schema
+practicalmeteor:chai
+http

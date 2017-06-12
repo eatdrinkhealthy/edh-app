@@ -1,4 +1,6 @@
-exports[`<MapContainer /> matches render snapshot 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MapComponent /> matches render snapshot 1`] = `
 <div>
   <Navbar />
   <LocationsMap
@@ -9,6 +11,10 @@ exports[`<MapContainer /> matches render snapshot 1`] = `
       }
     }
     googleMapsApiKey="TestAPIKeyValue"
-    zoom={16} />
+    selectedVenueId={null}
+    setSelectedVenueHandler={[Function]}
+    venues={Array []}
+    zoom={16}
+  />
 </div>
 `;

@@ -1,18 +1,38 @@
 // @flow
-
 /* eslint-disable import/no-extraneous-dependencies */
-
 import React from "react";
-import {
-  storiesOf,
-} from "@kadira/storybook";
-import { text, select } from "@kadira/storybook-addon-knobs";
+import { storiesOf, action } from "@kadira/storybook";
+import { select, boolean } from "@kadira/storybook-addon-knobs";
+import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 import Marker from "../../Marker";
+import sampleVenues from "../../../../data/state/stores/tests/sampleVenueData";
 
 storiesOf("Map", module)
   .add("Marker", (): React$Element<*> => (
-    <Marker
-      label={text("Label", "")}
-      origin={select("Origin", { center: "center", topLeft: "topLeft" }, "center")}
-    />
+    <CenterWrapper
+      width="50%"
+      height="50%"
+      childrenBorder={boolean("Children Border", false)}
+      hasBorder={boolean("Parent Border", false)}
+      background={
+        select(
+          "Parent Background",
+          { transparent: "transparent", lightblue: "lightblue", white: "white" },
+          "transparent",
+        )
+      }
+    >
+      <Marker
+        venue={sampleVenues[3]}
+        origin={
+          select(
+            "Origin",
+            { center: "center", topLeft: "topLeft", bottomCenter: "bottomCenter" },
+            "bottomCenter",
+          )
+        }
+        selected={boolean("Selected", false)}
+        setSelectedVenueHandler={action("clicked")}
+      />
+    </CenterWrapper>
   ));

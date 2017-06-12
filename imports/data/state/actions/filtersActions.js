@@ -1,5 +1,5 @@
 // @flow
-import SET_FILTER from "./actionTypes";
+import { SET_FILTER } from "./actionTypes";
 
 export type IFilterAction = {
   type: string,
@@ -8,7 +8,10 @@ export type IFilterAction = {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const setFilter = (id: string, checked: boolean): IFilterAction => ({
+export const setFilter = (
+  id: string,
+  checked: boolean,
+): IFilterAction => ({
   type: SET_FILTER,
   id,
   checked,

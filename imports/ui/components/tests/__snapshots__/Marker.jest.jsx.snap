@@ -1,11 +1,63 @@
-exports[`<Marker /> matches render snapshot, no text 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Marker /> matches render snapshot, selected 1`] = `
 <div
-  className="markerStyle" />
+  className="markerContainer hint--color-white-override hint--html hint--info hint--bottom hint--always markerOriginBottomCenter"
+  onClick={[Function]}
+>
+  <img
+    alt="cafe1 map marker"
+    src="/images/map_marker_selected.svg"
+  />
+  <div
+    className="hint__content hintContainer"
+  >
+    <div
+      className="hint-venue-name"
+    >
+      cafe1
+    </div>
+    <div
+      className="hint-venue-address"
+    >
+      1 street
+    </div>
+    <div
+      className="hint-venue-category"
+    >
+      coffee shop
+    </div>
+  </div>
+</div>
 `;
 
-exports[`<Marker /> matches render snapshot, with text 1`] = `
+exports[`<Marker /> matches render snapshot, unselected 1`] = `
 <div
-  className="markerStyle">
-  Some Place Cool
+  className="markerContainer hint--color-white-override hint--html hint--info hint--bottom hint--hidden markerOriginBottomCenter"
+  onClick={[Function]}
+>
+  <img
+    alt="cafe1 map marker"
+    src="/images/map_marker_unselected.svg"
+  />
+  <div
+    className="hint__content hintContainer"
+  >
+    <div
+      className="hint-venue-name"
+    >
+      cafe1
+    </div>
+    <div
+      className="hint-venue-address"
+    >
+      1 street
+    </div>
+    <div
+      className="hint-venue-category"
+    >
+      coffee shop
+    </div>
+  </div>
 </div>
 `;

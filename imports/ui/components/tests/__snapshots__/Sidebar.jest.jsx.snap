@@ -1,19 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<Sidebar /> matches render snapshot 1`] = `
 <div
-  className="sidebar">
+  className="sidebar"
+>
   <a
     onClick={[Function]}
-    style={Object {}}>
+    style={Object {}}
+  >
     Home
   </a>
   <div
-    className="logo" />
+    className="logo"
+  />
   <div
-    className="pitch">
+    className="pitch"
+  >
     A platform to find, share, and discuss healthy places to shop and eat.
   </div>
   <div
-    className="get-started">
+    className="get-started"
+  >
     Get Started
   </div>
 </div>

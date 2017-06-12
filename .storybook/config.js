@@ -2,6 +2,7 @@ import { configure, addDecorator } from "@kadira/storybook";
 import { withKnobs } from "@kadira/storybook-addon-knobs";
 import backgrounds from "react-storybook-addon-backgrounds";
 
+import "!style!css!less!../client/stylesheets/html-hint.min.css";
 import "!style!css!less!../client/stylesheets/main.less";
 
 // load settings as a Meteor application would (for API keys)

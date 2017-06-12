@@ -2,22 +2,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
 import Toggle from "react-toggle";
-import type { IFilter, IFilterList } from "../../data/state/data/defaultFiltersTypes";
-
-type IFilterItemProps = {
-  label: string,
-  filterId: string,
-  filterOn: boolean,
-  setFilterHandler: (id: string, checked: boolean) => void,
-};
+import type { IFilter } from "../../data/state/reducers/filtersReducers";
 
 export class FilterItem extends Component {
+  props: {
+    label: string,
+    filterId: string,
+    filterOn: boolean,
+    setFilterHandler: (id: string, checked: boolean) => void,
+  };
+
   handleToggleChange(event: Event) {
     const target = (event.target: window.HTMLInputElement);  // TODO issue #37
     this.props.setFilterHandler(target.id, target.checked);
   }
-
-  props: IFilterItemProps;
 
   render() {  // eslint-disable-line flowtype/require-return-type
     return (
@@ -35,8 +33,8 @@ export class FilterItem extends Component {
   }
 }
 
-export type IFilterListProps = {
-  filterList?: IFilterList,
+type IFilterListProps = {
+  filterList?: Array<IFilter>,
   setFilterHandler: () => void,
 };
 
@@ -51,7 +49,7 @@ const FilterList = (
       </Link>
     </div>
     <div className="filter">
-      {filterList.map((filter: IFilter): React.Element<*> =>
+      {filterList.map((filter: IFilter): React$Element<*> =>
         (<FilterItem
           key={filter.id}
           label={filter.name}

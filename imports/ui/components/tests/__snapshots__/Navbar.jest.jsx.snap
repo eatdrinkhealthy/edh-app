@@ -1,28 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<Navbar /> matches render snapshot 1`] = `
 <div
-  className="nav">
+  className="nav"
+>
   <a
     onClick={[Function]}
-    style={Object {}}>
+    style={Object {}}
+  >
     <div
-      className="toggle-sidebar">
+      className="toggle-sidebar"
+    >
       <div
-        className="burger" />
+        className="burger"
+      />
       <div
-        className="burger" />
+        className="burger"
+      />
       <div
-        className="burger" />
+        className="burger"
+      />
     </div>
   </a>
   <div
-    className="nav__title">
+    className="nav__title"
+  >
     Eat Drink Healthy
   </div>
   <a
     onClick={[Function]}
-    style={Object {}}>
+    style={Object {}}
+  >
     <div
-      className="toggle-filter">
+      className="toggle-filter"
+    >
       Filter
     </div>
   </a>
