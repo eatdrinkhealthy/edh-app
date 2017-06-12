@@ -35,12 +35,12 @@ const MIDDLE_BOUNDARY = 65;
 const BOTTOM_BOUNDARY = 200;
 
 const LEFT_BOUNDARY = 50;
-const LEFT_CENTER_BOUNDARY = 65;   // fully centered does fit
+const LEFT_CENTER_BOUNDARY = 85;   // fully centered does fit
 
 const CENTER_LEFTSIDE_BOUNDARY = 150;   // fully centered does fit
 const CENTER_RIGHTSIDE_BOUNDARY = 300;   // fully centered does fit
 
-const RIGHT_CENTER_BOUNDARY = 385;  // fully centered does fit
+const RIGHT_CENTER_BOUNDARY = 365;  // fully centered does fit
 const RIGHT_BOUNDARY = 400;
 
 const FIT_TOP_YES = -5;
