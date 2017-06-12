@@ -29,111 +29,58 @@ export const getDivSpacing = (
   };
 };
 
-export const TOP = 128;
-export const TOP_LEFT = 64;
-export const TOP_RIGHT = 32;
-
-export const BOTTOM = 16;
-export const BOTTOM_LEFT = 8;
-export const BOTTOM_RIGHT = 4;
-
-export const RIGHT = 2;
-export const LEFT = 1;
-
-export const fitLocationsBitmap = (
-  hintViewArea: IViewArea,
-  markerRect: ClientRect,
-  hint: IDivSpacing,
-): number => {
-  // center connotes horizontal, middle connotes vertical
-  const markerCenter = markerRect.left + (markerRect.width / 2);
-  const markerMiddle = markerRect.top + (markerRect.height / 2);
-
-  const fitsTop = markerRect.top - hint.height > hintViewArea.top;
-  const fitsMiddle = markerMiddle - hint.paddingBottom - hint.height > hintViewArea.top;
-  const fitsBottom = markerRect.bottom + hint.height < hintViewArea.bottom;
-
-  const fitsRight = markerRect.right + hint.width < hintViewArea.right;
-  const fitsLeft = markerRect.left - hint.width > hintViewArea.left;
-
-  // when centering, html-hint offsets the center by that sides padding amount
-
-  // TODO need write tests since move padding adjustment to other side of center
-  const fitsRightCenter = (markerCenter - hint.paddingLeft) + hint.width < hintViewArea.right &&
-    markerCenter - hint.paddingLeft > hintViewArea.left;
-
-  // TODO need write tests since move padding adjustment to other side of center
-  const fitsLeftCenter = (markerCenter + hint.paddingRight) - hint.width > hintViewArea.left &&
-    markerCenter + hint.paddingRight < hintViewArea.right;
-
-  const fitsCenter = markerCenter - (hint.width / 2) > hintViewArea.left &&
-    markerCenter + (hint.width / 2) < hintViewArea.right;
-
-  let positionsBitmap = 0;
-
-  if (fitsTop && fitsCenter) {
-    positionsBitmap |= TOP;
-  }
-  if (fitsTop && fitsLeftCenter) {
-    positionsBitmap |= TOP_LEFT;
-  }
-  if (fitsTop && fitsRightCenter) {
-    positionsBitmap |= TOP_RIGHT;
-  }
-  if (fitsBottom && fitsCenter) {
-    positionsBitmap |= BOTTOM;
-  }
-  if (fitsBottom && fitsLeftCenter) {
-    positionsBitmap |= BOTTOM_LEFT;
-  }
-  if (fitsBottom && fitsRightCenter) {
-    positionsBitmap |= BOTTOM_RIGHT;
-  }
-  if (fitsRight && fitsMiddle) {
-    positionsBitmap |= RIGHT;
-  }
-  if (fitsLeft && fitsMiddle) {
-    positionsBitmap |= LEFT;
-  }
-
-  return positionsBitmap;
-};
-
 export const calcHintPosition = (
   hintViewArea: ?IViewArea,
   markerRect: ClientRect,
-  hintSpacing: IDivSpacing,
+  hint: IDivSpacing,
 ): string => {
   let hintPos = "hint--bottom";
 
   if (hintViewArea) {
-    const locationsBitmap = fitLocationsBitmap(hintViewArea, markerRect, hintSpacing);
+    // center connotes horizontal, middle connotes vertical
+    const markerCenter = markerRect.left + (markerRect.width / 2);
+    const markerMiddle = markerRect.top + (markerRect.height / 2);
 
-    const fitsAlongBottom = locationsBitmap & (BOTTOM_LEFT | BOTTOM | BOTTOM_RIGHT);
-    const fitsAlongTop = locationsBitmap & (TOP_LEFT | TOP | TOP_RIGHT);
-    const fitsRight = locationsBitmap & RIGHT;
-    const fitsLeft = locationsBitmap & LEFT;
+    const fitsTop = markerRect.top - hint.height > hintViewArea.top;
+    const fitsMiddle = markerMiddle - hint.paddingBottom - hint.height > hintViewArea.top;
+    const fitsBottom = markerRect.bottom + hint.height < hintViewArea.bottom;
 
-    if (fitsAlongBottom) {
-      if (locationsBitmap & BOTTOM) {
+    const fitsRight = markerRect.right + hint.width < hintViewArea.right;
+    const fitsLeft = markerRect.left - hint.width > hintViewArea.left;
+
+    // when centering, html-hint offsets the center by that sides padding amount
+
+    const fitsRightCenter = (markerCenter - hint.paddingLeft) + hint.width < hintViewArea.right &&
+      markerCenter - hint.paddingLeft > hintViewArea.left;
+
+    const fitsLeftCenter = (markerCenter + hint.paddingRight) - hint.width > hintViewArea.left &&
+      markerCenter + hint.paddingRight < hintViewArea.right;
+
+    const fitsCenter = markerCenter - (hint.width / 2) > hintViewArea.left &&
+      markerCenter + (hint.width / 2) < hintViewArea.right;
+
+    if (fitsBottom) {
+      if (fitsCenter) {
         hintPos = "hint--bottom";
-      } else if (locationsBitmap & BOTTOM_RIGHT) {
+      } else if (fitsRightCenter) {
         hintPos = "hint--bottom-right";
-      } else {
+      } else if (fitsLeftCenter) {
         hintPos = "hint--bottom-left";
       }
-    } else if (fitsAlongTop) {
-      if (locationsBitmap & TOP) {
+    } else if (fitsTop) {
+      if (fitsCenter) {
         hintPos = "hint--top";
-      } else if (locationsBitmap & TOP_RIGHT) {
+      } else if (fitsRightCenter) {
         hintPos = "hint--top-right";
-      } else {
+      } else if (fitsLeftCenter) {
         hintPos = "hint--top-left";
       }
-    } else if (fitsRight) {
-      hintPos = "hint--right";
-    } else if (fitsLeft) {
-      hintPos = "hint--left";
+    } else if (fitsMiddle) {
+      if (fitsRight) {
+        hintPos = "hint--right";
+      } else if (fitsLeft) {
+        hintPos = "hint--left";
+      }
     }
     // else fits nowhere, uses default of "hint-bottom"
   }
