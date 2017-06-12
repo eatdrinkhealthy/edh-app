@@ -182,12 +182,12 @@ describe("calcHintPosition in relation to Marker", function () {
     expect(calcHintPosition(hintViewArea, markerRect, hintSpacing)).toBe("hint--bottom");
   });
 
-  it("should return 'hint--bottom-left' when fits top NO, right NO, bottom_left YES", function () {
+  it("should return 'hint--bottom-left' when fits top NO, center-rightside NO, bottom YES, left-center YES", function () {
     const hintViewArea = {
       top: TOP_BOUNDARY + FIT_TOP_NO,
       right: CENTER_RIGHTSIDE_BOUNDARY + FIT_RIGHT_NO,
       bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_YES,
-      left: LEFT_BOUNDARY + FIT_LEFT_YES,
+      left: LEFT_CENTER_BOUNDARY + FIT_LEFT_YES,
     };
 
     expect(calcHintPosition(hintViewArea, markerRect, hintSpacing)).toBe("hint--bottom-left");
@@ -215,10 +215,10 @@ describe("calcHintPosition in relation to Marker", function () {
     expect(calcHintPosition(hintViewArea, markerRect, hintSpacing)).toBe("hint--right");
   });
 
-  it("should return 'hint--bottom-right' when fits top NO, bottom_right YES, left NO", function () {
+  it("should return 'hint--bottom-right' when fits top NO, right-center YES, bottom YES, center-leftside NO", function () {
     const hintViewArea = {
       top: TOP_BOUNDARY + FIT_TOP_NO,
-      right: RIGHT_BOUNDARY + FIT_RIGHT_YES,
+      right: RIGHT_CENTER_BOUNDARY + FIT_RIGHT_YES,
       bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_YES,
       left: CENTER_LEFTSIDE_BOUNDARY + FIT_LEFT_NO,
     };
@@ -248,12 +248,12 @@ describe("calcHintPosition in relation to Marker", function () {
     expect(calcHintPosition(hintViewArea, markerRect, hintSpacing)).toBe("hint--top");
   });
 
-  it("should return 'hint--top-left' when fits top YES, right NO, bottom NO, left YES", function () {
+  it("should return 'hint--top-left' when fits top YES, center-rightside NO, bottom NO, left-center YES", function () {
     const hintViewArea = {
       top: TOP_BOUNDARY + FIT_TOP_YES,
       right: CENTER_RIGHTSIDE_BOUNDARY + FIT_RIGHT_NO,
       bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_NO,
-      left: LEFT_BOUNDARY + FIT_LEFT_YES,
+      left: LEFT_CENTER_BOUNDARY + FIT_LEFT_YES,
     };
 
     expect(calcHintPosition(hintViewArea, markerRect, hintSpacing)).toBe("hint--top-left");
@@ -281,10 +281,10 @@ describe("calcHintPosition in relation to Marker", function () {
     expect(calcHintPosition(hintViewArea, markerRect, hintSpacing)).toBe("hint--bottom");
   });
 
-  it("should return 'hint--top-right' when fits top YES, right YES, bottom NO, left NO", function () {
+  it("should return 'hint--top-right' when fits top YES, right-center YES, bottom NO, center-leftside NO", function () {
     const hintViewArea = {
       top: TOP_BOUNDARY + FIT_TOP_YES,
-      right: RIGHT_BOUNDARY + FIT_RIGHT_YES,
+      right: RIGHT_CENTER_BOUNDARY + FIT_RIGHT_YES,
       bottom: BOTTOM_BOUNDARY + FIT_BOTTOM_NO,
       left: CENTER_LEFTSIDE_BOUNDARY + FIT_LEFT_NO,
     };
