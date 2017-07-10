@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router";
 
 const Navbar = (): React$Element<*> =>
-  <div className="nav">
+  (<div className="nav">
     <Link to="/sidebar">
       <div className="toggle-sidebar">
         <div className="burger" />
@@ -17,6 +17,6 @@ const Navbar = (): React$Element<*> =>
     <Link to="/filter">
       <div className="toggle-filter">Filter</div>
     </Link>
-  </div>;
+  </div>);
 
 export default Navbar;
