@@ -1,3 +1,3 @@
-declare module "@kadira/storybook-addon-knobs" {
+declare module "@storybook/addon-knobs" {
   declare var exports: any;
 }
