@@ -22,6 +22,7 @@ class Marker extends PureComponent {
   static defaultProps = {
     origin: "bottomCenter",
     selected: false,
+    getHintViewArea: undefined,
   };
 
   state = {
