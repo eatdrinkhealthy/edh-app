@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import Toggle from "react-toggle";
 import type { IFilter } from "../../data/state/reducers/filtersReducers";
 
