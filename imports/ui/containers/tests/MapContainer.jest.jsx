@@ -3,6 +3,7 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
@@ -68,7 +69,9 @@ describe("<MapContainer />", function () {
 
   const wrapper = mount(
     <Provider store={testStore}>
-      <MapContainer />
+      <MemoryRouter>
+        <MapContainer />
+      </MemoryRouter>
     </Provider>,
   );
 

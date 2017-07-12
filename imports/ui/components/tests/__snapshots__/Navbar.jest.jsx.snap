@@ -5,8 +5,8 @@ exports[`<Navbar /> matches render snapshot 1`] = `
   className="nav"
 >
   <a
+    href="/sidebar"
     onClick={[Function]}
-    style={Object {}}
   >
     <div
       className="toggle-sidebar"
@@ -28,8 +28,8 @@ exports[`<Navbar /> matches render snapshot 1`] = `
     Eat Drink Healthy
   </div>
   <a
+    href="/filter"
     onClick={[Function]}
-    style={Object {}}
   >
     <div
       className="toggle-filter"
