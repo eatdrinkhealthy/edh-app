@@ -1,8 +1,8 @@
 // @flow
 import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
-const Navbar = (): React$Element<*> =>
+const Navbar = (): React$Element<*> => (
   <div className="nav">
     <Link to="/sidebar">
       <div className="toggle-sidebar">
@@ -17,6 +17,7 @@ const Navbar = (): React$Element<*> =>
     <Link to="/filter">
       <div className="toggle-filter">Filter</div>
     </Link>
-  </div>;
+  </div>
+);
 
 export default Navbar;

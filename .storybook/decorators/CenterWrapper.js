@@ -3,7 +3,7 @@ import React, {
 } from "react";
 import classNames from "classnames";
 
-import "!style!css!less!./CenterWrapper.css";
+import "!style-loader!css-loader!less-loader!./CenterWrapper.css";
 
 const CenterWrapper = (
   {

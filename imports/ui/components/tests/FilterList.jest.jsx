@@ -3,6 +3,7 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import {
   shallow,
@@ -41,7 +42,8 @@ describe("Filter List Components", function () {
           filterId={testFilterList[0].id}
           filterOn={testFilterList[0].on}
           setFilterHandler={jest.fn()}
-        />).toJSON();
+        />,
+      ).toJSON();
 
       expect(tree).toMatchSnapshot();
     });
@@ -73,38 +75,50 @@ describe("Filter List Components", function () {
   describe("<FilterList />", function () {
     it("matches render snapshot, with a filter list", function () {
       const tree = renderer.create(
-        <FilterList
-          filterList={testFilterList}
-          setFilterHandler={jest.fn()}
-        />).toJSON();
+        <MemoryRouter>
+          <FilterList
+            filterList={testFilterList}
+            setFilterHandler={jest.fn()}
+          />
+        </MemoryRouter>,
+      ).toJSON();
 
       expect(tree).toMatchSnapshot();
     });
 
     it("matches render snapshot, with no filter list", function () {
       const tree = renderer.create(
-        <FilterList
-          setFilterHandler={jest.fn()}
-        />).toJSON();
+        <MemoryRouter>
+          <FilterList
+            setFilterHandler={jest.fn()}
+          />
+        </MemoryRouter>,
+      ).toJSON();
 
       expect(tree).toMatchSnapshot();
     });
 
     it("renders a toggle component for each filter in the list", function () {
       const wrapper = mount(
-        <FilterList
-          filterList={testFilterList}
-          setFilterHandler={jest.fn()}
-        />);
+        <MemoryRouter>
+          <FilterList
+            filterList={testFilterList}
+            setFilterHandler={jest.fn()}
+          />
+        </MemoryRouter>,
+      );
 
       expect(wrapper.find("Toggle").length).toBe(3);
     });
 
     it("renders no toggle components when no filter list provided", function () {
       const wrapper = mount(
-        <FilterList
-          setFilterHandler={jest.fn()}
-        />);
+        <MemoryRouter>
+          <FilterList
+            setFilterHandler={jest.fn()}
+          />
+        </MemoryRouter>,
+      );
 
       expect(wrapper.find("Toggle").length).toBe(0);
     });

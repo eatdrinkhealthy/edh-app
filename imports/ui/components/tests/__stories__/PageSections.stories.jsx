@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React from "react";
-import { storiesOf } from "@kadira/storybook";
+import { storiesOf } from "@storybook/react";
 
 import Navbar from "../../Navbar";
 

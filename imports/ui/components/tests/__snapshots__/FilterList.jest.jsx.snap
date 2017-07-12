@@ -83,8 +83,8 @@ exports[`Filter List Components <FilterList /> matches render snapshot, with a f
       Filter
     </h4>
     <a
+      href="/"
       onClick={[Function]}
-      style={Object {}}
     >
       <div
         className="close-filter toggle-filter"
@@ -320,8 +320,8 @@ exports[`Filter List Components <FilterList /> matches render snapshot, with no 
       Filter
     </h4>
     <a
+      href="/"
       onClick={[Function]}
-      style={Object {}}
     >
       <div
         className="close-filter toggle-filter"

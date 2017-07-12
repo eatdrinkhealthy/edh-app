@@ -5,8 +5,8 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
   className="sidebar"
 >
   <a
+    href="/"
     onClick={[Function]}
-    style={Object {}}
   >
     Home
   </a>

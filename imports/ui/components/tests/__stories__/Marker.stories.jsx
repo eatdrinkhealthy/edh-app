@@ -1,8 +1,8 @@
 // @flow
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
-import { storiesOf, action } from "@kadira/storybook";
-import { select, boolean } from "@kadira/storybook-addon-knobs";
+import { storiesOf, action } from "@storybook/react";
+import { select, boolean } from "@storybook/addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 import Marker from "../../Marker";
 import sampleVenues from "../../../../data/state/stores/tests/sampleVenueData";

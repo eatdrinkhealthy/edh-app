@@ -1,8 +1,8 @@
 // @flow
 import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
-const Sidebar = (): React$Element<*> =>
+const Sidebar = (): React$Element<*> => (
   <div className="sidebar">
     <Link to="/">Home</Link>
     <div className="logo" />
@@ -10,6 +10,7 @@ const Sidebar = (): React$Element<*> =>
       A platform to find, share, and discuss healthy places to shop and eat.
     </div>
     <div className="get-started">Get Started</div>
-  </div>;
+  </div>
+);
 
 export default Sidebar;
