@@ -58,7 +58,7 @@
 
 #### Default test file names / locations for Jest, Meteor, and Chimp
 * [jest](http://facebook.github.io/jest/docs/configuration.html#testregex-string):
-  - loads all test files: `(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$)`
+  - loads all test files: `(/tests/.*|(\\.jest\\.jsx?$)`
 * ['meteor test'](https://guide.meteor.com/testing.html#test-modes):
   - loads all test files: `"*.test[s].js[x]"` or `"*.spec[s].js[x]"`
       + ignores any files in any `tests/` directory
@@ -68,7 +68,8 @@
       + ignores any files in any `tests/` directory
   - DOES eagerly load application code, as meteor build normally would
 * [chimp](https://chimp.readme.io/docs/command-line-options):
-  - loads cucumber tests from: `./features`
+  - loads end to end tests from: `tests/end-to-end`
+  - test files should be named `*_spec.js`
 
 #### Project test file location and naming convention
  * The following convention allows you to colocate test files in the same or sub directory of the system under test, without the test runners picking up the incorrect test file
@@ -83,7 +84,7 @@
     + `<project-root>/.../system-under-test/tests/Navbar.jest.jsx` (tests run by __jest__ only)
     + `<project-root>/.../system-under-test/Navbar.tests.jsx` (tests run by __'meteor test'__ only)
     + `<project-root>/.../system-under-test/calledMethods.app-tests.js` (tests run by __'meteor test --full-app'__ only)
-    + `<project-root>/tests/end-to-end/.../featureName.feature or .js` (tests to be run by __'chimp'__)
+    + `<project-root>/tests/end-to-end/.../*_spec.js` (tests to be run by __'chimp'__)
     
   NOTE: placing all 'non meteor application' code, such as tests and storybook stories, in `tests/` directories prevents meteor server from restarting when in development mode
 
@@ -107,6 +108,11 @@ Each testing framework comes with a default, or set of available assertion libra
     - it is possible to capture incorrect code or even 'undefined' in cases
 * snapshot files are to be kept in the default location, a `__snapshots__` subdirectory
     
+### Chimp
+* Install chimp globally
+    - this prevents an in issue sometimes arising when deploying to galaxy (an error installing chromedriver)
+* Note, for continuous integration, this requires chimp being installed as a build step
+
 ## Storybook
 * Story file location and naming convention
     - story file names are to follow the convetion `filename.stories.js`
