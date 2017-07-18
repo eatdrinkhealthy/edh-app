@@ -78,7 +78,6 @@
         - set [jest test filenames (testRegex)](http://facebook.github.io/jest/docs/configuration.html#testregex-string) to `/tests/.*\\.jest\\.jsx?$`
         - jest file name convention `filename.jest.js[x]`
     + place all chimp tests in 'tests' sub directory of the project root
-        - set npm script for chimp to `chimp  --path=tests/end-to-end`
         - NOTE: create additional sub directories in this directory to organize tests
  * example:
     + `<project-root>/.../system-under-test/tests/Navbar.jest.jsx` (tests run by __jest__ only)
@@ -112,9 +111,7 @@ Each testing framework comes with a default, or set of available assertion libra
 * Install chimp globally
     - this prevents an in issue sometimes arising when deploying to galaxy (an error installing chromedriver)
 * __NOTE:__ for continuous integration
-    - chimp must be installed as a build step (to be installed globally)
-    - as of chimp version 0.49.1, the `npm test` script __MUST BE RUN__ with meteor's npm (else chimp fails)
-        + `meteor npm test`
+    - (as of 7/18/17) chimp is unable to be successfully installed on semaphoreCI, so end to end testing must be run locally
 
 ## Storybook
 * Story file location and naming convention

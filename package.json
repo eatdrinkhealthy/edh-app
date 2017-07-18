@@ -6,7 +6,7 @@
     "lint": "eslint . --ext .js,.jsx --ignore-pattern 'packages/**'",
     "flow:check": "flow check",
     "pretest": "yarn run lint && yarn run flow:check",
-    "test": "yarn run unit-test && yarn run end-to-end-test",
+    "test": "yarn run unit-test",
     "unit-test": "jest -c .jest-config.json",
     "unit-test-w": "yarn run unit-test -- --watchAll",
     "integration-test": "meteor reset; meteor test --settings settings.json --once --port 4000 --driver-package dispatch:mocha-phantomjs",
