@@ -111,7 +111,10 @@ Each testing framework comes with a default, or set of available assertion libra
 ### Chimp
 * Install chimp globally
     - this prevents an in issue sometimes arising when deploying to galaxy (an error installing chromedriver)
-* Note, for continuous integration, this requires chimp being installed as a build step
+* __NOTE:__ for continuous integration
+    - chimp must be installed as a build step (to be installed globally)
+    - as of chimp version 0.49.1, the `npm test` script __MUST BE RUN__ with meteor's npm (else chimp fails)
+        + `meteor npm test`
 
 ## Storybook
 * Story file location and naming convention
