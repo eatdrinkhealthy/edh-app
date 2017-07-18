@@ -1,4 +1,4 @@
-// @flow
+// intentionally NOT flow checking chimp js files
 /* eslint-env jasmine */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
