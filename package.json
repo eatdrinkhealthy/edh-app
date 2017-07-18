@@ -4,7 +4,12 @@
   "scripts": {
     "start": "meteor run --settings settings.json",
     "lint": "eslint . --ext .js,.jsx --ignore-pattern 'packages/**'",
+    "lint-c": "clear && yarn lint",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "flow:check": "flow check",
+    "flow:status": "flow status",
+    "flow:status-c": "clear && flow status",
+    "flow:stop": "flow stop",
     "pretest": "yarn run lint && yarn run flow:check",
     "test": "yarn run unit-test",
     "unit-test": "jest -c .jest-config.json",
