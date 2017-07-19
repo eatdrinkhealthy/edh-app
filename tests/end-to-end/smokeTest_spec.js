@@ -75,17 +75,20 @@ describe("Smoke Test", function () {
     });
 
     it("returns more results when more filters clicked - NOTE may fail based on location", function () {
+      // go to the filter page
       browser.url(`${baseUrl}/filter`);
       browser.waitForExist(filterListComponent);
 
+      // get all the unchecked filter toggle elements, and click them
       const filterToggleUnchecked = "div.react-toggle:not(.react-toggle--checked)";
       const filterTogglesUnchecked = browser.elements(filterToggleUnchecked).value;
-      console.log("unchecked toggles:", filterTogglesUnchecked);
       filterTogglesUnchecked.forEach(el => el.click());
 
+      // go to the map (landing page)
       browser.click(filterCloseLink);
-      browser.waitForExist(locationsMapComponent);
+      browser.waitForExist(markerComponent, 2000); // allow for some api response time
 
+      // check that there are many more results
       const markerArray = browser.elements(markerComponent).value;
       expect(markerArray.length).toBeGreaterThan(10);
     });
