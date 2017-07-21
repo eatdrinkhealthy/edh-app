@@ -11,18 +11,22 @@ import MapContainer from "./MapContainer";
 import Sidebar from "../components/Sidebar";
 import FilterListContainer from "./FilterListContainer";
 import PageNotFound from "../pages/PageNotFound";
+import AlertMessage from "../components/AlertMessage";
 
 const App = (): React$Element<*> => (
-  <Provider store={store}>
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={MapContainer} />
-        <Route path="/sidebar" component={Sidebar} />
-        <Route path="/filter" component={FilterListContainer} />
-        <Route component={PageNotFound} />
-      </Switch>
-    </BrowserRouter>
-  </Provider>
+  <div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={MapContainer} />
+          <Route path="/sidebar" component={Sidebar} />
+          <Route path="/filter" component={FilterListContainer} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </BrowserRouter>
+    </Provider>
+    <AlertMessage stack={{ limit: 3 }} />
+  </div>
 );
 
 export default App;

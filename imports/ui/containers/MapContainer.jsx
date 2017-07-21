@@ -4,6 +4,7 @@ import React, {
 } from "react";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
+import AlertMessage from "../components/AlertMessage";
 import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
 import { getNearbyPlaces } from "../../api/methods";
@@ -41,6 +42,7 @@ export class MapComponent extends Component {
       console.log("Error:", error);
     } else {
       this.props.setSearchResultsHandler(result);
+      AlertMessage.info("Search results received.");
     }
   }
 
