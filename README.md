@@ -16,7 +16,11 @@
         + Although html-hint is free, hint.css is a paid package for commercial use (which I did purchase)
     - TECH NOTE: html-hint package uses sass, I instead pulled the css build (html-hint.min.css) and added that to the project, instead of adding the html-hint package or sass
     - ANOTHER NOTE: I did fork html-hint to be able to easily build [html-hin.min.css](https://github.com/stevenjmarsh/html-hint) (added some build scripts in package.json; can instead consider adding sass to project)
-    - Styling customizations for hint-html reside in a local project file, HtmlHintCustomization.import.less 
+    - Styling customizations for hint-html reside in a local project file, HtmlHintCustomization.import.less
+#### Importing Packages' CSS
+* some packages require css be included (imported) for the package to function / display properly (eg. react-s-alert)
+* import the package's css in 'importPackagesCss.js'
+    - this bundles the css, and does not directly import the css in to source code (which in some cases, like testing, is preferred to separate them [in one case, importing the css in to a component caused a syntax error when testing the component with Jest])
 #### Animation
 * __FIRST__ DETERMINE if CSS3 is being used in current version of app (and/or see what browser versions support it)
 * consider this component for animation sidebar & filter, [react-burger-menu](https://github.com/negomi/react-burger-menu)

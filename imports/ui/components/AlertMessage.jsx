@@ -3,6 +3,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Alert from "react-s-alert";
 
+// note, css required for this package is imported in 'importPackagesCss.js'
+
 const AlertMessage = props => (
   <Alert {...props} />
 );
