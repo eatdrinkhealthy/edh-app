@@ -39,10 +39,10 @@ export class MapComponent extends Component {
   // NOTE: this is an ES6 class property arrow function (preserves this context)
   getNearbyPlacesCB = (error: Error, result: Array<IVenue>) => {
     if (error) {
-      console.log("Error:", error);
+      AlertMessage.warning("Unable to search at this time...");
+      // TODO potentially throw here (or confirm an exception is thrown by server)
     } else {
       this.props.setSearchResultsHandler(result);
-      AlertMessage.info("Search results received.");
     }
   }
 
