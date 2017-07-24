@@ -25,7 +25,7 @@ const App = (): React$Element<*> => (
         </Switch>
       </BrowserRouter>
     </Provider>
-    <AlertMessage stack={{ limit: 3 }} />
+    <AlertMessage />
   </div>
 );
 
