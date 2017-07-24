@@ -2,7 +2,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Alert from "react-s-alert";
-import "react-s-alert/dist/s-alert-default.css";
 
 const AlertMessage = props => (
   <Alert {...props} />
