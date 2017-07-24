@@ -10,18 +10,13 @@ const AlertMessage = props => (
 );
 
 AlertMessage.propTypes = {
-  stack: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.shape({
-      limit: PropTypes.number,
-      spacing: PropTypes.number,
-    }),
-  ]),
   position: PropTypes.string,
+  offset: PropTypes.number,
 };
 
 AlertMessage.defaultProps = {
-  position: "top-right",
+  position: "top-left",
+  offset: 70,
 };
 
 // assign the Alert component methods to the functional component
