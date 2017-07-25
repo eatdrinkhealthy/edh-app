@@ -65,7 +65,7 @@ describe("<MapComponent />", function () {
       setSelectedVenueHandler={jest.fn()}
       selectedVenueId={null}
     />);
-    // $FlowFixMe (I think a flow error is caused due to enzyme libdef component definition)
+    // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component)
     wrapper.instance().getNearbyPlacesCB("some error", undefined);
     expect(AlertMessage.warning).toHaveBeenCalled();
   });
