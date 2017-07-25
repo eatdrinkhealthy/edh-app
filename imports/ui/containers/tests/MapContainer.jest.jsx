@@ -1,7 +1,24 @@
 // @flow
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies, import/first */
+
+// mock getNearbyPlaces (a method call for foursquare api)
+// eslint-disable-next-line flowtype/require-return-type
+jest.mock("../../../api/methods", () => ({
+  getNearbyPlaces: {
+    call: jest.fn(),
+  },
+}));
+
+// mock AlertMessage component (call to warning method)
+// eslint-disable-next-line flowtype/require-return-type
+jest.mock("../../components/AlertMessage", () => (
+  class AlertMessage {
+    static warning = jest.fn();
+  }
+));
+
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -18,14 +35,7 @@ import type { IState } from "../../../data/state/stores/store";
 /* eslint-enable no-duplicate-imports */
 
 import { getNearbyPlaces } from "../../../api/methods";
-
-// mock getNearbyPlaces (a method call for foursquare api)
-// eslint-disable-next-line flowtype/require-return-type
-jest.mock("../../../api/methods", () => ({
-  getNearbyPlaces: {
-    call: jest.fn(),
-  },
-}));
+import AlertMessage from "../../components/AlertMessage";
 
 describe("<MapComponent />", function () {
   const testFilterList: Array<IFilter> = [
@@ -44,6 +54,20 @@ describe("<MapComponent />", function () {
       selectedVenueId={null}
     />);
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("calls AlertMessage.warning when calling getNearbyPlacesCB with an error", function () {
+    // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
+    const wrapper = shallow(<MapComponent
+      filterList={testFilterList}
+      searchResults={[]}
+      setSearchResultsHandler={jest.fn()}
+      setSelectedVenueHandler={jest.fn()}
+      selectedVenueId={null}
+    />);
+    // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component)
+    wrapper.instance().getNearbyPlacesCB("some error", undefined);
+    expect(AlertMessage.warning).toHaveBeenCalled();
   });
 });
 
