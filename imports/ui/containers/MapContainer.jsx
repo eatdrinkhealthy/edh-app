@@ -4,6 +4,7 @@ import React, {
 } from "react";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
+import AlertMessage from "../components/AlertMessage";
 import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
 import { getNearbyPlaces } from "../../api/methods";
@@ -38,7 +39,8 @@ export class MapComponent extends Component {
   // NOTE: this is an ES6 class property arrow function (preserves this context)
   getNearbyPlacesCB = (error: Error, result: Array<IVenue>) => {
     if (error) {
-      console.log("Error:", error);
+      AlertMessage.warning("Unable to search at this time...");
+      // TODO potentially throw here (or confirm an exception is thrown by server)
     } else {
       this.props.setSearchResultsHandler(result);
     }

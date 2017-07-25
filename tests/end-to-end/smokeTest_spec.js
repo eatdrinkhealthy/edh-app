@@ -86,7 +86,7 @@ describe("Smoke Test", function () {
 
       // go to the map (landing page)
       browser.click(filterCloseLink);
-      browser.waitForExist(markerComponent, 2000); // allow for some api response time
+      browser.waitForExist(markerComponent, 3000); // allow for some api response time
 
       // check that there are many more results
       const markerArray = browser.elements(markerComponent).value;
