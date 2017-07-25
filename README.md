@@ -7,8 +7,7 @@
 * using React.PureComponent for some map related components
 
 ### Styling
-* using less css
-* using Skeleton, very light grid system
+* using less css preprocessor
 * __NOTE, currently using box-sizing to globally change box model__ (see box-sizing.import.less)
 * Initial version relies often on use of z-index
 * using npm package [html-hint](https://github.com/istarkov/html-hint) to display hints (balloons) for map markers
