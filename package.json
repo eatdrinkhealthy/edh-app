@@ -26,6 +26,7 @@
     "babel-runtime": "^6.23.0",
     "classnames": "^2.2.5",
     "google-map-react": "^0.24.0",
+    "html-hint": "^0.2.4",
     "lodash": "^4.17.4",
     "meteor-node-stubs": "~0.2.0",
     "prop-types": "^15.5.10",
