@@ -2,6 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import { storiesOf, action } from "@storybook/react";
 import { text, boolean } from "@storybook/addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
@@ -19,6 +20,7 @@ const testFilterList = [
 //      the toggle component will not visually toggle
 
 storiesOf("Modals", module)
+  .addDecorator((story: () => void): React$Element<*> => (<MemoryRouter>{story()}</MemoryRouter>))
   .add("Sidebar", (): React$Element<*> => (
     <Sidebar />
   ))
