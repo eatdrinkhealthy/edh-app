@@ -6,6 +6,7 @@ import { MemoryRouter } from "react-router-dom";
 import { storiesOf } from "@storybook/react";
 
 import Navbar from "../../Navbar";
+import CreateAccount from "../../CreateAccount";
 
 storiesOf("Page Sections", module)
   .addDecorator((story: () => React$Element<*>): React$Element<*> => (
@@ -13,4 +14,7 @@ storiesOf("Page Sections", module)
   ))
   .add("Navbar", (): React$Element<*> => (
     <Navbar />
+  ))
+  .add("CreateAccount", (): React$Element<*> => (
+    <CreateAccount />
   ));

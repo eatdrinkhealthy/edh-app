@@ -38,8 +38,24 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
         <legend
           className="f4 fw6 ph0 mh0"
         >
-          Sign In
+          Create Account
         </legend>
+        <div
+          className="mt3"
+        >
+          <label
+            className="db fw6 lh-copy f6"
+            htmlFor="username"
+          >
+            Username
+          </label>
+          <input
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            id="username"
+            name="username"
+            type="text"
+          />
+        </div>
         <div
           className="mt3"
         >
@@ -72,41 +88,29 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
             type="password"
           />
         </div>
-        <label
-          className="pa0 ma0 lh-copy f6 pointer"
-          htmlFor="remember"
+        <div
+          className="mv3"
         >
+          <label
+            className="db fw6 lh-copy f6"
+            htmlFor="confirm-password"
+          >
+            Confirm Password
+          </label>
           <input
-            id="remember"
-            type="checkbox"
+            className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            id="confirm-password"
+            name="confirm-password"
+            type="password"
           />
-           Remember me
-        </label>
+        </div>
       </fieldset>
-      <div
-        className=""
-      >
+      <div>
         <input
           className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
           type="submit"
-          value="Sign in"
+          value="Create Account"
         />
-      </div>
-      <div
-        className="lh-copy mt3"
-      >
-        <a
-          className="f6 link dim black db"
-          href="#0"
-        >
-          Sign up
-        </a>
-        <a
-          className="f6 link dim black db"
-          href="#0"
-        >
-          Forgot your password?
-        </a>
       </div>
     </form>
   </div>
