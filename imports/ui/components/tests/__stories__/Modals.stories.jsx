@@ -20,7 +20,9 @@ const testFilterList = [
 //      the toggle component will not visually toggle
 
 storiesOf("Modals", module)
-  .addDecorator((story: () => void): React$Element<*> => (<MemoryRouter>{story()}</MemoryRouter>))
+  .addDecorator((story: () => React$Element<*>): React$Element<*> => (
+    <MemoryRouter>{story()}</MemoryRouter>
+  ))
   .add("Sidebar", (): React$Element<*> => (
     <Sidebar />
   ))

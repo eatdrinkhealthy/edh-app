@@ -8,7 +8,9 @@ import { storiesOf } from "@storybook/react";
 import Navbar from "../../Navbar";
 
 storiesOf("Page Sections", module)
-  .addDecorator((story: () => void): React$Element<*> => (<MemoryRouter>{story()}</MemoryRouter>))
+  .addDecorator((story: () => React$Element<*>): React$Element<*> => (
+    <MemoryRouter>{story()}</MemoryRouter>
+  ))
   .add("Navbar", (): React$Element<*> => (
     <Navbar />
   ));
