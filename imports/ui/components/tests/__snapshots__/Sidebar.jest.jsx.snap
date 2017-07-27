@@ -10,9 +10,11 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
   >
     Home
   </a>
-  <div
-    className="logo"
-  />
+  <h2
+    className="mh4"
+  >
+    Eat Drink Healthy
+  </h2>
   <div
     className="pitch"
   >
