@@ -30,6 +30,7 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
   >
     <form
       className="measure center"
+      onSubmit={[Function]}
     >
       <fieldset
         className="ba b--transparent ph0 mh0"
