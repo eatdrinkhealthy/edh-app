@@ -31,9 +31,8 @@ mongo@1.1.19                   # The database Meteor supports right now
 aldeed:simple-schema
 
 # testing
-practicalmeteor:mocha
+meteortesting:mocha
 practicalmeteor:chai
-dispatch:mocha-phantomjs
 
 # mobile
 mobile-experience@1.0.4       # Packages for a great mobile UX
