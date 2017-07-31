@@ -7,23 +7,48 @@ import { getNearbyPlaces } from "./methods";
 
 import type { IFilter } from "../data/state/reducers/filtersReducers";
 
+const testFilterList = [
+  {
+    id: "juiceBar",
+    name: "Juice Bars",
+    on: true,
+    foursquareCategory: "4bf58dd8d48988d112941735",
+  },
+  {
+    id: "veganVegRestaurant",
+    name: "Vegan / Vegetarian",
+    on: true,
+    foursquareCategory: "4bf58dd8d48988d1d3941735",
+  },
+  {
+    id: "glutenFree",
+    name: "Gluten Free",
+    on: false,
+    foursquareCategory: "4c2cd86ed066bed06c3c5209",
+  },
+];
+
+if (Meteor.isServer) {
+  describe("methods", function () {
+    describe("getNearbyPlaces", function () {
+      it("should throw when ACTUAL foursquareApi throws (lat 0, lng 0)", function () {
+        const context = {};
+        const args = {
+          latitude: 0,
+          longitude: 0,
+          filterList: testFilterList,
+        };
+
+        assert.throws(() => {
+          getNearbyPlaces._execute(context, args);
+        }, Error, /Invalid geo coordinates/);
+      });
+    });
+  });
+}
+
 if (Meteor.isClient) {
   describe("client method calls", function () {
-    const testFilterList = [
-      {
-        id: "juiceBar",
-        name: "Juice Bars",
-        on: true,
-        foursquareCategory: "4bf58dd8d48988d112941735",
-      },
-      {
-        id: "veganVegRestaurant",
-        name: "Vegan / Vegetarian",
-        on: true,
-        foursquareCategory: "4bf58dd8d48988d1d3941735",
-      },
-    ];
-
     describe("getNearbyPlaces", function () {
       it("should NOT throw but instead get callback err, when foursquareApi throws",
         function (done: (Error | void) => void) {

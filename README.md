@@ -54,6 +54,8 @@
     + 'chimp' for end to end testing
         - test UI and application flow
     
+> NOTE: It is more common or advantageous to run integration tests using 'meteor test --full-app'. Although load time is slightly slower, it does allow tests to be run across the client server divide. At this time, there is not a known significant benefit for running non '--full-app' integration tests in addition to running the '--full-app' integration tests. (running both, takes significantly longer)
+
 ### Test Runner File Naming Conventions
 
 #### Default test file names / locations for Jest, Meteor, and Chimp
@@ -88,7 +90,7 @@
   NOTE: placing all 'non meteor application' code, such as tests and storybook stories, in `tests/` directories prevents meteor server from restarting when in development mode
 
 #### Assertions
-Each testing framework comes with a default, or set of available assertion libraries. To avoid the confusion of mixing similar libraries (e.g., jest's jasmine based expect & practicalmeteor's chai based expect), use the assertion libraries specified for each test framework.
+Each testing framework comes with a default, or set of available assertion libraries. To avoid the confusion of mixing similar libraries (e.g., jest's jasmine based expect & practicalmeteor's chai based expect), use the following specified assertion libraries for each test framework.
 * For unit / jest testing, use the jest provided assertions [(expect)](https://facebook.github.io/jest/docs/expect.html).
 * For integration testing (`meteor test`), use practicalmeteor:chai assert.
 
