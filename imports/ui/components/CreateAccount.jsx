@@ -1,5 +1,9 @@
 // @flow
 import React, { Component } from "react";
+import { Accounts } from "meteor/accounts-base";
+import type { IMeteorError } from "meteor/meteor";
+import AlertMessage from "./AlertMessage";
+
 
 class CreateAccount extends Component {
 
@@ -14,10 +18,34 @@ class CreateAccount extends Component {
   onSubmit = (event: Event) => {
     event.preventDefault();
 
-    console.log("username:", this.username.value);
-    console.log("email:", this.email.value);
-    console.log("password:", this.password.value);
-    console.log("confirmPassword:", this.confirmPassword.value);
+    const username = this.username.value;
+    const email = this.email.value;
+    const password = this.password.value;
+    const errors = [];
+
+    if (this.password.value !== this.confirmPassword.value) {
+      errors.push("Password and Confirm Password fields do not match.");
+    }
+
+    if (errors.length) {
+      errors.forEach((error: string): void => AlertMessage.warning(error));
+    } else {
+      Accounts.createUser({
+        username,
+        email,
+        password,
+      }, (error: IMeteorError) => {
+        if (error) {
+          // Using error.reason here to determine what message to display, keeps
+          // internationalization string usage on client side
+          // TODO map error.reason potential values to user friendly messages
+          const createUserErrorMsg = error.reason;
+          AlertMessage.warning(createUserErrorMsg);
+        } else {
+          AlertMessage.success("Welcome!");
+        }
+      });
+    }
   }
 
   render() {  // eslint-disable-line flowtype/require-return-type
@@ -33,7 +61,9 @@ class CreateAccount extends Component {
                 type="text"
                 name="username"
                 id="username"
-                ref={(el: HTMLInputElement) => { this.username = el; }}
+                ref={(el: HTMLInputElement) => {
+                  this.username = el;
+                }}
               />
             </div>
             <div className="mt3">
@@ -43,7 +73,9 @@ class CreateAccount extends Component {
                 type="email"
                 name="email-address"
                 id="email-address"
-                ref={(el: HTMLInputElement) => { this.email = el; }}
+                ref={(el: HTMLInputElement) => {
+                  this.email = el;
+                }}
               />
             </div>
             <div className="mv3">
@@ -53,7 +85,9 @@ class CreateAccount extends Component {
                 type="password"
                 name="password"
                 id="password"
-                ref={(el: HTMLInputElement) => { this.password = el; }}
+                ref={(el: HTMLInputElement) => {
+                  this.password = el;
+                }}
               />
             </div>
             <div className="mv3">
@@ -63,7 +97,9 @@ class CreateAccount extends Component {
                 type="password"
                 name="confirm-password"
                 id="confirm-password"
-                ref={(el: HTMLInputElement) => { this.confirmPassword = el; }}
+                ref={(el: HTMLInputElement) => {
+                  this.confirmPassword = el;
+                }}
               />
             </div>
           </fieldset>
