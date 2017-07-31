@@ -11,7 +11,7 @@
     "flow:status-c": "clear && flow status",
     "flow:stop": "flow stop",
     "pretest": "yarn run lint && yarn run flow:check",
-    "test": "yarn run unit-test",
+    "test": "yarn run unit-test && yarn run integration-test-full",
     "unit-test": "jest -c .jest-config.json",
     "integration-test-full": "TEST_BROWSER_DRIVER=nightmare meteor test --once --full-app --settings settings.json --driver-package meteortesting:mocha",
     "end-to-end-test": "chimp --jasmine --ddp=http://localhost:3000 --path=tests/end-to-end/",
