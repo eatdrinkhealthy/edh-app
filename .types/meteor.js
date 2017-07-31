@@ -10,10 +10,18 @@ declare module "meteor/meteor" {
     }
   };
 
+  declare export class IMeteorError {
+    constructor(error: string, reason?: string, details?: string): IMeteorError;
+
+    error: string;
+    reason?: string;
+    details?: string;
+  }
+
   declare export var Meteor: {
     settings: IMeteorSettings,
     startup(): void,
-    Error: {},
+    Error: IMeteorError,
     isClient: boolean,
     isServer: boolean,
   }
