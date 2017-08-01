@@ -29,7 +29,7 @@ const testFilterList = [
 ];
 
 if (Meteor.isServer) {
-  describe("methods", function () {
+  describe("Methods", function () {
     describe("getNearbyPlaces", function () {
       it("should throw when ACTUAL foursquareApi throws (lat 0, lng 0)", function () {
         const context = {};
@@ -48,7 +48,7 @@ if (Meteor.isServer) {
 }
 
 if (Meteor.isClient) {
-  describe("client method calls", function () {
+  describe("Methods - client calls", function () {
     describe("getNearbyPlaces", function () {
       it("should NOT throw but instead get callback err, when foursquareApi throws",
         function (done: (Error | void) => void) {
