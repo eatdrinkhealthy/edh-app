@@ -6,6 +6,8 @@ class CreateAccount extends Component {
     handleSubmit: (username: string, email: string, password: string) => void,
   };
 
+  form: HTMLFormElement;
+
   email: HTMLInputElement;
 
   username: HTMLInputElement;
@@ -30,13 +32,20 @@ class CreateAccount extends Component {
       errors.forEach((error: string): void => alert(error));
     } else {
       this.props.handleSubmit(username, email, password);
+      this.form.reset();
     }
   }
 
   render() {  // eslint-disable-line flowtype/require-return-type
     return (
       <div className="pt2 pl4 pr4 pb4">
-        <form className="measure center" onSubmit={this.onSubmit}>
+        <form
+          className="measure center"
+          onSubmit={this.onSubmit}
+          ref={(el: HTMLFormElement) => {
+            this.form = el;
+          }}
+        >
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
             <legend className="f4 fw6 ph0 mh0">Create Account</legend>
             <div className="mt3">

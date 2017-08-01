@@ -5,11 +5,11 @@ import type { IMeteorError } from "meteor/meteor";
 import AlertMessage from "../components/AlertMessage";
 import CreateAccount from "../components/CreateAccount";
 
-function createUser(
+export const createUser = (
   username: string,
   email: string,
   password: string,
-) {
+) => {
   Accounts.createUser({
     username,
     email,
@@ -22,10 +22,10 @@ function createUser(
       const createUserErrorMsg = error.reason;
       AlertMessage.warning(createUserErrorMsg);
     } else {
-      AlertMessage.success("Welcome!");
+      AlertMessage.success(`Welcome ${username}!`);
     }
   });
-}
+};
 
 const CreateAccountContainer = (): React$Element<*> => (
   <CreateAccount handleSubmit={createUser} />
