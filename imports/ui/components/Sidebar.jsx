@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { Link } from "react-router-dom";
-import CreateAccount from "./CreateAccount";
+import CreateAccountContainer from "../containers/CreateAccountContainer";
 
 const Sidebar = (): React$Element<*> => (
   <div className="sidebar">
@@ -11,7 +11,7 @@ const Sidebar = (): React$Element<*> => (
       A platform to find, share, and discuss healthy places to shop and eat.
     </div>
     <div className="get-started">Get Started</div>
-    <CreateAccount />
+    <CreateAccountContainer />
   </div>
 );
 

@@ -3,7 +3,7 @@
 
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { storiesOf } from "@storybook/react";
+import { storiesOf, action } from "@storybook/react";
 
 import Navbar from "../../Navbar";
 import CreateAccount from "../../CreateAccount";
@@ -16,5 +16,5 @@ storiesOf("Page Sections", module)
     <Navbar />
   ))
   .add("CreateAccount", (): React$Element<*> => (
-    <CreateAccount />
+    <CreateAccount handleSubmit={action("submitted")} />
   ));

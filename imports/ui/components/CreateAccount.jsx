@@ -1,11 +1,10 @@
 // @flow
 import React, { Component } from "react";
-import { Accounts } from "meteor/accounts-base";
-import type { IMeteorError } from "meteor/meteor";
-import AlertMessage from "./AlertMessage";
-
 
 class CreateAccount extends Component {
+  props: {
+    handleSubmit: (username: string, email: string, password: string) => void,
+  };
 
   email: HTMLInputElement;
 
@@ -28,23 +27,9 @@ class CreateAccount extends Component {
     }
 
     if (errors.length) {
-      errors.forEach((error: string): void => AlertMessage.warning(error));
+      errors.forEach((error: string): void => alert(error));
     } else {
-      Accounts.createUser({
-        username,
-        email,
-        password,
-      }, (error: IMeteorError) => {
-        if (error) {
-          // Using error.reason here to determine what message to display, keeps
-          // internationalization string usage on client side
-          // TODO map error.reason potential values to user friendly messages
-          const createUserErrorMsg = error.reason;
-          AlertMessage.warning(createUserErrorMsg);
-        } else {
-          AlertMessage.success("Welcome!");
-        }
-      });
+      this.props.handleSubmit(username, email, password);
     }
   }
 

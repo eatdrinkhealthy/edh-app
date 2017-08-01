@@ -8,7 +8,6 @@ import { text, boolean } from "@storybook/addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 
 import FilterList, { FilterItem } from "../../FilterList";
-import Sidebar from "../../Sidebar";
 
 const testFilterList = [
   { id: "juiceBar", name: "Juice Bar", on: true, foursquareCategory: "1" },
@@ -22,9 +21,6 @@ const testFilterList = [
 storiesOf("Modals", module)
   .addDecorator((story: () => React$Element<*>): React$Element<*> => (
     <MemoryRouter>{story()}</MemoryRouter>
-  ))
-  .add("Sidebar", (): React$Element<*> => (
-    <Sidebar />
   ))
   .add("FilterItem", (): React$Element<*> => (
     <CenterWrapper
