@@ -6,6 +6,8 @@ import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
 import { resetDatabase } from "meteor/xolvio:cleaner";
 
+import type { IMeteorError } from "meteor/meteor";
+
 if (Meteor.isClient) {
   describe("CreateAccount", function () {
     describe("client side call of Accounts.createUser", function () {
@@ -13,11 +15,26 @@ if (Meteor.isClient) {
         resetDatabase(null);
       });
 
+      it("should not return an error when all user fields match schema",
+        function (done: () => void) {
+          const validUser = {
+            username: "abcd",
+            email: "test@home.com",
+            password: "1234567",
+          };
+
+          Accounts.createUser(validUser, (err: IMeteorError) => {
+            assert.isUndefined(err);
+            assert.equal(validUser.username, Meteor.user().username);
+            done();
+          });
+        });
+
       it("should not throw with invalid user schema", function (done: () => void) {
         const invalidUser = {
           username: "abc",   // too short
           email: "test@home.com",
-          password: "strongpassword",
+          password: "StrongPassword",
         };
 
         assert.doesNotThrow(function () {
@@ -32,27 +49,12 @@ if (Meteor.isClient) {
           const invalidUser = {
             username: "abc",   // too short
             email: "test@home.com",
-            password: "strongpassword",
+            password: "StrongPassword",
           };
 
-          Accounts.createUser(invalidUser, (err) => {
+          Accounts.createUser(invalidUser, (err: IMeteorError) => {
             assert.isDefined(err);
             assert.equal(err.reason, "Username must be at least 4 characters");
-            done();
-          });
-        });
-
-      it("should return an error when password too short",
-        function (done: () => void) {
-          const invalidUser = {
-            username: "abcd",
-            email: "test@home.com",
-            password: "12345",
-          };
-
-          Accounts.createUser(invalidUser, (err) => {
-            assert.isDefined(err);
-            assert.equal(err.reason, "Password must be at least 1 characters");
             done();
           });
         });
@@ -62,12 +64,12 @@ if (Meteor.isClient) {
           const invalidUser = {
             username: "abcd",
             email: "test",
-            password: "strongpassword",
+            password: "StrongPassword",
           };
 
-          Accounts.createUser(invalidUser, (err) => {
+          Accounts.createUser(invalidUser, (err: IMeteorError) => {
             assert.isDefined(err);
-            assert.equal(err.reason, "Email does not match regex!!!");
+            assert.equal(err.reason, "Address must be a valid e-mail address");
             done();
           });
         });
@@ -77,10 +79,10 @@ if (Meteor.isClient) {
           const invalidUser = {
             username: "rOot",
             email: "test@home.com",
-            password: "strongpassword",
+            password: "StrongPassword",
           };
 
-          Accounts.createUser(invalidUser, (err) => {
+          Accounts.createUser(invalidUser, (err: IMeteorError) => {
             assert.isDefined(err);
             assert.equal(err.reason, "Username does not match regex!!!");
             done();
@@ -90,12 +92,12 @@ if (Meteor.isClient) {
       it("should return an error when username matches 'admin', case insensitive",
         function (done: () => void) {
           const invalidUser = {
-            username: "admiN",   // too short
+            username: "adMin",   // too short
             email: "test@home.com",
-            password: "strongpassword",
+            password: "StrongPassword",
           };
 
-          Accounts.createUser(invalidUser, (err) => {
+          Accounts.createUser(invalidUser, (err: IMeteorError) => {
             assert.isDefined(err);
             assert.equal(err.reason, "Username does not match regex!!!");
             done();

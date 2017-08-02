@@ -1,5 +1,4 @@
 // @flow
-import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
 
@@ -11,10 +10,6 @@ const UserSchema = {
     type: String,
     min: 4,
     max: 30,
-  },
-  password: {
-    type: String,
-    min: 6,
   },
   emails: {
     type: Array,

@@ -24,5 +24,11 @@ declare module "meteor/meteor" {
     Error: IMeteorError,
     isClient: boolean,
     isServer: boolean,
+    user(): {
+      username: string,
+      _id: string,
+      emails: [],
+    },
+    userId(): string,
   }
 }
