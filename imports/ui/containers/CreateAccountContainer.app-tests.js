@@ -84,7 +84,7 @@ if (Meteor.isClient) {
 
           Accounts.createUser(invalidUser, (err: IMeteorError) => {
             assert.isDefined(err);
-            assert.equal(err.reason, "Username does not match regex!!!");
+            assert.equal(err.reason, "Username failed regular expression validation");
             done();
           });
         });
@@ -99,7 +99,7 @@ if (Meteor.isClient) {
 
           Accounts.createUser(invalidUser, (err: IMeteorError) => {
             assert.isDefined(err);
-            assert.equal(err.reason, "Username does not match regex!!!");
+            assert.equal(err.reason, "Username failed regular expression validation");
             done();
           });
         });

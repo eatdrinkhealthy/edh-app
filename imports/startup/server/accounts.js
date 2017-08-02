@@ -10,6 +10,7 @@ const UserSchema = {
     type: String,
     min: 4,
     max: 30,
+    regEx: [/^(?!root)/i, /^(?!admin)/i],
   },
   emails: {
     type: Array,
