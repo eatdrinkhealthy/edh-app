@@ -27,19 +27,80 @@ if (Meteor.isClient) {
         });
       });
 
-      it("should return an error with invalid user - short username", function (done: () => void) {
-        const invalidUser = {
-          username: "abc",   // too short
-          email: "test@home.com",
-          password: "strongpassword",
-        };
+      it("should return an error when username too short",
+        function (done: () => void) {
+          const invalidUser = {
+            username: "abc",   // too short
+            email: "test@home.com",
+            password: "strongpassword",
+          };
 
-        Accounts.createUser(invalidUser, (err) => {
-          assert.isDefined(err);
-          assert.equal(err.reason, "Username must be at least 4 characters");
-          done();
+          Accounts.createUser(invalidUser, (err) => {
+            assert.isDefined(err);
+            assert.equal(err.reason, "Username must be at least 4 characters");
+            done();
+          });
         });
-      });
+
+      it("should return an error when password too short",
+        function (done: () => void) {
+          const invalidUser = {
+            username: "abcd",
+            email: "test@home.com",
+            password: "12345",
+          };
+
+          Accounts.createUser(invalidUser, (err) => {
+            assert.isDefined(err);
+            assert.equal(err.reason, "Password must be at least 1 characters");
+            done();
+          });
+        });
+
+      it("should return an error when email doesn't match regex",
+        function (done: () => void) {
+          const invalidUser = {
+            username: "abcd",
+            email: "test",
+            password: "strongpassword",
+          };
+
+          Accounts.createUser(invalidUser, (err) => {
+            assert.isDefined(err);
+            assert.equal(err.reason, "Email does not match regex!!!");
+            done();
+          });
+        });
+
+      it("should return an error when username matches 'root', case insensitive",
+        function (done: () => void) {
+          const invalidUser = {
+            username: "rOot",
+            email: "test@home.com",
+            password: "strongpassword",
+          };
+
+          Accounts.createUser(invalidUser, (err) => {
+            assert.isDefined(err);
+            assert.equal(err.reason, "Username does not match regex!!!");
+            done();
+          });
+        });
+
+      it("should return an error when username matches 'admin', case insensitive",
+        function (done: () => void) {
+          const invalidUser = {
+            username: "admiN",   // too short
+            email: "test@home.com",
+            password: "strongpassword",
+          };
+
+          Accounts.createUser(invalidUser, (err) => {
+            assert.isDefined(err);
+            assert.equal(err.reason, "Username does not match regex!!!");
+            done();
+          });
+        });
     });
   });
 }
