@@ -39,6 +39,7 @@
       "meteor/mdg:validated-method",
       "meteor/aldeed:simple-schema",
       "meteor/practicalmeteor:chai",
+      "meteor/xolvio:cleaner",
       "meteor/http"
     ],
     "flowtype": {

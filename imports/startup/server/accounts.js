@@ -1,4 +1,5 @@
 // @flow
+import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
 

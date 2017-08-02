@@ -11,9 +11,9 @@ declare module "meteor/meteor" {
   };
 
   declare export class IMeteorError {
-    constructor(error: string, reason?: string, details?: string): IMeteorError;
+    constructor(error: string | number, reason?: string, details?: string): IMeteorError;
 
-    error: string;
+    error: string | number;
     reason?: string;
     details?: string;
   }
