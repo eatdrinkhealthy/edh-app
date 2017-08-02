@@ -62,7 +62,8 @@
       {
         "allow": [
           "_id",
-          "_execute"
+          "_execute",
+          "_sleepForMs"
         ]
       }
     ],

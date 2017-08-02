@@ -30,5 +30,7 @@ declare module "meteor/meteor" {
       emails: [],
     },
     userId(): string,
+    _sleepForMs(number): void,
+    setTimeout(func: any, delay?: number): void,
   }
 }

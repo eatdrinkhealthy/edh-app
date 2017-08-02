@@ -8,6 +8,10 @@ import { resetDatabase } from "meteor/xolvio:cleaner";
 
 import type { IMeteorError } from "meteor/meteor";
 
+if (Meteor.isServer) {
+  Accounts.removeDefaultRateLimit();
+}
+
 if (Meteor.isClient) {
   describe("CreateAccount", function () {
     describe("client side call of Accounts.createUser", function () {
@@ -92,7 +96,7 @@ if (Meteor.isClient) {
       it("should return an error when username matches 'admin', case insensitive",
         function (done: () => void) {
           const invalidUser = {
-            username: "adMin",   // too short
+            username: "adMin",
             email: "test@home.com",
             password: "StrongPassword",
           };
@@ -100,6 +104,21 @@ if (Meteor.isClient) {
           Accounts.createUser(invalidUser, (err: IMeteorError) => {
             assert.isDefined(err);
             assert.equal(err.reason, "Username failed regular expression validation");
+            done();
+          });
+        });
+
+      it("should allow passwords with special characters",
+        function (done: () => void) {
+          const validUser = {
+            username: "abcd",
+            email: "test@home.com",
+            password: "Strong!@#$%^&()\\-+Password",
+          };
+
+          Accounts.createUser(validUser, (err: IMeteorError) => {
+            assert.isUndefined(err);
+            assert.equal("check meteor.userId", "logout, login, check userid again");
             done();
           });
         });
