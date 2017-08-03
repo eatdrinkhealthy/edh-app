@@ -3,11 +3,11 @@ import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
 import _ from "lodash";
-import foursquareApiSearch from "./foursquare/foursquareApi";
+import foursquareApiSearch from "./foursquareApi";
 
 // eslint-disable-next-line no-duplicate-imports
-import type { IVenue } from "../data/state/reducers/searchResultsReducers";
-import type { IFilter } from "../data/state/reducers/filtersReducers";
+import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
+import type { IFilter } from "../../data/state/reducers/filtersReducers";
 
 export const collectSearchResults = (
   latitude: number,

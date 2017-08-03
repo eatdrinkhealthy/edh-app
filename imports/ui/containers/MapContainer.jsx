@@ -7,7 +7,7 @@ import { Meteor } from "meteor/meteor";
 import AlertMessage from "../components/AlertMessage";
 import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
-import { getNearbyPlaces } from "../../api/methods";
+import { getNearbyPlaces } from "../../api/foursquare/methods";
 import { setSearchResults } from "../../data/state/actions/searchResultsActions";
 import { setSelectedVenue } from "../../data/state/actions/mapDisplayActions";
 

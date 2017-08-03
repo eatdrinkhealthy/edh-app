@@ -5,7 +5,7 @@
 
 // mock getNearbyPlaces (a method call for foursquare api)
 // eslint-disable-next-line flowtype/require-return-type
-jest.mock("../../../api/methods", () => ({
+jest.mock("../../../api/foursquare/methods", () => ({
   getNearbyPlaces: {
     call: jest.fn(),
   },
@@ -34,7 +34,7 @@ import type { IFilter } from "../../../data/state/reducers/filtersReducers";
 import type { IState } from "../../../data/state/stores/store";
 /* eslint-enable no-duplicate-imports */
 
-import { getNearbyPlaces } from "../../../api/methods";
+import { getNearbyPlaces } from "../../../api/foursquare/methods";
 import AlertMessage from "../../components/AlertMessage";
 
 describe("<MapComponent />", function () {

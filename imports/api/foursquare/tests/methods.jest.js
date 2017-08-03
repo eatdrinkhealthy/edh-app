@@ -5,11 +5,11 @@
 import { Meteor } from "meteor/meteor";
 import { collectSearchResults } from "../methods";
 
-import type { IFilter } from "../../data/state/reducers/filtersReducers";
+import type { IFilter } from "../../../data/state/reducers/filtersReducers";
 
 // mock results of foursquareApiSearch(), called by collectSearchResults
 /* eslint-disable flowtype/require-return-type */
-jest.mock("../foursquare/foursquareApi", () => (
+jest.mock("../foursquareApi", () => (
   jest.fn(() => ([{ id: "0", name: "testVenue0", location: {} }]))
     .mockImplementationOnce(() => ([
       { id: "1", name: "testVenue1", location: {} },
