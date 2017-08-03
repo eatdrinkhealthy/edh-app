@@ -125,6 +125,136 @@ if (Meteor.isClient) {
             done();
           });
         });
+
+      it("should deny creating a user for username AND email that already exists",
+        function (done: () => void) {
+          const validUser = {
+            username: "abcd",
+            email: "test@home.com",
+            password: "StrongPassword",
+          };
+          const dupUser = {
+            username: "abcd",
+            email: "test@home.com",
+            password: "StrongPassword",
+          };
+
+          Accounts.createUser(validUser, (err: IMeteorError) => {
+            assert.isUndefined(err);
+            assert.equal(Meteor.user().username, validUser.username);
+            Meteor.logout();
+          });
+
+          Accounts.createUser(dupUser, (err: IMeteorError) => {
+            assert.isDefined(err);
+            assert.equal(err.reason, "Username already exists.");
+            done();
+          });
+        });
+
+      it("should deny creating a user for username that already exists",
+        function (done: () => void) {
+          const validUser = {
+            username: "abcd",
+            email: "test@home.com",
+            password: "StrongPassword",
+          };
+          const dupUser = {
+            username: "abcd",
+            email: "test2@home.com",
+            password: "StrongPassword",
+          };
+
+          Accounts.createUser(validUser, (err: IMeteorError) => {
+            assert.isUndefined(err);
+            assert.equal(Meteor.user().username, validUser.username);
+            Meteor.logout();
+          });
+
+          Accounts.createUser(dupUser, (err: IMeteorError) => {
+            assert.isDefined(err);
+            assert.equal(err.reason, "Username already exists.");
+            done();
+          });
+        });
+
+      it("should deny creating a user for username that already exists, case insensitive",
+        function (done: () => void) {
+          const validUser = {
+            username: "abcd",
+            email: "test@home.com",
+            password: "StrongPassword",
+          };
+          const dupUser = {
+            username: "aBcd",
+            email: "test2@home.com",
+            password: "StrongPassword",
+          };
+
+          Accounts.createUser(validUser, (err: IMeteorError) => {
+            assert.isUndefined(err);
+            assert.equal(Meteor.user().username, validUser.username);
+            Meteor.logout();
+          });
+
+          Accounts.createUser(dupUser, (err: IMeteorError) => {
+            assert.isDefined(err);
+            assert.equal(err.reason, "Username already exists.");
+            done();
+          });
+        });
+
+      it("should deny creating a user for email that already exists",
+        function (done: () => void) {
+          const validUser = {
+            username: "abcd",
+            email: "test@home.com",
+            password: "StrongPassword",
+          };
+          const dupUser = {
+            username: "efgh",
+            email: "test@home.com",
+            password: "StrongPassword",
+          };
+
+          Accounts.createUser(validUser, (err: IMeteorError) => {
+            assert.isUndefined(err);
+            assert.equal(Meteor.user().username, validUser.username);
+            Meteor.logout();
+          });
+
+          Accounts.createUser(dupUser, (err: IMeteorError) => {
+            assert.isDefined(err);
+            assert.equal(err.reason, "Email already exists.");
+            done();
+          });
+        });
+
+      it("should deny creating a user for email that already exists, case insensitive",
+        function (done: () => void) {
+          const validUser = {
+            username: "abcd",
+            email: "test@home.com",
+            password: "StrongPassword",
+          };
+          const dupUser = {
+            username: "efgh",
+            email: "teSt@home.com",
+            password: "StrongPassword",
+          };
+
+          Accounts.createUser(validUser, (err: IMeteorError) => {
+            assert.isUndefined(err);
+            assert.equal(Meteor.user().username, validUser.username);
+            Meteor.logout();
+          });
+
+          Accounts.createUser(dupUser, (err: IMeteorError) => {
+            assert.isDefined(err);
+            assert.equal(err.reason, "Email already exists.");
+            done();
+          });
+        });
     });
   });
 }
