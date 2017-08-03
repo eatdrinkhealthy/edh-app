@@ -31,7 +31,7 @@ const testFilterList = [
 if (Meteor.isServer) {
   describe("Methods", function () {
     describe("getNearbyPlaces", function () {
-      it("should throw when ACTUAL foursquareApi throws (lat 0, lng 0)", function () {
+      it("should NOT throw but instead get empty results, when foursquareApi throws", function () {
         const context = {};
         const args = {
           latitude: 0,
@@ -39,9 +39,9 @@ if (Meteor.isServer) {
           filterList: testFilterList,
         };
 
-        assert.throws(() => {
-          getNearbyPlaces._execute(context, args);
-        }, Error, /Invalid geo coordinates/);
+        assert.doesNotThrow(() => {
+          assert.deepEqual(getNearbyPlaces._execute(context, args), []);
+        });
       });
     });
   });
@@ -50,7 +50,7 @@ if (Meteor.isServer) {
 if (Meteor.isClient) {
   describe("Methods - client calls", function () {
     describe("getNearbyPlaces", function () {
-      it("should NOT throw but instead get callback err, when foursquareApi throws",
+      it("should NOT throw but instead get callback with empty results, when foursquareApi throws",
         function (done: (Error | void) => void) {
           const args = {
             latitude: 0,
@@ -60,14 +60,8 @@ if (Meteor.isClient) {
 
           assert.doesNotThrow(() => {
             getNearbyPlaces.call(args, function (err: Error, res: Array<IFilter>) {
-              // NOTE: you need to wrap the assert, and be sure to call done, when in a callback
-              //       for a Meteor method -see notes in readme for more info
-              try {
-                assert.isUndefined(res);
-                assert.isDefined(err);
-              } catch (e) {
-                done(e);
-              }
+              assert.isUndefined(err);
+              assert.deepEqual(res, []);
               done();
             });
           });

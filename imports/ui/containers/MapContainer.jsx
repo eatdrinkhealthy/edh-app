@@ -42,6 +42,10 @@ export class MapComponent extends Component {
       AlertMessage.warning("Unable to search at this time...");
       // TODO potentially throw here (or confirm an exception is thrown by server)
     } else {
+      if (!result.length) {
+        AlertMessage.warning("No search results for current criteria...");
+      }
+      // TODO potentially throw here (or log search criteria to a logger for evaluation)
       this.props.setSearchResultsHandler(result);
     }
   }

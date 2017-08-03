@@ -2,7 +2,7 @@
 declare module "meteor/http" {
   declare export type IHttpResult = {
     statusCode: ?number,
-    content: string,
+    content: ?string,
     data: ?{},
     headers: {},
   };

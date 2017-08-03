@@ -67,7 +67,21 @@ describe("<MapComponent />", function () {
     />);
     // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component)
     wrapper.instance().getNearbyPlacesCB("some error", undefined);
-    expect(AlertMessage.warning).toHaveBeenCalled();
+    expect(AlertMessage.warning).toHaveBeenCalledWith("Unable to search at this time...");
+  });
+
+  it("calls AlertMessage.warning when calling getNearbyPlacesCB with an no search results", function () {
+    // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
+    const wrapper = shallow(<MapComponent
+      filterList={testFilterList}
+      searchResults={[]}
+      setSearchResultsHandler={jest.fn()}
+      setSelectedVenueHandler={jest.fn()}
+      selectedVenueId={null}
+    />);
+    // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component)
+    wrapper.instance().getNearbyPlacesCB(undefined, []);
+    expect(AlertMessage.warning).toHaveBeenCalledWith("No search results for current criteria...");
   });
 });
 
