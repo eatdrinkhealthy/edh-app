@@ -8,12 +8,12 @@ import AlertMessage from "../components/AlertMessage";
 import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
 import { getNearbyPlaces } from "../../api/foursquare/methods";
-import { setSearchResults } from "../../data/state/actions/searchResultsActions";
-import { setSelectedVenue } from "../../data/state/actions/mapDisplayActions";
+import { setSearchResults } from "../../state/actions/searchResultsActions";
+import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
 
-import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
-import type { IState } from "../../data/state/stores/store";
-import type { IFilter } from "../../data/state/reducers/filtersReducers";
+import type { IVenue } from "../../state/reducers/searchResultsReducers";
+import type { IState } from "../../state/stores/store";
+import type { IFilter } from "../../state/reducers/filtersReducers";
 
 export class MapComponent extends Component {
   props: {

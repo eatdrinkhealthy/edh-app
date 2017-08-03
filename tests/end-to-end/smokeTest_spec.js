@@ -2,7 +2,7 @@
 /* eslint-env jasmine */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
-import DEFAULT_FILTER_LIST from "../../imports/data/state/data/defaultFilters";
+import DEFAULT_FILTER_LIST from "../../imports/state/data/defaultFilters";
 
 describe("Smoke Test", function () {
   const baseUrl = "http://localhost:3000";

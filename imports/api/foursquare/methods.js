@@ -6,8 +6,8 @@ import _ from "lodash";
 import foursquareApiSearch from "./foursquareApi";
 
 // eslint-disable-next-line no-duplicate-imports
-import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
-import type { IFilter } from "../../data/state/reducers/filtersReducers";
+import type { IVenue } from "../../state/reducers/searchResultsReducers";
+import type { IFilter } from "../../state/reducers/filtersReducers";
 
 export const collectSearchResults = (
   latitude: number,

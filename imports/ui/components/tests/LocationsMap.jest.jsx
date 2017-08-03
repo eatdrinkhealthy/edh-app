@@ -8,7 +8,7 @@ import { Meteor } from "meteor/meteor";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import LocationsMap from "../LocationsMap";
-import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
+import sampleVenues from "../../../state/stores/tests/sampleVenueData";
 
 describe("<LocationsMap />", function () {
   it("matches render snapshot", function () {

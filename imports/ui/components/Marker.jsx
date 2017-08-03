@@ -5,7 +5,7 @@ import React, {
 import classNames from "classnames";
 import { calcHintPosition, getDivSpacing } from "../../utils/calcHintPosition";
 
-import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
+import type { IVenue } from "../../state/reducers/searchResultsReducers";
 import type { IViewArea } from "./LocationsMap";
 
 type IMarkerOrigin = "center" | "topLeft" | "bottomCenter";

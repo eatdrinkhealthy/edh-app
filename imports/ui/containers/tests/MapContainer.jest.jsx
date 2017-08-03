@@ -25,13 +25,13 @@ import { Provider } from "react-redux";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import { createStore } from "redux";
-import appReducer from "../../../data/state/reducers";
+import appReducer from "../../../state/reducers";
 import MapContainer, { MapComponent } from "../MapContainer";
-import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
+import sampleVenues from "../../../state/stores/tests/sampleVenueData";
 
 /* eslint-disable no-duplicate-imports */
-import type { IFilter } from "../../../data/state/reducers/filtersReducers";
-import type { IState } from "../../../data/state/stores/store";
+import type { IFilter } from "../../../state/reducers/filtersReducers";
+import type { IState } from "../../../state/stores/store";
 /* eslint-enable no-duplicate-imports */
 
 import { getNearbyPlaces } from "../../../api/foursquare/methods";

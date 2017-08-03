@@ -5,7 +5,7 @@ import { assert } from "meteor/practicalmeteor:chai";
 import { Meteor } from "meteor/meteor";
 import { getNearbyPlaces } from "./methods";
 
-import type { IFilter } from "../../data/state/reducers/filtersReducers";
+import type { IFilter } from "../../state/reducers/filtersReducers";
 
 const testFilterList = [
   {

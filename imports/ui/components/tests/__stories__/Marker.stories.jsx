@@ -5,7 +5,7 @@ import { storiesOf, action } from "@storybook/react";
 import { select, boolean } from "@storybook/addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 import Marker from "../../Marker";
-import sampleVenues from "../../../../data/state/stores/tests/sampleVenueData";
+import sampleVenues from "../../../../state/stores/tests/sampleVenueData";
 
 storiesOf("Map", module)
   .add("Marker", (): React$Element<*> => (
