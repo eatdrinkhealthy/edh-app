@@ -118,7 +118,10 @@ if (Meteor.isClient) {
 
           Accounts.createUser(validUser, (err: IMeteorError) => {
             assert.isUndefined(err);
-            assert.equal("check meteor.userId", "logout, login, check userid again");
+            assert.equal(Meteor.user().username, validUser.username);
+            Meteor.logout();
+            Meteor.loginWithPassword(validUser.username, validUser.password);
+            assert.equal(Meteor.user().username, validUser.username);
             done();
           });
         });

@@ -18,19 +18,27 @@ declare module "meteor/meteor" {
     details?: string;
   }
 
+  declare export type IMeteorUser = {
+    username: string,
+    _id: string,
+    emails: [],
+  };
+
   declare export var Meteor: {
     settings: IMeteorSettings,
     startup(): void,
     Error: IMeteorError,
     isClient: boolean,
     isServer: boolean,
-    user(): {
-      username: string,
-      _id: string,
-      emails: [],
-    },
+    user(): IMeteorUser,
     userId(): string,
     _sleepForMs(number): void,
     setTimeout(func: any, delay?: number): void,
+    logout(callback?: (err?: IMeteorError) => void): void,
+    loginWithPassword(
+      string | IMeteorUser,
+      string,
+      callback?: (err?: IMeteorError) => void
+    ): void,
   }
 }
