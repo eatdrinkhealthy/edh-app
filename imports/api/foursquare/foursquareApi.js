@@ -74,6 +74,7 @@ export const httpCallFoursquareSearch = (
     });
   } catch (e) {
     // TODO log this exception to a logger service !!!
+    console.error("Foursquare API exception:", e.message);  // eslint-disable-line no-console
     apiResult = {
       statusCode: null,
       content: null,
