@@ -44,7 +44,7 @@ describe("parseFoursquareResponse", function () {
 });
 
 describe("httpCallFoursquareSearch", function () {
-  it("should return and empty httpResponse if throwing an exception", function () {
+  it("should return an empty httpResponse if throwing an exception (client_id undefined)", function () {
     const exceptionHttpResult = {
       statusCode: null,
       content: null,
@@ -52,7 +52,7 @@ describe("httpCallFoursquareSearch", function () {
       headers: {},
     };
 
-    // NOTE: currently,  client_id (Meteor.settings.foursquare.client_id) is not set,
+    // NOTE: currently, client_id (Meteor.settings.foursquare.client_id) is not set,
     //       which causes an exception.
     //       Sending 0, 0 lat lng will also cause an exception
     expect(httpCallFoursquareSearch("4c2cd86ed066bed06c3c5209", 0, 0)).toEqual(exceptionHttpResult);
