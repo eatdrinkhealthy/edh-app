@@ -268,6 +268,41 @@ if (Meteor.isClient) {
             });
           });
       });
+
+      describe("deny writes to user document", function () {
+        waitForLogout();
+        waitForResetDatabase();
+
+        const testUser = {
+          username: "orig",
+          email: "orig@test.com",
+          password: "StrongPassword",
+        };
+
+        it("should create a user for deny write testing",
+          function (done: () => void) {
+            Accounts.createUser(testUser, (err: IMeteorError) => {
+              assert.isUndefined(err);
+              assert.equal(Meteor.user().username, testUser.username);
+              done();
+            });
+          });
+
+        it("should deny adding any data to user document", function (done: () => void) {
+          Meteor.users.update(Meteor.userId(),
+            {
+              $set: {
+                "profile.favoriteSport": "Soccer",
+              },
+            },
+            (err, numDocsUpdated) => { // eslint-disable-line flowtype/require-parameter-type
+              assert.isDefined(err);
+              assert.equal(numDocsUpdated, false);
+              done();
+            },
+          );
+        });
+      });
     });
   });
 }
