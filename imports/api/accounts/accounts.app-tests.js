@@ -88,6 +88,7 @@ if (Meteor.isClient) {
 
             Accounts.createUser(invalidUser, (err: IMeteorError) => {
               assert.isDefined(err);
+              assert.equal(err.error, "validation-error");
               assert.equal(err.reason, "Username must be at least 4 characters");
               done();
             });
@@ -103,6 +104,7 @@ if (Meteor.isClient) {
 
             Accounts.createUser(invalidUser, (err: IMeteorError) => {
               assert.isDefined(err);
+              assert.equal(err.error, "validation-error");
               assert.equal(err.reason, "Address must be a valid e-mail address");
               done();
             });
@@ -118,6 +120,7 @@ if (Meteor.isClient) {
 
             Accounts.createUser(invalidUser, (err: IMeteorError) => {
               assert.isDefined(err);
+              assert.equal(err.error, "validation-error");
               assert.equal(err.reason, "Username failed regular expression validation");
               done();
             });
@@ -133,6 +136,7 @@ if (Meteor.isClient) {
 
             Accounts.createUser(invalidUser, (err: IMeteorError) => {
               assert.isDefined(err);
+              assert.equal(err.error, "validation-error");
               assert.equal(err.reason, "Username failed regular expression validation");
               done();
             });
@@ -201,6 +205,7 @@ if (Meteor.isClient) {
 
             Accounts.createUser(dupUser, (err: IMeteorError) => {
               assert.isDefined(err);
+              assert.equal(err.error, 403);
               assert.equal(err.reason, "Username already exists.");
               done();
             });
@@ -216,6 +221,7 @@ if (Meteor.isClient) {
 
             Accounts.createUser(dupUser, (err: IMeteorError) => {
               assert.isDefined(err);
+              assert.equal(err.error, 403);
               assert.equal(err.reason, "Username already exists.");
               done();
             });
@@ -231,6 +237,7 @@ if (Meteor.isClient) {
 
             Accounts.createUser(dupUser, (err: IMeteorError) => {
               assert.isDefined(err);
+              assert.equal(err.error, 403);
               assert.equal(err.reason, "Email already exists.");
               done();
             });
@@ -248,6 +255,7 @@ if (Meteor.isClient) {
 
             Accounts.createUser(dupUser, (err: IMeteorError) => {
               assert.isDefined(err);
+              assert.equal(err.error, 403);
               assert.equal(err.reason, "Username already exists.");
               done();
             });
@@ -263,6 +271,7 @@ if (Meteor.isClient) {
 
             Accounts.createUser(dupUser, (err: IMeteorError) => {
               assert.isDefined(err);
+              assert.equal(err.error, 403);
               assert.equal(err.reason, "Email already exists.");
               done();
             });

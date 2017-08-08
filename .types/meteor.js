@@ -14,8 +14,8 @@ declare module "meteor/meteor" {
     constructor(error: string | number, reason?: string, details?: string): IMeteorError;
 
     error: string | number;
-    reason?: string;
-    details?: string;
+    reason: string;
+    details: string;
   }
 
   declare export type IMeteorCallback = (err?: IMeteorError, res: any) => void;
