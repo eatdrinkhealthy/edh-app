@@ -6,32 +6,40 @@ class CreateAccount extends Component {
     handleSubmit: (username: string, email: string, password: string) => void,
   };
 
+  state = {
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
+
   form: HTMLFormElement;
 
-  email: HTMLInputElement;
+  handleInputChange = (event: Event) => {
+    // NOTE: this flow issue, although you see this example everywhere, may
+    // be pointing out why simulate change isn't working. (see notes in jest file).
 
-  username: HTMLInputElement;
+    // $FlowFixMe
+    const { value, name } = event.target;
 
-  password: HTMLInputElement;
-
-  confirmPassword: HTMLInputElement;
+    this.setState({
+      [name]: value,
+    });
+  }
 
   onSubmit = (event: Event) => {
     event.preventDefault();
 
-    const username = this.username.value;
-    const email = this.email.value;
-    const password = this.password.value;
     const errors = [];
 
-    if (this.password.value !== this.confirmPassword.value) {
+    if (this.state.password !== this.state.confirmPassword) {
       errors.push("Password and Confirm Password fields do not match.");
     }
 
     if (errors.length) {
       errors.forEach((error: string): void => alert(error));
     } else {
-      this.props.handleSubmit(username, email, password);
+      this.props.handleSubmit(this.state.username, this.state.email, this.state.password);
       this.form.reset();
     }
   }
@@ -55,21 +63,19 @@ class CreateAccount extends Component {
                 type="text"
                 name="username"
                 id="username"
-                ref={(el: HTMLInputElement) => {
-                  this.username = el;
-                }}
+                value={this.state.username}
+                onChange={this.handleInputChange}
               />
             </div>
             <div className="mt3">
-              <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+              <label className="db fw6 lh-copy f6" htmlFor="email">Email</label>
               <input
                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                 type="email"
-                name="email-address"
-                id="email-address"
-                ref={(el: HTMLInputElement) => {
-                  this.email = el;
-                }}
+                name="email"
+                id="email"
+                value={this.state.email}
+                onChange={this.handleInputChange}
               />
             </div>
             <div className="mv3">
@@ -79,21 +85,19 @@ class CreateAccount extends Component {
                 type="password"
                 name="password"
                 id="password"
-                ref={(el: HTMLInputElement) => {
-                  this.password = el;
-                }}
+                value={this.state.password}
+                onChange={this.handleInputChange}
               />
             </div>
             <div className="mv3">
-              <label className="db fw6 lh-copy f6" htmlFor="confirm-password">Confirm Password</label>
+              <label className="db fw6 lh-copy f6" htmlFor="confirmPassword">Confirm Password</label>
               <input
                 className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                 type="password"
-                name="confirm-password"
-                id="confirm-password"
-                ref={(el: HTMLInputElement) => {
-                  this.confirmPassword = el;
-                }}
+                name="confirmPassword"
+                id="confirmPassword"
+                value={this.state.confirmPassword}
+                onChange={this.handleInputChange}
               />
             </div>
           </fieldset>

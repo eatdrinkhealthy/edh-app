@@ -54,7 +54,9 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
             className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
             id="username"
             name="username"
+            onChange={[Function]}
             type="text"
+            value=""
           />
         </div>
         <div
@@ -62,15 +64,17 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
         >
           <label
             className="db fw6 lh-copy f6"
-            htmlFor="email-address"
+            htmlFor="email"
           >
             Email
           </label>
           <input
             className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="email-address"
-            name="email-address"
+            id="email"
+            name="email"
+            onChange={[Function]}
             type="email"
+            value=""
           />
         </div>
         <div
@@ -86,7 +90,9 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
             className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
             id="password"
             name="password"
+            onChange={[Function]}
             type="password"
+            value=""
           />
         </div>
         <div
@@ -94,15 +100,17 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
         >
           <label
             className="db fw6 lh-copy f6"
-            htmlFor="confirm-password"
+            htmlFor="confirmPassword"
           >
             Confirm Password
           </label>
           <input
             className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="confirm-password"
-            name="confirm-password"
+            id="confirmPassword"
+            name="confirmPassword"
+            onChange={[Function]}
             type="password"
+            value=""
           />
         </div>
       </fieldset>
