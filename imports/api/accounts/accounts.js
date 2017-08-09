@@ -4,7 +4,7 @@ import { Accounts } from "meteor/accounts-base";
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
 
 Meteor.users.deny({
-  update() {
+  update(): boolean {
     return true;
   },
 });
