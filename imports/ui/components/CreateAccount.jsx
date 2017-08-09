@@ -40,8 +40,13 @@ class CreateAccount extends Component {
     if (errors.length) {
       errors.forEach((error: string): void => alert(error));
     } else {
+      this.setState({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
       this.props.handleSubmit(this.state.username, this.state.email, this.state.password);
-      this.form.reset();
     }
   }
 

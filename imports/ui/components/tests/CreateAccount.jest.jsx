@@ -31,4 +31,24 @@ describe("<CreateAccount />", function () {
     wrapper.find("input[type='submit']").simulate("submit");
     expect(props.handleSubmit).toHaveBeenCalledWith("user12", "user12@test.com", "user12pw");
   });
+
+  it("should clear the form input fields (state) on successful submit", function () {
+    const props = {
+      handleSubmit: jest.fn(),
+    };
+
+    const wrapper = mountCreateAccountForm(
+      <CreateAccount {...props} />,
+      "user12",
+      "user12@test.com",
+      "user12pw",
+      "user12pw",
+    );
+
+    wrapper.find("input[type='submit']").simulate("submit");
+    expect(wrapper.find("input#username").props().value).toEqual("");
+    expect(wrapper.find("input#email").props().value).toEqual("");
+    expect(wrapper.find("input#password").props().value).toEqual("");
+    expect(wrapper.find("input#confirmPassword").props().value).toEqual("");
+  });
 });
