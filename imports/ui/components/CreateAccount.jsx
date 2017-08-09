@@ -16,8 +16,9 @@ class CreateAccount extends Component {
   form: HTMLFormElement;
 
   handleInputChange = (event: Event) => {
-    // NOTE: this flow issue, although you see this example everywhere, may
-    // be pointing out why simulate change isn't working. (see notes in jest file).
+    // NOTE: although you see this handleInputChange example in react docs, it is
+    // getting a flow error. and may be pointing out why simulate change doesn't
+    // work without setting node value first. (see notes in jest file).
 
     // $FlowFixMe
     const { value, name } = event.target;
