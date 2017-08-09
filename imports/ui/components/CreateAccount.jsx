@@ -13,7 +13,11 @@ class CreateAccount extends Component {
     confirmPassword: "",
   };
 
-  form: HTMLFormElement;
+  componentDidMount() {
+    this.usernameInput.focus();
+  }
+
+  usernameInput: HTMLInputElement;
 
   handleInputChange = (event: Event) => {
     // NOTE: although you see this handleInputChange example in react docs, it is
@@ -56,9 +60,6 @@ class CreateAccount extends Component {
         <form
           className="measure center"
           onSubmit={this.onSubmit}
-          ref={(el: HTMLFormElement) => {
-            this.form = el;
-          }}
         >
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
             <legend className="f4 fw6 ph0 mh0">Create Account</legend>
@@ -71,6 +72,9 @@ class CreateAccount extends Component {
                 id="username"
                 value={this.state.username}
                 onChange={this.handleInputChange}
+                ref={(el: HTMLInputElement) => {
+                  this.usernameInput = el;
+                }}
               />
             </div>
             <div className="mt3">
