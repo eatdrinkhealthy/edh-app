@@ -7,21 +7,24 @@
 jest.mock("../../components/AlertMessage", () => (
   class AlertMessage {
     static success = jest.fn();
+    static warning = jest.fn();
   }
 ));
 
 // NOTE, this mock overrides a global simpler mock for accounts-base
 jest.mock("meteor/accounts-base", () => ({
   Accounts: {
-    createUser: jest.fn(({ username, email, password }, callback) => callback()),
+    createUser: jest.fn()
+      .mockImplementationOnce(({ username, email, password }, callback) => callback())
+      .mockImplementationOnce(({ username, email, password }, callback) => callback("error")),
   },
 }));
 /* eslint-enable flowtype/require-return-type, flowtype/require-parameter-type */
 
 import React from "react";
-import { mount } from "enzyme";
 import CreateAccountContainer, { lookupErrorMessage } from "../CreateAccountContainer";
 import AlertMessage from "../../components/AlertMessage";
+import { mountCreateAccountForm } from "../../components/tests/CreateAccount.jest";
 
 describe("lookupErrorMessage", function () {
   it("should return a default message when can't match error", function () {
@@ -47,30 +50,30 @@ describe("lookupErrorMessage", function () {
 
 describe("<CreateAccountContainer />", function () {
   it("should call AlertMessage.success when Accounts.createUser is successful", function () {
-    const wrapper = mount(<CreateAccountContainer />);
-
-    const usernameInput = wrapper.find("[name='username']");
-    const emailInput = wrapper.find("[name='email']");
-    const passwordInput = wrapper.find("[name='password']");
-    const confirmPasswordInput = wrapper.find("[name='confirmPassword']");
-
-    // $FlowFixMe
-    usernameInput.get(0).value = "user12";
-    usernameInput.simulate("change", usernameInput);
-
-    // $FlowFixMe
-    emailInput.get(0).value = "user12@test.com";
-    emailInput.simulate("change", emailInput);
-
-    // $FlowFixMe
-    passwordInput.get(0).value = "user12pw";
-    passwordInput.simulate("change", passwordInput);
-
-    // $FlowFixMe
-    confirmPasswordInput.get(0).value = "user12pw";
-    confirmPasswordInput.simulate("change", confirmPasswordInput);
+    const wrapper = mountCreateAccountForm(
+      <CreateAccountContainer />,
+      "user12",
+      "user12@test.com",
+      "user12pw",
+      "user12pw",
+    );
 
     wrapper.find("input[type='submit']").simulate("submit");
     expect(AlertMessage.success).toHaveBeenCalledWith("Welcome user12!");
+  });
+
+  it("should call AlertMessage.warning when Accounts.createUser is unsuccessful", function () {
+    const wrapper = mountCreateAccountForm(
+      <CreateAccountContainer />,
+      "user12",
+      "user12@test.com",
+      "user12pw",
+      "user12pw",
+    );
+
+    wrapper.find("input[type='submit']").simulate("submit");
+    expect(AlertMessage.warning).toHaveBeenCalledWith(
+      "Unable to create a new account at this time. Please try again later.",
+    );
   });
 });
