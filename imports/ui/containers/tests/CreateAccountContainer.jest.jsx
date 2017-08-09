@@ -22,31 +22,9 @@ jest.mock("meteor/accounts-base", () => ({
 /* eslint-enable flowtype/require-return-type, flowtype/require-parameter-type */
 
 import React from "react";
-import CreateAccountContainer, { lookupErrorMessage } from "../CreateAccountContainer";
+import CreateAccountContainer from "../CreateAccountContainer";
 import AlertMessage from "../../components/AlertMessage";
 import mountCreateAccountForm from "../../components/tests/CreateAccount_helper";
-
-describe("lookupErrorMessage", function () {
-  it("should return a default message when can't match error", function () {
-    expect(lookupErrorMessage("unknown error code"))
-      .toEqual("Unable to create a new account at this time. Please try again later.");
-  });
-
-  it("should match error message for username too short", function () {
-    expect(lookupErrorMessage("Username must be at least 4 characters"))
-      .toEqual("Username must be at least 4 characters.");
-  });
-
-  it("should match error message for root / admin username not allowed", function () {
-    expect(lookupErrorMessage("Username failed regular expression validation"))
-      .toEqual("Username can not be named 'root' or 'admin'.");
-  });
-
-  it("should match error message for email already exists", function () {
-    expect(lookupErrorMessage("Email already exists."))
-      .toEqual("An account with this email address already exists.");
-  });
-});
 
 describe("<CreateAccountContainer />", function () {
   it("should call AlertMessage.success when Accounts.createUser is successful", function () {
