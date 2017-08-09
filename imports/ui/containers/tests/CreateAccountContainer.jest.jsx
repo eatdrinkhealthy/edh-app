@@ -24,7 +24,7 @@ jest.mock("meteor/accounts-base", () => ({
 import React from "react";
 import CreateAccountContainer, { lookupErrorMessage } from "../CreateAccountContainer";
 import AlertMessage from "../../components/AlertMessage";
-import { mountCreateAccountForm } from "../../components/tests/CreateAccount.jest";
+import mountCreateAccountForm from "../../components/tests/CreateAccount_helper";
 
 describe("lookupErrorMessage", function () {
   it("should return a default message when can't match error", function () {

@@ -5,6 +5,14 @@
 import { mount } from "enzyme";
 import type { ReactWrapper } from "enzyme";
 
+// NOTE: mountCreateAccountForm used to be exported from CreateAccount.jest.jsx,
+//       but whenever it was imported in to another module (e.g. CreateAccountContainer.jest.jsx)
+//       it would generate a snapshot file for the file it was imported to (but
+//       generate a snapshot of <CreateAccount />)
+//       Moving mountCreateAccountForm to its own module resolved that.
+//
+//       Weird.
+
 const mountCreateAccountForm = ( // eslint-disable-line
   formComponent: React$Element<*>,
   username: string,
