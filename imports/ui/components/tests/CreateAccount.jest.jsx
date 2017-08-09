@@ -65,4 +65,20 @@ describe("<CreateAccount />", function () {
     expect(wrapper.find("input#password").props().value).toEqual("");
     expect(wrapper.find("input#confirmPassword").props().value).toEqual("");
   });
+
+  it("should set focus to username input on render", function () {
+    const props = {
+      handleSubmit: jest.fn(),
+    };
+
+    const wrapper = mountCreateAccountForm(
+      <CreateAccount {...props} />,
+      "user12",
+      "user12@test.com",
+      "user12pw",
+      "user12pw",
+    );
+
+    expect(wrapper.find("input#username").get(0)).toBe(document.activeElement);
+  });
 });
