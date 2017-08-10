@@ -34,7 +34,7 @@ export class FilterItem extends Component {
 }
 
 type IFilterListProps = {
-  filterList?: Array<IFilter>,
+  filterList?: Array<IFilter>, // eslint-disable-line react/require-default-props
   setFilterHandler: () => void,
 };
 
