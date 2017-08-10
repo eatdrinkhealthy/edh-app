@@ -1,9 +1,11 @@
 // @flow
 import React from "react";
 import { Link } from "react-router-dom";
+import type { RouterHistory } from "react-router-dom";
 import CreateAccountContainer from "../containers/CreateAccountContainer";
 
-const Sidebar = (): React$Element<*> => (
+// eslint-disable-next-line react/require-default-props
+const Sidebar = ({ history }: { history?: RouterHistory }): React$Element<*> => (
   <div className="sidebar">
     <Link to="/">Home</Link>
     <h2 className="mh4">Eat Drink Healthy</h2>
@@ -11,7 +13,7 @@ const Sidebar = (): React$Element<*> => (
       A platform to find, share, and discuss healthy places to shop and eat.
     </div>
     <div className="get-started">Get Started</div>
-    <CreateAccountContainer />
+    <CreateAccountContainer routerHistory={history} />
   </div>
 );
 
