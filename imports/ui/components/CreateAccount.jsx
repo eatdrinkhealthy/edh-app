@@ -19,6 +19,16 @@ class CreateAccount extends Component {
 
   usernameInput: HTMLInputElement;
 
+  resetForm = () => {
+    this.setState({
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+    this.usernameInput.focus();
+  }
+
   handleInputChange = (event: Event) => {
     // NOTE: although you see this handleInputChange example in react docs, it is
     // getting a flow error. and may be pointing out why simulate change doesn't
@@ -44,12 +54,7 @@ class CreateAccount extends Component {
     if (errors.length) {
       errors.forEach((error: string): void => alert(error));
     } else {
-      this.setState({
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
+      this.resetForm();
       this.props.handleSubmit(this.state.username, this.state.email, this.state.password);
     }
   }

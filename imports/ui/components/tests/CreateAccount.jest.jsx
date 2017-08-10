@@ -46,7 +46,7 @@ describe("<CreateAccount />", function () {
     expect(props.handleSubmit).toHaveBeenCalledWith("user12", "user12@test.com", "user12pw");
   });
 
-  it("should clear the form input fields (state) on successful submit", function () {
+  it("should clear input fields and give username focus on successful submit", function () {
     const props = {
       handleSubmit: jest.fn(),
     };
@@ -58,12 +58,19 @@ describe("<CreateAccount />", function () {
       "user12pw",
       "user12pw",
     );
+    const usernameNode = wrapper.find("input#username");
+    const confirmPasswordNode = wrapper.find("input#confirmPassword");
 
+    // give focus to confirm password input (like a user would do before submit)
+    // $FlowFixMe
+    confirmPasswordNode.get(0).focus();
     wrapper.find("input[type='submit']").simulate("submit");
-    expect(wrapper.find("input#username").props().value).toEqual("");
+
+    expect(usernameNode.props().value).toEqual("");
     expect(wrapper.find("input#email").props().value).toEqual("");
     expect(wrapper.find("input#password").props().value).toEqual("");
-    expect(wrapper.find("input#confirmPassword").props().value).toEqual("");
+    expect(confirmPasswordNode.props().value).toEqual("");
+    expect(usernameNode.get(0)).toBe(document.activeElement);
   });
 
   it("should set focus to username input on render", function () {
