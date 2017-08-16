@@ -25,6 +25,6 @@ describe("Join - create new user", function () {
   });
 
   it("should redirect to the landing / map page", function () {
-
+    browser.waitForExist(els.navbar.component);
   });
 });
