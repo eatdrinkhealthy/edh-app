@@ -4,24 +4,24 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* global browser */
 
-import el from "./elements";
+import els from "./elements";
 import DEFAULT_FILTER_LIST from "../../imports/state/data/defaultFilters";
 
 describe("Smoke Test", function () {
   describe("Landing Page", function () {
     it("displays the map and navbar as the main page", function () {
-      browser.url(el.baseUrl);
+      browser.url(els.baseUrl);
 
       expect(browser.getTitle()).toEqual("Eat Drink Healthy");
-      expect(browser.waitForExist(el.locationsMapComponent)).toBe(true);
-      expect(browser.waitForExist(el.navbarComponent)).toBe(true);
+      expect(browser.waitForExist(els.locationsMapComponent)).toBe(true);
+      expect(browser.waitForExist(els.navbar.component)).toBe(true);
     });
 
     it("displays at least one map marker - NOTE may fail based on location", function () {
-      browser.url(el.baseUrl);
-      browser.waitForExist(el.markerComponent);
+      browser.url(els.baseUrl);
+      browser.waitForExist(els.markerComponent);
 
-      const markerArray = browser.elements(el.markerComponent).value;
+      const markerArray = browser.elements(els.markerComponent).value;
 
       expect(markerArray.length).toBeGreaterThan(1);
     });
@@ -29,25 +29,25 @@ describe("Smoke Test", function () {
 
   describe("Filter Page", function () {
     it("displays the filter page when filter link clicked", function () {
-      browser.url(el.baseUrl);
-      browser.waitForExist(el.filterLinkComponent);
-      browser.click(el.filterLinkComponent);
+      browser.url(els.baseUrl);
+      browser.waitForExist(els.navbar.filterLink);
+      browser.click(els.navbar.filterLink);
 
-      expect(browser.waitForExist(el.filterListComponent)).toBe(true);
+      expect(browser.waitForExist(els.filterListComponent)).toBe(true);
     });
 
     it("has a toggle component for each filter", function () {
-      browser.url(`${el.baseUrl}/filter`);
-      browser.waitForExist(el.filterListComponent);
+      browser.url(`${els.baseUrl}/filter`);
+      browser.waitForExist(els.filterListComponent);
 
-      const numberOfFilterToggles = browser.elements(el.filterToggleComponent).value.length;
+      const numberOfFilterToggles = browser.elements(els.filterToggleComponent).value.length;
 
       expect(numberOfFilterToggles).toBe(DEFAULT_FILTER_LIST.length);
     });
 
     it("has default filters set", function () {
-      browser.url(`${el.baseUrl}/filter`);
-      browser.waitForExist(el.filterListComponent);
+      browser.url(`${els.baseUrl}/filter`);
+      browser.waitForExist(els.filterListComponent);
 
       const defaultFiltersOn = DEFAULT_FILTER_LIST.filter(filter => filter.on);
       const togglesOn = "input:checked";
@@ -57,47 +57,47 @@ describe("Smoke Test", function () {
     });
 
     it("returns to the landing page when 'x' is clicked", function () {
-      browser.url(`${el.baseUrl}/filter`);
-      browser.waitForExist(el.filterListComponent);
-      browser.click(el.filterCloseLink);
+      browser.url(`${els.baseUrl}/filter`);
+      browser.waitForExist(els.filterListComponent);
+      browser.click(els.filterCloseLink);
 
-      expect(browser.waitForExist(el.navbarComponent)).toBe(true);
+      expect(browser.waitForExist(els.navbar.component)).toBe(true);
     });
 
     it("returns more results when more filters clicked - NOTE may fail based on location", function () {
       // go to the filter page
-      browser.url(`${el.baseUrl}/filter`);
-      browser.waitForExist(el.filterListComponent);
+      browser.url(`${els.baseUrl}/filter`);
+      browser.waitForExist(els.filterListComponent);
 
       // get all the unchecked filter toggle elements, and click them
-      const filterTogglesUnchecked = browser.elements(el.filterToggleUnchecked).value;
+      const filterTogglesUnchecked = browser.elements(els.filterToggleUnchecked).value;
       filterTogglesUnchecked.forEach(elem => elem.click());
 
       // go to the map (landing page)
-      browser.click(el.filterCloseLink);
-      browser.waitForExist(el.markerComponent, 3000); // allow for some api response time
+      browser.click(els.filterCloseLink);
+      browser.waitForExist(els.markerComponent, 3000); // allow for some api response time
 
       // check that there are many more results
-      const markerArray = browser.elements(el.markerComponent).value;
+      const markerArray = browser.elements(els.markerComponent).value;
       expect(markerArray.length).toBeGreaterThan(10);
     });
   });
 
   describe("Sidebar / sign-in Page", function () {
-    it("displays the sidebar when hamburger clicked", function () {
-      browser.url(el.baseUrl);
-      browser.waitForExist(el.hamburger);
-      browser.click(el.hamburger);
+    it("displays the sidebar when join link clicked", function () {
+      browser.url(els.baseUrl);
+      browser.waitForExist(els.navbar.joinLink);
+      browser.click(els.navbar.joinLink);
 
-      expect(browser.waitForExist(el.sidebarComponent)).toBe(true);
+      expect(browser.waitForExist(els.sidebarComponent)).toBe(true);
     });
 
     it("goes back to landing page when home link clicked", function () {
-      browser.url(`${el.baseUrl}/sidebar`);
-      browser.waitForExist(el.homeLinkComponent);
-      browser.click(el.homeLinkComponent);
+      browser.url(`${els.baseUrl}/sidebar`);
+      browser.waitForExist(els.homeLinkComponent);
+      browser.click(els.homeLinkComponent);
 
-      expect(browser.waitForExist(el.navbarComponent)).toBe(true);
+      expect(browser.waitForExist(els.navbar.component)).toBe(true);
     });
   });
 });
