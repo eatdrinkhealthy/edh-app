@@ -2,6 +2,7 @@ export const baseUrl = "http://localhost:3000";
 
 export const elements = {
   locationsMapComponent: "div.map-container",
+  markerComponent: "div.markerContainer",
   navbar: {
     component: "div.nav a[href='/sidebar']",
     joinLink: "#navbarJoinLink",
@@ -12,7 +13,14 @@ export const elements = {
     component: "div.sidebar > div.pitch",
     homeLink: "a=Home",
   },
-  markerComponent: "div.markerContainer",
+  createAccountForm: {
+    usernameInput: "#username",
+    emailInput: "#email",
+    passwordInput: "#password",
+    confirmPasswordInput: "#confirmPassword",
+    submitButton: "input[value='Create Account']",
+  },
+  alertMessage: ".s-alert-box",  // NOTE: looked this class up in the component source code
   filterPage: {
     url: `${baseUrl}/filter`,
     component: "div.filter",

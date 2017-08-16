@@ -19,7 +19,7 @@ describe("Smoke Test", function () {
 
     it("displays at least one map marker - NOTE may fail based on location", function () {
       browser.url(baseUrl);
-      browser.waitForExist(els.markerComponent);
+      browser.waitForExist(els.markerComponent, 3000); // allow for some api response time
 
       const markerArray = browser.elements(els.markerComponent).value;
 
