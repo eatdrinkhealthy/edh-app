@@ -89,13 +89,13 @@ describe("Smoke Test", function () {
       browser.waitForExist(els.navbar.joinLink);
       browser.click(els.navbar.joinLink);
 
-      expect(browser.waitForExist(els.sidebarComponent)).toBe(true);
+      expect(browser.waitForExist(els.sidebar.component)).toBe(true);
     });
 
     it("goes back to landing page when home link clicked", function () {
       browser.url(`${els.baseUrl}/sidebar`);
-      browser.waitForExist(els.homeLinkComponent);
-      browser.click(els.homeLinkComponent);
+      browser.waitForExist(els.sidebar.homeLink);
+      browser.click(els.sidebar.homeLink);
 
       expect(browser.waitForExist(els.navbar.component)).toBe(true);
     });

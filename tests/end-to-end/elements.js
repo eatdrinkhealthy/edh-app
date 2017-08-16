@@ -6,9 +6,11 @@ const elements = {
     joinLink: "#navbarJoinLink",
     filterLink: "#navbarFilterLink",
   },
-  sidebarComponent: "div.sidebar > div.pitch",
+  sidebar: {
+    component: "div.sidebar > div.pitch",
+    homeLink: "a=Home",
+  },
   markerComponent: "div.markerContainer",
-  homeLinkComponent: "a=Home",
   filterListComponent: "div.filter",
   filterCloseLink: "div.close-filter",
   filterToggleComponent: "span.react-toggle-label",
