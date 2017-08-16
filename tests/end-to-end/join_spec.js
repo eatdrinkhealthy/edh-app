@@ -20,7 +20,8 @@ describe("Join - create new user", function () {
   });
 
   it("should display 'Welcome new user!' AlertMessage", function () {
-    browser.waitForExist(els.alertMessage, 2500);
+    browser.waitForExist(els.alertMessage, 2000);
+    expect(browser.getHTML(els.alertMessage)).toContain("Welcome testuser!");
   });
 
   it("should redirect to the landing / map page", function () {
