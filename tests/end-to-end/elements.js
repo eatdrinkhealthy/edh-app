@@ -11,10 +11,12 @@ const elements = {
     homeLink: "a=Home",
   },
   markerComponent: "div.markerContainer",
-  filterListComponent: "div.filter",
-  filterCloseLink: "div.close-filter",
-  filterToggleComponent: "span.react-toggle-label",
-  filterToggleUnchecked: "div.react-toggle:not(.react-toggle--checked)",
+  filterList: {
+    component: "div.filter",
+    closeLink: "div.close-filter",
+    toggle: "span.react-toggle-label",
+    toggleUnchecked: "div.react-toggle:not(.react-toggle--checked)",
+  },
 };
 
 export default elements;

@@ -33,21 +33,21 @@ describe("Smoke Test", function () {
       browser.waitForExist(els.navbar.filterLink);
       browser.click(els.navbar.filterLink);
 
-      expect(browser.waitForExist(els.filterListComponent)).toBe(true);
+      expect(browser.waitForExist(els.filterList.component)).toBe(true);
     });
 
     it("has a toggle component for each filter", function () {
       browser.url(`${els.baseUrl}/filter`);
-      browser.waitForExist(els.filterListComponent);
+      browser.waitForExist(els.filterList.component);
 
-      const numberOfFilterToggles = browser.elements(els.filterToggleComponent).value.length;
+      const numberOfFilterToggles = browser.elements(els.filterList.toggle).value.length;
 
       expect(numberOfFilterToggles).toBe(DEFAULT_FILTER_LIST.length);
     });
 
     it("has default filters set", function () {
       browser.url(`${els.baseUrl}/filter`);
-      browser.waitForExist(els.filterListComponent);
+      browser.waitForExist(els.filterList.component);
 
       const defaultFiltersOn = DEFAULT_FILTER_LIST.filter(filter => filter.on);
       const togglesOn = "input:checked";
@@ -58,8 +58,8 @@ describe("Smoke Test", function () {
 
     it("returns to the landing page when 'x' is clicked", function () {
       browser.url(`${els.baseUrl}/filter`);
-      browser.waitForExist(els.filterListComponent);
-      browser.click(els.filterCloseLink);
+      browser.waitForExist(els.filterList.component);
+      browser.click(els.filterList.closeLink);
 
       expect(browser.waitForExist(els.navbar.component)).toBe(true);
     });
@@ -67,14 +67,14 @@ describe("Smoke Test", function () {
     it("returns more results when more filters clicked - NOTE may fail based on location", function () {
       // go to the filter page
       browser.url(`${els.baseUrl}/filter`);
-      browser.waitForExist(els.filterListComponent);
+      browser.waitForExist(els.filterList.component);
 
       // get all the unchecked filter toggle elements, and click them
-      const filterTogglesUnchecked = browser.elements(els.filterToggleUnchecked).value;
+      const filterTogglesUnchecked = browser.elements(els.filterList.toggleUnchecked).value;
       filterTogglesUnchecked.forEach(elem => elem.click());
 
       // go to the map (landing page)
-      browser.click(els.filterCloseLink);
+      browser.click(els.filterList.closeLink);
       browser.waitForExist(els.markerComponent, 3000); // allow for some api response time
 
       // check that there are many more results
