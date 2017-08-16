@@ -72,6 +72,7 @@
 * [chimp](https://chimp.readme.io/docs/command-line-options):
   - loads end to end tests from: `tests/end-to-end`
   - test files should be named `*_spec.js`
+  - __RECOMMENDED__: run meteor server in test mode, this uses the meteor test database instead of development database (there is a package.json script to do so)
 
 #### Project test file location and naming convention
  * The following convention allows you to colocate test files in the same or sub directory of the system under test, without the test runners picking up the incorrect test file
