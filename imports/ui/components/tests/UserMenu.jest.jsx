@@ -7,7 +7,7 @@ import { MemoryRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import UserMenu from "../UserMenu";
 
-describe("<UserMenu", function () {
+describe("<UserMenu />", function () {
   it("matches render snapshot", function () {
     const tree = renderer.create(
       <MemoryRouter>
