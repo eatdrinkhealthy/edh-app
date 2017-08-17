@@ -1,27 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<UserMenu /> matches render snapshot = 1`] = `
-<a
-  className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-purple"
-  href="/sidebar"
-  id="navbarJoinLink"
-  onClick={[Function]}
->
-  Join
-</a>
-`;
-
-exports[`<UserMenu /> matches render snapshot -  1`] = `
-<a
-  className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-purple"
-  href="/sidebar"
-  id="navbarJoinLink"
-  onClick={[Function]}
->
-  Join
-</a>
-`;
-
 exports[`<UserMenu /> matches render snapshot - no username 1`] = `
 <a
   className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-purple"
@@ -33,35 +11,8 @@ exports[`<UserMenu /> matches render snapshot - no username 1`] = `
 </a>
 `;
 
-exports[`<UserMenu /> matches render snapshot - no username 2`] = `
-<a
-  className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-purple"
-  href="/sidebar"
-  id="navbarJoinLink"
-  onClick={[Function]}
->
-  Join
-</a>
-`;
-
 exports[`<UserMenu /> matches render snapshot - with username 1`] = `
-<a
-  className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-purple"
-  href="/sidebar"
-  id="navbarJoinLink"
-  onClick={[Function]}
->
-  Join
-</a>
-`;
-
-exports[`<UserMenu /> matches render snapshot 1`] = `
-<a
-  className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-purple"
-  href="/sidebar"
-  id="navbarJoinLink"
-  onClick={[Function]}
->
-  Join
-</a>
+<span>
+  testUser
+</span>
 `;
