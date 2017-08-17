@@ -3,7 +3,15 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class UserMenu extends Component {
-  render() {
+  props: {
+    username?: ?string,
+  };
+
+  static defaultProps = {
+    username: null,
+  };
+
+  render() {  // eslint-disable-line flowtype/require-return-type
     return (
       <span>
         <span>UserMenu</span>
