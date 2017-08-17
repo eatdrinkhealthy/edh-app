@@ -4,6 +4,7 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { storiesOf, action } from "@storybook/react";
+import { text } from "@storybook/addon-knobs";
 
 import Navbar from "../../Navbar";
 import CreateAccount from "../../CreateAccount";
@@ -20,5 +21,5 @@ storiesOf("Page Sections", module)
     <CreateAccount handleSubmit={action("submitted")} />
   ))
   .add("UserMenu", (): React$Element<*> => (
-    <UserMenu />
+    <UserMenu username={text("username", "")} />
   ));
