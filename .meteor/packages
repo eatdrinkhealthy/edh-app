@@ -25,6 +25,7 @@ mdg:validated-method
 
 # ui
 static-html
+react-meteor-data              # make react component reactive to meteor reactive data
 
 # data
 mongo@1.1.19                   # The database Meteor supports right now

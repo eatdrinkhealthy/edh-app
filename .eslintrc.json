@@ -40,7 +40,8 @@
       "meteor/aldeed:simple-schema",
       "meteor/practicalmeteor:chai",
       "meteor/xolvio:cleaner",
-      "meteor/http"
+      "meteor/http",
+      "meteor/react-meteor-data"
     ],
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true
