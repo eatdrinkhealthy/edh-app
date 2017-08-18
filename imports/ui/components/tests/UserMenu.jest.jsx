@@ -9,10 +9,10 @@ import { shallow } from "enzyme";
 import UserMenu from "../UserMenu";
 
 describe("<UserMenu />", function () {
-  it("matches render snapshot - no username", function () {
+  it("matches render snapshot - null username", function () {
     const tree = renderer.create(
       <MemoryRouter>
-        <UserMenu />
+        <UserMenu username={null} />
       </MemoryRouter>,
     ).toJSON();
     expect(tree).toMatchSnapshot();

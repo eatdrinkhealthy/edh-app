@@ -4,11 +4,7 @@ import { Link } from "react-router-dom";
 
 class UserMenu extends Component {
   props: {
-    username?: string,
-  };
-
-  static defaultProps = {
-    username: "",
+    username: ?string,
   };
 
   renderLoggedOut(): React$Element<*> {  // eslint-disable-line class-methods-use-this

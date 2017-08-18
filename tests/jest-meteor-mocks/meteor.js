@@ -13,6 +13,7 @@ const Meteor = {
   wrapAsync: jest.fn(() => jest.fn(() => { })),
   Error,
   userId: jest.fn(),
+  user: jest.fn(),
   settings: {
     public: {
       googleMapsApiKey: "TestAPIKeyValue",
