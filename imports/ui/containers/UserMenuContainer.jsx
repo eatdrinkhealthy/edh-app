@@ -4,7 +4,8 @@ import { createContainer } from "meteor/react-meteor-data";
 import UserMenu from "../components/UserMenu";
 
 const UserMenuContainer = createContainer(() => {
-  const username = Meteor.user() && Meteor.user().username;
+  const user = Meteor.user();
+  const username = user && user.username;
 
   return {
     username,

@@ -57,7 +57,7 @@ declare module "meteor/meteor" {
     Error: IMeteorError,
     isClient: boolean,
     isServer: boolean,
-    user(): IMeteorUser,
+    user(): ?IMeteorUser,
     userId(): string,
     users: IMeteorCollection,
     _sleepForMs(number): void,

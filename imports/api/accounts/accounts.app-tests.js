@@ -55,8 +55,11 @@ if (Meteor.isClient) {
             };
 
             Accounts.createUser(validUser, (err: IMeteorError) => {
+              const user = Meteor.user();
+              const username = user && user.username;
+
               assert.isUndefined(err);
-              assert.equal(validUser.username, Meteor.user().username);
+              assert.equal(validUser.username, username);
               done();
             });
           });
@@ -156,8 +159,11 @@ if (Meteor.isClient) {
         it("should create user with password that has special characters",
           function (done: () => void) {
             Accounts.createUser(userWithStrangePw, (err: IMeteorError) => {
+              const user = Meteor.user();
+              const username = user && user.username;
+
               assert.isUndefined(err);
-              assert.equal(Meteor.user().username, userWithStrangePw.username);
+              assert.equal(username, userWithStrangePw.username);
               done();
             });
           });
@@ -168,7 +174,10 @@ if (Meteor.isClient) {
           function (done: () => void) {
             Meteor.loginWithPassword(userWithStrangePw.username, userWithStrangePw.password,
               function () {
-                assert.equal(Meteor.user().username, userWithStrangePw.username);
+                const user = Meteor.user();
+                const username = user && user.username;
+
+                assert.equal(username, userWithStrangePw.username);
                 done();
               });
           });
@@ -187,8 +196,11 @@ if (Meteor.isClient) {
         it("should create a user to be used for comparing duplicates",
           function (done: () => void) {
             Accounts.createUser(originalUser, (err: IMeteorError) => {
+              const user = Meteor.user();
+              const username = user && user.username;
+
               assert.isUndefined(err);
-              assert.equal(Meteor.user().username, originalUser.username);
+              assert.equal(username, originalUser.username);
               done();
             });
           });
@@ -291,8 +303,11 @@ if (Meteor.isClient) {
         it("should create a user for deny write testing",
           function (done: () => void) {
             Accounts.createUser(testUser, (err: IMeteorError) => {
+              const user = Meteor.user();
+              const username = user && user.username;
+
               assert.isUndefined(err);
-              assert.equal(Meteor.user().username, testUser.username);
+              assert.equal(username, testUser.username);
               done();
             });
           });
