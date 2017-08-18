@@ -7,6 +7,10 @@
 import { elements as els } from "./elements";
 
 describe("Join - create new user", function () {
+  afterAll(() => {
+    browser.execute("Meteor.logout()");
+  });
+
   it("should navigate to the join dialog and create a new user", function () {
     browser.url(els.sidebarPage.url);
 

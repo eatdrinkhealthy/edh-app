@@ -4,7 +4,7 @@ export const elements = {
   locationsMapComponent: "div.map-container",
   markerComponent: "div.markerContainer",
   navbar: {
-    component: "div.nav a[href='/sidebar']",
+    component: "div.nav #navbarFilterLink",
     joinLink: "#navbarJoinLink",
     filterLink: "#navbarFilterLink",
   },
