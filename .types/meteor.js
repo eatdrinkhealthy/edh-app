@@ -41,7 +41,12 @@ declare module "meteor/meteor" {
       IMeteorMongoSelector,
       IMeteorMongoModifier,
       options?: IMeteorMongoOptions,
-      callback?: IMeteorCallback) => number | void,
+      callback?: IMeteorCallback
+    ) => number | void,
+    remove: (
+      IMeteorMongoSelector,
+      callback?: IMeteorCallback
+    ) => number,
     deny: (IMeteorAllowDenyOptions) => void,
   };
 
@@ -68,5 +73,6 @@ declare module "meteor/meteor" {
       string,
       callback?: (err?: IMeteorError) => void
     ): void,
+    methods({}): void,
   }
 }

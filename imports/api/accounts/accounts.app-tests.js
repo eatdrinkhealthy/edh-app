@@ -38,7 +38,7 @@ if (Meteor.isClient) {
 
     function waitForResetDatabase() {
       it("wait for resetDatabase()", function (done: () => void) {
-        resetDatabase(null, () => done());  // eslint-disable-line flowtype/require-return-type
+        resetDatabase(null, () => done());
       });
     }
 
