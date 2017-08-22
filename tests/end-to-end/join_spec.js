@@ -2,13 +2,21 @@
 /* eslint-env jasmine */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
-/* global browser */
+/* global browser server */
 
-import { elements as els } from "./elements";
+import { elements as els, baseUrl } from "./elements";
 
 describe("Join - create new user", function () {
-  afterAll(() => {
+  beforeAll(() => {
+    // a user shouldn't be logged in at this point, but in the event
+    // tests were run in an order that logged a user in
+    browser.url(baseUrl);
+    browser.waitForExist(els.navbar.component, 3000); // make sure Meteor is loaded.
     browser.execute("Meteor.logout()");
+
+    // in the event this test suite is run more than once (watch mode), remove
+    // the test user, so create / join will succeed
+    server.apply("removeUser", ["testuser"]);
   });
 
   it("should navigate to the join dialog and create a new user", function () {
