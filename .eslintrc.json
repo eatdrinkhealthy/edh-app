@@ -41,7 +41,8 @@
       "meteor/practicalmeteor:chai",
       "meteor/xolvio:cleaner",
       "meteor/http",
-      "meteor/react-meteor-data"
+      "meteor/react-meteor-data",
+      "meteor/check"
     ],
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true
