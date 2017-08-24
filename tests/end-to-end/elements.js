@@ -5,7 +5,6 @@ export const elements = {
   markerComponent: "div.markerContainer",
   navbar: {
     component: "div.nav #navbarFilterLink",
-    joinLink: "#navbarJoinLink",
     filterLink: "#navbarFilterLink",
   },
   sidebarPage: {
@@ -22,6 +21,8 @@ export const elements = {
   },
   userMenu: {
     username: "#loggedInUser",
+    joinLink: "#joinLink",
+    logoutLink: "#logoutLink",
   },
   alertMessage: ".s-alert-box",  // NOTE: looked this class up in the component source code
   filterPage: {

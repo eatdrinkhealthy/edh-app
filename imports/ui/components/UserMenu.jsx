@@ -24,6 +24,7 @@ class UserMenu extends Component {
     <span>
       <span id="loggedInUser">{this.props.username}</span>
       <a
+        id="logoutLink"
         className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-dark-blue"
         onClick={this.props.logout}
       >
