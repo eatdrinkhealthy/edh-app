@@ -13,7 +13,9 @@ exports[`<UserMenu /> matches render snapshot - null username 1`] = `
 
 exports[`<UserMenu /> matches render snapshot - with username 1`] = `
 <span>
-  <span>
+  <span
+    id="loggedInUser"
+  >
     testUser
   </span>
   <a

@@ -20,6 +20,9 @@ export const elements = {
     confirmPasswordInput: "#confirmPassword",
     submitButton: "input[value='Create Account']",
   },
+  userMenu: {
+    username: "#loggedInUser",
+  },
   alertMessage: ".s-alert-box",  // NOTE: looked this class up in the component source code
   filterPage: {
     url: `${baseUrl}/filter`,

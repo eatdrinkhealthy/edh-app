@@ -7,6 +7,7 @@ import { MemoryRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import { shallow } from "enzyme";
 import UserMenu from "../UserMenu";
+import { elements as es } from "../../../../tests/end-to-end/elements";
 
 describe("<UserMenu />", function () {
   it("matches render snapshot - null username", function () {
@@ -29,7 +30,7 @@ describe("<UserMenu />", function () {
 
   it("should display the username when passed a user name", function () {
     const wrapper = shallow(<UserMenu username="testUser" logout={jest.fn()} />);
-    expect(wrapper.find("span > span").text()).toBe("testUser");
+    expect(wrapper.find(es.userMenu.username).text()).toBe("testUser");
   });
 
   it("should call the logout prop function when clicking the logout button", function () {

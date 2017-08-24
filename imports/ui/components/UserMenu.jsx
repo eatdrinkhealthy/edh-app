@@ -22,7 +22,7 @@ class UserMenu extends Component {
 
   renderLoggedIn = (): React$Element<*> => (
     <span>
-      <span>{this.props.username}</span>
+      <span id="loggedInUser">{this.props.username}</span>
       <a
         className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-dark-blue"
         onClick={this.props.logout}
