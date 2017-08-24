@@ -11,7 +11,7 @@ class UserMenu extends Component {
   renderLoggedOut(): React$Element<*> {  // eslint-disable-line class-methods-use-this
     return (
       <Link
-        id="navbarJoinLink"
+        id="joinLink"
         className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-purple"
         to="/sidebar"
       >

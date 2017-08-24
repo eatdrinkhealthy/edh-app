@@ -18,7 +18,7 @@ exports[`<Navbar /> matches render snapshot 1`] = `
       <a
         className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-purple"
         href="/sidebar"
-        id="navbarJoinLink"
+        id="joinLink"
         onClick={[Function]}
       >
         Join

@@ -39,4 +39,9 @@ describe("Join - create new user", function () {
   it("should redirect to the landing / map page", function () {
     browser.waitForExist(els.navbar.component);
   });
+
+  it("should logout the user when logout link clicked (show join button)", function () {
+    browser.click(els.userMenu.logoutLink);
+    expect(browser.waitForExist(els.userMenu.joinLink)).toBe(true);
+  });
 });
