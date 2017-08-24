@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from "react";
+import AlertMessage from "./AlertMessage";
 
 class CreateAccount extends Component {
   props: {
@@ -52,7 +53,7 @@ class CreateAccount extends Component {
     }
 
     if (errors.length) {
-      errors.forEach((error: string): void => alert(error));
+      errors.forEach((error: string): void => AlertMessage.warning(error));
     } else {
       this.resetForm();
       this.props.handleSubmit(this.state.username, this.state.email, this.state.password);
