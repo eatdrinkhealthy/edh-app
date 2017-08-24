@@ -115,6 +115,9 @@ Each testing framework comes with a default, or set of available assertion libra
     - this prevents an in issue sometimes arising when deploying to galaxy (an error installing chromedriver)
 * __NOTE:__ for continuous integration
     - (as of 7/18/17) chimp is unable to be successfully installed on semaphoreCI, so end to end testing must be run locally
+* NOTE (strange behavior):
+    - when searching two times in a row in a test, for an element that is wrapped in a createContainer, the second search may fail
+        + e.g. waitForExist(someButton), then click(someButton) may result in an 'element not found on page' error on the click call
 
 ## Storybook
 * Story file location and naming convention
