@@ -12,7 +12,7 @@ describe("<UserMenu />", function () {
   it("matches render snapshot - null username", function () {
     const tree = renderer.create(
       <MemoryRouter>
-        <UserMenu username={null} />
+        <UserMenu username={null} logout={jest.fn()} />
       </MemoryRouter>,
     ).toJSON();
     expect(tree).toMatchSnapshot();
@@ -21,14 +21,14 @@ describe("<UserMenu />", function () {
   it("matches render snapshot - with username", function () {
     const tree = renderer.create(
       <MemoryRouter>
-        <UserMenu username="testUser" />
+        <UserMenu username="testUser" logout={jest.fn()} />
       </MemoryRouter>,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("should display the username when passed a user name", function () {
-    const wrapper = shallow(<UserMenu username="testUser" />);
-    expect(wrapper.find("span").text()).toBe("testUser");
+    const wrapper = shallow(<UserMenu username="testUser" logout={jest.fn()} />);
+    expect(wrapper.find("span > span").text()).toBe("testUser");
   });
 });

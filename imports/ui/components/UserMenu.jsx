@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 class UserMenu extends Component {
   props: {
     username: ?string,
+    logout: () => void,
   };
 
   renderLoggedOut(): React$Element<*> {  // eslint-disable-line class-methods-use-this
@@ -20,7 +21,15 @@ class UserMenu extends Component {
   }
 
   renderLoggedIn = (): React$Element<*> => (
-    <span>{this.props.username}</span>
+    <span>
+      <span>{this.props.username}</span>
+      <a
+        className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-dark-blue"
+        onClick={this.props.logout}
+      >
+        Logout
+      </a>
+    </span>
   );
 
   render() {  // eslint-disable-line flowtype/require-return-type

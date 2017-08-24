@@ -17,5 +17,8 @@ storiesOf("Page Sections", module)
     <CreateAccount handleSubmit={action("submitted")} />
   ))
   .add("UserMenu", (): React$Element<*> => (
-    <UserMenu username={text("username", "")} />
+    <UserMenu
+      username={text("username", "")}
+      logout={action("clicked")}
+    />
   ));

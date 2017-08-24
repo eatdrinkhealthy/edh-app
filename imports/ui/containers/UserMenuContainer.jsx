@@ -7,8 +7,13 @@ const UserMenuContainer = createContainer(() => {
   const user = Meteor.user();
   const username = user && user.username;
 
+  const logout = () => {
+    Meteor.logout();
+  };
+
   return {
     username,
+    logout,
   };
 }, UserMenu);
 
