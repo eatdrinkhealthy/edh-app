@@ -31,4 +31,12 @@ describe("<UserMenu />", function () {
     const wrapper = shallow(<UserMenu username="testUser" logout={jest.fn()} />);
     expect(wrapper.find("span > span").text()).toBe("testUser");
   });
+
+  it("should call the logout prop function when clicking the logout button", function () {
+    const logoutFn = jest.fn();
+
+    const wrapper = shallow(<UserMenu username={"testUser"} logout={logoutFn} />);
+    wrapper.find("a").simulate("click");
+    expect(logoutFn).toHaveBeenCalled();
+  });
 });
