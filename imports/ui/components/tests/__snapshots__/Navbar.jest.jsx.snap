@@ -15,14 +15,24 @@ exports[`<Navbar /> matches render snapshot 1`] = `
     <div
       className="dtc v-mid w-75 tr"
     >
-      <a
-        className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-purple"
-        href="/sidebar"
-        id="joinLink"
-        onClick={[Function]}
-      >
-        Join
-      </a>
+      <span>
+        <a
+          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 white bg-purple b--purple"
+          href="/sidebar"
+          id="joinLink"
+          onClick={[Function]}
+        >
+          JOIN
+        </a>
+        <a
+          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 b--purple"
+          href="/sidebar"
+          id="loginLink"
+          onClick={[Function]}
+        >
+          LOGIN
+        </a>
+      </span>
       <a
         className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-dark-green"
         href="/filter"

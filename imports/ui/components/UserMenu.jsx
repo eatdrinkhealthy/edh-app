@@ -10,22 +10,31 @@ class UserMenu extends Component {
 
   renderLoggedOut(): React$Element<*> {  // eslint-disable-line class-methods-use-this
     return (
-      <Link
-        id="joinLink"
-        className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-purple"
-        to="/sidebar"
-      >
-        Join
-      </Link>
+      <span>
+        <Link
+          id="joinLink"
+          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 white bg-purple b--purple"
+          to="/sidebar"
+        >
+          JOIN
+        </Link>
+        <Link
+          id="loginLink"
+          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 b--purple"
+          to="/sidebar"
+        >
+          LOGIN
+        </Link>
+      </span>
     );
   }
 
   renderLoggedIn = (): React$Element<*> => (
     <span>
-      <span id="loggedInUser">{this.props.username}</span>
+      <span id="loggedInUser" className="f5">{this.props.username}</span>
       <a
         id="logoutLink"
-        className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-dark-blue"
+        className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 white bg-purple b--purple"
         onClick={this.props.logout}
       >
         Logout
