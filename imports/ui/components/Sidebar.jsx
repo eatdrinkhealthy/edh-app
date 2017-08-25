@@ -13,9 +13,15 @@ class Sidebar extends Component {
     location?: Location,
   };
 
-  render() {
+  actionForm() {
     const action = searchProperty(this.props.location, "action");
 
+    return action === "signup"
+      ? <CreateAccountContainer routerHistory={this.props.history} />
+      : <div>{action}</div>;
+  }
+
+  render() {
     return (
       <div className="sidebar">
         <Link to="/">Home</Link>
@@ -24,7 +30,7 @@ class Sidebar extends Component {
           A platform to find, share, and discuss healthy places to shop and eat.
         </div>
         <div className="get-started">Get Started</div>
-        <CreateAccountContainer routerHistory={this.props.history} />
+        { this.actionForm() }
       </div>
     );
   }
