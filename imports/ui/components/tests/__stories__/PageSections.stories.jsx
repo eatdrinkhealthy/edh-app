@@ -7,6 +7,7 @@ import { storiesOf, action } from "@storybook/react";
 import { text } from "@storybook/addon-knobs";
 
 import CreateAccount from "../../CreateAccount";
+import Login from "../../Login";
 import UserMenu from "../../UserMenu";
 
 storiesOf("Page Sections", module)
@@ -15,6 +16,9 @@ storiesOf("Page Sections", module)
   ))
   .add("CreateAccount", (): React$Element<*> => (
     <CreateAccount handleSubmit={action("submitted")} />
+  ))
+  .add("Login", (): React$Element<*> => (
+    <Login handleSubmit={action("submitted")} />
   ))
   .add("UserMenu", (): React$Element<*> => (
     <UserMenu
