@@ -21,7 +21,7 @@ class LoginContainer extends Component {
       password,
       (error) => {
         if (error) {
-          alert(error.reason);
+          AlertMessage.warning("some error, fix me.");
         } else {
           AlertMessage.success(`Welcome ${usernameEmail}!`);
           if (this.props.routerHistory) {
