@@ -18,7 +18,7 @@ class Sidebar extends Component {
 
     return action === "signup"
       ? <CreateAccountContainer routerHistory={this.props.history} />
-      : <div>{action}</div>;
+      : <div />;
   }
 
   render() {

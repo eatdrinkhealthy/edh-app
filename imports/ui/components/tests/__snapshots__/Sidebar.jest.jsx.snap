@@ -1,6 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Sidebar /> matches render snapshot 1`] = `
+exports[`<Sidebar /> matches render snapshot - login form 1`] = `
+<div
+  className="sidebar"
+>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    Home
+  </a>
+  <h2
+    className="mh4"
+  >
+    Eat Drink Healthy
+  </h2>
+  <div
+    className="pitch"
+  >
+    A platform to find, share, and discuss healthy places to shop and eat.
+  </div>
+  <div
+    className="get-started"
+  >
+    Get Started
+  </div>
+  <div />
+</div>
+`;
+
+exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
+<div
+  className="sidebar"
+>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    Home
+  </a>
+  <h2
+    className="mh4"
+  >
+    Eat Drink Healthy
+  </h2>
+  <div
+    className="pitch"
+  >
+    A platform to find, share, and discuss healthy places to shop and eat.
+  </div>
+  <div
+    className="get-started"
+  >
+    Get Started
+  </div>
+  <div />
+</div>
+`;
+
+exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
 <div
   className="sidebar"
 >
