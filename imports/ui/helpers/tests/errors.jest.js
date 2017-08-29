@@ -7,7 +7,7 @@ import lookupErrorMessage from "../errors";
 describe("lookupErrorMessage", function () {
   it("should return a default message when can't match error", function () {
     expect(lookupErrorMessage("unknown error code"))
-      .toEqual("Unable to create a new account at this time. Please try again later.");
+      .toEqual("Unable to fulfill request at this time. Please try again later.");
   });
 
   it("should match error message for username too short", function () {

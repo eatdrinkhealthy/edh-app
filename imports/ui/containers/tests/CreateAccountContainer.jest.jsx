@@ -51,7 +51,7 @@ describe("<CreateAccountContainer />", function () {
 
     wrapper.find("input[type='submit']").simulate("submit");
     expect(AlertMessage.warning).toHaveBeenCalledWith(
-      "Unable to create a new account at this time. Please try again later.",
+      "Unable to fulfill request at this time. Please try again later.",
     );
   });
 });

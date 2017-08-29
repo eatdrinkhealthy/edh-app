@@ -32,7 +32,7 @@ const lookupErrorMessage = (serverError: string): string => {
     },
   ];
 
-  const defaultMessage = "Unable to create a new account at this time. Please try again later.";
+  const defaultMessage = "Unable to fulfill request at this time. Please try again later.";
   const matchedError = _.find(accountErrorMessages, { reason: serverError });
 
   return matchedError ? matchedError.clientMessage : defaultMessage;
