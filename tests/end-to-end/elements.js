@@ -22,6 +22,7 @@ export const elements = {
   userMenu: {
     username: "#loggedInUser",
     joinLink: "#joinLink",
+    loginLink: "#loginLink",
     logoutLink: "#logoutLink",
   },
   alertMessage: ".s-alert-box",  // NOTE: looked this class up in the component source code

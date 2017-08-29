@@ -33,6 +33,13 @@ describe("<UserMenu />", function () {
     expect(wrapper.find(es.userMenu.username).text()).toBe("testUser");
   });
 
+  it("should not show login & join buttons when logged in, and show logout", function () {
+    const wrapper = shallow(<UserMenu username="testUser" logout={jest.fn()} />);
+    expect(wrapper.find(es.userMenu.joinLink).length).toBe(0);
+    expect(wrapper.find(es.userMenu.loginLink).length).toBe(0);
+    expect(wrapper.find(es.userMenu.logoutLink).length).toBe(1);
+  });
+
   it("should call the logout prop function when clicking the logout button", function () {
     const logoutFn = jest.fn();
 
