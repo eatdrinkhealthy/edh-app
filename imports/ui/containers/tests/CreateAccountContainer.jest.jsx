@@ -24,16 +24,18 @@ jest.mock("meteor/accounts-base", () => ({
 import React from "react";
 import CreateAccountContainer from "../CreateAccountContainer";
 import AlertMessage from "../../components/AlertMessage";
-import mountCreateAccountForm from "../../components/tests/CreateAccount_helper";
+import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
 
 describe("<CreateAccountContainer />", function () {
   it("should call AlertMessage.success when Accounts.createUser is successful", function () {
-    const wrapper = mountCreateAccountForm(
+    const wrapper = mountFormWithInputs(
       <CreateAccountContainer />,
-      "user12",
-      "user12@test.com",
-      "user12pw",
-      "user12pw",
+      {
+        username: "user12",
+        email: "user12@test.com",
+        password: "user12pw",
+        confirmPassword: "user12pw",
+      },
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
@@ -41,12 +43,14 @@ describe("<CreateAccountContainer />", function () {
   });
 
   it("should call AlertMessage.warning when Accounts.createUser is unsuccessful", function () {
-    const wrapper = mountCreateAccountForm(
+    const wrapper = mountFormWithInputs(
       <CreateAccountContainer />,
-      "user12",
-      "user12@test.com",
-      "user12pw",
-      "user12pw",
+      {
+        username: "user12",
+        email: "user12@test.com",
+        password: "user12pw",
+        confirmPassword: "user12pw",
+      },
     );
 
     wrapper.find("input[type='submit']").simulate("submit");

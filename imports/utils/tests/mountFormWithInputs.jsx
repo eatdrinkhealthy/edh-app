@@ -4,6 +4,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { mount } from "enzyme";
 import type { ReactWrapper } from "enzyme";
+import _ from "lodash";
 
 // NOTE: mountCreateAccountForm used to be exported from CreateAccount.jest.jsx,
 //       but whenever it was imported in to another module (e.g. CreateAccountContainer.jest.jsx)
@@ -13,20 +14,13 @@ import type { ReactWrapper } from "enzyme";
 //
 //       Weird.
 
-const mountCreateAccountForm = ( // eslint-disable-line
+const mountFormWithInputs = ( // eslint-disable-line
   formComponent: React$Element<*>,
-  username: string,
-  email: string,
-  password: string,
-  confirmPassword: string,
+  inputs: {},
 ): ReactWrapper => {
   //
   // Had a lot of difficulty here, trying to figure out how to set the value of
-  // an input field. This test is much more valid, if you can set the input field,
-  // it updates state, then state is used to provide params for handleSubmit (true
-  // round trip).
-  //
-  // I had seen several examples of updating the input value by doing
+  // an input field. I had seen several examples of updating the input value by doing
   // wrapper.find("selector").simulate("change", {target: {value: "user12"}});
   //
   // But that wouldn't work here for some reason. Ended up finding another example
@@ -38,31 +32,24 @@ const mountCreateAccountForm = ( // eslint-disable-line
   // React$Element. Perhaps that is exposing an underlying problem with how this
   // is implemented.
   //
+  // Also note: tests are much more valid, if you can the input fields,
+  // which updates state, then state is used to provide params for handleSubmit (true
+  // round trip).
+  //
 
   const wrapper = mount(formComponent);
 
-  const usernameInput = wrapper.find("[name='username']");
-  const emailInput = wrapper.find("[name='email']");
-  const passwordInput = wrapper.find("[name='password']");
-  const confirmPasswordInput = wrapper.find("[name='confirmPassword']");
+  _.forIn(inputs, (value, input) => {
+    const inputWrapper = wrapper.find(`[name='${input}']`);
 
-  // $FlowFixMe
-  usernameInput.get(0).value = username;
-  usernameInput.simulate("change", usernameInput);
-
-  // $FlowFixMe
-  emailInput.get(0).value = email;
-  emailInput.simulate("change", emailInput);
-
-  // $FlowFixMe
-  passwordInput.get(0).value = password;
-  passwordInput.simulate("change", passwordInput);
-
-  // $FlowFixMe
-  confirmPasswordInput.get(0).value = confirmPassword;
-  confirmPasswordInput.simulate("change", confirmPasswordInput);
+    if (inputWrapper.length) {
+      // $FlowFixMe
+      inputWrapper.get(0).value = value;
+      inputWrapper.simulate("change", inputWrapper);
+    }
+  });
 
   return wrapper;
 };
 
-export default mountCreateAccountForm;
+export default mountFormWithInputs;

@@ -5,7 +5,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import CreateAccount from "../CreateAccount";
-import mountCreateAccountForm from "./CreateAccount_helper";
+import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
 
 describe("<CreateAccount />", function () {
   it("matches render snapshot", function () {
@@ -15,11 +15,13 @@ describe("<CreateAccount />", function () {
     function createNodeMock(element: HTMLElement): ?Object {
       if (element.type === "input") {
         return {
-          focus() {},
+          focus() {
+          },
         };
       }
       return null;
     }
+
     const options = { createNodeMock };
 
     const tree = renderer.create(
@@ -34,12 +36,14 @@ describe("<CreateAccount />", function () {
       handleSubmit: jest.fn(),
     };
 
-    const wrapper = mountCreateAccountForm(
+    const wrapper = mountFormWithInputs(
       <CreateAccount {...props} />,
-      "user12",
-      "user12@test.com",
-      "user12pw",
-      "user12pw",
+      {
+        username: "user12",
+        email: "user12@test.com",
+        password: "user12pw",
+        confirmPassword: "user12pw",
+      },
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
@@ -51,12 +55,14 @@ describe("<CreateAccount />", function () {
       handleSubmit: jest.fn(),
     };
 
-    const wrapper = mountCreateAccountForm(
+    const wrapper = mountFormWithInputs(
       <CreateAccount {...props} />,
-      "user12",
-      "user12@test.com",
-      "user12pw",
-      "user12pw",
+      {
+        username: "user12",
+        email: "user12@test.com",
+        password: "user12pw",
+        confirmPassword: "user12pw",
+      },
     );
     const usernameNode = wrapper.find("input#username");
     const confirmPasswordNode = wrapper.find("input#confirmPassword");
@@ -78,12 +84,14 @@ describe("<CreateAccount />", function () {
       handleSubmit: jest.fn(),
     };
 
-    const wrapper = mountCreateAccountForm(
+    const wrapper = mountFormWithInputs(
       <CreateAccount {...props} />,
-      "user12",
-      "user12@test.com",
-      "user12pw",
-      "user12pw",
+      {
+        username: "user12",
+        email: "user12@test.com",
+        password: "user12pw",
+        confirmPassword: "user12pw",
+      },
     );
 
     expect(wrapper.find("input#username").get(0)).toBe(document.activeElement);
