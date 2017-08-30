@@ -30,6 +30,16 @@ const lookupErrorMessage = (serverError: string): string => {
       reason: "Email already exists.",
       clientMessage: "An account with this email address already exists.",
     },
+    {
+      error: 403,
+      reason: "User not found",
+      clientMessage: "The username / email and password do not match.",
+    },
+    {
+      error: 403,
+      reason: "Incorrect password",
+      clientMessage: "The username / email and password do not match.",
+    },
   ];
 
   const defaultMessage = "Unable to fulfill request at this time. Please try again later.";

@@ -6,6 +6,7 @@ import { Meteor } from "meteor/meteor";
 import type { RouterHistory } from "react-router-dom";
 import AlertMessage from "../components/AlertMessage";
 import Login from "../components/Login";
+import lookupErrorMessage from "../helpers/errors";
 
 class LoginContainer extends Component {
   props: {
@@ -21,7 +22,7 @@ class LoginContainer extends Component {
       password,
       (error) => {
         if (error) {
-          AlertMessage.warning("some error, fix me.");
+          AlertMessage.warning(lookupErrorMessage(error.reason));
         } else {
           AlertMessage.success(`Welcome ${usernameEmail}!`);
           if (this.props.routerHistory) {

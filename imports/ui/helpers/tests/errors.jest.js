@@ -24,4 +24,9 @@ describe("lookupErrorMessage", function () {
     expect(lookupErrorMessage("Email already exists."))
       .toEqual("An account with this email address already exists.");
   });
+
+  it("should return the same error message for 'User not found' and 'Incorrect password'", function () {
+    expect(lookupErrorMessage("User not found"))
+      .toEqual(lookupErrorMessage("Incorrect password"));
+  });
 });

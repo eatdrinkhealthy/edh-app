@@ -15,7 +15,7 @@ jest.mock("meteor/meteor", () => ({
   Meteor: {
     loginWithPassword: jest.fn()
       .mockImplementationOnce((username, password, callback) => callback())
-      .mockImplementationOnce((username, password, callback) => callback("error")),
+      .mockImplementationOnce((username, password, callback) => callback({ reason: "User not found" })),
   },
 }));
 
@@ -43,7 +43,7 @@ describe("<LoginContainer />", function () {
 
     wrapper.find("input[type='submit']").simulate("submit");
     expect(AlertMessage.warning).toHaveBeenCalledWith(
-      "Unable to fulfill request at this time. Please try again later.",
+      "The username / email and password do not match.",
     );
   });
 });
