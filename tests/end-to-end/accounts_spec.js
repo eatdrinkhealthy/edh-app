@@ -6,6 +6,28 @@
 
 import { elements as els, baseUrl } from "./elements";
 
+describe("Sidebar / sign-in Page", function () {
+  it("displays the sidebar when join link clicked", function () {
+    browser.url(baseUrl);
+    browser.waitForExist(els.navbar.component);
+    // WARNING
+    //   -when searching for an element two times in a row, that is
+    //   wrapped in a createContainer, the second search may fail.
+    //   e.g. waitForExist(someButton), then click(someButton) may
+    //   result in an 'element not found on page' error
+    browser.click(els.userMenu.joinLink);
+
+    expect(browser.waitForExist(els.sidebarPage.component)).toBe(true);
+  });
+
+  it("goes back to landing page when home link clicked", function () {
+    browser.waitForExist(els.sidebarPage.homeLink);
+    browser.click(els.sidebarPage.homeLink);
+
+    expect(browser.waitForExist(els.navbar.component)).toBe(true);
+  });
+});
+
 describe("Join - create new user", function () {
   beforeAll(() => {
     // a user shouldn't be logged in at this point, but in the event
@@ -20,7 +42,8 @@ describe("Join - create new user", function () {
   });
 
   it("should navigate to the join dialog and create a new user", function () {
-    browser.url(els.sidebarPage.url);
+    // navbar already should be displayed (beforeAll)
+    browser.click(els.userMenu.joinLink);
 
     browser.waitForExist(els.createAccountForm.usernameInput);
     browser.setValue(els.createAccountForm.usernameInput, "testuser");
@@ -42,6 +65,6 @@ describe("Join - create new user", function () {
 
   it("should logout the user when logout link clicked (show join button)", function () {
     browser.click(els.userMenu.logoutLink);
-    expect(browser.waitForExist(els.userMenu.joinLink)).toBe(true);
+    expect(browser.waitForExist(els.userMenu.joinLink, 1000)).toBe(true);
   });
 });
