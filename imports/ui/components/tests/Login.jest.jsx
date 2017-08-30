@@ -30,7 +30,7 @@ describe("<Login />", function () {
 
     const wrapper = mountFormWithInputs(
       <Login {...props} />,
-      { usernameEmail: "user12", password: "user12pw" },
+      { usernameEmail: "user12", loginPassword: "user12pw" },
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
@@ -44,10 +44,10 @@ describe("<Login />", function () {
 
     const wrapper = mountFormWithInputs(
       <Login {...props} />,
-      { usernameEmail: "user12", password: "user12pw" },
+      { usernameEmail: "user12", loginPassword: "user12pw" },
     );
     const usernameEmailNode = wrapper.find("input#usernameEmail");
-    const passwordNode = wrapper.find("input#password");
+    const passwordNode = wrapper.find("input#loginPassword");
 
     // give focus to password input (like a user would do before submit)
     // $FlowFixMe
@@ -66,7 +66,7 @@ describe("<Login />", function () {
 
     const wrapper = mountFormWithInputs(
       <Login {...props} />,
-      { usernameEmail: "user12", password: "user12pw" },
+      { usernameEmail: "user12", loginPassword: "user12pw" },
     );
 
     expect(wrapper.find("input#usernameEmail").get(0)).toBe(document.activeElement);

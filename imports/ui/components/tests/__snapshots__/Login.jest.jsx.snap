@@ -40,14 +40,14 @@ exports[`<Login /> matches render snapshot 1`] = `
       >
         <label
           className="db fw6 lh-copy f6"
-          htmlFor="password"
+          htmlFor="loginPassword"
         >
           Password
         </label>
         <input
           className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-          id="password"
-          name="password"
+          id="loginPassword"
+          name="loginPassword"
           onChange={[Function]}
           type="password"
           value=""

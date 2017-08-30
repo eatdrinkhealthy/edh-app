@@ -19,6 +19,11 @@ export const elements = {
     confirmPasswordInput: "#confirmPassword",
     submitButton: "input[value='Create Account']",
   },
+  loginForm: {
+    usernameEmailInput: "#usernameEmail",
+    passwordInput: "#loginPassword",
+    submitButton: "input[value='Login']",
+  },
   userMenu: {
     username: "#loggedInUser",
     joinLink: "#joinLink",

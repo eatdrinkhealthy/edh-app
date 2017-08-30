@@ -8,7 +8,7 @@ class Login extends Component {
 
   state = {
     usernameEmail: "",
-    password: "",
+    loginPassword: "",
   };
 
   componentDidMount() {
@@ -20,7 +20,7 @@ class Login extends Component {
   resetForm = () => {
     this.setState({
       usernameEmail: "",
-      password: "",
+      loginPassword: "",
     });
     this.usernameEmailInput.focus();
   }
@@ -42,7 +42,7 @@ class Login extends Component {
     event.preventDefault();
 
     this.resetForm();
-    this.props.handleSubmit(this.state.usernameEmail, this.state.password);
+    this.props.handleSubmit(this.state.usernameEmail, this.state.loginPassword);
   }
 
   render() {
@@ -69,13 +69,13 @@ class Login extends Component {
               />
             </div>
             <div className="mv3">
-              <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
+              <label className="db fw6 lh-copy f6" htmlFor="loginPassword">Password</label>
               <input
                 className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                 type="password"
-                name="password"
-                id="password"
-                value={this.state.password}
+                name="loginPassword"
+                id="loginPassword"
+                value={this.state.loginPassword}
                 onChange={this.handleInputChange}
               />
             </div>
