@@ -16,7 +16,7 @@ jest.mock("meteor/accounts-base", () => ({
   Accounts: {
     createUser: jest.fn()
       .mockImplementationOnce(({ username, email, password }, callback) => callback())
-      .mockImplementationOnce(({ username, email, password }, callback) => callback("error")),
+      .mockImplementationOnce(({ username, email, password }, callback) => callback({ reason: "error" })),
   },
 }));
 /* eslint-enable flowtype/require-return-type, flowtype/require-parameter-type */
