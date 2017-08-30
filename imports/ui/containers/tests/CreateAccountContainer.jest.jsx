@@ -3,7 +3,6 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies, import/first */
 
-/* eslint-disable flowtype/require-return-type, flowtype/require-parameter-type */
 jest.mock("../../components/AlertMessage", () => (
   class AlertMessage {
     static success = jest.fn();
@@ -19,7 +18,6 @@ jest.mock("meteor/accounts-base", () => ({
       .mockImplementationOnce(({ username, email, password }, callback) => callback({ reason: "error" })),
   },
 }));
-/* eslint-enable flowtype/require-return-type, flowtype/require-parameter-type */
 
 import React from "react";
 import CreateAccountContainer from "../CreateAccountContainer";
