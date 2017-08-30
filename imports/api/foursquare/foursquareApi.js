@@ -5,7 +5,7 @@ import { Meteor } from "meteor/meteor";
 // eslint-disable-next-line no-duplicate-imports
 import type { IHttpResult } from "meteor/http";
 
-import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
+import type { IVenue } from "../../state/reducers/searchResultsReducers";
 
 type IFoursquareVenue = {
   id: string,
@@ -25,22 +25,30 @@ type IFoursquareVenue = {
 export const parseFoursquareResponse = (
   response: IHttpResult,
 ): Array<IVenue> => {
-  const content = JSON.parse(response.content);
+  let resultArray = [];
 
-  return content.response.venues.map(
-    (venue: IFoursquareVenue): IVenue => ({
-      id: venue.id,
-      name: venue.name,
-      location: {
-        lat: venue.location.lat,
-        lng: venue.location.lng,
-        address: venue.location.address,
-        city: venue.location.city,
-        postalCode: venue.location.postalCode,
-      },
-      primaryCategory: venue.categories[0].name,
-    }),
-  );
+  if (response.content) {
+    const content = JSON.parse(response.content);
+
+    if (content.response.venues) {
+      resultArray = content.response.venues.map(
+        (venue: IFoursquareVenue): IVenue => ({
+          id: venue.id,
+          name: venue.name,
+          location: {
+            lat: venue.location.lat,
+            lng: venue.location.lng,
+            address: venue.location.address,
+            city: venue.location.city,
+            postalCode: venue.location.postalCode,
+          },
+          primaryCategory: venue.categories[0].name,
+        }),
+      );
+    }
+  }
+
+  return resultArray;
 };
 
 export const httpCallFoursquareSearch = (
@@ -49,19 +57,33 @@ export const httpCallFoursquareSearch = (
   longitude: number,
 ): IHttpResult => {
   const latLng = `${latitude},${longitude}`;
+  let apiResult;
 
-  return HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", {
-    params: {
-      client_id: Meteor.settings.foursquare.client_id,
-      client_secret: Meteor.settings.foursquare.client_secret,
-      v: "20130815", // api version
-      ll: latLng,
-      limit: "50",
-      intent: "browse",
-      radius: "1000", // in meters
-      categoryId: category,
-    },
-  });
+  try {
+    apiResult = HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", {
+      params: {
+        client_id: Meteor.settings.foursquare.client_id,
+        client_secret: Meteor.settings.foursquare.client_secret,
+        v: "20130815", // api version
+        ll: latLng,
+        limit: "50",
+        intent: "browse",
+        radius: "1000", // in meters
+        categoryId: category,
+      },
+    });
+  } catch (e) {
+    // TODO log this exception to a logger service !!!
+    console.error("Foursquare API exception:", e.message);  // eslint-disable-line no-console
+    apiResult = {
+      statusCode: null,
+      content: null,
+      data: null,
+      headers: {},
+    };
+  }
+
+  return apiResult;
 };
 
 const foursquareApiSearch = (

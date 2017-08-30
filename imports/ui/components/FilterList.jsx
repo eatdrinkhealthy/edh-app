@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Toggle from "react-toggle";
-import type { IFilter } from "../../data/state/reducers/filtersReducers";
+import type { IFilter } from "../../state/reducers/filtersReducers";
 
 export class FilterItem extends Component {
   props: {
@@ -34,7 +34,7 @@ export class FilterItem extends Component {
 }
 
 type IFilterListProps = {
-  filterList?: Array<IFilter>,
+  filterList?: Array<IFilter>, // eslint-disable-line react/require-default-props
   setFilterHandler: () => void,
 };
 

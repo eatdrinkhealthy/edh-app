@@ -6,7 +6,7 @@ import {
   Switch,
 } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "../../data/state/stores/store";
+import store from "../../state/stores/store";
 import MapContainer from "./MapContainer";
 import Sidebar from "../components/Sidebar";
 import FilterListContainer from "./FilterListContainer";

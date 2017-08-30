@@ -7,13 +7,13 @@ import { Meteor } from "meteor/meteor";
 import AlertMessage from "../components/AlertMessage";
 import LocationsMap from "../components/LocationsMap";
 import Navbar from "../components/Navbar";
-import { getNearbyPlaces } from "../../api/methods";
-import { setSearchResults } from "../../data/state/actions/searchResultsActions";
-import { setSelectedVenue } from "../../data/state/actions/mapDisplayActions";
+import { getNearbyPlaces } from "../../api/foursquare/methods";
+import { setSearchResults } from "../../state/actions/searchResultsActions";
+import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
 
-import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
-import type { IState } from "../../data/state/stores/store";
-import type { IFilter } from "../../data/state/reducers/filtersReducers";
+import type { IVenue } from "../../state/reducers/searchResultsReducers";
+import type { IState } from "../../state/stores/store";
+import type { IFilter } from "../../state/reducers/filtersReducers";
 
 export class MapComponent extends Component {
   props: {
@@ -42,6 +42,10 @@ export class MapComponent extends Component {
       AlertMessage.warning("Unable to search at this time...");
       // TODO potentially throw here (or confirm an exception is thrown by server)
     } else {
+      if (!result.length) {
+        AlertMessage.warning("No search results for current criteria...");
+      }
+      // TODO potentially throw here (or log search criteria to a logger for evaluation)
       this.props.setSearchResultsHandler(result);
     }
   }

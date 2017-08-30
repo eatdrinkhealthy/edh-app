@@ -10,7 +10,7 @@ import {
   mount,
 } from "enzyme";
 import FilterList, { FilterItem } from "../FilterList";
-import type { IFilter } from "../../../data/state/reducers/filtersReducers";
+import type { IFilter } from "../../../state/reducers/filtersReducers";
 
 describe("Filter List Components", function () {
   const testFilterList: Array<IFilter> = [

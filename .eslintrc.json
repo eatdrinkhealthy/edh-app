@@ -39,7 +39,10 @@
       "meteor/mdg:validated-method",
       "meteor/aldeed:simple-schema",
       "meteor/practicalmeteor:chai",
-      "meteor/http"
+      "meteor/xolvio:cleaner",
+      "meteor/http",
+      "meteor/react-meteor-data",
+      "meteor/check"
     ],
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true
@@ -61,7 +64,8 @@
       {
         "allow": [
           "_id",
-          "_execute"
+          "_execute",
+          "_sleepForMs"
         ]
       }
     ],
@@ -115,14 +119,8 @@
       "error",
       "comma"
     ],
-    "flowtype/require-parameter-type": "warn",
-    "flowtype/require-return-type": [
-      "warn",
-      "always",
-      {
-        "annotateUndefined": "never"
-      }
-    ],
+    "flowtype/require-parameter-type": "off",
+    "flowtype/require-return-type": "off",
     "flowtype/require-valid-file-annotation": "error",
     "flowtype/semi": [
       "error",

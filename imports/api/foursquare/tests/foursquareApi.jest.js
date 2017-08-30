@@ -2,7 +2,10 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
-import { parseFoursquareResponse } from "../foursquareApi";
+import {
+  parseFoursquareResponse,
+  httpCallFoursquareSearch,
+} from "../foursquareApi";
 import httpTestResponse from "./foursquareApiData";
 
 describe("parseFoursquareResponse", function () {
@@ -26,5 +29,32 @@ describe("parseFoursquareResponse", function () {
 
     expect(parsedResponse[23].id).toEqual("57afaa93498e56f85192e68e");
     expect(parsedResponse[23].name).toEqual("Camino Roasters");
+  });
+
+  it("should parse an empty http result, when an api exception occurs", function () {
+    const exceptionHttpResult = {
+      statusCode: null,
+      content: null,
+      data: null,
+      headers: {},
+    };
+
+    expect(parseFoursquareResponse(exceptionHttpResult)).toEqual([]);
+  });
+});
+
+describe("httpCallFoursquareSearch", function () {
+  it("should return an empty httpResponse if throwing an exception (client_id undefined)", function () {
+    const exceptionHttpResult = {
+      statusCode: null,
+      content: null,
+      data: null,
+      headers: {},
+    };
+
+    // NOTE: currently, client_id (Meteor.settings.foursquare.client_id) is not set,
+    //       which causes an exception.
+    //       Sending 0, 0 lat lng will also cause an exception
+    expect(httpCallFoursquareSearch("4c2cd86ed066bed06c3c5209", 0, 0)).toEqual(exceptionHttpResult);
   });
 });

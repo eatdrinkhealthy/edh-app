@@ -2,12 +2,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import { storiesOf, action } from "@storybook/react";
 import { text, boolean } from "@storybook/addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 
 import FilterList, { FilterItem } from "../../FilterList";
-import Sidebar from "../../Sidebar";
 
 const testFilterList = [
   { id: "juiceBar", name: "Juice Bar", on: true, foursquareCategory: "1" },
@@ -19,8 +19,8 @@ const testFilterList = [
 //      the toggle component will not visually toggle
 
 storiesOf("Modals", module)
-  .add("Sidebar", (): React$Element<*> => (
-    <Sidebar />
+  .addDecorator((story: () => React$Element<*>): React$Element<*> => (
+    <MemoryRouter>{story()}</MemoryRouter>
   ))
   .add("FilterItem", (): React$Element<*> => (
     <CenterWrapper

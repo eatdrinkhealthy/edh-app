@@ -54,6 +54,8 @@
     + 'chimp' for end to end testing
         - test UI and application flow
     
+> NOTE: It is more common or advantageous to run integration tests using 'meteor test --full-app'. Although load time is slightly slower, it does allow tests to be run across the client server divide. At this time, there is not a known significant benefit for running non '--full-app' integration tests in addition to running the '--full-app' integration tests. (running both, takes significantly longer)
+
 ### Test Runner File Naming Conventions
 
 #### Default test file names / locations for Jest, Meteor, and Chimp
@@ -70,6 +72,7 @@
 * [chimp](https://chimp.readme.io/docs/command-line-options):
   - loads end to end tests from: `tests/end-to-end`
   - test files should be named `*_spec.js`
+  - __RECOMMENDED__: run meteor server in test mode, this uses the meteor test database instead of development database (there is a package.json script to do so)
 
 #### Project test file location and naming convention
  * The following convention allows you to colocate test files in the same or sub directory of the system under test, without the test runners picking up the incorrect test file
@@ -88,7 +91,7 @@
   NOTE: placing all 'non meteor application' code, such as tests and storybook stories, in `tests/` directories prevents meteor server from restarting when in development mode
 
 #### Assertions
-Each testing framework comes with a default, or set of available assertion libraries. To avoid the confusion of mixing similar libraries (e.g., jest's jasmine based expect & practicalmeteor's chai based expect), use the assertion libraries specified for each test framework.
+Each testing framework comes with a default, or set of available assertion libraries. To avoid the confusion of mixing similar libraries (e.g., jest's jasmine based expect & practicalmeteor's chai based expect), use the following specified assertion libraries for each test framework.
 * For unit / jest testing, use the jest provided assertions [(expect)](https://facebook.github.io/jest/docs/expect.html).
 * For integration testing (`meteor test`), use practicalmeteor:chai assert.
 
@@ -112,6 +115,9 @@ Each testing framework comes with a default, or set of available assertion libra
     - this prevents an in issue sometimes arising when deploying to galaxy (an error installing chromedriver)
 * __NOTE:__ for continuous integration
     - (as of 7/18/17) chimp is unable to be successfully installed on semaphoreCI, so end to end testing must be run locally
+* NOTE (strange behavior):
+    - when searching two times in a row in a test, for an element that is wrapped in a createContainer, the second search may fail
+        + e.g. waitForExist(someButton), then click(someButton) may result in an 'element not found on page' error on the click call
 
 ## Storybook
 * Story file location and naming convention

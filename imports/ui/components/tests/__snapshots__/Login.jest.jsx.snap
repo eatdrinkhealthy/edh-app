@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> matches render snapshot 1`] = `
+<div
+  className="pt2 pl4 pr4 pb4"
+>
+  <form
+    className="measure center"
+    onSubmit={[Function]}
+  >
+    <fieldset
+      className="ba b--transparent ph0 mh0"
+      id="sign_in"
+    >
+      <legend
+        className="f4 fw6 ph0 mh0"
+      >
+        Login
+      </legend>
+      <div
+        className="mt3"
+      >
+        <label
+          className="db fw6 lh-copy f6"
+          htmlFor="usernameEmail"
+        >
+          Username / Email
+        </label>
+        <input
+          className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+          id="usernameEmail"
+          name="usernameEmail"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="mv3"
+      >
+        <label
+          className="db fw6 lh-copy f6"
+          htmlFor="loginPassword"
+        >
+          Password
+        </label>
+        <input
+          className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+          id="loginPassword"
+          name="loginPassword"
+          onChange={[Function]}
+          type="password"
+          value=""
+        />
+      </div>
+    </fieldset>
+    <div>
+      <input
+        className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </form>
+</div>
+`;

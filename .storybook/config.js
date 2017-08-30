@@ -2,7 +2,10 @@ import { configure, addDecorator } from "@storybook/react";
 import { withKnobs } from "@storybook/addon-knobs";
 import backgrounds from "@storybook/addon-backgrounds";
 
-import "!style-loader!css-loader!less-loader!../client/stylesheets/html-hint.min.css";
+// NOTE must explicitly import css packages imported in project (or correct webpack config)
+import "!style-loader!css-loader!less-loader!../node_modules/react-s-alert/dist/s-alert-default.css";
+import "!style-loader!css-loader!less-loader!../node_modules/html-hint/dist/html-hint.css";
+import "!style-loader!css-loader!less-loader!../node_modules/tachyons/css/tachyons.css";
 import "!style-loader!css-loader!less-loader!../client/stylesheets/main.less";
 
 // load settings as a Meteor application would (for API keys)

@@ -3,6 +3,7 @@
 const Meteor = {
   loginWithPassword: jest.fn(),
   loginWithFacebook: jest.fn(),
+  logout: jest.fn(),
   methods: jest.fn(),
   call: jest.fn(),
   apply: jest.fn(),
@@ -13,6 +14,7 @@ const Meteor = {
   wrapAsync: jest.fn(() => jest.fn(() => { })),
   Error,
   userId: jest.fn(),
+  user: jest.fn(),
   settings: {
     public: {
       googleMapsApiKey: "TestAPIKeyValue",

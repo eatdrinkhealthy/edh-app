@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Sidebar /> matches render snapshot 1`] = `
+exports[`<Sidebar /> matches render snapshot - login form 1`] = `
 <div
   className="sidebar"
 >
@@ -10,9 +10,11 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
   >
     Home
   </a>
-  <div
-    className="logo"
-  />
+  <h2
+    className="mh4"
+  >
+    Eat Drink Healthy
+  </h2>
   <div
     className="pitch"
   >
@@ -28,6 +30,126 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
   >
     <form
       className="measure center"
+      onSubmit={[Function]}
+    >
+      <fieldset
+        className="ba b--transparent ph0 mh0"
+        id="sign_in"
+      >
+        <legend
+          className="f4 fw6 ph0 mh0"
+        >
+          Login
+        </legend>
+        <div
+          className="mt3"
+        >
+          <label
+            className="db fw6 lh-copy f6"
+            htmlFor="usernameEmail"
+          >
+            Username / Email
+          </label>
+          <input
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            id="usernameEmail"
+            name="usernameEmail"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="mv3"
+        >
+          <label
+            className="db fw6 lh-copy f6"
+            htmlFor="loginPassword"
+          >
+            Password
+          </label>
+          <input
+            className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            id="loginPassword"
+            name="loginPassword"
+            onChange={[Function]}
+            type="password"
+            value=""
+          />
+        </div>
+      </fieldset>
+      <div>
+        <input
+          className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+          type="submit"
+          value="Login"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
+<div
+  className="sidebar"
+>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    Home
+  </a>
+  <h2
+    className="mh4"
+  >
+    Eat Drink Healthy
+  </h2>
+  <div
+    className="pitch"
+  >
+    A platform to find, share, and discuss healthy places to shop and eat.
+  </div>
+  <div
+    className="get-started"
+  >
+    Get Started
+  </div>
+  <div />
+</div>
+`;
+
+exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
+<div
+  className="sidebar"
+>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    Home
+  </a>
+  <h2
+    className="mh4"
+  >
+    Eat Drink Healthy
+  </h2>
+  <div
+    className="pitch"
+  >
+    A platform to find, share, and discuss healthy places to shop and eat.
+  </div>
+  <div
+    className="get-started"
+  >
+    Get Started
+  </div>
+  <div
+    className="pt2 pl4 pr4 pb4"
+  >
+    <form
+      className="measure center"
+      onSubmit={[Function]}
     >
       <fieldset
         className="ba b--transparent ph0 mh0"
@@ -36,22 +158,42 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
         <legend
           className="f4 fw6 ph0 mh0"
         >
-          Sign In
+          Create Account
         </legend>
         <div
           className="mt3"
         >
           <label
             className="db fw6 lh-copy f6"
-            htmlFor="email-address"
+            htmlFor="username"
+          >
+            Username
+          </label>
+          <input
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            id="username"
+            name="username"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="mt3"
+        >
+          <label
+            className="db fw6 lh-copy f6"
+            htmlFor="email"
           >
             Email
           </label>
           <input
             className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="email-address"
-            name="email-address"
+            id="email"
+            name="email"
+            onChange={[Function]}
             type="email"
+            value=""
           />
         </div>
         <div
@@ -67,44 +209,36 @@ exports[`<Sidebar /> matches render snapshot 1`] = `
             className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
             id="password"
             name="password"
+            onChange={[Function]}
             type="password"
+            value=""
           />
         </div>
-        <label
-          className="pa0 ma0 lh-copy f6 pointer"
-          htmlFor="remember"
+        <div
+          className="mv3"
         >
+          <label
+            className="db fw6 lh-copy f6"
+            htmlFor="confirmPassword"
+          >
+            Confirm Password
+          </label>
           <input
-            id="remember"
-            type="checkbox"
+            className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            id="confirmPassword"
+            name="confirmPassword"
+            onChange={[Function]}
+            type="password"
+            value=""
           />
-           Remember me
-        </label>
+        </div>
       </fieldset>
-      <div
-        className=""
-      >
+      <div>
         <input
           className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
           type="submit"
-          value="Sign in"
+          value="Create Account"
         />
-      </div>
-      <div
-        className="lh-copy mt3"
-      >
-        <a
-          className="f6 link dim black db"
-          href="#0"
-        >
-          Sign up
-        </a>
-        <a
-          className="f6 link dim black db"
-          href="#0"
-        >
-          Forgot your password?
-        </a>
       </div>
     </form>
   </div>

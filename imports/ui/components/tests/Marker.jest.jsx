@@ -7,7 +7,7 @@ import { mount, shallow } from "enzyme";
 import renderer from "react-test-renderer";
 import * as chpMod from "../../../utils/calcHintPosition";
 import Marker from "../Marker";
-import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
+import sampleVenues from "../../../state/stores/tests/sampleVenueData";
 
 const stubFn = jest.fn();
 

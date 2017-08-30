@@ -5,7 +5,7 @@
 
 // mock getNearbyPlaces (a method call for foursquare api)
 // eslint-disable-next-line flowtype/require-return-type
-jest.mock("../../../api/methods", () => ({
+jest.mock("../../../api/foursquare/methods", () => ({
   getNearbyPlaces: {
     call: jest.fn(),
   },
@@ -25,16 +25,16 @@ import { Provider } from "react-redux";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import { createStore } from "redux";
-import appReducer from "../../../data/state/reducers";
+import appReducer from "../../../state/reducers";
 import MapContainer, { MapComponent } from "../MapContainer";
-import sampleVenues from "../../../data/state/stores/tests/sampleVenueData";
+import sampleVenues from "../../../state/stores/tests/sampleVenueData";
 
 /* eslint-disable no-duplicate-imports */
-import type { IFilter } from "../../../data/state/reducers/filtersReducers";
-import type { IState } from "../../../data/state/stores/store";
+import type { IFilter } from "../../../state/reducers/filtersReducers";
+import type { IState } from "../../../state/stores/store";
 /* eslint-enable no-duplicate-imports */
 
-import { getNearbyPlaces } from "../../../api/methods";
+import { getNearbyPlaces } from "../../../api/foursquare/methods";
 import AlertMessage from "../../components/AlertMessage";
 
 describe("<MapComponent />", function () {
@@ -67,7 +67,21 @@ describe("<MapComponent />", function () {
     />);
     // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component)
     wrapper.instance().getNearbyPlacesCB("some error", undefined);
-    expect(AlertMessage.warning).toHaveBeenCalled();
+    expect(AlertMessage.warning).toHaveBeenCalledWith("Unable to search at this time...");
+  });
+
+  it("calls AlertMessage.warning when calling getNearbyPlacesCB with an no search results", function () {
+    // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
+    const wrapper = shallow(<MapComponent
+      filterList={testFilterList}
+      searchResults={[]}
+      setSearchResultsHandler={jest.fn()}
+      setSelectedVenueHandler={jest.fn()}
+      selectedVenueId={null}
+    />);
+    // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component)
+    wrapper.instance().getNearbyPlacesCB(undefined, []);
+    expect(AlertMessage.warning).toHaveBeenCalledWith("No search results for current criteria...");
   });
 });
 

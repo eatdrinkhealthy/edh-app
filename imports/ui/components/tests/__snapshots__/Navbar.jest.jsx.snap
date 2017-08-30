@@ -4,38 +4,44 @@ exports[`<Navbar /> matches render snapshot 1`] = `
 <div
   className="nav"
 >
-  <a
-    href="/sidebar"
-    onClick={[Function]}
-  >
-    <div
-      className="toggle-sidebar"
-    >
-      <div
-        className="burger"
-      />
-      <div
-        className="burger"
-      />
-      <div
-        className="burger"
-      />
-    </div>
-  </a>
   <div
-    className="nav__title"
-  >
-    Eat Drink Healthy
-  </div>
-  <a
-    href="/filter"
-    onClick={[Function]}
+    className="dt w-100 pa2"
   >
     <div
-      className="toggle-filter"
+      className="dtc v-mid white w-25"
     >
-      Filter
+      Eat Drink Healthy
     </div>
-  </a>
+    <div
+      className="dtc v-mid w-75 tr"
+    >
+      <span>
+        <a
+          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 white bg-purple b--purple"
+          href="/sidebar?action=signup"
+          id="joinLink"
+          onClick={[Function]}
+        >
+          JOIN
+        </a>
+        <a
+          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 b--purple"
+          href="/sidebar?action=login"
+          id="loginLink"
+          onClick={[Function]}
+        >
+          LOGIN
+        </a>
+      </span>
+      <a
+        className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-dark-green"
+        href="/filter"
+        id="navbarFilterLink"
+        onClick={[Function]}
+      >
+        Filter
+      </a>
+    </div>
+  </div>
 </div>
 `;

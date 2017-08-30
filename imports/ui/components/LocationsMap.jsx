@@ -7,7 +7,7 @@ import Marker from "./Marker";
 
 // eslint-disable-next-line no-duplicate-imports, import/first
 import type { ILatLng } from "google-map-react";
-import type { IVenue } from "../../data/state/reducers/searchResultsReducers";
+import type { IVenue } from "../../state/reducers/searchResultsReducers";
 
 export type IViewArea = {
   top: number,

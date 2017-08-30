@@ -4,7 +4,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import LocationsMap from "../../LocationsMap";
-import sampleVenues from "../../../../data/state/stores/tests/sampleVenueData";
+import sampleVenues from "../../../../state/stores/tests/sampleVenueData";
 
 /* global Window */
 
