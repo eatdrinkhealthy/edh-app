@@ -28,10 +28,7 @@ describe("<LoginContainer />", function () {
   it("should call AlertMessage.success when submit (loginWithPassword) is successful", function () {
     const wrapper = mountFormWithInputs(
       <LoginContainer />,
-      {
-        usernameEmail: "user12",
-        password: "user12pw",
-      },
+      { usernameEmail: "user12", password: "user12pw" },
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
@@ -41,10 +38,7 @@ describe("<LoginContainer />", function () {
   it("should call AlertMessage.warning when submit (loginWithPassword) is unsuccessful", function () {
     const wrapper = mountFormWithInputs(
       <LoginContainer />,
-      {
-        usernameEmail: "user12",
-        password: "user12pwBad",
-      },
+      { usernameEmail: "user12", password: "user12pwBad" },
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
