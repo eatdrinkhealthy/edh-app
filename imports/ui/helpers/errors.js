@@ -7,8 +7,18 @@ const lookupErrorMessage = (serverError: string): string => {
   const accountErrorMessages = [
     {
       error: "validation-error",
+      reason: "Username is required",
+      clientMessage: "Username is a required field.",
+    },
+    {
+      error: "validation-error",
       reason: "Username must be at least 4 characters",
       clientMessage: "Username must be at least 4 characters.",
+    },
+    {
+      error: "validation-error",
+      reason: "Emails is required",
+      clientMessage: "Email address is a required field.",
     },
     {
       error: "validation-error",

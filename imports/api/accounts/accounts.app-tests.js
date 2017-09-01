@@ -98,6 +98,38 @@ if (Meteor.isClient) {
               });
             });
 
+          it("should return an error when username not provided",
+            function (done: () => void) {
+              const invalidUser = {
+                username: "",   // too short
+                email: "abc@test.com",
+                password: "StrongPassword",
+              };
+
+              Accounts.createUser(invalidUser, (err: IMeteorError) => {
+                assert.isDefined(err);
+                assert.equal(err.error, "validation-error");
+                assert.equal(err.reason, "Username is required");
+                done();
+              });
+            });
+
+          it("should return an error when email not provided",
+            function (done: () => void) {
+              const invalidUser = {
+                username: "abcd",
+                email: "",
+                password: "StrongPassword",
+              };
+
+              Accounts.createUser(invalidUser, (err: IMeteorError) => {
+                assert.isDefined(err);
+                assert.equal(err.error, "validation-error");
+                assert.equal(err.reason, "Emails is required");
+                done();
+              });
+            });
+
           it("should return an error when email doesn't match regex",
             function (done: () => void) {
               const invalidUser = {
