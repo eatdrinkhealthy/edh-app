@@ -22,10 +22,32 @@ class CreateAccount extends Component {
   };
 
   componentDidMount() {
-    this.usernameInput.focus();
+    // this.usernameInput.focus();
   }
 
-  usernameInput: HTMLInputElement;
+  renderInput = (
+    inputId: string,
+    inputType: string,
+    inputLabel: string,
+  ) => (
+    <div>
+      <label
+        className={this.labelClassName(!!this.state.formErrors[inputId])}
+        htmlFor={inputId}
+      >
+        {inputLabel}
+      </label>
+      <input
+        className={this.inputClassName(!!this.state.formErrors[inputId])}
+        type={inputType}
+        name={inputId}
+        id={inputId}
+        value={this.state[inputId]}
+        onChange={this.handleInputChange}
+      />
+      {this.renderInputError(this.state.formErrors[inputId])}
+    </div>
+  );
 
   renderInputError = (errorMessage: string) => (
     <div className="ml2 mt1 dark-red">{errorMessage}</div>
@@ -51,8 +73,14 @@ class CreateAccount extends Component {
       email: "",
       password: "",
       confirmPassword: "",
+      formErrors: {
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      },
     });
-    this.usernameInput.focus();
+    // this.usernameInput.focus();
   };
 
   handleInputChange = (event: Event) => {
@@ -71,15 +99,13 @@ class CreateAccount extends Component {
   onSubmit = (event: Event) => {
     event.preventDefault();
 
-    const errors = [];
-
     if (this.state.password !== this.state.confirmPassword) {
-      errors.push("Password and Confirm Password fields do not match.");
+      const currFormErrors = this.state.formErrors;
+      currFormErrors.confirmPassword = "Password and Confirm Password fields do not match.";
+      this.setState({ formErrors: currFormErrors });
     }
 
-    if (errors.length) {
-      errors.forEach((error: string): void => AlertMessage.warning(error));
-    } else {
+    if (this.state.password === this.state.confirmPassword) {
       this.resetForm();
       this.props.handleSubmit(this.state.username, this.state.email, this.state.password);
     }
@@ -95,24 +121,7 @@ class CreateAccount extends Component {
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
             <legend className="f4 fw6 ph0 mh0">Create Account</legend>
             <div className="mt3">
-              <label
-                className={this.labelClassName(!!this.state.formErrors.username)}
-                htmlFor="username"
-              >
-                Username
-              </label>
-              <input
-                className={this.inputClassName(!!this.state.formErrors.username)}
-                type="text"
-                name="username"
-                id="username"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-                ref={(el: HTMLInputElement) => {
-                  this.usernameInput = el;
-                }}
-              />
-              {this.renderInputError(this.state.formErrors.username)}
+              {this.renderInput("username", "text", "Username")}
             </div>
             <div className="mt3">
               <label
@@ -149,21 +158,7 @@ class CreateAccount extends Component {
               {this.renderInputError(this.state.formErrors.password)}
             </div>
             <div className="mv3">
-              <label
-                className={this.labelClassName(!!this.state.formErrors.confirmPassword)}
-                htmlFor="confirmPassword"
-              >
-                Confirm Password
-              </label>
-              <input
-                className={this.inputClassName(!!this.state.formErrors.confirmPassword)}
-                type="password"
-                name="confirmPassword"
-                id="confirmPassword"
-                value={this.state.confirmPassword}
-                onChange={this.handleInputChange}
-              />
-              {this.renderInputError(this.state.formErrors.confirmPassword)}
+              {this.renderInput("confirmPassword", "password", "Confirm Password")}
             </div>
           </fieldset>
           <div>
