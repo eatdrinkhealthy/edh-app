@@ -177,6 +177,11 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
             type="text"
             value=""
           />
+          <div
+            className="ml2 mt1 dark-red"
+          >
+            
+          </div>
         </div>
         <div
           className="mt3"
@@ -195,6 +200,11 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
             type="email"
             value=""
           />
+          <div
+            className="ml2 mt1 dark-red"
+          >
+            
+          </div>
         </div>
         <div
           className="mv3"
@@ -206,13 +216,18 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
             Password
           </label>
           <input
-            className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
             id="password"
             name="password"
             onChange={[Function]}
             type="password"
             value=""
           />
+          <div
+            className="ml2 mt1 dark-red"
+          >
+            
+          </div>
         </div>
         <div
           className="mv3"
@@ -224,13 +239,18 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
             Confirm Password
           </label>
           <input
-            className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
             id="confirmPassword"
             name="confirmPassword"
             onChange={[Function]}
             type="password"
             value=""
           />
+          <div
+            className="ml2 mt1 dark-red"
+          >
+            
+          </div>
         </div>
       </fieldset>
       <div>
