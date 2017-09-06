@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from "react";
 import classNames from "classnames";
-import AlertMessage from "./AlertMessage";
 
 class CreateAccount extends Component {
   props: {
@@ -37,8 +36,9 @@ class CreateAccount extends Component {
     inputLabel: string,
     inputRef?: (HTMLInputElement) => void,
   ) => {
+    const hasError = !!this.state.formErrors[inputId];
     const inputProps = {
-      className: this.inputClassName(!!this.state.formErrors[inputId]),
+      className: this.inputClassName(hasError),
       type: inputType,
       name: inputId,
       id: inputId,
