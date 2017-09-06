@@ -25,29 +25,36 @@ class CreateAccount extends Component {
     // this.usernameInput.focus();
   }
 
+  usernameInput: HTMLInputElement;
+
+  setUsernameRef = (input: HTMLInputElement) => {
+    this.usernameInput = input;
+  };
+
   renderInput = (
     inputId: string,
     inputType: string,
     inputLabel: string,
-  ) => (
-    <div>
-      <label
-        className={this.labelClassName(!!this.state.formErrors[inputId])}
-        htmlFor={inputId}
-      >
-        {inputLabel}
-      </label>
-      <input
-        className={this.inputClassName(!!this.state.formErrors[inputId])}
-        type={inputType}
-        name={inputId}
-        id={inputId}
-        value={this.state[inputId]}
-        onChange={this.handleInputChange}
-      />
-      {this.renderInputError(this.state.formErrors[inputId])}
-    </div>
-  );
+  ) => {
+    const inputProps = {
+      className: this.inputClassName(!!this.state.formErrors[inputId]),
+      type: inputType,
+      name: inputId,
+      id: inputId,
+      onChange: this.handleInputChange,
+      value: this.state[inputId],
+    };
+
+    return (
+      <div>
+        <label className={this.labelClassName(!!this.state.formErrors[inputId])} htmlFor={inputId} >
+          {inputLabel}
+        </label>
+        <input {...inputProps} />
+        {this.renderInputError(this.state.formErrors[inputId])}
+      </div>
+    );
+  };
 
   renderInputError = (errorMessage: string) => (
     <div className="ml2 mt1 dark-red">{errorMessage}</div>
