@@ -114,48 +114,17 @@ class CreateAccount extends Component {
   render() {  // eslint-disable-line flowtype/require-return-type
     return (
       <div className="pt2 pl4 pr4 pb4">
-        <form
-          className="measure center"
-          onSubmit={this.onSubmit}
-        >
+        <form className="measure center" onSubmit={this.onSubmit}>
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
             <legend className="f4 fw6 ph0 mh0">Create Account</legend>
             <div className="mt3">
               {this.renderInput("username", "text", "Username")}
             </div>
             <div className="mt3">
-              <label
-                className={this.labelClassName(!!this.state.formErrors.email)}
-                htmlFor="email"
-              >
-                Email
-              </label>
-              <input
-                className={this.inputClassName(!!this.state.formErrors.email)}
-                type="email"
-                name="email"
-                id="email"
-                value={this.state.email}
-                onChange={this.handleInputChange}
-              />
-              {this.renderInputError(this.state.formErrors.email)}
+              {this.renderInput("email", "email", "Email")}
             </div>
             <div className="mv3">
-              <label
-                className={this.labelClassName(!!this.state.formErrors.password)}
-                htmlFor="password"
-              >
-                Password
-              </label>
-              <input
-                className={this.inputClassName(!!this.state.formErrors.password)}
-                type="password"
-                name="password"
-                id="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-              />
-              {this.renderInputError(this.state.formErrors.password)}
+              {this.renderInput("password", "password", "Password")}
             </div>
             <div className="mv3">
               {this.renderInput("confirmPassword", "password", "Confirm Password")}

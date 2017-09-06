@@ -20,93 +20,101 @@ exports[`<CreateAccount /> matches render snapshot 1`] = `
       <div
         className="mt3"
       >
-        <label
-          className="db fw6 lh-copy f6"
-          htmlFor="username"
-        >
-          Username
-        </label>
-        <input
-          className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-          id="username"
-          name="username"
-          onChange={[Function]}
-          type="text"
-          value=""
-        />
-        <div
-          className="ml2 mt1 dark-red"
-        >
-          
+        <div>
+          <label
+            className="db fw6 lh-copy f6"
+            htmlFor="username"
+          >
+            Username
+          </label>
+          <input
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            id="username"
+            name="username"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <div
+            className="ml2 mt1 dark-red"
+          >
+            
+          </div>
         </div>
       </div>
       <div
         className="mt3"
       >
-        <label
-          className="db fw6 lh-copy f6"
-          htmlFor="email"
-        >
-          Email
-        </label>
-        <input
-          className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-          id="email"
-          name="email"
-          onChange={[Function]}
-          type="email"
-          value=""
-        />
-        <div
-          className="ml2 mt1 dark-red"
-        >
-          
+        <div>
+          <label
+            className="db fw6 lh-copy f6"
+            htmlFor="email"
+          >
+            Email
+          </label>
+          <input
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            id="email"
+            name="email"
+            onChange={[Function]}
+            type="email"
+            value=""
+          />
+          <div
+            className="ml2 mt1 dark-red"
+          >
+            
+          </div>
         </div>
       </div>
       <div
         className="mv3"
       >
-        <label
-          className="db fw6 lh-copy f6"
-          htmlFor="password"
-        >
-          Password
-        </label>
-        <input
-          className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-          id="password"
-          name="password"
-          onChange={[Function]}
-          type="password"
-          value=""
-        />
-        <div
-          className="ml2 mt1 dark-red"
-        >
-          
+        <div>
+          <label
+            className="db fw6 lh-copy f6"
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <input
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            id="password"
+            name="password"
+            onChange={[Function]}
+            type="password"
+            value=""
+          />
+          <div
+            className="ml2 mt1 dark-red"
+          >
+            
+          </div>
         </div>
       </div>
       <div
         className="mv3"
       >
-        <label
-          className="db fw6 lh-copy f6"
-          htmlFor="confirmPassword"
-        >
-          Confirm Password
-        </label>
-        <input
-          className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-          id="confirmPassword"
-          name="confirmPassword"
-          onChange={[Function]}
-          type="password"
-          value=""
-        />
-        <div
-          className="ml2 mt1 dark-red"
-        >
-          
+        <div>
+          <label
+            className="db fw6 lh-copy f6"
+            htmlFor="confirmPassword"
+          >
+            Confirm Password
+          </label>
+          <input
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            id="confirmPassword"
+            name="confirmPassword"
+            onChange={[Function]}
+            type="password"
+            value=""
+          />
+          <div
+            className="ml2 mt1 dark-red"
+          >
+            
+          </div>
         </div>
       </div>
     </fieldset>
