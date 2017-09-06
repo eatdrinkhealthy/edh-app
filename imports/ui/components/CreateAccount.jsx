@@ -22,7 +22,7 @@ class CreateAccount extends Component {
   };
 
   componentDidMount() {
-    // this.usernameInput.focus();
+    this.usernameInput.focus();
   }
 
   usernameInput: HTMLInputElement;
@@ -35,6 +35,7 @@ class CreateAccount extends Component {
     inputId: string,
     inputType: string,
     inputLabel: string,
+    inputRef?: (HTMLInputElement) => void,
   ) => {
     const inputProps = {
       className: this.inputClassName(!!this.state.formErrors[inputId]),
@@ -43,6 +44,7 @@ class CreateAccount extends Component {
       id: inputId,
       onChange: this.handleInputChange,
       value: this.state[inputId],
+      ...inputRef && { ref: inputRef },   // if inputRef provided, add ref prop
     };
 
     return (
@@ -87,7 +89,7 @@ class CreateAccount extends Component {
         confirmPassword: "",
       },
     });
-    // this.usernameInput.focus();
+    this.usernameInput.focus();
   };
 
   handleInputChange = (event: Event) => {
@@ -125,7 +127,7 @@ class CreateAccount extends Component {
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
             <legend className="f4 fw6 ph0 mh0">Create Account</legend>
             <div className="mt3">
-              {this.renderInput("username", "text", "Username")}
+              {this.renderInput("username", "text", "Username", this.setUsernameRef)}
             </div>
             <div className="mt3">
               {this.renderInput("email", "email", "Email")}
