@@ -41,16 +41,16 @@ const UserSchema = {
   },
 };
 
+Meteor.users.simpleSchema = new SimpleSchema(UserSchema);
+
 Accounts.validateNewUser((
   user: {},
 ): boolean => {
-  const userSchema = new SimpleSchema(UserSchema);
-
   // Place validation checks that are schema format related, or
   // useful to client side (UI) validation as well in the schema
   // So the schema, or portions of the schema can be used on the
   // client too.
-  userSchema.validate(user);
+  Meteor.users.simpleSchema.validate(user);
 
   // Place validation checks that are more specific / isolated to
   // the server side as code, in this validation method.

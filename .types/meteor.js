@@ -48,6 +48,7 @@ declare module "meteor/meteor" {
       callback?: IMeteorCallback
     ) => number,
     deny: (IMeteorAllowDenyOptions) => void,
+    simpleSchema: SimpleSchema, // storing simpleSchema in collection is a custom, but known practice
   };
 
   declare export type IMeteorUser = {
