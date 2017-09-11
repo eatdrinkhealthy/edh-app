@@ -2,9 +2,12 @@
 import React, { Component } from "react";
 import classNames from "classnames";
 
+// import type { SimpleSchema } from "meteor/aldeed:simple-schema";
+
 class CreateAccount extends Component {
   props: {
     handleSubmit: (username: string, email: string, password: string) => void,
+    // formValidator?: SimpleSchema<*>,   // eslint-disable-line react/require-default-props
   };
 
   state = {
@@ -49,7 +52,7 @@ class CreateAccount extends Component {
 
     return (
       <div>
-        <label className={this.labelClassName(!!this.state.formErrors[inputId])} htmlFor={inputId} >
+        <label className={this.labelClassName(!!this.state.formErrors[inputId])} htmlFor={inputId}>
           {inputLabel}
         </label>
         <input {...inputProps} />
@@ -105,16 +108,26 @@ class CreateAccount extends Component {
     });
   };
 
+  validateForm = () => {
+    const formErrors = this.state.formErrors;
+
+    if (this.state.password !== this.state.confirmPassword) {
+      formErrors.confirmPassword = "Password and Confirm Password fields do not match.";
+    }
+
+    this.setState({ formErrors });
+  };
+
+  formIsValid = (): boolean => (
+    this.state.formErrors.confirmPassword.length === 0
+  );
+
   onSubmit = (event: Event) => {
     event.preventDefault();
 
-    if (this.state.password !== this.state.confirmPassword) {
-      const currFormErrors = this.state.formErrors;
-      currFormErrors.confirmPassword = "Password and Confirm Password fields do not match.";
-      this.setState({ formErrors: currFormErrors });
-    }
+    this.validateForm();
 
-    if (this.state.password === this.state.confirmPassword) {
+    if (this.formIsValid()) {
       this.resetForm();
       this.props.handleSubmit(this.state.username, this.state.email, this.state.password);
     }
