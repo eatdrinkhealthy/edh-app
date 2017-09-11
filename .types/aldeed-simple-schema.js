@@ -4,7 +4,7 @@ declare module "meteor/aldeed:simple-schema" {
     constructor(param: T): void;
     validator(): Function;
     validate({}): Function;
-    newContext(contextName?: string): {};
+    namedContext(contextName?: string): SimpleSchema<T>;
     static RegEx: {
       Email: {},
     };
