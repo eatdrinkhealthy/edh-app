@@ -109,7 +109,7 @@ class CreateAccount extends Component {
   };
 
   validateForm = () => {
-    const formErrors = this.state.formErrors;
+    const formErrors = { ...this.state.formErrors };
 
     if (this.state.password !== this.state.confirmPassword) {
       formErrors.confirmPassword = "Password and Confirm Password fields do not match.";
@@ -128,8 +128,9 @@ class CreateAccount extends Component {
     this.validateForm();
 
     if (this.formIsValid()) {
+      const { username, email, password } = this.state;
       this.resetForm();
-      this.props.handleSubmit(this.state.username, this.state.email, this.state.password);
+      this.props.handleSubmit(username, email, password);
     }
   };
 

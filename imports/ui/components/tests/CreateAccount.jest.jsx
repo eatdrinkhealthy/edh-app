@@ -31,7 +31,7 @@ describe("<CreateAccount />", function () {
     expect(tree).toMatchSnapshot();
   });
 
-  it("should not call handleSubmit on submit with password & confirm password mismatch", function () {
+  it("should NOT call handleSubmit on submit, when password & confirm password mismatch", function () {
     const props = {
       handleSubmit: jest.fn(),
     };
@@ -51,11 +51,11 @@ describe("<CreateAccount />", function () {
       .toBe("Password and Confirm Password fields do not match.");
     // $FlowFixMe
     expect(wrapper.instance().formIsValid()).toBe(false);
-    expect("?").toBe("how can formIsValid be false, but handleSubmit still be called");
+    // expect("?").toBe("how can formIsValid be false, but handleSubmit still be called");
     expect(props.handleSubmit).not.toHaveBeenCalled();
   });
 
-  it("should call handleSubmit on submit with valid form fields", function () {
+  it("should call handleSubmit on submit, when all form fields are valid", function () {
     const props = {
       handleSubmit: jest.fn(),
     };
