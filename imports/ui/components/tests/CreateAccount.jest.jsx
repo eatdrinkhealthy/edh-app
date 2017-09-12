@@ -31,26 +31,7 @@ describe("<CreateAccount />", function () {
     expect(tree).toMatchSnapshot();
   });
 
-  it("should call handleSubmit on submit with valid form fields", function () {
-    const props = {
-      handleSubmit: jest.fn(),
-    };
-
-    const wrapper = mountFormWithInputs(
-      <CreateAccount {...props} />,
-      {
-        username: "user12",
-        email: "user12@test.com",
-        password: "user12pw",
-        confirmPassword: "user12pw",
-      },
-    );
-
-    wrapper.find("input[type='submit']").simulate("submit");
-    expect(props.handleSubmit).toHaveBeenCalledWith("user12", "user12@test.com", "user12pw");
-  });
-
-  it("should not call handleSubmit on submit with invalid form fields", function () {
+  it("should not call handleSubmit on submit with password & confirm password mismatch", function () {
     const props = {
       handleSubmit: jest.fn(),
     };
@@ -68,7 +49,29 @@ describe("<CreateAccount />", function () {
     wrapper.find("input[type='submit']").simulate("submit");
     expect(wrapper.state().formErrors.confirmPassword)
       .toBe("Password and Confirm Password fields do not match.");
+    // $FlowFixMe
+    expect(wrapper.instance().formIsValid()).toBe(false);
+    expect("?").toBe("how can formIsValid be false, but handleSubmit still be called");
     expect(props.handleSubmit).not.toHaveBeenCalled();
+  });
+
+  it("should call handleSubmit on submit with valid form fields", function () {
+    const props = {
+      handleSubmit: jest.fn(),
+    };
+
+    const wrapper = mountFormWithInputs(
+      <CreateAccount {...props} />,
+      {
+        username: "user12",
+        email: "user12@test.com",
+        password: "user12pw",
+        confirmPassword: "user12pw",
+      },
+    );
+
+    wrapper.find("input[type='submit']").simulate("submit");
+    expect(props.handleSubmit).toHaveBeenCalledWith("user12", "user12@test.com", "user12pw");
   });
 
   it("should clear input fields and give username focus on successful submit", function () {
