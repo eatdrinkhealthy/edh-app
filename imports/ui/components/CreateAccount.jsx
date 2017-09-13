@@ -103,13 +103,19 @@ class CreateAccount extends Component {
     // $FlowFixMe
     const { value, name } = event.target;
 
-    this.setState({
-      [name]: value,
-    });
+    this.setState(
+      { [name]: value },              // validateForm after input's
+      () => { this.validateForm(); }, // state is updated (async)
+    );
   };
 
   validateForm = () => {
-    const formErrors = { ...this.state.formErrors };
+    const formErrors = {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    };
 
     if (this.state.password !== this.state.confirmPassword) {
       formErrors.confirmPassword = "Password and Confirm Password fields do not match.";
@@ -124,8 +130,6 @@ class CreateAccount extends Component {
 
   onSubmit = (event: Event) => {
     event.preventDefault();
-
-    this.validateForm();
 
     if (this.formIsValid()) {
       const { username, email, password } = this.state;
