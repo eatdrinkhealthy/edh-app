@@ -51,7 +51,6 @@ describe("<CreateAccount />", function () {
       .toBe("Password and Confirm Password fields do not match.");
     // $FlowFixMe
     expect(wrapper.instance().formIsValid()).toBe(false);
-    expect("?").toBe("how can formIsValid be false, but handleSubmit still be called");
     expect(props.handleSubmit).not.toHaveBeenCalled();
   });
 
