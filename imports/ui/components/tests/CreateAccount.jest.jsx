@@ -47,7 +47,7 @@ describe("<CreateAccount />", function () {
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
-    expect(wrapper.state().formErrors.confirmPassword)
+    expect(wrapper.find("#confirmPasswordError").text())
       .toBe("Password and Confirm Password fields do not match.");
     // $FlowFixMe
     expect(wrapper.instance().formIsValid()).toBe(false);

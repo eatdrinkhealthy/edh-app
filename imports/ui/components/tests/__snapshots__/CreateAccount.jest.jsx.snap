@@ -37,6 +37,7 @@ exports[`<CreateAccount /> matches render snapshot 1`] = `
           />
           <div
             className="ml2 mt1 dark-red"
+            id="usernameError"
           >
             
           </div>
@@ -62,6 +63,7 @@ exports[`<CreateAccount /> matches render snapshot 1`] = `
           />
           <div
             className="ml2 mt1 dark-red"
+            id="emailError"
           >
             
           </div>
@@ -87,6 +89,7 @@ exports[`<CreateAccount /> matches render snapshot 1`] = `
           />
           <div
             className="ml2 mt1 dark-red"
+            id="passwordError"
           >
             
           </div>
@@ -112,6 +115,7 @@ exports[`<CreateAccount /> matches render snapshot 1`] = `
           />
           <div
             className="ml2 mt1 dark-red"
+            id="confirmPasswordError"
           >
             
           </div>

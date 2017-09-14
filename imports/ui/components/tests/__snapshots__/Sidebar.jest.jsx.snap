@@ -180,6 +180,7 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
             />
             <div
               className="ml2 mt1 dark-red"
+              id="usernameError"
             >
               
             </div>
@@ -205,6 +206,7 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
             />
             <div
               className="ml2 mt1 dark-red"
+              id="emailError"
             >
               
             </div>
@@ -230,6 +232,7 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
             />
             <div
               className="ml2 mt1 dark-red"
+              id="passwordError"
             >
               
             </div>
@@ -255,6 +258,7 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
             />
             <div
               className="ml2 mt1 dark-red"
+              id="confirmPasswordError"
             >
               
             </div>

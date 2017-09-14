@@ -56,13 +56,18 @@ class CreateAccount extends Component {
           {inputLabel}
         </label>
         <input {...inputProps} />
-        {this.renderInputError(this.state.formErrors[inputId])}
+        {this.renderInputError(inputId)}
       </div>
     );
   };
 
-  renderInputError = (errorMessage: string) => (
-    <div className="ml2 mt1 dark-red">{errorMessage}</div>
+  renderInputError = (inputId: string) => (
+    <div
+      id={`${inputId}Error`}
+      className="ml2 mt1 dark-red"
+    >
+      {this.state.formErrors[inputId]}
+    </div>
   );
 
   labelClassName = (error: boolean): string => (
@@ -105,7 +110,9 @@ class CreateAccount extends Component {
 
     this.setState(
       { [name]: value },              // validateForm after input's
-      () => { this.validateForm(); }, // state is updated (async)
+      () => {
+        this.validateForm();
+      }, // state is updated (async)
     );
   };
 
