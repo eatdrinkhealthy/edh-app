@@ -13,7 +13,7 @@ import sampleVenues from "./sampleVenueData";
 
 describe("store - smoke test", function () {
   it("should return a default state", function () {
-    expect(store.getState()).toEqual(defaultState);
+    expect(store.getState()).toEqual(expect.objectContaining(defaultState));
   });
 
   describe("filters state", function () {
