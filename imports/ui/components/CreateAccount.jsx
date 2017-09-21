@@ -19,18 +19,33 @@ const renderInputError = (error: string) => (
   </div>
 );
 
-const renderInput = ({ input, label, type, meta: { touched, error } }) => (
+type IRenderInputProps = {
+  inputId: string,
+  label: string,
+  type: string,
+  input: {},          // redux-form flow type
+  meta: {             // redux-form flow type
+    error: string,    // eslint-disable-line react/no-unused-prop-types
+    touched: boolean, // eslint-disable-line react/no-unused-prop-types
+  },
+};
+
+const renderInput = (
+  { input, inputId, label, type, meta: { touched, error } }: IRenderInputProps,
+) => (
   <div>
     <label
       className={classNames("db fw6 lh-copy f6", { "dark-red": !!error })}
+      htmlFor={inputId}
     >
       {label}
     </label>
     <input
       {...input}
+      id={inputId}
       className={classNames(
         "pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100",
-        { "dark-red": error },
+        { "dark-red": !!error },
       )}
       placeholder={label}
       type={type}
@@ -39,10 +54,11 @@ const renderInput = ({ input, label, type, meta: { touched, error } }) => (
   </div>
 );
 
-// propTypes?
-// handleSubmit: (username: string, email: string, password: string) => void,
+type ICreateAccountProps = {
+  handleSubmit: (username: string, email: string, password: string) => void,
+};
 
-const CreateAccount = (props) => {
+const CreateAccount = (props: ICreateAccountProps) => {
   const { handleSubmit } = props;
 
   return (
@@ -51,16 +67,35 @@ const CreateAccount = (props) => {
         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
           <legend className="f4 fw6 ph0 mh0">Create Account</legend>
           <div className="mt3">
-            <Field name="username" type="text" label="Username" component={renderInput} />
+            <Field
+              inputId="username"
+              name="username"
+              type="text"
+              label="Username"
+              component={renderInput}
+            />
           </div>
           <div className="mt3">
-            <Field name="email" type="email" label="Email" component={renderInput} />
-          </div>
-          <div className="mv3">
-            <Field name="password" type="password" label="Password" component={renderInput} />
+            <Field
+              inputId="email"
+              name="email"
+              type="email"
+              label="Email"
+              component={renderInput}
+            />
           </div>
           <div className="mv3">
             <Field
+              inputId="password"
+              name="password"
+              type="password"
+              label="Password"
+              component={renderInput}
+            />
+          </div>
+          <div className="mv3">
+            <Field
+              inputId="confirmPassword"
               name="confirmPassword"
               type="password"
               label="Confirm Password"
