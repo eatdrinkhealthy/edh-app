@@ -7,6 +7,7 @@ import type { IMeteorError } from "meteor/meteor";
 import type { RouterHistory } from "react-router-dom";
 import AlertMessage from "../components/AlertMessage";
 import CreateAccount from "../components/CreateAccount";
+import type { ICreateAccountFormValues } from "../components/CreateAccount";
 import lookupErrorMessage from "../helpers/errors";
 
 class CreateAccountContainer extends Component {
@@ -14,11 +15,9 @@ class CreateAccountContainer extends Component {
     routerHistory?: RouterHistory, // eslint-disable-line react/require-default-props
   };
 
-  createUser = (
-    username: string,
-    email: string,
-    password: string,
-  ) => {
+  createUser = (values: ICreateAccountFormValues) => {
+    const { username, email, password } = values;
+
     Accounts.createUser({
       username,
       email,
@@ -35,8 +34,9 @@ class CreateAccountContainer extends Component {
     });
   };
 
-  render() { // eslint-disable-line flowtype/require-return-type
-    return <CreateAccount handleSubmit={this.createUser} />;
+  render() {
+    // NOTE: passing submit handler as onSubmit prop, but it is read from handleSubmit prop
+    return <CreateAccount onSubmit={this.createUser} />;
   }
 }
 

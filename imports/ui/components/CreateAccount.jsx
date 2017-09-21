@@ -21,6 +21,7 @@ const renderInputError = (error: string) => (
 
 type IRenderInputProps = {
   inputId: string,
+  autoFocus: boolean,
   label: string,
   type: string,
   input: {},          // redux-form flow type
@@ -31,7 +32,7 @@ type IRenderInputProps = {
 };
 
 const renderInput = (
-  { input, inputId, label, type, meta: { touched, error } }: IRenderInputProps,
+  { input, inputId, autoFocus, label, type, meta: { touched, error } }: IRenderInputProps,
 ) => (
   <div>
     <label
@@ -49,13 +50,21 @@ const renderInput = (
       )}
       placeholder={label}
       type={type}
+      autoFocus={autoFocus}
     />
     {touched && (error && renderInputError(error))}
   </div>
 );
 
+export type ICreateAccountFormValues = {
+  username: string,
+  email: string,
+  password: string,
+  confirmPassword: string,
+};
+
 type ICreateAccountProps = {
-  handleSubmit: (username: string, email: string, password: string) => void,
+  handleSubmit: (values: ICreateAccountFormValues) => void,
 };
 
 const CreateAccount = (props: ICreateAccountProps) => {
@@ -73,6 +82,7 @@ const CreateAccount = (props: ICreateAccountProps) => {
               type="text"
               label="Username"
               component={renderInput}
+              autoFocus
             />
           </div>
           <div className="mt3">
