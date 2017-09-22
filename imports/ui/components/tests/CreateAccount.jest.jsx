@@ -31,16 +31,16 @@ describe("<CreateAccount />", function () {
 
     const tree = renderer.create(
       <Provider store={testStore}>
-        <CreateAccount handleSubmit={() => {}} />
+        <CreateAccount onSubmit={() => {}} />
       </Provider>,
       options,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it("should NOT call handleSubmit on submit, when password & confirm password mismatch", function () {
+  it("should set confirmPassword error and NOT call onSubmit, when password !== confirm password", function () {
     const props = {
-      handleSubmit: jest.fn(),
+      onSubmit: jest.fn(),
     };
 
     const wrapper = mountFormWithInputs(
@@ -49,7 +49,7 @@ describe("<CreateAccount />", function () {
         username: "user12",
         email: "user12@test.com",
         password: "user12pw",
-        confirmPassword: "user12pw2",
+        confirmPassword: "User12pw2",
       },
       testStore,
     );
@@ -57,14 +57,12 @@ describe("<CreateAccount />", function () {
     wrapper.find("input[type='submit']").simulate("submit");
     expect(wrapper.find("#confirmPasswordError").text())
       .toBe("Password and Confirm Password fields do not match.");
-    // $FlowFixMe
-    expect(wrapper.instance().formIsValid()).toBe(false);
-    expect(props.handleSubmit).not.toHaveBeenCalled();
+    expect(props.onSubmit).not.toHaveBeenCalled();
   });
 
-  it("should call handleSubmit on submit, when all form fields are valid", function () {
+  it("should call onSubmit, when submitting and all form fields are valid", function () {
     const props = {
-      handleSubmit: jest.fn(),
+      onSubmit: jest.fn(),
     };
 
     const wrapper = mountFormWithInputs(
@@ -79,12 +77,21 @@ describe("<CreateAccount />", function () {
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
-    expect(props.handleSubmit).toHaveBeenCalled();
+    expect(props.onSubmit).toHaveBeenCalledWith(
+      {
+        username: "user12",
+        email: "user12@test.com",
+        password: "user12pw",
+        confirmPassword: "user12pw",
+      },
+      expect.anything(),
+      expect.anything(),
+    );
   });
 
   it("should clear input fields and give username focus on successful submit", function () {
     const props = {
-      handleSubmit: jest.fn(),
+      onSubmit: jest.fn(),
     };
 
     const wrapper = mountFormWithInputs(
@@ -114,7 +121,7 @@ describe("<CreateAccount />", function () {
 
   it("should set focus to username input on render", function () {
     const props = {
-      handleSubmit: jest.fn(),
+      onSubmit: jest.fn(),
     };
 
     const wrapper = mountFormWithInputs(

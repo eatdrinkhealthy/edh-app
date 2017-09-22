@@ -13,8 +13,8 @@ const validate = (values) => {
   return errors;
 };
 
-const renderInputError = (error: string) => (
-  <div className="ml2 mt1 dark-red">
+const renderInputError = (inputId: string, error: string) => (
+  <div id={`${inputId}Error`} className="ml2 mt1 dark-red">
     {error}
   </div>
 );
@@ -52,7 +52,7 @@ const renderInput = (
       type={type}
       autoFocus={autoFocus}
     />
-    {touched && (error && renderInputError(error))}
+    {error && renderInputError(inputId, error)}
   </div>
 );
 
