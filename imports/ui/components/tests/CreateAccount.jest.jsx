@@ -105,6 +105,7 @@ describe("<CreateAccount />", function () {
       testStore,
     );
     const usernameNode = wrapper.find("input#username");
+    const passwordNode = wrapper.find("input#password");
     const confirmPasswordNode = wrapper.find("input#confirmPassword");
 
     // give focus to confirm password input (like a user would do before submit)
@@ -112,9 +113,7 @@ describe("<CreateAccount />", function () {
     confirmPasswordNode.get(0).focus();
     wrapper.find("input[type='submit']").simulate("submit");
 
-    expect(usernameNode.props().value).toEqual("");
-    expect(wrapper.find("input#email").props().value).toEqual("");
-    expect(wrapper.find("input#password").props().value).toEqual("");
+    expect(passwordNode.props().value).toEqual("");
     expect(confirmPasswordNode.props().value).toEqual("");
     expect(usernameNode.get(0)).toBe(document.activeElement);
   });

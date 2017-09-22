@@ -127,7 +127,14 @@ const CreateAccount = (props: ICreateAccountProps) => {
   );
 };
 
+const onSubmitSuccess = (result, dispatch, props) => {
+  // on successful submit, clear password fields
+  props.change("password", "");
+  props.change("confirmPassword", "");
+};
+
 export default reduxForm({
   form: "CreateAccount",
+  onSubmitSuccess,
   validate,
 })(CreateAccount);
