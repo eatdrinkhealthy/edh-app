@@ -3,11 +3,16 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 import renderer from "react-test-renderer";
 import CreateAccount from "../CreateAccount";
 import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
+import appReducer from "../../../state/reducers";
 
 describe("<CreateAccount />", function () {
+  const testStore = createStore(appReducer);
+
   it("matches render snapshot", function () {
     // Per a React blog post, when using renderer, must mock out refs
     // https://facebook.github.io/react/blog/2016/11/16/react-v15.4.0.html#mocking-refs-for-snapshot-testing
@@ -25,7 +30,9 @@ describe("<CreateAccount />", function () {
     const options = { createNodeMock };
 
     const tree = renderer.create(
-      <CreateAccount handleSubmit={() => {}} />,
+      <Provider store={testStore}>
+        <CreateAccount handleSubmit={() => {}} />
+      </Provider>,
       options,
     ).toJSON();
     expect(tree).toMatchSnapshot();
@@ -44,6 +51,7 @@ describe("<CreateAccount />", function () {
         password: "user12pw",
         confirmPassword: "user12pw2",
       },
+      testStore,
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
@@ -67,6 +75,7 @@ describe("<CreateAccount />", function () {
         password: "user12pw",
         confirmPassword: "user12pw",
       },
+      testStore,
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
@@ -86,6 +95,7 @@ describe("<CreateAccount />", function () {
         password: "user12pw",
         confirmPassword: "user12pw",
       },
+      testStore,
     );
     const usernameNode = wrapper.find("input#username");
     const confirmPasswordNode = wrapper.find("input#confirmPassword");
@@ -115,6 +125,7 @@ describe("<CreateAccount />", function () {
         password: "user12pw",
         confirmPassword: "user12pw",
       },
+      testStore,
     );
 
     expect(wrapper.find("input#username").get(0)).toBe(document.activeElement);
