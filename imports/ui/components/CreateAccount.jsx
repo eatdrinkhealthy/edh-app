@@ -67,6 +67,8 @@ type ICreateAccountProps = {
   handleSubmit: (values: ICreateAccountFormValues) => void,
 };
 
+// NOTE: when we call the CreateAccount component, we pass our submit handler as an onSubmit prop,
+//       and redux-form passes a submit function in as handleSubmit
 const CreateAccount = (props: ICreateAccountProps) => {
   const { handleSubmit } = props;
 
