@@ -79,7 +79,7 @@ describe("<CreateAccount />", function () {
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
-    expect(props.handleSubmit).toHaveBeenCalledWith("user12", "user12@test.com", "user12pw");
+    expect(props.handleSubmit).toHaveBeenCalled();
   });
 
   it("should clear input fields and give username focus on successful submit", function () {
