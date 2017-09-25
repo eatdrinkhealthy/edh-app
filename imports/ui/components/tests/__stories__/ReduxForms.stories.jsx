@@ -7,7 +7,7 @@ import { decorateAction } from "@storybook/addon-actions";
 import Provider from "./Provider";
 import CreateAccount from "../../CreateAccount";
 
-const firstArgAction = decorateAction([
+const actionFirstArg = decorateAction([
   args => args.slice(0, 1),
 ]);
 
@@ -16,5 +16,5 @@ storiesOf("Redux Forms", module)
     <Provider story={story()} />
   ))
   .add("CreateAccount", (): React$Element<*> => (
-    <CreateAccount onSubmit={firstArgAction("submitted")} />
+    <CreateAccount onSubmit={actionFirstArg("submitted")} />
   ));
