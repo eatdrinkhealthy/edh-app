@@ -6,11 +6,11 @@ import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import renderer from "react-test-renderer";
-import CreateAccount from "../CreateAccount";
+import CreateAccountForm from "../CreateAccountForm";
 import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
 import appReducer from "../../../state/reducers";
 
-describe("<CreateAccount />", function () {
+describe("<CreateAccountForm />", function () {
   const testStore = createStore(appReducer);
 
   it("matches render snapshot", function () {
@@ -31,7 +31,7 @@ describe("<CreateAccount />", function () {
 
     const tree = renderer.create(
       <Provider store={testStore}>
-        <CreateAccount onSubmit={() => {}} />
+        <CreateAccountForm onSubmit={() => {}} />
       </Provider>,
       options,
     ).toJSON();
@@ -44,7 +44,7 @@ describe("<CreateAccount />", function () {
     };
 
     const wrapper = mountFormWithInputs(
-      <CreateAccount {...props} />,
+      <CreateAccountForm {...props} />,
       {
         username: "user12",
         email: "user12@test.com",
@@ -66,7 +66,7 @@ describe("<CreateAccount />", function () {
     };
 
     const wrapper = mountFormWithInputs(
-      <CreateAccount {...props} />,
+      <CreateAccountForm {...props} />,
       {
         username: "user12",
         email: "user12@test.com",
@@ -95,7 +95,7 @@ describe("<CreateAccount />", function () {
     };
 
     const wrapper = mountFormWithInputs(
-      <CreateAccount {...props} />,
+      <CreateAccountForm {...props} />,
       {
         username: "user12",
         email: "user12@test.com",
@@ -119,7 +119,7 @@ describe("<CreateAccount />", function () {
     };
 
     const wrapper = mountFormWithInputs(
-      <CreateAccount {...props} />,
+      <CreateAccountForm {...props} />,
       {
         username: "user12",
         email: "user12@test.com",

@@ -9,10 +9,10 @@ import type { ReactWrapper } from "enzyme";
 import type { Store } from "redux";
 import _ from "lodash";
 
-// NOTE: mountCreateAccountForm used to be exported from CreateAccount.jest.jsx,
+// NOTE: mountCreateAccountForm used to be exported from CreateAccountForm.jest.jsx,
 //       but whenever it was imported in to another module (e.g. CreateAccountContainer.jest.jsx)
 //       it would generate a snapshot file for the file it was imported to (but
-//       generate a snapshot of <CreateAccount />)
+//       generate a snapshot of <CreateAccountForm />)
 //       Moving mountCreateAccountForm to its own module resolved that.
 //
 //       Weird.

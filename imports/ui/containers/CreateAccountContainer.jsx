@@ -6,8 +6,8 @@ import { Accounts } from "meteor/accounts-base";
 import type { IMeteorError } from "meteor/meteor";
 import type { RouterHistory } from "react-router-dom";
 import AlertMessage from "../components/AlertMessage";
-import CreateAccount from "../components/CreateAccount";
-import type { ICreateAccountFormValues } from "../components/CreateAccount";
+import CreateAccountForm from "../components/CreateAccountForm";
+import type { ICreateAccountFormValues } from "../components/CreateAccountForm";
 import lookupErrorMessage from "../helpers/errors";
 
 class CreateAccountContainer extends Component {
@@ -36,7 +36,7 @@ class CreateAccountContainer extends Component {
 
   render() {
     // NOTE: passing submit handler as onSubmit prop, but it is read from handleSubmit prop
-    return <CreateAccount onSubmit={this.createUser} />;
+    return <CreateAccountForm onSubmit={this.createUser} />;
   }
 }
 
