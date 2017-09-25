@@ -89,7 +89,7 @@ describe("<CreateAccount />", function () {
     );
   });
 
-  it("should clear input fields and give username focus on successful submit", function () {
+  it("should clear password and confirmPassword on successful submit", function () {
     const props = {
       onSubmit: jest.fn(),
     };
@@ -104,18 +104,13 @@ describe("<CreateAccount />", function () {
       },
       testStore,
     );
-    const usernameNode = wrapper.find("input#username");
     const passwordNode = wrapper.find("input#password");
     const confirmPasswordNode = wrapper.find("input#confirmPassword");
 
-    // give focus to confirm password input (like a user would do before submit)
-    // $FlowFixMe
-    confirmPasswordNode.get(0).focus();
     wrapper.find("input[type='submit']").simulate("submit");
 
     expect(passwordNode.props().value).toEqual("");
     expect(confirmPasswordNode.props().value).toEqual("");
-    expect(usernameNode.get(0)).toBe(document.activeElement);
   });
 
   it("should set focus to username input on render", function () {

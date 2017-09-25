@@ -132,6 +132,12 @@ const onSubmitSuccess = (result, dispatch, props) => {
   // on successful submit, clear password fields
   props.change("password", "");
   props.change("confirmPassword", "");
+
+  // set focus on username field
+  const usernameElem = document.querySelector("#username");
+  if (usernameElem) {
+    usernameElem.focus();
+  }
 };
 
 export default reduxForm({
