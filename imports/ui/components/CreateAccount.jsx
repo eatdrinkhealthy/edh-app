@@ -27,13 +27,13 @@ type IRenderInputProps = {
   input: {},          // redux-form flow type
   meta: {             // redux-form flow type
     error: string,    // eslint-disable-line react/no-unused-prop-types
-    touched: boolean, // eslint-disable-line react/no-unused-prop-types
   },
 };
 
 const renderInput = (
-  { input, inputId, autoFocus, label, type, meta: { touched, error } }: IRenderInputProps,
+  { input, inputId, autoFocus, label, type, meta: { error } }: IRenderInputProps,
 ) => (
+  /* eslint-disable jsx-a11y/no-autofocus */
   <div>
     <label
       className={classNames("db fw6 lh-copy f6", { "dark-red": !!error })}
@@ -54,6 +54,7 @@ const renderInput = (
     />
     {error && renderInputError(inputId, error)}
   </div>
+  /* eslint-enable jsx-a11y/no-autofocus */
 );
 
 export type ICreateAccountFormValues = {
