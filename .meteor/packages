@@ -30,7 +30,6 @@ react-meteor-data              # make react component reactive to meteor reactiv
 
 # data
 mongo@1.1.19                   # The database Meteor supports right now
-aldeed:simple-schema
 
 # testing
 meteortesting:mocha
@@ -49,3 +48,4 @@ mdg:geolocation
 http@1.2.12
 
 # new / not sorted
+mdg:validation-error

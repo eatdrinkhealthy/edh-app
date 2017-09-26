@@ -82,21 +82,20 @@ if (Meteor.isClient) {
             });
           });
 
-          it("should return an error when username too short",
-            function (done: () => void) {
-              const invalidUser = {
-                username: "abc",   // too short
-                email: "abc@test.com",
-                password: "StrongPassword",
-              };
+          it("should return an error when username too short", function (done: () => void) {
+            const invalidUser = {
+              username: "abc",   // too short
+              email: "abc@test.com",
+              password: "StrongPassword",
+            };
 
-              Accounts.createUser(invalidUser, (err: IMeteorError) => {
-                assert.isDefined(err);
-                assert.equal(err.error, "validation-error");
-                assert.equal(err.reason, "Username must be at least 4 characters");
-                done();
-              });
+            Accounts.createUser(invalidUser, (err: IMeteorError) => {
+              assert.isDefined(err);
+              assert.equal(err.error, "validation-error");
+              assert.equal(err.reason, "Username must be at least 4 characters");
+              done();
             });
+          });
 
           it("should return an error when username not provided",
             function (done: () => void) {

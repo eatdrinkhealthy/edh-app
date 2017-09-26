@@ -1,7 +1,7 @@
 // @flow
 import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
-import { SimpleSchema } from "meteor/aldeed:simple-schema";
+import SimpleSchema from "simpl-schema";
 import _ from "lodash";
 import foursquareApiSearch from "./foursquareApi";
 
@@ -29,20 +29,18 @@ export const collectSearchResults = (
   return result;
 };
 
-const FilterSchema = new SimpleSchema({
-  id: { type: String },
-  name: { type: String },
-  on: { type: Boolean },
-  foursquareCategory: { type: String },
-});
-
 export const getNearbyPlaces = new ValidatedMethod({
   name: "getNearbyPlaces",
 
   validate: new SimpleSchema({
-    latitude: { type: Number, decimal: true },
-    longitude: { type: Number, decimal: true },
-    filterList: { type: [FilterSchema] },
+    latitude: { type: Number },
+    longitude: { type: Number },
+    filterList: { type: Array },
+    "filterList.$": { type: Object },
+    "filterList.$.id": { type: String },
+    "filterList.$.name": { type: String },
+    "filterList.$.on": { type: Boolean },
+    "filterList.$.foursquareCategory": { type: String },
   }).validator(),
 
   // eslint-disable-next-line flowtype/require-parameter-type

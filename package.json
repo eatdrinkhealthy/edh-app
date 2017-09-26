@@ -37,6 +37,7 @@
     "react-toggle": "^4.0.1",
     "redux": "^3.7.1",
     "redux-form": "^7.0.4",
+    "simpl-schema": "^0.3.2",
     "tachyons": "^4.7.4"
   },
   "devDependencies": {
