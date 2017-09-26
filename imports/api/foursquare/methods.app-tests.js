@@ -59,14 +59,37 @@ if (Meteor.isClient) {
           };
 
           assert.doesNotThrow(() => {
-            getNearbyPlaces.call(args, function (err: Error, res: Array<IFilter>) {
-              assert.isUndefined(err);
-              assert.deepEqual(res, []);
-              done();
-            });
+            getNearbyPlaces.call(args,
+              function (err: IValidationError | Error, res: Array<IFilter>) {
+                assert.isUndefined(err);
+                assert.deepEqual(res, []);
+                done();
+              },
+            );
           });
         },
       );
+
+      it("should get a validation error, when schema validation fails", function (done) {
+        const args = {
+          latitude: "not a number",
+          longitude: 0,
+          filterList: testFilterList,
+        };
+
+        assert.doesNotThrow(() => {
+          getNearbyPlaces.call(args,
+            function (err: IValidationError | Error, res: Array<IFilter>) {
+              assert.isUndefined(res);
+              assert.isDefined(err);
+
+              // $FlowFixMe  (prevents having to add code to handle disjoint unions in flow)
+              assert.equal(err.error, "validation-error");
+              done();
+            },
+          );
+        });
+      });
     });
   });
 }
