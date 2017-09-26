@@ -47,7 +47,7 @@ if (Meteor.isClient) {
         describe("user schema validation", function () {
           waitForResetDatabase();
 
-          it("should not return an error when all user fields match schema",
+          it("should NOT return an error when all user fields match schema",
             function (done: () => void) {
               const validUser = {
                 username: "abcd",
@@ -68,7 +68,7 @@ if (Meteor.isClient) {
           waitForLogout();
           waitForResetDatabase();
 
-          it("should not throw with invalid user schema", function (done: () => void) {
+          it("should NOT throw with invalid user schema", function (done: () => void) {
             const invalidUser = {
               username: "abc",   // too short
               email: "abc@test.com",
