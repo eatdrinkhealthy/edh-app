@@ -83,8 +83,13 @@ if (Meteor.isClient) {
               assert.isUndefined(res);
               assert.isDefined(err);
 
-              // $FlowFixMe  (prevents having to add code to handle disjoint unions in flow)
-              assert.equal(err.error, "validation-error");
+              assert.include(err,
+                {
+                  error: "validation-error",
+                  errorType: "ClientError",
+                  name: "ClientError",
+                },
+              );
               done();
             },
           );
