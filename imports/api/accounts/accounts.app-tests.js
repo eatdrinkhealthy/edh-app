@@ -43,7 +43,7 @@ if (Meteor.isClient) {
       // as some tests rely on a created user to exist.
       //
 
-      describe("client side call of Accounts.createUser", function () {
+      describe.skip("client side call of Accounts.createUser", function () {
         describe("user schema validation", function () {
           waitForResetDatabase();
 
