@@ -37,6 +37,7 @@
       "meteor/accounts-base",
       "meteor/mongo",
       "meteor/mdg:validated-method",
+      "meteor/mdg:validation-error",
       "meteor/aldeed:simple-schema",
       "meteor/practicalmeteor:chai",
       "meteor/xolvio:cleaner",
