@@ -10,6 +10,11 @@ describe("lookupErrorMessage", function () {
       .toEqual("Unable to fulfill request at this time. Please try again later.");
   });
 
+  it("should return a default message when passed undefined", function () {
+    expect(lookupErrorMessage(undefined))
+      .toEqual("Unable to fulfill request at this time. Please try again later.");
+  });
+
   it("should match error message for username too short", function () {
     expect(lookupErrorMessage("Username must be at least 4 characters"))
       .toEqual("Username must be at least 4 characters.");

@@ -1,7 +1,7 @@
 // @flow
 import _ from "lodash";
 
-const lookupErrorMessage = (serverError: string): string => {
+const lookupErrorMessage = (serverError: ?string): string => {
   // Using server's error codes or reasons on client to determine what message to display,
   // keeps UI strings on client side for easier internationalization
   const accountErrorMessages = [
