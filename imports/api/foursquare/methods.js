@@ -32,6 +32,7 @@ export const collectSearchResults = (
 export const getNearbyPlaces = new ValidatedMethod({
   name: "getNearbyPlaces",
 
+  // NOTE: ValidatedMethods automatically throw a ValidationError for invalid schemas
   validate: new SimpleSchema({
     latitude: { type: Number },
     longitude: { type: Number },

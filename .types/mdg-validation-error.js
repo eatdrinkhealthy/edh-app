@@ -9,13 +9,13 @@ declare module "meteor/mdg:validation-error" {
     max?: number,
   };
 
-  declare export class IValidationError {
+  declare export class ValidationError {
     constructor(errors: Array<IValidationErrorDetail>, message?: string): IValidationError;
 
     errorType: string | number;
     name: string;
     error: string;
     details: Array<IValidationErrorDetail>;
-    is?: (any) => boolean;
+    static is(any): boolean;
   }
 }

@@ -15,7 +15,7 @@ declare module "meteor/meteor" {
 
     error: string | number;
     reason?: string;
-    details?: string;
+    details?: string | Array<{}>;  // Meteor.Error can be a ValidationError, containing a list
   }
 
   declare export type IMeteorCallback = (err?: IMeteorError, res: any) => void;

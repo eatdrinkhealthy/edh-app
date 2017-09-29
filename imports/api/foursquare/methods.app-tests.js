@@ -3,8 +3,8 @@
 /* eslint-disable func-names, prefer-arrow-callback */
 import { assert } from "meteor/practicalmeteor:chai";
 import { Meteor } from "meteor/meteor";
+import type { IMeteorError } from "meteor/meteor";
 import { getNearbyPlaces } from "./methods";
-
 import type { IFilter } from "../../state/reducers/filtersReducers";
 
 const testFilterList = [
@@ -60,7 +60,7 @@ if (Meteor.isClient) {
 
           assert.doesNotThrow(() => {
             getNearbyPlaces.call(args,
-              function (err: IValidationError | Error, res: Array<IFilter>) {
+              function (err: IMeteorError, res: Array<IFilter>) {
                 assert.isUndefined(err);
                 assert.deepEqual(res, []);
                 done();
@@ -70,7 +70,7 @@ if (Meteor.isClient) {
         },
       );
 
-      it("should get a validation error, when schema validation fails", function (done) {
+      it("should get a ValidationError, when schema validation fails", function (done) {
         const args = {
           latitude: "not a number",
           longitude: 0,
@@ -79,15 +79,27 @@ if (Meteor.isClient) {
 
         assert.doesNotThrow(() => {
           getNearbyPlaces.call(args,
-            function (err: IValidationError | Error, res: Array<IFilter>) {
+            function (err: IMeteorError, res: Array<IFilter>) {
               assert.isUndefined(res);
               assert.isDefined(err);
 
-              assert.include(err,
+              //
+              // doing a detailed examination of a ValidationError here, to learn
+              // the structure and some values
+              //
+              // NOTE: tried using Validation.Error.is(), but it does not return
+              //       true for the returned error
+              //
+
+              assert.equal(err.error, "validation-error");
+              // $FlowFixMe   (it's okay if err.details is undefined here, will throw as it should
+              assert.deepEqual(err.details[0],
                 {
-                  error: "validation-error",
-                  errorType: "ClientError",
-                  name: "ClientError",
+                  name: "latitude",
+                  value: "not a number",
+                  type: "expectedType",
+                  dataType: "Number",
+                  message: "Latitude must be of type Number",
                 },
               );
               done();
