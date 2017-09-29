@@ -43,7 +43,7 @@ if (Meteor.isClient) {
       // as some tests rely on a created user to exist.
       //
 
-      describe.skip("client side call of Accounts.createUser", function () {
+      describe("client side call of Accounts.createUser", function () {
         describe("user schema validation", function () {
           waitForResetDatabase();
 
@@ -82,7 +82,7 @@ if (Meteor.isClient) {
             });
           });
 
-          it("should return an error when username too short", function (done: () => void) {
+          it("should return a ValidationError when username too short", function (done: () => void) {
             const invalidUser = {
               username: "abc",   // too short
               email: "abc@test.com",
@@ -90,14 +90,22 @@ if (Meteor.isClient) {
             };
 
             Accounts.createUser(invalidUser, (err: IMeteorError) => {
-              assert.isDefined(err);
               assert.equal(err.error, "validation-error");
-              assert.equal(err.reason, "Username must be at least 4 characters");
+              // $FlowFixMe   (it's okay if err.details is undefined here, will throw as it should
+              assert.deepEqual(err.details[0],
+                {
+                  name: "username",
+                  value: "abc",
+                  type: "minString",
+                  min: 4,
+                  message: "Username must be at least 4 characters",
+                },
+              );
               done();
             });
           });
 
-          it("should return an error when username not provided",
+          it("should return a ValidationError when username not provided",
             function (done: () => void) {
               const invalidUser = {
                 username: "",   // too short
@@ -106,14 +114,20 @@ if (Meteor.isClient) {
               };
 
               Accounts.createUser(invalidUser, (err: IMeteorError) => {
-                assert.isDefined(err);
                 assert.equal(err.error, "validation-error");
-                assert.equal(err.reason, "Username is required");
+                // $FlowFixMe   (it's okay if err.details is undefined here, will throw as it should
+                assert.deepEqual(err.details[0],
+                  {
+                    name: "username",
+                    type: "required",
+                    message: "Username is required",
+                  },
+                );
                 done();
               });
             });
 
-          it("should return an error when email not provided",
+          it("should return a ValidationError when email not provided",
             function (done: () => void) {
               const invalidUser = {
                 username: "abcd",
@@ -122,14 +136,20 @@ if (Meteor.isClient) {
               };
 
               Accounts.createUser(invalidUser, (err: IMeteorError) => {
-                assert.isDefined(err);
                 assert.equal(err.error, "validation-error");
-                assert.equal(err.reason, "Emails is required");
+                // $FlowFixMe   (it's okay if err.details is undefined here, will throw as it should
+                assert.deepEqual(err.details[0],
+                  {
+                    name: "emails",
+                    type: "required",
+                    message: "Emails is required",
+                  },
+                );
                 done();
               });
             });
 
-          it("should return an error when email doesn't match regex",
+          it("should return a ValidationError when email doesn't match regex",
             function (done: () => void) {
               const invalidUser = {
                 username: "abcd",
@@ -138,14 +158,20 @@ if (Meteor.isClient) {
               };
 
               Accounts.createUser(invalidUser, (err: IMeteorError) => {
-                assert.isDefined(err);
                 assert.equal(err.error, "validation-error");
-                assert.equal(err.reason, "Address must be a valid e-mail address");
+                // $FlowFixMe   (it's okay if err.details is undefined here, will throw as it should
+                assert.include(err.details[0],
+                  {
+                    name: "emails.0.address",
+                    type: "regEx",
+                    message: "Address must be a valid email address",
+                  },
+                );
                 done();
               });
             });
 
-          it("should return an error when username matches 'root', case insensitive",
+          it("should return a ValidationError when username matches 'root', case insensitive",
             function (done: () => void) {
               const invalidUser = {
                 username: "rOot",
@@ -154,14 +180,20 @@ if (Meteor.isClient) {
               };
 
               Accounts.createUser(invalidUser, (err: IMeteorError) => {
-                assert.isDefined(err);
                 assert.equal(err.error, "validation-error");
-                assert.equal(err.reason, "Username failed regular expression validation");
+                // $FlowFixMe   (it's okay if err.details is undefined here, will throw as it should
+                assert.include(err.details[0],
+                  {
+                    name: "username",
+                    type: "regEx",
+                    message: "Username failed regular expression validation",
+                  },
+                );
                 done();
               });
             });
 
-          it("should return an error when username matches 'admin', case insensitive",
+          it("should return a ValidationError when username matches 'admin', case insensitive",
             function (done: () => void) {
               const invalidUser = {
                 username: "adMin",
@@ -170,9 +202,15 @@ if (Meteor.isClient) {
               };
 
               Accounts.createUser(invalidUser, (err: IMeteorError) => {
-                assert.isDefined(err);
                 assert.equal(err.error, "validation-error");
-                assert.equal(err.reason, "Username failed regular expression validation");
+                // $FlowFixMe   (it's okay if err.details is undefined here, will throw as it should
+                assert.include(err.details[0],
+                  {
+                    name: "username",
+                    type: "regEx",
+                    message: "Username failed regular expression validation",
+                  },
+                );
                 done();
               });
             });

@@ -11,7 +11,11 @@ declare module "meteor/meteor" {
   };
 
   declare export class IMeteorError {
-    constructor(error: string | number, reason?: string, details?: string): IMeteorError;
+    constructor(
+      error: string | number,
+      reason?: string,
+      details?: string | Array<{}>,
+    ): IMeteorError;
 
     error: string | number;
     reason?: string;
