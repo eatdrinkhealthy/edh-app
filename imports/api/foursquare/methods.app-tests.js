@@ -87,7 +87,7 @@ if (Meteor.isClient) {
               // doing a detailed examination of a ValidationError here, to learn
               // the structure and some values
               //
-              // NOTE: tried using Validation.Error.is(), but it does not return
+              // NOTE: tried using ValidationError.is(), but it does not return
               //       true for the returned error
               //
 
