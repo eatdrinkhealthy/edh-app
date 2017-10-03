@@ -2,11 +2,25 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import classNames from "classnames";
+import userSimpleSchema from "../../api/accounts/userSchema";
 
 const validate = (values) => {
   const errors = {};
 
-  if (values.password !== values.confirmPassword) {
+  const usernameValidationContext = userSimpleSchema.newContext();
+  if (!usernameValidationContext.validate(values, { keys: ["username"] })) {
+    const validationErrors = usernameValidationContext.validationErrors();
+    console.log("username validation errors:", validationErrors);
+    errors.username = `${validationErrors[0].name} ${validationErrors[0].type}`;
+  }
+
+  if (!values.password) {
+    errors.password = "Password is required.";
+  }
+
+  if (!values.confirmPassword) {
+    errors.confirmPassword = "Confirm password is required.";
+  } else if (values.password !== values.confirmPassword) {
     errors.confirmPassword = "Password and Confirm Password fields do not match.";
   }
 
