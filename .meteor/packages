@@ -22,7 +22,6 @@ standard-minifier-js@2.1.2    # JS minifier run for production mode
 
 # security
 mdg:validated-method
-mdg:validation-error
 check@1.2.5
 
 # ui
