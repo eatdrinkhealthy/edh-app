@@ -5,7 +5,6 @@ import { assert } from "meteor/practicalmeteor:chai";
 import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
 import { resetDatabase } from "meteor/xolvio:cleaner";
-import { ValidationError } from "meteor/mdg:validation-error";
 import type { IMeteorError } from "meteor/meteor";
 
 if (Meteor.isServer) {
@@ -90,7 +89,6 @@ if (Meteor.isClient) {
             };
 
             Accounts.createUser(invalidUser, (err: IMeteorError) => {
-              assert.equal(ValidationError.is(err), true);
               assert.equal(err.error, "validation-error");
               // $FlowFixMe   (it's okay if err.details is undefined here, will throw as it should
               assert.deepEqual(err.details[0],

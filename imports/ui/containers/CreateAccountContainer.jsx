@@ -24,7 +24,7 @@ class CreateAccountContainer extends Component {
       password,
     }, (error: IMeteorError) => {
       if (error) {
-        AlertMessage.warning(lookupErrorMessage(error.reason));
+        AlertMessage.warning(lookupErrorMessage(error));
       } else {
         AlertMessage.success(`Welcome ${username}!`);
         if (this.props.routerHistory) {
