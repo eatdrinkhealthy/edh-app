@@ -9,9 +9,7 @@ const validate = (values) => {
 
   const usernameValidationContext = userSimpleSchema.newContext();
   if (!usernameValidationContext.validate(values, { keys: ["username"] })) {
-    const validationErrors = usernameValidationContext.validationErrors();
-    console.log("username validation errors:", validationErrors);
-    errors.username = `${validationErrors[0].name} ${validationErrors[0].type}`;
+    errors.username = `${usernameValidationContext.keyErrorMessage("username")}.`;
   }
 
   if (!values.password) {
