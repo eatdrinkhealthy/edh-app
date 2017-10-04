@@ -79,7 +79,7 @@ type ICreateAccountFormProps = {
 
 // NOTE: when we call the CreateAccountForm component, we pass our submit handler as an
 // onSubmit prop, and redux-form passes a submit function in as handleSubmit
-const CreateAccountForm = (props: ICreateAccountFormProps) => {
+const CreateAccountFormComponent = (props: ICreateAccountFormProps) => {
   const { handleSubmit } = props;
 
   return (
@@ -149,8 +149,10 @@ const onSubmitSuccess = (result, dispatch, props) => {
   }
 };
 
-export default reduxForm({
+const CreateAccountForm = reduxForm({
   form: "CreateAccountForm",
   onSubmitSuccess,
   validate,
-})(CreateAccountForm);
+})(CreateAccountFormComponent);
+
+export default CreateAccountForm;

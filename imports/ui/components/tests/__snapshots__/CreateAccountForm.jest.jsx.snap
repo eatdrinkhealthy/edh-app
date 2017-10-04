@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CreateAccountForm /> matches render snapshot 1`] = `
+exports[`<CreateAccountForm /> matches render snapshot - with form validation errors 1`] = `
 <div
   className="pt2 pl4 pr4 pb4"
 >
@@ -22,14 +22,14 @@ exports[`<CreateAccountForm /> matches render snapshot 1`] = `
       >
         <div>
           <label
-            className="db fw6 lh-copy f6"
+            className="db fw6 lh-copy f6 dark-red"
             htmlFor="username"
           >
             Username
           </label>
           <input
             autoFocus={true}
-            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 dark-red"
             id="username"
             name="username"
             onBlur={[Function]}
@@ -41,6 +41,12 @@ exports[`<CreateAccountForm /> matches render snapshot 1`] = `
             type="text"
             value=""
           />
+          <div
+            className="ml2 mt1 dark-red"
+            id="usernameError"
+          >
+            Username is required
+          </div>
         </div>
       </div>
       <div
@@ -74,14 +80,14 @@ exports[`<CreateAccountForm /> matches render snapshot 1`] = `
       >
         <div>
           <label
-            className="db fw6 lh-copy f6"
+            className="db fw6 lh-copy f6 dark-red"
             htmlFor="password"
           >
             Password
           </label>
           <input
             autoFocus={undefined}
-            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 dark-red"
             id="password"
             name="password"
             onBlur={[Function]}
@@ -93,6 +99,12 @@ exports[`<CreateAccountForm /> matches render snapshot 1`] = `
             type="password"
             value=""
           />
+          <div
+            className="ml2 mt1 dark-red"
+            id="passwordError"
+          >
+            Password is required.
+          </div>
         </div>
       </div>
       <div
@@ -100,14 +112,14 @@ exports[`<CreateAccountForm /> matches render snapshot 1`] = `
       >
         <div>
           <label
-            className="db fw6 lh-copy f6"
+            className="db fw6 lh-copy f6 dark-red"
             htmlFor="confirmPassword"
           >
             Confirm Password
           </label>
           <input
             autoFocus={undefined}
-            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 dark-red"
             id="confirmPassword"
             name="confirmPassword"
             onBlur={[Function]}
@@ -119,6 +131,12 @@ exports[`<CreateAccountForm /> matches render snapshot 1`] = `
             type="password"
             value=""
           />
+          <div
+            className="ml2 mt1 dark-red"
+            id="confirmPasswordError"
+          >
+            Confirm password is required.
+          </div>
         </div>
       </div>
     </fieldset>
@@ -131,4 +149,1559 @@ exports[`<CreateAccountForm /> matches render snapshot 1`] = `
     </div>
   </form>
 </div>
+`;
+
+exports[`<CreateAccountForm /> matches render snapshot - without form validation errors 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <ReduxForm
+    onSubmit={[Function]}
+  >
+    <Connect(Form(CreateAccountFormComponent))
+      destroyOnUnmount={true}
+      enableReinitialize={false}
+      forceUnregisterOnUnmount={false}
+      form="CreateAccountForm"
+      getFormState={[Function]}
+      keepDirtyOnReinitialize={false}
+      onSubmit={[Function]}
+      onSubmitSuccess={[Function]}
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldValidate={[Function]}
+      touchOnBlur={true}
+      touchOnChange={false}
+      validate={[Function]}
+    >
+      <Form(CreateAccountFormComponent)
+        anyTouched={false}
+        array={
+          Object {
+            "insert": [Function],
+            "move": [Function],
+            "pop": [Function],
+            "push": [Function],
+            "remove": [Function],
+            "removeAll": [Function],
+            "shift": [Function],
+            "splice": [Function],
+            "swap": [Function],
+            "unshift": [Function],
+          }
+        }
+        arrayInsert={[Function]}
+        arrayMove={[Function]}
+        arrayPop={[Function]}
+        arrayPush={[Function]}
+        arrayRemove={[Function]}
+        arrayRemoveAll={[Function]}
+        arrayShift={[Function]}
+        arraySplice={[Function]}
+        arraySwap={[Function]}
+        arrayUnshift={[Function]}
+        asyncValidating={false}
+        autofill={[Function]}
+        blur={[Function]}
+        change={[Function]}
+        clearAsyncError={[Function]}
+        clearSubmit={[Function]}
+        clearSubmitErrors={[Function]}
+        destroy={[Function]}
+        destroyOnUnmount={true}
+        dirty={true}
+        dispatch={[Function]}
+        enableReinitialize={false}
+        focus={[Function]}
+        forceUnregisterOnUnmount={false}
+        form="CreateAccountForm"
+        getFormState={[Function]}
+        initialize={[Function]}
+        initialized={false}
+        invalid={true}
+        keepDirtyOnReinitialize={false}
+        onSubmit={[Function]}
+        onSubmitSuccess={[Function]}
+        persistentSubmitErrors={false}
+        pristine={false}
+        pure={true}
+        registerField={[Function]}
+        registeredFields={
+          Object {
+            "confirmPassword": Object {
+              "count": 2,
+              "name": "confirmPassword",
+              "type": "Field",
+            },
+            "email": Object {
+              "count": 2,
+              "name": "email",
+              "type": "Field",
+            },
+            "password": Object {
+              "count": 2,
+              "name": "password",
+              "type": "Field",
+            },
+            "username": Object {
+              "count": 2,
+              "name": "username",
+              "type": "Field",
+            },
+          }
+        }
+        reset={[Function]}
+        setSubmitFailed={[Function]}
+        setSubmitSucceeded={[Function]}
+        shouldAsyncValidate={[Function]}
+        shouldValidate={[Function]}
+        startAsyncValidation={[Function]}
+        startSubmit={[Function]}
+        stopAsyncValidation={[Function]}
+        stopSubmit={[Function]}
+        submit={[Function]}
+        submitFailed={false}
+        submitSucceeded={false}
+        submitting={false}
+        syncErrors={
+          Object {
+            "confirmPassword": "Password and Confirm Password fields do not match.",
+            "username": "",
+          }
+        }
+        syncWarnings={Object {}}
+        touch={[Function]}
+        touchOnBlur={true}
+        touchOnChange={false}
+        unregisterField={[Function]}
+        untouch={[Function]}
+        updateSyncErrors={[Function]}
+        updateSyncWarnings={[Function]}
+        valid={false}
+        validExceptSubmit={false}
+        validate={[Function]}
+        values={
+          Object {
+            "confirmPassword": "User12pw2",
+            "email": "user12@test.com",
+            "password": "user12pw",
+            "username": "user12",
+          }
+        }
+      >
+        <CreateAccountFormComponent
+          anyTouched={false}
+          array={
+            Object {
+              "insert": [Function],
+              "move": [Function],
+              "pop": [Function],
+              "push": [Function],
+              "remove": [Function],
+              "removeAll": [Function],
+              "shift": [Function],
+              "splice": [Function],
+              "swap": [Function],
+              "unshift": [Function],
+            }
+          }
+          asyncValidate={[Function]}
+          asyncValidating={false}
+          autofill={[Function]}
+          blur={[Function]}
+          change={[Function]}
+          clearAsyncError={[Function]}
+          clearSubmit={[Function]}
+          clearSubmitErrors={[Function]}
+          destroy={[Function]}
+          dirty={true}
+          dispatch={[Function]}
+          form="CreateAccountForm"
+          handleSubmit={[Function]}
+          initialize={[Function]}
+          initialized={false}
+          invalid={true}
+          onSubmit={[Function]}
+          onSubmitSuccess={[Function]}
+          pristine={false}
+          pure={true}
+          reset={[Function]}
+          submit={[Function]}
+          submitFailed={false}
+          submitSucceeded={false}
+          submitting={false}
+          touch={[Function]}
+          untouch={[Function]}
+          valid={false}
+          validate={[Function]}
+        >
+          <div
+            className="pt2 pl4 pr4 pb4"
+          >
+            <form
+              className="measure center"
+              onSubmit={[Function]}
+            >
+              <fieldset
+                className="ba b--transparent ph0 mh0"
+                id="sign_up"
+              >
+                <legend
+                  className="f4 fw6 ph0 mh0"
+                >
+                  Create Account
+                </legend>
+                <div
+                  className="mt3"
+                >
+                  <Field
+                    autoFocus={true}
+                    component={[Function]}
+                    inputId="username"
+                    label="Username"
+                    name="username"
+                    type="text"
+                  >
+                    <Connect(ConnectedField)
+                      _reduxForm={
+                        Object {
+                          "anyTouched": false,
+                          "array": Object {
+                            "insert": [Function],
+                            "move": [Function],
+                            "pop": [Function],
+                            "push": [Function],
+                            "remove": [Function],
+                            "removeAll": [Function],
+                            "shift": [Function],
+                            "splice": [Function],
+                            "swap": [Function],
+                            "unshift": [Function],
+                          },
+                          "arrayInsert": [Function],
+                          "arrayMove": [Function],
+                          "arrayPop": [Function],
+                          "arrayPush": [Function],
+                          "arrayRemove": [Function],
+                          "arrayRemoveAll": [Function],
+                          "arrayShift": [Function],
+                          "arraySplice": [Function],
+                          "arraySwap": [Function],
+                          "arrayUnshift": [Function],
+                          "asyncErrors": undefined,
+                          "asyncValidate": [Function],
+                          "asyncValidating": false,
+                          "autofill": [Function],
+                          "blur": [Function],
+                          "change": [Function],
+                          "clearAsyncError": [Function],
+                          "clearSubmit": [Function],
+                          "clearSubmitErrors": [Function],
+                          "destroy": [Function],
+                          "destroyOnUnmount": true,
+                          "dirty": true,
+                          "dispatch": [Function],
+                          "enableReinitialize": false,
+                          "error": undefined,
+                          "focus": [Function],
+                          "forceUnregisterOnUnmount": false,
+                          "form": "CreateAccountForm",
+                          "getFormState": [Function],
+                          "getValues": [Function],
+                          "initialValues": undefined,
+                          "initialize": [Function],
+                          "initialized": false,
+                          "invalid": true,
+                          "keepDirtyOnReinitialize": false,
+                          "onSubmit": [Function],
+                          "onSubmitSuccess": [Function],
+                          "persistentSubmitErrors": false,
+                          "pristine": false,
+                          "pure": true,
+                          "register": [Function],
+                          "registerField": [Function],
+                          "registerInnerOnSubmit": [Function],
+                          "registeredFields": Object {
+                            "confirmPassword": Object {
+                              "count": 2,
+                              "name": "confirmPassword",
+                              "type": "Field",
+                            },
+                            "email": Object {
+                              "count": 2,
+                              "name": "email",
+                              "type": "Field",
+                            },
+                            "password": Object {
+                              "count": 2,
+                              "name": "password",
+                              "type": "Field",
+                            },
+                            "username": Object {
+                              "count": 2,
+                              "name": "username",
+                              "type": "Field",
+                            },
+                          },
+                          "reset": [Function],
+                          "sectionPrefix": undefined,
+                          "setSubmitFailed": [Function],
+                          "setSubmitSucceeded": [Function],
+                          "shouldAsyncValidate": [Function],
+                          "shouldValidate": [Function],
+                          "startAsyncValidation": [Function],
+                          "startSubmit": [Function],
+                          "stopAsyncValidation": [Function],
+                          "stopSubmit": [Function],
+                          "submit": [Function],
+                          "submitFailed": false,
+                          "submitSucceeded": false,
+                          "submitting": false,
+                          "syncErrors": Object {
+                            "confirmPassword": "Confirm password is required.",
+                            "password": "Password is required.",
+                            "username": "",
+                          },
+                          "syncWarnings": Object {},
+                          "touch": [Function],
+                          "touchOnBlur": true,
+                          "touchOnChange": false,
+                          "triggerSubmit": undefined,
+                          "unregister": [Function],
+                          "unregisterField": [Function],
+                          "untouch": [Function],
+                          "updateSyncErrors": [Function],
+                          "updateSyncWarnings": [Function],
+                          "valid": false,
+                          "validExceptSubmit": false,
+                          "validate": [Function],
+                          "values": Object {
+                            "username": "user12",
+                          },
+                          "warning": undefined,
+                        }
+                      }
+                      autoFocus={true}
+                      component={[Function]}
+                      inputId="username"
+                      label="Username"
+                      name="username"
+                      normalize={[Function]}
+                      type="text"
+                    >
+                      <ConnectedField
+                        _reduxForm={
+                          Object {
+                            "anyTouched": false,
+                            "array": Object {
+                              "insert": [Function],
+                              "move": [Function],
+                              "pop": [Function],
+                              "push": [Function],
+                              "remove": [Function],
+                              "removeAll": [Function],
+                              "shift": [Function],
+                              "splice": [Function],
+                              "swap": [Function],
+                              "unshift": [Function],
+                            },
+                            "arrayInsert": [Function],
+                            "arrayMove": [Function],
+                            "arrayPop": [Function],
+                            "arrayPush": [Function],
+                            "arrayRemove": [Function],
+                            "arrayRemoveAll": [Function],
+                            "arrayShift": [Function],
+                            "arraySplice": [Function],
+                            "arraySwap": [Function],
+                            "arrayUnshift": [Function],
+                            "asyncErrors": undefined,
+                            "asyncValidate": [Function],
+                            "asyncValidating": false,
+                            "autofill": [Function],
+                            "blur": [Function],
+                            "change": [Function],
+                            "clearAsyncError": [Function],
+                            "clearSubmit": [Function],
+                            "clearSubmitErrors": [Function],
+                            "destroy": [Function],
+                            "destroyOnUnmount": true,
+                            "dirty": true,
+                            "dispatch": [Function],
+                            "enableReinitialize": false,
+                            "error": undefined,
+                            "focus": [Function],
+                            "forceUnregisterOnUnmount": false,
+                            "form": "CreateAccountForm",
+                            "getFormState": [Function],
+                            "getValues": [Function],
+                            "initialValues": undefined,
+                            "initialize": [Function],
+                            "initialized": false,
+                            "invalid": true,
+                            "keepDirtyOnReinitialize": false,
+                            "onSubmit": [Function],
+                            "onSubmitSuccess": [Function],
+                            "persistentSubmitErrors": false,
+                            "pristine": false,
+                            "pure": true,
+                            "register": [Function],
+                            "registerField": [Function],
+                            "registerInnerOnSubmit": [Function],
+                            "registeredFields": Object {
+                              "confirmPassword": Object {
+                                "count": 2,
+                                "name": "confirmPassword",
+                                "type": "Field",
+                              },
+                              "email": Object {
+                                "count": 2,
+                                "name": "email",
+                                "type": "Field",
+                              },
+                              "password": Object {
+                                "count": 2,
+                                "name": "password",
+                                "type": "Field",
+                              },
+                              "username": Object {
+                                "count": 2,
+                                "name": "username",
+                                "type": "Field",
+                              },
+                            },
+                            "reset": [Function],
+                            "sectionPrefix": undefined,
+                            "setSubmitFailed": [Function],
+                            "setSubmitSucceeded": [Function],
+                            "shouldAsyncValidate": [Function],
+                            "shouldValidate": [Function],
+                            "startAsyncValidation": [Function],
+                            "startSubmit": [Function],
+                            "stopAsyncValidation": [Function],
+                            "stopSubmit": [Function],
+                            "submit": [Function],
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "submitting": false,
+                            "syncErrors": Object {
+                              "confirmPassword": "Confirm password is required.",
+                              "password": "Password is required.",
+                              "username": "",
+                            },
+                            "syncWarnings": Object {},
+                            "touch": [Function],
+                            "touchOnBlur": true,
+                            "touchOnChange": false,
+                            "triggerSubmit": undefined,
+                            "unregister": [Function],
+                            "unregisterField": [Function],
+                            "untouch": [Function],
+                            "updateSyncErrors": [Function],
+                            "updateSyncWarnings": [Function],
+                            "valid": false,
+                            "validExceptSubmit": false,
+                            "validate": [Function],
+                            "values": Object {
+                              "username": "user12",
+                            },
+                            "warning": undefined,
+                          }
+                        }
+                        asyncValidating={false}
+                        autoFocus={true}
+                        component={[Function]}
+                        dirty={true}
+                        dispatch={[Function]}
+                        inputId="username"
+                        label="Username"
+                        name="username"
+                        normalize={[Function]}
+                        pristine={false}
+                        syncError=""
+                        type="text"
+                        value="user12"
+                      >
+                        <renderInput
+                          autoFocus={true}
+                          input={
+                            Object {
+                              "name": "username",
+                              "onBlur": [Function],
+                              "onChange": [Function],
+                              "onDragStart": [Function],
+                              "onDrop": [Function],
+                              "onFocus": [Function],
+                              "value": "user12",
+                            }
+                          }
+                          inputId="username"
+                          label="Username"
+                          meta={
+                            Object {
+                              "active": false,
+                              "asyncValidating": false,
+                              "autofilled": false,
+                              "dirty": true,
+                              "dispatch": [Function],
+                              "error": undefined,
+                              "form": "CreateAccountForm",
+                              "initial": undefined,
+                              "invalid": false,
+                              "pristine": false,
+                              "submitFailed": false,
+                              "submitting": false,
+                              "touched": false,
+                              "valid": true,
+                              "visited": false,
+                              "warning": undefined,
+                            }
+                          }
+                          type="text"
+                        >
+                          <div>
+                            <label
+                              className="db fw6 lh-copy f6"
+                              htmlFor="username"
+                            >
+                              Username
+                            </label>
+                            <input
+                              autoFocus={true}
+                              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                              id="username"
+                              name="username"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onDragStart={[Function]}
+                              onDrop={[Function]}
+                              onFocus={[Function]}
+                              placeholder="Username"
+                              type="text"
+                              value="user12"
+                            />
+                          </div>
+                        </renderInput>
+                      </ConnectedField>
+                    </Connect(ConnectedField)>
+                  </Field>
+                </div>
+                <div
+                  className="mt3"
+                >
+                  <Field
+                    component={[Function]}
+                    inputId="email"
+                    label="Email"
+                    name="email"
+                    type="email"
+                  >
+                    <Connect(ConnectedField)
+                      _reduxForm={
+                        Object {
+                          "anyTouched": false,
+                          "array": Object {
+                            "insert": [Function],
+                            "move": [Function],
+                            "pop": [Function],
+                            "push": [Function],
+                            "remove": [Function],
+                            "removeAll": [Function],
+                            "shift": [Function],
+                            "splice": [Function],
+                            "swap": [Function],
+                            "unshift": [Function],
+                          },
+                          "arrayInsert": [Function],
+                          "arrayMove": [Function],
+                          "arrayPop": [Function],
+                          "arrayPush": [Function],
+                          "arrayRemove": [Function],
+                          "arrayRemoveAll": [Function],
+                          "arrayShift": [Function],
+                          "arraySplice": [Function],
+                          "arraySwap": [Function],
+                          "arrayUnshift": [Function],
+                          "asyncErrors": undefined,
+                          "asyncValidate": [Function],
+                          "asyncValidating": false,
+                          "autofill": [Function],
+                          "blur": [Function],
+                          "change": [Function],
+                          "clearAsyncError": [Function],
+                          "clearSubmit": [Function],
+                          "clearSubmitErrors": [Function],
+                          "destroy": [Function],
+                          "destroyOnUnmount": true,
+                          "dirty": true,
+                          "dispatch": [Function],
+                          "enableReinitialize": false,
+                          "error": undefined,
+                          "focus": [Function],
+                          "forceUnregisterOnUnmount": false,
+                          "form": "CreateAccountForm",
+                          "getFormState": [Function],
+                          "getValues": [Function],
+                          "initialValues": undefined,
+                          "initialize": [Function],
+                          "initialized": false,
+                          "invalid": true,
+                          "keepDirtyOnReinitialize": false,
+                          "onSubmit": [Function],
+                          "onSubmitSuccess": [Function],
+                          "persistentSubmitErrors": false,
+                          "pristine": false,
+                          "pure": true,
+                          "register": [Function],
+                          "registerField": [Function],
+                          "registerInnerOnSubmit": [Function],
+                          "registeredFields": Object {
+                            "confirmPassword": Object {
+                              "count": 2,
+                              "name": "confirmPassword",
+                              "type": "Field",
+                            },
+                            "email": Object {
+                              "count": 2,
+                              "name": "email",
+                              "type": "Field",
+                            },
+                            "password": Object {
+                              "count": 2,
+                              "name": "password",
+                              "type": "Field",
+                            },
+                            "username": Object {
+                              "count": 2,
+                              "name": "username",
+                              "type": "Field",
+                            },
+                          },
+                          "reset": [Function],
+                          "sectionPrefix": undefined,
+                          "setSubmitFailed": [Function],
+                          "setSubmitSucceeded": [Function],
+                          "shouldAsyncValidate": [Function],
+                          "shouldValidate": [Function],
+                          "startAsyncValidation": [Function],
+                          "startSubmit": [Function],
+                          "stopAsyncValidation": [Function],
+                          "stopSubmit": [Function],
+                          "submit": [Function],
+                          "submitFailed": false,
+                          "submitSucceeded": false,
+                          "submitting": false,
+                          "syncErrors": Object {
+                            "confirmPassword": "Confirm password is required.",
+                            "password": "Password is required.",
+                            "username": "",
+                          },
+                          "syncWarnings": Object {},
+                          "touch": [Function],
+                          "touchOnBlur": true,
+                          "touchOnChange": false,
+                          "triggerSubmit": undefined,
+                          "unregister": [Function],
+                          "unregisterField": [Function],
+                          "untouch": [Function],
+                          "updateSyncErrors": [Function],
+                          "updateSyncWarnings": [Function],
+                          "valid": false,
+                          "validExceptSubmit": false,
+                          "validate": [Function],
+                          "values": Object {
+                            "username": "user12",
+                          },
+                          "warning": undefined,
+                        }
+                      }
+                      component={[Function]}
+                      inputId="email"
+                      label="Email"
+                      name="email"
+                      normalize={[Function]}
+                      type="email"
+                    >
+                      <ConnectedField
+                        _reduxForm={
+                          Object {
+                            "anyTouched": false,
+                            "array": Object {
+                              "insert": [Function],
+                              "move": [Function],
+                              "pop": [Function],
+                              "push": [Function],
+                              "remove": [Function],
+                              "removeAll": [Function],
+                              "shift": [Function],
+                              "splice": [Function],
+                              "swap": [Function],
+                              "unshift": [Function],
+                            },
+                            "arrayInsert": [Function],
+                            "arrayMove": [Function],
+                            "arrayPop": [Function],
+                            "arrayPush": [Function],
+                            "arrayRemove": [Function],
+                            "arrayRemoveAll": [Function],
+                            "arrayShift": [Function],
+                            "arraySplice": [Function],
+                            "arraySwap": [Function],
+                            "arrayUnshift": [Function],
+                            "asyncErrors": undefined,
+                            "asyncValidate": [Function],
+                            "asyncValidating": false,
+                            "autofill": [Function],
+                            "blur": [Function],
+                            "change": [Function],
+                            "clearAsyncError": [Function],
+                            "clearSubmit": [Function],
+                            "clearSubmitErrors": [Function],
+                            "destroy": [Function],
+                            "destroyOnUnmount": true,
+                            "dirty": true,
+                            "dispatch": [Function],
+                            "enableReinitialize": false,
+                            "error": undefined,
+                            "focus": [Function],
+                            "forceUnregisterOnUnmount": false,
+                            "form": "CreateAccountForm",
+                            "getFormState": [Function],
+                            "getValues": [Function],
+                            "initialValues": undefined,
+                            "initialize": [Function],
+                            "initialized": false,
+                            "invalid": true,
+                            "keepDirtyOnReinitialize": false,
+                            "onSubmit": [Function],
+                            "onSubmitSuccess": [Function],
+                            "persistentSubmitErrors": false,
+                            "pristine": false,
+                            "pure": true,
+                            "register": [Function],
+                            "registerField": [Function],
+                            "registerInnerOnSubmit": [Function],
+                            "registeredFields": Object {
+                              "confirmPassword": Object {
+                                "count": 2,
+                                "name": "confirmPassword",
+                                "type": "Field",
+                              },
+                              "email": Object {
+                                "count": 2,
+                                "name": "email",
+                                "type": "Field",
+                              },
+                              "password": Object {
+                                "count": 2,
+                                "name": "password",
+                                "type": "Field",
+                              },
+                              "username": Object {
+                                "count": 2,
+                                "name": "username",
+                                "type": "Field",
+                              },
+                            },
+                            "reset": [Function],
+                            "sectionPrefix": undefined,
+                            "setSubmitFailed": [Function],
+                            "setSubmitSucceeded": [Function],
+                            "shouldAsyncValidate": [Function],
+                            "shouldValidate": [Function],
+                            "startAsyncValidation": [Function],
+                            "startSubmit": [Function],
+                            "stopAsyncValidation": [Function],
+                            "stopSubmit": [Function],
+                            "submit": [Function],
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "submitting": false,
+                            "syncErrors": Object {
+                              "confirmPassword": "Confirm password is required.",
+                              "password": "Password is required.",
+                              "username": "",
+                            },
+                            "syncWarnings": Object {},
+                            "touch": [Function],
+                            "touchOnBlur": true,
+                            "touchOnChange": false,
+                            "triggerSubmit": undefined,
+                            "unregister": [Function],
+                            "unregisterField": [Function],
+                            "untouch": [Function],
+                            "updateSyncErrors": [Function],
+                            "updateSyncWarnings": [Function],
+                            "valid": false,
+                            "validExceptSubmit": false,
+                            "validate": [Function],
+                            "values": Object {
+                              "username": "user12",
+                            },
+                            "warning": undefined,
+                          }
+                        }
+                        asyncValidating={false}
+                        component={[Function]}
+                        dirty={true}
+                        dispatch={[Function]}
+                        inputId="email"
+                        label="Email"
+                        name="email"
+                        normalize={[Function]}
+                        pristine={false}
+                        type="email"
+                        value="user12@test.com"
+                      >
+                        <renderInput
+                          input={
+                            Object {
+                              "name": "email",
+                              "onBlur": [Function],
+                              "onChange": [Function],
+                              "onDragStart": [Function],
+                              "onDrop": [Function],
+                              "onFocus": [Function],
+                              "value": "user12@test.com",
+                            }
+                          }
+                          inputId="email"
+                          label="Email"
+                          meta={
+                            Object {
+                              "active": false,
+                              "asyncValidating": false,
+                              "autofilled": false,
+                              "dirty": true,
+                              "dispatch": [Function],
+                              "error": undefined,
+                              "form": "CreateAccountForm",
+                              "initial": undefined,
+                              "invalid": false,
+                              "pristine": false,
+                              "submitFailed": false,
+                              "submitting": false,
+                              "touched": false,
+                              "valid": true,
+                              "visited": false,
+                              "warning": undefined,
+                            }
+                          }
+                          type="email"
+                        >
+                          <div>
+                            <label
+                              className="db fw6 lh-copy f6"
+                              htmlFor="email"
+                            >
+                              Email
+                            </label>
+                            <input
+                              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                              id="email"
+                              name="email"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onDragStart={[Function]}
+                              onDrop={[Function]}
+                              onFocus={[Function]}
+                              placeholder="Email"
+                              type="email"
+                              value="user12@test.com"
+                            />
+                          </div>
+                        </renderInput>
+                      </ConnectedField>
+                    </Connect(ConnectedField)>
+                  </Field>
+                </div>
+                <div
+                  className="mv3"
+                >
+                  <Field
+                    component={[Function]}
+                    inputId="password"
+                    label="Password"
+                    name="password"
+                    type="password"
+                  >
+                    <Connect(ConnectedField)
+                      _reduxForm={
+                        Object {
+                          "anyTouched": false,
+                          "array": Object {
+                            "insert": [Function],
+                            "move": [Function],
+                            "pop": [Function],
+                            "push": [Function],
+                            "remove": [Function],
+                            "removeAll": [Function],
+                            "shift": [Function],
+                            "splice": [Function],
+                            "swap": [Function],
+                            "unshift": [Function],
+                          },
+                          "arrayInsert": [Function],
+                          "arrayMove": [Function],
+                          "arrayPop": [Function],
+                          "arrayPush": [Function],
+                          "arrayRemove": [Function],
+                          "arrayRemoveAll": [Function],
+                          "arrayShift": [Function],
+                          "arraySplice": [Function],
+                          "arraySwap": [Function],
+                          "arrayUnshift": [Function],
+                          "asyncErrors": undefined,
+                          "asyncValidate": [Function],
+                          "asyncValidating": false,
+                          "autofill": [Function],
+                          "blur": [Function],
+                          "change": [Function],
+                          "clearAsyncError": [Function],
+                          "clearSubmit": [Function],
+                          "clearSubmitErrors": [Function],
+                          "destroy": [Function],
+                          "destroyOnUnmount": true,
+                          "dirty": true,
+                          "dispatch": [Function],
+                          "enableReinitialize": false,
+                          "error": undefined,
+                          "focus": [Function],
+                          "forceUnregisterOnUnmount": false,
+                          "form": "CreateAccountForm",
+                          "getFormState": [Function],
+                          "getValues": [Function],
+                          "initialValues": undefined,
+                          "initialize": [Function],
+                          "initialized": false,
+                          "invalid": true,
+                          "keepDirtyOnReinitialize": false,
+                          "onSubmit": [Function],
+                          "onSubmitSuccess": [Function],
+                          "persistentSubmitErrors": false,
+                          "pristine": false,
+                          "pure": true,
+                          "register": [Function],
+                          "registerField": [Function],
+                          "registerInnerOnSubmit": [Function],
+                          "registeredFields": Object {
+                            "confirmPassword": Object {
+                              "count": 2,
+                              "name": "confirmPassword",
+                              "type": "Field",
+                            },
+                            "email": Object {
+                              "count": 2,
+                              "name": "email",
+                              "type": "Field",
+                            },
+                            "password": Object {
+                              "count": 2,
+                              "name": "password",
+                              "type": "Field",
+                            },
+                            "username": Object {
+                              "count": 2,
+                              "name": "username",
+                              "type": "Field",
+                            },
+                          },
+                          "reset": [Function],
+                          "sectionPrefix": undefined,
+                          "setSubmitFailed": [Function],
+                          "setSubmitSucceeded": [Function],
+                          "shouldAsyncValidate": [Function],
+                          "shouldValidate": [Function],
+                          "startAsyncValidation": [Function],
+                          "startSubmit": [Function],
+                          "stopAsyncValidation": [Function],
+                          "stopSubmit": [Function],
+                          "submit": [Function],
+                          "submitFailed": false,
+                          "submitSucceeded": false,
+                          "submitting": false,
+                          "syncErrors": Object {
+                            "confirmPassword": "Confirm password is required.",
+                            "password": "Password is required.",
+                            "username": "",
+                          },
+                          "syncWarnings": Object {},
+                          "touch": [Function],
+                          "touchOnBlur": true,
+                          "touchOnChange": false,
+                          "triggerSubmit": undefined,
+                          "unregister": [Function],
+                          "unregisterField": [Function],
+                          "untouch": [Function],
+                          "updateSyncErrors": [Function],
+                          "updateSyncWarnings": [Function],
+                          "valid": false,
+                          "validExceptSubmit": false,
+                          "validate": [Function],
+                          "values": Object {
+                            "username": "user12",
+                          },
+                          "warning": undefined,
+                        }
+                      }
+                      component={[Function]}
+                      inputId="password"
+                      label="Password"
+                      name="password"
+                      normalize={[Function]}
+                      type="password"
+                    >
+                      <ConnectedField
+                        _reduxForm={
+                          Object {
+                            "anyTouched": false,
+                            "array": Object {
+                              "insert": [Function],
+                              "move": [Function],
+                              "pop": [Function],
+                              "push": [Function],
+                              "remove": [Function],
+                              "removeAll": [Function],
+                              "shift": [Function],
+                              "splice": [Function],
+                              "swap": [Function],
+                              "unshift": [Function],
+                            },
+                            "arrayInsert": [Function],
+                            "arrayMove": [Function],
+                            "arrayPop": [Function],
+                            "arrayPush": [Function],
+                            "arrayRemove": [Function],
+                            "arrayRemoveAll": [Function],
+                            "arrayShift": [Function],
+                            "arraySplice": [Function],
+                            "arraySwap": [Function],
+                            "arrayUnshift": [Function],
+                            "asyncErrors": undefined,
+                            "asyncValidate": [Function],
+                            "asyncValidating": false,
+                            "autofill": [Function],
+                            "blur": [Function],
+                            "change": [Function],
+                            "clearAsyncError": [Function],
+                            "clearSubmit": [Function],
+                            "clearSubmitErrors": [Function],
+                            "destroy": [Function],
+                            "destroyOnUnmount": true,
+                            "dirty": true,
+                            "dispatch": [Function],
+                            "enableReinitialize": false,
+                            "error": undefined,
+                            "focus": [Function],
+                            "forceUnregisterOnUnmount": false,
+                            "form": "CreateAccountForm",
+                            "getFormState": [Function],
+                            "getValues": [Function],
+                            "initialValues": undefined,
+                            "initialize": [Function],
+                            "initialized": false,
+                            "invalid": true,
+                            "keepDirtyOnReinitialize": false,
+                            "onSubmit": [Function],
+                            "onSubmitSuccess": [Function],
+                            "persistentSubmitErrors": false,
+                            "pristine": false,
+                            "pure": true,
+                            "register": [Function],
+                            "registerField": [Function],
+                            "registerInnerOnSubmit": [Function],
+                            "registeredFields": Object {
+                              "confirmPassword": Object {
+                                "count": 2,
+                                "name": "confirmPassword",
+                                "type": "Field",
+                              },
+                              "email": Object {
+                                "count": 2,
+                                "name": "email",
+                                "type": "Field",
+                              },
+                              "password": Object {
+                                "count": 2,
+                                "name": "password",
+                                "type": "Field",
+                              },
+                              "username": Object {
+                                "count": 2,
+                                "name": "username",
+                                "type": "Field",
+                              },
+                            },
+                            "reset": [Function],
+                            "sectionPrefix": undefined,
+                            "setSubmitFailed": [Function],
+                            "setSubmitSucceeded": [Function],
+                            "shouldAsyncValidate": [Function],
+                            "shouldValidate": [Function],
+                            "startAsyncValidation": [Function],
+                            "startSubmit": [Function],
+                            "stopAsyncValidation": [Function],
+                            "stopSubmit": [Function],
+                            "submit": [Function],
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "submitting": false,
+                            "syncErrors": Object {
+                              "confirmPassword": "Confirm password is required.",
+                              "password": "Password is required.",
+                              "username": "",
+                            },
+                            "syncWarnings": Object {},
+                            "touch": [Function],
+                            "touchOnBlur": true,
+                            "touchOnChange": false,
+                            "triggerSubmit": undefined,
+                            "unregister": [Function],
+                            "unregisterField": [Function],
+                            "untouch": [Function],
+                            "updateSyncErrors": [Function],
+                            "updateSyncWarnings": [Function],
+                            "valid": false,
+                            "validExceptSubmit": false,
+                            "validate": [Function],
+                            "values": Object {
+                              "username": "user12",
+                            },
+                            "warning": undefined,
+                          }
+                        }
+                        asyncValidating={false}
+                        component={[Function]}
+                        dirty={true}
+                        dispatch={[Function]}
+                        inputId="password"
+                        label="Password"
+                        name="password"
+                        normalize={[Function]}
+                        pristine={false}
+                        type="password"
+                        value="user12pw"
+                      >
+                        <renderInput
+                          input={
+                            Object {
+                              "name": "password",
+                              "onBlur": [Function],
+                              "onChange": [Function],
+                              "onDragStart": [Function],
+                              "onDrop": [Function],
+                              "onFocus": [Function],
+                              "value": "user12pw",
+                            }
+                          }
+                          inputId="password"
+                          label="Password"
+                          meta={
+                            Object {
+                              "active": false,
+                              "asyncValidating": false,
+                              "autofilled": false,
+                              "dirty": true,
+                              "dispatch": [Function],
+                              "error": undefined,
+                              "form": "CreateAccountForm",
+                              "initial": undefined,
+                              "invalid": false,
+                              "pristine": false,
+                              "submitFailed": false,
+                              "submitting": false,
+                              "touched": false,
+                              "valid": true,
+                              "visited": false,
+                              "warning": undefined,
+                            }
+                          }
+                          type="password"
+                        >
+                          <div>
+                            <label
+                              className="db fw6 lh-copy f6"
+                              htmlFor="password"
+                            >
+                              Password
+                            </label>
+                            <input
+                              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                              id="password"
+                              name="password"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onDragStart={[Function]}
+                              onDrop={[Function]}
+                              onFocus={[Function]}
+                              placeholder="Password"
+                              type="password"
+                              value="user12pw"
+                            />
+                          </div>
+                        </renderInput>
+                      </ConnectedField>
+                    </Connect(ConnectedField)>
+                  </Field>
+                </div>
+                <div
+                  className="mv3"
+                >
+                  <Field
+                    component={[Function]}
+                    inputId="confirmPassword"
+                    label="Confirm Password"
+                    name="confirmPassword"
+                    type="password"
+                  >
+                    <Connect(ConnectedField)
+                      _reduxForm={
+                        Object {
+                          "anyTouched": false,
+                          "array": Object {
+                            "insert": [Function],
+                            "move": [Function],
+                            "pop": [Function],
+                            "push": [Function],
+                            "remove": [Function],
+                            "removeAll": [Function],
+                            "shift": [Function],
+                            "splice": [Function],
+                            "swap": [Function],
+                            "unshift": [Function],
+                          },
+                          "arrayInsert": [Function],
+                          "arrayMove": [Function],
+                          "arrayPop": [Function],
+                          "arrayPush": [Function],
+                          "arrayRemove": [Function],
+                          "arrayRemoveAll": [Function],
+                          "arrayShift": [Function],
+                          "arraySplice": [Function],
+                          "arraySwap": [Function],
+                          "arrayUnshift": [Function],
+                          "asyncErrors": undefined,
+                          "asyncValidate": [Function],
+                          "asyncValidating": false,
+                          "autofill": [Function],
+                          "blur": [Function],
+                          "change": [Function],
+                          "clearAsyncError": [Function],
+                          "clearSubmit": [Function],
+                          "clearSubmitErrors": [Function],
+                          "destroy": [Function],
+                          "destroyOnUnmount": true,
+                          "dirty": true,
+                          "dispatch": [Function],
+                          "enableReinitialize": false,
+                          "error": undefined,
+                          "focus": [Function],
+                          "forceUnregisterOnUnmount": false,
+                          "form": "CreateAccountForm",
+                          "getFormState": [Function],
+                          "getValues": [Function],
+                          "initialValues": undefined,
+                          "initialize": [Function],
+                          "initialized": false,
+                          "invalid": true,
+                          "keepDirtyOnReinitialize": false,
+                          "onSubmit": [Function],
+                          "onSubmitSuccess": [Function],
+                          "persistentSubmitErrors": false,
+                          "pristine": false,
+                          "pure": true,
+                          "register": [Function],
+                          "registerField": [Function],
+                          "registerInnerOnSubmit": [Function],
+                          "registeredFields": Object {
+                            "confirmPassword": Object {
+                              "count": 2,
+                              "name": "confirmPassword",
+                              "type": "Field",
+                            },
+                            "email": Object {
+                              "count": 2,
+                              "name": "email",
+                              "type": "Field",
+                            },
+                            "password": Object {
+                              "count": 2,
+                              "name": "password",
+                              "type": "Field",
+                            },
+                            "username": Object {
+                              "count": 2,
+                              "name": "username",
+                              "type": "Field",
+                            },
+                          },
+                          "reset": [Function],
+                          "sectionPrefix": undefined,
+                          "setSubmitFailed": [Function],
+                          "setSubmitSucceeded": [Function],
+                          "shouldAsyncValidate": [Function],
+                          "shouldValidate": [Function],
+                          "startAsyncValidation": [Function],
+                          "startSubmit": [Function],
+                          "stopAsyncValidation": [Function],
+                          "stopSubmit": [Function],
+                          "submit": [Function],
+                          "submitFailed": false,
+                          "submitSucceeded": false,
+                          "submitting": false,
+                          "syncErrors": Object {
+                            "confirmPassword": "Confirm password is required.",
+                            "password": "Password is required.",
+                            "username": "",
+                          },
+                          "syncWarnings": Object {},
+                          "touch": [Function],
+                          "touchOnBlur": true,
+                          "touchOnChange": false,
+                          "triggerSubmit": undefined,
+                          "unregister": [Function],
+                          "unregisterField": [Function],
+                          "untouch": [Function],
+                          "updateSyncErrors": [Function],
+                          "updateSyncWarnings": [Function],
+                          "valid": false,
+                          "validExceptSubmit": false,
+                          "validate": [Function],
+                          "values": Object {
+                            "username": "user12",
+                          },
+                          "warning": undefined,
+                        }
+                      }
+                      component={[Function]}
+                      inputId="confirmPassword"
+                      label="Confirm Password"
+                      name="confirmPassword"
+                      normalize={[Function]}
+                      type="password"
+                    >
+                      <ConnectedField
+                        _reduxForm={
+                          Object {
+                            "anyTouched": false,
+                            "array": Object {
+                              "insert": [Function],
+                              "move": [Function],
+                              "pop": [Function],
+                              "push": [Function],
+                              "remove": [Function],
+                              "removeAll": [Function],
+                              "shift": [Function],
+                              "splice": [Function],
+                              "swap": [Function],
+                              "unshift": [Function],
+                            },
+                            "arrayInsert": [Function],
+                            "arrayMove": [Function],
+                            "arrayPop": [Function],
+                            "arrayPush": [Function],
+                            "arrayRemove": [Function],
+                            "arrayRemoveAll": [Function],
+                            "arrayShift": [Function],
+                            "arraySplice": [Function],
+                            "arraySwap": [Function],
+                            "arrayUnshift": [Function],
+                            "asyncErrors": undefined,
+                            "asyncValidate": [Function],
+                            "asyncValidating": false,
+                            "autofill": [Function],
+                            "blur": [Function],
+                            "change": [Function],
+                            "clearAsyncError": [Function],
+                            "clearSubmit": [Function],
+                            "clearSubmitErrors": [Function],
+                            "destroy": [Function],
+                            "destroyOnUnmount": true,
+                            "dirty": true,
+                            "dispatch": [Function],
+                            "enableReinitialize": false,
+                            "error": undefined,
+                            "focus": [Function],
+                            "forceUnregisterOnUnmount": false,
+                            "form": "CreateAccountForm",
+                            "getFormState": [Function],
+                            "getValues": [Function],
+                            "initialValues": undefined,
+                            "initialize": [Function],
+                            "initialized": false,
+                            "invalid": true,
+                            "keepDirtyOnReinitialize": false,
+                            "onSubmit": [Function],
+                            "onSubmitSuccess": [Function],
+                            "persistentSubmitErrors": false,
+                            "pristine": false,
+                            "pure": true,
+                            "register": [Function],
+                            "registerField": [Function],
+                            "registerInnerOnSubmit": [Function],
+                            "registeredFields": Object {
+                              "confirmPassword": Object {
+                                "count": 2,
+                                "name": "confirmPassword",
+                                "type": "Field",
+                              },
+                              "email": Object {
+                                "count": 2,
+                                "name": "email",
+                                "type": "Field",
+                              },
+                              "password": Object {
+                                "count": 2,
+                                "name": "password",
+                                "type": "Field",
+                              },
+                              "username": Object {
+                                "count": 2,
+                                "name": "username",
+                                "type": "Field",
+                              },
+                            },
+                            "reset": [Function],
+                            "sectionPrefix": undefined,
+                            "setSubmitFailed": [Function],
+                            "setSubmitSucceeded": [Function],
+                            "shouldAsyncValidate": [Function],
+                            "shouldValidate": [Function],
+                            "startAsyncValidation": [Function],
+                            "startSubmit": [Function],
+                            "stopAsyncValidation": [Function],
+                            "stopSubmit": [Function],
+                            "submit": [Function],
+                            "submitFailed": false,
+                            "submitSucceeded": false,
+                            "submitting": false,
+                            "syncErrors": Object {
+                              "confirmPassword": "Confirm password is required.",
+                              "password": "Password is required.",
+                              "username": "",
+                            },
+                            "syncWarnings": Object {},
+                            "touch": [Function],
+                            "touchOnBlur": true,
+                            "touchOnChange": false,
+                            "triggerSubmit": undefined,
+                            "unregister": [Function],
+                            "unregisterField": [Function],
+                            "untouch": [Function],
+                            "updateSyncErrors": [Function],
+                            "updateSyncWarnings": [Function],
+                            "valid": false,
+                            "validExceptSubmit": false,
+                            "validate": [Function],
+                            "values": Object {
+                              "username": "user12",
+                            },
+                            "warning": undefined,
+                          }
+                        }
+                        asyncValidating={false}
+                        component={[Function]}
+                        dirty={true}
+                        dispatch={[Function]}
+                        inputId="confirmPassword"
+                        label="Confirm Password"
+                        name="confirmPassword"
+                        normalize={[Function]}
+                        pristine={false}
+                        syncError="Password and Confirm Password fields do not match."
+                        type="password"
+                        value="User12pw2"
+                      >
+                        <renderInput
+                          input={
+                            Object {
+                              "name": "confirmPassword",
+                              "onBlur": [Function],
+                              "onChange": [Function],
+                              "onDragStart": [Function],
+                              "onDrop": [Function],
+                              "onFocus": [Function],
+                              "value": "User12pw2",
+                            }
+                          }
+                          inputId="confirmPassword"
+                          label="Confirm Password"
+                          meta={
+                            Object {
+                              "active": false,
+                              "asyncValidating": false,
+                              "autofilled": false,
+                              "dirty": true,
+                              "dispatch": [Function],
+                              "error": "Password and Confirm Password fields do not match.",
+                              "form": "CreateAccountForm",
+                              "initial": undefined,
+                              "invalid": true,
+                              "pristine": false,
+                              "submitFailed": false,
+                              "submitting": false,
+                              "touched": false,
+                              "valid": false,
+                              "visited": false,
+                              "warning": undefined,
+                            }
+                          }
+                          type="password"
+                        >
+                          <div>
+                            <label
+                              className="db fw6 lh-copy f6 dark-red"
+                              htmlFor="confirmPassword"
+                            >
+                              Confirm Password
+                            </label>
+                            <input
+                              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 dark-red"
+                              id="confirmPassword"
+                              name="confirmPassword"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              onDragStart={[Function]}
+                              onDrop={[Function]}
+                              onFocus={[Function]}
+                              placeholder="Confirm Password"
+                              type="password"
+                              value="User12pw2"
+                            />
+                            <div
+                              className="ml2 mt1 dark-red"
+                              id="confirmPasswordError"
+                            >
+                              Password and Confirm Password fields do not match.
+                            </div>
+                          </div>
+                        </renderInput>
+                      </ConnectedField>
+                    </Connect(ConnectedField)>
+                  </Field>
+                </div>
+              </fieldset>
+              <div>
+                <input
+                  className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                  type="submit"
+                  value="Create Account"
+                />
+              </div>
+            </form>
+          </div>
+        </CreateAccountFormComponent>
+      </Form(CreateAccountFormComponent)>
+    </Connect(Form(CreateAccountFormComponent))>
+  </ReduxForm>
+</Provider>
 `;

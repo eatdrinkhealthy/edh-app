@@ -6,6 +6,7 @@ import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import renderer from "react-test-renderer";
+import toJson from "enzyme-to-json";
 import CreateAccountForm from "../CreateAccountForm";
 import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
 import appReducer from "../../../state/reducers";
@@ -13,7 +14,7 @@ import appReducer from "../../../state/reducers";
 describe("<CreateAccountForm />", function () {
   const testStore = createStore(appReducer);
 
-  it("matches render snapshot", function () {
+  it("matches render snapshot - with form validation errors", function () {
     // Per a React blog post, when using renderer, must mock out refs
     // https://facebook.github.io/react/blog/2016/11/16/react-v15.4.0.html#mocking-refs-for-snapshot-testing
     // eslint-disable-next-line flowtype/no-weak-types
@@ -29,6 +30,7 @@ describe("<CreateAccountForm />", function () {
 
     const options = { createNodeMock };
 
+    // render form with no input values to display validation errors
     const tree = renderer.create(
       <Provider store={testStore}>
         <CreateAccountForm onSubmit={() => {}} />
@@ -36,6 +38,25 @@ describe("<CreateAccountForm />", function () {
       options,
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it("matches render snapshot - without form validation errors", function () {
+    const props = {
+      onSubmit: jest.fn(),
+    };
+
+    // mount form with valid input values to suppress form validation errors
+    const wrapper = mountFormWithInputs(
+      <CreateAccountForm {...props} />,
+      {
+        username: "user12",
+        email: "user12@test.com",
+        password: "user12pw",
+        confirmPassword: "User12pw2",
+      },
+      testStore,
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it("should set confirmPassword error and NOT call onSubmit, when password !== confirm password", function () {
