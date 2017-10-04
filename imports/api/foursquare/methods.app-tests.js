@@ -30,6 +30,8 @@ const testFilterList = [
 
 if (Meteor.isServer) {
   describe("Methods", function () {
+    this.timeout(4000);
+
     describe("getNearbyPlaces", function () {
       it("should NOT throw but instead get empty results, when foursquareApi throws", function () {
         const context = {};
