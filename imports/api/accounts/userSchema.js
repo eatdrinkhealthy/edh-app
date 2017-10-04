@@ -17,10 +17,6 @@ const UserFormSchema = {
     type: String,
     min: 4,
   },
-  confirmPassword: {
-    type: String,
-    min: 4,
-  },
 };
 
 const userFormSimpleSchema = new SimpleSchema(UserFormSchema);

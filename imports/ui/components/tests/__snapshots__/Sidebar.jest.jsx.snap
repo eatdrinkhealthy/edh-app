@@ -261,14 +261,14 @@ exports[`<Sidebar /> matches render snapshot - signup form, with validation erro
         >
           <div>
             <label
-              className="db fw6 lh-copy f6 dark-red"
+              className="db fw6 lh-copy f6"
               htmlFor="confirmPassword"
             >
               Confirm Password
             </label>
             <input
               autoFocus={undefined}
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 dark-red"
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
               id="confirmPassword"
               name="confirmPassword"
               onBlur={[Function]}
@@ -280,12 +280,6 @@ exports[`<Sidebar /> matches render snapshot - signup form, with validation erro
               type="password"
               value=""
             />
-            <div
-              className="ml2 mt1 dark-red"
-              id="confirmPasswordError"
-            >
-              Confirm password is required.
-            </div>
           </div>
         </div>
       </fieldset>

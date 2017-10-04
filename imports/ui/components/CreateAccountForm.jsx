@@ -13,9 +13,7 @@ const validate = (values) => {
 
   errors.password = validateUserField("password", values.password);
 
-  if (!values.confirmPassword) {
-    errors.confirmPassword = "Confirm password is required.";
-  } else if (values.password !== values.confirmPassword) {
+  if (values.password !== values.confirmPassword) {
     errors.confirmPassword = "Password and Confirm Password fields do not match.";
   }
 

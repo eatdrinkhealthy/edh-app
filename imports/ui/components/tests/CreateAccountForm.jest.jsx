@@ -43,28 +43,6 @@ describe("<CreateAccountForm />", function () {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it("should set confirmPassword error and NOT call onSubmit, when password !== confirm password", function () {
-    const props = {
-      onSubmit: jest.fn(),
-    };
-
-    const wrapper = mountFormWithInputs(
-      <CreateAccountForm {...props} />,
-      {
-        username: "user12",
-        email: "user12@test.com",
-        password: "user12pw",
-        confirmPassword: "User12pw2",
-      },
-      testStore,
-    );
-
-    wrapper.find("input[type='submit']").simulate("submit");
-    expect(wrapper.find("#confirmPasswordError").text())
-      .toBe("Password and Confirm Password fields do not match.");
-    expect(props.onSubmit).not.toHaveBeenCalled();
-  });
-
   it("should set username too short error, when username less than min length", function () {
     const props = {
       onSubmit: jest.fn(),
@@ -123,6 +101,28 @@ describe("<CreateAccountForm />", function () {
 
     expect(wrapper.find("#passwordError").text())
       .toBe("Password must be at least 4 characters.");
+  });
+
+  it("should set confirmPassword error and NOT call onSubmit, when password !== confirm password", function () {
+    const props = {
+      onSubmit: jest.fn(),
+    };
+
+    const wrapper = mountFormWithInputs(
+      <CreateAccountForm {...props} />,
+      {
+        username: "user12",
+        email: "user12@test.com",
+        password: "user12pw",
+        confirmPassword: "User12pw2",
+      },
+      testStore,
+    );
+
+    wrapper.find("input[type='submit']").simulate("submit");
+    expect(wrapper.find("#confirmPasswordError").text())
+      .toBe("Password and Confirm Password fields do not match.");
+    expect(props.onSubmit).not.toHaveBeenCalled();
   });
 
   it("should call onSubmit, when submitting and all form fields are valid", function () {
