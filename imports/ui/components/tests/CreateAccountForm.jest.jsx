@@ -15,27 +15,11 @@ describe("<CreateAccountForm />", function () {
   const testStore = createStore(appReducer);
 
   it("matches render snapshot - with form validation errors", function () {
-    // Per a React blog post, when using renderer, must mock out refs
-    // https://facebook.github.io/react/blog/2016/11/16/react-v15.4.0.html#mocking-refs-for-snapshot-testing
-    // eslint-disable-next-line flowtype/no-weak-types
-    function createNodeMock(element: HTMLElement): ?Object {
-      if (element.type === "input") {
-        return {
-          focus() {
-          },
-        };
-      }
-      return null;
-    }
-
-    const options = { createNodeMock };
-
     // render form with no input values to display validation errors
     const tree = renderer.create(
       <Provider store={testStore}>
         <CreateAccountForm onSubmit={() => {}} />
       </Provider>,
-      options,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
