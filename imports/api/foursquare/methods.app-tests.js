@@ -49,6 +49,8 @@ if (Meteor.isServer) {
 
 if (Meteor.isClient) {
   describe("Methods - client calls", function () {
+    this.timeout(4000);
+
     describe("getNearbyPlaces", function () {
       it("should NOT throw but instead get callback with empty results, when foursquareApi throws",
         function (done: (Error | void) => void) {

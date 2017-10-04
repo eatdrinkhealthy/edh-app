@@ -13,6 +13,8 @@ if (Meteor.isServer) {
 
 if (Meteor.isClient) {
   describe("Accounts", function () {
+    this.timeout(4000);
+
     function waitForLogout() {
       it("wait for Meteor.logout()", function (done: () => void) {
         Meteor.logout((err) => {  // eslint-disable-line flowtype/require-parameter-type
