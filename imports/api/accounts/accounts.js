@@ -1,7 +1,7 @@
 // @flow
 import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
-import userSimpleSchema from "./userSchema";
+import { userSimpleSchema } from "./userSchema";
 
 Meteor.users.deny({
   update(): boolean {

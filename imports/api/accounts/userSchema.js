@@ -1,26 +1,41 @@
 // @flow
 import SimpleSchema from "simpl-schema";
 
-export const UserSchema = {
-  _id: {
-    type: String,
-  },
+const UserFormSchema = {
   username: {
     type: String,
     min: 4,
     max: 30,
     regEx: [/^(?!root)/i, /^(?!admin)/i],
   },
+  email: {
+    type: String,
+    regEx: SimpleSchema.RegEx.Email,
+  },
+  password: {
+    type: String,
+    min: 4,
+  },
+  confirmPassword: {
+    type: String,
+    min: 4,
+  },
+};
+
+const userFormSimpleSchema = new SimpleSchema(UserFormSchema);
+
+const UserSchema = {
+  _id: {
+    type: String,
+  },
+  username: UserFormSchema.username,
   emails: {
     type: Array,
   },
   "emails.$": {
     type: Object,
   },
-  "emails.$.address": {
-    type: String,
-    regEx: SimpleSchema.RegEx.Email,
-  },
+  "emails.$.address": UserFormSchema.email,
   "emails.$.verified": {
     type: Boolean,
   },
@@ -33,7 +48,7 @@ export const UserSchema = {
   },
 };
 
-const userSimpleSchema = new SimpleSchema(UserSchema);
+export const userSimpleSchema = new SimpleSchema(UserSchema);
 
 export const validateUserField = (
   field: string,
@@ -43,13 +58,10 @@ export const validateUserField = (
   const obj = {};
   obj[field] = value;
 
-  const fieldValidation = userSimpleSchema.newContext();
+  const fieldValidation = userFormSimpleSchema.newContext();
   if (!fieldValidation.validate(obj, { keys: [field] })) {
     validationError = fieldValidation.keyErrorMessage(field);
   }
 
   return validationError;
 };
-
-
-export default userSimpleSchema;
