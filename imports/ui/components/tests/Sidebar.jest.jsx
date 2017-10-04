@@ -12,19 +12,6 @@ import Sidebar from "../Sidebar";
 import appReducer from "../../../state/reducers";
 
 describe("<Sidebar />", function () {
-  // Per a React blog post, when using renderer, must mock out refs
-  // https://facebook.github.io/react/blog/2016/11/16/react-v15.4.0.html#mocking-refs-for-snapshot-testing
-  // eslint-disable-next-line flowtype/no-weak-types
-  function createNodeMock(element: HTMLElement): ?Object {
-    if (element.type === "input") {
-      return {
-        focus() {},
-      };
-    }
-    return null;
-  }
-  const options = { createNodeMock };
-
   const testStore = createStore(appReducer);
 
   it("matches render snapshot - no action form", function () {
@@ -32,12 +19,24 @@ describe("<Sidebar />", function () {
       <MemoryRouter>
         <Sidebar />
       </MemoryRouter>,
-      options,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("matches render snapshot - login form", function () {
+    // Per a React blog post, when using renderer, must mock out refs
+    // https://facebook.github.io/react/blog/2016/11/16/react-v15.4.0.html#mocking-refs-for-snapshot-testing
+    // eslint-disable-next-line flowtype/no-weak-types
+    function createNodeMock(element: HTMLElement): ?Object {
+      if (element.type === "input") {
+        return {
+          focus() {},
+        };
+      }
+      return null;
+    }
+    const options = { createNodeMock };
+
     // TODO figure out why MemoryRouter isn't passing location to child
     const tree = renderer.create(
       <MemoryRouter initialEntries={["/sidebar?action=login"]} initialIndex={0}>
@@ -56,7 +55,6 @@ describe("<Sidebar />", function () {
           <Sidebar location={{ pathname: "/sidebar", search: "?action=signup", hash: "" }} />
         </MemoryRouter>
       </Provider>,
-      options,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
