@@ -188,7 +188,7 @@ exports[`<Sidebar /> matches render snapshot - signup form, with validation erro
               className="ml2 mt1 dark-red"
               id="usernameError"
             >
-              Username is required
+              Username is a required field.
             </div>
           </div>
         </div>

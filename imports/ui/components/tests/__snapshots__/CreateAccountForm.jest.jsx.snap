@@ -45,7 +45,7 @@ exports[`<CreateAccountForm /> matches render snapshot - with form validation er
             className="ml2 mt1 dark-red"
             id="usernameError"
           >
-            Username is required
+            Username is a required field.
           </div>
         </div>
       </div>

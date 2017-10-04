@@ -10,6 +10,6 @@ describe("User SimpleSchema field validation", function () {
 
   it("should return validation error string for username too short", function () {
     expect(validateUserField("username", "abc"))
-      .toEqual("Username must be at least 4 characters");
+      .toEqual("Username must be at least 4 characters.");
   });
 });

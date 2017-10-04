@@ -1,5 +1,6 @@
 // @flow
 import SimpleSchema from "simpl-schema";
+import lookupErrorMessage from "../../ui/helpers/errors";
 
 const UserFormSchema = {
   username: {
@@ -58,9 +59,10 @@ export const validateUserField = (
   const obj = {};
   obj[field] = value;
 
-  const fieldValidation = userFormSimpleSchema.newContext();
-  if (!fieldValidation.validate(obj, { keys: [field] })) {
-    validationError = fieldValidation.keyErrorMessage(field);
+  try {
+    userFormSimpleSchema.validate(obj, { keys: [field] });
+  } catch (err) {
+    validationError = lookupErrorMessage(err);
   }
 
   return validationError;
