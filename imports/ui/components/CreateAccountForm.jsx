@@ -9,6 +9,8 @@ const validate = (values) => {
 
   errors.username = validateUserField("username", values.username);
 
+  errors.email = validateUserField("email", values.email);
+
   if (!values.password) {
     errors.password = "Password is required.";
   }

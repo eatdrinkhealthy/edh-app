@@ -197,14 +197,14 @@ exports[`<Sidebar /> matches render snapshot - signup form, with validation erro
         >
           <div>
             <label
-              className="db fw6 lh-copy f6"
+              className="db fw6 lh-copy f6 dark-red"
               htmlFor="email"
             >
               Email
             </label>
             <input
               autoFocus={undefined}
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 dark-red"
               id="email"
               name="email"
               onBlur={[Function]}
@@ -216,6 +216,12 @@ exports[`<Sidebar /> matches render snapshot - signup form, with validation erro
               type="email"
               value=""
             />
+            <div
+              className="ml2 mt1 dark-red"
+              id="emailError"
+            >
+              Email address is a required field.
+            </div>
           </div>
         </div>
         <div

@@ -14,6 +14,14 @@ const lookupErrorMessage = (error: {}): string => {
       clientMessage: "Username must be at least 4 characters.",
     },
     {
+      errorCode: "Email is required",
+      clientMessage: "Email address is a required field.",
+    },
+    {
+      errorCode: "Email must be a valid email address",
+      clientMessage: "Email address must be a valid email address format.",
+    },
+    {
       errorCode: "Emails is required",
       clientMessage: "Email address is a required field.",
     },

@@ -85,6 +85,26 @@ describe("<CreateAccountForm />", function () {
       .toBe("Username must be at least 4 characters.");
   });
 
+  it("should set invalid email error, when email format is invalid", function () {
+    const props = {
+      onSubmit: jest.fn(),
+    };
+
+    const wrapper = mountFormWithInputs(
+      <CreateAccountForm {...props} />,
+      {
+        username: "abcd",
+        email: "user12",
+        password: "user12pw",
+        confirmPassword: "User12pw2",
+      },
+      testStore,
+    );
+
+    expect(wrapper.find("#emailError").text())
+      .toBe("Email address must be a valid email address format.");
+  });
+
   it("should call onSubmit, when submitting and all form fields are valid", function () {
     const props = {
       onSubmit: jest.fn(),
