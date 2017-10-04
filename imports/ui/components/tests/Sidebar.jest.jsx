@@ -47,7 +47,7 @@ describe("<Sidebar />", function () {
     expect(tree).toMatchSnapshot();
   });
 
-  it("matches render snapshot - signup form", function () {
+  it("matches render snapshot - signup form, with validation errors", function () {
     // TODO figure out why MemoryRouter isn't passing location to child
     const tree = renderer.create(
       <Provider store={testStore}>

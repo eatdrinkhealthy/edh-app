@@ -119,7 +119,7 @@ exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
 </div>
 `;
 
-exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
+exports[`<Sidebar /> matches render snapshot - signup form, with validation errors 1`] = `
 <div
   className="sidebar"
 >
@@ -165,14 +165,14 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
         >
           <div>
             <label
-              className="db fw6 lh-copy f6"
+              className="db fw6 lh-copy f6 dark-red"
               htmlFor="username"
             >
               Username
             </label>
             <input
               autoFocus={true}
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 dark-red"
               id="username"
               name="username"
               onBlur={[Function]}
@@ -184,6 +184,12 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
               type="text"
               value=""
             />
+            <div
+              className="ml2 mt1 dark-red"
+              id="usernameError"
+            >
+              Username is required
+            </div>
           </div>
         </div>
         <div
@@ -217,14 +223,14 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
         >
           <div>
             <label
-              className="db fw6 lh-copy f6"
+              className="db fw6 lh-copy f6 dark-red"
               htmlFor="password"
             >
               Password
             </label>
             <input
               autoFocus={undefined}
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 dark-red"
               id="password"
               name="password"
               onBlur={[Function]}
@@ -236,6 +242,12 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
               type="password"
               value=""
             />
+            <div
+              className="ml2 mt1 dark-red"
+              id="passwordError"
+            >
+              Password is required.
+            </div>
           </div>
         </div>
         <div
@@ -243,14 +255,14 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
         >
           <div>
             <label
-              className="db fw6 lh-copy f6"
+              className="db fw6 lh-copy f6 dark-red"
               htmlFor="confirmPassword"
             >
               Confirm Password
             </label>
             <input
               autoFocus={undefined}
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 dark-red"
               id="confirmPassword"
               name="confirmPassword"
               onBlur={[Function]}
@@ -262,6 +274,12 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
               type="password"
               value=""
             />
+            <div
+              className="ml2 mt1 dark-red"
+              id="confirmPasswordError"
+            >
+              Confirm password is required.
+            </div>
           </div>
         </div>
       </fieldset>
