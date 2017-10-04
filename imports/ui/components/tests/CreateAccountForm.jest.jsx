@@ -36,7 +36,7 @@ describe("<CreateAccountForm />", function () {
         username: "user12",
         email: "user12@test.com",
         password: "user12pw",
-        confirmPassword: "User12pw2",
+        confirmPassword: "user12pw",
       },
       testStore,
     );
@@ -76,7 +76,7 @@ describe("<CreateAccountForm />", function () {
         username: "abc",
         email: "user12@test.com",
         password: "user12pw",
-        confirmPassword: "User12pw2",
+        confirmPassword: "user12pw",
       },
       testStore,
     );
@@ -96,13 +96,33 @@ describe("<CreateAccountForm />", function () {
         username: "abcd",
         email: "user12",
         password: "user12pw",
-        confirmPassword: "User12pw2",
+        confirmPassword: "user12pw",
       },
       testStore,
     );
 
     expect(wrapper.find("#emailError").text())
       .toBe("Email address must be a valid email address format.");
+  });
+
+  it("should set password too short error, when password is too short", function () {
+    const props = {
+      onSubmit: jest.fn(),
+    };
+
+    const wrapper = mountFormWithInputs(
+      <CreateAccountForm {...props} />,
+      {
+        username: "abcd",
+        email: "user12@test.com",
+        password: "us",
+        confirmPassword: "us",
+      },
+      testStore,
+    );
+
+    expect(wrapper.find("#passwordError").text())
+      .toBe("Password must be at least 4 characters.");
   });
 
   it("should call onSubmit, when submitting and all form fields are valid", function () {

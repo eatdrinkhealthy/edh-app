@@ -109,7 +109,7 @@ exports[`<CreateAccountForm /> matches render snapshot - with form validation er
             className="ml2 mt1 dark-red"
             id="passwordError"
           >
-            Password is required.
+            Password is a required field.
           </div>
         </div>
       </div>
@@ -233,7 +233,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
         getFormState={[Function]}
         initialize={[Function]}
         initialized={false}
-        invalid={true}
+        invalid={false}
         keepDirtyOnReinitialize={false}
         onSubmit={[Function]}
         onSubmitSuccess={[Function]}
@@ -280,8 +280,8 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
         submitting={false}
         syncErrors={
           Object {
-            "confirmPassword": "Password and Confirm Password fields do not match.",
             "email": "",
+            "password": "",
             "username": "",
           }
         }
@@ -293,12 +293,12 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
         untouch={[Function]}
         updateSyncErrors={[Function]}
         updateSyncWarnings={[Function]}
-        valid={false}
-        validExceptSubmit={false}
+        valid={true}
+        validExceptSubmit={true}
         validate={[Function]}
         values={
           Object {
-            "confirmPassword": "User12pw2",
+            "confirmPassword": "user12pw",
             "email": "user12@test.com",
             "password": "user12pw",
             "username": "user12",
@@ -336,7 +336,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
           handleSubmit={[Function]}
           initialize={[Function]}
           initialized={false}
-          invalid={true}
+          invalid={false}
           onSubmit={[Function]}
           onSubmitSuccess={[Function]}
           pristine={false}
@@ -348,7 +348,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
           submitting={false}
           touch={[Function]}
           untouch={[Function]}
-          valid={false}
+          valid={true}
           validate={[Function]}
         >
           <div
@@ -427,7 +427,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "initialValues": undefined,
                           "initialize": [Function],
                           "initialized": false,
-                          "invalid": true,
+                          "invalid": false,
                           "keepDirtyOnReinitialize": false,
                           "onSubmit": [Function],
                           "onSubmitSuccess": [Function],
@@ -474,9 +474,8 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "submitSucceeded": false,
                           "submitting": false,
                           "syncErrors": Object {
-                            "confirmPassword": "Confirm password is required.",
-                            "email": "Email address is a required field.",
-                            "password": "Password is required.",
+                            "email": "",
+                            "password": "",
                             "username": "",
                           },
                           "syncWarnings": Object {},
@@ -489,10 +488,13 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "untouch": [Function],
                           "updateSyncErrors": [Function],
                           "updateSyncWarnings": [Function],
-                          "valid": false,
-                          "validExceptSubmit": false,
+                          "valid": true,
+                          "validExceptSubmit": true,
                           "validate": [Function],
                           "values": Object {
+                            "confirmPassword": "user12pw",
+                            "email": "user12@test.com",
+                            "password": "user12pw",
                             "username": "user12",
                           },
                           "warning": undefined,
@@ -555,7 +557,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "initialValues": undefined,
                             "initialize": [Function],
                             "initialized": false,
-                            "invalid": true,
+                            "invalid": false,
                             "keepDirtyOnReinitialize": false,
                             "onSubmit": [Function],
                             "onSubmitSuccess": [Function],
@@ -602,9 +604,8 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "submitSucceeded": false,
                             "submitting": false,
                             "syncErrors": Object {
-                              "confirmPassword": "Confirm password is required.",
-                              "email": "Email address is a required field.",
-                              "password": "Password is required.",
+                              "email": "",
+                              "password": "",
                               "username": "",
                             },
                             "syncWarnings": Object {},
@@ -617,10 +618,13 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "untouch": [Function],
                             "updateSyncErrors": [Function],
                             "updateSyncWarnings": [Function],
-                            "valid": false,
-                            "validExceptSubmit": false,
+                            "valid": true,
+                            "validExceptSubmit": true,
                             "validate": [Function],
                             "values": Object {
+                              "confirmPassword": "user12pw",
+                              "email": "user12@test.com",
+                              "password": "user12pw",
                               "username": "user12",
                             },
                             "warning": undefined,
@@ -763,7 +767,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "initialValues": undefined,
                           "initialize": [Function],
                           "initialized": false,
-                          "invalid": true,
+                          "invalid": false,
                           "keepDirtyOnReinitialize": false,
                           "onSubmit": [Function],
                           "onSubmitSuccess": [Function],
@@ -810,9 +814,8 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "submitSucceeded": false,
                           "submitting": false,
                           "syncErrors": Object {
-                            "confirmPassword": "Confirm password is required.",
-                            "email": "Email address is a required field.",
-                            "password": "Password is required.",
+                            "email": "",
+                            "password": "",
                             "username": "",
                           },
                           "syncWarnings": Object {},
@@ -825,10 +828,13 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "untouch": [Function],
                           "updateSyncErrors": [Function],
                           "updateSyncWarnings": [Function],
-                          "valid": false,
-                          "validExceptSubmit": false,
+                          "valid": true,
+                          "validExceptSubmit": true,
                           "validate": [Function],
                           "values": Object {
+                            "confirmPassword": "user12pw",
+                            "email": "user12@test.com",
+                            "password": "user12pw",
                             "username": "user12",
                           },
                           "warning": undefined,
@@ -890,7 +896,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "initialValues": undefined,
                             "initialize": [Function],
                             "initialized": false,
-                            "invalid": true,
+                            "invalid": false,
                             "keepDirtyOnReinitialize": false,
                             "onSubmit": [Function],
                             "onSubmitSuccess": [Function],
@@ -937,9 +943,8 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "submitSucceeded": false,
                             "submitting": false,
                             "syncErrors": Object {
-                              "confirmPassword": "Confirm password is required.",
-                              "email": "Email address is a required field.",
-                              "password": "Password is required.",
+                              "email": "",
+                              "password": "",
                               "username": "",
                             },
                             "syncWarnings": Object {},
@@ -952,10 +957,13 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "untouch": [Function],
                             "updateSyncErrors": [Function],
                             "updateSyncWarnings": [Function],
-                            "valid": false,
-                            "validExceptSubmit": false,
+                            "valid": true,
+                            "validExceptSubmit": true,
                             "validate": [Function],
                             "values": Object {
+                              "confirmPassword": "user12pw",
+                              "email": "user12@test.com",
+                              "password": "user12pw",
                               "username": "user12",
                             },
                             "warning": undefined,
@@ -1095,7 +1103,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "initialValues": undefined,
                           "initialize": [Function],
                           "initialized": false,
-                          "invalid": true,
+                          "invalid": false,
                           "keepDirtyOnReinitialize": false,
                           "onSubmit": [Function],
                           "onSubmitSuccess": [Function],
@@ -1142,9 +1150,8 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "submitSucceeded": false,
                           "submitting": false,
                           "syncErrors": Object {
-                            "confirmPassword": "Confirm password is required.",
-                            "email": "Email address is a required field.",
-                            "password": "Password is required.",
+                            "email": "",
+                            "password": "",
                             "username": "",
                           },
                           "syncWarnings": Object {},
@@ -1157,10 +1164,13 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "untouch": [Function],
                           "updateSyncErrors": [Function],
                           "updateSyncWarnings": [Function],
-                          "valid": false,
-                          "validExceptSubmit": false,
+                          "valid": true,
+                          "validExceptSubmit": true,
                           "validate": [Function],
                           "values": Object {
+                            "confirmPassword": "user12pw",
+                            "email": "user12@test.com",
+                            "password": "user12pw",
                             "username": "user12",
                           },
                           "warning": undefined,
@@ -1222,7 +1232,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "initialValues": undefined,
                             "initialize": [Function],
                             "initialized": false,
-                            "invalid": true,
+                            "invalid": false,
                             "keepDirtyOnReinitialize": false,
                             "onSubmit": [Function],
                             "onSubmitSuccess": [Function],
@@ -1269,9 +1279,8 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "submitSucceeded": false,
                             "submitting": false,
                             "syncErrors": Object {
-                              "confirmPassword": "Confirm password is required.",
-                              "email": "Email address is a required field.",
-                              "password": "Password is required.",
+                              "email": "",
+                              "password": "",
                               "username": "",
                             },
                             "syncWarnings": Object {},
@@ -1284,10 +1293,13 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "untouch": [Function],
                             "updateSyncErrors": [Function],
                             "updateSyncWarnings": [Function],
-                            "valid": false,
-                            "validExceptSubmit": false,
+                            "valid": true,
+                            "validExceptSubmit": true,
                             "validate": [Function],
                             "values": Object {
+                              "confirmPassword": "user12pw",
+                              "email": "user12@test.com",
+                              "password": "user12pw",
                               "username": "user12",
                             },
                             "warning": undefined,
@@ -1302,6 +1314,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                         name="password"
                         normalize={[Function]}
                         pristine={false}
+                        syncError=""
                         type="password"
                         value="user12pw"
                       >
@@ -1426,7 +1439,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "initialValues": undefined,
                           "initialize": [Function],
                           "initialized": false,
-                          "invalid": true,
+                          "invalid": false,
                           "keepDirtyOnReinitialize": false,
                           "onSubmit": [Function],
                           "onSubmitSuccess": [Function],
@@ -1473,9 +1486,8 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "submitSucceeded": false,
                           "submitting": false,
                           "syncErrors": Object {
-                            "confirmPassword": "Confirm password is required.",
-                            "email": "Email address is a required field.",
-                            "password": "Password is required.",
+                            "email": "",
+                            "password": "",
                             "username": "",
                           },
                           "syncWarnings": Object {},
@@ -1488,10 +1500,13 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                           "untouch": [Function],
                           "updateSyncErrors": [Function],
                           "updateSyncWarnings": [Function],
-                          "valid": false,
-                          "validExceptSubmit": false,
+                          "valid": true,
+                          "validExceptSubmit": true,
                           "validate": [Function],
                           "values": Object {
+                            "confirmPassword": "user12pw",
+                            "email": "user12@test.com",
+                            "password": "user12pw",
                             "username": "user12",
                           },
                           "warning": undefined,
@@ -1553,7 +1568,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "initialValues": undefined,
                             "initialize": [Function],
                             "initialized": false,
-                            "invalid": true,
+                            "invalid": false,
                             "keepDirtyOnReinitialize": false,
                             "onSubmit": [Function],
                             "onSubmitSuccess": [Function],
@@ -1600,9 +1615,8 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "submitSucceeded": false,
                             "submitting": false,
                             "syncErrors": Object {
-                              "confirmPassword": "Confirm password is required.",
-                              "email": "Email address is a required field.",
-                              "password": "Password is required.",
+                              "email": "",
+                              "password": "",
                               "username": "",
                             },
                             "syncWarnings": Object {},
@@ -1615,10 +1629,13 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                             "untouch": [Function],
                             "updateSyncErrors": [Function],
                             "updateSyncWarnings": [Function],
-                            "valid": false,
-                            "validExceptSubmit": false,
+                            "valid": true,
+                            "validExceptSubmit": true,
                             "validate": [Function],
                             "values": Object {
+                              "confirmPassword": "user12pw",
+                              "email": "user12@test.com",
+                              "password": "user12pw",
                               "username": "user12",
                             },
                             "warning": undefined,
@@ -1633,9 +1650,8 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                         name="confirmPassword"
                         normalize={[Function]}
                         pristine={false}
-                        syncError="Password and Confirm Password fields do not match."
                         type="password"
-                        value="User12pw2"
+                        value="user12pw"
                       >
                         <renderInput
                           input={
@@ -1646,7 +1662,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                               "onDragStart": [Function],
                               "onDrop": [Function],
                               "onFocus": [Function],
-                              "value": "User12pw2",
+                              "value": "user12pw",
                             }
                           }
                           inputId="confirmPassword"
@@ -1658,15 +1674,15 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                               "autofilled": false,
                               "dirty": true,
                               "dispatch": [Function],
-                              "error": "Password and Confirm Password fields do not match.",
+                              "error": undefined,
                               "form": "CreateAccountForm",
                               "initial": undefined,
-                              "invalid": true,
+                              "invalid": false,
                               "pristine": false,
                               "submitFailed": false,
                               "submitting": false,
                               "touched": false,
-                              "valid": false,
+                              "valid": true,
                               "visited": false,
                               "warning": undefined,
                             }
@@ -1675,13 +1691,13 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                         >
                           <div>
                             <label
-                              className="db fw6 lh-copy f6 dark-red"
+                              className="db fw6 lh-copy f6"
                               htmlFor="confirmPassword"
                             >
                               Confirm Password
                             </label>
                             <input
-                              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 dark-red"
+                              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                               id="confirmPassword"
                               name="confirmPassword"
                               onBlur={[Function]}
@@ -1691,14 +1707,8 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
                               onFocus={[Function]}
                               placeholder="Confirm Password"
                               type="password"
-                              value="User12pw2"
+                              value="user12pw"
                             />
-                            <div
-                              className="ml2 mt1 dark-red"
-                              id="confirmPasswordError"
-                            >
-                              Password and Confirm Password fields do not match.
-                            </div>
                           </div>
                         </renderInput>
                       </ConnectedField>

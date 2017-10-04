@@ -22,6 +22,14 @@ const lookupErrorMessage = (error: {}): string => {
       clientMessage: "Email address must be a valid email address format.",
     },
     {
+      errorCode: "Password is required",
+      clientMessage: "Password is a required field.",
+    },
+    {
+      errorCode: "Password must be at least 4 characters",
+      clientMessage: "Password must be at least 4 characters.",
+    },
+    {
       errorCode: "Emails is required",
       clientMessage: "Email address is a required field.",
     },
@@ -63,6 +71,8 @@ const lookupErrorMessage = (error: {}): string => {
 
   const defaultMessage = "Unable to fulfill request at this time. Please try again later.";
   const matchedError = _.find(accountErrorMessages, { errorCode });
+
+  if (!matchedError) console.log("error code not found:", errorCode);
 
   return matchedError ? matchedError.clientMessage : defaultMessage;
 };

@@ -252,7 +252,7 @@ exports[`<Sidebar /> matches render snapshot - signup form, with validation erro
               className="ml2 mt1 dark-red"
               id="passwordError"
             >
-              Password is required.
+              Password is a required field.
             </div>
           </div>
         </div>
