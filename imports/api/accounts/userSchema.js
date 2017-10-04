@@ -1,6 +1,7 @@
+// @flow
 import SimpleSchema from "simpl-schema";
 
-const UserSchema = {
+export const UserSchema = {
   _id: {
     type: String,
   },
@@ -33,5 +34,22 @@ const UserSchema = {
 };
 
 const userSimpleSchema = new SimpleSchema(UserSchema);
+
+export const validateUserField = (
+  field: string,
+  value: string | number | boolean | {},
+): string => {
+  let validationError = "";
+  const obj = {};
+  obj[field] = value;
+
+  const fieldValidation = userSimpleSchema.newContext();
+  if (!fieldValidation.validate(obj, { keys: [field] })) {
+    validationError = fieldValidation.keyErrorMessage(field);
+  }
+
+  return validationError;
+};
+
 
 export default userSimpleSchema;

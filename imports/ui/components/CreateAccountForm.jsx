@@ -2,15 +2,12 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import classNames from "classnames";
-import userSimpleSchema from "../../api/accounts/userSchema";
+import { validateUserField } from "../../api/accounts/userSchema";
 
 const validate = (values) => {
   const errors = {};
 
-  const usernameValidationContext = userSimpleSchema.newContext();
-  if (!usernameValidationContext.validate(values, { keys: ["username"] })) {
-    errors.username = `${usernameValidationContext.keyErrorMessage("username")}.`;
-  }
+  errors.username = validateUserField("username", values.username);
 
   if (!values.password) {
     errors.password = "Password is required.";
