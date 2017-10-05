@@ -139,6 +139,7 @@ const CreateAccountFormComponent = (props: ICreateAccountFormProps) => {
 const onSubmitSuccess = (result, dispatch, props) => {
   // on successful submit, clear password fields
   props.change("password", "");
+  props.untouch("password");          // prevents showing validation error
   props.change("confirmPassword", "");
 
   // set focus on username field
