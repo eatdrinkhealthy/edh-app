@@ -6,7 +6,6 @@ import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import renderer from "react-test-renderer";
-import toJson from "enzyme-to-json";
 import CreateAccountForm from "../CreateAccountForm";
 import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
 import appReducer from "../../../state/reducers";
