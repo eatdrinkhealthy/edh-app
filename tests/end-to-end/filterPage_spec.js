@@ -51,7 +51,11 @@ describe("Filter Page", function () {
 
     // get all the unchecked filter toggle elements, and click them
     const filterTogglesUnchecked = browser.elements(els.filterPage.toggleUnchecked).value;
-    filterTogglesUnchecked.forEach(elem => elem.click());
+    filterTogglesUnchecked[0].click();
+    filterTogglesUnchecked[1].click();
+    filterTogglesUnchecked[2].click();
+    filterTogglesUnchecked[3].click();
+    filterTogglesUnchecked[4].click();
 
     // go to the map (landing page)
     browser.click(els.filterPage.closeLink);
