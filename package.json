@@ -11,10 +11,10 @@
     "flow:status-c": "clear && flow status",
     "flow:stop": "flow stop",
     "pretest": "yarn run lint && yarn run flow:check",
-    "test": "yarn run unit-test && yarn run integration-test-full",
+    "test": "yarn run unit-test && yarn run integration-test",
     "unit-test": "jest -c .jest-config.json",
-    "integration-test-full": "TEST_BROWSER_DRIVER=nightmare meteor test --once --full-app --settings settings.json --driver-package meteortesting:mocha",
-    "integration-test-full-w": "TEST_WATCH=1 TEST_BROWSER_DRIVER=nightmare meteor test --full-app --settings settings.json --driver-package meteortesting:mocha",
+    "integration-test": "TEST_BROWSER_DRIVER=nightmare meteor test --once --full-app --settings settings.json --driver-package meteortesting:mocha",
+    "integration-test-w": "TEST_WATCH=1 TEST_BROWSER_DRIVER=nightmare meteor test --full-app --settings settings.json --driver-package meteortesting:mocha",
     "meteor-test-server": "meteor test --full-app --settings settings.json --driver-package tmeasday:acceptance-test-driver",
     "end-to-end-test": "chimp --jasmine --ddp=http://localhost:3000 --path=tests/end-to-end/",
     "storybook": "start-storybook -s ./public -p 9001 -c .storybook"
