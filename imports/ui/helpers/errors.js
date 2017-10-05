@@ -72,8 +72,6 @@ const lookupErrorMessage = (error: {}): string => {
   const defaultMessage = "Unable to fulfill request at this time. Please try again later.";
   const matchedError = _.find(accountErrorMessages, { errorCode });
 
-  if (!matchedError) console.log("error code not found:", errorCode);
-
   return matchedError ? matchedError.clientMessage : defaultMessage;
 };
 
