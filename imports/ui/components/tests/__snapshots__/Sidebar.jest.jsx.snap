@@ -268,6 +268,7 @@ exports[`<Sidebar /> matches render snapshot - signup form, without form validat
       <div>
         <input
           className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+          disabled={true}
           type="submit"
           value="Create Account"
         />

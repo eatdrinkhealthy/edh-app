@@ -70,12 +70,13 @@ export type ICreateAccountFormValues = {
 
 type ICreateAccountFormProps = {
   handleSubmit: (values: ICreateAccountFormValues) => void,
+  invalid: boolean,
 };
 
 // NOTE: when we call the CreateAccountForm component, we pass our submit handler as an
 // onSubmit prop, and redux-form passes a submit function in as handleSubmit
 const CreateAccountFormComponent = (props: ICreateAccountFormProps) => {
-  const { handleSubmit } = props;
+  const { handleSubmit, invalid } = props;
 
   return (
     <div className="pt2 pl4 pr4 pb4">
@@ -129,6 +130,7 @@ const CreateAccountFormComponent = (props: ICreateAccountFormProps) => {
             className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
             type="submit"
             value="Create Account"
+            disabled={invalid}
           />
         </div>
       </form>

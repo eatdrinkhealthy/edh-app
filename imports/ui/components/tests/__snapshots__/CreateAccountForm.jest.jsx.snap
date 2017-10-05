@@ -125,6 +125,7 @@ exports[`<CreateAccountForm /> matches render snapshot - without form validation
     <div>
       <input
         className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+        disabled={true}
         type="submit"
         value="Create Account"
       />
