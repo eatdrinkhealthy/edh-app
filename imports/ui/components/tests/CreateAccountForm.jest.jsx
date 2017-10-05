@@ -14,7 +14,7 @@ import appReducer from "../../../state/reducers";
 describe("<CreateAccountForm />", function () {
   const testStore = createStore(appReducer);
 
-  it("matches render snapshot - with form validation errors", function () {
+  it("matches render snapshot - without form validation errors", function () {
     // render form with no input values to display validation errors
     const tree = renderer.create(
       <Provider store={testStore}>
@@ -22,25 +22,6 @@ describe("<CreateAccountForm />", function () {
       </Provider>,
     ).toJSON();
     expect(tree).toMatchSnapshot();
-  });
-
-  it("matches render snapshot - without form validation errors", function () {
-    const props = {
-      onSubmit: jest.fn(),
-    };
-
-    // mount form with valid input values to suppress form validation errors
-    const wrapper = mountFormWithInputs(
-      <CreateAccountForm {...props} />,
-      {
-        username: "user12",
-        email: "user12@test.com",
-        password: "user12pw",
-        confirmPassword: "user12pw",
-      },
-      testStore,
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it("should set username too short error, when username less than min length", function () {
@@ -52,12 +33,11 @@ describe("<CreateAccountForm />", function () {
       <CreateAccountForm {...props} />,
       {
         username: "abc",
-        email: "user12@test.com",
-        password: "user12pw",
-        confirmPassword: "user12pw",
       },
       testStore,
     );
+
+    wrapper.find("#username").simulate("blur"); // blur triggers field validation
 
     expect(wrapper.find("#usernameError").text())
       .toBe("Username must be at least 4 characters.");
@@ -71,13 +51,12 @@ describe("<CreateAccountForm />", function () {
     const wrapper = mountFormWithInputs(
       <CreateAccountForm {...props} />,
       {
-        username: "abcd",
         email: "user12",
-        password: "user12pw",
-        confirmPassword: "user12pw",
       },
       testStore,
     );
+
+    wrapper.find("#email").simulate("blur"); // blur triggers field validation
 
     expect(wrapper.find("#emailError").text())
       .toBe("Email address must be a valid email address format.");
@@ -91,13 +70,12 @@ describe("<CreateAccountForm />", function () {
     const wrapper = mountFormWithInputs(
       <CreateAccountForm {...props} />,
       {
-        username: "abcd",
-        email: "user12@test.com",
         password: "us",
-        confirmPassword: "us",
       },
       testStore,
     );
+
+    wrapper.find("#password").simulate("blur"); // blur triggers field validation
 
     expect(wrapper.find("#passwordError").text())
       .toBe("Password must be at least 4 characters.");

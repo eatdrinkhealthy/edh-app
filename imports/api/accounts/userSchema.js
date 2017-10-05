@@ -50,8 +50,9 @@ export const userSimpleSchema = new SimpleSchema(UserSchema);
 export const validateUserField = (
   field: string,
   value: string | number | boolean | {},
-): string => {
-  let validationError = "";
+): ?string => {
+  let validationError;
+
   const obj = {};
   obj[field] = value;
 

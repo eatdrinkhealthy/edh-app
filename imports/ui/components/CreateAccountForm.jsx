@@ -4,21 +4,17 @@ import { Field, reduxForm } from "redux-form";
 import classNames from "classnames";
 import { validateUserField } from "../../api/accounts/userSchema";
 
-const validate = (values) => {
-  const errors = {};
+const validateUsername = value => validateUserField("username", value);
 
-  errors.username = validateUserField("username", values.username);
+const validateEmail = value => validateUserField("email", value);
 
-  errors.email = validateUserField("email", values.email);
+const validatePassword = value => validateUserField("password", value);
 
-  errors.password = validateUserField("password", values.password);
-
-  if (values.password !== values.confirmPassword) {
-    errors.confirmPassword = "Password and Confirm Password fields do not match.";
-  }
-
-  return errors;
-};
+const validateConfirmPassword = (value, allValues) => (
+  allValues.password !== allValues.confirmPassword
+    ? "Password and Confirm Password fields do not match."
+    : undefined
+);
 
 const renderInputError = (inputId: string, error: string) => (
   <div id={`${inputId}Error`} className="ml2 mt1 dark-red">
@@ -33,17 +29,18 @@ type IRenderInputProps = {
   type: string,
   input: {},          // redux-form flow type
   meta: {             // redux-form flow type
+    touched: boolean, // eslint-disable-line react/no-unused-prop-types
     error: string,    // eslint-disable-line react/no-unused-prop-types
   },
 };
 
 const renderInput = (
-  { input, inputId, autoFocus, label, type, meta: { error } }: IRenderInputProps,
+  { input, inputId, autoFocus, label, type, meta: { touched, error } }: IRenderInputProps,
 ) => (
   /* eslint-disable jsx-a11y/no-autofocus */
   <div>
     <label
-      className={classNames("db fw6 lh-copy f6", { "dark-red": !!error })}
+      className={classNames("db fw6 lh-copy f6", { "dark-red": touched && !!error })}
       htmlFor={inputId}
     >
       {label}
@@ -53,13 +50,13 @@ const renderInput = (
       id={inputId}
       className={classNames(
         "pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100",
-        { "dark-red": !!error },
+        { "dark-red": touched && !!error },
       )}
       placeholder={label}
       type={type}
       autoFocus={autoFocus}
     />
-    {error && renderInputError(inputId, error)}
+    {touched && (error && renderInputError(inputId, error))}
   </div>
   /* eslint-enable jsx-a11y/no-autofocus */
 );
@@ -92,6 +89,7 @@ const CreateAccountFormComponent = (props: ICreateAccountFormProps) => {
               type="text"
               label="Username"
               component={renderInput}
+              validate={validateUsername}
               autoFocus
             />
           </div>
@@ -102,6 +100,7 @@ const CreateAccountFormComponent = (props: ICreateAccountFormProps) => {
               type="email"
               label="Email"
               component={renderInput}
+              validate={validateEmail}
             />
           </div>
           <div className="mv3">
@@ -111,6 +110,7 @@ const CreateAccountFormComponent = (props: ICreateAccountFormProps) => {
               type="password"
               label="Password"
               component={renderInput}
+              validate={validatePassword}
             />
           </div>
           <div className="mv3">
@@ -120,6 +120,7 @@ const CreateAccountFormComponent = (props: ICreateAccountFormProps) => {
               type="password"
               label="Confirm Password"
               component={renderInput}
+              validate={validateConfirmPassword}
             />
           </div>
         </fieldset>
@@ -150,7 +151,6 @@ const onSubmitSuccess = (result, dispatch, props) => {
 const CreateAccountForm = reduxForm({
   form: "CreateAccountForm",
   onSubmitSuccess,
-  validate,
 })(CreateAccountFormComponent);
 
 export default CreateAccountForm;

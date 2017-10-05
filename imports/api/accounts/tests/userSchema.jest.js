@@ -4,8 +4,8 @@
 import { validateUserField } from "../userSchema";
 
 describe("User SimpleSchema field validation", function () {
-  it("should return an empty string when there are no validation errors", function () {
-    expect(validateUserField("username", "abcd")).toEqual("");
+  it("should return undefined when there are no validation errors", function () {
+    expect(validateUserField("username", "abcd")).toBeUndefined();
   });
 
   it("should return validation error string for username too short", function () {
