@@ -11,6 +11,7 @@ jest.mock("../../components/AlertMessage", () => (
 ));
 
 // NOTE, this mock overrides a global simpler mock for accounts-base
+/* eslint-disable no-unused-vars */
 jest.mock("meteor/accounts-base", () => ({
   Accounts: {
     createUser: jest.fn()
@@ -29,6 +30,7 @@ jest.mock("meteor/accounts-base", () => ({
       })),
   },
 }));
+/* eslint-enable no-unused-vars */
 
 import React from "react";
 import { createStore } from "redux";

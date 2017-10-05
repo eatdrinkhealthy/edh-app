@@ -52,6 +52,12 @@
   "rules": {
     "semi": "error",
     "no-console": "warn",
+    "no-multi-spaces": [
+      "warn",
+      {
+        "ignoreEOLComments": true
+      }
+    ],
     "quotes": [
       "error",
       "double",
