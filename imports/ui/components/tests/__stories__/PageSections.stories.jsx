@@ -6,16 +6,12 @@ import { MemoryRouter } from "react-router-dom";
 import { storiesOf, action } from "@storybook/react";
 import { text } from "@storybook/addon-knobs";
 
-import CreateAccount from "../../CreateAccount";
 import Login from "../../Login";
 import UserMenu from "../../UserMenu";
 
 storiesOf("Page Sections", module)
   .addDecorator((story: () => React$Element<*>): React$Element<*> => (
     <MemoryRouter>{story()}</MemoryRouter>
-  ))
-  .add("CreateAccount", (): React$Element<*> => (
-    <CreateAccount handleSubmit={action("submitted")} />
   ))
   .add("Login", (): React$Element<*> => (
     <Login handleSubmit={action("submitted")} />

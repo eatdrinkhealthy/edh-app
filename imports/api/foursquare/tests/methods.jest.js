@@ -85,9 +85,9 @@ describe("Methods", function () {
       //          call order, and number of calls to collectSearchResults matter
       //
       // beforeEach(() => {
-        // NOTE: these do not seem to reset the mockImplementationOnce call results
-        // jest.resetModules();
-        // jest.clearAllMocks();
+      //   NOTE: these do not seem to reset the mockImplementationOnce call results
+      //   jest.resetModules();
+      //   jest.clearAllMocks();
       // });
 
       beforeAll(() => {

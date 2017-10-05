@@ -11,11 +11,15 @@ declare module "meteor/meteor" {
   };
 
   declare export class IMeteorError {
-    constructor(error: string | number, reason?: string, details?: string): IMeteorError;
+    constructor(
+      error: string | number,
+      reason?: string,
+      details?: string | Array<{}>,
+    ): IMeteorError;
 
     error: string | number;
-    reason: string;
-    details: string;
+    reason?: string;
+    details?: string | Array<IValidationErrorDetail>;  // Meteor.Error can be a ValidationError
   }
 
   declare export type IMeteorCallback = (err?: IMeteorError, res: any) => void;
@@ -48,6 +52,7 @@ declare module "meteor/meteor" {
       callback?: IMeteorCallback
     ) => number,
     deny: (IMeteorAllowDenyOptions) => void,
+    simpleSchema: SimpleSchema, // storing simpleSchema in collection is a custom, but known practice
   };
 
   declare export type IMeteorUser = {

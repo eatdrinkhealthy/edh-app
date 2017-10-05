@@ -2,14 +2,17 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
+import React from "react";
 import { mount } from "enzyme";
+import { Provider } from "react-redux";
 import type { ReactWrapper } from "enzyme";
+import type { Store } from "redux";
 import _ from "lodash";
 
-// NOTE: mountCreateAccountForm used to be exported from CreateAccount.jest.jsx,
+// NOTE: mountCreateAccountForm used to be exported from CreateAccountForm.jest.jsx,
 //       but whenever it was imported in to another module (e.g. CreateAccountContainer.jest.jsx)
 //       it would generate a snapshot file for the file it was imported to (but
-//       generate a snapshot of <CreateAccount />)
+//       generate a snapshot of <CreateAccountForm />)
 //       Moving mountCreateAccountForm to its own module resolved that.
 //
 //       Weird.
@@ -17,6 +20,7 @@ import _ from "lodash";
 const mountFormWithInputs = ( // eslint-disable-line
   formComponent: React$Element<*>,
   inputs: {},
+  store?: Store<*, *>,        // if a store is provided, mount with a <Provider /> and store
 ): ReactWrapper => {
   //
   // Had a lot of difficulty here, trying to figure out how to set the value of
@@ -37,7 +41,9 @@ const mountFormWithInputs = ( // eslint-disable-line
   // round trip).
   //
 
-  const wrapper = mount(formComponent);
+  const wrapper = (store)
+    ? mount(<Provider store={store}>{formComponent}</Provider>)   // for redux-form forms
+    : mount(formComponent);                                       // for standard forms
 
   _.forIn(inputs, (value, input) => {
     const inputWrapper = wrapper.find(`[name='${input}']`);

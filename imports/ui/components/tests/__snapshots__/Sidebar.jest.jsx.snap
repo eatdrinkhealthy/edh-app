@@ -119,7 +119,7 @@ exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
 </div>
 `;
 
-exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
+exports[`<Sidebar /> matches render snapshot - signup form, without form validation errors 1`] = `
 <div
   className="sidebar"
 >
@@ -163,79 +163,112 @@ exports[`<Sidebar /> matches render snapshot - signup form 1`] = `
         <div
           className="mt3"
         >
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="username"
-          >
-            Username
-          </label>
-          <input
-            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="username"
-            name="username"
-            onChange={[Function]}
-            type="text"
-            value=""
-          />
+          <div>
+            <label
+              className="db fw6 lh-copy f6"
+              htmlFor="username"
+            >
+              Username
+            </label>
+            <input
+              autoFocus={true}
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              id="username"
+              name="username"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              placeholder="Username"
+              type="text"
+              value=""
+            />
+          </div>
         </div>
         <div
           className="mt3"
         >
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="email"
-            name="email"
-            onChange={[Function]}
-            type="email"
-            value=""
-          />
+          <div>
+            <label
+              className="db fw6 lh-copy f6"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              autoFocus={undefined}
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              id="email"
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              placeholder="Email"
+              type="email"
+              value=""
+            />
+          </div>
         </div>
         <div
           className="mv3"
         >
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <input
-            className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="password"
-            name="password"
-            onChange={[Function]}
-            type="password"
-            value=""
-          />
+          <div>
+            <label
+              className="db fw6 lh-copy f6"
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <input
+              autoFocus={undefined}
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              id="password"
+              name="password"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              placeholder="Password"
+              type="password"
+              value=""
+            />
+          </div>
         </div>
         <div
           className="mv3"
         >
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="confirmPassword"
-          >
-            Confirm Password
-          </label>
-          <input
-            className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="confirmPassword"
-            name="confirmPassword"
-            onChange={[Function]}
-            type="password"
-            value=""
-          />
+          <div>
+            <label
+              className="db fw6 lh-copy f6"
+              htmlFor="confirmPassword"
+            >
+              Confirm Password
+            </label>
+            <input
+              autoFocus={undefined}
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+              id="confirmPassword"
+              name="confirmPassword"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              placeholder="Confirm Password"
+              type="password"
+              value=""
+            />
+          </div>
         </div>
       </fieldset>
       <div>
         <input
           className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+          disabled={true}
           type="submit"
           value="Create Account"
         />

@@ -30,7 +30,7 @@ export const elements = {
     loginLink: "#loginLink",
     logoutLink: "#logoutLink",
   },
-  alertMessage: ".s-alert-box",  // NOTE: looked this class up in the component source code
+  alertMessage: ".s-alert-box", // NOTE: looked this class up in the component source code
   filterPage: {
     url: `${baseUrl}/filter`,
     component: "div.filter",

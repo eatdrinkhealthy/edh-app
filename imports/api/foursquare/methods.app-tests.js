@@ -3,8 +3,8 @@
 /* eslint-disable func-names, prefer-arrow-callback */
 import { assert } from "meteor/practicalmeteor:chai";
 import { Meteor } from "meteor/meteor";
+import type { IMeteorError } from "meteor/meteor";
 import { getNearbyPlaces } from "./methods";
-
 import type { IFilter } from "../../state/reducers/filtersReducers";
 
 const testFilterList = [
@@ -30,6 +30,8 @@ const testFilterList = [
 
 if (Meteor.isServer) {
   describe("Methods", function () {
+    this.timeout(4000);
+
     describe("getNearbyPlaces", function () {
       it("should NOT throw but instead get empty results, when foursquareApi throws", function () {
         const context = {};
@@ -49,6 +51,8 @@ if (Meteor.isServer) {
 
 if (Meteor.isClient) {
   describe("Methods - client calls", function () {
+    this.timeout(4000);
+
     describe("getNearbyPlaces", function () {
       it("should NOT throw but instead get callback with empty results, when foursquareApi throws",
         function (done: (Error | void) => void) {
@@ -59,14 +63,54 @@ if (Meteor.isClient) {
           };
 
           assert.doesNotThrow(() => {
-            getNearbyPlaces.call(args, function (err: Error, res: Array<IFilter>) {
-              assert.isUndefined(err);
-              assert.deepEqual(res, []);
-              done();
-            });
+            getNearbyPlaces.call(args,
+              function (err: IMeteorError, res: Array<IFilter>) {
+                assert.isUndefined(err);
+                assert.deepEqual(res, []);
+                done();
+              },
+            );
           });
         },
       );
+
+      it("should get a ValidationError, when schema validation fails", function (done) {
+        const args = {
+          latitude: "not a number",
+          longitude: 0,
+          filterList: testFilterList,
+        };
+
+        assert.doesNotThrow(() => {
+          getNearbyPlaces.call(args,
+            function (err: IMeteorError, res: Array<IFilter>) {
+              assert.isUndefined(res);
+              assert.isDefined(err);
+
+              //
+              // doing a detailed examination of a ValidationError here, to learn
+              // the structure and some values
+              //
+              // NOTE: tried using ValidationError.is() from mdg:validation-error, but
+              // it does not return true for the returned error
+              //
+
+              assert.equal(err.error, "validation-error");
+              // $FlowFixMe   (it's okay if err.details is undefined here, will throw as it should
+              assert.deepEqual(err.details[0],
+                {
+                  name: "latitude",
+                  value: "not a number",
+                  type: "expectedType",
+                  dataType: "Number",
+                  message: "Latitude must be of type Number",
+                },
+              );
+              done();
+            },
+          );
+        });
+      });
     });
   });
 }
