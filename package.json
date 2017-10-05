@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^1.0.3",
     "classnames": "^2.2.5",
     "google-map-react": "^0.24.0",
     "html-hint": "^0.2.4",
