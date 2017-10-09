@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../../state/stores/store";
-import MapContainer from "./MapContainer";
+import HomePage from "../pages/HomePage";
 import Sidebar from "../components/Sidebar";
 import FilterListContainer from "./FilterListContainer";
 import PageNotFound from "../pages/PageNotFound";
@@ -18,7 +18,7 @@ const App = (): React$Element<*> => (
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={MapContainer} />
+          <Route exact path="/" component={HomePage} />
           <Route path="/sidebar" component={Sidebar} />
           <Route path="/filter" component={FilterListContainer} />
           <Route component={PageNotFound} />

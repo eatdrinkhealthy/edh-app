@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
 import AlertMessage from "../components/AlertMessage";
 import Map from "../components/Map";
-import Navbar from "../components/Navbar";
 import { getNearbyPlaces } from "../../api/foursquare/methods";
 import { setSearchResults } from "../../state/actions/searchResultsActions";
 import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
@@ -48,19 +47,16 @@ export class MapWrapper extends Component {
       // TODO potentially throw here (or log search criteria to a logger for evaluation)
       this.props.setSearchResultsHandler(result);
     }
-  }
+  };
 
   render() { // eslint-disable-line flowtype/require-return-type
     return (
-      <div>
-        <Navbar />
-        <Map
-          googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
-          venues={this.props.searchResults}
-          setSelectedVenueHandler={this.props.setSelectedVenueHandler}
-          selectedVenueId={this.props.selectedVenueId}
-        />
-      </div>
+      <Map
+        googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
+        venues={this.props.searchResults}
+        setSelectedVenueHandler={this.props.setSelectedVenueHandler}
+        selectedVenueId={this.props.selectedVenueId}
+      />
     );
   }
 }
