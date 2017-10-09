@@ -16,7 +16,7 @@ export type IViewArea = {
   left: number,
 };
 
-export default class LocationsMap extends PureComponent {
+export default class Map extends PureComponent {
   props: {
     center?: ILatLng,
     zoom?: number,
@@ -59,7 +59,7 @@ export default class LocationsMap extends PureComponent {
   render() {  // eslint-disable-line flowtype/require-return-type
     return (
       <div
-        className="map-container"
+        className="map-holder"
         ref={this.setMapHolderRef}
       >
         <GoogleMap

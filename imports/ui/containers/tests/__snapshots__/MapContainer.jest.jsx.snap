@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MapComponent /> matches render snapshot 1`] = `
+exports[`<MapWrapper /> matches render snapshot 1`] = `
 <div>
   <Navbar />
-  <LocationsMap
+  <Map
     center={
       Object {
         "lat": 32.789008,

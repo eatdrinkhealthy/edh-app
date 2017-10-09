@@ -26,7 +26,7 @@ import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import { createStore } from "redux";
 import appReducer from "../../../state/reducers";
-import MapContainer, { MapComponent } from "../MapContainer";
+import MapContainer, { MapWrapper } from "../MapContainer";
 import sampleVenues from "../../../state/stores/tests/sampleVenueData";
 
 /* eslint-disable no-duplicate-imports */
@@ -37,7 +37,7 @@ import type { IState } from "../../../state/stores/store";
 import { getNearbyPlaces } from "../../../api/foursquare/methods";
 import AlertMessage from "../../components/AlertMessage";
 
-describe("<MapComponent />", function () {
+describe("<MapWrapper />", function () {
   const testFilterList: Array<IFilter> = [
     { id: "jb1", name: "Juice Bar1", on: true, foursquareCategory: "1" },
     { id: "jb2", name: "Juice Bar2", on: false, foursquareCategory: "2" },
@@ -46,7 +46,7 @@ describe("<MapComponent />", function () {
 
   it("matches render snapshot", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
-    const wrapper = shallow(<MapComponent
+    const wrapper = shallow(<MapWrapper
       filterList={testFilterList}
       searchResults={[]}
       setSearchResultsHandler={jest.fn()}
@@ -58,7 +58,7 @@ describe("<MapComponent />", function () {
 
   it("calls AlertMessage.warning when calling getNearbyPlacesCB with an error", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
-    const wrapper = shallow(<MapComponent
+    const wrapper = shallow(<MapWrapper
       filterList={testFilterList}
       searchResults={[]}
       setSearchResultsHandler={jest.fn()}
@@ -72,7 +72,7 @@ describe("<MapComponent />", function () {
 
   it("calls AlertMessage.warning when calling getNearbyPlacesCB with an no search results", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
-    const wrapper = shallow(<MapComponent
+    const wrapper = shallow(<MapWrapper
       filterList={testFilterList}
       searchResults={[]}
       setSearchResultsHandler={jest.fn()}
@@ -118,13 +118,13 @@ describe("<MapContainer />", function () {
       .toEqual([testDefaultState.filters[0]]);
   });
 
-  it("should set search results for MapComponent from state", function () {
-    expect(wrapper.find("MapComponent").at(0).props().searchResults)
+  it("should set search results for MapWrapper from state", function () {
+    expect(wrapper.find("MapWrapper").at(0).props().searchResults)
       .toEqual(testDefaultState.searchResults);
   });
 
   it("should set selectedVenueId from state", function () {
-    expect(wrapper.find("MapComponent").at(0).props().selectedVenueId)
+    expect(wrapper.find("MapWrapper").at(0).props().selectedVenueId)
       .toEqual(testDefaultState.mapDisplay.selectedVenueId);
   });
 });

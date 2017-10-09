@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LocationsMap /> matches render snapshot 1`] = `
+exports[`<Map /> matches render snapshot 1`] = `
 <div
-  className="map-container"
+  className="map-holder"
 >
   <GoogleMap
     bootstrapURLKeys={

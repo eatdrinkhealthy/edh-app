@@ -7,13 +7,13 @@ import React from "react";
 import { Meteor } from "meteor/meteor";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
-import LocationsMap from "../LocationsMap";
+import Map from "../Map";
 import sampleVenues from "../../../state/stores/tests/sampleVenueData";
 
-describe("<LocationsMap />", function () {
+describe("<Map />", function () {
   it("matches render snapshot", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
-    const wrapper = shallow(<LocationsMap
+    const wrapper = shallow(<Map
       googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
       setSelectedVenueHandler={() => {}}
       selectedVenueId={null}
@@ -21,7 +21,7 @@ describe("<LocationsMap />", function () {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  describe("LocationsMap markers", function () {
+  describe("Map markers", function () {
     const testVenues = [
       sampleVenues[0],
       sampleVenues[1],
@@ -32,7 +32,7 @@ describe("<LocationsMap />", function () {
     const selectedPropTrue = node => node.props().selected === true;
 
     it("should display provided search results as markers", function () {
-      const wrapper = shallow(<LocationsMap
+      const wrapper = shallow(<Map
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={testVenues}
         setSelectedVenueHandler={() => {}}
@@ -43,7 +43,7 @@ describe("<LocationsMap />", function () {
     });
 
     it("should have no 'selected' markers when selectedVenueId provided null", function () {
-      const wrapper = shallow(<LocationsMap
+      const wrapper = shallow(<Map
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={testVenues}
         setSelectedVenueHandler={() => {}}
@@ -54,7 +54,7 @@ describe("<LocationsMap />", function () {
     });
 
     it("should have one 'selected' marker when provided a matching selectedVenueId", function () {
-      const wrapper = shallow(<LocationsMap
+      const wrapper = shallow(<Map
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={testVenues}
         setSelectedVenueHandler={() => {}}
@@ -66,7 +66,7 @@ describe("<LocationsMap />", function () {
 
     it("should clear a selected marker when the map is clicked", function () {
       const selectVenue = jest.fn();
-      const wrapper = shallow(<LocationsMap
+      const wrapper = shallow(<Map
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={testVenues}
         setSelectedVenueHandler={selectVenue}

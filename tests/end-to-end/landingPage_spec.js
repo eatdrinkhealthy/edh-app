@@ -11,7 +11,7 @@ describe("Landing Page", function () {
     browser.url(baseUrl);
 
     expect(browser.getTitle()).toEqual("Eat Drink Healthy");
-    expect(browser.waitForExist(els.locationsMapComponent)).toBe(true);
+    expect(browser.waitForExist(els.mapComponent)).toBe(true);
     expect(browser.waitForExist(els.navbar.component)).toBe(true);
   });
 

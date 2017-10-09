@@ -1,7 +1,7 @@
 // @flow
 /* eslint-disable no-bitwise */
 /* eslint-disable flowtype/require-parameter-type, flowtype/require-return-type */
-import type { IViewArea } from "../ui/components/LocationsMap";
+import type { IViewArea } from "../ui/components/Map";
 
 export type IDivSpacing = {
   width: number,

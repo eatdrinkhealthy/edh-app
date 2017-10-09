@@ -1,7 +1,7 @@
 export const baseUrl = "http://localhost:3000";
 
 export const elements = {
-  locationsMapComponent: "div.map-container",
+  mapComponent: "div.map-holder",
   markerComponent: "div.markerContainer",
   navbar: {
     component: "div.nav #navbarFilterLink",

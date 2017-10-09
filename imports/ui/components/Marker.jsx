@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { calcHintPosition, getDivSpacing } from "../../utils/calcHintPosition";
 
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
-import type { IViewArea } from "./LocationsMap";
+import type { IViewArea } from "./Map";
 
 type IMarkerOrigin = "center" | "topLeft" | "bottomCenter";
 

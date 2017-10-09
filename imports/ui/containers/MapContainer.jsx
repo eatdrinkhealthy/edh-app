@@ -5,7 +5,7 @@ import React, {
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
 import AlertMessage from "../components/AlertMessage";
-import LocationsMap from "../components/LocationsMap";
+import Map from "../components/Map";
 import Navbar from "../components/Navbar";
 import { getNearbyPlaces } from "../../api/foursquare/methods";
 import { setSearchResults } from "../../state/actions/searchResultsActions";
@@ -15,7 +15,7 @@ import type { IVenue } from "../../state/reducers/searchResultsReducers";
 import type { IState } from "../../state/stores/store";
 import type { IFilter } from "../../state/reducers/filtersReducers";
 
-export class MapComponent extends Component {
+export class MapWrapper extends Component {
   props: {
     filterList: Array<IFilter>,
     searchResults: Array<IVenue>,
@@ -54,7 +54,7 @@ export class MapComponent extends Component {
     return (
       <div>
         <Navbar />
-        <LocationsMap
+        <Map
           googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
           venues={this.props.searchResults}
           setSelectedVenueHandler={this.props.setSelectedVenueHandler}
@@ -91,6 +91,6 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   ),
 });
 
-const MapContainer = connect(mapStateToProps, mapDispatchToProps)(MapComponent);
+const MapContainer = connect(mapStateToProps, mapDispatchToProps)(MapWrapper);
 
 export default MapContainer;
