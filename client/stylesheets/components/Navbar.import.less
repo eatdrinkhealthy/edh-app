@@ -5,15 +5,18 @@
   top: 0;
   left: 0;
   z-index: 100;
-  &__title {
-    text-align: center;
-    color: white;
-    font-size: 21px;
-    font-weight: bold;
-    line-height: 60px;
-    @media (max-width: @mobile-portrait) {
-      font-size: 16px;
-    }
+}
+.nav__title {
+  text-align: center;
+  color: saddlebrown;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 60px;
+}
+
+@media only screen and (max-width: @mobile-portrait) {
+  .nav__title {
+    display: none;
   }
 }
 

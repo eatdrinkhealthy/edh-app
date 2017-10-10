@@ -23,7 +23,7 @@ class UserMenu extends Component {
           className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 b--purple"
           to={{ pathname: "/sidebar", search: "?action=login" }}
         >
-          LOGIN
+          LOG IN
         </Link>
       </span>
     );
