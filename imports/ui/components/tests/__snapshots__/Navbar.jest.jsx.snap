@@ -33,14 +33,6 @@ exports[`<Navbar /> matches render snapshot 1`] = `
           LOGIN
         </a>
       </span>
-      <a
-        className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-dark-green"
-        href="/filter"
-        id="navbarFilterLink"
-        onClick={[Function]}
-      >
-        Filter
-      </a>
     </div>
   </div>
 </div>
