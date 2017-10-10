@@ -9,6 +9,12 @@ import Marker from "./Marker";
 import type { ILatLng } from "google-map-react";
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
 
+function createMapOptions() {
+  return {
+    fullscreenControl: false,
+  };
+}
+
 export type IViewArea = {
   top: number,
   right: number,
@@ -67,6 +73,7 @@ export default class Map extends PureComponent {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           onClick={this.handleOnClick}
+          options={createMapOptions}
         >
           {this.props.venues.map((venue: IVenue): React$Element<*> => (
             <Marker
