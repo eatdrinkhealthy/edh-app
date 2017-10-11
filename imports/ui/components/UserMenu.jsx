@@ -13,14 +13,14 @@ class UserMenu extends Component {
       <span>
         <Link
           id="joinLink"
-          className=""
+          className="btn btn-default"
           to={{ pathname: "/sidebar", search: "?action=signup" }}
         >
           JOIN
         </Link>
         <Link
           id="loginLink"
-          className=""
+          className="btn btn-default"
           to={{ pathname: "/sidebar", search: "?action=login" }}
         >
           LOG IN
@@ -34,7 +34,7 @@ class UserMenu extends Component {
       <span id="loggedInUser" className="">{this.props.username}</span>
       <a
         id="logoutLink"
-        className=""
+        className="btn btn-default"
         onClick={this.props.logout}
       >
         Logout

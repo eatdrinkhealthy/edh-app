@@ -11,8 +11,9 @@ const HomePage = () => (
     <div>
       <Link
         id="filterLink"
-        className=""
+        className="btn btn-default"
         to="/filter"
+        role="button"
       >
         Filter
       </Link>
