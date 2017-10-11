@@ -3,9 +3,9 @@ export const baseUrl = "http://localhost:3000";
 export const elements = {
   mapComponent: "div.map-holder",
   markerComponent: "div.markerContainer",
-  navbar: {
-    component: "div.nav #navbarFilterLink",
-    filterLink: "#navbarFilterLink",
+  homePage: {
+    navbar: "#navbar",
+    filterLink: "#filterLink",
   },
   sidebarPage: {
     url: `${baseUrl}/sidebar`,

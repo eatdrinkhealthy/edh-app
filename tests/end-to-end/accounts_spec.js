@@ -18,7 +18,7 @@ describe("User Accounts", function () {
       // a user shouldn't be logged in at this point, but in the event
       // tests were run in an order that logged a user in
       browser.url(baseUrl);
-      browser.waitForExist(els.navbar.component, 3000); // make sure Meteor is loaded.
+      browser.waitForExist(els.homePage.navbar, 3000); // make sure Meteor is loaded.
       browser.execute("Meteor.logout()");
 
       // in the event this test suite is run more than once (watch mode), remove
@@ -45,7 +45,7 @@ describe("User Accounts", function () {
     });
 
     it("should redirect to the landing / map page", function () {
-      browser.waitForExist(els.navbar.component);
+      browser.waitForExist(els.homePage.navbar);
     });
 
     it("should logout the user when logout link clicked (show join button)", function () {
@@ -59,7 +59,7 @@ describe("User Accounts", function () {
       // a user shouldn't be logged in at this point, but in the event
       // tests were run in an order that logged a user in
       browser.url(baseUrl);
-      browser.waitForExist(els.navbar.component, 3000); // make sure Meteor is loaded.
+      browser.waitForExist(els.homePage.navbar, 3000); // make sure Meteor is loaded.
     });
 
     it("should navigate to the sign in dialog and sign in", function () {
@@ -74,7 +74,7 @@ describe("User Accounts", function () {
     });
 
     it("should redirect to the landing / map page", function () {
-      browser.waitForExist(els.navbar.component, 1500);
+      browser.waitForExist(els.homePage.navbar, 1500);
     });
 
     it("should show the logged in username on the navbar", function () {

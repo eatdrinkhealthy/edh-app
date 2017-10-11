@@ -12,7 +12,7 @@ describe("Landing Page", function () {
 
     expect(browser.getTitle()).toEqual("Eat Drink Healthy");
     expect(browser.waitForExist(els.mapComponent)).toBe(true);
-    expect(browser.waitForExist(els.navbar.component)).toBe(true);
+    expect(browser.waitForExist(els.homePage.navbar)).toBe(true);
   });
 
   it("displays at least one map marker - NOTE may fail based on location", function () {

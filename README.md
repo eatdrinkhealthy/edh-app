@@ -9,7 +9,6 @@
 ### Styling
 * using less css preprocessor
 * using postcss post-process (with plugins: postcss-easy-import, autoprefixer)
-* __NOTE, currently using box-sizing to globally change box model__ (see box-sizing.import.less)
 * using npm package [html-hint](https://github.com/istarkov/html-hint) to display hints (balloons) for map markers
     - NOTE: istarkov (author of google-map-react), took the hint.css package, and extended it to support html in the hint
         + Although html-hint is free, hint.css is a paid package for commercial use (which I did purchase)
@@ -17,6 +16,11 @@
 #### CSS Packages
 * to include css from npm installed css packages, import the css file in `css-packages.css`
     - this will include the css in the project, as well postcss process / minify the css and bundle it with the rest of the css
+* NOTE: trying react-bootstrap (which needs bootstrap.css)
+    - installing bootstrap.css via npm
+    - removing normalize.import.less and box-sizing.import.less since they are included in bootstrap
+    - removing typography.import.less (will re-add any wanted fonts later)
+    - removed a lot of unknown body css settings (probably for cordova, will re-add later as needed)
 #### Animation
 * __FIRST__ DETERMINE if CSS3 is being used in current version of app (and/or see what browser versions support it)
 * consider this component for animation sidebar & filter, [react-burger-menu](https://github.com/negomi/react-burger-menu)

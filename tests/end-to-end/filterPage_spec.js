@@ -10,8 +10,8 @@ import DEFAULT_FILTER_LIST from "../../imports/state/data/defaultFilters";
 describe("Filter Page", function () {
   it("displays the filter page when filter link clicked", function () {
     browser.url(baseUrl);
-    browser.waitForExist(els.navbar.filterLink);
-    browser.click(els.navbar.filterLink);
+    browser.waitForExist(els.homePage.filterLink);
+    browser.click(els.homePage.filterLink);
 
     expect(browser.waitForExist(els.filterPage.component)).toBe(true);
   });
@@ -41,7 +41,7 @@ describe("Filter Page", function () {
     browser.waitForExist(els.filterPage.component);
     browser.click(els.filterPage.closeLink);
 
-    expect(browser.waitForExist(els.navbar.component)).toBe(true);
+    expect(browser.waitForExist(els.homePage.navbar)).toBe(true);
   });
 
   it("returns more results when more filters clicked - NOTE may fail based on location", function () {

@@ -10,7 +10,7 @@ const HomePage = () => (
     <MapContainer />
     <div>
       <Link
-        id="navbarFilterLink"
+        id="filterLink"
         className="f6 link dim ma1 ph3 pv2 mb2 white bg-dark-green"
         to="/filter"
       >

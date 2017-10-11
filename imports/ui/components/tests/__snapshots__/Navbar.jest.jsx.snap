@@ -3,6 +3,7 @@
 exports[`<Navbar /> matches render snapshot 1`] = `
 <div
   className="nav"
+  id="navbar"
 >
   <div
     className="dt w-100 pa2"
