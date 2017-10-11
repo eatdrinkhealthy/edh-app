@@ -4,9 +4,9 @@ import UserMenuContainer from "../containers/UserMenuContainer";
 
 const Navbar = (): React$Element<*> => (
   <div id="navbar" className="nav">
-    <div className="dt w-100 pa2">
+    <div className="">
       <div className="nav__title">Eat Drink Healthy</div>
-      <div className="dtc v-mid w-75 tr">
+      <div className="">
         <UserMenuContainer />
       </div>
     </div>
@@ -14,5 +14,3 @@ const Navbar = (): React$Element<*> => (
 );
 
 export default Navbar;
-
-// dtc v-mid white w-25

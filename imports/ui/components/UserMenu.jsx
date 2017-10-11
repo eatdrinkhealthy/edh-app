@@ -13,14 +13,14 @@ class UserMenu extends Component {
       <span>
         <Link
           id="joinLink"
-          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 white bg-purple b--purple"
+          className=""
           to={{ pathname: "/sidebar", search: "?action=signup" }}
         >
           JOIN
         </Link>
         <Link
           id="loginLink"
-          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 b--purple"
+          className=""
           to={{ pathname: "/sidebar", search: "?action=login" }}
         >
           LOG IN
@@ -31,10 +31,10 @@ class UserMenu extends Component {
 
   renderLoggedIn = (): React$Element<*> => (
     <span>
-      <span id="loggedInUser" className="f5">{this.props.username}</span>
+      <span id="loggedInUser" className="">{this.props.username}</span>
       <a
         id="logoutLink"
-        className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 white bg-purple b--purple"
+        className=""
         onClick={this.props.logout}
       >
         Logout

@@ -6,7 +6,7 @@ exports[`<Navbar /> matches render snapshot 1`] = `
   id="navbar"
 >
   <div
-    className="dt w-100 pa2"
+    className=""
   >
     <div
       className="nav__title"
@@ -14,11 +14,11 @@ exports[`<Navbar /> matches render snapshot 1`] = `
       Eat Drink Healthy
     </div>
     <div
-      className="dtc v-mid w-75 tr"
+      className=""
     >
       <span>
         <a
-          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 white bg-purple b--purple"
+          className=""
           href="/sidebar?action=signup"
           id="joinLink"
           onClick={[Function]}
@@ -26,7 +26,7 @@ exports[`<Navbar /> matches render snapshot 1`] = `
           JOIN
         </a>
         <a
-          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 b--purple"
+          className=""
           href="/sidebar?action=login"
           id="loginLink"
           onClick={[Function]}

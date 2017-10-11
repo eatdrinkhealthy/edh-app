@@ -38,8 +38,7 @@
     "react-toggle": "^4.0.2",
     "redux": "^3.7.2",
     "redux-form": "^7.0.4",
-    "simpl-schema": "^0.3.2",
-    "tachyons": "^4.7.4"
+    "simpl-schema": "^0.3.2"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.2.12",

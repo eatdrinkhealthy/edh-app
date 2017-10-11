@@ -11,7 +11,7 @@ const HomePage = () => (
     <div>
       <Link
         id="filterLink"
-        className="f6 link dim ma1 ph3 pv2 mb2 white bg-dark-green"
+        className=""
         to="/filter"
       >
         Filter
