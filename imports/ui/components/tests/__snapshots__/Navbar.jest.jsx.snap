@@ -2,38 +2,46 @@
 
 exports[`<Navbar /> matches render snapshot 1`] = `
 <div
-  className="nav"
+  className="nav container-fluid"
   id="navbar"
 >
   <div
-    className=""
+    className="container"
   >
     <div
-      className="nav__title"
+      className="row"
     >
-      Eat Drink Healthy
-    </div>
-    <div
-      className=""
-    >
-      <span>
-        <a
-          className="btn btn-default"
-          href="/sidebar?action=signup"
-          id="joinLink"
-          onClick={[Function]}
+      <div
+        className="col-xs-6"
+      >
+        <div
+          className="nav__title"
         >
-          JOIN
-        </a>
-        <a
-          className="btn btn-default"
-          href="/sidebar?action=login"
-          id="loginLink"
-          onClick={[Function]}
-        >
-          LOG IN
-        </a>
-      </span>
+          Eat Drink Healthy
+        </div>
+      </div>
+      <div
+        className="col-xs-6"
+      >
+        <span>
+          <a
+            className="btn join_button"
+            href="/sidebar?action=signup"
+            id="joinLink"
+            onClick={[Function]}
+          >
+            JOIN
+          </a>
+          <a
+            className="btn log_in_out_button"
+            href="/sidebar?action=login"
+            id="loginLink"
+            onClick={[Function]}
+          >
+            LOG IN
+          </a>
+        </span>
+      </div>
     </div>
   </div>
 </div>

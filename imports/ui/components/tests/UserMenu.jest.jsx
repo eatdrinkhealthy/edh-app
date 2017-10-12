@@ -30,7 +30,7 @@ describe("<UserMenu />", function () {
 
   it("should display the username when passed a user name", function () {
     const wrapper = shallow(<UserMenu username="testUser" logout={jest.fn()} />);
-    expect(wrapper.find(es.userMenu.username).text()).toBe("testUser");
+    expect(wrapper.find(es.userMenu.username).text()).toBe("Username: testUser");
   });
 
   it("should not show login & join buttons when logged in, and show logout", function () {
