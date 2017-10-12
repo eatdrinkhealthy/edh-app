@@ -81,7 +81,7 @@ describe("User Accounts", function () {
       browser.waitForExist(els.userMenu.username);
       const loggedInUsername = browser.getText(els.userMenu.username);
 
-      expect(loggedInUsername).toEqual(testUser.username);
+      expect(loggedInUsername).toEqual(`Username: ${testUser.username}`);
     });
 
     it("should logout the user when logout link clicked (show join button)", function () {
