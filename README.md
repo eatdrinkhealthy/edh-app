@@ -2,6 +2,12 @@
 
 [![Build Status](https://semaphoreci.com/api/v1/projects/97c77f98-2bd8-4722-afad-d287d5f83770/1169973/shields_badge.svg)](https://semaphoreci.com/eat-drink-healthy/edh-app)
 
+## Installation
+* TBD when to use yarn vs. `meteor npm install 'package'`
+* NOTE packages that require a binary build step, need to be installed using `meteor npm install`
+* Must install bcrypt using `meteor npm install bcrypt`
+    - this triggers a binary build step needed for Meteor
+
 ## Notes
 ### React
 * using React.PureComponent for some map related components
