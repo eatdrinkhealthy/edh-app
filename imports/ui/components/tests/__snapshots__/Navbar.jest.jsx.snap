@@ -2,53 +2,40 @@
 
 exports[`<Navbar /> matches render snapshot 1`] = `
 <div
-  className="nav container-fluid"
+  className="nav"
   id="navbar"
 >
-  <div
-    className="container"
+  <img
+    alt="Eat Drink Healthy logo"
+    className="nav__logo verticalCenterFudge"
+    src="/images/EDH-logo.png"
+  />
+  <span
+    className="nav__title"
   >
-    <div
-      className="row"
-    >
-      <div
-        className="col-xs-4"
-        offset={4}
+    EAT. DRINK. HEALTHY.
+  </span>
+  <span
+    className="nav__usermenu"
+  >
+    <span>
+      <a
+        className="btn join_button"
+        href="/sidebar?action=signup"
+        id="joinLink"
+        onClick={[Function]}
       >
-        <img
-          alt="Eat Drink Healthy logo"
-          className="nav__logo"
-          src="/images/EDH-logo.png"
-        />
-        <div
-          className="nav__title"
-        >
-          Eat Drink Healthy
-        </div>
-      </div>
-      <div
-        className="col-xs-4"
+        JOIN
+      </a>
+      <a
+        className="btn log_in_out_button"
+        href="/sidebar?action=login"
+        id="loginLink"
+        onClick={[Function]}
       >
-        <span>
-          <a
-            className="btn join_button"
-            href="/sidebar?action=signup"
-            id="joinLink"
-            onClick={[Function]}
-          >
-            JOIN
-          </a>
-          <a
-            className="btn log_in_out_button"
-            href="/sidebar?action=login"
-            id="loginLink"
-            onClick={[Function]}
-          >
-            LOG IN
-          </a>
-        </span>
-      </div>
-    </div>
-  </div>
+        LOG IN
+      </a>
+    </span>
+  </span>
 </div>
 `;

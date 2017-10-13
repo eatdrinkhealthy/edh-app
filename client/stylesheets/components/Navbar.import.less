@@ -1,24 +1,38 @@
+@navbar_height: 60px;
+
 .nav {
   position: absolute;
-  height: 60px;
+  height: @navbar_height;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 100;
 }
-.nav__title {
-  text-align: left;
-  color: saddlebrown;
-  font-size: 26px;
-  font-weight: bold;
-  line-height: 60px;
+
+.verticalCenterFudge {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-20%);
 }
 
 .nav__logo {
-  width: 50px;
+  width: 60px;
   height: 60px;
-  float: left;
-  margin-right: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.nav__title {
+  text-align: left;
+  color: #663300;
+  line-height: @navbar_height;    // for vertical centering
+  font-family: "BlanchCaps";
+  font-size: 48px;
+}
+
+.nav__usermenu {
+  float: right;
+  line-height: @navbar_height;    // for vertical centering
 }
 
 @media only screen and (max-width: @mobile-portrait) {
