@@ -1,16 +1,27 @@
 // @flow
 import React from "react";
+import { Grid, Row, Col } from "../helpers/reactBootstrapLib";
 import UserMenuContainer from "../containers/UserMenuContainer";
 
 const Navbar = (): React$Element<*> => (
   <div id="navbar" className="nav">
-    <img
-      className="nav__logo verticalCenterFudge"
-      src="/images/EDH-logo.png"
-      alt="Eat Drink Healthy logo"
-    />
-    <span className="nav__title">EAT.&nbsp;DRINK.&nbsp;HEALTHY.</span>
-    <span className="nav__usermenu"><UserMenuContainer /></span>
+    <Grid fluid>
+      <Row>
+        <Col xs={4} className="show-grid">
+          <img
+            className="nav__logo"
+            src="/images/EDH-logo.png"
+            alt="Eat Drink Healthy logo"
+          />
+        </Col>
+        <Col xs={4} className="show-grid">
+          <span className="nav__title">EAT.&nbsp;DRINK.&nbsp;HEALTHY.</span>
+        </Col>
+        <Col xs={4} className="show-grid">
+          <span className="nav__usermenu"><UserMenuContainer /></span>
+        </Col>
+      </Row>
+    </Grid>
   </div>
 );
 

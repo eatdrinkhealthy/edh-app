@@ -9,12 +9,6 @@
   z-index: 100;
 }
 
-.verticalCenterFudge {
-  position: relative;
-  top: 50%;
-  transform: perspective(1px) translateY(-20%);
-}
-
 .nav__logo {
   width: 60px;
   height: 60px;
@@ -25,9 +19,9 @@
 .nav__title {
   text-align: left;
   color: #663300;
-  line-height: @navbar_height;    // for vertical centering
   font-family: "BlanchCaps";
   font-size: 48px;
+  line-height: @navbar_height;    // for vertical centering
 }
 
 .nav__usermenu {
@@ -50,4 +44,8 @@
   right: 0px;
   top: 0;
   padding: 15px;
+}
+
+.show-grid {
+  border: 1px solid rgba(86,61,124,.2);
 }
