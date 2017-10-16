@@ -1,6 +1,6 @@
 @navbar_height: 60px;
 
-.nav {
+.nav__bar {
   position: absolute;
   height: @navbar_height;
   width: 100%;
@@ -12,24 +12,32 @@
 .nav__logo {
   width: 60px;
   height: 60px;
+  margin-left: 5px;
 }
 
 .nav__title {
   text-align: left;
   color: #663300;
   font-family: "BlanchCaps";
-  font-size: 14px;
-  line-height: @navbar_height;    // for vertical centering
+  font-size: 44px;
+  // vertical align center
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .nav__usermenu {
   float: right;
-  line-height: @navbar_height;    // for vertical centering
+  margin-right: 5px;
+  // vertical align center
+  line-height: @navbar_height;
 }
 
-@media only screen and (max-width: @mobile-portrait) {
+@media only screen and (max-width: @mobile-responsive) {
   .nav__title {
-    display: none;
+    font-size: 20px;
+    width: 40px;
+    line-height: 14px;
   }
 }
 
@@ -42,8 +50,4 @@
   right: 0px;
   top: 0;
   padding: 15px;
-}
-
-.show-grid {
-  border: 1px solid rgba(86,61,124,.2);
 }

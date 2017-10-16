@@ -2,18 +2,18 @@
 
 exports[`<Navbar /> matches render snapshot 1`] = `
 <div
-  className="nav"
+  className="nav__bar"
   id="navbar"
 >
   <img
     alt="Eat Drink Healthy logo"
-    className="nav__logo verticalCenterFudge"
+    className="nav__logo"
     src="/images/EDH-logo.png"
   />
   <span
     className="nav__title"
   >
-    EAT. DRINK. HEALTHY.
+    EAT. DRINK. HEALTHY.
   </span>
   <span
     className="nav__usermenu"

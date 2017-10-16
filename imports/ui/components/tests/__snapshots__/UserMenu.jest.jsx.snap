@@ -27,8 +27,9 @@ exports[`<UserMenu /> matches render snapshot - with username 1`] = `
     className="username"
     id="loggedInUser"
   >
-    Username: 
+    Welcome, 
     testUser
+    !
   </span>
   <a
     className="btn log_in_out_button"
