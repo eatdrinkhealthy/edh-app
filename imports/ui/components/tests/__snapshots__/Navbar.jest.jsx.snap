@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Navbar /> matches render snapshot 1`] = `
+exports[`<Navbar /> matches render snapshot - with null username 1`] = `
 <div
   className="nav__bar"
   id="navbar"
@@ -12,7 +12,7 @@ exports[`<Navbar /> matches render snapshot 1`] = `
       className="row"
     >
       <div
-        className="show-grid col-xs-6"
+        className="show-grid col-xs-4"
       >
         <img
           alt="Eat Drink Healthy logo"
@@ -23,6 +23,76 @@ exports[`<Navbar /> matches render snapshot 1`] = `
           className="nav__title"
         >
           EAT. DRINK. HEALTHY.
+        </span>
+      </div>
+      <div
+        className="col-xs-1"
+      >
+        <span>
+          
+        </span>
+      </div>
+      <div
+        className="show-grid col-xs-6"
+      >
+        <span
+          className="nav__usermenu"
+        >
+          <span>
+            <a
+              className="btn join_button"
+              href="/sidebar?action=signup"
+              id="joinLink"
+              onClick={[Function]}
+            >
+              JOIN
+            </a>
+            <a
+              className="btn log_in_out_button"
+              href="/sidebar?action=login"
+              id="loginLink"
+              onClick={[Function]}
+            >
+              LOG IN
+            </a>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Navbar /> matches render snapshot - with username 1`] = `
+<div
+  className="nav__bar"
+  id="navbar"
+>
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="show-grid col-xs-4"
+      >
+        <img
+          alt="Eat Drink Healthy logo"
+          className="nav__logo"
+          src="/images/EDH-logo.png"
+        />
+        <span
+          className="nav__title"
+        >
+          EAT. DRINK. HEALTHY.
+        </span>
+      </div>
+      <div
+        className="col-xs-1"
+      >
+        <span>
+          testuser
         </span>
       </div>
       <div

@@ -5,7 +5,7 @@ import UserMenu from "../components/UserMenu";
 
 export const userHOC = (
   WrappedComponent: React$Component<*, *, *>,
-  props: {},
+  props?: {},
 ) => {
   const displayName = WrappedComponent.displayName || WrappedComponent.name || "Component";
 

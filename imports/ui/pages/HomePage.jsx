@@ -1,12 +1,12 @@
 // @flow
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import NavbarContainer from "../containers/NavbarContainer";
 import MapContainer from "../containers/MapContainer";
 
 const HomePage = () => (
   <div>
-    <Navbar />
+    <NavbarContainer />
     <MapContainer />
     <div>
       <Link
