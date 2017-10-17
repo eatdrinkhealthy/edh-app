@@ -5,37 +5,53 @@ exports[`<Navbar /> matches render snapshot 1`] = `
   className="nav__bar"
   id="navbar"
 >
-  <img
-    alt="Eat Drink Healthy logo"
-    className="nav__logo"
-    src="/images/EDH-logo.png"
-  />
-  <span
-    className="nav__title"
+  <div
+    className="container-fluid"
   >
-    EAT. DRINK. HEALTHY.
-  </span>
-  <span
-    className="nav__usermenu"
-  >
-    <span>
-      <a
-        className="btn join_button"
-        href="/sidebar?action=signup"
-        id="joinLink"
-        onClick={[Function]}
+    <div
+      className="row"
+    >
+      <div
+        className="show-grid col-xs-6"
       >
-        JOIN
-      </a>
-      <a
-        className="btn log_in_out_button"
-        href="/sidebar?action=login"
-        id="loginLink"
-        onClick={[Function]}
+        <img
+          alt="Eat Drink Healthy logo"
+          className="nav__logo"
+          src="/images/EDH-logo.png"
+        />
+        <span
+          className="nav__title"
+        >
+          EAT. DRINK. HEALTHY.
+        </span>
+      </div>
+      <div
+        className="show-grid col-xs-6"
       >
-        LOG IN
-      </a>
-    </span>
-  </span>
+        <span
+          className="nav__usermenu"
+        >
+          <span>
+            <a
+              className="btn join_button"
+              href="/sidebar?action=signup"
+              id="joinLink"
+              onClick={[Function]}
+            >
+              JOIN
+            </a>
+            <a
+              className="btn log_in_out_button"
+              href="/sidebar?action=login"
+              id="loginLink"
+              onClick={[Function]}
+            >
+              LOG IN
+            </a>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;
