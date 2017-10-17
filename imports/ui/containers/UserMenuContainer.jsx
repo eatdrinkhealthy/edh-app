@@ -13,12 +13,10 @@ export const userHOC = (
     const user = Meteor.user();
     const username = user && user.username;
 
-    const allProps = {
+    return {
       username,
       ...props,
     };
-
-    return allProps;
   }, WrappedComponent);
 
   // $FlowFixMe
