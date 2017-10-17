@@ -3,7 +3,7 @@ import React from "react";
 import { Grid, Row, Col } from "../helpers/reactBootstrapLib";
 import UserMenuContainer from "../containers/UserMenuContainer";
 
-const Navbar = (): React$Element<*> => (
+const Navbar = () => (
   <div id="navbar" className="nav__bar">
     <Grid fluid>
       <Row>

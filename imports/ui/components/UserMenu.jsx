@@ -8,7 +8,7 @@ class UserMenu extends Component {
     logout: () => void,
   };
 
-  renderLoggedOut(): React$Element<*> {  // eslint-disable-line class-methods-use-this
+  renderLoggedOut() {  // eslint-disable-line class-methods-use-this
     return (
       <span>
         <Link
@@ -29,7 +29,7 @@ class UserMenu extends Component {
     );
   }
 
-  renderLoggedIn = (): React$Element<*> => (
+  renderLoggedIn = () => (
     <span>
       <span id="loggedInUser" className="username">Welcome, {this.props.username}!</span>
       <a
@@ -42,7 +42,7 @@ class UserMenu extends Component {
     </span>
   );
 
-  render() {  // eslint-disable-line flowtype/require-return-type
+  render() {
     return this.props.username ? this.renderLoggedIn() : this.renderLoggedOut();
   }
 }

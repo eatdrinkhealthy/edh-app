@@ -3,18 +3,32 @@ import { Meteor } from "meteor/meteor";
 import { createContainer } from "meteor/react-meteor-data";
 import UserMenu from "../components/UserMenu";
 
-const UserMenuContainer = createContainer(() => {
-  const user = Meteor.user();
-  const username = user && user.username;
+export const userHOC = (
+  WrappedComponent: React$Component<*, *, *>,
+) => {
+  const displayName = WrappedComponent.displayName || WrappedComponent.name || "Component";
 
-  const logout = () => {
-    Meteor.logout();
-  };
+  const userContainer = createContainer(() => {
+    const user = Meteor.user();
+    const username = user && user.username;
 
-  return {
-    username,
-    logout,
-  };
-}, UserMenu);
+    const logout = () => {
+      Meteor.logout();
+    };
+
+    return {
+      username,
+      logout,
+    };
+  }, WrappedComponent);
+
+  // $FlowFixMe
+  userContainer.displayName = `HOC(${displayName})`;
+
+  return userContainer;
+};
+
+// $FlowFixMe
+const UserMenuContainer = userHOC(UserMenu);
 
 export default UserMenuContainer;
