@@ -5,6 +5,7 @@ import UserMenu from "../components/UserMenu";
 
 export const userHOC = (
   WrappedComponent: React$Component<*, *, *>,
+  props: {},
 ) => {
   const displayName = WrappedComponent.displayName || WrappedComponent.name || "Component";
 
@@ -12,14 +13,12 @@ export const userHOC = (
     const user = Meteor.user();
     const username = user && user.username;
 
-    const logout = () => {
-      Meteor.logout();
+    const allProps = {
+      username,
+      ...props,
     };
 
-    return {
-      username,
-      logout,
-    };
+    return allProps;
   }, WrappedComponent);
 
   // $FlowFixMe
@@ -28,7 +27,11 @@ export const userHOC = (
   return userContainer;
 };
 
+const props = {
+  logout: () => Meteor.logout(),
+};
+
 // $FlowFixMe
-const UserMenuContainer = userHOC(UserMenu);
+const UserMenuContainer = userHOC(UserMenu, props);
 
 export default UserMenuContainer;
