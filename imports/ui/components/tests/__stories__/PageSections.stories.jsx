@@ -4,7 +4,7 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { storiesOf, action } from "@storybook/react";
-import { text } from "@storybook/addon-knobs";
+import { boolean } from "@storybook/addon-knobs";
 
 import Login from "../../Login";
 import UserMenu from "../../UserMenu";
@@ -18,7 +18,7 @@ storiesOf("Page Sections", module)
   ))
   .add("UserMenu", (): React$Element<*> => (
     <UserMenu
-      username={text("username", "")}
+      userLoggedIn={boolean("userLoggedIn", false)}
       logout={action("clicked")}
     />
   ));

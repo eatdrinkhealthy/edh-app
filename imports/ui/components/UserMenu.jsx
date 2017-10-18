@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 class UserMenu extends Component {
   props: {
-    username: ?string,
+    userLoggedIn?: boolean, // eslint-disable-line react/require-default-props
     logout: () => void,
   };
 
@@ -30,20 +30,17 @@ class UserMenu extends Component {
   }
 
   renderLoggedIn = () => (
-    <span>
-      <span id="loggedInUser" className="username">Welcome, {this.props.username}!</span>
-      <a
-        id="logoutLink"
-        className="btn log_in_out_button"
-        onClick={this.props.logout}
-      >
-        LOG OUT
-      </a>
-    </span>
+    <a
+      id="logoutLink"
+      className="btn log_in_out_button"
+      onClick={this.props.logout}
+    >
+      LOG OUT
+    </a>
   );
 
   render() {
-    return this.props.username ? this.renderLoggedIn() : this.renderLoggedOut();
+    return this.props.userLoggedIn ? this.renderLoggedIn() : this.renderLoggedOut();
   }
 }
 

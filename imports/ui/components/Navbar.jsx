@@ -19,10 +19,10 @@ const Navbar = ({ username }: INavbarProps) => (
           />
           <span className="nav__title">EAT. DRINK. HEALTHY.</span>
         </Col>
-        <Col xs={1}>
-          <span>{username}</span>
+        <Col xs={4} className="show-grid nav__username">
+          Welcome, {username}!
         </Col>
-        <Col xs={6} className="show-grid">
+        <Col xs={4} className="show-grid">
           <span className="nav__usermenu"><UserMenuContainer /></span>
         </Col>
       </Row>
