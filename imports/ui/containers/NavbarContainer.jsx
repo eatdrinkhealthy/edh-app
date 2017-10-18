@@ -1,5 +1,5 @@
 // @flow
-import { userHOC } from "../containers/UserMenuContainer";
+import userHOC from "./userHOC";
 import Navbar from "../components/Navbar";
 
 // $FlowFixMe
