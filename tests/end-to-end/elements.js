@@ -7,6 +7,9 @@ export const elements = {
     navbar: "#navbar",
     filterLink: "#filterLink",
   },
+  navbar: {
+    username: "#loggedInUser",
+  },
   sidebarPage: {
     url: `${baseUrl}/sidebar`,
     component: "div.sidebar > div.pitch",
@@ -25,7 +28,6 @@ export const elements = {
     submitButton: "input[value='Login']",
   },
   userMenu: {
-    username: "#loggedInUser",
     joinLink: "#joinLink",
     loginLink: "#loginLink",
     logoutLink: "#logoutLink",
