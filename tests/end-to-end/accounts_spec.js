@@ -78,8 +78,8 @@ describe("User Accounts", function () {
     });
 
     it("should show the logged in username on the navbar", function () {
-      browser.waitForExist(els.userMenu.username);
-      const loggedInUsername = browser.getText(els.userMenu.username);
+      browser.waitForExist(els.navbar.username);
+      const loggedInUsername = browser.getText(els.navbar.username);
 
       expect(loggedInUsername).toEqual(`Welcome, ${testUser.username}!`);
     });
@@ -88,8 +88,8 @@ describe("User Accounts", function () {
       browser.click(els.userMenu.logoutLink);
       expect(browser.waitForExist(els.userMenu.joinLink, 1000)).toBe(true);
 
-      const doesNotExist = browser.waitForExist(els.userMenu.username, null, true);
-      expect(doesNotExist).toBe(true);
+      const loggedInUser = browser.getText(els.navbar.username);
+      expect(loggedInUser).toBe("");
     });
   });
 });

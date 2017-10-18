@@ -1,3 +1,28 @@
 .show-grid {
   border: 1px solid rgba(86, 61, 124, .2);
 }
+
+.show-breakpoint::before {
+  content: "xs";
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+  background-color: #000;
+  color: #fff;
+}
+@media (min-width : 768px) {
+  .show-breakpoint::before {
+    content: "sm";
+  }
+}
+@media (min-width : 992px) {
+  .show-breakpoint::before {
+    content: "md";
+  }
+}
+@media (min-width : 1200px) {
+  .show-breakpoint::before {
+    content: "lg";
+  }
+}

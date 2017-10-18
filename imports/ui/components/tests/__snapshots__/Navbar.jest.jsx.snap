@@ -12,7 +12,7 @@ exports[`<Navbar /> matches render snapshot - with null username 1`] = `
       className="row"
     >
       <div
-        className="show-grid col-xs-4"
+        className="col-md-4 col-xs-6"
       >
         <img
           alt="Eat Drink Healthy logo"
@@ -26,13 +26,13 @@ exports[`<Navbar /> matches render snapshot - with null username 1`] = `
         </span>
       </div>
       <div
-        className="show-grid nav__username col-xs-4"
+        className="nav__username col-md-4 hidden-sm hidden-xs"
         id="loggedInUser"
       >
         
       </div>
       <div
-        className="show-grid col-xs-4"
+        className="col-md-4 col-xs-6"
       >
         <span
           className="nav__usermenu"
@@ -58,6 +58,15 @@ exports[`<Navbar /> matches render snapshot - with null username 1`] = `
         </span>
       </div>
     </div>
+    <div
+      className="row"
+    >
+      <div
+        className="nav__username_row2 hidden-lg hidden-md"
+      >
+        
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -74,7 +83,7 @@ exports[`<Navbar /> matches render snapshot - with username 1`] = `
       className="row"
     >
       <div
-        className="show-grid col-xs-4"
+        className="col-md-4 col-xs-6"
       >
         <img
           alt="Eat Drink Healthy logo"
@@ -88,13 +97,13 @@ exports[`<Navbar /> matches render snapshot - with username 1`] = `
         </span>
       </div>
       <div
-        className="show-grid nav__username col-xs-4"
+        className="nav__username col-md-4 hidden-sm hidden-xs"
         id="loggedInUser"
       >
         Welcome, testuser!
       </div>
       <div
-        className="show-grid col-xs-4"
+        className="col-md-4 col-xs-6"
       >
         <span
           className="nav__usermenu"
@@ -107,6 +116,15 @@ exports[`<Navbar /> matches render snapshot - with username 1`] = `
             LOG OUT
           </a>
         </span>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="nav__username_row2 hidden-lg hidden-md"
+      >
+        Welcome, testuser!
       </div>
     </div>
   </div>
