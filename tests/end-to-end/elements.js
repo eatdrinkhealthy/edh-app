@@ -8,7 +8,8 @@ export const elements = {
     filterLink: "#filterLink",
   },
   navbar: {
-    username: "#loggedInUser",
+    username: ".nav__username",
+    username_row2: ".nav__username_row2",
   },
   sidebarPage: {
     url: `${baseUrl}/sidebar`,

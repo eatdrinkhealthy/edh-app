@@ -10,7 +10,7 @@ describe("User Accounts", function () {
   const testUser = {
     username: "testuser",
     email: "testuser@test.com",
-    password: "asdfadf",
+    password: "asdfasdf",
   };
 
   describe("Join - create new user", function () {
@@ -77,9 +77,19 @@ describe("User Accounts", function () {
       browser.waitForExist(els.homePage.navbar, 1500);
     });
 
+    const getResponsiveLoggedInUser = () => {
+      // depending on browser width, could be one or the other fields
+      //   -if user not logged in, both should be empty
+      const navbarUsernameRow1 = browser.getText(els.navbar.username);
+      const navbarUsernameRow2 = browser.getText(els.navbar.username_row2);
+
+      // returns logged in username, or empty if both strings are empty
+      return navbarUsernameRow1 || navbarUsernameRow2;
+    };
+
     it("should show the logged in username on the navbar", function () {
-      browser.waitForExist(els.navbar.username);
-      const loggedInUsername = browser.getText(els.navbar.username);
+      browser.waitForExist(els.homePage.navbar);
+      const loggedInUsername = getResponsiveLoggedInUser();
 
       expect(loggedInUsername).toEqual(`Welcome, ${testUser.username}!`);
     });
@@ -88,8 +98,8 @@ describe("User Accounts", function () {
       browser.click(els.userMenu.logoutLink);
       expect(browser.waitForExist(els.userMenu.joinLink, 1000)).toBe(true);
 
-      const loggedInUser = browser.getText(els.navbar.username);
-      expect(loggedInUser).toBe("");
+      const loggedInUsername = getResponsiveLoggedInUser();
+      expect(loggedInUsername).toBe("");
     });
   });
 });
