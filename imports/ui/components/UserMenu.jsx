@@ -34,6 +34,7 @@ class UserMenu extends Component {
       id="logoutLink"
       className="btn log_in_out_button"
       onClick={this.props.logout}
+      href=""
     >
       LOG OUT
     </a>

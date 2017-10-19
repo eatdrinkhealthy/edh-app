@@ -110,6 +110,7 @@ exports[`<Navbar /> matches render snapshot - with username 1`] = `
         >
           <a
             className="btn log_in_out_button"
+            href=""
             id="logoutLink"
             onClick={[Function]}
           >

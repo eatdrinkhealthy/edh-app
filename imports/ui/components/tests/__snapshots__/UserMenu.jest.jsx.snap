@@ -24,6 +24,7 @@ exports[`<UserMenu /> matches render snapshot - userLoggedIn false 1`] = `
 exports[`<UserMenu /> matches render snapshot - userLoggedIn true 1`] = `
 <a
   className="btn log_in_out_button"
+  href=""
   id="logoutLink"
   onClick={[Function]}
 >
