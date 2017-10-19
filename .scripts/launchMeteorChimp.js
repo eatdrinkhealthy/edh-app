@@ -5,15 +5,15 @@ const { exec } = require("child_process");
 const meteorCommand = process.argv[2];
 const chimpCommand = process.argv[3];
 
-const meteorProcess = exec(meteorCommand); // 'npm start'
+const meteorProcess = exec(meteorCommand); // 'yarn or npm run meteor-test-server'
 
 meteorProcess.stdout.pipe(process.stdout);
 meteorProcess.stderr.pipe(process.stderr);
 
 // Wait until Meteor is started and then start the chimp tests
-meteorProcess.stdout.on('data', function (data) {
+meteorProcess.stdout.on('data', (data) => {
   if (data.toString().match('App running at')) {
-    const chimpProcess = exec(chimpCommand, { maxBuffer: 20480000 }); // 'npm run test:chimp:phantomjs'
+    const chimpProcess = exec(chimpCommand, { maxBuffer: 20480000 }); // 'yarn or npm run end-to-end-test'
 
     chimpProcess.stdout.pipe(process.stdout);
     chimpProcess.stderr.pipe(process.stderr);
