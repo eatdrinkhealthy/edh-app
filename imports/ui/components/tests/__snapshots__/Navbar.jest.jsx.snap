@@ -26,13 +26,13 @@ exports[`<Navbar /> matches render snapshot - with null username 1`] = `
         </span>
       </div>
       <div
-        className="nav__username col-md-4 hidden-sm hidden-xs"
+        className="nav__username col-md-5 hidden-sm hidden-xs"
         id="loggedInUser"
       >
         
       </div>
       <div
-        className="col-md-4 col-xs-6"
+        className="col-md-3 col-xs-6"
       >
         <span
           className="nav__usermenu"
@@ -97,13 +97,13 @@ exports[`<Navbar /> matches render snapshot - with username 1`] = `
         </span>
       </div>
       <div
-        className="nav__username col-md-4 hidden-sm hidden-xs"
+        className="nav__username col-md-5 hidden-sm hidden-xs"
         id="loggedInUser"
       >
         Welcome, testuser!
       </div>
       <div
-        className="col-md-4 col-xs-6"
+        className="col-md-3 col-xs-6"
       >
         <span
           className="nav__usermenu"

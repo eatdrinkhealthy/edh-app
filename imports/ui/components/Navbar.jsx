@@ -28,10 +28,10 @@ const Navbar = ({
             />
             <span className="nav__title">EAT. DRINK. HEALTHY.</span>
           </Col>
-          <Col id="loggedInUser" xsHidden smHidden md={4} className="nav__username">
+          <Col id="loggedInUser" xsHidden smHidden md={5} className="nav__username">
             {usernameDisplay}
           </Col>
-          <Col xs={6} md={4}>
+          <Col xs={6} md={3}>
             <span className="nav__usermenu">
               <UserMenu userLoggedIn={userLoggedIn} logout={logout} />
             </span>
