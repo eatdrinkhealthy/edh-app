@@ -50,7 +50,7 @@ describe("User Accounts", function () {
 
     it("should logout the user when logout link clicked (show join button)", function () {
       browser.click(els.userMenu.logoutLink);
-      expect(browser.waitForExist(els.userMenu.joinLink, 1000)).toBe(true);
+      expect(browser.waitForExist(els.userMenu.joinLink, 2000)).toBe(true);
     });
   });
 
