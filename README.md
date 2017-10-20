@@ -122,10 +122,10 @@ Each testing framework comes with a default, or set of available assertion libra
     
 ### Chimp
 * Install chimp globally
-    - this prevents an in issue sometimes arising when deploying to galaxy (an error installing chromedriver) [NOTE installing chimp with 'meteor npm' may successfully install chimp locally]
-    - NOTE, as of 10/19/17, yarn fails when trying to install chimp locally (yarn version 1.2.1)
-* __NOTE:__ for continuous integration
-    - (as of 10/19/17) chimp is able to be globally installed successfully on semaphore, but the end-to-end-test launch script ('launchMeteorChimp.js'), causes some of the chimp tests to fail. awaiting a semaphore platform upgrade to try again.
+    - this prevents an in issue sometimes arising when deploying to galaxy (an error installing chromedriver)
+    - also, as of 10/19/17, yarn was failing on chimp install (so easier to install globally using 'npm')
+* Continuous Integration
+    - in order for all test tiers to succeed, it 'seemed' a pause of around 5 seconds was needed between the integration and end-to-end tests. Else, the end-to-end test would get random failures (timeouts, elements not found)
 * NOTE (strange behavior):
     - when searching two times in a row in a test, for an element that is wrapped in a createContainer, the second search may fail
         + e.g. waitForExist(someButton), then click(someButton) may result in an 'element not found on page' error on the click call
