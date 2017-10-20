@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Grid, Row, Col } from "../helpers/reactBootstrapLib";
+import { Grid, Row, Col } from "./ReactBootstrapLib";
 import UserMenu from "./UserMenu";
 
 type INavbarProps = {

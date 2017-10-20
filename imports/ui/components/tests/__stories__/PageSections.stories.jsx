@@ -9,6 +9,7 @@ import { boolean, text } from "@storybook/addon-knobs";
 import Login from "../../Login";
 import UserMenu from "../../UserMenu";
 import Navbar from "../../Navbar";
+import PrimaryFilter from "../../PrimaryFilter";
 
 storiesOf("Page Sections", module)
   .addDecorator((story: () => React$Element<*>): React$Element<*> => (
@@ -29,4 +30,7 @@ storiesOf("Page Sections", module)
       userLoggedIn={boolean("userLoggedIn", true)}
       logout={action("logout clicked")}
     />
+  ))
+  .add("PrimaryFilter", () => (
+    <PrimaryFilter />
   ));
