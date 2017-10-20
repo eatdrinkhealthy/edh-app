@@ -26,6 +26,14 @@
   transform: translateY(-50%);
 }
 
+@media only screen and (max-width: @mobile-responsive) {
+  .nav__title {
+    font-size: 20px;
+    width: 40px;
+    line-height: 14px;
+  }
+}
+
 .nav__username {
   text-align: center;
   color: black;
@@ -47,14 +55,6 @@
   margin-right: 5px;
   // vertical align center
   line-height: @navbar_height;
-}
-
-@media only screen and (max-width: @mobile-responsive) {
-  .nav__title {
-    font-size: 20px;
-    width: 40px;
-    line-height: 14px;
-  }
 }
 
 .toggle-filter {
