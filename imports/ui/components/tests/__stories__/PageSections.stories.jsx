@@ -24,13 +24,16 @@ storiesOf("Page Sections", module)
       logout={action("logout clicked")}
     />
   ))
-  .add("Navbar", () => (
-    <Navbar
-      username={text("username", "testUser")}
-      userLoggedIn={boolean("userLoggedIn", true)}
-      logout={action("logout clicked")}
-    />
-  ))
+  .add("Navbar", () => {
+    window.SHOW_GRID = boolean("show grid", false);
+    return (
+      <Navbar
+        username={text("username", "testUser")}
+        userLoggedIn={boolean("userLoggedIn", true)}
+        logout={action("logout clicked")}
+      />
+    );
+  })
   .add("PrimaryFilter", () => (
     <PrimaryFilter />
   ));
