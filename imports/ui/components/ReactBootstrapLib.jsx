@@ -17,10 +17,7 @@ export { ToggleButtonGroup };
 
 export const Col = (props) => {
   const { className, children, ...otherProps } = props;
-  const allClasses = classNames(
-    className,
-    window.SHOW_GRID ? "show-grid" : "",
-  );
+  const allClasses = classNames(className, { "show-grid": window.SHOW_GRID });
 
   return (
     <ColBase
@@ -39,10 +36,7 @@ Col.propTypes = {
 
 export const Grid = (props) => {
   const { className, children, ...otherProps } = props;
-  const allClasses = classNames(
-    className,
-    window.SHOW_GRID ? "show-breakpoint" : "",
-  );
+  const allClasses = classNames(className, { "show-breakpoint": window.SHOW_GRID });
 
   return (
     <GridBase
