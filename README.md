@@ -48,7 +48,13 @@
         * note, this has NOT yet worked for google-map-react
     * setting position to absolute seems one step closer. it displays the map correctly, but will run in to problems eventually with z-index
         * note, google-map-react uses position absolute, and has it working somehow
-        
+
+## Development / Debugging
+* A global `window.SHOW_GRID` was added to display a border around react-bootstrap columns.
+    + this setting also displays the breakpoint screen size in the upper left corner of the body
+    + NOTE: this global is not typically set in source code, but more often used in storybook
+        - avoid setting this global in source code
+                 
 ## Testing
 
 ### Notes
