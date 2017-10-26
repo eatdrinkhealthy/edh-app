@@ -4,18 +4,18 @@ import { createContainer } from "meteor/react-meteor-data";
 
 const userHOC = (
   WrappedComponent: React$Component<*, *, *>,
-  moreProps?: {},
 ) => {
   const displayName = WrappedComponent.displayName || WrappedComponent.name || "Component";
 
   const userContainer = createContainer(() => {
     const user = Meteor.user();
     const username = user && user.username;
+    const logout = () => Meteor.logout();
 
     return {
       username,
       userLoggedIn: !!user,
-      ...moreProps,
+      logout,
     };
   }, WrappedComponent);
 
