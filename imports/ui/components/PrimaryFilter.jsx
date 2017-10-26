@@ -30,11 +30,6 @@ class PrimaryFilter extends Component {
       <div>
         <div>Eat / Drink</div>
         <div>
-          <div>
-            <ToggleButtonGroup name="testtoggle">
-              <ToggleButton value={1}>ToggleButton</ToggleButton>
-            </ToggleButtonGroup>
-          </div>
           <Button
             name="vegan"
             onClick={this.handleButtonClick}
