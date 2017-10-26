@@ -1,10 +1,6 @@
 // @flow
 import React, { Component } from "react";
-import {
-  Button,
-  ToggleButton,
-  ToggleButtonGroup,
-} from "./ReactBootstrapLib";
+import Pill from "./Pill";
 
 class PrimaryFilter extends Component {
   state = {
@@ -30,54 +26,54 @@ class PrimaryFilter extends Component {
       <div>
         <div>Eat / Drink</div>
         <div>
-          <Button
+          <Pill
             name="vegan"
             onClick={this.handleButtonClick}
             active={this.state.vegan}
           >
             Vegan
-          </Button>
+          </Pill>
 
-          <Button
+          <Pill
             name="vegetarian"
             onClick={this.handleButtonClick}
             active={this.state.vegetarian}
           >
             Vegetarian
-          </Button>
+          </Pill>
 
-          <Button
+          <Pill
             name="glutenFree"
             onClick={this.handleButtonClick}
             active={this.state.glutenFree}
           >
             Gluten Free
-          </Button>
+          </Pill>
         </div>
         <div>
-          <Button
+          <Pill
             name="rawFood"
             onClick={this.handleButtonClick}
             active={this.state.rawFood}
           >
             Raw Food
-          </Button>
+          </Pill>
 
-          <Button
+          <Pill
             name="juice"
             onClick={this.handleButtonClick}
             active={this.state.juice}
           >
             Juice
-          </Button>
+          </Pill>
 
-          <Button
+          <Pill
             name="supplements"
             onClick={this.handleButtonClick}
             active={this.state.supplements}
           >
             Supplements
-          </Button>
+          </Pill>
         </div>
         <div>Venue</div>
       </div>
