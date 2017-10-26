@@ -17,6 +17,7 @@ class PrimaryFilter extends Component {
   };
 
   handleButtonClick = (event: SyntheticEvent<HTMLButtonElement>) => {
+    // $FlowFixMe
     const { name } = event.currentTarget;
 
     this.setState({

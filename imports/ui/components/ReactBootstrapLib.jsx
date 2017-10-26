@@ -1,6 +1,6 @@
 // NO Flow (primarily to avoid making libdefs for each react-bootstrap component lib)
 /* eslint-disable react/require-default-props */
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import GridBase from "react-bootstrap/lib/Grid";
