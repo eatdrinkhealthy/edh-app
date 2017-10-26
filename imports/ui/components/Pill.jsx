@@ -4,8 +4,11 @@ import { Button } from "./ReactBootstrapLib";
 
 type IPillProps = any;
 
-const Pill = (props: IPillProps) => (
-  <Button {...props} />
+const Pill = ({
+  className,    // extract className to override
+  ...props
+}: IPillProps) => (
+  <Button className="pill" {...props} />
 );
 
 export default Pill;
