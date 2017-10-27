@@ -1,6 +1,45 @@
 // @flow
 import type { IFilter } from "../reducers/filtersReducers";
 
+export const EAT_DRINK_FILTERS: Array<IFilter> = [
+  {
+    id: "vegan",
+    name: "Vegan",
+    on: true,
+    foursquareCategory: "4bf58dd8d48988d1d3941735",
+  },
+  {
+    id: "vegetarian",
+    name: "Vegetarian",
+    on: true,
+    foursquareCategory: "4bf58dd8d48988d1d3941735",
+  },
+  {
+    id: "glutenFree",
+    name: "Gluten Free",
+    on: false,
+    foursquareCategory: "4c2cd86ed066bed06c3c5209",
+  },
+  {
+    id: "rawFood",
+    name: "Raw Food",
+    on: false,
+    foursquareCategory: "4c2cd86ed066bed06c3c5209",
+  },
+  {
+    id: "juice",
+    name: "Juice",
+    on: true,
+    foursquareCategory: "4bf58dd8d48988d112941735",
+  },
+  {
+    id: "supplements",
+    name: "Supplements",
+    on: false,
+    foursquareCategory: "4c2cd86ed066bed06c3c5209",
+  },
+];
+
 const DEFAULT_FILTER_LIST: Array<IFilter> = [
   {
     id: "juiceBar",

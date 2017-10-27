@@ -1,20 +1,15 @@
 // @flow
 import React, { Component } from "react";
 import Pill from "./Pill";
+import type { IFilter } from "../../state/reducers/filtersReducers";
 
 class FilterSection extends Component {
   props: {
     title: string,
+    filters: Array<IFilter>,
   };
 
-  state = {
-    vegan: false,
-    vegetarian: false,
-    glutenFree: false,
-    rawFood: false,
-    juice: false,
-    supplements: false,
-  };
+  state = {};
 
   handleButtonClick = (event: SyntheticEvent<HTMLButtonElement>) => {
     // $FlowFixMe
@@ -26,57 +21,59 @@ class FilterSection extends Component {
   };
 
   render() {
+    const { title, filters } = this.props;
+
     return (
       <div>
-        <div>{this.props.title}</div>
+        <div>{title}</div>
         <div>
           <Pill
-            name="vegan"
+            name={filters[0].id}
             onClick={this.handleButtonClick}
-            active={this.state.vegan}
+            active={this.state[filters[0].id]}
           >
-            Vegan
+            {filters[0].name}
           </Pill>
 
           <Pill
-            name="vegetarian"
+            name={filters[1].id}
             onClick={this.handleButtonClick}
-            active={this.state.vegetarian}
+            active={this.state[filters[1].id]}
           >
-            Vegetarian
+            {filters[1].name}
           </Pill>
 
           <Pill
-            name="glutenFree"
+            name={filters[2].id}
             onClick={this.handleButtonClick}
-            active={this.state.glutenFree}
+            active={this.state[filters[2].id]}
           >
-            Gluten Free
+            {filters[2].name}
           </Pill>
         </div>
         <div>
           <Pill
-            name="rawFood"
+            name={filters[3].id}
             onClick={this.handleButtonClick}
-            active={this.state.rawFood}
+            active={this.state[filters[3].id]}
           >
-            Raw Food
+            {filters[3].name}
           </Pill>
 
           <Pill
-            name="juice"
+            name={filters[4].id}
             onClick={this.handleButtonClick}
-            active={this.state.juice}
+            active={this.state[filters[4].id]}
           >
-            Juice
+            {filters[4].name}
           </Pill>
 
           <Pill
-            name="supplements"
+            name={filters[5].id}
             onClick={this.handleButtonClick}
-            active={this.state.supplements}
+            active={this.state[filters[5].id]}
           >
-            Supplements
+            {filters[5].name}
           </Pill>
         </div>
       </div>

@@ -10,7 +10,7 @@ type IPillProps = {
 };
 
 const Pill = ({
-  className: excludeClassName,  // extract out and override className
+  className: excludeClassName,  // extract out nd override className
   ...props                      // pass on the rest of the props (used by a button)
 }: IPillProps) => (
   <button className={classNames("pill", { pill_selected: props.active })} {...props} />
