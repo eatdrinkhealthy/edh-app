@@ -1,10 +1,10 @@
 // @flow
 import React from "react";
-import EatDrinkFilter from "./EatDrinkFilter";
+import FilterSection from "./FilterSection";
 
 const PrimaryFilter = () => (
   <div>
-    <EatDrinkFilter />
+    <FilterSection title="Eat / Drink" />
   </div>
 );
 

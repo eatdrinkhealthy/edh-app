@@ -2,7 +2,11 @@
 import React, { Component } from "react";
 import Pill from "./Pill";
 
-class EatDrinkFilter extends Component {
+class FilterSection extends Component {
+  props: {
+    title: string,
+  };
+
   state = {
     vegan: false,
     vegetarian: false,
@@ -24,7 +28,7 @@ class EatDrinkFilter extends Component {
   render() {
     return (
       <div>
-        <div>Eat / Drink</div>
+        <div>{this.props.title}</div>
         <div>
           <Pill
             name="vegan"
@@ -80,4 +84,4 @@ class EatDrinkFilter extends Component {
   }
 }
 
-export default EatDrinkFilter;
+export default FilterSection;

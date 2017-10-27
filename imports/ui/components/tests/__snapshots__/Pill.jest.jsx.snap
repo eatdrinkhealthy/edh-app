@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pill /> matches render snapshot - active 1`] = `
+<button
+  active={true}
+  className="pill pill_selected"
+  name="pill1"
+  onClick={[Function]}
+>
+  Test Pill Button
+</button>
+`;
+
+exports[`<Pill /> matches render snapshot - inactive 1`] = `
+<button
+  active={false}
+  className="pill"
+  name="pill1"
+  onClick={[Function]}
+>
+  Test Pill Button
+</button>
+`;
