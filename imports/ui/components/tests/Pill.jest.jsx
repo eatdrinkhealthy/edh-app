@@ -26,7 +26,7 @@ describe("<Pill />", function () {
     expect(tree).toMatchSnapshot();
   });
 
-  it("should not pass a className prop on to the button component", function () {
+  it("should overwrite className and not pass active to button component", function () {
     const wrapper = shallow(
       <Pill name="pill1" onClick={() => {}} active={false} className="badClass">
         Test Pill Button
@@ -35,6 +35,6 @@ describe("<Pill />", function () {
     const button = wrapper.find("button");
     expect(button.prop("className")).toBe("pill");
     expect(button.prop("name")).toBe("pill1");
-    expect(button.prop("active")).toBe(false);
+    expect(button.prop("active")).toBe(undefined);
   });
 });
