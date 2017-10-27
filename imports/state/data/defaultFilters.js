@@ -40,6 +40,45 @@ export const EAT_DRINK_FILTERS: Array<IFilter> = [
   },
 ];
 
+export const VENUE_FILTERS: Array<IFilter> = [
+  {
+    id: "restaurant",
+    name: "Restaurant / Cafe",
+    on: false,
+    foursquareCategory: "4bf58dd8d48988d1c4941735",
+  },
+  {
+    id: "grocery",
+    name: "Market / Store",
+    on: false,
+    foursquareCategory: "4bf58dd8d48988d118951735",
+  },
+  {
+    id: "coffeeShop",
+    name: "Coffee Shop",
+    on: false,
+    foursquareCategory: "4bf58dd8d48988d1e0931735",
+  },
+  {
+    id: "bakery",
+    name: "Bakery",
+    on: false,
+    foursquareCategory: "4bf58dd8d48988d16a941735",
+  },
+  {
+    id: "juiceBar",
+    name: "Juice Bar",
+    on: true,
+    foursquareCategory: "4bf58dd8d48988d112941735",
+  },
+  {
+    id: "healthFoodStore",
+    name: "Health Food Store",
+    on: false,
+    foursquareCategory: "50aa9e744b90af0d42d5de0e",
+  },
+];
+
 const DEFAULT_FILTER_LIST: Array<IFilter> = [
   {
     id: "juiceBar",

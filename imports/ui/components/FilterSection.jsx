@@ -9,7 +9,9 @@ class FilterSection extends Component {
     filters: Array<IFilter>,
   };
 
-  state = {};
+  state = {
+    // state will be populated with id's of each filter
+  };
 
   handleButtonClick = (event: SyntheticEvent<HTMLButtonElement>) => {
     // $FlowFixMe
