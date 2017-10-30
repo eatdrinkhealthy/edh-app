@@ -16,7 +16,7 @@ storiesOf("Components", module)
     window.SHOW_GRID = boolean("show grid", false);
 
     return (
-      <FilterSection title={"EAT / DRINK"} filters={EAT_DRINK_FILTERS} getFilters={() => {}} />
+      <FilterSection title="EAT / DRINK" filters={EAT_DRINK_FILTERS} getFilters={() => {}} />
     );
   })
   .add("Pill", () => (

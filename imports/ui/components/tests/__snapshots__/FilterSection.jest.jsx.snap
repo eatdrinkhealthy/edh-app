@@ -1,55 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FilterSection /> matches render snapshot 1`] = `
-<div>
-  <div>
-    Test Filter Section
-  </div>
-  <div>
-    <button
-      className="pill"
-      name="juiceBar1"
-      onClick={[Function]}
+<div
+  className="container-fluid"
+>
+  <div
+    className="col-xs-12"
+  >
+    <div
+      className="row"
     >
-      Juice Bar1
-    </button>
-    <button
-      className="pill"
-      name="juiceBar2"
-      onClick={[Function]}
+      <div
+        className="col-xs-12"
+      >
+        <div
+          className="filterSectionTitle"
+        >
+          Test Filter Section
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
     >
-      Juice Bar2
-    </button>
-    <button
-      className="pill"
-      name="juiceBar3"
-      onClick={[Function]}
-    >
-      Juice Bar3
-    </button>
-  </div>
-  <div>
-    <button
-      className="pill"
-      name="juiceBar4"
-      onClick={[Function]}
-    >
-      Juice Bar4
-    </button>
-    <button
-      className="pill"
-      name="juiceBar5"
-      onClick={[Function]}
-    >
-      Juice Bar5
-    </button>
-    <button
-      className="pill"
-      name="juiceBar6"
-      onClick={[Function]}
-    >
-      Juice Bar6
-    </button>
+      <button
+        className="pill"
+        name="juiceBar1"
+        onClick={[Function]}
+      >
+        Juice Bar1
+      </button>
+      <button
+        className="pill"
+        name="juiceBar2"
+        onClick={[Function]}
+      >
+        Juice Bar2
+      </button>
+      <button
+        className="pill"
+        name="juiceBar3"
+        onClick={[Function]}
+      >
+        Juice Bar3
+      </button>
+      <button
+        className="pill"
+        name="juiceBar4"
+        onClick={[Function]}
+      >
+        Juice Bar4
+      </button>
+      <button
+        className="pill"
+        name="juiceBar5"
+        onClick={[Function]}
+      >
+        Juice Bar5
+      </button>
+      <button
+        className="pill"
+        name="juiceBar6"
+        onClick={[Function]}
+      >
+        Juice Bar6
+      </button>
+    </div>
   </div>
 </div>
 `;
