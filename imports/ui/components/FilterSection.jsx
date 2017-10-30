@@ -38,7 +38,7 @@ class FilterSection extends Component {
 
     return (
       <div>
-        <div>{title}</div>
+        <div className="filterSectionTitle">{title}</div>
         <div>
           <Pill
             name={filters[0].id}

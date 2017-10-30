@@ -1,6 +1,5 @@
 // @flow
 /* eslint-disable import/no-extraneous-dependencies */
-
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { storiesOf, action } from "@storybook/react";

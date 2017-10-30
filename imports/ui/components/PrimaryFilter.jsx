@@ -17,8 +17,8 @@ const PrimaryFilter = () => {
 
   return (
     <div>
-      <FilterSection title="Eat / Drink" filters={EAT_DRINK_FILTERS} getFilters={eatDrinkFilters} />
-      <FilterSection title="Venue" filters={VENUE_FILTERS} getFilters={venueFilters} />
+      <FilterSection title="EAT / DRINK" filters={EAT_DRINK_FILTERS} getFilters={eatDrinkFilters} />
+      <FilterSection title="VENUE" filters={VENUE_FILTERS} getFilters={venueFilters} />
     </div>
   );
 };
