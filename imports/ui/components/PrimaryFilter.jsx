@@ -6,11 +6,21 @@ import {
   VENUE_FILTERS,
 } from "../../state/data/defaultFilters";
 
-const PrimaryFilter = () => (
-  <div>
-    <FilterSection title="Eat / Drink" filters={EAT_DRINK_FILTERS} />
-    <FilterSection title="Venue" filters={VENUE_FILTERS} />
-  </div>
-);
+const PrimaryFilter = () => {
+  const eatDrinkFilters = (filters: Array<string>) => {
+    console.log("eat drink filters:", filters);
+  };
+
+  const venueFilters = (filters: Array<string>) => {
+    console.log("venue filters:", filters);
+  };
+
+  return (
+    <div>
+      <FilterSection title="Eat / Drink" filters={EAT_DRINK_FILTERS} getFilters={eatDrinkFilters} />
+      <FilterSection title="Venue" filters={VENUE_FILTERS} getFilters={venueFilters} />
+    </div>
+  );
+};
 
 export default PrimaryFilter;

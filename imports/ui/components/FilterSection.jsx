@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from "react";
+import _ from "lodash";
 import Pill from "./Pill";
 import type { IFilter } from "../../state/reducers/filtersReducers";
 
@@ -7,11 +8,21 @@ class FilterSection extends Component {
   props: {
     title: string,
     filters: Array<IFilter>,
+    getFilters: (Array<string>) => void,
   };
 
   state = {
     // state will be populated with id's of each filter
   };
+
+  componentDidUpdate() {
+    const setFilters = [];
+    _.forIn(this.state, (value, key) => {
+      if (value) setFilters.push(key);
+    });
+
+    this.props.getFilters(setFilters);
+  }
 
   handleButtonClick = (event: SyntheticEvent<HTMLButtonElement>) => {
     // $FlowFixMe

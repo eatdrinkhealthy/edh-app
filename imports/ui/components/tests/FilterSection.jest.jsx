@@ -52,6 +52,7 @@ describe("<FilterSection />", function () {
       <FilterSection
         title="Test Filter Section"
         filters={testFilterList}
+        getFilters={() => {}}
       />,
     ).toJSON();
 
