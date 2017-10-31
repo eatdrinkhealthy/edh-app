@@ -8,11 +8,11 @@ import {
 
 const PrimaryFilter = () => {
   const eatDrinkFilters = (filters: Array<string>) => {
-    console.log("eat drink filters:", filters);
+    // todo, add filters to api call
   };
 
   const venueFilters = (filters: Array<string>) => {
-    console.log("venue filters:", filters);
+    // todo, add filters to api call
   };
 
   return (
