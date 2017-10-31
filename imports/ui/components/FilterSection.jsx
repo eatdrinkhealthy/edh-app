@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import _ from "lodash";
 import Pill from "./Pill";
-import { Grid, Row, Col } from "./ReactBootstrapLib";
 import type { IFilter } from "../../state/reducers/filtersReducers";
 
 class FilterSection extends Component {
@@ -37,15 +36,30 @@ class FilterSection extends Component {
   render() {
     const { title, filters } = this.props;
 
+    const divCenterContent = {
+      textAlign: "center",
+    };
+
+    const spanTitleStyle = {
+      display: "inline-block",
+      background: "yellow",
+      width: "860px",         // TODO define as a custom breakpoint / width
+      textAlign: "left",
+    };
+
+    const spanStyle = {
+      display: "inline-block",
+    };
+
     return (
-      <Grid fluid>
-        <Col xs={12}>
-          <Row>
-            <Col xs={12}>
-              <div className="filterSectionTitle">{title}</div>
-            </Col>
-          </Row>
-          <Row>
+      <div>
+        <div style={divCenterContent}>
+          <span style={spanTitleStyle} className="filterSectionTitle">
+            {title}
+          </span>
+        </div>
+        <div style={divCenterContent}>
+          <span style={spanStyle}>
             <Pill
               name={filters[0].id}
               onClick={this.handleButtonClick}
@@ -69,7 +83,8 @@ class FilterSection extends Component {
             >
               {filters[2].name}
             </Pill>
-
+          </span>
+          <span style={spanStyle}>
             <Pill
               name={filters[3].id}
               onClick={this.handleButtonClick}
@@ -93,9 +108,9 @@ class FilterSection extends Component {
             >
               {filters[5].name}
             </Pill>
-          </Row>
-        </Col>
-      </Grid>
+          </span>
+        </div>
+      </div>
     );
   }
 }
