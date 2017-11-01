@@ -1,27 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FilterSection /> matches render snapshot 1`] = `
-<div
-  className="container-fluid"
->
+<div>
   <div
-    className="col-xs-12"
+    style={
+      Object {
+        "padding": "0px 10px 0px 10px",
+        "textAlign": "center",
+      }
+    }
   >
-    <div
-      className="row"
+    <span
+      className="filterSectionTitle"
     >
-      <div
-        className="col-xs-12"
-      >
-        <div
-          className="filterSectionTitle"
-        >
-          Test Filter Section
-        </div>
-      </div>
-    </div>
-    <div
-      className="row"
+      Test Filter Section
+    </span>
+  </div>
+  <div
+    style={
+      Object {
+        "padding": "0px 10px 0px 10px",
+        "textAlign": "center",
+      }
+    }
+  >
+    <span
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
     >
       <button
         className="pill"
@@ -44,6 +52,14 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
       >
         Juice Bar3
       </button>
+    </span>
+    <span
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
       <button
         className="pill"
         name="juiceBar4"
@@ -65,7 +81,7 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
       >
         Juice Bar6
       </button>
-    </div>
+    </span>
   </div>
 </div>
 `;

@@ -38,28 +38,20 @@ class FilterSection extends Component {
 
     const divCenterContent = {
       textAlign: "center",
+      padding: "0px 10px 0px 10px",
     };
 
-    const spanTitleStyle = {
-      display: "inline-block",
-      background: "yellow",
-      width: "860px",         // TODO define as a custom breakpoint / width
-      textAlign: "left",
-    };
-
-    const spanStyle = {
+    const pillContainer = {
       display: "inline-block",
     };
 
     return (
       <div>
         <div style={divCenterContent}>
-          <span style={spanTitleStyle} className="filterSectionTitle">
-            {title}
-          </span>
+          <span className="filterSectionTitle">{title}</span>
         </div>
         <div style={divCenterContent}>
-          <span style={spanStyle}>
+          <span style={pillContainer}>
             <Pill
               name={filters[0].id}
               onClick={this.handleButtonClick}
@@ -84,7 +76,7 @@ class FilterSection extends Component {
               {filters[2].name}
             </Pill>
           </span>
-          <span style={spanStyle}>
+          <span style={pillContainer}>
             <Pill
               name={filters[3].id}
               onClick={this.handleButtonClick}
