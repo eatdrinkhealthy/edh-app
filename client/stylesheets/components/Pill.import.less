@@ -1,7 +1,5 @@
-@pillWidth: 140px;
-
 .pill {
-  width: @pillWidth;
+  width: 140px;
   margin: 2px;
   color: black;
   background: white;
@@ -10,6 +8,11 @@
   padding: 1px;
   font-size: 14px;
   font-weight: bold;
+  @media only screen and (max-width: @filterSection_bp2) {
+    width: 90px;           // three pill buttons wide (to match centering of buttons)
+    font-size: 10px;
+    font-weight: normal;
+  }
 }
 
 .pill_selected {
