@@ -12,13 +12,9 @@ import {
 
 
 storiesOf("Components", module)
-  .add("FilterSection", () => {
-    window.SHOW_GRID = boolean("show grid", false);
-
-    return (
-      <FilterSection title="EAT / DRINK" filters={EAT_DRINK_FILTERS} getFilters={() => {}} />
-    );
-  })
+  .add("FilterSection", () => (
+    <FilterSection title="EAT / DRINK" filters={EAT_DRINK_FILTERS} getFilters={() => {}} />
+  ))
   .add("Pill", () => (
     <CenterWrapper
       width="50%"
