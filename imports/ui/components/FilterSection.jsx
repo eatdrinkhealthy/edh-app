@@ -36,11 +36,11 @@ class FilterSection extends Component {
   render() {
     const { title, filters } = this.props;
 
+    // for centering already styled components
     const divCenterContent = {
       textAlign: "center",
       padding: "0px 10px 0px 10px",
     };
-
     const pillContainer = {
       display: "inline-block",
     };

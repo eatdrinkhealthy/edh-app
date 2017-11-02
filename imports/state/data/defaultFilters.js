@@ -6,7 +6,7 @@ export const EAT_DRINK_FILTERS: Array<IFilter> = [
     id: "vegan",
     name: "Vegan",
     on: true,
-    foursquareCategory: "4bf58dd8d48988d1d3941735",
+    foursquareCategory: "52f2ab2ebcbc57f1066b8b1c",
   },
   {
     id: "vegetarian",
@@ -24,7 +24,7 @@ export const EAT_DRINK_FILTERS: Array<IFilter> = [
     id: "rawFood",
     name: "Raw Food",
     on: false,
-    foursquareCategory: "4c2cd86ed066bed06c3c5209",
+    foursquareCategory: "52f2ab2ebcbc57f1066b8b45",
   },
   {
     id: "juice",
@@ -36,7 +36,7 @@ export const EAT_DRINK_FILTERS: Array<IFilter> = [
     id: "supplements",
     name: "Supplements",
     on: false,
-    foursquareCategory: "4c2cd86ed066bed06c3c5209",
+    foursquareCategory: "5744ccdfe4b0c0459246b4cd",
   },
 ];
 
