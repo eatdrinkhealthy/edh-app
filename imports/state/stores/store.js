@@ -1,7 +1,9 @@
 // @flow
 import { createStore } from "redux";
 import appReducer from "../reducers";
-import DEFAULT_FILTER_LIST from "../data/defaultFilters";
+import DEFAULT_FILTER_LIST, {
+  EAT_DRINK_FILTERS,
+} from "../data/defaultFilters";
 import { defaultMapDisplayState } from "../reducers/mapDisplayReducers";
 
 /* eslint-disable no-duplicate-imports */
@@ -12,12 +14,14 @@ import type { IVenue } from "../reducers/searchResultsReducers";
 
 export type IState = {
   filters: Array<IFilter>,
+  eatDrinkFilters: Array<IFilter>,
   searchResults: Array<IVenue>,
   mapDisplay: IMapDisplayState,
 };
 
 export const defaultState: IState = {
   filters: DEFAULT_FILTER_LIST,
+  eatDrinkFilters: EAT_DRINK_FILTERS,
   searchResults: [],
   mapDisplay: defaultMapDisplayState,
 };
