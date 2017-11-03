@@ -1,7 +1,8 @@
 // @flow
 import { createStore } from "redux";
 import appReducer from "../reducers";
-import DEFAULT_FILTER_LIST, {
+import {
+  DEFAULT_FILTERS,
   EAT_DRINK_FILTERS,
 } from "../data/defaultFilters";
 import { defaultMapDisplayState } from "../reducers/mapDisplayReducers";
@@ -20,7 +21,7 @@ export type IState = {
 };
 
 export const defaultState: IState = {
-  filters: DEFAULT_FILTER_LIST,
+  filters: DEFAULT_FILTERS,
   eatDrinkFilters: EAT_DRINK_FILTERS,
   searchResults: [],
   mapDisplay: defaultMapDisplayState,

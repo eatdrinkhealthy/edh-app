@@ -5,6 +5,8 @@
 import store, { defaultState } from "../store";
 import filtersReducer from "../../reducers/filtersReducers";
 import { setFilter } from "../../actions/filtersActions";
+import eatDrinkFiltersReducer from "../../reducers/eatDrinkFiltersReducers";
+import { toggleEatDrinkFilter } from "../../actions/eatDrinkFiltersActions";
 import searchResultsReducer from "../../reducers/searchResultsReducers";
 import { setSearchResults } from "../../actions/searchResultsActions";
 import mapDisplayReducer from "../../reducers/mapDisplayReducers";
@@ -28,12 +30,22 @@ describe("store - smoke test", function () {
     });
   });
 
+  describe("eat drink filters state", function () {
+    it("should return the initial state of eat drink filters reducer", function () {
+      const unknownAction = { type: "unknown", id: "a" };
+      expect(store.getState().eatDrinkFilters)
+        .toEqual(eatDrinkFiltersReducer(undefined, unknownAction));
+    });
+
+    it("should handle a toggleEatDrinkFilter action", function () {
+      store.dispatch(toggleEatDrinkFilter("vegan"));
+      expect(store.getState().eatDrinkFilters[0].on).toEqual(true);
+    });
+  });
+
   describe("searchResults state", function () {
     it("should return the initial state of the searchResults reducer", function () {
-      const unknownAction = {
-        type: "unknown",
-        searchResults: [sampleVenues[0]],
-      };
+      const unknownAction = { type: "unknown", searchResults: [sampleVenues[0]] };
       expect(store.getState().searchResults)
         .toEqual(searchResultsReducer(undefined, unknownAction));
     });

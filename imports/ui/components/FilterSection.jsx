@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from "react";
-import _ from "lodash";
 import Pill from "./Pill";
 import type { IFilter } from "../../state/reducers/filtersReducers";
 
@@ -8,29 +7,13 @@ class FilterSection extends Component {
   props: {
     title: string,
     filters: Array<IFilter>,
-    getFilters: (Array<string>) => void,
+    setFilter: (id: string) => void,
   };
 
-  state = {
-    // state will be populated with id's of each filter
-  };
-
-  componentDidUpdate() {
-    const setFilters = [];
-    _.forIn(this.state, (value, key) => {
-      if (value) setFilters.push(key);
-    });
-
-    this.props.getFilters(setFilters);
-  }
-
-  handleButtonClick = (event: SyntheticEvent<HTMLButtonElement>) => {
+  handlePillClick = (event: SyntheticEvent<HTMLButtonElement>) => {
     // $FlowFixMe
     const { name } = event.currentTarget;
-
-    this.setState({
-      [name]: !this.state[name],
-    });
+    this.props.setFilter(name);           // toggle current value of filter
   };
 
   render() {
@@ -54,24 +37,24 @@ class FilterSection extends Component {
           <span style={pillContainer}>
             <Pill
               name={filters[0].id}
-              onClick={this.handleButtonClick}
-              active={this.state[filters[0].id]}
+              onClick={this.handlePillClick}
+              active={filters[0].on}
             >
               {filters[0].name}
             </Pill>
 
             <Pill
               name={filters[1].id}
-              onClick={this.handleButtonClick}
-              active={this.state[filters[1].id]}
+              onClick={this.handlePillClick}
+              active={filters[1].on}
             >
               {filters[1].name}
             </Pill>
 
             <Pill
               name={filters[2].id}
-              onClick={this.handleButtonClick}
-              active={this.state[filters[2].id]}
+              onClick={this.handlePillClick}
+              active={filters[2].on}
             >
               {filters[2].name}
             </Pill>
@@ -79,24 +62,24 @@ class FilterSection extends Component {
           <span style={pillContainer}>
             <Pill
               name={filters[3].id}
-              onClick={this.handleButtonClick}
-              active={this.state[filters[3].id]}
+              onClick={this.handlePillClick}
+              active={filters[3].on}
             >
               {filters[3].name}
             </Pill>
 
             <Pill
               name={filters[4].id}
-              onClick={this.handleButtonClick}
-              active={this.state[filters[4].id]}
+              onClick={this.handlePillClick}
+              active={filters[4].on}
             >
               {filters[4].name}
             </Pill>
 
             <Pill
               name={filters[5].id}
-              onClick={this.handleButtonClick}
-              active={this.state[filters[5].id]}
+              onClick={this.handlePillClick}
+              active={filters[5].on}
             >
               {filters[5].name}
             </Pill>

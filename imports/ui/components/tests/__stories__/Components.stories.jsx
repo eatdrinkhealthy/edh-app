@@ -10,10 +10,9 @@ import {
   EAT_DRINK_FILTERS,
 } from "../../../../state/data/defaultFilters";
 
-
 storiesOf("Components", module)
   .add("FilterSection", () => (
-    <FilterSection title="EAT / DRINK" filters={EAT_DRINK_FILTERS} getFilters={() => {}} />
+    <FilterSection title="EAT / DRINK" filters={EAT_DRINK_FILTERS} setFilter={action("filter clicked")} />
   ))
   .add("Pill", () => (
     <CenterWrapper

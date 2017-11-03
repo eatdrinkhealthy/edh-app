@@ -3,14 +3,14 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import filtersReducer, { setFilter } from "../filtersReducers";
-import DEFAULT_FILTER_LIST from "../../data/defaultFilters";
+import { DEFAULT_FILTERS } from "../../data/defaultFilters";
 import { setFilter as setFilterActionCreator } from "../../actions/filtersActions";
 
 describe("filters reducer", function () {
   const unknownAction = { type: "unknown", id: "a", checked: false };
 
   it("should return an initial state of DEFAULT_FILTER_LIST", function () {
-    expect(filtersReducer(undefined, unknownAction)).toEqual(DEFAULT_FILTER_LIST);
+    expect(filtersReducer(undefined, unknownAction)).toEqual(DEFAULT_FILTERS);
   });
 
   it("should return the previous state for any unknown action", function () {

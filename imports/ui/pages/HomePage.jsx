@@ -2,13 +2,13 @@
 import React from "react";
 import NavbarContainer from "../containers/NavbarContainer";
 import MapContainer from "../containers/MapContainer";
-import PrimaryFilter from "../components/PrimaryFilter";
+import PrimaryFilterContainer from "../containers/PrimaryFilterContainer";
 
 const HomePage = () => (
   <div>
     <NavbarContainer />
     <MapContainer />
-    <PrimaryFilter />
+    <PrimaryFilterContainer />
   </div>
 );
 

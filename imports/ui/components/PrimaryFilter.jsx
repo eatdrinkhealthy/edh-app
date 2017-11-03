@@ -1,26 +1,23 @@
 // @flow
 import React from "react";
 import FilterSection from "./FilterSection";
-import {
-  EAT_DRINK_FILTERS,
-  VENUE_FILTERS,
-} from "../../state/data/defaultFilters";
+import type { IEatDrinkFilter } from "../../state/reducers/eatDrinkFiltersReducers";
 
-const PrimaryFilter = () => {
-  const eatDrinkFilters = (filters: Array<string>) => {
-    // todo, add filters to api call
-  };
-
-  const venueFilters = (filters: Array<string>) => {
-    // todo, add filters to api call
-  };
-
-  return (
-    <div>
-      <FilterSection title="EAT / DRINK" filters={EAT_DRINK_FILTERS} getFilters={eatDrinkFilters} />
-      <FilterSection title="VENUE" filters={VENUE_FILTERS} getFilters={venueFilters} />
-    </div>
-  );
+type IPrimaryFilterProps = {
+  eatDrinkFilters: Array<IEatDrinkFilter>,
+  toggleEatDrinkFilterHandler: (id: string) => void,
 };
+
+const PrimaryFilter = (
+  { eatDrinkFilters, toggleEatDrinkFilterHandler }: IPrimaryFilterProps,
+) => (
+  <div>
+    <FilterSection
+      title="EAT / DRINK"
+      filters={eatDrinkFilters}
+      setFilter={toggleEatDrinkFilterHandler}
+    />
+  </div>
+);
 
 export default PrimaryFilter;

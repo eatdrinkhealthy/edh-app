@@ -5,13 +5,13 @@ export const EAT_DRINK_FILTERS: Array<IFilter> = [
   {
     id: "vegan",
     name: "Vegan",
-    on: true,
+    on: false,
     foursquareCategory: "52f2ab2ebcbc57f1066b8b1c",
   },
   {
     id: "vegetarian",
     name: "Vegetarian",
-    on: true,
+    on: false,
     foursquareCategory: "4bf58dd8d48988d1d3941735",
   },
   {
@@ -29,7 +29,7 @@ export const EAT_DRINK_FILTERS: Array<IFilter> = [
   {
     id: "juice",
     name: "Juice",
-    on: true,
+    on: false,
     foursquareCategory: "4bf58dd8d48988d112941735",
   },
   {
@@ -79,7 +79,7 @@ export const VENUE_FILTERS: Array<IFilter> = [
   },
 ];
 
-const DEFAULT_FILTER_LIST: Array<IFilter> = [
+export const DEFAULT_FILTERS: Array<IFilter> = [
   {
     id: "juiceBar",
     name: "Juice Bars",
@@ -171,5 +171,3 @@ const DEFAULT_FILTER_LIST: Array<IFilter> = [
     foursquareCategory: "50be8ee891d4fa8dcc7199a7",
   },
 ];
-
-export default DEFAULT_FILTER_LIST;

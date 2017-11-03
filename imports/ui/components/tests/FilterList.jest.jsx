@@ -14,24 +14,9 @@ import type { IFilter } from "../../../state/reducers/filtersReducers";
 
 describe("Filter List Components", function () {
   const testFilterList: Array<IFilter> = [
-    {
-      id: "juiceBar1",
-      name: "Juice Bar1",
-      on: true,
-      foursquareCategory: "1",
-    },
-    {
-      id: "juiceBar2",
-      name: "Juice Bar2",
-      on: false,
-      foursquareCategory: "2",
-    },
-    {
-      id: "juiceBar3",
-      name: "Juice Bar3",
-      on: false,
-      foursquareCategory: "3",
-    },
+    { id: "juiceBar1", name: "Juice Bar1", on: true, foursquareCategory: "1" },
+    { id: "juiceBar2", name: "Juice Bar2", on: false, foursquareCategory: "2" },
+    { id: "juiceBar3", name: "Juice Bar3", on: false, foursquareCategory: "3" },
   ];
 
   describe("<FilterItem />", function () {

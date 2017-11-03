@@ -1,18 +1,15 @@
 // @flow
-import { SET_EAT_DRINK_FILTER } from "./actionTypes";
+import { TOGGLE_EAT_DRINK_FILTER } from "./actionTypes";
 
 export type IEatDrinkFilterAction = {
   type: string,
   id: string,
-  checked: boolean,
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const setEatDrinkFilter = (
+export const toggleEatDrinkFilter = (
   id: string,
-  checked: boolean,
 ): IEatDrinkFilterAction => ({
-  type: SET_EAT_DRINK_FILTER,
+  type: TOGGLE_EAT_DRINK_FILTER,
   id,
-  checked,
 });

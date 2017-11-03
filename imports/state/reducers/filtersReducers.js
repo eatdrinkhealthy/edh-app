@@ -1,5 +1,5 @@
 // @flow
-import DEFAULT_FILTER_LIST from "../data/defaultFilters";
+import { DEFAULT_FILTERS } from "../data/defaultFilters";
 import { SET_FILTER } from "../actions/actionTypes";
 import type { IFilterAction } from "../actions/filtersActions";
 
@@ -20,7 +20,7 @@ export const setFilter = (state: Array<IFilter>, id: string, checked: boolean): 
 );
 
 const filters = (
-  state: Array<IFilter> = DEFAULT_FILTER_LIST,
+  state: Array<IFilter> = DEFAULT_FILTERS,
   action: IFilterAction,
 ): Array<IFilter> => {
   switch (action.type) {

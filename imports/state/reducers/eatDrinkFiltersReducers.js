@@ -1,6 +1,6 @@
 // @flow
-import EAT_DRINK_FILTER_LIST from "../data/defaultFilters";
-import { SET_EAT_DRINK_FILTER } from "../actions/actionTypes";
+import { EAT_DRINK_FILTERS } from "../data/defaultFilters";
+import { TOGGLE_EAT_DRINK_FILTER } from "../actions/actionTypes";
 import type { IEatDrinkFilterAction } from "../actions/eatDrinkFiltersActions";
 
 export type IEatDrinkFilter = {
@@ -10,26 +10,25 @@ export type IEatDrinkFilter = {
   foursquareCategory: string,
 };
 
-export const setEatDrinkFilter = (
+export const toggleEatDrinkFilter = (
   state: Array<IEatDrinkFilter>,
   id: string,
-  checked: boolean,
 ): Array<IEatDrinkFilter> => (
-  state.map((filter: IEatDrinkFilter): IEatDrinkFilter => (
+  state.map((currFilter: IEatDrinkFilter): IEatDrinkFilter => (
     {
-      ...filter,  // generate copy of each filter, then overwrite 'on' as needed
-      on: filter.id === id ? checked : filter.on,
+      ...currFilter,  // generate copy of current filter, then overwrite 'on' when id matches
+      on: currFilter.id === id ? !currFilter.on : currFilter.on,
     }
   ))
 );
 
 const eatDrinkFilters = (
-  state: Array<IEatDrinkFilter> = EAT_DRINK_FILTER_LIST,
+  state: Array<IEatDrinkFilter> = EAT_DRINK_FILTERS,
   action: IEatDrinkFilterAction,
 ): Array<IEatDrinkFilter> => {
   switch (action.type) {
-    case SET_EAT_DRINK_FILTER:
-      return setEatDrinkFilter(state, action.id, action.checked);
+    case TOGGLE_EAT_DRINK_FILTER:
+      return toggleEatDrinkFilter(state, action.id);
 
     default:
       return state;

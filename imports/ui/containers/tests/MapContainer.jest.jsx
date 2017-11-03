@@ -92,6 +92,11 @@ describe("<MapContainer />", function () {
       { id: "cafe", name: "Cafe", on: false, foursquareCategory: "2" },
       { id: "market", name: "Market", on: false, foursquareCategory: "3" },
     ],
+    eatDrinkFilters: [
+      { id: "vegan", name: "Vegan", on: true, foursquareCategory: "4" },
+      { id: "bakery", name: "Bakery", on: false, foursquareCategory: "5" },
+      { id: "farmersMarket", name: "Farmers Market", on: false, foursquareCategory: "6" },
+    ],
     searchResults: [
       sampleVenues[3],
       sampleVenues[4],

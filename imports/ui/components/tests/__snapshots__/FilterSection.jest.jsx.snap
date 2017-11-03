@@ -32,7 +32,7 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
       }
     >
       <button
-        className="pill"
+        className="pill pill_selected"
         name="juiceBar1"
         onClick={[Function]}
       >
@@ -61,7 +61,7 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
       }
     >
       <button
-        className="pill"
+        className="pill pill_selected"
         name="juiceBar4"
         onClick={[Function]}
       >

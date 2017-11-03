@@ -9,6 +9,9 @@ import Login from "../../Login";
 import UserMenu from "../../UserMenu";
 import Navbar from "../../Navbar";
 import PrimaryFilter from "../../PrimaryFilter";
+import {
+  EAT_DRINK_FILTERS,
+} from "../../../../state/data/defaultFilters";
 
 storiesOf("Page Sections", module)
   .addDecorator((story: () => React$Element<*>): React$Element<*> => (
@@ -34,5 +37,8 @@ storiesOf("Page Sections", module)
     );
   })
   .add("PrimaryFilter", () => (
-    <PrimaryFilter />
+    <PrimaryFilter
+      eatDrinkFilters={EAT_DRINK_FILTERS}
+      toggleEatDrinkFilterHandler={action("filter clicked")}
+    />
   ));
