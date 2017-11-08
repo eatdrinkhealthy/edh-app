@@ -4,6 +4,7 @@ import React, {
 } from "react";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
+import _ from "lodash";
 import AlertMessage from "../components/AlertMessage";
 import Map from "../components/Map";
 import { getNearbyPlaces } from "../../api/foursquare/methods";
@@ -14,25 +15,29 @@ import type { IVenue } from "../../state/reducers/searchResultsReducers";
 import type { IState } from "../../state/stores/store";
 import type { IFilter } from "../../state/reducers/filtersReducers";
 
+type IMapWrapperProps = {
+  filterList: Array<IFilter>,
+  searchResults: Array<IVenue>,
+  setSearchResultsHandler: (searchResults: Array<IVenue>) => void,
+  setSelectedVenueHandler: () => void,
+  selectedVenueId: ?string,
+};
+
 export class MapWrapper extends Component {
-  props: {
-    filterList: Array<IFilter>,
-    searchResults: Array<IVenue>,
-    setSearchResultsHandler: (searchResults: Array<IVenue>) => void,
-    setSelectedVenueHandler: () => void,
-    selectedVenueId: ?string,
-  };
+  props: IMapWrapperProps;
 
-  componentWillMount() {
-    const selectedFilters = this.props.filterList.filter(
-      (filterItem: IFilter): boolean => (filterItem.on),
-    );
+  componentWillReceiveProps(nextProps: IMapWrapperProps) {
+    if (!_.isEqual(this.props.filterList, nextProps.filterList)) {
+      const selectedFilters = nextProps.filterList.filter(
+        (filterItem: IFilter): boolean => (filterItem.on),
+      );
 
-    getNearbyPlaces.call({
-      latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
-      longitude: -79.932115,
-      filterList: selectedFilters,
-    }, this.getNearbyPlacesCB);
+      getNearbyPlaces.call({
+        latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
+        longitude: -79.932115,
+        filterList: selectedFilters,
+      }, this.getNearbyPlacesCB);
+    }
   }
 
   // NOTE: this is an ES6 class property arrow function (preserves this context)
@@ -68,7 +73,7 @@ type IStateProps = {
 };
 
 const mapStateToProps = (state: IState): IStateProps => ({
-  filterList: state.filters,
+  filterList: state.eatDrinkFilters,
   searchResults: state.searchResults,
   selectedVenueId: state.mapDisplay.selectedVenueId,
 });

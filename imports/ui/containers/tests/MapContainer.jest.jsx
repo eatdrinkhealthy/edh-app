@@ -3,14 +3,6 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies, import/first */
 
-// mock getNearbyPlaces (a method call for foursquare api)
-// eslint-disable-next-line flowtype/require-return-type
-jest.mock("../../../api/foursquare/methods", () => ({
-  getNearbyPlaces: {
-    call: jest.fn(),
-  },
-}));
-
 // mock AlertMessage component (call to warning method)
 // eslint-disable-next-line flowtype/require-return-type
 jest.mock("../../components/AlertMessage", () => (
@@ -34,7 +26,6 @@ import type { IFilter } from "../../../state/reducers/filtersReducers";
 import type { IState } from "../../../state/stores/store";
 /* eslint-enable no-duplicate-imports */
 
-import { getNearbyPlaces } from "../../../api/foursquare/methods";
 import AlertMessage from "../../components/AlertMessage";
 
 describe("<MapWrapper />", function () {
@@ -70,7 +61,7 @@ describe("<MapWrapper />", function () {
     expect(AlertMessage.warning).toHaveBeenCalledWith("Unable to search at this time...");
   });
 
-  it("calls AlertMessage.warning when calling getNearbyPlacesCB with an no search results", function () {
+  it("calls AlertMessage.warning when calling getNearbyPlacesCB with no search results", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
     const wrapper = shallow(<MapWrapper
       filterList={testFilterList}
@@ -117,11 +108,6 @@ describe("<MapContainer />", function () {
       </MemoryRouter>
     </Provider>,
   );
-
-  it("should call getNearbyPlaces method with selected filters (on: true)", function () {
-    expect(getNearbyPlaces.call.mock.calls[0][0].filterList)
-      .toEqual([testDefaultState.filters[0]]);
-  });
 
   it("should set search results for MapWrapper from state", function () {
     expect(wrapper.find("MapWrapper").at(0).props().searchResults)
