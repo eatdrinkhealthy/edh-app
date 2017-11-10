@@ -34,7 +34,7 @@ export default class Map extends PureComponent {
 
   static defaultProps = {
     center: { lat: 32.789008, lng: -79.932115 },
-    zoom: 16,
+    zoom: 15,
     venues: [],
   }
 

@@ -66,7 +66,7 @@ export const httpCallFoursquareSearch = (
         client_secret: Meteor.settings.foursquare.client_secret,
         v: "20130815", // api version
         ll: latLng,
-        limit: "50",
+        limit: "20",
         intent: "browse",
         radius: "1000", // in meters
         categoryId: category,
