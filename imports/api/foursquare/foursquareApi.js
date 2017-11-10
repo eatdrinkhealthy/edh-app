@@ -60,18 +60,19 @@ export const httpCallFoursquareSearch = (
   let apiResult;
 
   try {
-    apiResult = HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", {
-      params: {
-        client_id: Meteor.settings.foursquare.client_id,
-        client_secret: Meteor.settings.foursquare.client_secret,
-        v: "20130815", // api version
-        ll: latLng,
-        limit: "50",
-        intent: "browse",
-        radius: "1000", // in meters
-        categoryId: category,
-      },
-    });
+    const params = {
+      client_id: Meteor.settings.foursquare.client_id,
+      client_secret: Meteor.settings.foursquare.client_secret,
+      v: "20130815", // api version
+      ll: latLng,
+      limit: "50",
+      intent: "browse",
+      radius: "1000", // in meters
+      categoryId: category,
+    };
+    console.log("search params:", params);
+
+    apiResult = HTTP.call("GET", "https://api.foursquare.com/v2/venues/search", { params });
   } catch (e) {
     // TODO log this exception to a logger service !!!
     console.error("Foursquare API exception:", e.message);  // eslint-disable-line no-console
@@ -82,6 +83,7 @@ export const httpCallFoursquareSearch = (
       headers: {},
     };
   }
+  console.log("result:", apiResult.content);
 
   return apiResult;
 };
