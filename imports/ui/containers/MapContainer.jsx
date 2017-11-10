@@ -28,7 +28,6 @@ export class MapWrapper extends Component {
 
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
     if (!_.isEqual(this.props.filterList, nextProps.filterList)) {
-      console.log("Map received new / different props.");
       const selectedFilters = nextProps.filterList.filter(
         (filterItem: IFilter): boolean => (filterItem.on),
       );
