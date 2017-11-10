@@ -24,7 +24,7 @@ export const EAT_DRINK_FILTERS: Array<IFilter> = [
     id: "rawFood",
     name: "Raw Food",
     on: false,
-    foursquareCategory: "52f2ab2ebcbc57f1066b8b45",
+    foursquareCategory: "4bf58dd8d48988d1e0931735",
   },
   {
     id: "juice",
