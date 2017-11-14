@@ -1,7 +1,8 @@
 // @flow
 import type { IFilter } from "../reducers/filtersReducers";
+import type { IEatDrinkFilter } from "../reducers/eatDrinkFiltersReducers";
 
-export const EAT_DRINK_FILTERS: Array<IFilter> = [
+export const EAT_DRINK_FILTERS: Array<IEatDrinkFilter> = [
   {
     id: "vegan",
     name: "Vegan",

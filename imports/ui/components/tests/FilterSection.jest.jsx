@@ -6,10 +6,10 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 import FilterSection from "../FilterSection";
-import type { IFilter } from "../../../state/reducers/filtersReducers";
+import type { IEatDrinkFilter } from "../../../state/reducers/eatDrinkFiltersReducers";
 
 describe("<FilterSection />", function () {
-  const testFilterList: Array<IFilter> = [
+  const testFilterList: Array<IEatDrinkFilter> = [
     { id: "juiceBar1", name: "Juice Bar1", on: true, foursquareCategory: "1" },
     { id: "juiceBar2", name: "Juice Bar2", on: false, foursquareCategory: "2" },
     { id: "juiceBar3", name: "Juice Bar3", on: false, foursquareCategory: "3" },

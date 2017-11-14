@@ -1,12 +1,12 @@
 // @flow
 import React, { Component } from "react";
 import Pill from "./Pill";
-import type { IFilter } from "../../state/reducers/filtersReducers";
+import type { IEatDrinkFilter } from "../../state/reducers/eatDrinkFiltersReducers";
 
 class FilterSection extends Component {
   props: {
     title: string,
-    filters: Array<IFilter>,
+    filters: Array<IEatDrinkFilter>,
     setFilter: (id: string) => void,
   };
 

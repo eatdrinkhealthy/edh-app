@@ -10,12 +10,13 @@ import { defaultMapDisplayState } from "../reducers/mapDisplayReducers";
 /* eslint-disable no-duplicate-imports */
 import type { IMapDisplayState } from "../reducers/mapDisplayReducers";
 import type { IFilter } from "../reducers/filtersReducers";
+import type { IEatDrinkFilter } from "../reducers/eatDrinkFiltersReducers";
 import type { IVenue } from "../reducers/searchResultsReducers";
 /* eslint-enable no-duplicate-imports */
 
 export type IState = {
   filters: Array<IFilter>,
-  eatDrinkFilters: Array<IFilter>,
+  eatDrinkFilters: Array<IEatDrinkFilter>,
   searchResults: Array<IVenue>,
   mapDisplay: IMapDisplayState,
 };
