@@ -88,6 +88,11 @@ describe("<MapContainer />", function () {
       { id: "bakery", name: "Bakery", on: false, foursquareCategory: "5" },
       { id: "farmersMarket", name: "Farmers Market", on: false, foursquareCategory: "6" },
     ],
+    venueTypeFilters: [
+      { id: "coffeeShop", name: "Coffee Shop", on: true, foursquareCategory: "7" },
+      { id: "grocery", name: "Market / Store", on: false, foursquareCategory: "8" },
+      { id: "healthFoodStore", name: "Health Food Store", on: false, foursquareCategory: "9" },
+    ],
     searchResults: [
       sampleVenues[3],
       sampleVenues[4],
