@@ -41,7 +41,7 @@ export const EAT_DRINK_FILTERS: Array<IEatDrinkFilter> = [
   },
 ];
 
-export const VENUE_FILTERS: Array<IFilter> = [
+export const VENUE_TYPE_FILTERS: Array<IFilter> = [
   {
     id: "restaurant",
     name: "Restaurant / Cafe",
