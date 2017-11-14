@@ -2,11 +2,12 @@
 import React, { Component } from "react";
 import Pill from "./Pill";
 import type { IEatDrinkFilter } from "../../state/reducers/eatDrinkFiltersReducers";
+import type { IVenueTypeFilter } from "../../state/reducers/venueTypeFiltersReducers";
 
 class FilterSection extends Component {
   props: {
     title: string,
-    filters: Array<IEatDrinkFilter>,
+    filters: Array<IEatDrinkFilter | IVenueTypeFilter>,
     setFilter: (id: string) => void,
   };
 

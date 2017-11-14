@@ -69,7 +69,7 @@ export const VENUE_TYPE_FILTERS: Array<IFilter> = [
   {
     id: "juiceBar",
     name: "Juice Bar",
-    on: true,
+    on: false,
     foursquareCategory: "4bf58dd8d48988d112941735",
   },
   {

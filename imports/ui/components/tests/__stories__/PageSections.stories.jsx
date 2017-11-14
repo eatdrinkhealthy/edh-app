@@ -11,6 +11,7 @@ import Navbar from "../../Navbar";
 import PrimaryFilter from "../../PrimaryFilter";
 import {
   EAT_DRINK_FILTERS,
+  VENUE_TYPE_FILTERS,
 } from "../../../../state/data/defaultFilters";
 
 storiesOf("Page Sections", module)
@@ -39,6 +40,8 @@ storiesOf("Page Sections", module)
   .add("PrimaryFilter", () => (
     <PrimaryFilter
       eatDrinkFilters={EAT_DRINK_FILTERS}
-      toggleEatDrinkFilterHandler={action("filter clicked")}
+      toggleEatDrinkFilterHandler={action("eat drink filter clicked")}
+      venueTypeFilters={VENUE_TYPE_FILTERS}
+      toggleVenueTypeFilterHandler={action("venue type filter clicked")}
     />
   ));
