@@ -7,17 +7,17 @@ import foursquareApiSearch from "./foursquareApi";
 
 // eslint-disable-next-line no-duplicate-imports
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
-import type { IFilter } from "../../state/reducers/filtersReducers";
+import type { IEatDrinkFilter } from "../../state/reducers/eatDrinkFiltersReducers";
 
 export const collectSearchResults = (
   latitude: number,
   longitude: number,
-  filterList: Array<IFilter>,
+  eatDrinkFilters: Array<IEatDrinkFilter>,
 ): Array<IVenue> => {
   let result = [];
 
   if (Meteor.isServer) {
-    filterList.forEach((filter: IFilter) => {
+    eatDrinkFilters.forEach((filter: IEatDrinkFilter) => {
       result = _.unionBy(
         result,
         foursquareApiSearch(filter.foursquareCategory, latitude, longitude),
@@ -36,20 +36,20 @@ export const getNearbyPlaces = new ValidatedMethod({
   validate: new SimpleSchema({
     latitude: { type: Number },
     longitude: { type: Number },
-    filterList: { type: Array },
-    "filterList.$": { type: Object },
-    "filterList.$.id": { type: String },
-    "filterList.$.name": { type: String },
-    "filterList.$.on": { type: Boolean },
-    "filterList.$.foursquareCategory": { type: String },
+    eatDrinkFilters: { type: Array },
+    "eatDrinkFilters.$": { type: Object },
+    "eatDrinkFilters.$.id": { type: String },
+    "eatDrinkFilters.$.name": { type: String },
+    "eatDrinkFilters.$.on": { type: Boolean },
+    "eatDrinkFilters.$.foursquareCategory": { type: String },
   }).validator(),
 
   // eslint-disable-next-line flowtype/require-parameter-type
-  run({ latitude, longitude, filterList }): Array<IVenue> {
+  run({ latitude, longitude, eatDrinkFilters }): Array<IVenue> {
     // TODO use unblock? (if so, confirm `meteor test` still passes)
     // if (Meteor.isServer) {
     //   this.unblock();
     // }
-    return collectSearchResults(latitude, longitude, filterList);
+    return collectSearchResults(latitude, longitude, eatDrinkFilters);
   },
 });

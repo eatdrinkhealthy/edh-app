@@ -13,10 +13,10 @@ import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
 
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
 import type { IState } from "../../state/stores/store";
-import type { IFilter } from "../../state/reducers/filtersReducers";
+import type { IEatDrinkFilter } from "../../state/reducers/eatDrinkFiltersReducers";
 
 type IMapWrapperProps = {
-  filterList: Array<IFilter>,
+  eatDrinkFilters: Array<IEatDrinkFilter>,
   searchResults: Array<IVenue>,
   setSearchResultsHandler: (searchResults: Array<IVenue>) => void,
   setSelectedVenueHandler: () => void,
@@ -27,15 +27,15 @@ export class MapWrapper extends Component {
   props: IMapWrapperProps;
 
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
-    if (!_.isEqual(this.props.filterList, nextProps.filterList)) {
-      const selectedFilters = nextProps.filterList.filter(
-        (filterItem: IFilter): boolean => (filterItem.on),
+    if (!_.isEqual(this.props.eatDrinkFilters, nextProps.eatDrinkFilters)) {
+      const selectedFilters = nextProps.eatDrinkFilters.filter(
+        (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
       );
 
       getNearbyPlaces.call({
         latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
         longitude: -79.932115,
-        filterList: selectedFilters,
+        eatDrinkFilters: selectedFilters,
       }, this.getNearbyPlacesCB);
     }
   }
@@ -67,13 +67,13 @@ export class MapWrapper extends Component {
 }
 
 type IStateProps = {
-  filterList: Array<IFilter>,
+  eatDrinkFilters: Array<IEatDrinkFilter>,
   searchResults: Array<IVenue>,
   selectedVenueId: ?string,
 };
 
 const mapStateToProps = (state: IState): IStateProps => ({
-  filterList: state.eatDrinkFilters,
+  eatDrinkFilters: state.eatDrinkFilters,
   searchResults: state.searchResults,
   selectedVenueId: state.mapDisplay.selectedVenueId,
 });

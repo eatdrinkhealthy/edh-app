@@ -22,14 +22,14 @@ import MapContainer, { MapWrapper } from "../MapContainer";
 import sampleVenues from "../../../state/stores/tests/sampleVenueData";
 
 /* eslint-disable no-duplicate-imports */
-import type { IFilter } from "../../../state/reducers/filtersReducers";
 import type { IState } from "../../../state/stores/store";
+import type { IEatDrinkFilter } from "../../../state/reducers/eatDrinkFiltersReducers";
 /* eslint-enable no-duplicate-imports */
 
 import AlertMessage from "../../components/AlertMessage";
 
 describe("<MapWrapper />", function () {
-  const testFilterList: Array<IFilter> = [
+  const testFilterList: Array<IEatDrinkFilter> = [
     { id: "jb1", name: "Juice Bar1", on: true, foursquareCategory: "1" },
     { id: "jb2", name: "Juice Bar2", on: false, foursquareCategory: "2" },
     { id: "jb3", name: "Juice Bar3", on: false, foursquareCategory: "3" },
@@ -38,7 +38,7 @@ describe("<MapWrapper />", function () {
   it("matches render snapshot", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
     const wrapper = shallow(<MapWrapper
-      filterList={testFilterList}
+      eatDrinkFilters={testFilterList}
       searchResults={[]}
       setSearchResultsHandler={jest.fn()}
       setSelectedVenueHandler={jest.fn()}
@@ -50,7 +50,7 @@ describe("<MapWrapper />", function () {
   it("calls AlertMessage.warning when calling getNearbyPlacesCB with an error", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
     const wrapper = shallow(<MapWrapper
-      filterList={testFilterList}
+      eatDrinkFilters={testFilterList}
       searchResults={[]}
       setSearchResultsHandler={jest.fn()}
       setSelectedVenueHandler={jest.fn()}
@@ -64,7 +64,7 @@ describe("<MapWrapper />", function () {
   it("calls AlertMessage.warning when calling getNearbyPlacesCB with no search results", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
     const wrapper = shallow(<MapWrapper
-      filterList={testFilterList}
+      eatDrinkFilters={testFilterList}
       searchResults={[]}
       setSearchResultsHandler={jest.fn()}
       setSelectedVenueHandler={jest.fn()}

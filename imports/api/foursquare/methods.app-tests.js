@@ -5,7 +5,7 @@ import { assert } from "meteor/practicalmeteor:chai";
 import { Meteor } from "meteor/meteor";
 import type { IMeteorError } from "meteor/meteor";
 import { getNearbyPlaces } from "./methods";
-import type { IFilter } from "../../state/reducers/filtersReducers";
+import type { IVenue } from "../../state/reducers/searchResultsReducers";
 
 const testFilterList = [
   {
@@ -38,7 +38,7 @@ if (Meteor.isServer) {
         const args = {
           latitude: 0,
           longitude: 0,
-          filterList: testFilterList,
+          eatDrinkFilters: testFilterList,
         };
 
         assert.doesNotThrow(() => {
@@ -59,12 +59,12 @@ if (Meteor.isClient) {
           const args = {
             latitude: 0,
             longitude: 0,
-            filterList: testFilterList,
+            eatDrinkFilters: testFilterList,
           };
 
           assert.doesNotThrow(() => {
             getNearbyPlaces.call(args,
-              function (err: IMeteorError, res: Array<IFilter>) {
+              function (err: IMeteorError, res: Array<IVenue>) {
                 assert.isUndefined(err);
                 assert.deepEqual(res, []);
                 done();
@@ -78,12 +78,12 @@ if (Meteor.isClient) {
         const args = {
           latitude: "not a number",
           longitude: 0,
-          filterList: testFilterList,
+          eatDrinkFilters: testFilterList,
         };
 
         assert.doesNotThrow(() => {
           getNearbyPlaces.call(args,
-            function (err: IMeteorError, res: Array<IFilter>) {
+            function (err: IMeteorError, res: Array<IVenue>) {
               assert.isUndefined(res);
               assert.isDefined(err);
 
