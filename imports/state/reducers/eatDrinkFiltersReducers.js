@@ -22,7 +22,7 @@ export const toggleEatDrinkFilter = (
   ))
 );
 
-const eatDrinkFilters = (
+export const eatDrinkFiltersReducer = (
   state: Array<IEatDrinkFilter> = EAT_DRINK_FILTERS,
   action: IEatDrinkFilterAction,
 ): Array<IEatDrinkFilter> => {
@@ -34,5 +34,3 @@ const eatDrinkFilters = (
       return state;
   }
 };
-
-export default eatDrinkFilters;

@@ -2,7 +2,7 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
-import eatDrinkFiltersReducer, { toggleEatDrinkFilter } from "../eatDrinkFiltersReducers";
+import { eatDrinkFiltersReducer, toggleEatDrinkFilter } from "../eatDrinkFiltersReducers";
 import { EAT_DRINK_FILTERS } from "../../data/defaultFilters";
 import {
   toggleEatDrinkFilter as toggleEatDrinkFilterActionCreator,

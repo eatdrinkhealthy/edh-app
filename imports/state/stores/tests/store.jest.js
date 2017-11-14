@@ -5,7 +5,7 @@
 import store, { defaultState } from "../store";
 import filtersReducer from "../../reducers/filtersReducers";
 import { setFilter } from "../../actions/filtersActions";
-import eatDrinkFiltersReducer from "../../reducers/eatDrinkFiltersReducers";
+import { eatDrinkFiltersReducer } from "../../reducers/eatDrinkFiltersReducers";
 import { toggleEatDrinkFilter } from "../../actions/eatDrinkFiltersActions";
 import { venueTypeFiltersReducer } from "../../reducers/venueTypeFiltersReducers";
 import { toggleVenueTypeFilter } from "../../actions/venueTypeFiltersActions";
