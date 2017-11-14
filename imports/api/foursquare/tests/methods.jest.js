@@ -4,8 +4,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Meteor } from "meteor/meteor";
 import { collectSearchResults } from "../methods";
-
-import type { IFilter } from "../../../state/reducers/filtersReducers";
+import type { IEatDrinkFilter } from "../../../state/reducers/eatDrinkFiltersReducers";
 
 // mock results of foursquareApiSearch(), called by collectSearchResults
 /* eslint-disable flowtype/require-return-type */
@@ -42,7 +41,7 @@ jest.mock("../foursquareApi", () => (
 describe("Methods", function () {
   describe("getNearbyPlaces", function () {
     describe("collectSearchResults - helper function", function () {
-      const selected2TestFilters: Array<IFilter> = [
+      const selected2EatDrinkFilters: Array<IEatDrinkFilter> = [
         {
           id: "saladPlace",
           name: "Salad Places",
@@ -57,7 +56,7 @@ describe("Methods", function () {
         },
       ];
 
-      const selected3TestFilters: Array<IFilter> = [
+      const selected3EatDrinkFilters: Array<IEatDrinkFilter> = [
         {
           id: "saladPlace",
           name: "Salad Places",
@@ -106,7 +105,7 @@ describe("Methods", function () {
 
       it("should concat results from multiple foursquareApi calls", function () {
         // call with 2 filters, foursquareSearchApi returns 1,2,3 and 4,5,6
-        const results = collectSearchResults(0, 0, selected2TestFilters);
+        const results = collectSearchResults(0, 0, selected2EatDrinkFilters);
         expect(results).toEqual([
           { id: "1", name: "testVenue1", location: {} },
           { id: "2", name: "testVenue2", location: {} },
@@ -119,7 +118,7 @@ describe("Methods", function () {
 
       it("should filter out duplicate venues", function () {
         // call with 3 filters, foursquareSearchApi returns 3 sets of results, with 3 duplicates
-        const results = collectSearchResults(0, 0, selected3TestFilters);
+        const results = collectSearchResults(0, 0, selected3EatDrinkFilters);
         expect(results).toEqual([
           { id: "A", name: "testVenueA", location: {} },
           { id: "B", name: "testVenueB", location: {} },

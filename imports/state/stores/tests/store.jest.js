@@ -3,8 +3,6 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import store, { defaultState } from "../store";
-import filtersReducer from "../../reducers/filtersReducers";
-import { setFilter } from "../../actions/filtersActions";
 import { eatDrinkFiltersReducer } from "../../reducers/eatDrinkFiltersReducers";
 import { toggleEatDrinkFilter } from "../../actions/eatDrinkFiltersActions";
 import { venueTypeFiltersReducer } from "../../reducers/venueTypeFiltersReducers";
@@ -18,18 +16,6 @@ import sampleVenues from "./sampleVenueData";
 describe("store - smoke test", function () {
   it("should return a default state", function () {
     expect(store.getState()).toEqual(expect.objectContaining(defaultState));
-  });
-
-  describe("filters state", function () {
-    it("should return the initial state of filters reducer", function () {
-      const unknownAction = { type: "unknown", id: "a", checked: false };
-      expect(store.getState().filters).toEqual(filtersReducer(undefined, unknownAction));
-    });
-
-    it("should handle a setFilter action", function () {
-      store.dispatch(setFilter("bakery", true)); // 5th filter in defaultFilters
-      expect(store.getState().filters[4].on).toEqual(true);
-    });
   });
 
   describe("eat drink filters state", function () {
