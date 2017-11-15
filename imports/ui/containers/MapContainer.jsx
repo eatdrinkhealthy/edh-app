@@ -30,14 +30,14 @@ export class MapWrapper extends Component {
 
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
     if (this.filterHasChanged(nextProps)) {
-      const selectedFilters = nextProps.eatDrinkFilters.filter(
+      const eatDrinkFilters = nextProps.eatDrinkFilters.filter(
         (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
       );
 
       getNearbyPlaces.call({
         latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
         longitude: -79.932115,
-        eatDrinkFilters: selectedFilters,
+        eatDrinkFilters,
       }, this.getNearbyPlacesCB);
     }
   }

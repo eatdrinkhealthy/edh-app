@@ -2,6 +2,7 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
+import _ from "lodash";
 import searchResults from "../searchResultsReducers";
 import { setSearchResults } from "../../actions/searchResultsActions";
 import sampleVenues from "../../stores/tests/sampleVenueData";
@@ -48,7 +49,7 @@ describe("searchResults reducer", function () {
       sampleVenues[1],
       sampleVenues[2],
     ];
-    const copyState = [...prevState];
+    const copyState = _.cloneDeep(prevState);
     const nextState = [
       sampleVenues[3],
       sampleVenues[4],

@@ -2,6 +2,7 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
+import _ from "lodash";
 import { venueTypeFiltersReducer, toggleVenueTypeFilter } from "../venueTypeFiltersReducers";
 import { VENUE_TYPE_FILTERS } from "../../data/defaultFilters";
 import {
@@ -16,7 +17,7 @@ describe("venueTypeFilters reducers", function () {
       { id: "2", name: "Juice Bar 2", on: false, foursquareCategory: "def" },
       { id: "3", name: "Juice Bar 3", on: false, foursquareCategory: "ghi" },
     ];
-    const copyState = [...previousState];
+    const copyState = _.cloneDeep(previousState);
     const newState = toggleVenueTypeFilter(previousState, "2");
 
     it("should only set the 'on' property of indicated filter", function () {

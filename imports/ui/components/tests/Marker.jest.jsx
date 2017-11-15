@@ -4,6 +4,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 import { mount, shallow } from "enzyme";
+import _ from "lodash";
 import renderer from "react-test-renderer";
 import * as chpMod from "../../../utils/calcHintPosition";
 import Marker from "../Marker";
@@ -27,7 +28,7 @@ describe("<Marker />", function () {
 
   const options = { createNodeMock };
 
-  const testVenue = { ...sampleVenues[0] };  // create a copy of a sample venue object
+  const testVenue = _.cloneDeep(sampleVenues[0]);  // create a copy of a sample venue object
 
   const chpSpy = jest.spyOn(chpMod, "calcHintPosition");
 
