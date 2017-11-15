@@ -7,7 +7,6 @@ import { Meteor } from "meteor/meteor";
 import _ from "lodash";
 import AlertMessage from "../components/AlertMessage";
 import Map from "../components/Map";
-import { getNearbyPlaces } from "../../api/foursquare/methods";
 import { setSearchResults } from "../../state/actions/searchResultsActions";
 import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
 
@@ -34,11 +33,14 @@ export class MapWrapper extends Component {
         (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
       );
 
-      getNearbyPlaces.call({
-        latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
-        longitude: -79.932115,
-        eatDrinkFilters,
-      }, this.getNearbyPlacesCB);
+      Meteor.call("getNearbyPlaces",
+        {
+          latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
+          longitude: -79.932115,
+          eatDrinkFilters,
+        },
+        this.getNearbyPlacesCB,
+      );
     }
   }
 
@@ -47,7 +49,7 @@ export class MapWrapper extends Component {
     const vtfChanged = !_.isEqual(this.props.venueTypeFilters, nextProps.venueTypeFilters);
 
     return edfChanged || vtfChanged;
-  }
+  };
 
   // NOTE: this is an ES6 class property arrow function (preserves this context)
   getNearbyPlacesCB = (error: Error, result: Array<IVenue>) => {

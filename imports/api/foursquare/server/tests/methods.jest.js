@@ -4,7 +4,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Meteor } from "meteor/meteor";
 import { collectSearchResults } from "../methods";
-import type { IEatDrinkFilter } from "../../../state/reducers/eatDrinkFiltersReducers";
+import type { IEatDrinkFilter } from "../../../../state/reducers/eatDrinkFiltersReducers";
 
 // mock results of foursquareApiSearch(), called by collectSearchResults
 /* eslint-disable flowtype/require-return-type */

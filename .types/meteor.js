@@ -79,5 +79,6 @@ declare module "meteor/meteor" {
       callback?: (err?: IMeteorError) => void
     ): void,
     methods({}): void,
+    call(string, {}, function): void,
   }
 }

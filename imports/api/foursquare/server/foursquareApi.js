@@ -5,7 +5,7 @@ import { Meteor } from "meteor/meteor";
 // eslint-disable-next-line no-duplicate-imports
 import type { IHttpResult } from "meteor/http";
 
-import type { IVenue } from "../../state/reducers/searchResultsReducers";
+import type { IVenue } from "../../../state/reducers/searchResultsReducers";
 
 type IFoursquareVenue = {
   id: string,
