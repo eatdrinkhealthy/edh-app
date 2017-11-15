@@ -14,9 +14,11 @@ import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
 import type { IState } from "../../state/stores/store";
 import type { IEatDrinkFilter } from "../../state/reducers/eatDrinkFiltersReducers";
+import type { IVenueTypeFilter } from "../../state/reducers/venueTypeFiltersReducers";
 
 type IMapWrapperProps = {
   eatDrinkFilters: Array<IEatDrinkFilter>,
+  venueTypeFilters: Array<IVenueTypeFilter>,
   searchResults: Array<IVenue>,
   setSearchResultsHandler: (searchResults: Array<IVenue>) => void,
   setSelectedVenueHandler: () => void,
@@ -27,7 +29,7 @@ export class MapWrapper extends Component {
   props: IMapWrapperProps;
 
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
-    if (!_.isEqual(this.props.eatDrinkFilters, nextProps.eatDrinkFilters)) {
+    if (this.filterHasChanged(nextProps)) {
       const selectedFilters = nextProps.eatDrinkFilters.filter(
         (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
       );
@@ -38,6 +40,13 @@ export class MapWrapper extends Component {
         eatDrinkFilters: selectedFilters,
       }, this.getNearbyPlacesCB);
     }
+  }
+
+  filterHasChanged = (nextProps: IMapWrapperProps): boolean => {
+    const edfChanged = !_.isEqual(this.props.eatDrinkFilters, nextProps.eatDrinkFilters);
+    const vtfChanged = !_.isEqual(this.props.venueTypeFilters, nextProps.venueTypeFilters);
+
+    return edfChanged || vtfChanged;
   }
 
   // NOTE: this is an ES6 class property arrow function (preserves this context)
@@ -68,12 +77,14 @@ export class MapWrapper extends Component {
 
 type IStateProps = {
   eatDrinkFilters: Array<IEatDrinkFilter>,
+  venueTypeFilters: Array<IVenueTypeFilter>,
   searchResults: Array<IVenue>,
   selectedVenueId: ?string,
 };
 
 const mapStateToProps = (state: IState): IStateProps => ({
   eatDrinkFilters: state.eatDrinkFilters,
+  venueTypeFilters: state.venueTypeFilters,
   searchResults: state.searchResults,
   selectedVenueId: state.mapDisplay.selectedVenueId,
 });

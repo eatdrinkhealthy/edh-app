@@ -16,6 +16,7 @@ import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
+import _ from "lodash";
 import { createStore } from "redux";
 import appReducer from "../../../state/reducers";
 import MapContainer, { MapWrapper } from "../MapContainer";
@@ -29,64 +30,76 @@ import type { IEatDrinkFilter } from "../../../state/reducers/eatDrinkFiltersRed
 import AlertMessage from "../../components/AlertMessage";
 
 describe("<MapWrapper />", function () {
-  const testFilterList: Array<IEatDrinkFilter> = [
-    { id: "jb1", name: "Juice Bar1", on: true, foursquareCategory: "1" },
-    { id: "jb2", name: "Juice Bar2", on: false, foursquareCategory: "2" },
-    { id: "jb3", name: "Juice Bar3", on: false, foursquareCategory: "3" },
+  const edFilterList: Array<IEatDrinkFilter> = [
+    { id: "jb1", name: "vegan", on: true, foursquareCategory: "1" },
+    { id: "jb2", name: "raw", on: false, foursquareCategory: "2" },
+    { id: "jb3", name: "juice", on: false, foursquareCategory: "3" },
   ];
+
+  const vtFilterList: Array<IEatDrinkFilter> = [
+    { id: "vt1", name: "Restaurant", on: true, foursquareCategory: "4" },
+    { id: "vt2", name: "Coffee Shop", on: false, foursquareCategory: "5" },
+    { id: "vt3", name: "Market", on: false, foursquareCategory: "6" },
+  ];
+
+  const stubFn = jest.fn();
+
+  const props = {
+    eatDrinkFilters: edFilterList,
+    venueTypeFilters: vtFilterList,
+    searchResults: [],
+    setSearchResultsHandler: stubFn,
+    setSelectedVenueHandler: stubFn,
+    selectedVenueId: null,
+  };
 
   it("matches render snapshot", function () {
     // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
-    const wrapper = shallow(<MapWrapper
-      eatDrinkFilters={testFilterList}
-      searchResults={[]}
-      setSearchResultsHandler={jest.fn()}
-      setSelectedVenueHandler={jest.fn()}
-      selectedVenueId={null}
-    />);
+    const wrapper = shallow(<MapWrapper {...props} />);
+
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it("calls AlertMessage.warning when calling getNearbyPlacesCB with an error", function () {
-    // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
-    const wrapper = shallow(<MapWrapper
-      eatDrinkFilters={testFilterList}
-      searchResults={[]}
-      setSearchResultsHandler={jest.fn()}
-      setSelectedVenueHandler={jest.fn()}
-      selectedVenueId={null}
-    />);
-    // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component)
+    const wrapper = shallow(<MapWrapper {...props} />);
+
+    // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
     wrapper.instance().getNearbyPlacesCB("some error", undefined);
     expect(AlertMessage.warning).toHaveBeenCalledWith("Unable to search at this time...");
   });
 
   it("calls AlertMessage.warning when calling getNearbyPlacesCB with no search results", function () {
-    // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
-    const wrapper = shallow(<MapWrapper
-      eatDrinkFilters={testFilterList}
-      searchResults={[]}
-      setSearchResultsHandler={jest.fn()}
-      setSelectedVenueHandler={jest.fn()}
-      selectedVenueId={null}
-    />);
-    // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component)
+    const wrapper = shallow(<MapWrapper {...props} />);
+
+    // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
     wrapper.instance().getNearbyPlacesCB(undefined, []);
     expect(AlertMessage.warning).toHaveBeenCalledWith("No search results for current criteria...");
+  });
+
+  it("should know when filter has NOT changed", function () {
+    const nextProps = _.cloneDeep(props);    // make a copy of props
+
+    const wrapper = shallow(<MapWrapper {...props} />);
+    // $FlowFixMe (ignoring 'filterHasChanged' is not method of React$Component error)
+    expect(wrapper.instance().filterHasChanged(nextProps)).toBe(false);
+  });
+
+  it("should know when filter has changed", function () {
+    const nextProps = _.cloneDeep(props);        // make a copy of props
+    nextProps.venueTypeFilters[0].on = false;    // change something in it
+
+    const wrapper = shallow(<MapWrapper {...props} />);
+    // $FlowFixMe (ignoring 'filterHasChanged' is not method of React$Component error)
+    expect(wrapper.instance().filterHasChanged(nextProps)).toBe(true);
   });
 });
 
 describe("<MapContainer />", function () {
   const testDefaultState: IState = {
-    filters: [
-      { id: "juiceBar", name: "Juice Bar", on: true, foursquareCategory: "1" },
-      { id: "cafe", name: "Cafe", on: false, foursquareCategory: "2" },
-      { id: "market", name: "Market", on: false, foursquareCategory: "3" },
-    ],
     eatDrinkFilters: [
       { id: "vegan", name: "Vegan", on: true, foursquareCategory: "4" },
-      { id: "bakery", name: "Bakery", on: false, foursquareCategory: "5" },
-      { id: "farmersMarket", name: "Farmers Market", on: false, foursquareCategory: "6" },
+      { id: "raw", name: "Raw", on: false, foursquareCategory: "5" },
+      { id: "juice", name: "Juice", on: false, foursquareCategory: "6" },
     ],
     venueTypeFilters: [
       { id: "coffeeShop", name: "Coffee Shop", on: true, foursquareCategory: "7" },
