@@ -6,7 +6,16 @@ import { Meteor } from "meteor/meteor";
 import type { IMeteorError } from "meteor/meteor";
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
 
-const testFilterList = [
+const eatDrinkFilters = [
+  {
+    id: "juiceBar",
+    name: "Juice Bars",
+    on: true,
+    foursquareCategory: "4bf58dd8d48988d112941735",
+  },
+];
+
+const venueTypeFilters = [
   {
     id: "juiceBar",
     name: "Juice Bars",
@@ -25,7 +34,8 @@ if (Meteor.isClient) {
           const args = {
             latitude: 0,
             longitude: 0,
-            eatDrinkFilters: testFilterList,
+            eatDrinkFilters,
+            venueTypeFilters,
           };
 
           assert.doesNotThrow(() => {
@@ -44,7 +54,8 @@ if (Meteor.isClient) {
         const args = {
           latitude: "not a number",
           longitude: 0,
-          eatDrinkFilters: testFilterList,
+          eatDrinkFilters,
+          venueTypeFilters,
         };
 
         assert.doesNotThrow(() => {

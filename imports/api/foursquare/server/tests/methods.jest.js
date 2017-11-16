@@ -43,37 +43,52 @@ describe("Methods", function () {
     describe("collectSearchResults - helper function", function () {
       const selected2EatDrinkFilters: Array<IEatDrinkFilter> = [
         {
-          id: "saladPlace",
-          name: "Salad Places",
+          id: "vegan",
+          name: "Vegan",
           on: false,
-          foursquareCategory: "4bf58dd8d48988d1bd941735",
+          foursquareCategory: "52f2ab2ebcbc57f1066b8b1c",
         },
         {
-          id: "bakery",
-          name: "Bakeries",
+          id: "vegetarian",
+          name: "Vegetarian",
           on: false,
-          foursquareCategory: "4bf58dd8d48988d16a941735",
+          foursquareCategory: "4bf58dd8d48988d1d3941735",
         },
       ];
 
       const selected3EatDrinkFilters: Array<IEatDrinkFilter> = [
         {
-          id: "saladPlace",
-          name: "Salad Places",
+          id: "vegan",
+          name: "Vegan",
           on: false,
-          foursquareCategory: "4bf58dd8d48988d1bd941735",
+          foursquareCategory: "52f2ab2ebcbc57f1066b8b1c",
         },
         {
-          id: "bakery",
-          name: "Bakeries",
+          id: "vegetarian",
+          name: "Vegetarian",
           on: false,
-          foursquareCategory: "4bf58dd8d48988d16a941735",
+          foursquareCategory: "4bf58dd8d48988d1d3941735",
         },
         {
-          id: "coffeeShop",
-          name: "Coffee Shops",
+          id: "glutenFree",
+          name: "Gluten Free",
           on: false,
-          foursquareCategory: "4bf58dd8d48988d1e0931735",
+          foursquareCategory: "4c2cd86ed066bed06c3c5209",
+        },
+      ];
+
+      const selected2VenueTypeFilters: Array<IEatDrinkFilter> = [
+        {
+          id: "restaurant",
+          name: "Restaurant / Cafe",
+          on: false,
+          foursquareCategory: "4bf58dd8d48988d1c4941735",
+        },
+        {
+          id: "grocery",
+          name: "Market / Store",
+          on: false,
+          foursquareCategory: "4bf58dd8d48988d118951735",
         },
       ];
 
@@ -99,13 +114,16 @@ describe("Methods", function () {
       });
 
       it("should return an empty array when no filters selected foursquareApi calls", function () {
-        const results = collectSearchResults(0, 0, []);
+        const results = collectSearchResults(0, 0, [], []);
         expect(results).toEqual([]);
       });
 
       it("should concat results from multiple foursquareApi calls", function () {
         // call with 2 filters, foursquareSearchApi returns 1,2,3 and 4,5,6
-        const results = collectSearchResults(0, 0, selected2EatDrinkFilters);
+        const results = collectSearchResults(
+          0, 0, selected2EatDrinkFilters, selected2VenueTypeFilters,
+        );
+
         expect(results).toEqual([
           { id: "1", name: "testVenue1", location: {} },
           { id: "2", name: "testVenue2", location: {} },
@@ -118,7 +136,10 @@ describe("Methods", function () {
 
       it("should filter out duplicate venues", function () {
         // call with 3 filters, foursquareSearchApi returns 3 sets of results, with 3 duplicates
-        const results = collectSearchResults(0, 0, selected3EatDrinkFilters);
+        const results = collectSearchResults(
+          0, 0, selected3EatDrinkFilters, selected2VenueTypeFilters,
+        );
+
         expect(results).toEqual([
           { id: "A", name: "testVenueA", location: {} },
           { id: "B", name: "testVenueB", location: {} },

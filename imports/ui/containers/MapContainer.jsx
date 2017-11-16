@@ -33,11 +33,16 @@ export class MapWrapper extends Component {
         (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
       );
 
+      const venueTypeFilters = nextProps.venueTypeFilters.filter(
+        (filterItem: IVenueTypeFilter): boolean => (filterItem.on),
+      );
+
       Meteor.call("getNearbyPlaces",
         {
           latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
           longitude: -79.932115,
           eatDrinkFilters,
+          venueTypeFilters,
         },
         this.getNearbyPlacesCB,
       );

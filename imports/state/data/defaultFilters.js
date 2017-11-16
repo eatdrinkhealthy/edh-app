@@ -25,13 +25,13 @@ export const EAT_DRINK_FILTERS: Array<IEatDrinkFilter> = [
     id: "rawFood",
     name: "Raw Food",
     on: false,
-    foursquareCategory: "4bf58dd8d48988d1e0931735",
+    foursquareCategory: "52f2ab2ebcbc57f1066b8b1c",
   },
   {
     id: "juice",
     name: "Juice",
     on: false,
-    foursquareCategory: "4bf58dd8d48988d112941735",
+    foursquareCategory: "4bf58dd8d48988d1bd941735",
   },
   {
     id: "supplements",
