@@ -9,6 +9,17 @@ import type { IVenue } from "../../../state/reducers/searchResultsReducers";
 import type { IEatDrinkFilter } from "../../../state/reducers/eatDrinkFiltersReducers";
 import type { IVenueTypeFilter } from "../../../state/reducers/venueTypeFiltersReducers";
 
+export const buildSearchString = (
+  eatDrinkFilters: Array<IEatDrinkFilter>,
+  venueTypeFilters: Array<IVenueTypeFilter>,
+): string => {
+  const edCategories = _.map(eatDrinkFilters, filter => (filter.foursquareCategory));
+  const vtCategories = _.map(venueTypeFilters, filter => (filter.foursquareCategory));
+  const allCategories = _.union(edCategories, vtCategories);
+
+  return _.join(allCategories);
+};
+
 export const collectSearchResults = (
   latitude: number,
   longitude: number,
@@ -16,14 +27,13 @@ export const collectSearchResults = (
   venueTypeFilters: Array<IVenueTypeFilter>,
 ): Array<IVenue> => {
   let result = [];
+  console.log("write tests for buildSearchString");
+  const categories = buildSearchString(eatDrinkFilters, venueTypeFilters);
 
-  venueTypeFilters.forEach((filter: IVenueTypeFilter) => {
-    result = _.unionBy(
-      result,
-      foursquareApiSearch(filter.foursquareCategory, latitude, longitude),
-      "id",
-    );
-  });
+  console.log("write tests for calling fs api logic");
+  if (categories) {
+    result = foursquareApiSearch(categories, latitude, longitude);
+  }
 
   return result;
 };
