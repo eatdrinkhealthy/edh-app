@@ -12,7 +12,12 @@ import {
 
 storiesOf("Components", module)
   .add("FilterSection", () => (
-    <FilterSection title="EAT / DRINK" filters={EAT_DRINK_FILTERS} setFilter={action("filter clicked")} />
+    <FilterSection
+      id="eatDrinkFilters"
+      title="EAT / DRINK"
+      filters={EAT_DRINK_FILTERS}
+      setFilter={action("filter clicked")}
+    />
   ))
   .add("Pill", () => (
     <CenterWrapper

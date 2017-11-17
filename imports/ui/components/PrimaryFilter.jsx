@@ -19,11 +19,13 @@ const PrimaryFilter = ({
 }: IPrimaryFilterProps) => (
   <div>
     <FilterSection
+      id="eatDrinkFilters"
       title="EAT / DRINK"
       filters={eatDrinkFilters}
       setFilter={toggleEatDrinkFilterHandler}
     />
     <FilterSection
+      id="venueTypeFilters"
       title="VENUES"
       filters={venueTypeFilters}
       setFilter={toggleVenueTypeFilterHandler}

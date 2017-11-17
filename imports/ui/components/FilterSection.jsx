@@ -6,6 +6,7 @@ import type { IVenueTypeFilter } from "../../state/reducers/venueTypeFiltersRedu
 
 class FilterSection extends Component {
   props: {
+    id: string,
     title: string,
     filters: Array<IEatDrinkFilter | IVenueTypeFilter>,
     setFilter: (id: string) => void,
@@ -18,7 +19,7 @@ class FilterSection extends Component {
   };
 
   render() {
-    const { title, filters } = this.props;
+    const { id, title, filters } = this.props;
 
     // for centering already styled components
     const divCenterContent = {
@@ -30,7 +31,7 @@ class FilterSection extends Component {
     };
 
     return (
-      <div>
+      <div id={id}>
         <div style={divCenterContent}>
           <span className="filterSectionTitle">{title}</span>
         </div>

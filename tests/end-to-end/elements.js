@@ -1,3 +1,5 @@
+// selectors for various elements, organized by pages, page sections, or components
+
 export const baseUrl = "http://localhost:3000";
 
 export const elements = {
@@ -5,7 +7,8 @@ export const elements = {
   markerComponent: "div.markerContainer",
   homePage: {
     navbar: "#navbar",
-    filterLink: "#filterLink",
+    eatDrinkFilters: "#eatDrinkFilters",
+    venueTypeFilters: "#venueTypeFilters",
   },
   navbar: {
     username: ".nav__username",

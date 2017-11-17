@@ -21,6 +21,7 @@ describe("<FilterSection />", function () {
   it("matches render snapshot", function () {
     const tree = renderer.create(
       <FilterSection
+        id="testFilter"
         title="Test Filter Section"
         filters={testFilterList}
         setFilter={() => {}}
@@ -32,6 +33,7 @@ describe("<FilterSection />", function () {
 
   it("should call setFilter with filter id, when a Pill is clicked", function () {
     const props = {
+      id: "testFilter",
       title: "Test Filter Section",
       filters: testFilterList,
       setFilter: jest.fn(),

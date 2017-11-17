@@ -5,64 +5,48 @@
 /* global browser */
 
 import { elements as els, baseUrl } from "./elements";
-import DEFAULT_FILTER_LIST from "../../imports/state/data/defaultFilters";
+import {
+  EAT_DRINK_FILTERS,
+  VENUE_TYPE_FILTERS,
+} from "../../imports/state/data/defaultFilters";
 
-describe("Filter Page", function () {
-  it("displays the filter page when filter link clicked", function () {
+describe("Filters", function () {
+  it("has a pill component for each 'Eat / Drink' filter", function () {
     browser.url(baseUrl);
-    browser.waitForExist(els.homePage.filterLink);
-    browser.click(els.homePage.filterLink);
+    browser.waitForExist(els.homePage.eatDrinkFilters);
 
-    expect(browser.waitForExist(els.filterPage.component)).toBe(true);
+    EAT_DRINK_FILTERS.forEach((filter) => {
+      expect(browser.waitForExist(`[name='${filter.id}']`)).toBe(true);
+    });
   });
 
-  it("has a toggle component for each filter", function () {
-    browser.url(els.filterPage.url);
-    browser.waitForExist(els.filterPage.component);
+  it("has a pill component for each 'Venue Type' filter", function () {
+    browser.url(baseUrl);
+    browser.waitForExist(els.homePage.venueTypeFilters);
 
-    const numberOfFilterToggles = browser.elements(els.filterPage.toggle).value.length;
-
-    expect(numberOfFilterToggles).toBe(DEFAULT_FILTER_LIST.length);
-  });
-
-  it("has default filters set", function () {
-    browser.url(els.filterPage.url);
-    browser.waitForExist(els.filterPage.component);
-
-    const defaultFiltersOn = DEFAULT_FILTER_LIST.filter(filter => filter.on);
-    const togglesOn = "input:checked";
-    const numberTogglesOn = browser.elements(togglesOn).value.length;
-
-    expect(numberTogglesOn).toBe(defaultFiltersOn.length);
-  });
-
-  it("returns to the landing page when 'x' is clicked", function () {
-    browser.url(els.filterPage.url);
-    browser.waitForExist(els.filterPage.component);
-    browser.click(els.filterPage.closeLink);
-
-    expect(browser.waitForExist(els.homePage.navbar)).toBe(true);
+    VENUE_TYPE_FILTERS.forEach((filter) => {
+      expect(browser.waitForExist(`[name='${filter.id}']`)).toBe(true);
+    });
   });
 
   it("returns more results when more filters clicked - NOTE may fail based on location", function () {
-    // go to the filter page
-    browser.url(els.filterPage.url);
-    browser.waitForExist(els.filterPage.component);
+    browser.url(baseUrl);
+    browser.waitForExist(els.homePage.eatDrinkFilters);
 
-    // get all the unchecked filter toggle elements, and click them
-    const filterTogglesUnchecked = browser.elements(els.filterPage.toggleUnchecked).value;
-    filterTogglesUnchecked[0].click();
-    filterTogglesUnchecked[1].click();
-    filterTogglesUnchecked[2].click();
-    filterTogglesUnchecked[3].click();
-    filterTogglesUnchecked[4].click();
+    // check that there no search results (at this time, default /initial search has no results)
+    let markerArray = browser.elements(els.markerComponent).value;
+    expect(markerArray.length).toBe(0);
 
-    // go to the map (landing page)
-    browser.click(els.filterPage.closeLink);
+    // get and click a popular filter (with search results)
+    const coffeeShopPill = browser.element("[name='coffeeShop']");
+    expect(coffeeShopPill.getAttribute("class")).toBe("pill");
+    coffeeShopPill.click();
+    expect(coffeeShopPill.getAttribute("class")).toBe("pill pill_selected");
+
     browser.waitForExist(els.markerComponent, 7000); // allow for some api response time
 
     // check that there are many more results
-    const markerArray = browser.elements(els.markerComponent).value;
-    expect(markerArray.length).toBeGreaterThan(10);
+    markerArray = browser.elements(els.markerComponent).value;
+    expect(markerArray.length).toBeGreaterThan(5);
   });
 });
