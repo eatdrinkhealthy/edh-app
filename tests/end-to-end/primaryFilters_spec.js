@@ -10,7 +10,7 @@ import {
   VENUE_TYPE_FILTERS,
 } from "../../imports/state/data/defaultFilters";
 
-describe("Filters", function () {
+describe("Primary Filters", function () {
   it("has a pill component for each 'Eat / Drink' filter", function () {
     browser.url(baseUrl);
     browser.waitForExist(els.homePage.eatDrinkFilters);
