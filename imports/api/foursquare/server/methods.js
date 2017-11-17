@@ -27,10 +27,8 @@ export const collectSearchResults = (
   venueTypeFilters: Array<IVenueTypeFilter>,
 ): Array<IVenue> => {
   let result = [];
-  console.log("write tests for buildSearchString");
   const categories = buildSearchString(eatDrinkFilters, venueTypeFilters);
 
-  console.log("write tests for calling fs api logic");
   if (categories) {
     result = foursquareApiSearch(categories, latitude, longitude);
   }
