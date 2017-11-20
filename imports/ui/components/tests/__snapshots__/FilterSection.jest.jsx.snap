@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilterSection /> matches render snapshot 1`] = `
+<div
+  id="testFilter"
+>
+  <div
+    style={
+      Object {
+        "padding": "0px 10px 0px 10px",
+        "textAlign": "center",
+      }
+    }
+  >
+    <span
+      className="filterSectionTitle"
+    >
+      Test Filter Section
+    </span>
+  </div>
+  <div
+    style={
+      Object {
+        "padding": "0px 10px 0px 10px",
+        "textAlign": "center",
+      }
+    }
+  >
+    <span
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        className="pill pill_selected"
+        name="juiceBar1"
+        onClick={[Function]}
+      >
+        Juice Bar1
+      </button>
+      <button
+        className="pill"
+        name="juiceBar2"
+        onClick={[Function]}
+      >
+        Juice Bar2
+      </button>
+      <button
+        className="pill"
+        name="juiceBar3"
+        onClick={[Function]}
+      >
+        Juice Bar3
+      </button>
+    </span>
+    <span
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        className="pill pill_selected"
+        name="juiceBar4"
+        onClick={[Function]}
+      >
+        Juice Bar4
+      </button>
+      <button
+        className="pill"
+        name="juiceBar5"
+        onClick={[Function]}
+      >
+        Juice Bar5
+      </button>
+      <button
+        className="pill"
+        name="juiceBar6"
+        onClick={[Function]}
+      >
+        Juice Bar6
+      </button>
+    </span>
+  </div>
+</div>
+`;

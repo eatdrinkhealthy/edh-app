@@ -10,7 +10,7 @@ describe("User Accounts", function () {
   const testUser = {
     username: "testuser",
     email: "testuser@test.com",
-    password: "asdfadf",
+    password: "asdfasdf",
   };
 
   describe("Join - create new user", function () {
@@ -18,7 +18,7 @@ describe("User Accounts", function () {
       // a user shouldn't be logged in at this point, but in the event
       // tests were run in an order that logged a user in
       browser.url(baseUrl);
-      browser.waitForExist(els.navbar.component, 3000); // make sure Meteor is loaded.
+      browser.waitForExist(els.homePage.navbar, 3000); // make sure Meteor is loaded.
       browser.execute("Meteor.logout()");
 
       // in the event this test suite is run more than once (watch mode), remove
@@ -45,12 +45,12 @@ describe("User Accounts", function () {
     });
 
     it("should redirect to the landing / map page", function () {
-      browser.waitForExist(els.navbar.component);
+      browser.waitForExist(els.homePage.navbar);
     });
 
     it("should logout the user when logout link clicked (show join button)", function () {
       browser.click(els.userMenu.logoutLink);
-      expect(browser.waitForExist(els.userMenu.joinLink, 1000)).toBe(true);
+      expect(browser.waitForExist(els.userMenu.joinLink, 2000)).toBe(true);
     });
   });
 
@@ -59,7 +59,7 @@ describe("User Accounts", function () {
       // a user shouldn't be logged in at this point, but in the event
       // tests were run in an order that logged a user in
       browser.url(baseUrl);
-      browser.waitForExist(els.navbar.component, 3000); // make sure Meteor is loaded.
+      browser.waitForExist(els.homePage.navbar, 3000); // make sure Meteor is loaded.
     });
 
     it("should navigate to the sign in dialog and sign in", function () {
@@ -74,22 +74,32 @@ describe("User Accounts", function () {
     });
 
     it("should redirect to the landing / map page", function () {
-      browser.waitForExist(els.navbar.component, 1500);
+      browser.waitForExist(els.homePage.navbar, 1500);
     });
 
-    it("should show the logged in username on the navbar", function () {
-      browser.waitForExist(els.userMenu.username);
-      const loggedInUsername = browser.getText(els.userMenu.username);
+    const getResponsiveLoggedInUser = () => {
+      // depending on browser width, could be one or the other fields
+      //   -if user not logged in, both should be empty
+      const navbarUsernameRow1 = browser.getText(els.navbar.username);
+      const navbarUsernameRow2 = browser.getText(els.navbar.username_row2);
 
-      expect(loggedInUsername).toEqual(testUser.username);
+      // returns logged in username, or empty if both strings are empty
+      return navbarUsernameRow1 || navbarUsernameRow2;
+    };
+
+    it("should show the logged in username on the navbar", function () {
+      browser.waitForExist(els.homePage.navbar);
+      const loggedInUsername = getResponsiveLoggedInUser();
+
+      expect(loggedInUsername).toEqual(`Welcome, ${testUser.username}!`);
     });
 
     it("should logout the user when logout link clicked (show join button)", function () {
       browser.click(els.userMenu.logoutLink);
       expect(browser.waitForExist(els.userMenu.joinLink, 1000)).toBe(true);
 
-      const doesNotExist = browser.waitForExist(els.userMenu.username, null, true);
-      expect(doesNotExist).toBe(true);
+      const loggedInUsername = getResponsiveLoggedInUser();
+      expect(loggedInUsername).toBe("");
     });
   });
 });

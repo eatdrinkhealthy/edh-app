@@ -8,7 +8,7 @@ import { elements as els, baseUrl } from "./elements";
 describe("Sidebar / sign-in Page", function () {
   it("displays the sidebar when join link clicked", function () {
     browser.url(baseUrl);
-    browser.waitForExist(els.navbar.component);
+    browser.waitForExist(els.homePage.navbar);
     // WARNING
     //   -when searching for an element two times in a row, that is
     //   wrapped in a createContainer, the second search may fail.
@@ -23,6 +23,6 @@ describe("Sidebar / sign-in Page", function () {
     browser.waitForExist(els.sidebarPage.homeLink);
     browser.click(els.sidebarPage.homeLink);
 
-    expect(browser.waitForExist(els.navbar.component)).toBe(true);
+    expect(browser.waitForExist(els.homePage.navbar)).toBe(true);
   });
 });

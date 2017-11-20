@@ -1,20 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MapComponent /> matches render snapshot 1`] = `
-<div>
-  <Navbar />
-  <LocationsMap
-    center={
-      Object {
-        "lat": 32.789008,
-        "lng": -79.932115,
-      }
+exports[`<MapWrapper /> matches render snapshot 1`] = `
+<Map
+  center={
+    Object {
+      "lat": 32.789008,
+      "lng": -79.932115,
     }
-    googleMapsApiKey="TestAPIKeyValue"
-    selectedVenueId={null}
-    setSelectedVenueHandler={[Function]}
-    venues={Array []}
-    zoom={16}
-  />
-</div>
+  }
+  googleMapsApiKey="TestAPIKeyValue"
+  selectedVenueId={null}
+  setSelectedVenueHandler={[Function]}
+  venues={Array []}
+  zoom={15}
+/>
 `;

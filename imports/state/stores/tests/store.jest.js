@@ -3,8 +3,10 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import store, { defaultState } from "../store";
-import filtersReducer from "../../reducers/filtersReducers";
-import { setFilter } from "../../actions/filtersActions";
+import { eatDrinkFiltersReducer } from "../../reducers/eatDrinkFiltersReducers";
+import { toggleEatDrinkFilter } from "../../actions/eatDrinkFiltersActions";
+import { venueTypeFiltersReducer } from "../../reducers/venueTypeFiltersReducers";
+import { toggleVenueTypeFilter } from "../../actions/venueTypeFiltersActions";
 import searchResultsReducer from "../../reducers/searchResultsReducers";
 import { setSearchResults } from "../../actions/searchResultsActions";
 import mapDisplayReducer from "../../reducers/mapDisplayReducers";
@@ -16,24 +18,35 @@ describe("store - smoke test", function () {
     expect(store.getState()).toEqual(expect.objectContaining(defaultState));
   });
 
-  describe("filters state", function () {
-    it("should return the initial state of filters reducer", function () {
-      const unknownAction = { type: "unknown", id: "a", checked: false };
-      expect(store.getState().filters).toEqual(filtersReducer(undefined, unknownAction));
+  describe("eat drink filters state", function () {
+    it("should return the initial state of eat drink filters reducer", function () {
+      const unknownAction = { type: "unknown", id: "a" };
+      expect(store.getState().eatDrinkFilters)
+        .toEqual(eatDrinkFiltersReducer(undefined, unknownAction));
     });
 
-    it("should handle a setFilter action", function () {
-      store.dispatch(setFilter("bakery", true)); // 5th filter in defaultFilters
-      expect(store.getState().filters[4].on).toEqual(true);
+    it("should handle a toggleEatDrinkFilter action", function () {
+      store.dispatch(toggleEatDrinkFilter("vegan"));
+      expect(store.getState().eatDrinkFilters[0].on).toEqual(true);
+    });
+  });
+
+  describe("venue type filters state", function () {
+    it("should return the initial state of venue type filters reducer", function () {
+      const unknownAction = { type: "unknown", id: "a" };
+      expect(store.getState().venueTypeFilters)
+        .toEqual(venueTypeFiltersReducer(undefined, unknownAction));
+    });
+
+    it("should handle a toggleVenueTypeFilter action", function () {
+      store.dispatch(toggleVenueTypeFilter("restaurant"));
+      expect(store.getState().venueTypeFilters[0].on).toEqual(true);
     });
   });
 
   describe("searchResults state", function () {
     it("should return the initial state of the searchResults reducer", function () {
-      const unknownAction = {
-        type: "unknown",
-        searchResults: [sampleVenues[0]],
-      };
+      const unknownAction = { type: "unknown", searchResults: [sampleVenues[0]] };
       expect(store.getState().searchResults)
         .toEqual(searchResultsReducer(undefined, unknownAction));
     });

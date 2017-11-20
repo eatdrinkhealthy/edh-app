@@ -4,37 +4,57 @@ import React, {
 } from "react";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
+import _ from "lodash";
 import AlertMessage from "../components/AlertMessage";
-import LocationsMap from "../components/LocationsMap";
-import Navbar from "../components/Navbar";
-import { getNearbyPlaces } from "../../api/foursquare/methods";
+import Map from "../components/Map";
 import { setSearchResults } from "../../state/actions/searchResultsActions";
 import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
 
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
 import type { IState } from "../../state/stores/store";
-import type { IFilter } from "../../state/reducers/filtersReducers";
+import type { IEatDrinkFilter } from "../../state/reducers/eatDrinkFiltersReducers";
+import type { IVenueTypeFilter } from "../../state/reducers/venueTypeFiltersReducers";
 
-export class MapComponent extends Component {
-  props: {
-    filterList: Array<IFilter>,
-    searchResults: Array<IVenue>,
-    setSearchResultsHandler: (searchResults: Array<IVenue>) => void,
-    setSelectedVenueHandler: () => void,
-    selectedVenueId: ?string,
-  };
+type IMapWrapperProps = {
+  eatDrinkFilters: Array<IEatDrinkFilter>,
+  venueTypeFilters: Array<IVenueTypeFilter>,
+  searchResults: Array<IVenue>,
+  setSearchResultsHandler: (searchResults: Array<IVenue>) => void,
+  setSelectedVenueHandler: () => void,
+  selectedVenueId: ?string,
+};
 
-  componentWillMount() {
-    const selectedFilters = this.props.filterList.filter(
-      (filterItem: IFilter): boolean => (filterItem.on),
-    );
+export class MapWrapper extends Component {
+  props: IMapWrapperProps;
 
-    getNearbyPlaces.call({
-      latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
-      longitude: -79.932115,
-      filterList: selectedFilters,
-    }, this.getNearbyPlacesCB);
+  componentWillReceiveProps(nextProps: IMapWrapperProps) {
+    if (this.filterHasChanged(nextProps)) {
+      const eatDrinkFilters = nextProps.eatDrinkFilters.filter(
+        (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
+      );
+
+      const venueTypeFilters = nextProps.venueTypeFilters.filter(
+        (filterItem: IVenueTypeFilter): boolean => (filterItem.on),
+      );
+
+      Meteor.call("getNearbyPlaces",
+        {
+          latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
+          longitude: -79.932115,
+          eatDrinkFilters,
+          venueTypeFilters,
+        },
+        this.getNearbyPlacesCB,
+      );
+    }
   }
+
+  filterHasChanged = (nextProps: IMapWrapperProps): boolean => {
+    const edfChanged = !_.isEqual(this.props.eatDrinkFilters, nextProps.eatDrinkFilters);
+    const vtfChanged = !_.isEqual(this.props.venueTypeFilters, nextProps.venueTypeFilters);
+
+    return edfChanged || vtfChanged;
+  };
 
   // NOTE: this is an ES6 class property arrow function (preserves this context)
   getNearbyPlacesCB = (error: Error, result: Array<IVenue>) => {
@@ -48,31 +68,30 @@ export class MapComponent extends Component {
       // TODO potentially throw here (or log search criteria to a logger for evaluation)
       this.props.setSearchResultsHandler(result);
     }
-  }
+  };
 
   render() { // eslint-disable-line flowtype/require-return-type
     return (
-      <div>
-        <Navbar />
-        <LocationsMap
-          googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
-          venues={this.props.searchResults}
-          setSelectedVenueHandler={this.props.setSelectedVenueHandler}
-          selectedVenueId={this.props.selectedVenueId}
-        />
-      </div>
+      <Map
+        googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
+        venues={this.props.searchResults}
+        setSelectedVenueHandler={this.props.setSelectedVenueHandler}
+        selectedVenueId={this.props.selectedVenueId}
+      />
     );
   }
 }
 
 type IStateProps = {
-  filterList: Array<IFilter>,
+  eatDrinkFilters: Array<IEatDrinkFilter>,
+  venueTypeFilters: Array<IVenueTypeFilter>,
   searchResults: Array<IVenue>,
   selectedVenueId: ?string,
 };
 
 const mapStateToProps = (state: IState): IStateProps => ({
-  filterList: state.filters,
+  eatDrinkFilters: state.eatDrinkFilters,
+  venueTypeFilters: state.venueTypeFilters,
   searchResults: state.searchResults,
   selectedVenueId: state.mapDisplay.selectedVenueId,
 });
@@ -91,6 +110,6 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   ),
 });
 
-const MapContainer = connect(mapStateToProps, mapDispatchToProps)(MapComponent);
+const MapContainer = connect(mapStateToProps, mapDispatchToProps)(MapWrapper);
 
 export default MapContainer;

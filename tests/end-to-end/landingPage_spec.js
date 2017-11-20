@@ -11,16 +11,14 @@ describe("Landing Page", function () {
     browser.url(baseUrl);
 
     expect(browser.getTitle()).toEqual("Eat Drink Healthy");
-    expect(browser.waitForExist(els.locationsMapComponent)).toBe(true);
-    expect(browser.waitForExist(els.navbar.component)).toBe(true);
+    expect(browser.waitForExist(els.mapComponent)).toBe(true);
+    expect(browser.waitForExist(els.homePage.navbar)).toBe(true);
   });
 
-  it("displays at least one map marker - NOTE may fail based on location", function () {
+  it("displays the Eat / Drink and Venues filter sections", function () {
     browser.url(baseUrl);
-    browser.waitForExist(els.markerComponent, 3000); // allow for some api response time
 
-    const markerArray = browser.elements(els.markerComponent).value;
-
-    expect(markerArray.length).toBeGreaterThan(1);
+    expect(browser.waitForExist(els.homePage.eatDrinkFilters)).toBe(true);
+    expect(browser.waitForExist(els.homePage.venueTypeFilters)).toBe(true);
   });
 });

@@ -1,11 +1,18 @@
+// selectors for various elements, organized by pages, page sections, or components
+
 export const baseUrl = "http://localhost:3000";
 
 export const elements = {
-  locationsMapComponent: "div.map-container",
+  mapComponent: "div.map-holder",
   markerComponent: "div.markerContainer",
+  homePage: {
+    navbar: "#navbar",
+    eatDrinkFilters: "#eatDrinkFilters",
+    venueTypeFilters: "#venueTypeFilters",
+  },
   navbar: {
-    component: "div.nav #navbarFilterLink",
-    filterLink: "#navbarFilterLink",
+    username: ".nav__username",
+    username_row2: ".nav__username_row2",
   },
   sidebarPage: {
     url: `${baseUrl}/sidebar`,
@@ -25,17 +32,9 @@ export const elements = {
     submitButton: "input[value='Login']",
   },
   userMenu: {
-    username: "#loggedInUser",
     joinLink: "#joinLink",
     loginLink: "#loginLink",
     logoutLink: "#logoutLink",
   },
   alertMessage: ".s-alert-box", // NOTE: looked this class up in the component source code
-  filterPage: {
-    url: `${baseUrl}/filter`,
-    component: "div.filter",
-    closeLink: "div.close-filter",
-    toggle: "span.react-toggle-label",
-    toggleUnchecked: "div.react-toggle:not(.react-toggle--checked)",
-  },
 };

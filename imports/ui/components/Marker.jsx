@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { calcHintPosition, getDivSpacing } from "../../utils/calcHintPosition";
 
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
-import type { IViewArea } from "./LocationsMap";
+import type { IViewArea } from "./Map";
 
 type IMarkerOrigin = "center" | "topLeft" | "bottomCenter";
 
@@ -83,11 +83,13 @@ class Marker extends PureComponent {
 
     const altStr = `${venue.name} map marker`;
 
+    /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
     return (
       <div
         className={markerContainerClasses}
         ref={this.setMarkerHolderRef}
         onClick={this.handleOnClick}
+        role="tooltip"
       >
         <img src={markerImage} alt={altStr} />
         <div
@@ -100,6 +102,7 @@ class Marker extends PureComponent {
         </div>
       </div>
     );
+    /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */
   }
 }
 

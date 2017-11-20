@@ -11,7 +11,7 @@ exports[`<Sidebar /> matches render snapshot - login form 1`] = `
     Home
   </a>
   <h2
-    className="mh4"
+    className=""
   >
     Eat Drink Healthy
   </h2>
@@ -101,7 +101,7 @@ exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
     Home
   </a>
   <h2
-    className="mh4"
+    className=""
   >
     Eat Drink Healthy
   </h2>
@@ -130,7 +130,7 @@ exports[`<Sidebar /> matches render snapshot - signup form, without form validat
     Home
   </a>
   <h2
-    className="mh4"
+    className=""
   >
     Eat Drink Healthy
   </h2>

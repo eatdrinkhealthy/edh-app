@@ -4,6 +4,7 @@ exports[`<Marker /> matches render snapshot, selected 1`] = `
 <div
   className="markerContainer hint--color-white-override hint--html hint--info hint--bottom hint--always markerOriginBottomCenter"
   onClick={[Function]}
+  role="tooltip"
 >
   <img
     alt="cafe1 map marker"
@@ -35,6 +36,7 @@ exports[`<Marker /> matches render snapshot, unselected 1`] = `
 <div
   className="markerContainer hint--color-white-override hint--html hint--info hint--bottom hint--hidden markerOriginBottomCenter"
   onClick={[Function]}
+  role="tooltip"
 >
   <img
     alt="cafe1 map marker"

@@ -1,4 +1,5 @@
 // @flow
+import _ from "lodash";
 import { SET_SEARCH_RESULTS } from "./actionTypes";
 import type { IVenue } from "../reducers/searchResultsReducers";
 
@@ -12,5 +13,5 @@ export const setSearchResults = (
   searchResults: Array<IVenue>,
 ): ISearchResultsAction => ({
   type: SET_SEARCH_RESULTS,
-  searchResults,
+  searchResults: _.cloneDeep(searchResults),
 });

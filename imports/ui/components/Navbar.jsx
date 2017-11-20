@@ -1,24 +1,50 @@
 // @flow
 import React from "react";
-import { Link } from "react-router-dom";
-import UserMenuContainer from "../containers/UserMenuContainer";
+import { Grid, Row, Col } from "./ReactBootstrapLib";
+import UserMenu from "./UserMenu";
 
-const Navbar = (): React$Element<*> => (
-  <div className="nav">
-    <div className="dt w-100 pa2">
-      <div className="dtc v-mid white w-25">Eat Drink Healthy</div>
-      <div className="dtc v-mid w-75 tr">
-        <UserMenuContainer />
-        <Link
-          id="navbarFilterLink"
-          className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-dark-green"
-          to="/filter"
-        >
-          Filter
-        </Link>
-      </div>
+type INavbarProps = {
+  username: ?string,
+  userLoggedIn?: boolean, // eslint-disable-line react/require-default-props
+  logout: () => void,
+};
+
+const Navbar = ({
+  username,
+  userLoggedIn,
+  logout,
+}: INavbarProps) => {
+  const usernameDisplay = username ? `Welcome, ${username}!` : "";
+
+  return (
+    <div id="navbar" className="nav__bar">
+      <Grid fluid>
+        <Row>
+          <Col xs={6} md={4}>
+            <img
+              className="nav__logo"
+              src="/images/EDH-logo.png"
+              alt="Eat Drink Healthy logo"
+            />
+            <span className="nav__title">EAT. DRINK. HEALTHY.</span>
+          </Col>
+          <Col id="loggedInUser" xsHidden smHidden md={5} className="nav__username">
+            {usernameDisplay}
+          </Col>
+          <Col xs={6} md={3}>
+            <span className="nav__usermenu">
+              <UserMenu userLoggedIn={userLoggedIn} logout={logout} />
+            </span>
+          </Col>
+        </Row>
+        <Row>
+          <Col mdHidden lgHidden className="nav__username_row2">
+            {usernameDisplay}
+          </Col>
+        </Row>
+      </Grid>
     </div>
-  </div>
-);
+  );
+};
 
 export default Navbar;

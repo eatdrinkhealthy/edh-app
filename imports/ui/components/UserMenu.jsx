@@ -4,46 +4,44 @@ import { Link } from "react-router-dom";
 
 class UserMenu extends Component {
   props: {
-    username: ?string,
+    userLoggedIn?: boolean, // eslint-disable-line react/require-default-props
     logout: () => void,
   };
 
-  renderLoggedOut(): React$Element<*> {  // eslint-disable-line class-methods-use-this
+  renderLoggedOut() {  // eslint-disable-line class-methods-use-this
     return (
       <span>
         <Link
           id="joinLink"
-          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 white bg-purple b--purple"
+          className="btn join_button"
           to={{ pathname: "/sidebar", search: "?action=signup" }}
         >
           JOIN
         </Link>
         <Link
           id="loginLink"
-          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 b--purple"
+          className="btn log_in_out_button"
           to={{ pathname: "/sidebar", search: "?action=login" }}
         >
-          LOGIN
+          LOG IN
         </Link>
       </span>
     );
   }
 
-  renderLoggedIn = (): React$Element<*> => (
-    <span>
-      <span id="loggedInUser" className="f5">{this.props.username}</span>
-      <a
-        id="logoutLink"
-        className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 white bg-purple b--purple"
-        onClick={this.props.logout}
-      >
-        Logout
-      </a>
-    </span>
+  renderLoggedIn = () => (
+    <a
+      id="logoutLink"
+      className="btn log_in_out_button"
+      onClick={this.props.logout}
+      href=""
+    >
+      LOG OUT
+    </a>
   );
 
-  render() {  // eslint-disable-line flowtype/require-return-type
-    return this.props.username ? this.renderLoggedIn() : this.renderLoggedOut();
+  render() {
+    return this.props.userLoggedIn ? this.renderLoggedIn() : this.renderLoggedOut();
   }
 }
 

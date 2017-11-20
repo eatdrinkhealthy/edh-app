@@ -1,13 +1,18 @@
 // @flow
 /* eslint-disable import/no-extraneous-dependencies */
-
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { storiesOf, action } from "@storybook/react";
-import { text } from "@storybook/addon-knobs";
+import { boolean, text } from "@storybook/addon-knobs";
 
 import Login from "../../Login";
 import UserMenu from "../../UserMenu";
+import Navbar from "../../Navbar";
+import PrimaryFilter from "../../PrimaryFilter";
+import {
+  EAT_DRINK_FILTERS,
+  VENUE_TYPE_FILTERS,
+} from "../../../../state/data/defaultFilters";
 
 storiesOf("Page Sections", module)
   .addDecorator((story: () => React$Element<*>): React$Element<*> => (
@@ -18,7 +23,25 @@ storiesOf("Page Sections", module)
   ))
   .add("UserMenu", (): React$Element<*> => (
     <UserMenu
-      username={text("username", "")}
-      logout={action("clicked")}
+      userLoggedIn={boolean("userLoggedIn", false)}
+      logout={action("logout clicked")}
+    />
+  ))
+  .add("Navbar", () => {
+    window.SHOW_GRID = boolean("show grid", false);
+    return (
+      <Navbar
+        username={text("username", "testUser")}
+        userLoggedIn={boolean("userLoggedIn", true)}
+        logout={action("logout clicked")}
+      />
+    );
+  })
+  .add("PrimaryFilter", () => (
+    <PrimaryFilter
+      eatDrinkFilters={EAT_DRINK_FILTERS}
+      toggleEatDrinkFilterHandler={action("eat drink filter clicked")}
+      venueTypeFilters={VENUE_TYPE_FILTERS}
+      toggleVenueTypeFilterHandler={action("venue type filter clicked")}
     />
   ));

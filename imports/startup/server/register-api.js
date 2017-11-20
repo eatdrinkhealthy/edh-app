@@ -1,2 +1,2 @@
-import "../../api/foursquare/methods";
+import "../../api/foursquare/server/methods";
 import "../../api/accounts/accounts";

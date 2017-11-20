@@ -2,6 +2,12 @@
 
 [![Build Status](https://semaphoreci.com/api/v1/projects/97c77f98-2bd8-4722-afad-d287d5f83770/1169973/shields_badge.svg)](https://semaphoreci.com/eat-drink-healthy/edh-app)
 
+## Installation
+* TBD when to use yarn vs. `meteor npm install 'package'`
+* NOTE packages that require a binary build step, need to be installed using `meteor npm install`
+* Must install bcrypt using `meteor npm install bcrypt`
+    - this triggers a binary build step needed for Meteor
+
 ## Notes
 ### React
 * using React.PureComponent for some map related components
@@ -9,7 +15,6 @@
 ### Styling
 * using less css preprocessor
 * using postcss post-process (with plugins: postcss-easy-import, autoprefixer)
-* __NOTE, currently using box-sizing to globally change box model__ (see box-sizing.import.less)
 * using npm package [html-hint](https://github.com/istarkov/html-hint) to display hints (balloons) for map markers
     - NOTE: istarkov (author of google-map-react), took the hint.css package, and extended it to support html in the hint
         + Although html-hint is free, hint.css is a paid package for commercial use (which I did purchase)
@@ -17,6 +22,11 @@
 #### CSS Packages
 * to include css from npm installed css packages, import the css file in `css-packages.css`
     - this will include the css in the project, as well postcss process / minify the css and bundle it with the rest of the css
+* NOTE: trying react-bootstrap (which needs bootstrap.css)
+    - installing bootstrap.css via npm
+    - removing normalize.import.less and box-sizing.import.less since they are included in bootstrap
+    - removing typography.import.less (will re-add any wanted fonts later)
+    - removed a lot of unknown body css settings (probably for cordova, will re-add later as needed)
 #### Animation
 * __FIRST__ DETERMINE if CSS3 is being used in current version of app (and/or see what browser versions support it)
 * consider this component for animation sidebar & filter, [react-burger-menu](https://github.com/negomi/react-burger-menu)
@@ -38,7 +48,13 @@
         * note, this has NOT yet worked for google-map-react
     * setting position to absolute seems one step closer. it displays the map correctly, but will run in to problems eventually with z-index
         * note, google-map-react uses position absolute, and has it working somehow
-        
+
+## Development / Debugging
+* A global `window.SHOW_GRID` was added to display a border around react-bootstrap columns.
+    + this setting also displays the breakpoint screen size in the upper left corner of the body
+    + NOTE: this global is not typically set in source code, but more often used in storybook
+        - avoid setting this global in source code
+                 
 ## Testing
 
 ### Notes
@@ -113,8 +129,9 @@ Each testing framework comes with a default, or set of available assertion libra
 ### Chimp
 * Install chimp globally
     - this prevents an in issue sometimes arising when deploying to galaxy (an error installing chromedriver)
-* __NOTE:__ for continuous integration
-    - (as of 7/18/17) chimp is unable to be successfully installed on semaphoreCI, so end to end testing must be run locally
+    - also, as of 10/19/17, yarn was failing on chimp install (so easier to install globally using 'npm')
+* Continuous Integration
+    - in order for all test tiers to succeed, it 'seemed' a pause of around 5 seconds was needed between the integration and end-to-end tests. Else, the end-to-end test would get random failures (timeouts, elements not found)
 * NOTE (strange behavior):
     - when searching two times in a row in a test, for an element that is wrapped in a createContainer, the second search may fail
         + e.g. waitForExist(someButton), then click(someButton) may result in an 'element not found on page' error on the click call

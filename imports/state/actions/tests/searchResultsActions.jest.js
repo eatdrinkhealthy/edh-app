@@ -2,6 +2,7 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
+import _ from "lodash";
 import * as actions from "../searchResultsActions";
 import sampleVenues from "../../stores/tests/sampleVenueData";
 import { SET_SEARCH_RESULTS } from "../actionTypes";
@@ -34,6 +35,25 @@ describe("Search Results Actions", function () {
       };
 
       expect(actions.setSearchResults(searchResults)).toEqual(expectedAction);
+    });
+
+    it("should clone, and not reference original search results", function () {
+      const searchResults = [
+        sampleVenues[0],
+        sampleVenues[1],
+        sampleVenues[2],
+      ];
+
+      const expectedAction = {
+        type: SET_SEARCH_RESULTS,
+        searchResults: _.cloneDeep(searchResults),
+      };
+
+      const searchResultsAction = actions.setSearchResults(searchResults);
+      searchResults[0].id = "22423255";
+
+      expect(searchResultsAction).toEqual(expectedAction);
+      expect(searchResultsAction.searchResults).not.toEqual(searchResults);
     });
   });
 });

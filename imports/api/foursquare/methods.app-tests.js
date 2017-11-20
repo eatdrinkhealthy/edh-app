@@ -4,67 +4,43 @@
 import { assert } from "meteor/practicalmeteor:chai";
 import { Meteor } from "meteor/meteor";
 import type { IMeteorError } from "meteor/meteor";
-import { getNearbyPlaces } from "./methods";
-import type { IFilter } from "../../state/reducers/filtersReducers";
+import type { IVenue } from "../../state/reducers/searchResultsReducers";
 
-const testFilterList = [
+const eatDrinkFilters = [
   {
     id: "juiceBar",
     name: "Juice Bars",
     on: true,
     foursquareCategory: "4bf58dd8d48988d112941735",
   },
-  {
-    id: "veganVegRestaurant",
-    name: "Vegan / Vegetarian",
-    on: true,
-    foursquareCategory: "4bf58dd8d48988d1d3941735",
-  },
-  {
-    id: "glutenFree",
-    name: "Gluten Free",
-    on: false,
-    foursquareCategory: "4c2cd86ed066bed06c3c5209",
-  },
 ];
 
-if (Meteor.isServer) {
-  describe("Methods", function () {
-    this.timeout(4000);
-
-    describe("getNearbyPlaces", function () {
-      it("should NOT throw but instead get empty results, when foursquareApi throws", function () {
-        const context = {};
-        const args = {
-          latitude: 0,
-          longitude: 0,
-          filterList: testFilterList,
-        };
-
-        assert.doesNotThrow(() => {
-          assert.deepEqual(getNearbyPlaces._execute(context, args), []);
-        });
-      });
-    });
-  });
-}
+const venueTypeFilters = [
+  {
+    id: "juiceBar",
+    name: "Juice Bars",
+    on: true,
+    foursquareCategory: "4bf58dd8d48988d112941735",
+  },
+];
 
 if (Meteor.isClient) {
   describe("Methods - client calls", function () {
     this.timeout(4000);
 
-    describe("getNearbyPlaces", function () {
-      it("should NOT throw but instead get callback with empty results, when foursquareApi throws",
+    describe("Meteor.call('getNearbyPlaces')", function () {
+      it("should NOT throw, but get callback with empty results, when foursquareApi throws",
         function (done: (Error | void) => void) {
           const args = {
             latitude: 0,
             longitude: 0,
-            filterList: testFilterList,
+            eatDrinkFilters,
+            venueTypeFilters,
           };
 
           assert.doesNotThrow(() => {
-            getNearbyPlaces.call(args,
-              function (err: IMeteorError, res: Array<IFilter>) {
+            Meteor.call("getNearbyPlaces", args,
+              function (err: IMeteorError, res: Array<IVenue>) {
                 assert.isUndefined(err);
                 assert.deepEqual(res, []);
                 done();
@@ -78,12 +54,13 @@ if (Meteor.isClient) {
         const args = {
           latitude: "not a number",
           longitude: 0,
-          filterList: testFilterList,
+          eatDrinkFilters,
+          venueTypeFilters,
         };
 
         assert.doesNotThrow(() => {
-          getNearbyPlaces.call(args,
-            function (err: IMeteorError, res: Array<IFilter>) {
+          Meteor.call("getNearbyPlaces", args,
+            function (err: IMeteorError, res: Array<IVenue>) {
               assert.isUndefined(res);
               assert.isDefined(err);
 

@@ -2,6 +2,6 @@
 declare module "meteor/react-meteor-data" {
   declare export function createContainer(
     reactiveFunction: () => object,
-    component: React$Component,
+    component: React$Component<*, * , *>,
   ): React$Component;
 }

@@ -1,46 +1,132 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Navbar /> matches render snapshot 1`] = `
+exports[`<Navbar /> matches render snapshot - with null username 1`] = `
 <div
-  className="nav"
+  className="nav__bar"
+  id="navbar"
 >
   <div
-    className="dt w-100 pa2"
+    className="container-fluid"
   >
     <div
-      className="dtc v-mid white w-25"
+      className="row"
     >
-      Eat Drink Healthy
+      <div
+        className="col-md-4 col-xs-6"
+      >
+        <img
+          alt="Eat Drink Healthy logo"
+          className="nav__logo"
+          src="/images/EDH-logo.png"
+        />
+        <span
+          className="nav__title"
+        >
+          EAT. DRINK. HEALTHY.
+        </span>
+      </div>
+      <div
+        className="nav__username col-md-5 hidden-sm hidden-xs"
+        id="loggedInUser"
+      >
+        
+      </div>
+      <div
+        className="col-md-3 col-xs-6"
+      >
+        <span
+          className="nav__usermenu"
+        >
+          <span>
+            <a
+              className="btn join_button"
+              href="/sidebar?action=signup"
+              id="joinLink"
+              onClick={[Function]}
+            >
+              JOIN
+            </a>
+            <a
+              className="btn log_in_out_button"
+              href="/sidebar?action=login"
+              id="loginLink"
+              onClick={[Function]}
+            >
+              LOG IN
+            </a>
+          </span>
+        </span>
+      </div>
     </div>
     <div
-      className="dtc v-mid w-75 tr"
+      className="row"
     >
-      <span>
-        <a
-          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 white bg-purple b--purple"
-          href="/sidebar?action=signup"
-          id="joinLink"
-          onClick={[Function]}
-        >
-          JOIN
-        </a>
-        <a
-          className="dib f5 link dim ma1 mb2 ph3 pv2 ba bw2 br3 b--purple"
-          href="/sidebar?action=login"
-          id="loginLink"
-          onClick={[Function]}
-        >
-          LOGIN
-        </a>
-      </span>
-      <a
-        className="f6 link dim ma1 ph3 pv2 mb2 dib white bg-dark-green"
-        href="/filter"
-        id="navbarFilterLink"
-        onClick={[Function]}
+      <div
+        className="nav__username_row2 hidden-lg hidden-md"
       >
-        Filter
-      </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Navbar /> matches render snapshot - with username 1`] = `
+<div
+  className="nav__bar"
+  id="navbar"
+>
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-md-4 col-xs-6"
+      >
+        <img
+          alt="Eat Drink Healthy logo"
+          className="nav__logo"
+          src="/images/EDH-logo.png"
+        />
+        <span
+          className="nav__title"
+        >
+          EAT. DRINK. HEALTHY.
+        </span>
+      </div>
+      <div
+        className="nav__username col-md-5 hidden-sm hidden-xs"
+        id="loggedInUser"
+      >
+        Welcome, testuser!
+      </div>
+      <div
+        className="col-md-3 col-xs-6"
+      >
+        <span
+          className="nav__usermenu"
+        >
+          <a
+            className="btn log_in_out_button"
+            href=""
+            id="logoutLink"
+            onClick={[Function]}
+          >
+            LOG OUT
+          </a>
+        </span>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="nav__username_row2 hidden-lg hidden-md"
+      >
+        Welcome, testuser!
+      </div>
     </div>
   </div>
 </div>

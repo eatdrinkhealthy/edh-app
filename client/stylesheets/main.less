@@ -1,24 +1,16 @@
 //settings - used with preprocessors and contain font, colors definitions, etc.
-@import "settings/colors.import.less";
-@import "settings/typography.import.less";
 @import "settings/breakpoints.import.less";
-
-//tools - globally used mixins and functions. It’s important not to output any CSS in the first 2 layers.
-@import "tools/gradient-bg.import.less";
-
-//generic – reset and/or normalize styles, box-sizing definition, etc. This is the first layer which generates actual CSS.
-@import "generic/normalize.import.less";
-@import "generic/box-sizing.import.less";
-
-//elements – styling for bare HTML elements (like H1, A, etc.). These come with default styling from the browser so we can redefine them here.
-@import "elements/html.import.less";
-@import "elements/body.import.less";
+@import "settings/fonts.import.less";
+@import "settings/colors.import.less";
+@import "settings/bootstrapUtils.import.less";
 
 //components – specific UI components. This is where majority of our work takes place and our UI components are often composed of Objects and Components
-@import "components/LocationsMap.import.less";
+@import "components/Map.import.less";
 @import "components/Marker.import.less";
 @import "components/HtmlHintCustomization.import.less";
 @import "components/Navbar.import.less";
 @import "components/Sidebar.import.less";
 @import "components/Filter.import.less";
-@import "components/Toggle.import.less";
+@import "components/FilterSection.import.less";
+@import "components/UserMenu.import.less";
+@import "components/Pill.import.less";
