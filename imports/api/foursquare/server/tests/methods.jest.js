@@ -4,30 +4,30 @@
 /* eslint-disable import/no-extraneous-dependencies, import/first */
 jest.mock("../foursquareApi");
 
-import { Meteor } from "meteor/meteor";
 import { buildSearchString, collectSearchResults } from "../methods";
+import { defaultSearch } from "../../../../state/data/defaultFilters";
 import foursquareApiSearch from "../foursquareApi";
 import type { IEatDrinkFilter } from "../../../../state/reducers/eatDrinkFiltersReducers";
 
 describe("Methods", function () {
   describe("getNearbyPlaces", function () {
+    const eatDrinkFilters: Array<IEatDrinkFilter> = [
+      { id: "vegan", name: "Vegan", on: false, foursquareCategory: "1" },
+      { id: "vegetarian", name: "Vegetarian", on: false, foursquareCategory: "2" },
+    ];
+
+    const venueTypeFilters: Array<IEatDrinkFilter> = [
+      { id: "restaurant", name: "Restaurant / Cafe", on: false, foursquareCategory: "3" },
+      { id: "grocery", name: "Market / Store", on: false, foursquareCategory: "4" },
+    ];
+
+    const venueTypeFiltersDup: Array<IEatDrinkFilter> = [
+      { id: "restaurant", name: "Restaurant / Cafe", on: false, foursquareCategory: "3" },
+      { id: "grocery", name: "Market / Store", on: false, foursquareCategory: "4" },
+      { id: "vegan", name: "Vegan", on: false, foursquareCategory: "1" },
+    ];
+
     describe("buildSearchString - helper function", function () {
-      const eatDrinkFilters: Array<IEatDrinkFilter> = [
-        { id: "vegan", name: "Vegan", on: false, foursquareCategory: "1" },
-        { id: "vegetarian", name: "Vegetarian", on: false, foursquareCategory: "2" },
-      ];
-
-      const venueTypeFilters: Array<IEatDrinkFilter> = [
-        { id: "restaurant", name: "Restaurant / Cafe", on: false, foursquareCategory: "3" },
-        { id: "grocery", name: "Market / Store", on: false, foursquareCategory: "4" },
-      ];
-
-      const venueTypeFiltersDup: Array<IEatDrinkFilter> = [
-        { id: "restaurant", name: "Restaurant / Cafe", on: false, foursquareCategory: "3" },
-        { id: "grocery", name: "Market / Store", on: false, foursquareCategory: "4" },
-        { id: "vegan", name: "Vegan", on: false, foursquareCategory: "1" },
-      ];
-
       it("should return an empty string, when no filters are provided", function () {
         expect(buildSearchString([], [])).toBe("");
       });
@@ -50,25 +50,14 @@ describe("Methods", function () {
     });
 
     describe("collectSearchResults - helper function", function () {
-      const origMeteorIsServer = Meteor.isServer;
-
-      beforeAll(() => {
-        // triggers code to be run (like it would on server) in methods.js collectSearchResults
-        Meteor.isServer = true;
-      });
-
-      afterAll(() => {
-        Meteor.isServer = origMeteorIsServer;
-      });
-
-      it("should not call foursquareApi when no filters selected", function () {
+      it("should call foursquareApi with 'defaultSearch' when no filters selected", function () {
         collectSearchResults(0, 0, [], []);
-        expect(foursquareApiSearch).not.toHaveBeenCalled();
+        expect(foursquareApiSearch).toHaveBeenCalledWith(defaultSearch, 0, 0);
       });
 
-      it("should return an empty array when no filters selected", function () {
-        const results = collectSearchResults(0, 0, [], []);
-        expect(results).toEqual([]);
+      it("should call foursquareApi with user selected filters", function () {
+        collectSearchResults(0, 0, eatDrinkFilters, venueTypeFilters);
+        expect(foursquareApiSearch).toHaveBeenCalledWith("1,2,3,4", 0, 0);
       });
     });
   });

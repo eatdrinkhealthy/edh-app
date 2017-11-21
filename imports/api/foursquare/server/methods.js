@@ -3,6 +3,7 @@ import { ValidatedMethod } from "meteor/mdg:validated-method";
 import SimpleSchema from "simpl-schema";
 import _ from "lodash";
 import foursquareApiSearch from "./foursquareApi";
+import { defaultSearch } from "../../../state/data/defaultFilters";
 
 // eslint-disable-next-line no-duplicate-imports
 import type { IVenue } from "../../../state/reducers/searchResultsReducers";
@@ -29,9 +30,8 @@ export const collectSearchResults = (
   let result = [];
   const categories = buildSearchString(eatDrinkFilters, venueTypeFilters);
 
-  if (categories) {
-    result = foursquareApiSearch(categories, latitude, longitude);
-  }
+  result = categories ? foursquareApiSearch(categories, latitude, longitude)
+    : foursquareApiSearch(defaultSearch, latitude, longitude);
 
   return result;
 };
