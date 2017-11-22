@@ -5,7 +5,6 @@
 jest.mock("../foursquareApi");
 
 import { buildSearchString, collectSearchResults } from "../methods";
-import { defaultSearch } from "../../../../state/data/defaultFilters";
 import foursquareApiSearch from "../foursquareApi";
 import type { IEatDrinkFilter } from "../../../../state/reducers/eatDrinkFiltersReducers";
 
@@ -50,9 +49,13 @@ describe("Methods", function () {
     });
 
     describe("collectSearchResults - helper function", function () {
-      it("should call foursquareApi with 'defaultSearch' when no filters selected", function () {
+      it("should call NOT foursquareApi when no filters selected", function () {
         collectSearchResults(0, 0, [], []);
-        expect(foursquareApiSearch).toHaveBeenCalledWith(defaultSearch, 0, 0);
+        expect(foursquareApiSearch).not.toHaveBeenCalled();
+      });
+
+      it("should return an empty array (no search results) when no filters selected", function () {
+        expect(collectSearchResults(0, 0, [], [])).toEqual([]);
       });
 
       it("should call foursquareApi with user selected filters", function () {
