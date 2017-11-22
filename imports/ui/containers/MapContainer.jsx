@@ -70,7 +70,19 @@ export class MapWrapper extends Component {
       // TODO potentially throw here (or confirm an exception is thrown by server)
     } else {
       if (!result.length) {
-        AlertMessage.warning("No search results for current criteria...");
+        // TODO consider only storing selected filters in state (instead of all
+        //      filters) starting to repeat code to get which filters are selected
+        const selectedEdFilters = this.props.eatDrinkFilters.filter(
+          (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
+        );
+
+        const selectedVtFilters = this.props.venueTypeFilters.filter(
+          (filterItem: IVenueTypeFilter): boolean => (filterItem.on),
+        );
+
+        if (selectedEdFilters.length || selectedVtFilters.length) {
+          AlertMessage.warning("No search results for current criteria...");
+        }
       }
       // TODO potentially throw here (or log search criteria to a logger for evaluation)
       this.props.setSearchResultsHandler(result);
