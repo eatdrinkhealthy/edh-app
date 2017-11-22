@@ -180,9 +180,3 @@ export const collectCategories = (
   const categories = _.map(categoryList, filter => (filter.foursquareCategory));
   return _.join(categories);
 };
-
-// eslint-disable-next-line prefer-template
-export const defaultSearch = `${collectCategories(restaurantCafeCategories)},`
-  + `${collectCategories(marketGroceryCategories)},`
-  + `${collectCategories(juiceBarCategories)},`
-  + collectCategories(healthFoodStoreCategories);
