@@ -49,8 +49,8 @@ export class MapWrapper extends Component {
       {
         latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
         longitude: -79.932115,
-        selectedEatDrinkFilters,
-        selectedVenueTypeFilters,
+        eatDrinkFilters: selectedEatDrinkFilters,
+        venueTypeFilters: selectedVenueTypeFilters,
       },
       this.getNearbyPlacesCB,
     );
@@ -68,7 +68,6 @@ export class MapWrapper extends Component {
     if (error) {
       AlertMessage.warning("Unable to search at this time...");
       // TODO potentially throw here (or confirm an exception is thrown by server)
-      console.log("getNearbyPlacesCB error:", error);
     } else {
       if (!result.length) {
         AlertMessage.warning("No search results for current criteria...");
