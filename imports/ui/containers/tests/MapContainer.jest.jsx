@@ -127,6 +127,16 @@ describe("<MapContainer />", function () {
     </Provider>,
   );
 
+  it("should set eatDrinkFilters for MapWrapper from state", function () {
+    expect(wrapper.find("MapWrapper").at(0).props().eatDrinkFilters)
+      .toEqual(testDefaultState.eatDrinkFilters);
+  });
+
+  it("should set venueTypeFilters for MapWrapper from state", function () {
+    expect(wrapper.find("MapWrapper").at(0).props().venueTypeFilters)
+      .toEqual(testDefaultState.venueTypeFilters);
+  });
+
   it("should set search results for MapWrapper from state", function () {
     expect(wrapper.find("MapWrapper").at(0).props().searchResults)
       .toEqual(testDefaultState.searchResults);
