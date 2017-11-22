@@ -29,24 +29,31 @@ export class MapWrapper extends Component {
 
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
     if (this.filterHasChanged(nextProps)) {
-      const eatDrinkFilters = nextProps.eatDrinkFilters.filter(
-        (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
-      );
-
-      const venueTypeFilters = nextProps.venueTypeFilters.filter(
-        (filterItem: IVenueTypeFilter): boolean => (filterItem.on),
-      );
-
-      Meteor.call("getNearbyPlaces",
-        {
-          latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
-          longitude: -79.932115,
-          eatDrinkFilters,
-          venueTypeFilters,
-        },
-        this.getNearbyPlacesCB,
-      );
+      this.callFoursquareApi(nextProps.eatDrinkFilters, nextProps.venueTypeFilters);
     }
+  }
+
+  callFoursquareApi = (
+    eatDrinkFilters: Array<IEatDrinkFilter>,
+    venueTypeFilters: Array<IVenueTypeFilter>,
+  ) => {
+    const selectedEatDrinkFilters = eatDrinkFilters.filter(
+      (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
+    );
+
+    const selectedVenueTypeFilters = venueTypeFilters.filter(
+      (filterItem: IVenueTypeFilter): boolean => (filterItem.on),
+    );
+
+    Meteor.call("getNearbyPlaces",
+      {
+        latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
+        longitude: -79.932115,
+        selectedEatDrinkFilters,
+        selectedVenueTypeFilters,
+      },
+      this.getNearbyPlacesCB,
+    );
   }
 
   filterHasChanged = (nextProps: IMapWrapperProps): boolean => {
@@ -61,6 +68,7 @@ export class MapWrapper extends Component {
     if (error) {
       AlertMessage.warning("Unable to search at this time...");
       // TODO potentially throw here (or confirm an exception is thrown by server)
+      console.log("getNearbyPlacesCB error:", error);
     } else {
       if (!result.length) {
         AlertMessage.warning("No search results for current criteria...");
