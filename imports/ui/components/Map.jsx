@@ -6,7 +6,7 @@ import GoogleMap from "google-map-react";
 import Marker from "./Marker";
 
 // eslint-disable-next-line no-duplicate-imports, import/first
-import type { ILatLng } from "google-map-react";
+import type { ILatLng, IGoogleMapDisplay } from "google-map-react";
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
 
 function createMapOptions() {
@@ -30,12 +30,14 @@ export default class Map extends PureComponent {
     venues: Array<IVenue>, // TODO can't this be optional with default? when so, produces flow error
     selectedVenueId: ?string,
     setSelectedVenueHandler: (venueId: ?string) => void,
+    onMapChange?: (mapChange: ?IGoogleMapDisplay) => void,
   };
 
   static defaultProps = {
     center: { lat: 32.789008, lng: -79.932115 },
     zoom: 15,
     venues: [],
+    onMapChange: (mapChange) => {}, // eslint-disable-line no-unused-vars
   }
 
   handleOnClick = () => {
@@ -74,6 +76,7 @@ export default class Map extends PureComponent {
           defaultZoom={this.props.zoom}
           onClick={this.handleOnClick}
           options={createMapOptions}
+          onChange={this.props.onMapChange}
         >
           {this.props.venues.map((venue: IVenue): React$Element<*> => (
             <Marker

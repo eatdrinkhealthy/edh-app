@@ -9,6 +9,7 @@ exports[`<MapWrapper /> matches render snapshot 1`] = `
     }
   }
   googleMapsApiKey="TestAPIKeyValue"
+  onMapChange={[Function]}
   selectedVenueId={null}
   setSelectedVenueHandler={[Function]}
   venues={Array []}

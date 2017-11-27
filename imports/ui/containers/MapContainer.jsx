@@ -10,6 +10,7 @@ import Map from "../components/Map";
 import { setSearchResults } from "../../state/actions/searchResultsActions";
 import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
 
+import type { IGoogleMapDisplay } from "google-map-react"; // eslint-disable-line import/first
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
 import type { IState } from "../../state/stores/store";
 import type { IEatDrinkFilter } from "../../state/reducers/eatDrinkFiltersReducers";
@@ -27,16 +28,7 @@ type IMapWrapperProps = {
 export class MapWrapper extends Component {
   props: IMapWrapperProps;
 
-  componentWillMount() {
-    console.log("geolocation willmount:", Geolocation.latLng());
-  }
-
-  componentDidMount() {
-    console.log("geolocation didmount:", Geolocation.latLng());
-  }
-
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
-    console.log("geolocation willreceiveprops:", Geolocation.latLng());
     if (this.filterHasChanged(nextProps)) {
       this.callFoursquareApi(nextProps.eatDrinkFilters, nextProps.venueTypeFilters);
     }
@@ -98,6 +90,10 @@ export class MapWrapper extends Component {
     }
   };
 
+  handleMapChange = (mapChange: IGoogleMapDisplay) => {
+    console.log("center change:", mapChange.center.lat, mapChange.center.lng);
+  }
+
   render() { // eslint-disable-line flowtype/require-return-type
     return (
       <Map
@@ -105,6 +101,7 @@ export class MapWrapper extends Component {
         venues={this.props.searchResults}
         setSelectedVenueHandler={this.props.setSelectedVenueHandler}
         selectedVenueId={this.props.selectedVenueId}
+        onMapChange={this.handleMapChange}
       />
     );
   }
