@@ -28,10 +28,15 @@ export class MapWrapper extends Component {
   props: IMapWrapperProps;
 
   componentWillMount() {
-    console.log("geolocation:", Geolocation.latLng());
+    console.log("geolocation willmount:", Geolocation.latLng());
+  }
+
+  componentDidMount() {
+    console.log("geolocation didmount:", Geolocation.latLng());
   }
 
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
+    console.log("geolocation willreceiveprops:", Geolocation.latLng());
     if (this.filterHasChanged(nextProps)) {
       this.callFoursquareApi(nextProps.eatDrinkFilters, nextProps.venueTypeFilters);
     }
