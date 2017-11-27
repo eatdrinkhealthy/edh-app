@@ -50,7 +50,7 @@ describe("Primary Filters", function () {
     expect(markerArray.length).toBeGreaterThan(5);
   });
 
-  it("shows no map markers when no search criteria are selected - NOTE may fail based on location", function () {
+  it("shows no map markers when no search criteria are selected", function () {
     browser.url(baseUrl);
     browser.waitForExist(els.homePage.eatDrinkFilters);
 
