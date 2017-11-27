@@ -27,6 +27,10 @@ type IMapWrapperProps = {
 export class MapWrapper extends Component {
   props: IMapWrapperProps;
 
+  componentWillMount() {
+    console.log("geolocation:", Geolocation.latLng());
+  }
+
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
     if (this.filterHasChanged(nextProps)) {
       this.callFoursquareApi(nextProps.eatDrinkFilters, nextProps.venueTypeFilters);
