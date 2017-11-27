@@ -28,6 +28,11 @@ type IMapWrapperProps = {
 export class MapWrapper extends Component {
   props: IMapWrapperProps;
 
+  state = {
+    latitude: 32.789008,
+    longitude: -79.932115,
+  };
+
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
     if (this.filterHasChanged(nextProps)) {
       this.callFoursquareApi(nextProps.eatDrinkFilters, nextProps.venueTypeFilters);
@@ -48,8 +53,8 @@ export class MapWrapper extends Component {
 
     Meteor.call("getNearbyPlaces",
       {
-        latitude: 32.789008,     // TODO remove hardcoded coordinates, get real location
-        longitude: -79.932115,
+        latitude: this.state.latitude,
+        longitude: this.state.longitude,
         eatDrinkFilters: selectedEatDrinkFilters,
         venueTypeFilters: selectedVenueTypeFilters,
       },
@@ -62,7 +67,7 @@ export class MapWrapper extends Component {
     const vtfChanged = !_.isEqual(this.props.venueTypeFilters, nextProps.venueTypeFilters);
 
     return edfChanged || vtfChanged;
-  };
+  }
 
   // NOTE: this is an ES6 class property arrow function (preserves this context)
   getNearbyPlacesCB = (error: Error, result: Array<IVenue>) => {
@@ -88,10 +93,13 @@ export class MapWrapper extends Component {
       // TODO potentially throw here (or log search criteria to a logger for evaluation)
       this.props.setSearchResultsHandler(result);
     }
-  };
+  }
 
   handleMapChange = (mapChange: IGoogleMapDisplay) => {
-    console.log("center change:", mapChange.center.lat, mapChange.center.lng);
+    this.setState({
+      latitude: mapChange.center.lat,
+      longitude: mapChange.center.lng,
+    });
   }
 
   render() { // eslint-disable-line flowtype/require-return-type
