@@ -112,6 +112,8 @@ Each testing framework comes with a default, or set of available assertion libra
 * For integration testing (`meteor test`), use practicalmeteor:chai assert.
 
 ### Jest
+#### Configuration Settings
+* NOTE: setting 'clearMocks' to true, which clears mock call information between tests
 #### Mocking Meteor packages
 * Many commonly used meteor packages were mocked, by creating mock modules, and using the moduleNameMapper configuration setting
     + some details and light exmaples can be seen on this [meteor forum discussion](https://forums.meteor.com/t/mocking-meteor-package-imports-in-jest/27780/9)
