@@ -14,6 +14,7 @@ jest.mock("../../components/AlertMessage", () => (
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { Meteor } from "meteor/meteor";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import _ from "lodash";
@@ -70,6 +71,39 @@ describe("<MapWrapper />", function () {
     const wrapper = shallow(<MapWrapper {...props} />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("should call FS API search (meteor method) using current location from state", function () {
+    const wrapper = mount(<MapWrapper {...props} />);
+
+    // simulate the map component location being changed
+    // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
+    wrapper.instance().handleMapChange({
+      center: {
+        lat: 54,
+        lng: 63,
+      },
+    });
+
+    // call with new props to trigger componentWillReceiveProps
+    wrapper.setProps({
+      eatDrinkFilters: noEdFilterList,
+      venueTypeFilters: vtFilterList,
+      searchResults: [],
+      setSearchResultsHandler: stubFn,
+      setSelectedVenueHandler: stubFn,
+      selectedVenueId: null,
+    });
+
+    expect(Meteor.call).toHaveBeenCalledWith("getNearbyPlaces",
+      {
+        latitude: 54,
+        longitude: 63,
+        eatDrinkFilters: [],
+        venueTypeFilters: [{ id: "vt1", name: "Restaurant", on: true, foursquareCategory: "4" }],
+      },
+      expect.any(Function),
+    );
   });
 
   it("should call AlertMessage.warning when calling getNearbyPlacesCB with an error", function () {
