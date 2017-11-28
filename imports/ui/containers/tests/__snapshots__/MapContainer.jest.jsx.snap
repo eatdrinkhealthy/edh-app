@@ -13,6 +13,6 @@ exports[`<MapWrapper /> matches render snapshot 1`] = `
   selectedVenueId={null}
   setSelectedVenueHandler={[Function]}
   venues={Array []}
-  zoom={15}
+  zoom={3}
 />
 `;

@@ -7,6 +7,7 @@ import { Meteor } from "meteor/meteor";
 import _ from "lodash";
 import AlertMessage from "../components/AlertMessage";
 import Map from "../components/Map";
+import { getLocation } from "../../utils/geoLocation";
 import { setSearchResults } from "../../state/actions/searchResultsActions";
 import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
 
@@ -31,7 +32,18 @@ export class MapWrapper extends Component {
   state = {
     latitude: 32.789008,
     longitude: -79.932115,
+    zoom: 3,
   };
+
+  componentDidMount() {
+    getLocation((position: Position) => {
+      this.setState({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        zoom: 15,
+      });
+    });
+  }
 
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
     if (this.filterHasChanged(nextProps)) {
@@ -105,6 +117,11 @@ export class MapWrapper extends Component {
   render() { // eslint-disable-line flowtype/require-return-type
     return (
       <Map
+        center={{
+          lat: this.state.latitude,
+          lng: this.state.longitude,
+        }}
+        zoom={this.state.zoom}
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={this.props.searchResults}
         setSelectedVenueHandler={this.props.setSelectedVenueHandler}

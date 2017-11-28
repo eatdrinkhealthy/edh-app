@@ -1,20 +1,25 @@
 // @flow
 import AlertMessage from "../ui/components/AlertMessage";
 
-export const alertLocation = () => {
-  if (!navigator.geolocation) {
-    throw new Error("GeolocationNotSupported");
-  }
+//
+// NOTE: the mdg:geolocation is installed, which simply relies on navigator.geolocation
+//       however the mdg package also installs a cordova plugin for devices that may not
+//       natively support navigator.geolocation
+//
+//       calls can be made to navigator.geolocation directly as needed (in addition to
+//       making calls to Geolocation (mdg:geolocation)
+//
 
-  function gotLoc(position) {
-    AlertMessage.success(`latLng position: ${position.coords.latitude} , ${position.coords.longitude}`);
+function locationError() {
+  AlertMessage.warning("Unable to get geolocation.");
+  const glError = Geolocation.error();
+  if (glError) {
+    throw glError;
   }
+}
 
-  function gotLocError() {
-    AlertMessage.warning("unable to get position.");
-  }
-
-  navigator.geolocation.getCurrentPosition(gotLoc, gotLocError);
+export const getLocation = (locationFound: (position: Position) => void) => {
+  navigator.geolocation.getCurrentPosition(locationFound, locationError);
 };
 
 export const initGeoLocation = () => {
@@ -27,6 +32,4 @@ export const initGeoLocation = () => {
   if (glError) {
     throw glError;
   }
-
-  alertLocation();
 };

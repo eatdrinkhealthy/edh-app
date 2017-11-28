@@ -72,8 +72,8 @@ export default class Map extends PureComponent {
       >
         <GoogleMap
           bootstrapURLKeys={{ key: this.props.googleMapsApiKey }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          center={this.props.center}
+          zoom={this.props.zoom}
           onClick={this.handleOnClick}
           options={createMapOptions}
           onChange={this.props.onMapChange}

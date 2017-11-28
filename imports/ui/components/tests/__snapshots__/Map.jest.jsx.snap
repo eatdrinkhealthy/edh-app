@@ -10,14 +10,13 @@ exports[`<Map /> matches render snapshot 1`] = `
         "key": "TestAPIKeyValue",
       }
     }
-    debounced={true}
-    defaultCenter={
+    center={
       Object {
         "lat": 32.789008,
         "lng": -79.932115,
       }
     }
-    defaultZoom={15}
+    debounced={true}
     distanceToMouse={[Function]}
     googleMapLoader={[Function]}
     hoverDistance={30}
@@ -35,6 +34,7 @@ exports[`<Map /> matches render snapshot 1`] = `
       }
     }
     yesIWantToUseGoogleMapApiInternals={false}
+    zoom={15}
   />
 </div>
 `;

@@ -11,6 +11,9 @@ jest.mock("../../components/AlertMessage", () => (
   }
 ));
 
+// stubs out / prevents calling navigator.geolocation (currently not needed for these tests)
+jest.mock("../../../utils/geoLocation");
+
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
