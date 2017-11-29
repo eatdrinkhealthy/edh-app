@@ -164,4 +164,6 @@ Each testing framework comes with a default, or set of available assertion libra
 * Work Hard Anywhere - many of the UI characteristics
 * google-map-react
     - the map component
-    - marker balloon pop up behavior (see their main example online) 
+    - marker balloon pop up behavior (see their main example online)
+* Pulsating Map Pin
+    - http://bluefaqs.com/2016/02/how-to-animate-a-map-location-marker-with-css/
