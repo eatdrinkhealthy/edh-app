@@ -35,6 +35,11 @@ exports[`<Map /> matches render snapshot 1`] = `
     }
     yesIWantToUseGoogleMapApiInternals={false}
     zoom={15}
-  />
+  >
+    <Pin
+      lat={32.789008}
+      lng={-79.932115}
+    />
+  </GoogleMap>
 </div>
 `;

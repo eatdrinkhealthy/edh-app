@@ -4,6 +4,7 @@ import React, {
 } from "react";
 import GoogleMap from "google-map-react";
 import Marker from "./Marker";
+import Pin from "./Pin";
 
 // eslint-disable-next-line no-duplicate-imports, import/first
 import type { ILatLng, IGoogleMapDisplay } from "google-map-react";
@@ -65,6 +66,9 @@ export default class Map extends PureComponent {
   }
 
   render() {  // eslint-disable-line flowtype/require-return-type
+    // $FlowFixMe  (flow says possibly undefined, but a default props is provided)
+    const { lat: userLat, lng: userLng } = this.props.center;
+
     return (
       <div
         className="map-holder"
@@ -78,6 +82,7 @@ export default class Map extends PureComponent {
           options={createMapOptions}
           onChange={this.props.onMapChange}
         >
+          <Pin lat={userLat} lng={userLng} />
           {this.props.venues.map((venue: IVenue): React$Element<*> => (
             <Marker
               key={venue.id}
