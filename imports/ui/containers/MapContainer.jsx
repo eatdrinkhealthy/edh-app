@@ -11,7 +11,7 @@ import { getLocation } from "../../utils/geoLocation";
 import { setSearchResults } from "../../state/actions/searchResultsActions";
 import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
 
-import type { IGoogleMapDisplay } from "google-map-react"; // eslint-disable-line import/first
+import type { IGoogleMapDisplay, ILatLng } from "google-map-react"; // eslint-disable-line import/first
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
 import type { IState } from "../../state/stores/store";
 import type { IEatDrinkFilter } from "../../state/reducers/eatDrinkFiltersReducers";
@@ -26,10 +26,16 @@ type IMapWrapperProps = {
   selectedVenueId: ?string,
 };
 
+type IMapWrapperState = {
+  center: ILatLng,
+  userLocation?: ILatLng,
+  zoom: number,
+};
+
 export class MapWrapper extends Component {
   props: IMapWrapperProps;
 
-  state = {
+  state: IMapWrapperState = {
     center: {
       lat: 32.789008,
       lng: -79.932115,
@@ -41,6 +47,10 @@ export class MapWrapper extends Component {
     getLocation((position: Position) => {
       this.setState({
         center: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        },
+        userLocation: {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         },
@@ -125,6 +135,7 @@ export class MapWrapper extends Component {
       <Map
         center={this.state.center}
         zoom={this.state.zoom}
+        userLocation={this.state.userLocation}
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={this.props.searchResults}
         setSelectedVenueHandler={this.props.setSelectedVenueHandler}
