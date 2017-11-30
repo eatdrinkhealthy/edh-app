@@ -21,6 +21,16 @@ describe("<Map />", function () {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it("matches render snapshot - with userLocation pin", function () {
+    const wrapper = shallow(<Map
+      googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
+      setSelectedVenueHandler={() => {}}
+      selectedVenueId={null}
+      userLocation={{ lat: 32.789008, lng: -79.932115 }}
+    />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   describe("Map markers", function () {
     const testVenues = [
       sampleVenues[0],

@@ -11,9 +11,13 @@ jest.mock("../../components/AlertMessage", () => (
   }
 ));
 
+// stubs out / prevents calling navigator.geolocation (currently not needed for these tests)
+jest.mock("../../../utils/geoLocation");
+
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { Meteor } from "meteor/meteor";
 import { shallow, mount } from "enzyme";
 import toJson from "enzyme-to-json";
 import _ from "lodash";
@@ -36,8 +40,20 @@ describe("<MapWrapper />", function () {
     { id: "jb3", name: "juice", on: false, foursquareCategory: "3" },
   ];
 
+  const noEdFilterList: Array<IEatDrinkFilter> = [
+    { id: "jb1", name: "vegan", on: false, foursquareCategory: "1" },
+    { id: "jb2", name: "raw", on: false, foursquareCategory: "2" },
+    { id: "jb3", name: "juice", on: false, foursquareCategory: "3" },
+  ];
+
   const vtFilterList: Array<IEatDrinkFilter> = [
     { id: "vt1", name: "Restaurant", on: true, foursquareCategory: "4" },
+    { id: "vt2", name: "Coffee Shop", on: false, foursquareCategory: "5" },
+    { id: "vt3", name: "Market", on: false, foursquareCategory: "6" },
+  ];
+
+  const noVtFilterList: Array<IEatDrinkFilter> = [
+    { id: "vt1", name: "Restaurant", on: false, foursquareCategory: "4" },
     { id: "vt2", name: "Coffee Shop", on: false, foursquareCategory: "5" },
     { id: "vt3", name: "Market", on: false, foursquareCategory: "6" },
   ];
@@ -60,7 +76,40 @@ describe("<MapWrapper />", function () {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it("calls AlertMessage.warning when calling getNearbyPlacesCB with an error", function () {
+  it("should call FS API search (meteor method) using current location from state", function () {
+    const wrapper = mount(<MapWrapper {...props} />);
+
+    // simulate the map component location being changed
+    // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
+    wrapper.instance().handleMapChange({
+      center: {
+        lat: 54,
+        lng: 63,
+      },
+    });
+
+    // call with new props to trigger componentWillReceiveProps
+    wrapper.setProps({
+      eatDrinkFilters: noEdFilterList,
+      venueTypeFilters: vtFilterList,
+      searchResults: [],
+      setSearchResultsHandler: stubFn,
+      setSelectedVenueHandler: stubFn,
+      selectedVenueId: null,
+    });
+
+    expect(Meteor.call).toHaveBeenCalledWith("getNearbyPlaces",
+      {
+        latitude: 54,
+        longitude: 63,
+        eatDrinkFilters: [],
+        venueTypeFilters: [{ id: "vt1", name: "Restaurant", on: true, foursquareCategory: "4" }],
+      },
+      expect.any(Function),
+    );
+  });
+
+  it("should call AlertMessage.warning when calling getNearbyPlacesCB with an error", function () {
     const wrapper = shallow(<MapWrapper {...props} />);
 
     // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
@@ -68,13 +117,32 @@ describe("<MapWrapper />", function () {
     expect(AlertMessage.warning).toHaveBeenCalledWith("Unable to search at this time...");
   });
 
-  it("calls AlertMessage.warning when calling getNearbyPlacesCB with no search results", function () {
-    const wrapper = shallow(<MapWrapper {...props} />);
+  it("should call AlertMessage.warning when getNearbyPlacesCB has filters but no search results",
+    function () {
+      const wrapper = shallow(<MapWrapper {...props} />);
 
-    // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
-    wrapper.instance().getNearbyPlacesCB(undefined, []);
-    expect(AlertMessage.warning).toHaveBeenCalledWith("No search results for current criteria...");
-  });
+      // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
+      wrapper.instance().getNearbyPlacesCB(undefined, []);
+      expect(AlertMessage.warning).toHaveBeenCalledWith("No search results for current criteria...");
+    });
+
+  it("should NOT call AlertMessage.warning when getNearbyPlacesCB has no filters, no search results",
+    function () {
+      const propsNoFilters = {
+        eatDrinkFilters: noEdFilterList,
+        venueTypeFilters: noVtFilterList,
+        searchResults: [],
+        setSearchResultsHandler: stubFn,
+        setSelectedVenueHandler: stubFn,
+        selectedVenueId: null,
+      };
+
+      const wrapper = shallow(<MapWrapper {...propsNoFilters} />);
+
+      // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
+      wrapper.instance().getNearbyPlacesCB(undefined, []);
+      expect(AlertMessage.warning).not.toHaveBeenCalled();
+    });
 
   it("should know when filter has NOT changed", function () {
     const nextProps = _.cloneDeep(props);    // make a copy of props
@@ -126,6 +194,16 @@ describe("<MapContainer />", function () {
       </MemoryRouter>
     </Provider>,
   );
+
+  it("should set eatDrinkFilters for MapWrapper from state", function () {
+    expect(wrapper.find("MapWrapper").at(0).props().eatDrinkFilters)
+      .toEqual(testDefaultState.eatDrinkFilters);
+  });
+
+  it("should set venueTypeFilters for MapWrapper from state", function () {
+    expect(wrapper.find("MapWrapper").at(0).props().venueTypeFilters)
+      .toEqual(testDefaultState.venueTypeFilters);
+  });
 
   it("should set search results for MapWrapper from state", function () {
     expect(wrapper.find("MapWrapper").at(0).props().searchResults)

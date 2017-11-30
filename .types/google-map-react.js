@@ -9,6 +9,24 @@ declare module "google-map-react" {
     lng: number,
   };
 
+  declare type IBounds = {
+    ne: ILatLng,
+    nw: ILatLng,
+    se: ILatLng,
+    sw: ILatLng,
+  };
+
+  declare export type IGoogleMapDisplay = {
+    bounds: IBounds,
+    center: ILatLng,
+    marginBounds: IBounds,
+    size: {
+      width: number,
+      height: number,
+    },
+    zoom: number,
+  };
+
   declare export type IGoogleMapsMouseEvent = {
     x: number,
     y: number,

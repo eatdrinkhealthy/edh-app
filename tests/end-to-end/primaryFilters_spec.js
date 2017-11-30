@@ -29,7 +29,7 @@ describe("Primary Filters", function () {
     });
   });
 
-  it("returns more results when more filters clicked - NOTE may fail based on location", function () {
+  it("shows more map markers when more search criteria are selected - NOTE may fail based on location", function () {
     browser.url(baseUrl);
     browser.waitForExist(els.homePage.eatDrinkFilters);
 
@@ -48,5 +48,23 @@ describe("Primary Filters", function () {
     // check that there are many more results
     markerArray = browser.elements(els.markerComponent).value;
     expect(markerArray.length).toBeGreaterThan(5);
+  });
+
+  it("shows no map markers when no search criteria are selected", function () {
+    browser.url(baseUrl);
+    browser.waitForExist(els.homePage.eatDrinkFilters);
+
+    // deselect any search criteria
+    const selectedFilterButtons = browser.elements(".pill_selected");
+    selectedFilterButtons.value.forEach(filterButton => filterButton.click());
+    expect(browser.elements(".pill_selected").value.length).toBe(0);
+
+    // check that there no search results
+    browser.waitUntil(
+      () => browser.elements(els.markerComponent).value.length === 0,
+      6000,
+      "expected no search results after deselecting any filters and waiting 6 seconds",
+      2000,
+    );
   });
 });

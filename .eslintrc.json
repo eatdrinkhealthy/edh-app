@@ -18,7 +18,9 @@
     "window": true,
     "document": true,
     "browser": true,
-    "alert": true
+    "navigator": true,
+    "alert": true,
+    "Geolocation": true
   },
   "parserOptions": {
     "sourceType": "module",

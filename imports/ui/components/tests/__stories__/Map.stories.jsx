@@ -14,6 +14,7 @@ storiesOf("Map", module)
       googleMapsApiKey={Window.Meteor.settings.public.googleMapsApiKey}
       setSelectedVenueHandler={action("clicked")}
       selectedVenueId={null}
+      userLocation={{ lat: 32.789008, lng: -79.932115 }}
     />
   ))
   .add("Map - multiple markers", (): React$Element<*> => (
@@ -22,5 +23,6 @@ storiesOf("Map", module)
       venues={sampleVenues.slice(3)}
       setSelectedVenueHandler={action("clicked")}
       selectedVenueId={null}
+      userLocation={{ lat: 32.789008, lng: -79.932115 }}
     />
   ));
