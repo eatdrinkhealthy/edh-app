@@ -30,16 +30,20 @@ export class MapWrapper extends Component {
   props: IMapWrapperProps;
 
   state = {
-    latitude: 32.789008,
-    longitude: -79.932115,
+    center: {
+      lat: 32.789008,
+      lng: -79.932115,
+    },
     zoom: 3,
   };
 
   componentDidMount() {
     getLocation((position: Position) => {
       this.setState({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
+        center: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        },
         zoom: 15,
       });
     });
@@ -65,21 +69,21 @@ export class MapWrapper extends Component {
 
     Meteor.call("getNearbyPlaces",
       {
-        latitude: this.state.latitude,
-        longitude: this.state.longitude,
+        latitude: this.state.center.lat,
+        longitude: this.state.center.lng,
         eatDrinkFilters: selectedEatDrinkFilters,
         venueTypeFilters: selectedVenueTypeFilters,
       },
       this.getNearbyPlacesCB,
     );
-  }
+  };
 
   filterHasChanged = (nextProps: IMapWrapperProps): boolean => {
     const edfChanged = !_.isEqual(this.props.eatDrinkFilters, nextProps.eatDrinkFilters);
     const vtfChanged = !_.isEqual(this.props.venueTypeFilters, nextProps.venueTypeFilters);
 
     return edfChanged || vtfChanged;
-  }
+  };
 
   // NOTE: this is an ES6 class property arrow function (preserves this context)
   getNearbyPlacesCB = (error: Error, result: Array<IVenue>) => {
@@ -105,22 +109,21 @@ export class MapWrapper extends Component {
       // TODO potentially throw here (or log search criteria to a logger for evaluation)
       this.props.setSearchResultsHandler(result);
     }
-  }
+  };
 
   handleMapChange = (mapChange: IGoogleMapDisplay) => {
     this.setState({
-      latitude: mapChange.center.lat,
-      longitude: mapChange.center.lng,
+      center: {
+        lat: mapChange.center.lat,
+        lng: mapChange.center.lng,
+      },
     });
-  }
+  };
 
   render() { // eslint-disable-line flowtype/require-return-type
     return (
       <Map
-        center={{
-          lat: this.state.latitude,
-          lng: this.state.longitude,
-        }}
+        center={this.state.center}
         zoom={this.state.zoom}
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={this.props.searchResults}
