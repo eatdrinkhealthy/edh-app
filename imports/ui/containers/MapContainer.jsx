@@ -7,7 +7,11 @@ import { Meteor } from "meteor/meteor";
 import _ from "lodash";
 import AlertMessage from "../components/AlertMessage";
 import Map from "../components/Map";
-import { getLocation } from "../../utils/geoLocation";
+import {
+  getLocation,
+  watchLocation,
+  clearWatch,
+} from "../../utils/geoLocation";
 import { setSearchResults } from "../../state/actions/searchResultsActions";
 import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
 
@@ -50,11 +54,16 @@ export class MapWrapper extends Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         },
+        zoom: 15,
+      });
+    });
+
+    this.watchLocationId = watchLocation((position: Position) => {
+      this.setState({
         userLocation: {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         },
-        zoom: 15,
       });
     });
   }
@@ -63,6 +72,10 @@ export class MapWrapper extends Component {
     if (this.filterHasChanged(nextProps)) {
       this.callFoursquareApi(nextProps.eatDrinkFilters, nextProps.venueTypeFilters);
     }
+  }
+
+  componentWillUnmount() {
+    clearWatch(this.watchLocationId);
   }
 
   callFoursquareApi = (
@@ -87,6 +100,8 @@ export class MapWrapper extends Component {
       this.getNearbyPlacesCB,
     );
   };
+
+  watchLocationId: number;
 
   filterHasChanged = (nextProps: IMapWrapperProps): boolean => {
     const edfChanged = !_.isEqual(this.props.eatDrinkFilters, nextProps.eatDrinkFilters);

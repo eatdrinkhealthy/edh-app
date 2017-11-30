@@ -18,9 +18,21 @@ function locationError() {
   }
 }
 
+const options = {
+  enableHighAccuracy: true,
+  maximumAge: 3000,
+  timeout: 7000,
+};
+
 export const getLocation = (locationFound: (position: Position) => void) => {
   navigator.geolocation.getCurrentPosition(locationFound, locationError);
 };
+
+// NOTE: this does return an id returned from watchPosition
+export const watchLocation = (locationFound: (position: Position) => void): number =>
+  navigator.geolocation.watchPosition(locationFound, locationError, options);
+
+export const clearWatch = (id: number) => navigator.geolocation.clearWatch(id);
 
 export const initGeoLocation = () => {
   if (!navigator.geolocation) {
