@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Map /> matches render snapshot 1`] = `
+exports[`<Map /> matches render snapshot - with userLocation pin 1`] = `
 <div
   className="map-holder"
 >
@@ -41,5 +41,44 @@ exports[`<Map /> matches render snapshot 1`] = `
       lng={-79.932115}
     />
   </GoogleMap>
+</div>
+`;
+
+exports[`<Map /> matches render snapshot 1`] = `
+<div
+  className="map-holder"
+>
+  <GoogleMap
+    bootstrapURLKeys={
+      Object {
+        "key": "TestAPIKeyValue",
+      }
+    }
+    center={
+      Object {
+        "lat": 32.789008,
+        "lng": -79.932115,
+      }
+    }
+    debounced={true}
+    distanceToMouse={[Function]}
+    googleMapLoader={[Function]}
+    hoverDistance={30}
+    layerTypes={Array []}
+    onChange={[Function]}
+    onClick={[Function]}
+    options={[Function]}
+    style={
+      Object {
+        "height": "100%",
+        "margin": 0,
+        "padding": 0,
+        "position": "relative",
+        "width": "100%",
+      }
+    }
+    yesIWantToUseGoogleMapApiInternals={false}
+    zoom={15}
+  />
 </div>
 `;

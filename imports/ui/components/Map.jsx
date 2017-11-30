@@ -27,8 +27,9 @@ export default class Map extends PureComponent {
   props: {
     center?: ILatLng,
     zoom?: number,
+    userLocation?: ILatLng,   // eslint-disable-line react/require-default-props
     googleMapsApiKey: string,
-    venues: Array<IVenue>, // TODO can't this be optional with default? when so, produces flow error
+    venues: Array<IVenue>,
     selectedVenueId: ?string,
     setSelectedVenueHandler: (venueId: ?string) => void,
     onMapChange?: (mapChange: ?IGoogleMapDisplay) => void,
@@ -66,8 +67,7 @@ export default class Map extends PureComponent {
   }
 
   render() {  // eslint-disable-line flowtype/require-return-type
-    // $FlowFixMe  (flow says possibly undefined, but a default props is provided)
-    const { lat: userLat, lng: userLng } = this.props.center;
+    const userLocation = this.props.userLocation;
 
     return (
       <div
@@ -82,7 +82,7 @@ export default class Map extends PureComponent {
           options={createMapOptions}
           onChange={this.props.onMapChange}
         >
-          <Pin lat={userLat} lng={userLng} />
+          {userLocation && <Pin lat={userLocation.lat} lng={userLocation.lng} />}
           {this.props.venues.map((venue: IVenue): React$Element<*> => (
             <Marker
               key={venue.id}
