@@ -20,8 +20,8 @@ function positionError() {
 
 const options = {
   enableHighAccuracy: true,
-  maximumAge: 3000,
   timeout: 7000,
+  maximumAge: 0,
 };
 
 export const getPosition = (positionFound: (position: Position) => void) => {
