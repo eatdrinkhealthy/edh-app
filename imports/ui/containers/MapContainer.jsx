@@ -8,9 +8,9 @@ import _ from "lodash";
 import AlertMessage from "../components/AlertMessage";
 import Map from "../components/Map";
 import {
-  getLocation,
-  watchLocation,
-  clearWatch,
+  getPosition,
+  watchPosition,
+  clearWatchPosition,
 } from "../../utils/geoLocation";
 import { setSearchResults } from "../../state/actions/searchResultsActions";
 import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
@@ -48,7 +48,7 @@ export class MapWrapper extends Component {
   };
 
   componentDidMount() {
-    getLocation((position: Position) => {
+    getPosition((position: Position) => {
       this.setState({
         center: {
           lat: position.coords.latitude,
@@ -58,7 +58,7 @@ export class MapWrapper extends Component {
       });
     });
 
-    this.watchLocationId = watchLocation((position: Position) => {
+    this.watchPositionId = watchPosition((position: Position) => {
       this.setState({
         userLocation: {
           lat: position.coords.latitude,
@@ -75,7 +75,7 @@ export class MapWrapper extends Component {
   }
 
   componentWillUnmount() {
-    clearWatch(this.watchLocationId);
+    clearWatchPosition(this.watchPositionId);
   }
 
   callFoursquareApi = (
@@ -101,7 +101,7 @@ export class MapWrapper extends Component {
     );
   };
 
-  watchLocationId: number;
+  watchPositionId: number;
 
   filterHasChanged = (nextProps: IMapWrapperProps): boolean => {
     const edfChanged = !_.isEqual(this.props.eatDrinkFilters, nextProps.eatDrinkFilters);

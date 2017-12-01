@@ -10,7 +10,7 @@ import AlertMessage from "../ui/components/AlertMessage";
 //       making calls to Geolocation (mdg:geolocation)
 //
 
-function locationError() {
+function positionError() {
   AlertMessage.warning("Unable to get geolocation.");
   const glError = Geolocation.error();
   if (glError) {
@@ -24,15 +24,15 @@ const options = {
   timeout: 7000,
 };
 
-export const getLocation = (locationFound: (position: Position) => void) => {
-  navigator.geolocation.getCurrentPosition(locationFound, locationError);
+export const getPosition = (positionFound: (position: Position) => void) => {
+  navigator.geolocation.getCurrentPosition(positionFound, positionError);
 };
 
 // NOTE: this does return an id returned from watchPosition
-export const watchLocation = (locationFound: (position: Position) => void): number =>
-  navigator.geolocation.watchPosition(locationFound, locationError, options);
+export const watchPosition = (positionFound: (position: Position) => void): number =>
+  navigator.geolocation.watchPosition(positionFound, positionError, options);
 
-export const clearWatch = (id: number) => navigator.geolocation.clearWatch(id);
+export const clearWatchPosition = (id: number) => navigator.geolocation.clearWatch(id);
 
 export const initGeoLocation = () => {
   if (!navigator.geolocation) {
