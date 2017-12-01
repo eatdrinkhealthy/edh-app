@@ -12,6 +12,7 @@ exports[`<MapWrapper /> matches render snapshot 1`] = `
   onMapChange={[Function]}
   selectedVenueId={null}
   setSelectedVenueHandler={[Function]}
+  userPosition={null}
   venues={Array []}
   zoom={3}
 />

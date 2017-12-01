@@ -67,6 +67,7 @@ describe("<MapWrapper />", function () {
     setSearchResultsHandler: stubFn,
     setSelectedVenueHandler: stubFn,
     selectedVenueId: null,
+    userPosition: null,
   };
 
   it("matches render snapshot", function () {
@@ -96,6 +97,7 @@ describe("<MapWrapper />", function () {
       setSearchResultsHandler: stubFn,
       setSelectedVenueHandler: stubFn,
       selectedVenueId: null,
+      userPosition: null,
     });
 
     expect(Meteor.call).toHaveBeenCalledWith("getNearbyPlaces",
@@ -135,6 +137,7 @@ describe("<MapWrapper />", function () {
         setSearchResultsHandler: stubFn,
         setSelectedVenueHandler: stubFn,
         selectedVenueId: null,
+        userPosition: null,
       };
 
       const wrapper = shallow(<MapWrapper {...propsNoFilters} />);
@@ -181,7 +184,10 @@ describe("<MapContainer />", function () {
     ],
     mapDisplay: {
       selectedVenueId: "B",
-      userPosition: null,
+      userPosition: {
+        lat: 3,
+        lng: 4,
+      },
     },
   };
 
@@ -216,5 +222,10 @@ describe("<MapContainer />", function () {
   it("should set selectedVenueId from state", function () {
     expect(wrapper.find("MapWrapper").at(0).props().selectedVenueId)
       .toEqual(testDefaultState.mapDisplay.selectedVenueId);
+  });
+
+  it("should set userPosition from state", function () {
+    expect(wrapper.find("MapWrapper").at(0).props().userPosition)
+      .toEqual(testDefaultState.mapDisplay.userPosition);
   });
 });

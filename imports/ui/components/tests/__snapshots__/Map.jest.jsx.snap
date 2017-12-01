@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Map /> matches render snapshot - with userLocation pin 1`] = `
+exports[`<Map /> matches render snapshot - with userPosition pin 1`] = `
 <div
   className="map-holder"
 >
