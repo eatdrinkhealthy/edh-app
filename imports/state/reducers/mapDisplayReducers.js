@@ -1,13 +1,19 @@
 // @flow
-import { SET_SELECTED_VENUE } from "../actions/actionTypes";
+import type { ILatLng } from "google-map-react";
+import {
+  SET_SELECTED_VENUE,
+  SET_USER_POSITION,
+} from "../actions/actionTypes";
 import type { IMapDisplayAction } from "../actions/mapDisplayActions";
 
 export type IMapDisplayState = {
   selectedVenueId: ?string,
+  userPosition: ?ILatLng,
 };
 
 export const defaultMapDisplayState = {
   selectedVenueId: null,
+  userPosition: null,
 };
 
 const mapDisplay = (
@@ -16,7 +22,10 @@ const mapDisplay = (
 ): IMapDisplayState => {
   switch (action.type) {
     case SET_SELECTED_VENUE:
-      return { selectedVenueId: action.venueId };
+      return Object.assign({}, state, { selectedVenueId: action.venueId });
+
+    case SET_USER_POSITION:
+      return Object.assign({}, state, { userPosition: action.userPosition });
 
     default:
       return state;

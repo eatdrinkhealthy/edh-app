@@ -179,7 +179,10 @@ describe("<MapContainer />", function () {
       sampleVenues[4],
       sampleVenues[5],
     ],
-    mapDisplay: { selectedVenueId: "B" },
+    mapDisplay: {
+      selectedVenueId: "B",
+      userPosition: null,
+    },
   };
 
   const testStore = createStore(

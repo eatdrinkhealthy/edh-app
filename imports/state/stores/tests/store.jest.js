@@ -10,7 +10,10 @@ import { toggleVenueTypeFilter } from "../../actions/venueTypeFiltersActions";
 import searchResultsReducer from "../../reducers/searchResultsReducers";
 import { setSearchResults } from "../../actions/searchResultsActions";
 import mapDisplayReducer from "../../reducers/mapDisplayReducers";
-import { setSelectedVenue } from "../../actions/mapDisplayActions";
+import {
+  setSelectedVenue,
+  setUserPosition,
+} from "../../actions/mapDisplayActions";
 import sampleVenues from "./sampleVenueData";
 
 describe("store - smoke test", function () {
@@ -72,6 +75,11 @@ describe("store - smoke test", function () {
     it("should handle a setSelectedVenue action", function () {
       store.dispatch(setSelectedVenue("abc"));
       expect(store.getState().mapDisplay.selectedVenueId).toEqual("abc");
+    });
+
+    it("should handle a setUserPosition action", function () {
+      store.dispatch(setUserPosition({ lat: 1, lng: 2 }));
+      expect(store.getState().mapDisplay.userPosition).toEqual({ lat: 1, lng: 2 });
     });
   });
 });
