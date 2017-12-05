@@ -30,6 +30,7 @@ import sampleVenues from "../../../state/stores/tests/sampleVenueData";
 import type { IState } from "../../../state/stores/store";
 import type { IEatDrinkFilter } from "../../../state/reducers/eatDrinkFiltersReducers";
 import type { IVenueTypeFilter } from "../../../state/reducers/venueTypeFiltersReducers";
+import type { IMapWrapperProps } from "../MapContainer";
 /* eslint-enable no-duplicate-imports */
 
 import AlertMessage from "../../components/AlertMessage";
@@ -62,7 +63,7 @@ describe("<MapContainer />", function () {
 
     const stubFn = jest.fn();
 
-    const props = {
+    const props: IMapWrapperProps = {
       eatDrinkFilters: edFilterList,
       venueTypeFilters: vtFilterList,
       searchResults: [],
@@ -72,6 +73,8 @@ describe("<MapContainer />", function () {
       userLocation: null,
       mapCenter: { lat: 1, lng: 2 },
       setMapCenterHandler: stubFn,
+      zoom: 6,
+      setMapZoomHandler: stubFn,
     };
 
     it("matches render snapshot", function () {
@@ -119,7 +122,7 @@ describe("<MapContainer />", function () {
 
     it("should NOT call AlertMessage.warning when getNearbyPlacesCB has no filters, no search results",
       function () {
-        const propsNoFilters = {
+        const propsNoFilters: IMapWrapperProps = {
           eatDrinkFilters: noEdFilterList,
           venueTypeFilters: noVtFilterList,
           searchResults: [],
@@ -129,6 +132,8 @@ describe("<MapContainer />", function () {
           userLocation: null,
           mapCenter: { lat: 5, lng: 6 },
           setMapCenterHandler: stubFn,
+          zoom: 6,
+          setMapZoomHandler: stubFn,
         };
 
         const wrapper = shallow(<MapWrapper {...propsNoFilters} />);
@@ -138,15 +143,17 @@ describe("<MapContainer />", function () {
         expect(AlertMessage.warning).not.toHaveBeenCalled();
       });
 
-    it("should know when filter has NOT changed", function () {
+    it("should know filter has NOT changed, when zoom and userLocation have changed", function () {
       const nextProps = _.cloneDeep(props);    // make a copy of props
+      nextProps.zoom = 18;
+      nextProps.userLocation = { lat: 3, lng: 4 };
 
       const wrapper = shallow(<MapWrapper {...props} />);
       // $FlowFixMe (ignoring 'filterHasChanged' is not method of React$Component error)
       expect(wrapper.instance().filterHasChanged(nextProps)).toBe(false);
     });
 
-    it("should show filter has changed when a venueTypeFilter changes", function () {
+    it("should know filter has changed when a venueTypeFilter changes", function () {
       const nextProps = _.cloneDeep(props);
       nextProps.venueTypeFilters[0].on = false;
 
@@ -155,7 +162,7 @@ describe("<MapContainer />", function () {
       expect(wrapper.instance().filterHasChanged(nextProps)).toBe(true);
     });
 
-    it("should show filter has changed when an eatDrinkFilter changes", function () {
+    it("should know filter has changed when an eatDrinkFilter changes", function () {
       const nextProps = _.cloneDeep(props);
       nextProps.eatDrinkFilters[0].on = false;
 
@@ -164,7 +171,7 @@ describe("<MapContainer />", function () {
       expect(wrapper.instance().filterHasChanged(nextProps)).toBe(true);
     });
 
-    it("should show filter has changed when a mapCenter changes", function () {
+    it("should know filter has changed when a mapCenter changes", function () {
       const nextProps = _.cloneDeep(props);
       nextProps.mapCenter = { lat: 3, lng: 4 };
 
@@ -195,7 +202,7 @@ describe("<MapContainer />", function () {
         selectedVenueId: "B",
         userLocation: { lat: 3, lng: 4 },
         mapCenter: { lat: 5, lng: 6 },
-        zoom: 3,
+        zoom: 6,
       },
     };
 
@@ -240,6 +247,11 @@ describe("<MapContainer />", function () {
     it("should set mapCenter for MapWrapper from redux state", function () {
       expect(wrapper.find("MapWrapper").at(0).props().mapCenter)
         .toEqual(testDefaultState.mapDisplay.mapCenter);
+    });
+
+    it("should set zoom for MapWrapper from redux state", function () {
+      expect(wrapper.find("MapWrapper").at(0).props().zoom)
+        .toEqual(testDefaultState.mapDisplay.zoom);
     });
   });
 });

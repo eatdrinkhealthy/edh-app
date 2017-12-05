@@ -7,11 +7,11 @@ import { Meteor } from "meteor/meteor";
 import _ from "lodash";
 import AlertMessage from "../components/AlertMessage";
 import Map from "../components/Map";
-import { getPosition } from "../../utils/geoLocation";
 import { setSearchResults } from "../../state/actions/searchResultsActions";
 import {
   setSelectedVenue,
   setMapCenter,
+  setMapZoom,
 } from "../../state/actions/mapDisplayActions";
 
 import type { IGoogleMapDisplay, ILatLng } from "google-map-react"; // eslint-disable-line import/first
@@ -20,7 +20,7 @@ import type { IState } from "../../state/stores/store";
 import type { IEatDrinkFilter } from "../../state/reducers/eatDrinkFiltersReducers";
 import type { IVenueTypeFilter } from "../../state/reducers/venueTypeFiltersReducers";
 
-type IMapWrapperProps = {
+export type IMapWrapperProps = {
   eatDrinkFilters: Array<IEatDrinkFilter>,
   venueTypeFilters: Array<IVenueTypeFilter>,
   searchResults: Array<IVenue>,
@@ -30,26 +30,12 @@ type IMapWrapperProps = {
   userLocation: ?ILatLng,
   mapCenter: ILatLng,
   setMapCenterHandler: (mapCenter: ILatLng) => void,
-};
-
-type IMapWrapperState = {
   zoom: number,
+  setMapZoomHandler: (zoom: number) => void,
 };
 
 export class MapWrapper extends Component {
   props: IMapWrapperProps;
-
-  state: IMapWrapperState = {
-    zoom: 3,
-  };
-
-  componentDidMount() {
-    getPosition((position: Position) => {
-      this.setState({
-        zoom: 15,
-      });
-    });
-  }
 
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
     if (this.filterHasChanged(nextProps)) {
@@ -120,17 +106,21 @@ export class MapWrapper extends Component {
   };
 
   handleMapChange = (mapChange: IGoogleMapDisplay) => {
+    // TODO conditionally call these handlers (if center or zoom have changed)
+    //   -confirmed, redux will issue a dispatch, even with same values in action
     this.props.setMapCenterHandler({
       lat: mapChange.center.lat,
       lng: mapChange.center.lng,
     });
+
+    this.props.setMapZoomHandler(mapChange.zoom);
   };
 
   render() { // eslint-disable-line flowtype/require-return-type
     return (
       <Map
         center={this.props.mapCenter}
-        zoom={this.state.zoom}
+        zoom={this.props.zoom}
         userLocation={this.props.userLocation}
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={this.props.searchResults}
@@ -149,6 +139,7 @@ type IStateProps = {
   selectedVenueId: ?string,
   userLocation: ?ILatLng,
   mapCenter: ILatLng,
+  zoom: number,
 };
 
 const mapStateToProps = (state: IState): IStateProps => ({
@@ -158,12 +149,14 @@ const mapStateToProps = (state: IState): IStateProps => ({
   selectedVenueId: state.mapDisplay.selectedVenueId,
   userLocation: state.mapDisplay.userLocation,
   mapCenter: state.mapDisplay.mapCenter,
+  zoom: state.mapDisplay.zoom,
 });
 
 type IDispatchProps = {
   setSearchResultsHandler: (searchResults: Array<IVenue>) => void,
   setSelectedVenueHandler: (venueId: string) => void,
   setMapCenterHandler: (mapCenter: ILatLng) => void,
+  setMapZoomHandler: (zoom: number) => void,
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
@@ -175,6 +168,9 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   ),
   setMapCenterHandler: (mapCenter: ILatLng): void => (
     dispatch(setMapCenter(mapCenter))
+  ),
+  setMapZoomHandler: (zoom: number): void => (
+    dispatch(setMapZoom(zoom))
   ),
 });
 

@@ -14,6 +14,6 @@ exports[`<MapContainer /> <MapWrapper /> matches render snapshot 1`] = `
   setSelectedVenueHandler={[Function]}
   userLocation={null}
   venues={Array []}
-  zoom={3}
+  zoom={6}
 />
 `;
