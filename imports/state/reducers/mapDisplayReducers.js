@@ -4,6 +4,7 @@ import {
   SET_SELECTED_VENUE,
   SET_USER_LOCATION,
   SET_MAP_CENTER,
+  SET_MAP_ZOOM,
 } from "../actions/actionTypes";
 import type { IMapDisplayAction } from "../actions/mapDisplayActions";
 
@@ -11,6 +12,7 @@ export type IMapDisplayState = {
   selectedVenueId: ?string,
   userLocation: ?ILatLng,
   mapCenter: ILatLng,
+  zoom: number,
 };
 
 export const defaultMapDisplayState = {
@@ -20,6 +22,7 @@ export const defaultMapDisplayState = {
     lat: 32.789008,
     lng: -79.932115,
   },
+  zoom: 3,
 };
 
 const mapDisplay = (
@@ -35,6 +38,9 @@ const mapDisplay = (
 
     case SET_MAP_CENTER:
       return Object.assign({}, state, { mapCenter: action.mapCenter });
+
+    case SET_MAP_ZOOM:
+      return Object.assign({}, state, { zoom: action.zoom });
 
     default:
       return state;

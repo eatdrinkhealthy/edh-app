@@ -195,6 +195,7 @@ describe("<MapContainer />", function () {
         selectedVenueId: "B",
         userLocation: { lat: 3, lng: 4 },
         mapCenter: { lat: 5, lng: 6 },
+        zoom: 3,
       },
     };
 

@@ -14,6 +14,7 @@ import {
   setSelectedVenue,
   setUserLocation,
   setMapCenter,
+  setMapZoom,
 } from "../../actions/mapDisplayActions";
 import sampleVenues from "./sampleVenueData";
 
@@ -86,6 +87,11 @@ describe("store - smoke test", function () {
     it("should handle a setMapCenter action", function () {
       store.dispatch(setMapCenter({ lat: 4, lng: 6 }));
       expect(store.getState().mapDisplay.mapCenter).toEqual({ lat: 4, lng: 6 });
+    });
+
+    it("should handle a setMapZoom action", function () {
+      store.dispatch(setMapZoom(10));
+      expect(store.getState().mapDisplay.zoom).toEqual(10);
     });
   });
 });

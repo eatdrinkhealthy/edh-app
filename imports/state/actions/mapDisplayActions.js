@@ -12,6 +12,7 @@ export type IMapDisplayAction = {
   venueId?: ?string,
   userLocation?: ?ILatLng,
   mapCenter?: ILatLng,
+  zoom?: number,
 };
 
 // eslint-disable-next-line import/prefer-default-export

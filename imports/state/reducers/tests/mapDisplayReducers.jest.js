@@ -7,16 +7,18 @@ import {
   setSelectedVenue as setSelectedVenueActionCreator,
   setUserLocation as setUserLocationActionCreator,
   setMapCenter as setMapCenterActionCreator,
+  setMapZoom as setMapZoomActionCreator,
 } from "../../actions/mapDisplayActions";
 
 describe("mapDisplay reducers", function () {
   const unknownAction = { type: "unknown", venueId: "abc123" };
 
-  it("should return an initial state of mapCenter and nulls", function () {
+  it("should return an initial state of mapCenter, mapZoom and nulls", function () {
     expect(mapDisplayReducer(undefined, unknownAction)).toEqual({
       selectedVenueId: null,
       userLocation: null,
       mapCenter: { lat: 32.789008, lng: -79.932115 },
+      zoom: 3,
     });
   });
 
@@ -25,6 +27,7 @@ describe("mapDisplay reducers", function () {
       selectedVenueId: "xyz",
       userLocation: { lat: 3, lng: 4 },
       mapCenter: { lat: 7, lng: 8 },
+      zoom: 12,
     };
     const nextState = mapDisplayReducer(previousState, unknownAction);
 
@@ -36,11 +39,13 @@ describe("mapDisplay reducers", function () {
       selectedVenueId: "abc",
       userLocation: { lat: 3, lng: 4 },
       mapCenter: { lat: 7, lng: 8 },
+      zoom: 12,
     };
     const expectedResult = {
       selectedVenueId: "xyz",
       userLocation: { lat: 3, lng: 4 },
       mapCenter: { lat: 7, lng: 8 },
+      zoom: 12,
     };
 
     const setSelectedVenueAction = setSelectedVenueActionCreator("xyz");
@@ -52,11 +57,13 @@ describe("mapDisplay reducers", function () {
       selectedVenueId: "xyz",
       userLocation: { lat: 2, lng: 4 },
       mapCenter: { lat: 7, lng: 8 },
+      zoom: 12,
     };
     const expectedResult = {
       selectedVenueId: "xyz",
       userLocation: { lat: 3, lng: 5 },
       mapCenter: { lat: 7, lng: 8 },
+      zoom: 12,
     };
 
     const setUserLocationAction = setUserLocationActionCreator({ lat: 3, lng: 5 });
@@ -68,14 +75,34 @@ describe("mapDisplay reducers", function () {
       selectedVenueId: "xyz",
       userLocation: { lat: 2, lng: 4 },
       mapCenter: { lat: 7, lng: 8 },
+      zoom: 12,
     };
     const expectedResult = {
       selectedVenueId: "xyz",
       userLocation: { lat: 2, lng: 4 },
       mapCenter: { lat: 9, lng: 10 },
+      zoom: 12,
     };
 
     const setMapCenterAction = setMapCenterActionCreator({ lat: 9, lng: 10 });
     expect(mapDisplayReducer(previousState, setMapCenterAction)).toEqual(expectedResult);
+  });
+
+  it("should handle a SET_MAP_ZOOM action", function () {
+    const previousState = {
+      selectedVenueId: "xyz",
+      userLocation: { lat: 2, lng: 4 },
+      mapCenter: { lat: 7, lng: 8 },
+      zoom: 10,
+    };
+    const expectedResult = {
+      selectedVenueId: "xyz",
+      userLocation: { lat: 2, lng: 4 },
+      mapCenter: { lat: 7, lng: 8 },
+      zoom: 12,
+    };
+
+    const setMapZoomAction = setMapZoomActionCreator(12);
+    expect(mapDisplayReducer(previousState, setMapZoomAction)).toEqual(expectedResult);
   });
 });
