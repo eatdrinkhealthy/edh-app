@@ -14,13 +14,23 @@ import AlertMessage from "../components/AlertMessage";
 import {
   clearWatchPosition,
   watchPosition,
+  getPosition,
 } from "../../utils/geoLocation";
-import { setUserLocation } from "../../state/actions/mapDisplayActions";
+import { setMapCenter, setUserLocation } from "../../state/actions/mapDisplayActions";
 
 class App extends Component {
   componentDidMount() {
+    // set a watch for user's location
     this.watchPositionId = watchPosition((position: Position) => {
       store.dispatch(setUserLocation({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      }));
+    });
+
+    // get the current location, to set initial map center
+    getPosition((position: Position) => {
+      store.dispatch(setMapCenter({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }));
