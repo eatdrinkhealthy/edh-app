@@ -49,7 +49,21 @@
     * setting position to absolute seems one step closer. it displays the map correctly, but will run in to problems eventually with z-index
         * note, google-map-react uses position absolute, and has it working somehow
 
-## Development / Debugging
+## Development Notes
+### Development Process 
+* Github
+    - Master branch contains the version that goes to production
+    - For the most part, any branch may go to staging for testing purposes, __BUT__ each
+    iteration branch must go to staging, then be merged in to master via a pull request, in order to make it to production
+    - A separate branch is created for each iteration
+        + branch name format: iterationMMDDYY   where MMDDYY is the start date of the iteration
+    - A separate branch is created for each story in an iteration, then merged in to the iteration branch
+        + branch name format: iterationMMDDYY-storyName
+    - Separate branches can be made for development progress, then merged in to the story branch
+        + branch name format: iterationMMDDYY-storyName-devProgress
+    - NOTE: in Trello, lists (columns) are created for each iteration completed
+        + column name: 'Done IterationMMDDYY'
+### Debugging
 * A global `window.SHOW_GRID` was added to display a border around react-bootstrap columns.
     + this setting also displays the breakpoint screen size in the upper left corner of the body
     + NOTE: this global is not typically set in source code, but more often used in storybook
