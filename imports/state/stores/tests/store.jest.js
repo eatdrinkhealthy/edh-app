@@ -12,7 +12,7 @@ import { setSearchResults } from "../../actions/searchResultsActions";
 import mapDisplayReducer from "../../reducers/mapDisplayReducers";
 import {
   setSelectedVenue,
-  setUserPosition,
+  setUserLocation,
   setMapCenter,
 } from "../../actions/mapDisplayActions";
 import sampleVenues from "./sampleVenueData";
@@ -78,9 +78,9 @@ describe("store - smoke test", function () {
       expect(store.getState().mapDisplay.selectedVenueId).toEqual("abc");
     });
 
-    it("should handle a setUserPosition action", function () {
-      store.dispatch(setUserPosition({ lat: 1, lng: 2 }));
-      expect(store.getState().mapDisplay.userPosition).toEqual({ lat: 1, lng: 2 });
+    it("should handle a setUserLocation action", function () {
+      store.dispatch(setUserLocation({ lat: 1, lng: 2 }));
+      expect(store.getState().mapDisplay.userLocation).toEqual({ lat: 1, lng: 2 });
     });
 
     it("should handle a setMapCenter action", function () {

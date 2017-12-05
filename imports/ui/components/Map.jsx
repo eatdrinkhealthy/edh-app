@@ -27,7 +27,7 @@ export default class Map extends PureComponent {
   props: {
     center: ILatLng,
     zoom?: number,
-    userPosition?: ?ILatLng,   // eslint-disable-line react/require-default-props
+    userLocation?: ?ILatLng,   // eslint-disable-line react/require-default-props
     googleMapsApiKey: string,
     venues: Array<IVenue>,
     selectedVenueId: ?string,
@@ -66,7 +66,7 @@ export default class Map extends PureComponent {
   }
 
   render() {  // eslint-disable-line flowtype/require-return-type
-    const userPosition = this.props.userPosition;
+    const userLocation = this.props.userLocation;
 
     return (
       <div
@@ -81,7 +81,7 @@ export default class Map extends PureComponent {
           options={createMapOptions}
           onChange={this.props.onMapChange}
         >
-          {userPosition && <Pin lat={userPosition.lat} lng={userPosition.lng} />}
+          {userLocation && <Pin lat={userLocation.lat} lng={userLocation.lng} />}
           {this.props.venues.map((venue: IVenue): React$Element<*> => (
             <Marker
               key={venue.id}

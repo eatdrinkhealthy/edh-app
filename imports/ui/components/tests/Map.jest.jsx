@@ -22,12 +22,12 @@ describe("<Map />", function () {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it("matches render snapshot - with userPosition pin", function () {
+  it("matches render snapshot - with userLocation pin", function () {
     const wrapper = shallow(<Map
       googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
       setSelectedVenueHandler={() => {}}
       selectedVenueId={null}
-      userPosition={{ lat: 32.789008, lng: -79.932115 }}
+      userLocation={{ lat: 32.789008, lng: -79.932115 }}
       center={{ lat: 32.789008, lng: -79.932115 }}
     />);
     expect(toJson(wrapper)).toMatchSnapshot();

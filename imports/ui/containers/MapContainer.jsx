@@ -24,7 +24,7 @@ type IMapWrapperProps = {
   setSearchResultsHandler: (searchResults: Array<IVenue>) => void,
   setSelectedVenueHandler: () => void,
   selectedVenueId: ?string,
-  userPosition: ?ILatLng,
+  userLocation: ?ILatLng,
 };
 
 type IMapWrapperState = {
@@ -131,7 +131,7 @@ export class MapWrapper extends Component {
       <Map
         center={this.state.center}
         zoom={this.state.zoom}
-        userPosition={this.props.userPosition}
+        userLocation={this.props.userLocation}
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
         venues={this.props.searchResults}
         setSelectedVenueHandler={this.props.setSelectedVenueHandler}
@@ -147,7 +147,7 @@ type IStateProps = {
   venueTypeFilters: Array<IVenueTypeFilter>,
   searchResults: Array<IVenue>,
   selectedVenueId: ?string,
-  userPosition: ?ILatLng,
+  userLocation: ?ILatLng,
 };
 
 const mapStateToProps = (state: IState): IStateProps => ({
@@ -155,7 +155,7 @@ const mapStateToProps = (state: IState): IStateProps => ({
   venueTypeFilters: state.venueTypeFilters,
   searchResults: state.searchResults,
   selectedVenueId: state.mapDisplay.selectedVenueId,
-  userPosition: state.mapDisplay.userPosition,
+  userLocation: state.mapDisplay.userLocation,
 });
 
 type IDispatchProps = {

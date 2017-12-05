@@ -15,12 +15,12 @@ import {
   clearWatchPosition,
   watchPosition,
 } from "../../utils/geoLocation";
-import { setUserPosition } from "../../state/actions/mapDisplayActions";
+import { setUserLocation } from "../../state/actions/mapDisplayActions";
 
 class App extends Component {
   componentDidMount() {
     this.watchPositionId = watchPosition((position: Position) => {
-      store.dispatch(setUserPosition({
+      store.dispatch(setUserLocation({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }));

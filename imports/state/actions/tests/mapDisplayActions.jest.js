@@ -4,13 +4,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import {
   setSelectedVenue,
-  setUserPosition,
+  setUserLocation,
   setMapCenter,
 } from "../mapDisplayActions";
 import {
   SET_MAP_CENTER,
   SET_SELECTED_VENUE,
-  SET_USER_POSITION,
+  SET_USER_LOCATION,
 } from "../actionTypes";
 
 describe("Map Display Actions", function () {
@@ -26,22 +26,22 @@ describe("Map Display Actions", function () {
     });
   });
 
-  describe("setUserPosition", function () {
-    it("should create a SET_USER_POSITION action", function () {
-      const userPosition = {
+  describe("setUserLocation", function () {
+    it("should create a SET_USER_LOCATION action", function () {
+      const userLocation = {
         lat: 4.5,
         lng: 5.6,
       };
 
       const expectedAction = {
-        type: SET_USER_POSITION,
-        userPosition: {
+        type: SET_USER_LOCATION,
+        userLocation: {
           lat: 4.5,
           lng: 5.6,
         },
       };
 
-      expect(setUserPosition(userPosition)).toEqual(expectedAction);
+      expect(setUserLocation(userLocation)).toEqual(expectedAction);
     });
   });
 

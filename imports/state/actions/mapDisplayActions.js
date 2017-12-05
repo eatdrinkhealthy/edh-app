@@ -2,14 +2,14 @@
 import type { ILatLng } from "google-map-react";
 import {
   SET_SELECTED_VENUE,
-  SET_USER_POSITION,
+  SET_USER_LOCATION,
   SET_MAP_CENTER,
 } from "./actionTypes";
 
 export type IMapDisplayAction = {
   type: string,
   venueId?: ?string,
-  userPosition?: ?ILatLng,
+  userLocation?: ?ILatLng,
   mapCenter?: ILatLng,
 };
 
@@ -21,11 +21,11 @@ export const setSelectedVenue = (
   venueId,
 });
 
-export const setUserPosition = (
-  userPosition: ?ILatLng,
+export const setUserLocation = (
+  userLocation: ?ILatLng,
 ) => ({
-  type: SET_USER_POSITION,
-  userPosition,
+  type: SET_USER_LOCATION,
+  userLocation,
 });
 
 export const setMapCenter = (

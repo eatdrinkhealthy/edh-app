@@ -69,7 +69,7 @@ describe("<MapContainer />", function () {
       setSearchResultsHandler: stubFn,
       setSelectedVenueHandler: stubFn,
       selectedVenueId: null,
-      userPosition: null,
+      userLocation: null,
     };
 
     it("matches render snapshot", function () {
@@ -99,7 +99,7 @@ describe("<MapContainer />", function () {
         setSearchResultsHandler: stubFn,
         setSelectedVenueHandler: stubFn,
         selectedVenueId: null,
-        userPosition: null,
+        userLocation: null,
       });
 
       expect(Meteor.call).toHaveBeenCalledWith("getNearbyPlaces",
@@ -139,7 +139,7 @@ describe("<MapContainer />", function () {
           setSearchResultsHandler: stubFn,
           setSelectedVenueHandler: stubFn,
           selectedVenueId: null,
-          userPosition: null,
+          userLocation: null,
         };
 
         const wrapper = shallow(<MapWrapper {...propsNoFilters} />);
@@ -186,7 +186,7 @@ describe("<MapContainer />", function () {
       ],
       mapDisplay: {
         selectedVenueId: "B",
-        userPosition: { lat: 3, lng: 4 },
+        userLocation: { lat: 3, lng: 4 },
         mapCenter: { lat: 5, lng: 6 },
       },
     };
@@ -224,9 +224,9 @@ describe("<MapContainer />", function () {
         .toEqual(testDefaultState.mapDisplay.selectedVenueId);
     });
 
-    it("should set userPosition for MapWrapper from redux state", function () {
-      expect(wrapper.find("MapWrapper").at(0).props().userPosition)
-        .toEqual(testDefaultState.mapDisplay.userPosition);
+    it("should set userLocation for MapWrapper from redux state", function () {
+      expect(wrapper.find("MapWrapper").at(0).props().userLocation)
+        .toEqual(testDefaultState.mapDisplay.userLocation);
     });
 
     it.skip("should set mapCenter for MapWrapper from redux state", function () {
