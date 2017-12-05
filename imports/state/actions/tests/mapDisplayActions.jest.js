@@ -6,11 +6,13 @@ import {
   setSelectedVenue,
   setUserLocation,
   setMapCenter,
+  setMapZoom,
 } from "../mapDisplayActions";
 import {
   SET_MAP_CENTER,
   SET_SELECTED_VENUE,
   SET_USER_LOCATION,
+  SET_MAP_ZOOM,
 } from "../actionTypes";
 
 describe("Map Display Actions", function () {
@@ -61,6 +63,17 @@ describe("Map Display Actions", function () {
       };
 
       expect(setMapCenter(mapCenter)).toEqual(expectedAction);
+    });
+  });
+
+  describe("setMapZoom", function () {
+    it("should create a SET_MAP_ZOOM action", function () {
+      const expectedAction = {
+        type: SET_MAP_ZOOM,
+        zoom: 15,
+      };
+
+      expect(setMapZoom(15)).toEqual(expectedAction);
     });
   });
 });

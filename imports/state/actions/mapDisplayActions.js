@@ -4,6 +4,7 @@ import {
   SET_SELECTED_VENUE,
   SET_USER_LOCATION,
   SET_MAP_CENTER,
+  SET_MAP_ZOOM,
 } from "./actionTypes";
 
 export type IMapDisplayAction = {
@@ -33,4 +34,11 @@ export const setMapCenter = (
 ) => ({
   type: SET_MAP_CENTER,
   mapCenter,
+});
+
+export const setMapZoom = (
+  zoom: number,
+) => ({
+  type: SET_MAP_ZOOM,
+  zoom,
 });
