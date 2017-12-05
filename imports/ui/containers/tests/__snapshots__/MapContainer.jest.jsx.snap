@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MapWrapper /> matches render snapshot 1`] = `
+exports[`<MapContainer /> <MapWrapper /> matches render snapshot 1`] = `
 <Map
   center={
     Object {

@@ -3,12 +3,14 @@ import type { ILatLng } from "google-map-react";
 import {
   SET_SELECTED_VENUE,
   SET_USER_POSITION,
+  SET_MAP_CENTER,
 } from "./actionTypes";
 
 export type IMapDisplayAction = {
   type: string,
   venueId?: ?string,
   userPosition?: ?ILatLng,
+  mapCenter?: ILatLng,
 };
 
 // eslint-disable-next-line import/prefer-default-export
@@ -24,4 +26,11 @@ export const setUserPosition = (
 ) => ({
   type: SET_USER_POSITION,
   userPosition,
+});
+
+export const setMapCenter = (
+  mapCenter: ILatLng,
+) => ({
+  type: SET_MAP_CENTER,
+  mapCenter,
 });

@@ -5,8 +5,10 @@
 import {
   setSelectedVenue,
   setUserPosition,
+  setMapCenter,
 } from "../mapDisplayActions";
 import {
+  SET_MAP_CENTER,
   SET_SELECTED_VENUE,
   SET_USER_POSITION,
 } from "../actionTypes";
@@ -40,6 +42,25 @@ describe("Map Display Actions", function () {
       };
 
       expect(setUserPosition(userPosition)).toEqual(expectedAction);
+    });
+  });
+
+  describe("setMapCenter", function () {
+    it("should create a SET_MAP_CENTER action", function () {
+      const mapCenter = {
+        lat: 2.5,
+        lng: 3.6,
+      };
+
+      const expectedAction = {
+        type: SET_MAP_CENTER,
+        mapCenter: {
+          lat: 2.5,
+          lng: 3.6,
+        },
+      };
+
+      expect(setMapCenter(mapCenter)).toEqual(expectedAction);
     });
   });
 });

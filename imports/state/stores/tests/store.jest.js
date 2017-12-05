@@ -13,6 +13,7 @@ import mapDisplayReducer from "../../reducers/mapDisplayReducers";
 import {
   setSelectedVenue,
   setUserPosition,
+  setMapCenter,
 } from "../../actions/mapDisplayActions";
 import sampleVenues from "./sampleVenueData";
 
@@ -80,6 +81,11 @@ describe("store - smoke test", function () {
     it("should handle a setUserPosition action", function () {
       store.dispatch(setUserPosition({ lat: 1, lng: 2 }));
       expect(store.getState().mapDisplay.userPosition).toEqual({ lat: 1, lng: 2 });
+    });
+
+    it("should handle a setMapCenter action", function () {
+      store.dispatch(setMapCenter({ lat: 4, lng: 6 }));
+      expect(store.getState().mapDisplay.mapCenter).toEqual({ lat: 4, lng: 6 });
     });
   });
 });
