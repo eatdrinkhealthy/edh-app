@@ -4,8 +4,8 @@ exports[`<MapContainer /> <MapWrapper /> matches render snapshot 1`] = `
 <Map
   center={
     Object {
-      "lat": 32.789008,
-      "lng": -79.932115,
+      "lat": 1,
+      "lng": 2,
     }
   }
   googleMapsApiKey="TestAPIKeyValue"

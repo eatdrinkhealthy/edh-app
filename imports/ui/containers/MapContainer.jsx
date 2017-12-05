@@ -9,7 +9,10 @@ import AlertMessage from "../components/AlertMessage";
 import Map from "../components/Map";
 import { getPosition } from "../../utils/geoLocation";
 import { setSearchResults } from "../../state/actions/searchResultsActions";
-import { setSelectedVenue } from "../../state/actions/mapDisplayActions";
+import {
+  setSelectedVenue,
+  setMapCenter,
+} from "../../state/actions/mapDisplayActions";
 
 import type { IGoogleMapDisplay, ILatLng } from "google-map-react"; // eslint-disable-line import/first
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
@@ -25,10 +28,11 @@ type IMapWrapperProps = {
   setSelectedVenueHandler: () => void,
   selectedVenueId: ?string,
   userLocation: ?ILatLng,
+  mapCenter: ILatLng,
+  setMapCenterHandler: (mapCenter: ILatLng) => void,
 };
 
 type IMapWrapperState = {
-  center: ILatLng,
   zoom: number,
 };
 
@@ -36,20 +40,12 @@ export class MapWrapper extends Component {
   props: IMapWrapperProps;
 
   state: IMapWrapperState = {
-    center: {
-      lat: 32.789008,
-      lng: -79.932115,
-    },
     zoom: 3,
   };
 
   componentDidMount() {
     getPosition((position: Position) => {
       this.setState({
-        center: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        },
         zoom: 15,
       });
     });
@@ -57,13 +53,18 @@ export class MapWrapper extends Component {
 
   componentWillReceiveProps(nextProps: IMapWrapperProps) {
     if (this.filterHasChanged(nextProps)) {
-      this.callFoursquareApi(nextProps.eatDrinkFilters, nextProps.venueTypeFilters);
+      this.callFoursquareApi(
+        nextProps.eatDrinkFilters,
+        nextProps.venueTypeFilters,
+        nextProps.mapCenter,
+      );
     }
   }
 
   callFoursquareApi = (
     eatDrinkFilters: Array<IEatDrinkFilter>,
     venueTypeFilters: Array<IVenueTypeFilter>,
+    mapCenter: ILatLng,
   ) => {
     const selectedEatDrinkFilters = eatDrinkFilters.filter(
       (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
@@ -75,8 +76,8 @@ export class MapWrapper extends Component {
 
     Meteor.call("getNearbyPlaces",
       {
-        latitude: this.state.center.lat,
-        longitude: this.state.center.lng,
+        latitude: mapCenter.lat,
+        longitude: mapCenter.lng,
         eatDrinkFilters: selectedEatDrinkFilters,
         venueTypeFilters: selectedVenueTypeFilters,
       },
@@ -87,8 +88,9 @@ export class MapWrapper extends Component {
   filterHasChanged = (nextProps: IMapWrapperProps): boolean => {
     const edfChanged = !_.isEqual(this.props.eatDrinkFilters, nextProps.eatDrinkFilters);
     const vtfChanged = !_.isEqual(this.props.venueTypeFilters, nextProps.venueTypeFilters);
+    const mapChanged = !_.isEqual(this.props.mapCenter, nextProps.mapCenter);
 
-    return edfChanged || vtfChanged;
+    return edfChanged || vtfChanged || mapChanged;
   };
 
   // NOTE: this is an ES6 class property arrow function (preserves this context)
@@ -118,18 +120,16 @@ export class MapWrapper extends Component {
   };
 
   handleMapChange = (mapChange: IGoogleMapDisplay) => {
-    this.setState({
-      center: {
-        lat: mapChange.center.lat,
-        lng: mapChange.center.lng,
-      },
+    this.props.setMapCenterHandler({
+      lat: mapChange.center.lat,
+      lng: mapChange.center.lng,
     });
   };
 
   render() { // eslint-disable-line flowtype/require-return-type
     return (
       <Map
-        center={this.state.center}
+        center={this.props.mapCenter}
         zoom={this.state.zoom}
         userLocation={this.props.userLocation}
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
@@ -148,6 +148,7 @@ type IStateProps = {
   searchResults: Array<IVenue>,
   selectedVenueId: ?string,
   userLocation: ?ILatLng,
+  mapCenter: ILatLng,
 };
 
 const mapStateToProps = (state: IState): IStateProps => ({
@@ -156,11 +157,13 @@ const mapStateToProps = (state: IState): IStateProps => ({
   searchResults: state.searchResults,
   selectedVenueId: state.mapDisplay.selectedVenueId,
   userLocation: state.mapDisplay.userLocation,
+  mapCenter: state.mapDisplay.mapCenter,
 });
 
 type IDispatchProps = {
   setSearchResultsHandler: (searchResults: Array<IVenue>) => void,
   setSelectedVenueHandler: (venueId: string) => void,
+  setMapCenterHandler: (mapCenter: ILatLng) => void,
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
@@ -169,6 +172,9 @@ const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   ),
   setSelectedVenueHandler: (venueId: ?string): void => (
     dispatch(setSelectedVenue(venueId))
+  ),
+  setMapCenterHandler: (mapCenter: ILatLng): void => (
+    dispatch(setMapCenter(mapCenter))
   ),
 });
 

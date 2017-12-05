@@ -70,6 +70,8 @@ describe("<MapContainer />", function () {
       setSelectedVenueHandler: stubFn,
       selectedVenueId: null,
       userLocation: null,
+      mapCenter: { lat: 1, lng: 2 },
+      setMapCenterHandler: stubFn,
     };
 
     it("matches render snapshot", function () {
@@ -79,34 +81,19 @@ describe("<MapContainer />", function () {
       expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    it("should call Foursquare API search (meteor method) using current location from state", function () {
+    it("should call Foursquare API search (meteor method) using mapCenter from props", function () {
       const wrapper = mount(<MapWrapper {...props} />);
-
-      // simulate the map component location being changed
-      // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
-      wrapper.instance().handleMapChange({
-        center: {
-          lat: 54,
-          lng: 63,
-        },
-      });
 
       // call with new props to trigger componentWillReceiveProps
       wrapper.setProps({
-        eatDrinkFilters: noEdFilterList,
-        venueTypeFilters: vtFilterList,
-        searchResults: [],
-        setSearchResultsHandler: stubFn,
-        setSelectedVenueHandler: stubFn,
-        selectedVenueId: null,
-        userLocation: null,
+        mapCenter: { lat: 5, lng: 3 },
       });
 
       expect(Meteor.call).toHaveBeenCalledWith("getNearbyPlaces",
         {
-          latitude: 54,
-          longitude: 63,
-          eatDrinkFilters: [],
+          latitude: 5,
+          longitude: 3,
+          eatDrinkFilters: [{ id: "jb1", name: "vegan", on: true, foursquareCategory: "1" }],
           venueTypeFilters: [{ id: "vt1", name: "Restaurant", on: true, foursquareCategory: "4" }],
         },
         expect.any(Function),
@@ -140,6 +127,8 @@ describe("<MapContainer />", function () {
           setSelectedVenueHandler: stubFn,
           selectedVenueId: null,
           userLocation: null,
+          mapCenter: { lat: 5, lng: 6 },
+          setMapCenterHandler: stubFn,
         };
 
         const wrapper = shallow(<MapWrapper {...propsNoFilters} />);
@@ -157,9 +146,27 @@ describe("<MapContainer />", function () {
       expect(wrapper.instance().filterHasChanged(nextProps)).toBe(false);
     });
 
-    it("should know when filter has changed", function () {
-      const nextProps = _.cloneDeep(props);        // make a copy of props
-      nextProps.venueTypeFilters[0].on = false;    // change something in it
+    it("should show filter has changed when a venueTypeFilter changes", function () {
+      const nextProps = _.cloneDeep(props);
+      nextProps.venueTypeFilters[0].on = false;
+
+      const wrapper = shallow(<MapWrapper {...props} />);
+      // $FlowFixMe (ignoring 'filterHasChanged' is not method of React$Component error)
+      expect(wrapper.instance().filterHasChanged(nextProps)).toBe(true);
+    });
+
+    it("should show filter has changed when an eatDrinkFilter changes", function () {
+      const nextProps = _.cloneDeep(props);
+      nextProps.eatDrinkFilters[0].on = false;
+
+      const wrapper = shallow(<MapWrapper {...props} />);
+      // $FlowFixMe (ignoring 'filterHasChanged' is not method of React$Component error)
+      expect(wrapper.instance().filterHasChanged(nextProps)).toBe(true);
+    });
+
+    it("should show filter has changed when a mapCenter changes", function () {
+      const nextProps = _.cloneDeep(props);
+      nextProps.mapCenter = { lat: 3, lng: 4 };
 
       const wrapper = shallow(<MapWrapper {...props} />);
       // $FlowFixMe (ignoring 'filterHasChanged' is not method of React$Component error)
@@ -229,7 +236,7 @@ describe("<MapContainer />", function () {
         .toEqual(testDefaultState.mapDisplay.userLocation);
     });
 
-    it.skip("should set mapCenter for MapWrapper from redux state", function () {
+    it("should set mapCenter for MapWrapper from redux state", function () {
       expect(wrapper.find("MapWrapper").at(0).props().mapCenter)
         .toEqual(testDefaultState.mapDisplay.mapCenter);
     });
