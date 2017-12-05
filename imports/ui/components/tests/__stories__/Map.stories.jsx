@@ -15,6 +15,7 @@ storiesOf("Map", module)
       setSelectedVenueHandler={action("clicked")}
       selectedVenueId={null}
       userLocation={{ lat: 32.789008, lng: -79.932115 }}
+      center={{ lat: 32.789008, lng: -79.932115 }}
     />
   ))
   .add("Map - multiple markers", (): React$Element<*> => (
@@ -24,5 +25,6 @@ storiesOf("Map", module)
       setSelectedVenueHandler={action("clicked")}
       selectedVenueId={null}
       userLocation={{ lat: 32.789008, lng: -79.932115 }}
+      center={{ lat: 32.789008, lng: -79.932115 }}
     />
   ));

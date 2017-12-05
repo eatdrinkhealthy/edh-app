@@ -25,7 +25,7 @@ export type IViewArea = {
 
 export default class Map extends PureComponent {
   props: {
-    center?: ILatLng,
+    center: ILatLng,
     zoom?: number,
     userPosition?: ?ILatLng,   // eslint-disable-line react/require-default-props
     googleMapsApiKey: string,
@@ -36,7 +36,6 @@ export default class Map extends PureComponent {
   };
 
   static defaultProps = {
-    center: { lat: 32.789008, lng: -79.932115 },
     zoom: 15,
     venues: [],
     onMapChange: (mapChange) => {}, // eslint-disable-line no-unused-vars
