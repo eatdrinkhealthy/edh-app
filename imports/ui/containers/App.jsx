@@ -16,7 +16,11 @@ import {
   watchPosition,
   getPosition,
 } from "../../utils/geoLocation";
-import { setMapCenter, setUserLocation } from "../../state/actions/mapDisplayActions";
+import {
+  setMapCenter,
+  setUserLocation,
+  setMapZoom,
+} from "../../state/actions/mapDisplayActions";
 
 class App extends Component {
   componentDidMount() {
@@ -28,12 +32,14 @@ class App extends Component {
       }));
     });
 
-    // get the current location, to set initial map center
+    // once current location obtained, set initial map center and zoom
     getPosition((position: Position) => {
       store.dispatch(setMapCenter({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }));
+
+      store.dispatch(setMapZoom(15));
     });
   }
 
