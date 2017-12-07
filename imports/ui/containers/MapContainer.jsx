@@ -107,7 +107,6 @@ export class MapWrapper extends Component {
 
   handleMapChange = (mapChange: IGoogleMapDisplay) => {
     // TODO conditionally call these handlers (if center or zoom have changed)
-    //   -confirmed, redux will issue a dispatch, even with same values in action
     this.props.setMapCenterHandler({
       lat: mapChange.center.lat,
       lng: mapChange.center.lng,

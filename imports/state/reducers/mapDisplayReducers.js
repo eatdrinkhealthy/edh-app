@@ -6,6 +6,7 @@ import {
   SET_MAP_CENTER,
   SET_MAP_ZOOM,
 } from "../actions/actionTypes";
+import { roundedLatLng } from "../../utils/geoLocation";
 import type { IMapDisplayAction } from "../actions/mapDisplayActions";
 
 export type IMapDisplayState = {
@@ -20,7 +21,7 @@ export const defaultMapDisplayState = {
   userLocation: null,
   mapCenter: {          // Charleston, SC
     lat: 32.789008,
-    lng: -79.932115,
+    lng: -79.932115,  // also, lat lng action truncates decimal beyond precision of 7
   },
   zoom: 3,
 };
@@ -37,7 +38,9 @@ const mapDisplay = (
       return Object.assign({}, state, { userLocation: action.userLocation });
 
     case SET_MAP_CENTER:
-      return Object.assign({}, state, { mapCenter: action.mapCenter });
+      return Object.assign({}, state, {
+        mapCenter: action.mapCenter && roundedLatLng(action.mapCenter), // this check done for flow
+      });
 
     case SET_MAP_ZOOM:
       return Object.assign({}, state, { zoom: action.zoom });

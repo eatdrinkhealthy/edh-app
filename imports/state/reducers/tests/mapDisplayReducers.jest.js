@@ -88,6 +88,26 @@ describe("mapDisplay reducers", function () {
     expect(mapDisplayReducer(previousState, setMapCenterAction)).toEqual(expectedResult);
   });
 
+  it("should only save 7 significant digits for SET_MAP_CENTER", function () {
+    const previousState = {
+      selectedVenueId: "xyz",
+      userLocation: { lat: 2, lng: 4 },
+      mapCenter: { lat: 7, lng: 8 },
+      zoom: 12,
+    };
+
+    const setMapCenterAction = setMapCenterActionCreator(
+      { lat: 32.789008929999, lng: -79.932115011 },
+    );
+
+    expect(mapDisplayReducer(previousState, setMapCenterAction)).toEqual({
+      selectedVenueId: "xyz",
+      userLocation: { lat: 2, lng: 4 },
+      mapCenter: { lat: 32.7890089, lng: -79.932115 },
+      zoom: 12,
+    });
+  });
+
   it("should handle a SET_MAP_ZOOM action", function () {
     const previousState = {
       selectedVenueId: "xyz",

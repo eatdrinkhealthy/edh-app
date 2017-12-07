@@ -1,6 +1,6 @@
 // @flow
+import type { ILatLng } from "google-map-react";
 import AlertMessage from "../ui/components/AlertMessage";
-
 //
 // NOTE: the mdg:geolocation is installed, which simply relies on navigator.geolocation
 //       however the mdg package also installs a cordova plugin for devices that may not
@@ -23,6 +23,13 @@ const options = {
   timeout: 7000,
   maximumAge: 0,
 };
+
+export const roundedLatLng = (latLng: ILatLng): ILatLng => (
+  {
+    lat: Number(latLng.lat.toFixed(7)),
+    lng: Number(latLng.lng.toFixed(7)),
+  }
+);
 
 export const getPosition = (positionFound: (position: Position) => void) => {
   navigator.geolocation.getCurrentPosition(positionFound, positionError);
