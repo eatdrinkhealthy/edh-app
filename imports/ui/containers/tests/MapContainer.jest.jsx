@@ -179,6 +179,47 @@ describe("<MapContainer />", function () {
       // $FlowFixMe (ignoring 'filterHasChanged' is not method of React$Component error)
       expect(wrapper.instance().filterHasChanged(nextProps)).toBe(true);
     });
+
+    describe("handleMapChange", function () {
+      const handlerProps: IMapWrapperProps = {
+        eatDrinkFilters: edFilterList,
+        venueTypeFilters: vtFilterList,
+        searchResults: [],
+        setSearchResultsHandler: stubFn,
+        setSelectedVenueHandler: stubFn,
+        selectedVenueId: null,
+        userLocation: null,
+        mapCenter: { lat: 1, lng: 2 },
+        setMapCenterHandler: jest.fn(),
+        zoom: 6,
+        setMapZoomHandler: jest.fn(),
+      };
+      const wrapper = shallow(<MapWrapper {...handlerProps} />);
+
+      it("should call setMapCenterHandler when mapCenter has changed", function () {
+        // $FlowFixMe (ignoring 'handleMapChange' is not method of React$Component error)
+        wrapper.instance().handleMapChange({ center: { lat: 3, lng: 4 } });
+        expect(handlerProps.setMapCenterHandler).toHaveBeenCalledWith({ lat: 3, lng: 4 });
+      });
+
+      it("should NOT call setMapCenterHandler when mapCenter has NOT changed", function () {
+        // $FlowFixMe (ignoring 'handleMapChange' is not method of React$Component error)
+        wrapper.instance().handleMapChange({ center: { lat: 1, lng: 2 } });
+        expect(handlerProps.setMapCenterHandler).not.toHaveBeenCalled();
+      });
+
+      it("should call setMapZoomHandler when mapZoom has changed", function () {
+        // $FlowFixMe (ignoring 'handleMapChange' is not method of React$Component error)
+        wrapper.instance().handleMapChange({ center: { lat: 1, lng: 2 }, zoom: 7 });
+        expect(handlerProps.setMapZoomHandler).toHaveBeenCalledWith(7);
+      });
+
+      it("should NOT call setMapZoomHandler when mapZoom has NOT changed", function () {
+        // $FlowFixMe (ignoring 'handleMapChange' is not method of React$Component error)
+        wrapper.instance().handleMapChange({ center: { lat: 1, lng: 2 }, zoom: 6 });
+        expect(handlerProps.setMapZoomHandler).not.toHaveBeenCalled();
+      });
+    });
   });
 
   describe("Map redux store to MapContainer", function () {
