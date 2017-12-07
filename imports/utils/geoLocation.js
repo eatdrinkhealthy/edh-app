@@ -1,5 +1,6 @@
 // @flow
 import type { ILatLng } from "google-map-react";
+import _ from "lodash";
 import AlertMessage from "../ui/components/AlertMessage";
 //
 // NOTE: the mdg:geolocation is installed, which simply relies on navigator.geolocation
@@ -30,6 +31,17 @@ export const roundedLatLng = (latLng: ILatLng): ILatLng => (
     lng: Number(latLng.lng.toFixed(7)),
   }
 );
+
+export const sameRoundedLocation = (latLngA: ?ILatLng, latLngB: ?ILatLng): boolean => {
+  const roundedLlA = latLngA && roundedLatLng(latLngA);
+  const roundedLlB = latLngB && roundedLatLng(latLngB);
+
+  if (!roundedLlA && !roundedLlB) { // if both were undefined, return false
+    return false;
+  }
+
+  return _.isEqual(roundedLlA, roundedLlB);
+};
 
 export const getPosition = (positionFound: (position: Position) => void) => {
   navigator.geolocation.getCurrentPosition(positionFound, positionError);
