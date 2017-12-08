@@ -69,6 +69,22 @@ describe("geoLocation utility functions", function () {
       expect(sameRoundedLocation({ lat: -0.12345678, lng: -0.12345678 })).toBe(false);
     });
 
+    it("should return false when given one undefined", function () {
+      expect(sameRoundedLocation(undefined)).toBe(false);
+    });
+
+    it("should return false when given two undefineds", function () {
+      expect(sameRoundedLocation(undefined, undefined)).toBe(false);
+    });
+
+    it("should return false when given one null", function () {
+      expect(sameRoundedLocation(null)).toBe(false);
+    });
+
+    it("should return false when given two nulls", function () {
+      expect(sameRoundedLocation(null, null)).toBe(false);
+    });
+
     it("should return true when two locations are equal, both with precision < 7", function () {
       expect(sameRoundedLocation(
         { lat: 0.1234, lng: 0.1234 },

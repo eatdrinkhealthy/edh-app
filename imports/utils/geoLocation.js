@@ -33,12 +33,12 @@ export const roundedLatLng = (latLng: ILatLng): ILatLng => (
 );
 
 export const sameRoundedLocation = (latLngA: ?ILatLng, latLngB: ?ILatLng): boolean => {
-  const roundedLlA = latLngA && roundedLatLng(latLngA);
-  const roundedLlB = latLngB && roundedLatLng(latLngB);
-
-  if (!roundedLlA && !roundedLlB) { // if both were undefined, return false
+  if (!latLngA || !latLngB) { // if either are not defined, return false
     return false;
   }
+
+  const roundedLlA = roundedLatLng(latLngA);
+  const roundedLlB = roundedLatLng(latLngB);
 
   return _.isEqual(roundedLlA, roundedLlB);
 };
