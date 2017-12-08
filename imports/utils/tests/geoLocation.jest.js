@@ -112,5 +112,12 @@ describe("geoLocation utility functions", function () {
         { lat: 0.12345665, lng: 0.12345672 },
       )).toBe(true);
     });
+
+    it("should return true when given two nested objects, with whole numbers", function () {
+      const locA = { center: { lat: 1, lng: 2 } };
+      const locB = { center: { lat: 1, lng: 2 } };
+
+      expect(sameRoundedLocation(locA.center, locB.center)).toBe(true);
+    });
   });
 });
