@@ -13,6 +13,7 @@ import {
   setMapCenter,
   setMapZoom,
 } from "../../state/actions/mapDisplayActions";
+import { sameRoundedLocation } from "../../utils/geoLocation";
 
 import type { IGoogleMapDisplay, ILatLng } from "google-map-react"; // eslint-disable-line import/first
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
@@ -106,13 +107,13 @@ export class MapWrapper extends Component {
   };
 
   handleMapChange = (mapChange: IGoogleMapDisplay) => {
-    // TODO conditionally call these handlers (if center or zoom have changed)
-    this.props.setMapCenterHandler({
-      lat: mapChange.center.lat,
-      lng: mapChange.center.lng,
-    });
+    if (!sameRoundedLocation(mapChange.center, this.props.mapCenter)) {
+      this.props.setMapCenterHandler(mapChange.center);
+    }
 
-    this.props.setMapZoomHandler(mapChange.zoom);
+    if (mapChange.zoom !== this.props.zoom) {
+      this.props.setMapZoomHandler(mapChange.zoom);
+    }
   };
 
   render() { // eslint-disable-line flowtype/require-return-type
