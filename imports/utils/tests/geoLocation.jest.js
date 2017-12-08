@@ -37,15 +37,26 @@ describe("geoLocation utility functions", function () {
         lng: 0.1234,
       });
     });
-  });
 
-  it("should save 7 significant digits for negative numbers too", function () {
-    expect(roundedLatLng({
-      lat: -0.12345678,
-      lng: -0.12345678,
-    })).toEqual({
-      lat: -0.1234568,
-      lng: -0.1234568,
+    it("should save 7 significant digits for negative numbers too", function () {
+      expect(roundedLatLng({
+        lat: -0.12345678,
+        lng: -0.12345678,
+      })).toEqual({
+        lat: -0.1234568,
+        lng: -0.1234568,
+      });
+    });
+
+    it("should work with whole numbers, in a nested object", function () {
+      const a = {
+        center: {
+          lat: 1,
+          lng: 2,
+        },
+      };
+
+      expect(roundedLatLng(a.center)).toEqual({ lat: 1, lng: 2 });
     });
   });
 
