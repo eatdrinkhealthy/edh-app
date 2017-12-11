@@ -15,7 +15,7 @@ function positionError() {
   AlertMessage.warning("Unable to get geolocation.");
   const glError = Geolocation.error();
   if (glError) {
-    // throw glError;
+    throw glError;
   }
 }
 

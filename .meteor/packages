@@ -36,6 +36,7 @@ meteortesting:mocha
 practicalmeteor:chai
 xolvio:cleaner
 tmeasday:acceptance-test-driver
+svub:mock-location
 
 # mobile
 mobile-experience@1.0.5       # Packages for a great mobile UX

@@ -45,7 +45,8 @@
       "meteor/xolvio:cleaner",
       "meteor/http",
       "meteor/react-meteor-data",
-      "meteor/check"
+      "meteor/check",
+      "meteor/svub:mock-location"
     ],
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true

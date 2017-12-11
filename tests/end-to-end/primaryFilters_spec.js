@@ -30,9 +30,6 @@ describe("Primary Filters", function () {
   });
 
   it("shows more map markers when more search criteria are selected - NOTE may fail based on location", function () {
-    // NOTE: setGeoLocation will be deprecated
-    browser.setGeoLocation({ latitude: 32.789008, longitude: -79.932115, altitude: 10 });
-
     browser.url(baseUrl);
     browser.waitForExist(els.homePage.eatDrinkFilters);
 
@@ -54,9 +51,6 @@ describe("Primary Filters", function () {
   });
 
   it("shows no map markers when no search criteria are selected", function () {
-    // NOTE: setGeoLocation will be deprecated
-    browser.setGeoLocation({ latitude: 32.789008, longitude: -79.932115, altitude: 10 });
-
     browser.url(baseUrl);
     browser.waitForExist(els.homePage.eatDrinkFilters);
 
