@@ -21,7 +21,7 @@ export const defaultMapDisplayState = {
   userLocation: null,
   mapCenter: {          // Charleston, SC
     lat: 32.789008,
-    lng: -79.932115,  // also, lat lng action truncates decimal beyond precision of 7
+    lng: -79.932115,    // also, lat lng action truncates decimal beyond precision of 7
   },
   zoom: 3,
 };
@@ -39,7 +39,9 @@ const mapDisplay = (
 
     case SET_MAP_CENTER:
       return Object.assign({}, state, {
-        mapCenter: action.mapCenter && roundedLatLng(action.mapCenter), // this check done for flow
+        // only store precision of 7 for lat lng
+        //   also, checking action.mapCenter is defined here to prevent flow error message
+        mapCenter: action.mapCenter && roundedLatLng(action.mapCenter),
       });
 
     case SET_MAP_ZOOM:
