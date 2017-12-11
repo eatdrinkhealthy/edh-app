@@ -53,7 +53,7 @@ export const watchPosition = (positionFound: (position: Position) => void): numb
 
 export const clearWatchPosition = (id: number) => navigator.geolocation.clearWatch(id);
 
-export const initGeoLocation = () => {
+export const initGeolocation = () => {
   if (!navigator.geolocation) {
     throw new Error("GeolocationNotSupported");
   }
