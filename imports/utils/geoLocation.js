@@ -19,12 +19,6 @@ function positionError() {
   }
 }
 
-const options = {
-  enableHighAccuracy: true,
-  timeout: 7000,
-  maximumAge: 0,
-};
-
 export const roundedLatLng = (latLng: ILatLng): ILatLng => (
   {
     lat: Number(latLng.lat.toFixed(7)),
@@ -45,6 +39,12 @@ export const sameRoundedLocation = (latLngA: ?ILatLng, latLngB: ?ILatLng): boole
 
 export const getPosition = (positionFound: (position: Position) => void) => {
   navigator.geolocation.getCurrentPosition(positionFound, positionError);
+};
+
+const options = {
+  enableHighAccuracy: true,
+  timeout: 7000,
+  maximumAge: 0,
 };
 
 // NOTE: this does return an id returned from watchPosition
