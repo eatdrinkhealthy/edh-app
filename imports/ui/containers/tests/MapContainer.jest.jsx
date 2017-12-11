@@ -11,9 +11,6 @@ jest.mock("../../components/AlertMessage", () => (
   }
 ));
 
-// stubs out / prevents calling navigator.geolocation (currently not needed for these tests)
-jest.mock("../../../utils/geoLocation");
-
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -202,16 +199,9 @@ describe("<MapContainer />", function () {
         expect(handlerProps.setMapCenterHandler).toHaveBeenCalledWith({ lat: 3, lng: 4 });
       });
 
-      it.skip("should NOT call setMapCenterHandler when mapCenter has NOT changed", function () {
-        // NOTE: this test is exhibiting strange behavior. It fails when it should succeed.
-        //   Suspicious of jest or enzyme, passing values to sameRoundedLocation incorrectly.
-        //   When that same code is copied locally to MapContainer, it works.
-        //   Also, it is a low risk check. If it fails, an extraneous harmless call to
-        //   setMapCenterHandler is made, which 'may' cause an additional render.
-        const mapChange = { center: { lat: 1, lng: 2 }, zoom: 6 };
-
+      it("should NOT call setMapCenterHandler when mapCenter has NOT changed", function () {
         // $FlowFixMe (ignoring 'handleMapChange' is not method of React$Component error)
-        wrapper.instance().handleMapChange(mapChange);
+        wrapper.instance().handleMapChange({ center: { lat: 1, lng: 2 }, zoom: 6 });
         expect(handlerProps.setMapCenterHandler).not.toHaveBeenCalled();
       });
 
