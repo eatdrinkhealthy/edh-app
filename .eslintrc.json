@@ -18,7 +18,9 @@
     "window": true,
     "document": true,
     "browser": true,
-    "alert": true
+    "navigator": true,
+    "alert": true,
+    "Geolocation": true
   },
   "parserOptions": {
     "sourceType": "module",
@@ -43,7 +45,8 @@
       "meteor/xolvio:cleaner",
       "meteor/http",
       "meteor/react-meteor-data",
-      "meteor/check"
+      "meteor/check",
+      "meteor/svub:mock-location"
     ],
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true

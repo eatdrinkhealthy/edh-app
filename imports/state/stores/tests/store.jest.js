@@ -10,7 +10,12 @@ import { toggleVenueTypeFilter } from "../../actions/venueTypeFiltersActions";
 import searchResultsReducer from "../../reducers/searchResultsReducers";
 import { setSearchResults } from "../../actions/searchResultsActions";
 import mapDisplayReducer from "../../reducers/mapDisplayReducers";
-import { setSelectedVenue } from "../../actions/mapDisplayActions";
+import {
+  setSelectedVenue,
+  setUserLocation,
+  setMapCenter,
+  setMapZoom,
+} from "../../actions/mapDisplayActions";
 import sampleVenues from "./sampleVenueData";
 
 describe("store - smoke test", function () {
@@ -72,6 +77,21 @@ describe("store - smoke test", function () {
     it("should handle a setSelectedVenue action", function () {
       store.dispatch(setSelectedVenue("abc"));
       expect(store.getState().mapDisplay.selectedVenueId).toEqual("abc");
+    });
+
+    it("should handle a setUserLocation action", function () {
+      store.dispatch(setUserLocation({ lat: 1, lng: 2 }));
+      expect(store.getState().mapDisplay.userLocation).toEqual({ lat: 1, lng: 2 });
+    });
+
+    it("should handle a setMapCenter action", function () {
+      store.dispatch(setMapCenter({ lat: 4, lng: 6 }));
+      expect(store.getState().mapDisplay.mapCenter).toEqual({ lat: 4, lng: 6 });
+    });
+
+    it("should handle a setMapZoom action", function () {
+      store.dispatch(setMapZoom(10));
+      expect(store.getState().mapDisplay.zoom).toEqual(10);
     });
   });
 });

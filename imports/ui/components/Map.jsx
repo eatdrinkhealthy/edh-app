@@ -4,9 +4,10 @@ import React, {
 } from "react";
 import GoogleMap from "google-map-react";
 import Marker from "./Marker";
+import Pin from "./Pin";
 
 // eslint-disable-next-line no-duplicate-imports, import/first
-import type { ILatLng } from "google-map-react";
+import type { ILatLng, IGoogleMapDisplay } from "google-map-react";
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
 
 function createMapOptions() {
@@ -24,18 +25,20 @@ export type IViewArea = {
 
 export default class Map extends PureComponent {
   props: {
-    center?: ILatLng,
+    center: ILatLng,
     zoom?: number,
+    userLocation?: ?ILatLng,   // eslint-disable-line react/require-default-props
     googleMapsApiKey: string,
-    venues: Array<IVenue>, // TODO can't this be optional with default? when so, produces flow error
+    venues: Array<IVenue>,
     selectedVenueId: ?string,
     setSelectedVenueHandler: (venueId: ?string) => void,
+    onMapChange?: (mapChange: ?IGoogleMapDisplay) => void,
   };
 
   static defaultProps = {
-    center: { lat: 32.789008, lng: -79.932115 },
     zoom: 15,
     venues: [],
+    onMapChange: (mapChange) => {}, // eslint-disable-line no-unused-vars
   }
 
   handleOnClick = () => {
@@ -63,6 +66,8 @@ export default class Map extends PureComponent {
   }
 
   render() {  // eslint-disable-line flowtype/require-return-type
+    const userLocation = this.props.userLocation;
+
     return (
       <div
         className="map-holder"
@@ -70,11 +75,13 @@ export default class Map extends PureComponent {
       >
         <GoogleMap
           bootstrapURLKeys={{ key: this.props.googleMapsApiKey }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          center={this.props.center}
+          zoom={this.props.zoom}
           onClick={this.handleOnClick}
           options={createMapOptions}
+          onChange={this.props.onMapChange}
         >
+          {userLocation && <Pin lat={userLocation.lat} lng={userLocation.lng} />}
           {this.props.venues.map((venue: IVenue): React$Element<*> => (
             <Marker
               key={venue.id}

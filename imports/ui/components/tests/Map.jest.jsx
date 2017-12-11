@@ -17,6 +17,18 @@ describe("<Map />", function () {
       googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
       setSelectedVenueHandler={() => {}}
       selectedVenueId={null}
+      center={{ lat: 32.789008, lng: -79.932115 }}
+    />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("matches render snapshot - with userLocation pin", function () {
+    const wrapper = shallow(<Map
+      googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
+      setSelectedVenueHandler={() => {}}
+      selectedVenueId={null}
+      userLocation={{ lat: 32.789008, lng: -79.932115 }}
+      center={{ lat: 32.789008, lng: -79.932115 }}
     />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -37,6 +49,7 @@ describe("<Map />", function () {
         venues={testVenues}
         setSelectedVenueHandler={() => {}}
         selectedVenueId={null}
+        center={{ lat: 32.789008, lng: -79.932115 }}
       />);
 
       expect(wrapper.find("Marker").length).toBe(3);
@@ -48,6 +61,7 @@ describe("<Map />", function () {
         venues={testVenues}
         setSelectedVenueHandler={() => {}}
         selectedVenueId={null}
+        center={{ lat: 32.789008, lng: -79.932115 }}
       />);
 
       expect(wrapper.find("Marker").findWhere(selectedPropTrue).length).toBe(0);
@@ -59,6 +73,7 @@ describe("<Map />", function () {
         venues={testVenues}
         setSelectedVenueHandler={() => {}}
         selectedVenueId="3"
+        center={{ lat: 32.789008, lng: -79.932115 }}
       />);
 
       expect(wrapper.find("Marker").findWhere(selectedPropTrue).length).toBe(1);
@@ -71,6 +86,7 @@ describe("<Map />", function () {
         venues={testVenues}
         setSelectedVenueHandler={selectVenue}
         selectedVenueId="3"
+        center={{ lat: 32.789008, lng: -79.932115 }}
       />);
 
       wrapper.find("GoogleMap").simulate("click");
