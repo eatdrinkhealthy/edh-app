@@ -37,6 +37,12 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
         className="pill pill_selected"
         name="juiceBar1"
         onClick={[Function]}
+        style={
+          Object {
+            "background": "#5e2ca5",
+            "borderColor": "#5e2ca5",
+          }
+        }
       >
         Juice Bar1
       </button>
@@ -44,6 +50,12 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
         className="pill"
         name="juiceBar2"
         onClick={[Function]}
+        style={
+          Object {
+            "background": "white",
+            "borderColor": "#ccc",
+          }
+        }
       >
         Juice Bar2
       </button>
@@ -51,6 +63,12 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
         className="pill"
         name="juiceBar3"
         onClick={[Function]}
+        style={
+          Object {
+            "background": "white",
+            "borderColor": "#ccc",
+          }
+        }
       >
         Juice Bar3
       </button>
@@ -66,6 +84,12 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
         className="pill pill_selected"
         name="juiceBar4"
         onClick={[Function]}
+        style={
+          Object {
+            "background": "#5e2ca5",
+            "borderColor": "#5e2ca5",
+          }
+        }
       >
         Juice Bar4
       </button>
@@ -73,6 +97,12 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
         className="pill"
         name="juiceBar5"
         onClick={[Function]}
+        style={
+          Object {
+            "background": "white",
+            "borderColor": "#ccc",
+          }
+        }
       >
         Juice Bar5
       </button>
@@ -80,6 +110,12 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
         className="pill"
         name="juiceBar6"
         onClick={[Function]}
+        style={
+          Object {
+            "background": "white",
+            "borderColor": "#ccc",
+          }
+        }
       >
         Juice Bar6
       </button>

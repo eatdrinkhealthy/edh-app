@@ -5,6 +5,12 @@ exports[`<Pill /> matches render snapshot - active 1`] = `
   className="pill pill_selected"
   name="pill1"
   onClick={[Function]}
+  style={
+    Object {
+      "background": "#5e2ca5",
+      "borderColor": "#5e2ca5",
+    }
+  }
 >
   Test Pill Button
 </button>
@@ -15,6 +21,12 @@ exports[`<Pill /> matches render snapshot - inactive 1`] = `
   className="pill"
   name="pill1"
   onClick={[Function]}
+  style={
+    Object {
+      "background": "white",
+      "borderColor": "#ccc",
+    }
+  }
 >
   Test Pill Button
 </button>

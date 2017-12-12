@@ -8,9 +8,14 @@ class FilterSection extends Component {
   props: {
     id: string,
     title: string,
+    selectedColor?: string,
     filters: Array<IEatDrinkFilter | IVenueTypeFilter>,
     setFilter: (id: string) => void,
   };
+
+  static defaultProps = {
+    selectedColor: "#5e2ca5",
+  }
 
   handlePillClick = (event: SyntheticEvent<HTMLButtonElement>) => {
     // $FlowFixMe
@@ -19,7 +24,7 @@ class FilterSection extends Component {
   };
 
   render() {
-    const { id, title, filters } = this.props;
+    const { id, title, selectedColor, filters } = this.props;
 
     // for centering already styled components
     const divCenterContent = {
@@ -41,6 +46,7 @@ class FilterSection extends Component {
               name={filters[0].id}
               onClick={this.handlePillClick}
               active={filters[0].on}
+              selectedColor={selectedColor}
             >
               {filters[0].name}
             </Pill>
@@ -49,6 +55,7 @@ class FilterSection extends Component {
               name={filters[1].id}
               onClick={this.handlePillClick}
               active={filters[1].on}
+              selectedColor={selectedColor}
             >
               {filters[1].name}
             </Pill>
@@ -57,6 +64,7 @@ class FilterSection extends Component {
               name={filters[2].id}
               onClick={this.handlePillClick}
               active={filters[2].on}
+              selectedColor={selectedColor}
             >
               {filters[2].name}
             </Pill>
@@ -66,6 +74,7 @@ class FilterSection extends Component {
               name={filters[3].id}
               onClick={this.handlePillClick}
               active={filters[3].on}
+              selectedColor={selectedColor}
             >
               {filters[3].name}
             </Pill>
@@ -74,6 +83,7 @@ class FilterSection extends Component {
               name={filters[4].id}
               onClick={this.handlePillClick}
               active={filters[4].on}
+              selectedColor={selectedColor}
             >
               {filters[4].name}
             </Pill>
@@ -82,6 +92,7 @@ class FilterSection extends Component {
               name={filters[5].id}
               onClick={this.handlePillClick}
               active={filters[5].on}
+              selectedColor={selectedColor}
             >
               {filters[5].name}
             </Pill>
