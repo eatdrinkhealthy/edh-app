@@ -56,7 +56,6 @@ describe("httpCallFoursquareSearch", function () {
   });
 
   it("should return an empty httpResponse if throwing an exception (client_id undefined)", function () {
-
     const exceptionHttpResult = {
       statusCode: null,
       content: null,
