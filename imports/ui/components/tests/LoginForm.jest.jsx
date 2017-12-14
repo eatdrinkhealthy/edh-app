@@ -28,12 +28,31 @@ describe("<LoginForm />", function () {
     expect(tree).toMatchSnapshot();
   });
 
-  it.skip("should set username / email required validation error, when not provided", function () {
+  it("should set username / email required validation error, when not provided", function () {
+    const wrapper = mountFormWithInputs(
+      <LoginForm {...props} />,
+      { loginPassword: "user12pw" },
+      testStore,
+    );
 
+    wrapper.find("#usernameEmail").simulate("blur"); // triggers field validation
+
+    expect(wrapper.find("#usernameEmailError").text())
+      .toBe("Username / Email is a required field.");
   });
 
-  it.skip("should set password required validation error, when not provided", function () {
+  it("should set password required validation error, when not provided", function () {
+    const wrapper = mountFormWithInputs(
+      <LoginForm {...props} />,
+      { usernameEmail: "user12", loginPassword: "" },
+      testStore,
+    );
 
+    // NOTE: must also touch the field (ie, enter something in it)
+    wrapper.find("#loginPassword").simulate("blur"); // triggers field validation
+
+    expect(wrapper.find("#loginPasswordError").text())
+      .toBe("Password is a required field.");
   });
 
   it("should call onSubmit on submit with form field values", function () {
