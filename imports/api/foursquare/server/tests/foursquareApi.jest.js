@@ -44,7 +44,19 @@ describe("parseFoursquareResponse", function () {
 });
 
 describe("httpCallFoursquareSearch", function () {
+  let origConsole;
+
+  beforeAll(() => {
+    origConsole = global.console;
+    global.console = { error: jest.fn() };
+  });
+
+  afterAll(() => {
+    global.console = origConsole;
+  });
+
   it("should return an empty httpResponse if throwing an exception (client_id undefined)", function () {
+
     const exceptionHttpResult = {
       statusCode: null,
       content: null,
@@ -56,5 +68,6 @@ describe("httpCallFoursquareSearch", function () {
     //       which causes an exception.
     //       Sending 0, 0 lat lng will also cause an exception
     expect(httpCallFoursquareSearch("4c2cd86ed066bed06c3c5209", 0, 0)).toEqual(exceptionHttpResult);
+    expect(global.console.error).toHaveBeenCalled();
   });
 });
