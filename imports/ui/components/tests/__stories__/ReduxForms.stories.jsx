@@ -1,14 +1,14 @@
 // @flow
 /* eslint-disable import/no-extraneous-dependencies */
-
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { decorateAction } from "@storybook/addon-actions";
 import Provider from "./Provider";
 import CreateAccountForm from "../../CreateAccountForm";
+import LoginForm from "../../LoginForm";
 
 const actionFirstArg = decorateAction([
-  args => args.slice(0, 1),
+  args => [JSON.stringify(args.slice(0, 1)[0])],
 ]);
 
 storiesOf("Redux Forms", module)
@@ -17,4 +17,7 @@ storiesOf("Redux Forms", module)
   ))
   .add("CreateAccountForm", (): React$Element<*> => (
     <CreateAccountForm onSubmit={actionFirstArg("submitted")} />
+  ))
+  .add("LoginForm", () => (
+    <LoginForm onSubmit={actionFirstArg("submitted")} />
   ));
