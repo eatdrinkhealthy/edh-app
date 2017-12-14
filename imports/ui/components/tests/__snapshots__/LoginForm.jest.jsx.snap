@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginForm /> matches render snapshot, with form validation errors 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div>
+    <label
+      className=""
+      htmlFor="usernameEmail"
+    >
+      Username / Email
+    </label>
+    <input
+      autoFocus={true}
+      className=""
+      id="usernameEmail"
+      name="usernameEmail"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <div>
+    <label
+      className=""
+      htmlFor="loginPassword"
+    >
+      Password
+    </label>
+    <input
+      autoFocus={undefined}
+      className=""
+      id="loginPassword"
+      name="loginPassword"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      type="password"
+      value=""
+    />
+  </div>
+  <input
+    disabled={true}
+    type="submit"
+    value="Login"
+  />
+</form>
+`;

@@ -145,7 +145,8 @@ const onSubmitSuccess = (result, dispatch, props) => {
   props.change("confirmPassword", "");
 
   // set focus on username field
-  const usernameElem = document.querySelector("#username");
+  // NOTE: using document.querySelector is not a React standard (works here, not in jest)
+  const usernameElem = document.querySelector("input#username");
   if (usernameElem) {
     usernameElem.focus();
   }

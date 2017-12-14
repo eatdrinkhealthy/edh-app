@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CreateAccountForm /> matches render snapshot - without form validation errors 1`] = `
+exports[`<CreateAccountForm /> matches render snapshot - with form validation errors 1`] = `
 <div
   className="pt2 pl4 pr4 pb4"
 >

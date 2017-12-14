@@ -146,13 +146,20 @@ describe("<CreateAccountForm />", function () {
       },
       testStore,
     );
+    const usernameNode = wrapper.find("input#username");
     const passwordNode = wrapper.find("input#password");
     const confirmPasswordNode = wrapper.find("input#confirmPassword");
 
+    // give focus to confirmPassword input (like a user would do before submit)
+    // $FlowFixMe
+    confirmPasswordNode.get(0).focus();
     wrapper.find("input[type='submit']").simulate("submit");
 
+    expect(usernameNode.props().value).toEqual("user12");
     expect(passwordNode.props().value).toEqual("");
     expect(confirmPasswordNode.props().value).toEqual("");
+    // NOTE: document.querySelector called in onSubmitSuccess works in browser but not in jest
+    // expect(usernameNode.get(0)).toEqual(document.activeElement);
   });
 
   it("should set focus to username input on render", function () {

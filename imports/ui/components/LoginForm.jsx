@@ -57,6 +57,8 @@ type ILoginFormProps = {
   invalid: boolean,
 };
 
+// NOTE: when we call the LoginForm component, we pass our submit handler as an
+// onSubmit prop, and redux-form passes a submit function in as handleSubmit
 const LoginFormComponent = ({ handleSubmit, invalid }: ILoginFormProps) => (
   <form onSubmit={handleSubmit}>
     <Field
@@ -66,6 +68,7 @@ const LoginFormComponent = ({ handleSubmit, invalid }: ILoginFormProps) => (
       label="Username / Email"
       component={renderInput}
       validate={requiredUsername}
+      autoFocus
     />
     <Field
       inputId="loginPassword"
@@ -89,7 +92,8 @@ const onSubmitSuccess = (result, dispatch, props) => {
   props.untouch("loginPassword");     // prevents showing validation error
 
   // set focus on usernameEmail field
-  const usernameEmailElem = document.querySelector("#usernameEmail");
+  // NOTE: using document.querySelector is not a React standard (works here, not in jest)
+  const usernameEmailElem = document.querySelector("input#usernameEmail");
   if (usernameEmailElem) {
     usernameEmailElem.focus();
   }

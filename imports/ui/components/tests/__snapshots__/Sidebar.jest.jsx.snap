@@ -36,7 +36,7 @@ exports[`<Sidebar /> matches render snapshot - login form, with no validation er
         Username / Email
       </label>
       <input
-        autoFocus={undefined}
+        autoFocus={true}
         className=""
         id="usernameEmail"
         name="usernameEmail"
