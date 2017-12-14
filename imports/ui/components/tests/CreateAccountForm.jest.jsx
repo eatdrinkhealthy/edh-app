@@ -13,7 +13,7 @@ import appReducer from "../../../state/reducers";
 describe("<CreateAccountForm />", function () {
   const testStore = createStore(appReducer);
 
-  it("matches render snapshot - without form validation errors", function () {
+  it("matches render snapshot - with form validation errors", function () {
     // render form with no input values to display validation errors
     const tree = renderer.create(
       <Provider store={testStore}>
