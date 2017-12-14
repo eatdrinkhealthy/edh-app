@@ -23,31 +23,19 @@ describe("<Sidebar />", function () {
     expect(tree).toMatchSnapshot();
   });
 
-  it("matches render snapshot - login form", function () {
-    // Per a React blog post, when using renderer, must mock out refs
-    // https://facebook.github.io/react/blog/2016/11/16/react-v15.4.0.html#mocking-refs-for-snapshot-testing
-    // eslint-disable-next-line flowtype/no-weak-types
-    function createNodeMock(element: HTMLElement): ?Object {
-      if (element.type === "input") {
-        return {
-          focus() {},
-        };
-      }
-      return null;
-    }
-    const options = { createNodeMock };
-
+  it("matches render snapshot - login form, with no validation errors", function () {
     // TODO figure out why MemoryRouter isn't passing location to child
     const tree = renderer.create(
-      <MemoryRouter initialEntries={["/sidebar?action=login"]} initialIndex={0}>
-        <Sidebar location={{ pathname: "/sidebar", search: "?action=login", hash: "" }} />
-      </MemoryRouter>,
-      options,
+      <Provider store={testStore}>
+        <MemoryRouter initialEntries={["/sidebar?action=login"]} initialIndex={0}>
+          <Sidebar location={{ pathname: "/sidebar", search: "?action=login", hash: "" }} />
+        </MemoryRouter>
+      </Provider>,
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it("matches render snapshot - signup form, without form validation errors", function () {
+  it("matches render snapshot - signup form, with no validation errors", function () {
     // TODO figure out why MemoryRouter isn't passing location to child
     const tree = renderer.create(
       <Provider store={testStore}>

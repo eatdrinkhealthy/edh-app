@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Sidebar /> matches render snapshot - login form 1`] = `
+exports[`<Sidebar /> matches render snapshot - login form, with no validation errors 1`] = `
 <div
   className="sidebar"
 >
@@ -25,68 +25,57 @@ exports[`<Sidebar /> matches render snapshot - login form 1`] = `
   >
     Get Started
   </div>
-  <div
-    className="pt2 pl4 pr4 pb4"
+  <form
+    onSubmit={[Function]}
   >
-    <form
-      className="measure center"
-      onSubmit={[Function]}
-    >
-      <fieldset
-        className="ba b--transparent ph0 mh0"
-        id="sign_in"
+    <div>
+      <label
+        className=""
+        htmlFor="usernameEmail"
       >
-        <legend
-          className="f4 fw6 ph0 mh0"
-        >
-          Login
-        </legend>
-        <div
-          className="mt3"
-        >
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="usernameEmail"
-          >
-            Username / Email
-          </label>
-          <input
-            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="usernameEmail"
-            name="usernameEmail"
-            onChange={[Function]}
-            type="text"
-            value=""
-          />
-        </div>
-        <div
-          className="mv3"
-        >
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="loginPassword"
-          >
-            Password
-          </label>
-          <input
-            className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="loginPassword"
-            name="loginPassword"
-            onChange={[Function]}
-            type="password"
-            value=""
-          />
-        </div>
-      </fieldset>
-      <div>
-        <input
-          className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-          type="submit"
-          value="Login"
-        />
-      </div>
-    </form>
-  </div>
+        Username / Email
+      </label>
+      <input
+        autoFocus={undefined}
+        className=""
+        id="usernameEmail"
+        name="usernameEmail"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div>
+      <label
+        className=""
+        htmlFor="loginPassword"
+      >
+        Password
+      </label>
+      <input
+        autoFocus={undefined}
+        className=""
+        id="loginPassword"
+        name="loginPassword"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        type="password"
+        value=""
+      />
+    </div>
+    <input
+      disabled={true}
+      type="submit"
+      value="Login"
+    />
+  </form>
 </div>
 `;
 
@@ -119,7 +108,7 @@ exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
 </div>
 `;
 
-exports[`<Sidebar /> matches render snapshot - signup form, without form validation errors 1`] = `
+exports[`<Sidebar /> matches render snapshot - signup form, with no validation errors 1`] = `
 <div
   className="sidebar"
 >

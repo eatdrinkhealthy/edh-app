@@ -20,15 +20,20 @@ jest.mock("meteor/meteor", () => ({
 }));
 
 import React from "react";
+import { createStore } from "redux";
+import appReducer from "../../../state/reducers";
 import LoginContainer from "../LoginContainer";
 import AlertMessage from "../../components/AlertMessage";
 import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
 
 describe("<LoginContainer />", function () {
+  const testStore = createStore(appReducer);
+
   it("should call AlertMessage.success when submit (loginWithPassword) is successful", function () {
     const wrapper = mountFormWithInputs(
       <LoginContainer />,
-      { usernameEmail: "user12", password: "user12pw" },
+      { usernameEmail: "user12", loginPassword: "user12pw" },
+      testStore,
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
@@ -38,7 +43,8 @@ describe("<LoginContainer />", function () {
   it("should call AlertMessage.warning when submit (loginWithPassword) is unsuccessful", function () {
     const wrapper = mountFormWithInputs(
       <LoginContainer />,
-      { usernameEmail: "user12", password: "user12pwBad" },
+      { usernameEmail: "user12", loginPassword: "user12pwBad" },
+      testStore,
     );
 
     wrapper.find("input[type='submit']").simulate("submit");
