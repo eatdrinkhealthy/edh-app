@@ -13,6 +13,8 @@ import FormGroup from "react-bootstrap/lib/FormGroup";
 import ControlLabel from "react-bootstrap/lib/ControlLabel";
 import FormControl from "react-bootstrap/lib/FormControl";
 import HelpBlock from "react-bootstrap/lib/HelpBlock";
+import Panel from "react-bootstrap/lib/Panel";
+import Jumbotron from "react-bootstrap/lib/Jumbotron";
 
 export { Row };
 export { Button };
@@ -22,6 +24,8 @@ export { FormGroup };
 export { ControlLabel };
 export { FormControl };
 export { HelpBlock };
+export { Panel };
+export { Jumbotron };
 
 // This HOC takes a component, and will add the additional passed in class
 // to className, if the global variable SHOW_GRID is set.

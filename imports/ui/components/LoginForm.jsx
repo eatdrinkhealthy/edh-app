@@ -71,7 +71,7 @@ const LoginFormComponent = ({ handleSubmit, invalid }: ILoginFormProps) => (
       component={renderInput}
       validate={requiredPassword}
     />
-    <Button id="loginSubmit" type="submit" disabled={invalid}>Login</Button>
+    <Button id="loginSubmit" type="submit" disabled={invalid}>Sign In</Button>
   </form>
 );
 
