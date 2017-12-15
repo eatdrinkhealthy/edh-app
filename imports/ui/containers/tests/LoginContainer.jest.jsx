@@ -36,7 +36,7 @@ describe("<LoginContainer />", function () {
       testStore,
     );
 
-    wrapper.find("input[type='submit']").simulate("submit");
+    wrapper.find("button[type='submit']").simulate("submit");
     expect(AlertMessage.success).toHaveBeenCalledWith("Welcome user12!");
   });
 
@@ -47,7 +47,7 @@ describe("<LoginContainer />", function () {
       testStore,
     );
 
-    wrapper.find("input[type='submit']").simulate("submit");
+    wrapper.find("button[type='submit']").simulate("submit");
     expect(AlertMessage.warning).toHaveBeenCalledWith(
       "The username / email and password do not match.",
     );

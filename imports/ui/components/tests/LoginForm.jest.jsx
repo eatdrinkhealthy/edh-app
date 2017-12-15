@@ -9,6 +9,7 @@ import renderer from "react-test-renderer";
 import LoginForm from "../LoginForm";
 import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
 import appReducer from "../../../state/reducers";
+import { elements as els } from "../../../../tests/end-to-end/elements";
 
 describe("<LoginForm />", function () {
   const testStore = createStore(appReducer);
@@ -18,7 +19,7 @@ describe("<LoginForm />", function () {
     onSubmit: jest.fn(),
   };
 
-  it("matches render snapshot, with form validation errors", function () {
+  it("matches render snapshot, with no form validation errors", function () {
     // render form with no input values to display validation errors
     const tree = renderer.create(
       <Provider store={testStore}>
@@ -35,9 +36,9 @@ describe("<LoginForm />", function () {
       testStore,
     );
 
-    wrapper.find("#usernameEmail").simulate("blur"); // triggers field validation
+    wrapper.find(els.loginForm.usernameEmail).simulate("blur"); // triggers field validation
 
-    expect(wrapper.find("#usernameEmailError").text())
+    expect(wrapper.find(els.loginForm.usernameEmailError).text())
       .toBe("Username / Email is a required field.");
   });
 
@@ -49,9 +50,9 @@ describe("<LoginForm />", function () {
     );
 
     // NOTE: must also touch the field (ie, enter something in it)
-    wrapper.find("#loginPassword").simulate("blur"); // triggers field validation
+    wrapper.find(els.loginForm.password).simulate("blur"); // triggers field validation
 
-    expect(wrapper.find("#loginPasswordError").text())
+    expect(wrapper.find(els.loginForm.passwordError).text())
       .toBe("Password is a required field.");
   });
 
@@ -62,7 +63,7 @@ describe("<LoginForm />", function () {
       testStore,
     );
 
-    wrapper.find("input[type='submit']").simulate("submit");
+    wrapper.find(els.loginForm.submitButton).simulate("submit");
     expect(props.onSubmit).toHaveBeenCalledWith(
       { usernameEmail: "user12", loginPassword: "user12pw" },
       expect.anything(),
@@ -76,13 +77,13 @@ describe("<LoginForm />", function () {
       { usernameEmail: "user12", loginPassword: "user12pw" },
       testStore,
     );
-    const usernameEmailNode = wrapper.find("input#usernameEmail");
-    const passwordNode = wrapper.find("input#loginPassword");
+    const usernameEmailNode = wrapper.find(els.loginForm.usernameEmail);
+    const passwordNode = wrapper.find(els.loginForm.password);
 
     // give focus to password input (like a user would do before submit)
     // $FlowFixMe
     passwordNode.get(0).focus();
-    wrapper.find("input[type='submit']").simulate("submit");
+    wrapper.find(els.loginForm.submitButton).simulate("submit");
 
     expect(usernameEmailNode.props().value).toEqual("user12");
     expect(passwordNode.props().value).toEqual("");
@@ -97,6 +98,6 @@ describe("<LoginForm />", function () {
       testStore,
     );
 
-    expect(wrapper.find("input#usernameEmail").get(0)).toBe(document.activeElement);
+    expect(wrapper.find(els.loginForm.usernameEmail).get(0)).toBe(document.activeElement);
   });
 });

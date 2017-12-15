@@ -1,16 +1,16 @@
 // @flow
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import classNames from "classnames";
+import {
+  FormGroup,
+  ControlLabel,
+  FormControl,
+  HelpBlock,
+  Button,
+} from "./ReactBootstrapLib";
 
 const requiredUsername = value => (value ? undefined : `Username / Email is a required field.`);
 const requiredPassword = value => (value ? undefined : `Password is a required field.`);
-
-const renderInputError = (inputId: string, error: string) => (
-  <div id={`${inputId}Error`} className="dark-red">
-    {error}
-  </div>
-);
 
 type IRenderInputProps = {
   inputId: string,
@@ -26,26 +26,19 @@ type IRenderInputProps = {
 
 const renderInput = (
   { input, inputId, autoFocus, label, type, meta: { touched, error } }: IRenderInputProps,
-) => (
+) => {
+  const validationState = touched && !!error ? "error" : null;
+
   /* eslint-disable jsx-a11y/no-autofocus */
-  <div>
-    <label
-      className={classNames({ "dark-red": touched && !!error })}
-      htmlFor={inputId}
-    >
-      {label}
-    </label>
-    <input
-      {...input}
-      id={inputId}
-      className={classNames({ "dark-red": touched && !!error })}
-      type={type}
-      autoFocus={autoFocus}
-    />
-    {touched && (error && renderInputError(inputId, error))}
-  </div>
+  return (
+    <FormGroup controlId={inputId} validationState={validationState}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...input} type={type} autoFocus={autoFocus} />
+      {touched && error && <HelpBlock id={`${inputId}Error`}>{error}</HelpBlock>}
+    </FormGroup>
+  );
   /* eslint-enable jsx-a11y/no-autofocus */
-);
+};
 
 export type ILoginFormValues = {
   usernameEmail: string,
@@ -78,11 +71,7 @@ const LoginFormComponent = ({ handleSubmit, invalid }: ILoginFormProps) => (
       component={renderInput}
       validate={requiredPassword}
     />
-    <input
-      type="submit"
-      value="Login"
-      disabled={invalid}
-    />
+    <Button id="loginSubmit" type="submit" disabled={invalid}>Login</Button>
   </form>
 );
 

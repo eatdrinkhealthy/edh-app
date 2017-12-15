@@ -1,19 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoginForm /> matches render snapshot, with form validation errors 1`] = `
+exports[`<LoginForm /> matches render snapshot, with no form validation errors 1`] = `
 <form
   onSubmit={[Function]}
 >
-  <div>
+  <div
+    className="form-group"
+  >
     <label
-      className=""
+      className="control-label"
       htmlFor="usernameEmail"
     >
       Username / Email
     </label>
     <input
       autoFocus={true}
-      className=""
+      className="form-control"
       id="usernameEmail"
       name="usernameEmail"
       onBlur={[Function]}
@@ -25,16 +27,18 @@ exports[`<LoginForm /> matches render snapshot, with form validation errors 1`] 
       value=""
     />
   </div>
-  <div>
+  <div
+    className="form-group"
+  >
     <label
-      className=""
+      className="control-label"
       htmlFor="loginPassword"
     >
       Password
     </label>
     <input
       autoFocus={undefined}
-      className=""
+      className="form-control"
       id="loginPassword"
       name="loginPassword"
       onBlur={[Function]}
@@ -46,10 +50,13 @@ exports[`<LoginForm /> matches render snapshot, with form validation errors 1`] 
       value=""
     />
   </div>
-  <input
+  <button
+    className="btn btn-default"
     disabled={true}
+    id="loginSubmit"
     type="submit"
-    value="Login"
-  />
+  >
+    Login
+  </button>
 </form>
 `;

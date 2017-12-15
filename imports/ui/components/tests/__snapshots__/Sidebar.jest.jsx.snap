@@ -28,16 +28,18 @@ exports[`<Sidebar /> matches render snapshot - login form, with no validation er
   <form
     onSubmit={[Function]}
   >
-    <div>
+    <div
+      className="form-group"
+    >
       <label
-        className=""
+        className="control-label"
         htmlFor="usernameEmail"
       >
         Username / Email
       </label>
       <input
         autoFocus={true}
-        className=""
+        className="form-control"
         id="usernameEmail"
         name="usernameEmail"
         onBlur={[Function]}
@@ -49,16 +51,18 @@ exports[`<Sidebar /> matches render snapshot - login form, with no validation er
         value=""
       />
     </div>
-    <div>
+    <div
+      className="form-group"
+    >
       <label
-        className=""
+        className="control-label"
         htmlFor="loginPassword"
       >
         Password
       </label>
       <input
         autoFocus={undefined}
-        className=""
+        className="form-control"
         id="loginPassword"
         name="loginPassword"
         onBlur={[Function]}
@@ -70,11 +74,14 @@ exports[`<Sidebar /> matches render snapshot - login form, with no validation er
         value=""
       />
     </div>
-    <input
+    <button
+      className="btn btn-default"
       disabled={true}
+      id="loginSubmit"
       type="submit"
-      value="Login"
-    />
+    >
+      Login
+    </button>
   </form>
 </div>
 `;

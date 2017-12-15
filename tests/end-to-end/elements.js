@@ -27,9 +27,11 @@ export const elements = {
     submitButton: "input[value='Create Account']",
   },
   loginForm: {
-    usernameEmailInput: "#usernameEmail",
-    passwordInput: "#loginPassword",
-    submitButton: "input[value='Login']",
+    usernameEmail: "#usernameEmail",
+    usernameEmailError: "#usernameEmailError",
+    password: "#loginPassword",
+    passwordError: "#loginPasswordError",
+    submitButton: "#loginSubmit",
   },
   userMenu: {
     joinLink: "#joinLink",

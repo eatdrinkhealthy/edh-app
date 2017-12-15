@@ -9,11 +9,19 @@ import ColBase from "react-bootstrap/lib/Col";
 import Button from "react-bootstrap/lib/Button";
 import ToggleButton from "react-bootstrap/lib/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/lib/ToggleButtonGroup";
+import FormGroup from "react-bootstrap/lib/FormGroup";
+import ControlLabel from "react-bootstrap/lib/ControlLabel";
+import FormControl from "react-bootstrap/lib/FormControl";
+import HelpBlock from "react-bootstrap/lib/HelpBlock";
 
 export { Row };
 export { Button };
 export { ToggleButton };
 export { ToggleButtonGroup };
+export { FormGroup };
+export { ControlLabel };
+export { FormControl };
+export { HelpBlock };
 
 // This HOC takes a component, and will add the additional passed in class
 // to className, if the global variable SHOW_GRID is set.
