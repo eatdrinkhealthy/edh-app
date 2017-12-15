@@ -66,9 +66,9 @@ describe("User Accounts", function () {
       // navbar already should be displayed (beforeAll)
       browser.click(els.userMenu.loginLink);
 
-      browser.waitForExist(els.loginForm.usernameEmailInput);
-      browser.setValue(els.loginForm.usernameEmailInput, testUser.username);
-      browser.setValue(els.loginForm.passwordInput, testUser.password);
+      browser.waitForExist(els.loginForm.usernameEmail);
+      browser.setValue(els.loginForm.usernameEmail, testUser.username);
+      browser.setValue(els.loginForm.password, testUser.password);
 
       browser.click(els.loginForm.submitButton);
     });

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Sidebar /> matches render snapshot - login form, with no validation errors 1`] = `
-<div>
+<div
+  id="sidebarPage"
+>
   <a
     href="/"
     onClick={[Function]}
@@ -113,7 +115,9 @@ exports[`<Sidebar /> matches render snapshot - login form, with no validation er
 `;
 
 exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
-<div>
+<div
+  id="sidebarPage"
+>
   <a
     href="/"
     onClick={[Function]}
@@ -168,7 +172,9 @@ exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
 `;
 
 exports[`<Sidebar /> matches render snapshot - signup form, with no validation errors 1`] = `
-<div>
+<div
+  id="sidebarPage"
+>
   <a
     href="/"
     onClick={[Function]}

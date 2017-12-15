@@ -38,7 +38,7 @@ class Sidebar extends Component {
 
   render() {
     return (
-      <div>
+      <div id="sidebarPage">
         <Link to="/">Home</Link>
         <Grid fluid>
           <Row>

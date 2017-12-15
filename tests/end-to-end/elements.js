@@ -16,7 +16,7 @@ export const elements = {
   },
   sidebarPage: {
     url: `${baseUrl}/sidebar`,
-    component: "div.sidebar > div.pitch",
+    component: "#sidebarPage",
     homeLink: "a=Home",
   },
   createAccountForm: {
