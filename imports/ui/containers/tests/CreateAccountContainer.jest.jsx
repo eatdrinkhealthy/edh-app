@@ -38,6 +38,7 @@ import appReducer from "../../../state/reducers";
 import CreateAccountContainer from "../CreateAccountContainer";
 import AlertMessage from "../../components/AlertMessage";
 import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
+import { elements as els } from "../../../../tests/end-to-end/elements";
 
 describe("<CreateAccountContainer />", function () {
   const testStore = createStore(appReducer);
@@ -54,7 +55,7 @@ describe("<CreateAccountContainer />", function () {
       testStore,
     );
 
-    wrapper.find("input[type='submit']").simulate("submit");
+    wrapper.find(els.createAccountForm.submitButton).simulate("submit");
 
     // NOTE first mock call to Accounts.createUser succeeds
     expect(AlertMessage.success).toHaveBeenCalledWith("Welcome user12!");
@@ -72,7 +73,7 @@ describe("<CreateAccountContainer />", function () {
       testStore,
     );
 
-    wrapper.find("input[type='submit']").simulate("submit");
+    wrapper.find(els.createAccountForm.submitButton).simulate("submit");
 
     // NOTE second mock call to Accounts.createUser generates general / unknown error
     expect(AlertMessage.warning).toHaveBeenCalledWith(
@@ -92,7 +93,7 @@ describe("<CreateAccountContainer />", function () {
       testStore,
     );
 
-    wrapper.find("input[type='submit']").simulate("submit");
+    wrapper.find(els.createAccountForm.submitButton).simulate("submit");
 
     // NOTE third mock call to Accounts.createUser generates a ValidationError
     expect(AlertMessage.warning).toHaveBeenCalledWith(
@@ -112,7 +113,7 @@ describe("<CreateAccountContainer />", function () {
       testStore,
     );
 
-    wrapper.find("input[type='submit']").simulate("submit");
+    wrapper.find(els.createAccountForm.submitButton).simulate("submit");
 
     // NOTE fourth mock call to Accounts.createUser generates a 403 Meteor.Error
     expect(AlertMessage.warning).toHaveBeenCalledWith(
