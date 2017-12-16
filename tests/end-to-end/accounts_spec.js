@@ -30,11 +30,11 @@ describe("User Accounts", function () {
       // navbar already should be displayed (beforeAll)
       browser.click(els.userMenu.joinLink);
 
-      browser.waitForExist(els.createAccountForm.usernameInput);
-      browser.setValue(els.createAccountForm.usernameInput, testUser.username);
-      browser.setValue(els.createAccountForm.emailInput, testUser.email);
-      browser.setValue(els.createAccountForm.passwordInput, testUser.password);
-      browser.setValue(els.createAccountForm.confirmPasswordInput, testUser.password);
+      browser.waitForExist(els.createAccountForm.username);
+      browser.setValue(els.createAccountForm.username, testUser.username);
+      browser.setValue(els.createAccountForm.email, testUser.email);
+      browser.setValue(els.createAccountForm.password, testUser.password);
+      browser.setValue(els.createAccountForm.confirmPassword, testUser.password);
 
       browser.click(els.createAccountForm.submitButton);
     });
