@@ -5,6 +5,13 @@ import type { RouterHistory, Location } from "react-router-dom";
 import CreateAccountContainer from "../containers/CreateAccountContainer";
 import LoginContainer from "../containers/LoginContainer";
 import { searchProperty } from "../../utils/routeLocation";
+import {
+  Grid,
+  Row,
+  Col,
+  Panel,
+  Jumbotron,
+} from "./ReactBootstrapLib";
 
 /* eslint-disable react/require-default-props */
 
@@ -31,14 +38,26 @@ class Sidebar extends Component {
 
   render() {
     return (
-      <div className="sidebar">
+      <div id="sidebarPage">
         <Link to="/">Home</Link>
-        <h2 className="">Eat Drink Healthy</h2>
-        <div className="pitch">
-          A platform to find, share, and discuss healthy places to shop and eat.
-        </div>
-        <div className="get-started">Get Started</div>
-        {this.actionForm()}
+        <Grid fluid>
+          <Row>
+            <Col xs={12}>
+              <Jumbotron>
+                <div className="pitch">
+                  A platform to find, share, and discuss healthy places to shop and eat.
+                </div>
+              </Jumbotron>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
+              <Panel header="Get Started">
+                {this.actionForm()}
+              </Panel>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }

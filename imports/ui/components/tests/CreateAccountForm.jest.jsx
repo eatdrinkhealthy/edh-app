@@ -9,11 +9,12 @@ import renderer from "react-test-renderer";
 import CreateAccountForm from "../CreateAccountForm";
 import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
 import appReducer from "../../../state/reducers";
+import { elements as els } from "../../../../tests/end-to-end/elements";
 
 describe("<CreateAccountForm />", function () {
   const testStore = createStore(appReducer);
 
-  it("matches render snapshot - without form validation errors", function () {
+  it("matches render snapshot - with no form validation errors", function () {
     // render form with no input values to display validation errors
     const tree = renderer.create(
       <Provider store={testStore}>
@@ -36,9 +37,9 @@ describe("<CreateAccountForm />", function () {
       testStore,
     );
 
-    wrapper.find("#username").simulate("blur"); // blur triggers field validation
+    wrapper.find(els.createAccountForm.username).simulate("blur"); // blur triggers field validation
 
-    expect(wrapper.find("#usernameError").text())
+    expect(wrapper.find(els.createAccountForm.usernameError).text())
       .toBe("Username must be at least 4 characters.");
   });
 
@@ -55,9 +56,9 @@ describe("<CreateAccountForm />", function () {
       testStore,
     );
 
-    wrapper.find("#email").simulate("blur"); // blur triggers field validation
+    wrapper.find(els.createAccountForm.email).simulate("blur"); // blur triggers field validation
 
-    expect(wrapper.find("#emailError").text())
+    expect(wrapper.find(els.createAccountForm.emailError).text())
       .toBe("Email address must be a valid email address format.");
   });
 
@@ -74,9 +75,9 @@ describe("<CreateAccountForm />", function () {
       testStore,
     );
 
-    wrapper.find("#password").simulate("blur"); // blur triggers field validation
+    wrapper.find(els.createAccountForm.password).simulate("blur"); // blur triggers field validation
 
-    expect(wrapper.find("#passwordError").text())
+    expect(wrapper.find(els.createAccountForm.passwordError).text())
       .toBe("Password must be at least 4 characters.");
   });
 
@@ -96,8 +97,8 @@ describe("<CreateAccountForm />", function () {
       testStore,
     );
 
-    wrapper.find("input[type='submit']").simulate("submit");
-    expect(wrapper.find("#confirmPasswordError").text())
+    wrapper.find(els.createAccountForm.submitButton).simulate("submit");
+    expect(wrapper.find(els.createAccountForm.confirmPasswordError).text())
       .toBe("Password and Confirm Password fields do not match.");
     expect(props.onSubmit).not.toHaveBeenCalled();
   });
@@ -118,7 +119,7 @@ describe("<CreateAccountForm />", function () {
       testStore,
     );
 
-    wrapper.find("input[type='submit']").simulate("submit");
+    wrapper.find(els.createAccountForm.submitButton).simulate("submit");
     expect(props.onSubmit).toHaveBeenCalledWith(
       {
         username: "user12",
@@ -146,13 +147,20 @@ describe("<CreateAccountForm />", function () {
       },
       testStore,
     );
-    const passwordNode = wrapper.find("input#password");
-    const confirmPasswordNode = wrapper.find("input#confirmPassword");
+    const usernameNode = wrapper.find(els.createAccountForm.username);
+    const passwordNode = wrapper.find(els.createAccountForm.password);
+    const confirmPasswordNode = wrapper.find(els.createAccountForm.confirmPassword);
 
-    wrapper.find("input[type='submit']").simulate("submit");
+    // give focus to confirmPassword input (like a user would do before submit)
+    // $FlowFixMe
+    confirmPasswordNode.get(0).focus();
+    wrapper.find(els.createAccountForm.submitButton).simulate("submit");
 
+    expect(usernameNode.props().value).toEqual("user12");
     expect(passwordNode.props().value).toEqual("");
     expect(confirmPasswordNode.props().value).toEqual("");
+    // NOTE: document.querySelector called in onSubmitSuccess works in browser but not in jest
+    // expect(usernameNode.get(0)).toEqual(document.activeElement);
   });
 
   it("should set focus to username input on render", function () {
@@ -171,6 +179,6 @@ describe("<CreateAccountForm />", function () {
       testStore,
     );
 
-    expect(wrapper.find("input#username").get(0)).toBe(document.activeElement);
+    expect(wrapper.find(els.createAccountForm.username).get(0)).toBe(document.activeElement);
   });
 });

@@ -27,6 +27,7 @@ const PrimaryFilter = ({
     <FilterSection
       id="venueTypeFilters"
       title="VENUES"
+      selectedColor="#663300"
       filters={venueTypeFilters}
       setFilter={toggleVenueTypeFilterHandler}
     />

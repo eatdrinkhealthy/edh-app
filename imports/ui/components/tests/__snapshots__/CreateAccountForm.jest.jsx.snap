@@ -1,135 +1,109 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CreateAccountForm /> matches render snapshot - without form validation errors 1`] = `
-<div
-  className="pt2 pl4 pr4 pb4"
+exports[`<CreateAccountForm /> matches render snapshot - with no form validation errors 1`] = `
+<form
+  className="measure center"
+  onSubmit={[Function]}
 >
-  <form
-    className="measure center"
-    onSubmit={[Function]}
+  <div
+    className="form-group"
   >
-    <fieldset
-      className="ba b--transparent ph0 mh0"
-      id="sign_up"
+    <label
+      className="control-label"
+      htmlFor="username"
     >
-      <legend
-        className="f4 fw6 ph0 mh0"
-      >
-        Create Account
-      </legend>
-      <div
-        className="mt3"
-      >
-        <div>
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="username"
-          >
-            Username
-          </label>
-          <input
-            autoFocus={true}
-            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="username"
-            name="username"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            placeholder="Username"
-            type="text"
-            value=""
-          />
-        </div>
-      </div>
-      <div
-        className="mt3"
-      >
-        <div>
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            autoFocus={undefined}
-            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="email"
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            placeholder="Email"
-            type="email"
-            value=""
-          />
-        </div>
-      </div>
-      <div
-        className="mv3"
-      >
-        <div>
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <input
-            autoFocus={undefined}
-            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="password"
-            name="password"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            placeholder="Password"
-            type="password"
-            value=""
-          />
-        </div>
-      </div>
-      <div
-        className="mv3"
-      >
-        <div>
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="confirmPassword"
-          >
-            Confirm Password
-          </label>
-          <input
-            autoFocus={undefined}
-            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="confirmPassword"
-            name="confirmPassword"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            placeholder="Confirm Password"
-            type="password"
-            value=""
-          />
-        </div>
-      </div>
-    </fieldset>
-    <div>
-      <input
-        className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-        disabled={true}
-        type="submit"
-        value="Create Account"
-      />
-    </div>
-  </form>
-</div>
+      Username
+    </label>
+    <input
+      autoFocus={true}
+      className="form-control"
+      id="username"
+      name="username"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      className="control-label"
+      htmlFor="email"
+    >
+      Email
+    </label>
+    <input
+      autoFocus={undefined}
+      className="form-control"
+      id="email"
+      name="email"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      type="email"
+      value=""
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      className="control-label"
+      htmlFor="password"
+    >
+      Password
+    </label>
+    <input
+      autoFocus={undefined}
+      className="form-control"
+      id="password"
+      name="password"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      type="password"
+      value=""
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      className="control-label"
+      htmlFor="confirmPassword"
+    >
+      Confirm Password
+    </label>
+    <input
+      autoFocus={undefined}
+      className="form-control"
+      id="confirmPassword"
+      name="confirmPassword"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      type="password"
+      value=""
+    />
+  </div>
+  <button
+    className="btn btn-default"
+    disabled={true}
+    id="createAccountSubmit"
+    type="submit"
+  >
+    Create Account
+  </button>
+</form>
 `;

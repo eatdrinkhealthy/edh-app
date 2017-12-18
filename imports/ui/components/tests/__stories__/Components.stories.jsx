@@ -26,8 +26,9 @@ storiesOf("Components", module)
     >
       <Pill
         name="Pill"
-        onClick={action("Pill Clicked")}
-        active={boolean("active", false)}
+        onClick={action("pill clicked")}
+        active={boolean("Active", false)}
+        selectedColor={text("Selected Color", "#5e2ca5")}
       >
         {text("Pill Text", "Vegan")}
       </Pill>

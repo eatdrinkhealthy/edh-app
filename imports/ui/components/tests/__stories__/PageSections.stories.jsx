@@ -5,7 +5,6 @@ import { MemoryRouter } from "react-router-dom";
 import { storiesOf, action } from "@storybook/react";
 import { boolean, text } from "@storybook/addon-knobs";
 
-import Login from "../../Login";
 import UserMenu from "../../UserMenu";
 import Navbar from "../../Navbar";
 import PrimaryFilter from "../../PrimaryFilter";
@@ -17,9 +16,6 @@ import {
 storiesOf("Page Sections", module)
   .addDecorator((story: () => React$Element<*>): React$Element<*> => (
     <MemoryRouter>{story()}</MemoryRouter>
-  ))
-  .add("Login", (): React$Element<*> => (
-    <Login handleSubmit={action("submitted")} />
   ))
   .add("UserMenu", (): React$Element<*> => (
     <UserMenu

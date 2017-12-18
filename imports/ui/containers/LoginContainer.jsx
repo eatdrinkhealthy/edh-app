@@ -5,21 +5,22 @@ import React, {
 import { Meteor } from "meteor/meteor";
 import type { RouterHistory } from "react-router-dom";
 import AlertMessage from "../components/AlertMessage";
-import Login from "../components/Login";
+import LoginForm from "../components/LoginForm";
 import lookupErrorMessage from "../helpers/errors";
+
+import type { ILoginFormValues } from "../components/LoginForm";
 
 class LoginContainer extends Component {
   props: {
     routerHistory?: RouterHistory, // eslint-disable-line react/require-default-props
   };
 
-  login = (
-    usernameEmail: string,
-    password: string,
-  ) => {
+  login = (formValues: ILoginFormValues) => {
+    const { usernameEmail, loginPassword } = formValues;
+
     Meteor.loginWithPassword(
       usernameEmail,
-      password,
+      loginPassword,
       (error) => {
         if (error) {
           AlertMessage.warning(lookupErrorMessage(error));
@@ -33,7 +34,8 @@ class LoginContainer extends Component {
   };
 
   render() {
-    return <Login handleSubmit={this.login} />;
+    // NOTE: passing submit handler as onSubmit prop, but it is read from handleSubmit prop
+    return <LoginForm onSubmit={this.login} />;
   }
 }
 

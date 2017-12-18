@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Sidebar /> matches render snapshot - login form 1`] = `
+exports[`<Sidebar /> matches render snapshot - login form, with no validation errors 1`] = `
 <div
-  className="sidebar"
+  id="sidebarPage"
 >
   <a
     href="/"
@@ -10,89 +10,113 @@ exports[`<Sidebar /> matches render snapshot - login form 1`] = `
   >
     Home
   </a>
-  <h2
-    className=""
-  >
-    Eat Drink Healthy
-  </h2>
   <div
-    className="pitch"
+    className="container-fluid"
   >
-    A platform to find, share, and discuss healthy places to shop and eat.
-  </div>
-  <div
-    className="get-started"
-  >
-    Get Started
-  </div>
-  <div
-    className="pt2 pl4 pr4 pb4"
-  >
-    <form
-      className="measure center"
-      onSubmit={[Function]}
+    <div
+      className="row"
     >
-      <fieldset
-        className="ba b--transparent ph0 mh0"
-        id="sign_in"
+      <div
+        className="col-xs-12"
       >
-        <legend
-          className="f4 fw6 ph0 mh0"
-        >
-          Login
-        </legend>
         <div
-          className="mt3"
+          className="jumbotron"
         >
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="usernameEmail"
+          <div
+            className="pitch"
           >
-            Username / Email
-          </label>
-          <input
-            className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="usernameEmail"
-            name="usernameEmail"
-            onChange={[Function]}
-            type="text"
-            value=""
-          />
+            A platform to find, share, and discuss healthy places to shop and eat.
+          </div>
         </div>
-        <div
-          className="mv3"
-        >
-          <label
-            className="db fw6 lh-copy f6"
-            htmlFor="loginPassword"
-          >
-            Password
-          </label>
-          <input
-            className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-            id="loginPassword"
-            name="loginPassword"
-            onChange={[Function]}
-            type="password"
-            value=""
-          />
-        </div>
-      </fieldset>
-      <div>
-        <input
-          className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-          type="submit"
-          value="Login"
-        />
       </div>
-    </form>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2"
+      >
+        <div
+          className="panel panel-default"
+          id={undefined}
+        >
+          <div
+            className="panel-heading"
+          >
+            Get Started
+          </div>
+          <div
+            className="panel-body"
+          >
+            <form
+              onSubmit={[Function]}
+            >
+              <div
+                className="form-group"
+              >
+                <label
+                  className="control-label"
+                  htmlFor="usernameEmail"
+                >
+                  Username / Email
+                </label>
+                <input
+                  autoFocus={true}
+                  className="form-control"
+                  id="usernameEmail"
+                  name="usernameEmail"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                className="form-group"
+              >
+                <label
+                  className="control-label"
+                  htmlFor="loginPassword"
+                >
+                  Password
+                </label>
+                <input
+                  autoFocus={undefined}
+                  className="form-control"
+                  id="loginPassword"
+                  name="loginPassword"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  type="password"
+                  value=""
+                />
+              </div>
+              <button
+                className="btn btn-default"
+                disabled={true}
+                id="loginSubmit"
+                type="submit"
+              >
+                Sign In
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
 <div
-  className="sidebar"
+  id="sidebarPage"
 >
   <a
     href="/"
@@ -100,28 +124,56 @@ exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
   >
     Home
   </a>
-  <h2
-    className=""
-  >
-    Eat Drink Healthy
-  </h2>
   <div
-    className="pitch"
+    className="container-fluid"
   >
-    A platform to find, share, and discuss healthy places to shop and eat.
+    <div
+      className="row"
+    >
+      <div
+        className="col-xs-12"
+      >
+        <div
+          className="jumbotron"
+        >
+          <div
+            className="pitch"
+          >
+            A platform to find, share, and discuss healthy places to shop and eat.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2"
+      >
+        <div
+          className="panel panel-default"
+          id={undefined}
+        >
+          <div
+            className="panel-heading"
+          >
+            Get Started
+          </div>
+          <div
+            className="panel-body"
+          >
+            <div />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div
-    className="get-started"
-  >
-    Get Started
-  </div>
-  <div />
 </div>
 `;
 
-exports[`<Sidebar /> matches render snapshot - signup form, without form validation errors 1`] = `
+exports[`<Sidebar /> matches render snapshot - signup form, with no validation errors 1`] = `
 <div
-  className="sidebar"
+  id="sidebarPage"
 >
   <a
     href="/"
@@ -129,151 +181,153 @@ exports[`<Sidebar /> matches render snapshot - signup form, without form validat
   >
     Home
   </a>
-  <h2
-    className=""
-  >
-    Eat Drink Healthy
-  </h2>
   <div
-    className="pitch"
+    className="container-fluid"
   >
-    A platform to find, share, and discuss healthy places to shop and eat.
-  </div>
-  <div
-    className="get-started"
-  >
-    Get Started
-  </div>
-  <div
-    className="pt2 pl4 pr4 pb4"
-  >
-    <form
-      className="measure center"
-      onSubmit={[Function]}
+    <div
+      className="row"
     >
-      <fieldset
-        className="ba b--transparent ph0 mh0"
-        id="sign_up"
+      <div
+        className="col-xs-12"
       >
-        <legend
-          className="f4 fw6 ph0 mh0"
-        >
-          Create Account
-        </legend>
         <div
-          className="mt3"
+          className="jumbotron"
         >
-          <div>
-            <label
-              className="db fw6 lh-copy f6"
-              htmlFor="username"
-            >
-              Username
-            </label>
-            <input
-              autoFocus={true}
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-              id="username"
-              name="username"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onDragStart={[Function]}
-              onDrop={[Function]}
-              onFocus={[Function]}
-              placeholder="Username"
-              type="text"
-              value=""
-            />
+          <div
+            className="pitch"
+          >
+            A platform to find, share, and discuss healthy places to shop and eat.
           </div>
         </div>
-        <div
-          className="mt3"
-        >
-          <div>
-            <label
-              className="db fw6 lh-copy f6"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              autoFocus={undefined}
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-              id="email"
-              name="email"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onDragStart={[Function]}
-              onDrop={[Function]}
-              onFocus={[Function]}
-              placeholder="Email"
-              type="email"
-              value=""
-            />
-          </div>
-        </div>
-        <div
-          className="mv3"
-        >
-          <div>
-            <label
-              className="db fw6 lh-copy f6"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              autoFocus={undefined}
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-              id="password"
-              name="password"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onDragStart={[Function]}
-              onDrop={[Function]}
-              onFocus={[Function]}
-              placeholder="Password"
-              type="password"
-              value=""
-            />
-          </div>
-        </div>
-        <div
-          className="mv3"
-        >
-          <div>
-            <label
-              className="db fw6 lh-copy f6"
-              htmlFor="confirmPassword"
-            >
-              Confirm Password
-            </label>
-            <input
-              autoFocus={undefined}
-              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-              id="confirmPassword"
-              name="confirmPassword"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onDragStart={[Function]}
-              onDrop={[Function]}
-              onFocus={[Function]}
-              placeholder="Confirm Password"
-              type="password"
-              value=""
-            />
-          </div>
-        </div>
-      </fieldset>
-      <div>
-        <input
-          className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-          disabled={true}
-          type="submit"
-          value="Create Account"
-        />
       </div>
-    </form>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2"
+      >
+        <div
+          className="panel panel-default"
+          id={undefined}
+        >
+          <div
+            className="panel-heading"
+          >
+            Get Started
+          </div>
+          <div
+            className="panel-body"
+          >
+            <form
+              className="measure center"
+              onSubmit={[Function]}
+            >
+              <div
+                className="form-group"
+              >
+                <label
+                  className="control-label"
+                  htmlFor="username"
+                >
+                  Username
+                </label>
+                <input
+                  autoFocus={true}
+                  className="form-control"
+                  id="username"
+                  name="username"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                className="form-group"
+              >
+                <label
+                  className="control-label"
+                  htmlFor="email"
+                >
+                  Email
+                </label>
+                <input
+                  autoFocus={undefined}
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  type="email"
+                  value=""
+                />
+              </div>
+              <div
+                className="form-group"
+              >
+                <label
+                  className="control-label"
+                  htmlFor="password"
+                >
+                  Password
+                </label>
+                <input
+                  autoFocus={undefined}
+                  className="form-control"
+                  id="password"
+                  name="password"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  type="password"
+                  value=""
+                />
+              </div>
+              <div
+                className="form-group"
+              >
+                <label
+                  className="control-label"
+                  htmlFor="confirmPassword"
+                >
+                  Confirm Password
+                </label>
+                <input
+                  autoFocus={undefined}
+                  className="form-control"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onDragStart={[Function]}
+                  onDrop={[Function]}
+                  onFocus={[Function]}
+                  type="password"
+                  value=""
+                />
+              </div>
+              <button
+                className="btn btn-default"
+                disabled={true}
+                id="createAccountSubmit"
+                type="submit"
+              >
+                Create Account
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
