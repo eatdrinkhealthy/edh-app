@@ -9,7 +9,6 @@ import {
   Grid,
   Row,
   Col,
-  Panel,
   Jumbotron,
 } from "./ReactBootstrapLib";
 
@@ -52,9 +51,7 @@ class Sidebar extends Component {
           </Row>
           <Row>
             <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
-              <Panel header="Get Started">
-                {this.actionForm()}
-              </Panel>
+              {this.actionForm()}
             </Col>
           </Row>
         </Grid>

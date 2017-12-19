@@ -150,21 +150,7 @@ exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
       <div
         className="col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2"
       >
-        <div
-          className="panel panel-default"
-          id={undefined}
-        >
-          <div
-            className="panel-heading"
-          >
-            Get Started
-          </div>
-          <div
-            className="panel-body"
-          >
-            <div />
-          </div>
-        </div>
+        <div />
       </div>
     </div>
   </div>

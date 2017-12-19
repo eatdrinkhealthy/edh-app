@@ -1,109 +1,123 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CreateAccountForm /> matches render snapshot - with no form validation errors 1`] = `
-<form
-  className="measure center"
-  onSubmit={[Function]}
+<div
+  className="panel panel-default"
+  id={undefined}
 >
   <div
-    className="form-group"
+    className="panel-heading"
   >
-    <label
-      className="control-label"
-      htmlFor="username"
-    >
-      Username
-    </label>
-    <input
-      autoFocus={true}
-      className="form-control"
-      id="username"
-      name="username"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onDragStart={[Function]}
-      onDrop={[Function]}
-      onFocus={[Function]}
-      type="text"
-      value=""
-    />
+    Get Started
   </div>
   <div
-    className="form-group"
+    className="panel-body"
   >
-    <label
-      className="control-label"
-      htmlFor="email"
+    <form
+      className="measure center"
+      onSubmit={[Function]}
     >
-      Email
-    </label>
-    <input
-      autoFocus={undefined}
-      className="form-control"
-      id="email"
-      name="email"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onDragStart={[Function]}
-      onDrop={[Function]}
-      onFocus={[Function]}
-      type="email"
-      value=""
-    />
+      <div
+        className="form-group"
+      >
+        <label
+          className="control-label"
+          htmlFor="username"
+        >
+          Username
+        </label>
+        <input
+          autoFocus={true}
+          className="form-control"
+          id="username"
+          name="username"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          className="control-label"
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <input
+          autoFocus={undefined}
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          className="control-label"
+          htmlFor="password"
+        >
+          Password
+        </label>
+        <input
+          autoFocus={undefined}
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          className="control-label"
+          htmlFor="confirmPassword"
+        >
+          Confirm Password
+        </label>
+        <input
+          autoFocus={undefined}
+          className="form-control"
+          id="confirmPassword"
+          name="confirmPassword"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          type="password"
+          value=""
+        />
+      </div>
+      <button
+        className="btn btn-default"
+        disabled={true}
+        id="createAccountSubmit"
+        type="submit"
+      >
+        Create Account
+      </button>
+    </form>
   </div>
-  <div
-    className="form-group"
-  >
-    <label
-      className="control-label"
-      htmlFor="password"
-    >
-      Password
-    </label>
-    <input
-      autoFocus={undefined}
-      className="form-control"
-      id="password"
-      name="password"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onDragStart={[Function]}
-      onDrop={[Function]}
-      onFocus={[Function]}
-      type="password"
-      value=""
-    />
-  </div>
-  <div
-    className="form-group"
-  >
-    <label
-      className="control-label"
-      htmlFor="confirmPassword"
-    >
-      Confirm Password
-    </label>
-    <input
-      autoFocus={undefined}
-      className="form-control"
-      id="confirmPassword"
-      name="confirmPassword"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onDragStart={[Function]}
-      onDrop={[Function]}
-      onFocus={[Function]}
-      type="password"
-      value=""
-    />
-  </div>
-  <button
-    className="btn btn-default"
-    disabled={true}
-    id="createAccountSubmit"
-    type="submit"
-  >
-    Create Account
-  </button>
-</form>
+</div>
 `;
