@@ -1,0 +1,40 @@
+@header_height: 60px;
+
+.header_bar {
+  position: absolute;
+  height: @header_height;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.header_logo {
+  width: 60px;
+  height: 60px;
+  margin-left: 5px;
+}
+
+.header_title {
+  text-align: left;
+  color: #663300;
+  font-family: "BlanchCaps";
+  font-size: 44px;
+  // vertical align center
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  @media only screen and (max-width: @mobile-responsive) {
+    font-size: 20px;
+    width: 40px;
+    line-height: 14px;
+  }
+}
+
+.header_menu {
+  float: right;
+  margin-right: 5px;
+  // vertical align center
+  line-height: @header_height;
+}
+

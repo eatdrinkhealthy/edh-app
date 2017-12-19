@@ -5,22 +5,22 @@ import { Grid, Row, Col } from "./ReactBootstrapLib";
 
 // TODO refactor, TBD combine with Navbar?
 const Header = () => (
-  <div id="header" className="nav__bar">
+  <div id="header" className="header_bar">
     <Grid fluid>
       <Row>
         <Col xs={6}>
           <img
-            className="nav__logo"
+            className="header_logo"
             src="/images/EDH-logo.png"
             alt="Eat Drink Healthy logo"
           />
-          <span className="nav__title">EAT. DRINK. HEALTHY.</span>
+          <span className="header_title">EAT. DRINK. HEALTHY.</span>
         </Col>
         <Col xs={6}>
-          <span className="nav__usermenu">
+          <span className="header_menu">
             <Link
               id="homeLink"
-              className="btn join_button"
+              className="btn solid_button"
               to="/"
             >
               Search
