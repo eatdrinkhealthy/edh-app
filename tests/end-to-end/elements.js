@@ -14,10 +14,12 @@ export const elements = {
     username: ".nav__username",
     username_row2: ".nav__username_row2",
   },
+  header: {
+    homeLink: "#homeLink",
+  },
   sidebarPage: {
     url: `${baseUrl}/sidebar`,
     component: "#sidebarPage",
-    homeLink: "a=Home",
   },
   createAccountForm: {
     username: "#username",

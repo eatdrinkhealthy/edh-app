@@ -7,6 +7,7 @@ import { boolean, text } from "@storybook/addon-knobs";
 
 import UserMenu from "../../UserMenu";
 import Navbar from "../../Navbar";
+import Header from "../../Header";
 import PrimaryFilter from "../../PrimaryFilter";
 import {
   EAT_DRINK_FILTERS,
@@ -32,6 +33,10 @@ storiesOf("Page Sections", module)
         logout={action("logout clicked")}
       />
     );
+  })
+  .add("Header", () => {
+    window.SHOW_GRID = boolean("show grid", false);
+    return <Header />;
   })
   .add("PrimaryFilter", () => (
     <PrimaryFilter
