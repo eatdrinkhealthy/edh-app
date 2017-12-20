@@ -8,7 +8,6 @@ import {
   Grid,
   Row,
   Col,
-  Jumbotron,
 } from "./ReactBootstrapLib";
 import Header from "../components/Header";
 
@@ -41,12 +40,10 @@ class Sidebar extends Component {
         <Header />
         <Grid fluid>
           <Row>
-            <Col xs={12}>
-              <Jumbotron>
-                <div className="pitch">
-                  A platform to find, share, and discuss healthy places to shop and eat.
-                </div>
-              </Jumbotron>
+            <Col xsOffset={3} xs={6}>
+              <div className="pitch">
+                A platform to find, share, and discuss healthy places to shop and eat.
+              </div>
             </Col>
           </Row>
           <Row>

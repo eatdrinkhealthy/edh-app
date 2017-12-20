@@ -54,16 +54,12 @@ exports[`<Sidebar /> matches render snapshot - login form, with no validation er
       className="row"
     >
       <div
-        className="col-xs-12"
+        className="col-xs-6 col-xs-offset-3"
       >
         <div
-          className="jumbotron"
+          className="pitch"
         >
-          <div
-            className="pitch"
-          >
-            A platform to find, share, and discuss healthy places to shop and eat.
-          </div>
+          A platform to find, share, and discuss healthy places to shop and eat.
         </div>
       </div>
     </div>
@@ -205,16 +201,12 @@ exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
       className="row"
     >
       <div
-        className="col-xs-12"
+        className="col-xs-6 col-xs-offset-3"
       >
         <div
-          className="jumbotron"
+          className="pitch"
         >
-          <div
-            className="pitch"
-          >
-            A platform to find, share, and discuss healthy places to shop and eat.
-          </div>
+          A platform to find, share, and discuss healthy places to shop and eat.
         </div>
       </div>
     </div>
@@ -285,16 +277,12 @@ exports[`<Sidebar /> matches render snapshot - signup form, with no validation e
       className="row"
     >
       <div
-        className="col-xs-12"
+        className="col-xs-6 col-xs-offset-3"
       >
         <div
-          className="jumbotron"
+          className="pitch"
         >
-          <div
-            className="pitch"
-          >
-            A platform to find, share, and discuss healthy places to shop and eat.
-          </div>
+          A platform to find, share, and discuss healthy places to shop and eat.
         </div>
       </div>
     </div>
