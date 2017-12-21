@@ -2,6 +2,7 @@
 /* eslint-env jest */
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
+import { HTTP } from "meteor/http";
 import {
   parseFoursquareResponse,
   httpCallFoursquareSearch,
@@ -49,10 +50,15 @@ describe("httpCallFoursquareSearch", function () {
   beforeAll(() => {
     origConsole = global.console;
     global.console = { error: jest.fn() };
+    HTTP.call = jest.fn()
+      .mockImplementationOnce(() => {
+        throw new Error("mock http error");
+      });
   });
 
   afterAll(() => {
     global.console = origConsole;
+    HTTP.call = jest.fn();
   });
 
   it("should return an empty httpResponse if throwing an exception (client_id undefined)", function () {
@@ -63,9 +69,8 @@ describe("httpCallFoursquareSearch", function () {
       headers: {},
     };
 
-    // NOTE: currently, client_id (Meteor.settings.foursquare.client_id) is not set,
-    //       which causes an exception.
-    //       Sending 0, 0 lat lng will also cause an exception
+    // NOTE: HTTP.call mockImplementation throws an error.
+    //       Sending 0, 0 lat lng to the real api will also cause an exception
     expect(httpCallFoursquareSearch("4c2cd86ed066bed06c3c5209", 0, 0)).toEqual(exceptionHttpResult);
     expect(global.console.error).toHaveBeenCalled();
   });
