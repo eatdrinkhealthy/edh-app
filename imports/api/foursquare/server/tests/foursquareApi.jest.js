@@ -31,7 +31,7 @@ describe("parseFoursquareResponse", function () {
     expect(parsedResponse[23].name).toEqual("Camino Roasters");
   });
 
-  it("should parse an empty http result, when an api exception occurs", function () {
+  it("should return an empty array, when parsing an api exception result", function () {
     const exceptionHttpResult = {
       statusCode: null,
       content: null,
