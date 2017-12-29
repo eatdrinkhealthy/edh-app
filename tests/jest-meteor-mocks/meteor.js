@@ -19,6 +19,10 @@ const Meteor = {
     public: {
       googleMapsApiKey: "TestAPIKeyValue",
     },
+    foursquare: {
+      client_id: "TESTFOURSQUARECLIENTID",
+      client_secret: "TESTFOURSQUARECLIENTSECRET",
+    },
   },
 };
 

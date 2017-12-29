@@ -8,13 +8,21 @@
 // {
 //   "id":"4b5f8468f964a52011bf29e3",
 //   "name":"Starbucks",
-//   "contact":{"phone":"8438058007","formattedPhone":"(843) 805-8007","twitter":"starbucks","facebook":"22092443056","facebookUsername":"Starbucks","facebookName":"Starbucks"},
+//   "contact":{
+//     "phone":"8438058007",
+//     "formattedPhone":"(843) 805-8007",
+//     "twitter":"starbucks",
+//     "facebook":"22092443056",
+//     "facebookUsername":"Starbucks",
+//     "facebookName":"Starbucks"
+//   },
 //   "location":{
 //       "address":"239 King St",
 //       "lat":32.78122634,
 //       "lng":-79.93341592,
 //       "labeledLatLngs":[{"label":"display","lat":32.78122634,"lng":-79.93341592}],
-//       "distance":874,"postalCode":"29401",
+//       "distance":874,
+//       "postalCode":"29401",
 //       "cc":"US",
 //       "city":"Charleston",
 //       "state":"SC",
@@ -22,10 +30,20 @@
 //       "formattedAddress":["239 King St","Charleston, SC 29401","United States"]
 //     },
 //   "categories":[
-//       {"id":"4bf58dd8d48988d1e0931735","name":"Coffee Shop","pluralName":"Coffee Shops","shortName":"Coffee Shop","icon":{"prefix":"https:\\/\\/ss3.4sqi.net\\/img\\/categories_v2\\/food\\/coffeeshop_","suffix":".png"},"primary":true}
+//       {
+//         "id":"4bf58dd8d48988d1e0931735",
+//         "name":"Coffee Shop",
+//         "pluralName":"Coffee Shops",
+//         "shortName":"Coffee Shop",
+//         "icon":{
+//           "prefix":"https:\\/\\/ss3.4sqi.net\\/img\\/categories_v2\\/food\\/coffeeshop_",
+//           "suffix":".png"
+//         },
+//        "primary":true
+//      }
 //    ],
 //   "verified":true,
-//   "stats":{"checkinsCount":8051,"usersCount":3000,"tipCount":38},
+//   "stats": { "checkinsCount":8051, "usersCount":3000, "tipCount":38 },
 //   "url":"http:\\/\\/www.starbucks.com\\/",
 //   "hasMenu":true,
 //   "menu":{"type":"Menu","label":"Menu","anchor":"View Menu","url":"https:\\/\\/foursquare.com\\/v\\/starbucks\\/4b5f8468f964a52011bf29e3\\/menu","mobileUrl":"https:\\/\\/foursquare.com\\/v\\/4b5f8468f964a52011bf29e3\\/device_menu"},

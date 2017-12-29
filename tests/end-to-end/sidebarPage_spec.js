@@ -20,8 +20,8 @@ describe("Sidebar / sign-in Page", function () {
   });
 
   it("goes back to landing page when home link clicked", function () {
-    browser.waitForExist(els.sidebarPage.homeLink);
-    browser.click(els.sidebarPage.homeLink);
+    browser.waitForExist(els.header.homeLink);
+    browser.click(els.header.homeLink);
 
     expect(browser.waitForExist(els.homePage.navbar)).toBe(true);
   });

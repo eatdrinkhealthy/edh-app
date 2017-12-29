@@ -64,7 +64,7 @@ export const httpCallFoursquareSearch = (
       params: {
         client_id: Meteor.settings.foursquare.client_id,
         client_secret: Meteor.settings.foursquare.client_secret,
-        v: "20130815", // api version
+        v: "20170801", // api version
         ll: latLng,
         limit: "20",
         intent: "browse",

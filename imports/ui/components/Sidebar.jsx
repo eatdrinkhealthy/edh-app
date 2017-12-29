@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import type { RouterHistory, Location } from "react-router-dom";
 import CreateAccountContainer from "../containers/CreateAccountContainer";
 import LoginContainer from "../containers/LoginContainer";
@@ -9,9 +8,8 @@ import {
   Grid,
   Row,
   Col,
-  Panel,
-  Jumbotron,
 } from "./ReactBootstrapLib";
+import Header from "../components/Header";
 
 /* eslint-disable react/require-default-props */
 
@@ -39,22 +37,18 @@ class Sidebar extends Component {
   render() {
     return (
       <div id="sidebarPage">
-        <Link to="/">Home</Link>
+        <Header />
         <Grid fluid>
           <Row>
-            <Col xs={12}>
-              <Jumbotron>
-                <div className="pitch">
-                  A platform to find, share, and discuss healthy places to shop and eat.
-                </div>
-              </Jumbotron>
+            <Col xsOffset={3} xs={6}>
+              <div className="pitch">
+                A platform to find, share, and discuss healthy places to shop and eat.
+              </div>
             </Col>
           </Row>
           <Row>
             <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
-              <Panel header="Get Started">
-                {this.actionForm()}
-              </Panel>
+              {this.actionForm()}
             </Col>
           </Row>
         </Grid>
@@ -62,6 +56,5 @@ class Sidebar extends Component {
     );
   }
 }
-
 
 export default Sidebar;

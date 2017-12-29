@@ -76,7 +76,7 @@
     + 'jest / enzyme' for unit testing
         - test logic, function and module results
         - typically mocking systems not under test, 3rd party and meteor modules
-    + 'meteor test' for complex integration testing
+    + 'meteor test --full-app' for complex integration testing
         - test module integration
         - test meteor / environment behavior (mocking APIs / modules as needed) 
         - test behavior across client / server connection (mocking " " )
@@ -91,7 +91,7 @@
 #### Default test file names / locations for Jest, Meteor, and Chimp
 * [jest](http://facebook.github.io/jest/docs/configuration.html#testregex-string):
   - loads all test files: `(/tests/.*|(\\.jest\\.jsx?$)`
-* ['meteor test'](https://guide.meteor.com/testing.html#test-modes):
+* ['meteor test'](https://guide.meteor.com/testing.html#test-modes): (NOTE: Typically not used for testing. Use --full-app.)
   - loads all test files: `"*.test[s].js[x]"` or `"*.spec[s].js[x]"`
       + ignores any files in any `tests/` directory
   - DOES NOT eagerly load application code, only modules imported by tests

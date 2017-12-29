@@ -4,12 +4,49 @@ exports[`<Sidebar /> matches render snapshot - login form, with no validation er
 <div
   id="sidebarPage"
 >
-  <a
-    href="/"
-    onClick={[Function]}
+  <div
+    className="header_bar"
+    id="header"
   >
-    Home
-  </a>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-xs-6"
+        >
+          <img
+            alt="Eat Drink Healthy logo"
+            className="header_logo"
+            src="/images/EDH-logo.png"
+          />
+          <span
+            className="header_title"
+          >
+            EAT. DRINK. HEALTHY.
+          </span>
+        </div>
+        <div
+          className="col-xs-6"
+        >
+          <span
+            className="header_menu"
+          >
+            <a
+              className="btn solid_button"
+              href="/"
+              id="homeLink"
+              onClick={[Function]}
+            >
+              Search
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
   <div
     className="container-fluid"
   >
@@ -17,16 +54,12 @@ exports[`<Sidebar /> matches render snapshot - login form, with no validation er
       className="row"
     >
       <div
-        className="col-xs-12"
+        className="col-xs-6 col-xs-offset-3"
       >
         <div
-          className="jumbotron"
+          className="pitch"
         >
-          <div
-            className="pitch"
-          >
-            A platform to find, share, and discuss healthy places to shop and eat.
-          </div>
+          A platform to find, share, and discuss healthy places to shop and eat.
         </div>
       </div>
     </div>
@@ -118,12 +151,49 @@ exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
 <div
   id="sidebarPage"
 >
-  <a
-    href="/"
-    onClick={[Function]}
+  <div
+    className="header_bar"
+    id="header"
   >
-    Home
-  </a>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-xs-6"
+        >
+          <img
+            alt="Eat Drink Healthy logo"
+            className="header_logo"
+            src="/images/EDH-logo.png"
+          />
+          <span
+            className="header_title"
+          >
+            EAT. DRINK. HEALTHY.
+          </span>
+        </div>
+        <div
+          className="col-xs-6"
+        >
+          <span
+            className="header_menu"
+          >
+            <a
+              className="btn solid_button"
+              href="/"
+              id="homeLink"
+              onClick={[Function]}
+            >
+              Search
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
   <div
     className="container-fluid"
   >
@@ -131,16 +201,12 @@ exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
       className="row"
     >
       <div
-        className="col-xs-12"
+        className="col-xs-6 col-xs-offset-3"
       >
         <div
-          className="jumbotron"
+          className="pitch"
         >
-          <div
-            className="pitch"
-          >
-            A platform to find, share, and discuss healthy places to shop and eat.
-          </div>
+          A platform to find, share, and discuss healthy places to shop and eat.
         </div>
       </div>
     </div>
@@ -150,21 +216,7 @@ exports[`<Sidebar /> matches render snapshot - no action form 1`] = `
       <div
         className="col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2"
       >
-        <div
-          className="panel panel-default"
-          id={undefined}
-        >
-          <div
-            className="panel-heading"
-          >
-            Get Started
-          </div>
-          <div
-            className="panel-body"
-          >
-            <div />
-          </div>
-        </div>
+        <div />
       </div>
     </div>
   </div>
@@ -175,12 +227,49 @@ exports[`<Sidebar /> matches render snapshot - signup form, with no validation e
 <div
   id="sidebarPage"
 >
-  <a
-    href="/"
-    onClick={[Function]}
+  <div
+    className="header_bar"
+    id="header"
   >
-    Home
-  </a>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-xs-6"
+        >
+          <img
+            alt="Eat Drink Healthy logo"
+            className="header_logo"
+            src="/images/EDH-logo.png"
+          />
+          <span
+            className="header_title"
+          >
+            EAT. DRINK. HEALTHY.
+          </span>
+        </div>
+        <div
+          className="col-xs-6"
+        >
+          <span
+            className="header_menu"
+          >
+            <a
+              className="btn solid_button"
+              href="/"
+              id="homeLink"
+              onClick={[Function]}
+            >
+              Search
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
   <div
     className="container-fluid"
   >
@@ -188,16 +277,12 @@ exports[`<Sidebar /> matches render snapshot - signup form, with no validation e
       className="row"
     >
       <div
-        className="col-xs-12"
+        className="col-xs-6 col-xs-offset-3"
       >
         <div
-          className="jumbotron"
+          className="pitch"
         >
-          <div
-            className="pitch"
-          >
-            A platform to find, share, and discuss healthy places to shop and eat.
-          </div>
+          A platform to find, share, and discuss healthy places to shop and eat.
         </div>
       </div>
     </div>

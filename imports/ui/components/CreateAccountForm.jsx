@@ -3,7 +3,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { validateUserField } from "../../api/accounts/userSchema";
 import FormInput from "./FormInput";
-import { Button } from "./ReactBootstrapLib";
+import { Button, Panel } from "./ReactBootstrapLib";
 
 const validateUsername = value => validateUserField("username", value);
 
@@ -32,42 +32,44 @@ type ICreateAccountFormProps = {
 // NOTE: when we call the CreateAccountForm component, we pass our submit handler as an
 // onSubmit prop, and redux-form passes a submit function in as handleSubmit
 const CreateAccountFormComponent = ({ handleSubmit, invalid }: ICreateAccountFormProps) => (
-  <form className="measure center" onSubmit={handleSubmit}>
-    <Field
-      inputId="username"
-      name="username"
-      type="text"
-      label="Username"
-      component={FormInput}
-      validate={validateUsername}
-      autoFocus
-    />
-    <Field
-      inputId="email"
-      name="email"
-      type="email"
-      label="Email"
-      component={FormInput}
-      validate={validateEmail}
-    />
-    <Field
-      inputId="password"
-      name="password"
-      type="password"
-      label="Password"
-      component={FormInput}
-      validate={validatePassword}
-    />
-    <Field
-      inputId="confirmPassword"
-      name="confirmPassword"
-      type="password"
-      label="Confirm Password"
-      component={FormInput}
-      validate={validateConfirmPassword}
-    />
-    <Button id="createAccountSubmit" type="submit" disabled={invalid}>Create Account</Button>
-  </form>
+  <Panel header="Get Started">
+    <form className="measure center" onSubmit={handleSubmit}>
+      <Field
+        inputId="username"
+        name="username"
+        type="text"
+        label="Username"
+        component={FormInput}
+        validate={validateUsername}
+        autoFocus
+      />
+      <Field
+        inputId="email"
+        name="email"
+        type="email"
+        label="Email"
+        component={FormInput}
+        validate={validateEmail}
+      />
+      <Field
+        inputId="password"
+        name="password"
+        type="password"
+        label="Password"
+        component={FormInput}
+        validate={validatePassword}
+      />
+      <Field
+        inputId="confirmPassword"
+        name="confirmPassword"
+        type="password"
+        label="Confirm Password"
+        component={FormInput}
+        validate={validateConfirmPassword}
+      />
+      <Button id="createAccountSubmit" type="submit" disabled={invalid}>Create Account</Button>
+    </form>
+  </Panel>
 );
 
 const onSubmitSuccess = (result, dispatch, props) => {

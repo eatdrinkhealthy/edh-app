@@ -1,0 +1,47 @@
+.solid_button,
+.solid_button:focus,
+.solid_button:hover {
+  color: white;
+  border-width: 2px;
+  border-color: @t_purple;
+  background-color: @t_purple;
+  font-weight: bold;
+  margin: 2px;
+  @media only screen and (max-width: 364px) {
+    font-size: 10px;
+  }
+}
+
+.transparent_button,
+.transparent_button:focus,
+.transparent_button:hover {
+  border-width: 2px;
+  border-color: @t_purple;
+  color: @t_purple;
+  font-weight: bold;
+  margin: 2px;
+  @media only screen and (max-width: 364px) {
+    font-size: 10px;
+  }
+}
+
+.pill {
+  width: 140px;
+  margin: 2px;
+  color: black;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 1px;
+  font-size: 14px;
+  font-weight: bold;
+  @media only screen and (max-width: @filterSection_bp2) {
+    width: 90px;           // three pill buttons wide (to match centering of buttons)
+    font-size: 10px;
+    font-weight: normal;
+  }
+}
+
+.pill_selected {
+  color: white;
+}
