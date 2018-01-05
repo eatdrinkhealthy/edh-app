@@ -79,7 +79,6 @@
       }
     ],
     "react/no-danger": "warn",
-    "react/react-in-jsx-scope": "off",
     "react/require-default-props": "warn",
     "react/sort-comp": [
       "warn",
