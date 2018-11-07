@@ -13,8 +13,8 @@ export const buildSearchString = (
   eatDrinkFilters: Array<IEatDrinkFilter>,
   venueTypeFilters: Array<IVenueTypeFilter>,
 ): string => {
-  const edCategories = _.map(eatDrinkFilters, filter => (filter.foursquareCategory));
-  const vtCategories = _.map(venueTypeFilters, filter => (filter.foursquareCategory));
+  const edCategories = _.map(eatDrinkFilters, filter => filter.foursquareCategory);
+  const vtCategories = _.map(venueTypeFilters, filter => filter.foursquareCategory);
   const allCategories = _.union(edCategories, vtCategories);
 
   return _.join(allCategories);

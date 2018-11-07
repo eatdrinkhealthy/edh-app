@@ -11,11 +11,10 @@ const validateEmail = value => validateUserField("email", value);
 
 const validatePassword = value => validateUserField("password", value);
 
-const validateConfirmPassword = (value, allValues) => (
+const validateConfirmPassword = (value, allValues) =>
   allValues.password !== allValues.confirmPassword
     ? "Password and Confirm Password fields do not match."
-    : undefined
-);
+    : undefined;
 
 export type ICreateAccountFormValues = {
   username: string,
@@ -31,7 +30,10 @@ type ICreateAccountFormProps = {
 
 // NOTE: when we call the CreateAccountForm component, we pass our submit handler as an
 // onSubmit prop, and redux-form passes a submit function in as handleSubmit
-const CreateAccountFormComponent = ({ handleSubmit, invalid }: ICreateAccountFormProps) => (
+const CreateAccountFormComponent = ({
+  handleSubmit,
+  invalid,
+}: ICreateAccountFormProps) => (
   <Panel header="Get Started">
     <form className="measure center" onSubmit={handleSubmit}>
       <Field
@@ -67,7 +69,9 @@ const CreateAccountFormComponent = ({ handleSubmit, invalid }: ICreateAccountFor
         component={FormInput}
         validate={validateConfirmPassword}
       />
-      <Button id="createAccountSubmit" type="submit" disabled={invalid}>Create Account</Button>
+      <Button id="createAccountSubmit" type="submit" disabled={invalid}>
+        Create Account
+      </Button>
     </form>
   </Panel>
 );
@@ -75,7 +79,7 @@ const CreateAccountFormComponent = ({ handleSubmit, invalid }: ICreateAccountFor
 const onSubmitSuccess = (result, dispatch, props) => {
   // on successful submit, clear password fields
   props.change("password", "");
-  props.untouch("password");          // prevents showing validation error
+  props.untouch("password"); // prevents showing validation error
   props.change("confirmPassword", "");
 
   // set focus on username field

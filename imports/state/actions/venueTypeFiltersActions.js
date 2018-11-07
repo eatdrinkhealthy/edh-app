@@ -7,9 +7,7 @@ export type IVenueTypeFilterAction = {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const toggleVenueTypeFilter = (
-  id: string,
-): IVenueTypeFilterAction => ({
+export const toggleVenueTypeFilter = (id: string): IVenueTypeFilterAction => ({
   type: TOGGLE_VENUE_TYPE_FILTER,
   id,
 });

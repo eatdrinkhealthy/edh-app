@@ -1,7 +1,5 @@
 // @flow
-import React, {
-  PureComponent,
-} from "react";
+import React, { PureComponent } from "react";
 import GoogleMap from "google-map-react";
 import Marker from "./Marker";
 import Pin from "./Pin";
@@ -27,7 +25,7 @@ export default class Map extends PureComponent {
   props: {
     center: ILatLng,
     zoom?: number,
-    userLocation?: ?ILatLng,   // eslint-disable-line react/require-default-props
+    userLocation?: ?ILatLng, // eslint-disable-line react/require-default-props
     googleMapsApiKey: string,
     venues: Array<IVenue>,
     selectedVenueId: ?string,
@@ -38,18 +36,18 @@ export default class Map extends PureComponent {
   static defaultProps = {
     zoom: 15,
     venues: [],
-    onMapChange: (mapChange) => {}, // eslint-disable-line no-unused-vars
-  }
+    onMapChange: mapChange => {}, // eslint-disable-line no-unused-vars
+  };
 
   handleOnClick = () => {
     this.props.setSelectedVenueHandler(null);
-  }
+  };
 
   mapHolder: HTMLDivElement;
 
   setMapHolderRef = (div: HTMLDivElement) => {
     this.mapHolder = div;
-  }
+  };
 
   getHintViewArea = (): IViewArea => {
     const mhRect = this.mapHolder.getBoundingClientRect();
@@ -63,16 +61,14 @@ export default class Map extends PureComponent {
       bottom: mhRect.bottom - VIEW_AREA_PADDING,
       left: mhRect.left + VIEW_AREA_PADDING,
     };
-  }
+  };
 
-  render() {  // eslint-disable-line flowtype/require-return-type
+  render() {
+    // eslint-disable-line flowtype/require-return-type
     const userLocation = this.props.userLocation;
 
     return (
-      <div
-        className="map-holder"
-        ref={this.setMapHolderRef}
-      >
+      <div className="map-holder" ref={this.setMapHolderRef}>
         <GoogleMap
           bootstrapURLKeys={{ key: this.props.googleMapsApiKey }}
           center={this.props.center}
@@ -82,17 +78,19 @@ export default class Map extends PureComponent {
           onChange={this.props.onMapChange}
         >
           {userLocation && <Pin lat={userLocation.lat} lng={userLocation.lng} />}
-          {this.props.venues.map((venue: IVenue): React$Element<*> => (
-            <Marker
-              key={venue.id}
-              venue={venue}
-              lat={venue.location.lat}
-              lng={venue.location.lng}
-              setSelectedVenueHandler={this.props.setSelectedVenueHandler}
-              selected={venue.id === this.props.selectedVenueId}
-              getHintViewArea={this.getHintViewArea}
-            />))
-          }
+          {this.props.venues.map(
+            (venue: IVenue): React$Element<*> => (
+              <Marker
+                key={venue.id}
+                venue={venue}
+                lat={venue.location.lat}
+                lng={venue.location.lng}
+                setSelectedVenueHandler={this.props.setSelectedVenueHandler}
+                selected={venue.id === this.props.selectedVenueId}
+                getHintViewArea={this.getHintViewArea}
+              />
+            ),
+          )}
         </GoogleMap>
       </div>
     );

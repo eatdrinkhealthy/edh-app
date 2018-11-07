@@ -15,12 +15,12 @@ class FilterSection extends Component {
 
   static defaultProps = {
     selectedColor: "#5e2ca5",
-  }
+  };
 
   handlePillClick = (event: SyntheticEvent<HTMLButtonElement>) => {
     // $FlowFixMe
     const { name } = event.currentTarget;
-    this.props.setFilter(name);           // toggle current value of filter
+    this.props.setFilter(name); // toggle current value of filter
   };
 
   render() {

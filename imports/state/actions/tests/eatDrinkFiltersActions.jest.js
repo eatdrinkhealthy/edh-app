@@ -5,9 +5,9 @@
 import { toggleEatDrinkFilter } from "../eatDrinkFiltersActions";
 import { TOGGLE_EAT_DRINK_FILTER } from "../actionTypes";
 
-describe("Eat Drink Filter Actions", function () {
-  describe("toggleEatDrinkFilter", function () {
-    it("should create a SET_EAT_DRINK_FILTER action", function () {
+describe("Eat Drink Filter Actions", function() {
+  describe("toggleEatDrinkFilter", function() {
+    it("should create a SET_EAT_DRINK_FILTER action", function() {
       const id = "abc";
       const expectedAction = {
         type: TOGGLE_EAT_DRINK_FILTER,

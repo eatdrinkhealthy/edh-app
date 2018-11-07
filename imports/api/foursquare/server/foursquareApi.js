@@ -19,12 +19,10 @@ type IFoursquareVenue = {
   },
   categories: Array<{
     name: string,
-  }>
+  }>,
 };
 
-export const parseFoursquareResponse = (
-  response: IHttpResult,
-): Array<IVenue> => {
+export const parseFoursquareResponse = (response: IHttpResult): Array<IVenue> => {
   let resultArray = [];
 
   if (response.content) {
@@ -74,7 +72,7 @@ export const httpCallFoursquareSearch = (
     });
   } catch (e) {
     // TODO log this exception to a logger service !!!
-    console.error("Foursquare API exception:", e.message);  // eslint-disable-line no-console
+    console.error("Foursquare API exception:", e.message); // eslint-disable-line no-console
     apiResult = {
       statusCode: null,
       content: null,

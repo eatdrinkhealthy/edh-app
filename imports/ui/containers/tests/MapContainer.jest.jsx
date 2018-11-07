@@ -5,11 +5,13 @@
 
 // mock AlertMessage component (call to warning method)
 // eslint-disable-next-line flowtype/require-return-type
-jest.mock("../../components/AlertMessage", () => (
-  class AlertMessage {
-    static warning = jest.fn();
-  }
-));
+jest.mock(
+  "../../components/AlertMessage",
+  () =>
+    class AlertMessage {
+      static warning = jest.fn();
+    },
+);
 
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
@@ -32,8 +34,8 @@ import type { IMapWrapperProps } from "../MapContainer";
 
 import AlertMessage from "../../components/AlertMessage";
 
-describe("<MapContainer />", function () {
-  describe("<MapWrapper />", function () {
+describe("<MapContainer />", function() {
+  describe("<MapWrapper />", function() {
     const edFilterList: Array<IEatDrinkFilter> = [
       { id: "jb1", name: "vegan", on: true, foursquareCategory: "1" },
       { id: "jb2", name: "raw", on: false, foursquareCategory: "2" },
@@ -74,14 +76,14 @@ describe("<MapContainer />", function () {
       setMapZoomHandler: stubFn,
     };
 
-    it("matches render snapshot", function () {
+    it("matches render snapshot", function() {
       // TODO - to capture more snapshot detail, use mount or react-test-renderer (BOTH FAIL HERE)
       const wrapper = shallow(<MapWrapper {...props} />);
 
       expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    it("should call Foursquare API search (meteor method) using mapCenter from props", function () {
+    it("should call Foursquare API search (meteor method) using mapCenter from props", function() {
       const wrapper = mount(<MapWrapper {...props} />);
 
       // call with new props to trigger componentWillReceiveProps
@@ -89,59 +91,66 @@ describe("<MapContainer />", function () {
         mapCenter: { lat: 5, lng: 3 },
       });
 
-      expect(Meteor.call).toHaveBeenCalledWith("getNearbyPlaces",
+      expect(Meteor.call).toHaveBeenCalledWith(
+        "getNearbyPlaces",
         {
           latitude: 5,
           longitude: 3,
-          eatDrinkFilters: [{ id: "jb1", name: "vegan", on: true, foursquareCategory: "1" }],
-          venueTypeFilters: [{ id: "vt1", name: "Restaurant", on: true, foursquareCategory: "4" }],
+          eatDrinkFilters: [
+            { id: "jb1", name: "vegan", on: true, foursquareCategory: "1" },
+          ],
+          venueTypeFilters: [
+            { id: "vt1", name: "Restaurant", on: true, foursquareCategory: "4" },
+          ],
         },
         expect.any(Function),
       );
     });
 
-    it("should call AlertMessage.warning when calling getNearbyPlacesCB with an error", function () {
+    it("should call AlertMessage.warning when calling getNearbyPlacesCB with an error", function() {
       const wrapper = shallow(<MapWrapper {...props} />);
 
       // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
       wrapper.instance().getNearbyPlacesCB("some error", undefined);
-      expect(AlertMessage.warning).toHaveBeenCalledWith("Unable to search at this time...");
+      expect(AlertMessage.warning).toHaveBeenCalledWith(
+        "Unable to search at this time...",
+      );
     });
 
-    it("should call AlertMessage.warning when getNearbyPlacesCB has filters but no search results",
-      function () {
-        const wrapper = shallow(<MapWrapper {...props} />);
+    it("should call AlertMessage.warning when getNearbyPlacesCB has filters but no search results", function() {
+      const wrapper = shallow(<MapWrapper {...props} />);
 
-        // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
-        wrapper.instance().getNearbyPlacesCB(undefined, []);
-        expect(AlertMessage.warning).toHaveBeenCalledWith("No search results for current criteria...");
-      });
+      // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
+      wrapper.instance().getNearbyPlacesCB(undefined, []);
+      expect(AlertMessage.warning).toHaveBeenCalledWith(
+        "No search results for current criteria...",
+      );
+    });
 
-    it("should NOT call AlertMessage.warning when getNearbyPlacesCB has no filters, no search results",
-      function () {
-        const propsNoFilters: IMapWrapperProps = {
-          eatDrinkFilters: noEdFilterList,
-          venueTypeFilters: noVtFilterList,
-          searchResults: [],
-          setSearchResultsHandler: stubFn,
-          setSelectedVenueHandler: stubFn,
-          selectedVenueId: null,
-          userLocation: null,
-          mapCenter: { lat: 5, lng: 6 },
-          setMapCenterHandler: stubFn,
-          zoom: 6,
-          setMapZoomHandler: stubFn,
-        };
+    it("should NOT call AlertMessage.warning when getNearbyPlacesCB has no filters, no search results", function() {
+      const propsNoFilters: IMapWrapperProps = {
+        eatDrinkFilters: noEdFilterList,
+        venueTypeFilters: noVtFilterList,
+        searchResults: [],
+        setSearchResultsHandler: stubFn,
+        setSelectedVenueHandler: stubFn,
+        selectedVenueId: null,
+        userLocation: null,
+        mapCenter: { lat: 5, lng: 6 },
+        setMapCenterHandler: stubFn,
+        zoom: 6,
+        setMapZoomHandler: stubFn,
+      };
 
-        const wrapper = shallow(<MapWrapper {...propsNoFilters} />);
+      const wrapper = shallow(<MapWrapper {...propsNoFilters} />);
 
-        // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
-        wrapper.instance().getNearbyPlacesCB(undefined, []);
-        expect(AlertMessage.warning).not.toHaveBeenCalled();
-      });
+      // $FlowFixMe (ignoring 'getNearbyPlacesCB' is not method of React$Component error)
+      wrapper.instance().getNearbyPlacesCB(undefined, []);
+      expect(AlertMessage.warning).not.toHaveBeenCalled();
+    });
 
-    it("should know filter has NOT changed, when zoom and userLocation have changed", function () {
-      const nextProps = _.cloneDeep(props);    // make a copy of props
+    it("should know filter has NOT changed, when zoom and userLocation have changed", function() {
+      const nextProps = _.cloneDeep(props); // make a copy of props
       nextProps.zoom = 18;
       nextProps.userLocation = { lat: 3, lng: 4 };
 
@@ -150,7 +159,7 @@ describe("<MapContainer />", function () {
       expect(wrapper.instance().filterHasChanged(nextProps)).toBe(false);
     });
 
-    it("should know filter has changed when a venueTypeFilter changes", function () {
+    it("should know filter has changed when a venueTypeFilter changes", function() {
       const nextProps = _.cloneDeep(props);
       nextProps.venueTypeFilters[0].on = false;
 
@@ -159,7 +168,7 @@ describe("<MapContainer />", function () {
       expect(wrapper.instance().filterHasChanged(nextProps)).toBe(true);
     });
 
-    it("should know filter has changed when an eatDrinkFilter changes", function () {
+    it("should know filter has changed when an eatDrinkFilter changes", function() {
       const nextProps = _.cloneDeep(props);
       nextProps.eatDrinkFilters[0].on = false;
 
@@ -168,7 +177,7 @@ describe("<MapContainer />", function () {
       expect(wrapper.instance().filterHasChanged(nextProps)).toBe(true);
     });
 
-    it("should know filter has changed when a mapCenter changes", function () {
+    it("should know filter has changed when a mapCenter changes", function() {
       const nextProps = _.cloneDeep(props);
       nextProps.mapCenter = { lat: 3, lng: 4 };
 
@@ -177,7 +186,7 @@ describe("<MapContainer />", function () {
       expect(wrapper.instance().filterHasChanged(nextProps)).toBe(true);
     });
 
-    describe("handleMapChange", function () {
+    describe("handleMapChange", function() {
       const handlerProps: IMapWrapperProps = {
         eatDrinkFilters: edFilterList,
         venueTypeFilters: vtFilterList,
@@ -193,25 +202,25 @@ describe("<MapContainer />", function () {
       };
       const wrapper = shallow(<MapWrapper {...handlerProps} />);
 
-      it("should call setMapCenterHandler when mapCenter has changed", function () {
+      it("should call setMapCenterHandler when mapCenter has changed", function() {
         // $FlowFixMe (ignoring 'handleMapChange' is not method of React$Component error)
         wrapper.instance().handleMapChange({ center: { lat: 3, lng: 4 } });
         expect(handlerProps.setMapCenterHandler).toHaveBeenCalledWith({ lat: 3, lng: 4 });
       });
 
-      it("should NOT call setMapCenterHandler when mapCenter has NOT changed", function () {
+      it("should NOT call setMapCenterHandler when mapCenter has NOT changed", function() {
         // $FlowFixMe (ignoring 'handleMapChange' is not method of React$Component error)
         wrapper.instance().handleMapChange({ center: { lat: 1, lng: 2 }, zoom: 6 });
         expect(handlerProps.setMapCenterHandler).not.toHaveBeenCalled();
       });
 
-      it("should call setMapZoomHandler when mapZoom has changed", function () {
+      it("should call setMapZoomHandler when mapZoom has changed", function() {
         // $FlowFixMe (ignoring 'handleMapChange' is not method of React$Component error)
         wrapper.instance().handleMapChange({ center: { lat: 1, lng: 2 }, zoom: 7 });
         expect(handlerProps.setMapZoomHandler).toHaveBeenCalledWith(7);
       });
 
-      it("should NOT call setMapZoomHandler when mapZoom has NOT changed", function () {
+      it("should NOT call setMapZoomHandler when mapZoom has NOT changed", function() {
         // $FlowFixMe (ignoring 'handleMapChange' is not method of React$Component error)
         wrapper.instance().handleMapChange({ center: { lat: 1, lng: 2 }, zoom: 6 });
         expect(handlerProps.setMapZoomHandler).not.toHaveBeenCalled();
@@ -219,7 +228,7 @@ describe("<MapContainer />", function () {
     });
   });
 
-  describe("Map redux store to MapContainer", function () {
+  describe("Map redux store to MapContainer", function() {
     const testDefaultState: IState = {
       eatDrinkFilters: [
         { id: "vegan", name: "Vegan", on: true, foursquareCategory: "4" },
@@ -229,13 +238,14 @@ describe("<MapContainer />", function () {
       venueTypeFilters: [
         { id: "coffeeShop", name: "Coffee Shop", on: true, foursquareCategory: "7" },
         { id: "grocery", name: "Market / Store", on: false, foursquareCategory: "8" },
-        { id: "healthFoodStore", name: "Health Food Store", on: false, foursquareCategory: "9" },
+        {
+          id: "healthFoodStore",
+          name: "Health Food Store",
+          on: false,
+          foursquareCategory: "9",
+        },
       ],
-      searchResults: [
-        sampleVenues[3],
-        sampleVenues[4],
-        sampleVenues[5],
-      ],
+      searchResults: [sampleVenues[3], sampleVenues[4], sampleVenues[5]],
       mapDisplay: {
         selectedVenueId: "B",
         userLocation: { lat: 3, lng: 4 },
@@ -244,10 +254,7 @@ describe("<MapContainer />", function () {
       },
     };
 
-    const testStore = createStore(
-      appReducer,
-      testDefaultState,
-    );
+    const testStore = createStore(appReducer, testDefaultState);
 
     const wrapper = mount(
       <Provider store={testStore}>
@@ -257,39 +264,67 @@ describe("<MapContainer />", function () {
       </Provider>,
     );
 
-    it("should set eatDrinkFilters for MapWrapper from redux state", function () {
-      expect(wrapper.find("MapWrapper").at(0).props().eatDrinkFilters)
-        .toEqual(testDefaultState.eatDrinkFilters);
+    it("should set eatDrinkFilters for MapWrapper from redux state", function() {
+      expect(
+        wrapper
+          .find("MapWrapper")
+          .at(0)
+          .props().eatDrinkFilters,
+      ).toEqual(testDefaultState.eatDrinkFilters);
     });
 
-    it("should set venueTypeFilters for MapWrapper from redux state", function () {
-      expect(wrapper.find("MapWrapper").at(0).props().venueTypeFilters)
-        .toEqual(testDefaultState.venueTypeFilters);
+    it("should set venueTypeFilters for MapWrapper from redux state", function() {
+      expect(
+        wrapper
+          .find("MapWrapper")
+          .at(0)
+          .props().venueTypeFilters,
+      ).toEqual(testDefaultState.venueTypeFilters);
     });
 
-    it("should set search results for MapWrapper from redux state", function () {
-      expect(wrapper.find("MapWrapper").at(0).props().searchResults)
-        .toEqual(testDefaultState.searchResults);
+    it("should set search results for MapWrapper from redux state", function() {
+      expect(
+        wrapper
+          .find("MapWrapper")
+          .at(0)
+          .props().searchResults,
+      ).toEqual(testDefaultState.searchResults);
     });
 
-    it("should set selectedVenueId for MapWrapper from redux state", function () {
-      expect(wrapper.find("MapWrapper").at(0).props().selectedVenueId)
-        .toEqual(testDefaultState.mapDisplay.selectedVenueId);
+    it("should set selectedVenueId for MapWrapper from redux state", function() {
+      expect(
+        wrapper
+          .find("MapWrapper")
+          .at(0)
+          .props().selectedVenueId,
+      ).toEqual(testDefaultState.mapDisplay.selectedVenueId);
     });
 
-    it("should set userLocation for MapWrapper from redux state", function () {
-      expect(wrapper.find("MapWrapper").at(0).props().userLocation)
-        .toEqual(testDefaultState.mapDisplay.userLocation);
+    it("should set userLocation for MapWrapper from redux state", function() {
+      expect(
+        wrapper
+          .find("MapWrapper")
+          .at(0)
+          .props().userLocation,
+      ).toEqual(testDefaultState.mapDisplay.userLocation);
     });
 
-    it("should set mapCenter for MapWrapper from redux state", function () {
-      expect(wrapper.find("MapWrapper").at(0).props().mapCenter)
-        .toEqual(testDefaultState.mapDisplay.mapCenter);
+    it("should set mapCenter for MapWrapper from redux state", function() {
+      expect(
+        wrapper
+          .find("MapWrapper")
+          .at(0)
+          .props().mapCenter,
+      ).toEqual(testDefaultState.mapDisplay.mapCenter);
     });
 
-    it("should set zoom for MapWrapper from redux state", function () {
-      expect(wrapper.find("MapWrapper").at(0).props().zoom)
-        .toEqual(testDefaultState.mapDisplay.zoom);
+    it("should set zoom for MapWrapper from redux state", function() {
+      expect(
+        wrapper
+          .find("MapWrapper")
+          .at(0)
+          .props().zoom,
+      ).toEqual(testDefaultState.mapDisplay.zoom);
     });
   });
 });

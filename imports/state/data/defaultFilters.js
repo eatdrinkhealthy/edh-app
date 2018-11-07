@@ -9,10 +9,8 @@ type IFoursquareCategory = {
   foursquareCategory: string,
 };
 
-export const collectCategories = (
-  categoryList: Array<IFoursquareCategory>,
-): string => {
-  const categories = _.map(categoryList, filter => (filter.foursquareCategory));
+export const collectCategories = (categoryList: Array<IFoursquareCategory>): string => {
+  const categories = _.map(categoryList, filter => filter.foursquareCategory);
   return _.join(categories);
 };
 

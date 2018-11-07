@@ -5,12 +5,10 @@
 import _ from "lodash";
 import { eatDrinkFiltersReducer, toggleEatDrinkFilter } from "../eatDrinkFiltersReducers";
 import { EAT_DRINK_FILTERS } from "../../data/defaultFilters";
-import {
-  toggleEatDrinkFilter as toggleEatDrinkFilterActionCreator,
-} from "../../actions/eatDrinkFiltersActions";
+import { toggleEatDrinkFilter as toggleEatDrinkFilterActionCreator } from "../../actions/eatDrinkFiltersActions";
 
-describe("eatDrinkFilters reducers", function () {
-  describe("toggleEatDrinkFilter function", function () {
+describe("eatDrinkFilters reducers", function() {
+  describe("toggleEatDrinkFilter function", function() {
     // eslint-disable-next-line prefer-const
     let previousState = [
       { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
@@ -20,7 +18,7 @@ describe("eatDrinkFilters reducers", function () {
     const copyState = _.cloneDeep(previousState);
     const newState = toggleEatDrinkFilter(previousState, "2");
 
-    it("should only set the 'on' property of indicated filter", function () {
+    it("should only set the 'on' property of indicated filter", function() {
       expect(newState).toEqual([
         { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
         { id: "2", name: "Juice Bar 2", on: true, foursquareCategory: "def" },
@@ -28,11 +26,11 @@ describe("eatDrinkFilters reducers", function () {
       ]);
     });
 
-    it("should not mutate previous state", function () {
-      expect(previousState).toEqual(copyState);  // does not mutate previous state
+    it("should not mutate previous state", function() {
+      expect(previousState).toEqual(copyState); // does not mutate previous state
     });
 
-    it("should toggle/set on to true if it was undefined", function () {
+    it("should toggle/set on to true if it was undefined", function() {
       const originalState = [
         { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
         // $FlowFixMe (allowing this to break the flow type, to test defensive code
@@ -49,14 +47,14 @@ describe("eatDrinkFilters reducers", function () {
     });
   });
 
-  describe("eatDrinkFilters reducer (toggle)", function () {
+  describe("eatDrinkFilters reducer (toggle)", function() {
     const unknownAction = { type: "unknown", id: "a" };
 
-    it("should return an initial state of EAT_DRINK_FILTERS", function () {
+    it("should return an initial state of EAT_DRINK_FILTERS", function() {
       expect(eatDrinkFiltersReducer(undefined, unknownAction)).toEqual(EAT_DRINK_FILTERS);
     });
 
-    it("should return the previous state for any unknown action", function () {
+    it("should return the previous state for any unknown action", function() {
       const previousState = [
         { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
       ];
@@ -65,7 +63,7 @@ describe("eatDrinkFilters reducers", function () {
       expect(nextState).toEqual(previousState);
     });
 
-    it("should handle TOGGLE_EAT_DRINK_FILTER action", function () {
+    it("should handle TOGGLE_EAT_DRINK_FILTER action", function() {
       const previousState = [
         { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
         { id: "2", name: "Juice Bar 2", on: false, foursquareCategory: "def" },
@@ -82,7 +80,7 @@ describe("eatDrinkFilters reducers", function () {
       expect(nextState).toEqual(expectedResult);
     });
 
-    it("should return previous state if 'id' is not found", function () {
+    it("should return previous state if 'id' is not found", function() {
       const originalState = [
         { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
         { id: "2", name: "Juice Bar 2", on: false, foursquareCategory: "def" },

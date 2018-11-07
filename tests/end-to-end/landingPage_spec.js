@@ -6,8 +6,8 @@
 
 import { elements as els, baseUrl } from "./elements";
 
-describe("Landing Page", function () {
-  it("displays the map and navbar as the main page", function () {
+describe("Landing Page", function() {
+  it("displays the map and navbar as the main page", function() {
     browser.url(baseUrl);
 
     expect(browser.getTitle()).toEqual("Eat Drink Healthy");
@@ -15,7 +15,7 @@ describe("Landing Page", function () {
     expect(browser.waitForExist(els.homePage.navbar)).toBe(true);
   });
 
-  it("displays the Eat / Drink and Venues filter sections", function () {
+  it("displays the Eat / Drink and Venues filter sections", function() {
     browser.url(baseUrl);
 
     expect(browser.waitForExist(els.homePage.eatDrinkFilters)).toBe(true);

@@ -11,7 +11,7 @@ import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
 import appReducer from "../../../state/reducers";
 import { elements as els } from "../../../../tests/end-to-end/elements";
 
-describe("<LoginForm />", function () {
+describe("<LoginForm />", function() {
   const testStore = createStore(appReducer);
 
   // NOTE: we actually pass handleSubmit to the component, but redux-form calls onSubmit
@@ -19,17 +19,19 @@ describe("<LoginForm />", function () {
     onSubmit: jest.fn(),
   };
 
-  it("matches render snapshot, with no form validation errors", function () {
+  it("matches render snapshot, with no form validation errors", function() {
     // render form with no input values to display validation errors
-    const tree = renderer.create(
-      <Provider store={testStore}>
-        <LoginForm onSubmit={() => {}} />
-      </Provider>,
-    ).toJSON();
+    const tree = renderer
+      .create(
+        <Provider store={testStore}>
+          <LoginForm onSubmit={() => {}} />
+        </Provider>,
+      )
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it("should set username / email required validation error, when not provided", function () {
+  it("should set username / email required validation error, when not provided", function() {
     const wrapper = mountFormWithInputs(
       <LoginForm {...props} />,
       { loginPassword: "user12pw" },
@@ -38,11 +40,12 @@ describe("<LoginForm />", function () {
 
     wrapper.find(els.loginForm.usernameEmail).simulate("blur"); // triggers field validation
 
-    expect(wrapper.find(els.loginForm.usernameEmailError).text())
-      .toBe("Username / Email is a required field.");
+    expect(wrapper.find(els.loginForm.usernameEmailError).text()).toBe(
+      "Username / Email is a required field.",
+    );
   });
 
-  it("should set password required validation error, when not provided", function () {
+  it("should set password required validation error, when not provided", function() {
     const wrapper = mountFormWithInputs(
       <LoginForm {...props} />,
       { usernameEmail: "user12", loginPassword: "" },
@@ -52,11 +55,12 @@ describe("<LoginForm />", function () {
     // NOTE: must also touch the field (ie, enter something in it)
     wrapper.find(els.loginForm.password).simulate("blur"); // triggers field validation
 
-    expect(wrapper.find(els.loginForm.passwordError).text())
-      .toBe("Password is a required field.");
+    expect(wrapper.find(els.loginForm.passwordError).text()).toBe(
+      "Password is a required field.",
+    );
   });
 
-  it("should call onSubmit on submit with form field values", function () {
+  it("should call onSubmit on submit with form field values", function() {
     const wrapper = mountFormWithInputs(
       <LoginForm {...props} />,
       { usernameEmail: "user12", loginPassword: "user12pw" },
@@ -71,7 +75,7 @@ describe("<LoginForm />", function () {
     );
   });
 
-  it("should clear password on successful submit", function () {
+  it("should clear password on successful submit", function() {
     const wrapper = mountFormWithInputs(
       <LoginForm {...props} />,
       { usernameEmail: "user12", loginPassword: "user12pw" },
@@ -91,7 +95,7 @@ describe("<LoginForm />", function () {
     // expect(usernameEmailNode.get(0)).toEqual(document.activeElement);
   });
 
-  it("should set focus to username input on render", function () {
+  it("should set focus to username input on render", function() {
     const wrapper = mountFormWithInputs(
       <LoginForm {...props} />,
       { usernameEmail: "user12", loginPassword: "user12pw" },

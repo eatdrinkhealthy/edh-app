@@ -1,7 +1,5 @@
 // @flow
-import React, {
-  Component,
-} from "react";
+import React, { Component } from "react";
 import { Accounts } from "meteor/accounts-base";
 import type { IMeteorError } from "meteor/meteor";
 import type { RouterHistory } from "react-router-dom";
@@ -18,20 +16,23 @@ class CreateAccountContainer extends Component {
   createUser = (values: ICreateAccountFormValues) => {
     const { username, email, password } = values;
 
-    Accounts.createUser({
-      username,
-      email,
-      password,
-    }, (error: IMeteorError) => {
-      if (error) {
-        AlertMessage.warning(lookupErrorMessage(error));
-      } else {
-        AlertMessage.success(`Welcome ${username}!`);
-        if (this.props.routerHistory) {
-          this.props.routerHistory.push("/");
+    Accounts.createUser(
+      {
+        username,
+        email,
+        password,
+      },
+      (error: IMeteorError) => {
+        if (error) {
+          AlertMessage.warning(lookupErrorMessage(error));
+        } else {
+          AlertMessage.success(`Welcome ${username}!`);
+          if (this.props.routerHistory) {
+            this.props.routerHistory.push("/");
+          }
         }
-      }
-    });
+      },
+    );
   };
 
   render() {

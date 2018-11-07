@@ -11,20 +11,22 @@ import mountFormWithInputs from "../../../utils/tests/mountFormWithInputs";
 import appReducer from "../../../state/reducers";
 import { elements as els } from "../../../../tests/end-to-end/elements";
 
-describe("<CreateAccountForm />", function () {
+describe("<CreateAccountForm />", function() {
   const testStore = createStore(appReducer);
 
-  it("matches render snapshot - with no form validation errors", function () {
+  it("matches render snapshot - with no form validation errors", function() {
     // render form with no input values to display validation errors
-    const tree = renderer.create(
-      <Provider store={testStore}>
-        <CreateAccountForm onSubmit={() => {}} />
-      </Provider>,
-    ).toJSON();
+    const tree = renderer
+      .create(
+        <Provider store={testStore}>
+          <CreateAccountForm onSubmit={() => {}} />
+        </Provider>,
+      )
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it("should set username too short error, when username less than min length", function () {
+  it("should set username too short error, when username less than min length", function() {
     const props = {
       onSubmit: jest.fn(),
     };
@@ -39,11 +41,12 @@ describe("<CreateAccountForm />", function () {
 
     wrapper.find(els.createAccountForm.username).simulate("blur"); // blur triggers field validation
 
-    expect(wrapper.find(els.createAccountForm.usernameError).text())
-      .toBe("Username must be at least 4 characters.");
+    expect(wrapper.find(els.createAccountForm.usernameError).text()).toBe(
+      "Username must be at least 4 characters.",
+    );
   });
 
-  it("should set invalid email error, when email format is invalid", function () {
+  it("should set invalid email error, when email format is invalid", function() {
     const props = {
       onSubmit: jest.fn(),
     };
@@ -58,11 +61,12 @@ describe("<CreateAccountForm />", function () {
 
     wrapper.find(els.createAccountForm.email).simulate("blur"); // blur triggers field validation
 
-    expect(wrapper.find(els.createAccountForm.emailError).text())
-      .toBe("Email address must be a valid email address format.");
+    expect(wrapper.find(els.createAccountForm.emailError).text()).toBe(
+      "Email address must be a valid email address format.",
+    );
   });
 
-  it("should set password too short error, when password is too short", function () {
+  it("should set password too short error, when password is too short", function() {
     const props = {
       onSubmit: jest.fn(),
     };
@@ -77,11 +81,12 @@ describe("<CreateAccountForm />", function () {
 
     wrapper.find(els.createAccountForm.password).simulate("blur"); // blur triggers field validation
 
-    expect(wrapper.find(els.createAccountForm.passwordError).text())
-      .toBe("Password must be at least 4 characters.");
+    expect(wrapper.find(els.createAccountForm.passwordError).text()).toBe(
+      "Password must be at least 4 characters.",
+    );
   });
 
-  it("should set confirmPassword error and NOT call onSubmit, when password !== confirm password", function () {
+  it("should set confirmPassword error and NOT call onSubmit, when password !== confirm password", function() {
     const props = {
       onSubmit: jest.fn(),
     };
@@ -98,12 +103,13 @@ describe("<CreateAccountForm />", function () {
     );
 
     wrapper.find(els.createAccountForm.submitButton).simulate("submit");
-    expect(wrapper.find(els.createAccountForm.confirmPasswordError).text())
-      .toBe("Password and Confirm Password fields do not match.");
+    expect(wrapper.find(els.createAccountForm.confirmPasswordError).text()).toBe(
+      "Password and Confirm Password fields do not match.",
+    );
     expect(props.onSubmit).not.toHaveBeenCalled();
   });
 
-  it("should call onSubmit, when submitting and all form fields are valid", function () {
+  it("should call onSubmit, when submitting and all form fields are valid", function() {
     const props = {
       onSubmit: jest.fn(),
     };
@@ -132,7 +138,7 @@ describe("<CreateAccountForm />", function () {
     );
   });
 
-  it("should clear password and confirmPassword on successful submit", function () {
+  it("should clear password and confirmPassword on successful submit", function() {
     const props = {
       onSubmit: jest.fn(),
     };
@@ -163,7 +169,7 @@ describe("<CreateAccountForm />", function () {
     // expect(usernameNode.get(0)).toEqual(document.activeElement);
   });
 
-  it("should set focus to username input on render", function () {
+  it("should set focus to username input on render", function() {
     const props = {
       onSubmit: jest.fn(),
     };
@@ -179,6 +185,8 @@ describe("<CreateAccountForm />", function () {
       testStore,
     );
 
-    expect(wrapper.find(els.createAccountForm.username).get(0)).toBe(document.activeElement);
+    expect(wrapper.find(els.createAccountForm.username).get(0)).toBe(
+      document.activeElement,
+    );
   });
 });

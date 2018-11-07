@@ -3,14 +3,11 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import { HTTP } from "meteor/http";
-import {
-  parseFoursquareResponse,
-  httpCallFoursquareSearch,
-} from "../foursquareApi";
+import { parseFoursquareResponse, httpCallFoursquareSearch } from "../foursquareApi";
 import httpTestResponse from "./foursquareApiData";
 
-describe("parseFoursquareResponse", function () {
-  it("should parse venue data from api response", function () {
+describe("parseFoursquareResponse", function() {
+  it("should parse venue data from api response", function() {
     const parsedResponse = parseFoursquareResponse(httpTestResponse);
 
     expect(Array.isArray(parsedResponse)).toBe(true);
@@ -32,7 +29,7 @@ describe("parseFoursquareResponse", function () {
     expect(parsedResponse[23].name).toEqual("Camino Roasters");
   });
 
-  it("should return an empty array, when parsing an api exception result", function () {
+  it("should return an empty array, when parsing an api exception result", function() {
     const exceptionHttpResult = {
       statusCode: null,
       content: null,
@@ -44,16 +41,15 @@ describe("parseFoursquareResponse", function () {
   });
 });
 
-describe("httpCallFoursquareSearch", function () {
+describe("httpCallFoursquareSearch", function() {
   let origConsole;
 
   beforeAll(() => {
     origConsole = global.console;
     global.console = { error: jest.fn() };
-    HTTP.call = jest.fn()
-      .mockImplementationOnce(() => {
-        throw new Error("mock http error");
-      });
+    HTTP.call = jest.fn().mockImplementationOnce(() => {
+      throw new Error("mock http error");
+    });
   });
 
   afterAll(() => {
@@ -61,7 +57,7 @@ describe("httpCallFoursquareSearch", function () {
     HTTP.call = jest.fn();
   });
 
-  it("should return an empty httpResponse if throwing an exception (client_id undefined)", function () {
+  it("should return an empty httpResponse if throwing an exception (client_id undefined)", function() {
     const exceptionHttpResult = {
       statusCode: null,
       content: null,
@@ -71,7 +67,9 @@ describe("httpCallFoursquareSearch", function () {
 
     // NOTE: HTTP.call mockImplementation throws an error.
     //       Sending 0, 0 lat lng to the real api will also cause an exception
-    expect(httpCallFoursquareSearch("4c2cd86ed066bed06c3c5209", 0, 0)).toEqual(exceptionHttpResult);
+    expect(httpCallFoursquareSearch("4c2cd86ed066bed06c3c5209", 0, 0)).toEqual(
+      exceptionHttpResult,
+    );
     expect(global.console.error).toHaveBeenCalled();
   });
 });

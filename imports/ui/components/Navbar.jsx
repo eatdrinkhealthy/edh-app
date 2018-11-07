@@ -9,11 +9,7 @@ type INavbarProps = {
   logout: () => void,
 };
 
-const Navbar = ({
-  username,
-  userLoggedIn,
-  logout,
-}: INavbarProps) => {
+const Navbar = ({ username, userLoggedIn, logout }: INavbarProps) => {
   const usernameDisplay = username ? `Welcome, ${username}!` : "";
 
   return (

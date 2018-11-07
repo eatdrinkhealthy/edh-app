@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable class-methods-use-this */
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
@@ -8,7 +9,7 @@ class UserMenu extends Component {
     logout: () => void,
   };
 
-  renderLoggedOut() {  // eslint-disable-line class-methods-use-this
+  renderLoggedOut() {
     return (
       <span>
         <Link

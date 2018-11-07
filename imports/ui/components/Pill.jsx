@@ -3,7 +3,7 @@ import React from "react";
 import classNames from "classnames";
 
 type IPillProps = {
-  className?: string,   // eslint-disable-line react/require-default-props
+  className?: string, // eslint-disable-line react/require-default-props
   name: string,
   active: boolean,
   selectedColor?: string,
@@ -11,10 +11,10 @@ type IPillProps = {
 };
 
 const Pill = ({
-  className: excludeClassName,  // extract out and override className
-  active,                       // use active, but don't pass it on to button
+  className: excludeClassName, // extract out and override className
+  active, // use active, but don't pass it on to button
   selectedColor,
-  ...props                      // pass on the rest of the props (used by a button)
+  ...props // pass on the rest of the props (used by a button)
 }: IPillProps) => {
   // TODO find better way to optimize styling (all here, or in .less file)
   const colorStyle = {
@@ -22,7 +22,13 @@ const Pill = ({
     borderColor: active ? selectedColor : "#ccc",
   };
 
-  return <button style={colorStyle} className={classNames("pill", { pill_selected: active })} {...props} />;
+  return (
+    <button
+      style={colorStyle}
+      className={classNames("pill", { pill_selected: active })}
+      {...props}
+    />
+  );
 };
 
 Pill.defaultProps = {

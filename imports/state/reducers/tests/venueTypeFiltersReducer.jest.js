@@ -3,14 +3,15 @@
 /* eslint-disable func-names, prefer-arrow-callback, no-unused-expressions */
 /* eslint-disable import/no-extraneous-dependencies */
 import _ from "lodash";
-import { venueTypeFiltersReducer, toggleVenueTypeFilter } from "../venueTypeFiltersReducers";
-import { VENUE_TYPE_FILTERS } from "../../data/defaultFilters";
 import {
-  toggleVenueTypeFilter as toggleVenueTypeFilterActionCreator,
-} from "../../actions/venueTypeFiltersActions";
+  venueTypeFiltersReducer,
+  toggleVenueTypeFilter,
+} from "../venueTypeFiltersReducers";
+import { VENUE_TYPE_FILTERS } from "../../data/defaultFilters";
+import { toggleVenueTypeFilter as toggleVenueTypeFilterActionCreator } from "../../actions/venueTypeFiltersActions";
 
-describe("venueTypeFilters reducers", function () {
-  describe("toggleVenueTypeFilter function", function () {
+describe("venueTypeFilters reducers", function() {
+  describe("toggleVenueTypeFilter function", function() {
     // eslint-disable-next-line prefer-const
     let previousState = [
       { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
@@ -20,7 +21,7 @@ describe("venueTypeFilters reducers", function () {
     const copyState = _.cloneDeep(previousState);
     const newState = toggleVenueTypeFilter(previousState, "2");
 
-    it("should only set the 'on' property of indicated filter", function () {
+    it("should only set the 'on' property of indicated filter", function() {
       expect(newState).toEqual([
         { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
         { id: "2", name: "Juice Bar 2", on: true, foursquareCategory: "def" },
@@ -28,11 +29,11 @@ describe("venueTypeFilters reducers", function () {
       ]);
     });
 
-    it("should not mutate previous state", function () {
-      expect(previousState).toEqual(copyState);  // does not mutate previous state
+    it("should not mutate previous state", function() {
+      expect(previousState).toEqual(copyState); // does not mutate previous state
     });
 
-    it("should toggle/set on to true if it was undefined", function () {
+    it("should toggle/set on to true if it was undefined", function() {
       const originalState = [
         { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
         // $FlowFixMe (allowing this to break the flow type, to test defensive code
@@ -49,14 +50,16 @@ describe("venueTypeFilters reducers", function () {
     });
   });
 
-  describe("venueTypeFilters reducer (toggle)", function () {
+  describe("venueTypeFilters reducer (toggle)", function() {
     const unknownAction = { type: "unknown", id: "a" };
 
-    it("should return an initial state of VENUE_TYPE_FILTERS", function () {
-      expect(venueTypeFiltersReducer(undefined, unknownAction)).toEqual(VENUE_TYPE_FILTERS);
+    it("should return an initial state of VENUE_TYPE_FILTERS", function() {
+      expect(venueTypeFiltersReducer(undefined, unknownAction)).toEqual(
+        VENUE_TYPE_FILTERS,
+      );
     });
 
-    it("should return the previous state for any unknown action", function () {
+    it("should return the previous state for any unknown action", function() {
       const previousState = [
         { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
       ];
@@ -65,7 +68,7 @@ describe("venueTypeFilters reducers", function () {
       expect(nextState).toEqual(previousState);
     });
 
-    it("should handle TOGGLE_VENUE_TYPE_FILTER action", function () {
+    it("should handle TOGGLE_VENUE_TYPE_FILTER action", function() {
       const previousState = [
         { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
         { id: "2", name: "Juice Bar 2", on: false, foursquareCategory: "def" },
@@ -82,7 +85,7 @@ describe("venueTypeFilters reducers", function () {
       expect(nextState).toEqual(expectedResult);
     });
 
-    it("should return previous state if 'id' is not found", function () {
+    it("should return previous state if 'id' is not found", function() {
       const originalState = [
         { id: "1", name: "Juice Bar 1", on: true, foursquareCategory: "abc" },
         { id: "2", name: "Juice Bar 2", on: false, foursquareCategory: "def" },

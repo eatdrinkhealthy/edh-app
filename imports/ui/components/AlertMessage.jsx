@@ -19,4 +19,3 @@ class AlertMessage extends Alert {
 }
 
 export default AlertMessage;
-

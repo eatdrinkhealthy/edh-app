@@ -13,14 +13,13 @@ export type IEatDrinkFilter = {
 export const toggleEatDrinkFilter = (
   state: Array<IEatDrinkFilter>,
   id: string,
-): Array<IEatDrinkFilter> => (
-  state.map((currFilter: IEatDrinkFilter): IEatDrinkFilter => (
-    {
-      ...currFilter,  // generate copy of current filter, then overwrite 'on' when id matches
+): Array<IEatDrinkFilter> =>
+  state.map(
+    (currFilter: IEatDrinkFilter): IEatDrinkFilter => ({
+      ...currFilter, // generate copy of current filter, then overwrite 'on' when id matches
       on: currFilter.id === id ? !currFilter.on : currFilter.on,
-    }
-  ))
-);
+    }),
+  );
 
 export const eatDrinkFiltersReducer = (
   state: Array<IEatDrinkFilter> = EAT_DRINK_FILTERS,

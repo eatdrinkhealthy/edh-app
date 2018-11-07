@@ -5,8 +5,8 @@
 
 import { elements as els, baseUrl } from "./elements";
 
-describe("Sidebar / sign-in Page", function () {
-  it("displays the sidebar when join link clicked", function () {
+describe("Sidebar / sign-in Page", function() {
+  it("displays the sidebar when join link clicked", function() {
     browser.url(baseUrl);
     browser.waitForExist(els.homePage.navbar);
     // WARNING
@@ -19,7 +19,7 @@ describe("Sidebar / sign-in Page", function () {
     expect(browser.waitForExist(els.sidebarPage.component)).toBe(true);
   });
 
-  it("goes back to landing page when home link clicked", function () {
+  it("goes back to landing page when home link clicked", function() {
     browser.waitForExist(els.header.homeLink);
     browser.click(els.header.homeLink);
 

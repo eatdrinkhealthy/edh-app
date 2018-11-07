@@ -77,4 +77,3 @@ const sampleVenues: Array<IVenue> = [
 ];
 
 export default sampleVenues;
-

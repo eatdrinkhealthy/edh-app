@@ -13,14 +13,13 @@ export type IVenueTypeFilter = {
 export const toggleVenueTypeFilter = (
   state: Array<IVenueTypeFilter>,
   id: string,
-): Array<IVenueTypeFilter> => (
-  state.map((currFilter: IVenueTypeFilter): IVenueTypeFilter => (
-    {
-      ...currFilter,  // generate copy of current filter, then overwrite 'on' when id matches
+): Array<IVenueTypeFilter> =>
+  state.map(
+    (currFilter: IVenueTypeFilter): IVenueTypeFilter => ({
+      ...currFilter, // generate copy of current filter, then overwrite 'on' when id matches
       on: currFilter.id === id ? !currFilter.on : currFilter.on,
-    }
-  ))
-);
+    }),
+  );
 
 export const venueTypeFiltersReducer = (
   state: Array<IVenueTypeFilter> = VENUE_TYPE_FILTERS,

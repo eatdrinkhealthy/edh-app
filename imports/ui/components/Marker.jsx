@@ -1,7 +1,5 @@
 // @flow
-import React, {
-  PureComponent,
-} from "react";
+import React, { PureComponent } from "react";
 import classNames from "classnames";
 import { calcHintPosition, getDivSpacing } from "../../utils/calcHintPosition";
 
@@ -31,11 +29,11 @@ class Marker extends PureComponent {
 
   setHintHolderRef = (div: HTMLDivElement) => {
     this.hintHolder = div;
-  }
+  };
 
   setMarkerHolderRef = (div: HTMLDivElement) => {
     this.markerHolder = div;
-  }
+  };
 
   handleOnClick = () => {
     this.props.setSelectedVenueHandler(this.props.venue.id);
@@ -49,13 +47,14 @@ class Marker extends PureComponent {
         getDivSpacing(this.hintHolder),
       ),
     });
-  }
+  };
 
   hintHolder: HTMLDivElement;
 
   markerHolder: HTMLDivElement;
 
-  render() {  // eslint-disable-line flowtype/require-return-type
+  render() {
+    // eslint-disable-line flowtype/require-return-type
     const markerContainerClasses = classNames(
       "markerContainer",
       "hint--color-white-override",
@@ -74,10 +73,7 @@ class Marker extends PureComponent {
       ? "/images/map_marker_selected.svg"
       : "/images/map_marker_unselected.svg";
 
-    const hintClasses = classNames(
-      "hint__content",
-      "hintContainer",
-    );
+    const hintClasses = classNames("hint__content", "hintContainer");
 
     const venue = this.props.venue;
 
@@ -92,10 +88,7 @@ class Marker extends PureComponent {
         role="tooltip"
       >
         <img src={markerImage} alt={altStr} />
-        <div
-          className={hintClasses}
-          ref={this.setHintHolderRef}
-        >
+        <div className={hintClasses} ref={this.setHintHolderRef}>
           <div className="hint-venue-name">{venue.name}</div>
           <div className="hint-venue-address">{venue.location.address}</div>
           <div className="hint-venue-category">{venue.primaryCategory}</div>

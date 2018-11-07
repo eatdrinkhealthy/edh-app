@@ -1,21 +1,13 @@
 // @flow
 import React, { Component } from "react";
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../../state/stores/store";
 import HomePage from "../pages/HomePage";
 import Sidebar from "../components/Sidebar";
 import PageNotFound from "../pages/PageNotFound";
 import AlertMessage from "../components/AlertMessage";
-import {
-  clearWatchPosition,
-  watchPosition,
-  getPosition,
-} from "../../utils/geoLocation";
+import { clearWatchPosition, watchPosition, getPosition } from "../../utils/geoLocation";
 import {
   setMapCenter,
   setUserLocation,
@@ -26,18 +18,22 @@ class App extends Component {
   componentDidMount() {
     // set a watch for user's location
     this.watchPositionId = watchPosition((position: Position) => {
-      store.dispatch(setUserLocation({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      }));
+      store.dispatch(
+        setUserLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        }),
+      );
     });
 
     // once current location obtained, set initial map center and zoom
     getPosition((position: Position) => {
-      store.dispatch(setMapCenter({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      }));
+      store.dispatch(
+        setMapCenter({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        }),
+      );
 
       store.dispatch(setMapZoom(15));
     });
@@ -68,4 +64,3 @@ class App extends Component {
 }
 
 export default App;
-
