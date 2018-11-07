@@ -112,6 +112,7 @@
         ]
       }
     ],
+    "import/extensions": "ignorePackages",
     "flowtype/boolean-style": [
       "error",
       "boolean"
