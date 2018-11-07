@@ -1,7 +1,5 @@
 # edh-app
 
-[![Build Status](https://semaphoreci.com/api/v1/projects/97c77f98-2bd8-4722-afad-d287d5f83770/1169973/shields_badge.svg)](https://semaphoreci.com/eat-drink-healthy/edh-app)
-
 ## Installation
 * TBD when to use yarn vs. `meteor npm install 'package'`
 * NOTE packages that require a binary build step, need to be installed using `meteor npm install`
