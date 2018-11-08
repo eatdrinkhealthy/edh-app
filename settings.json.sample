@@ -1,0 +1,13 @@
+{
+  "public": {
+    "analyticsSettings": {
+      "Google Analytics" : {"trackingId": "your_key_here"},
+      "Mixpanel"         : {"token":  "your_key_here", "people": true}
+    },
+    "googleMapsApiKey"   : "your_key_here"
+  },
+  "foursquare": {
+    "client_id"     : "your_id_here",
+    "client_secret" : "your_key_here"
+  }
+}
