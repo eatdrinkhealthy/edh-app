@@ -4,10 +4,7 @@
   "scripts": {
     "start": "meteor run --settings settings.json",
     "lint": "eslint . --ext .js,.jsx --ignore-pattern 'packages/**'",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "flow:check": "flow check",
-    "flow:status": "flow status",
-    "flow:stop": "flow stop",
     "pretest": "npm run lint && npm run flow:check",
     "test": "npm run unit-test && npm run integration-test && npm run end-to-end-test:standalone",
     "unit-test": "jest -c .jest-config.json",
