@@ -10,10 +10,10 @@ import {
   setMapZoom as setMapZoomActionCreator,
 } from "../../actions/mapDisplayActions";
 
-describe("mapDisplay reducers", function () {
+describe("mapDisplay reducers", function() {
   const unknownAction = { type: "unknown", venueId: "abc123" };
 
-  it("should return an initial state of mapCenter, mapZoom and nulls", function () {
+  it("should return an initial state of mapCenter, mapZoom and nulls", function() {
     expect(mapDisplayReducer(undefined, unknownAction)).toEqual({
       selectedVenueId: null,
       userLocation: null,
@@ -22,7 +22,7 @@ describe("mapDisplay reducers", function () {
     });
   });
 
-  it("should return the previous state for any unknown action", function () {
+  it("should return the previous state for any unknown action", function() {
     const previousState = {
       selectedVenueId: "xyz",
       userLocation: { lat: 3, lng: 4 },
@@ -34,7 +34,7 @@ describe("mapDisplay reducers", function () {
     expect(nextState).toEqual(previousState);
   });
 
-  it("should handle a SET_SELECTED_VENUE action", function () {
+  it("should handle a SET_SELECTED_VENUE action", function() {
     const previousState = {
       selectedVenueId: "abc",
       userLocation: { lat: 3, lng: 4 },
@@ -49,10 +49,12 @@ describe("mapDisplay reducers", function () {
     };
 
     const setSelectedVenueAction = setSelectedVenueActionCreator("xyz");
-    expect(mapDisplayReducer(previousState, setSelectedVenueAction)).toEqual(expectedResult);
+    expect(mapDisplayReducer(previousState, setSelectedVenueAction)).toEqual(
+      expectedResult,
+    );
   });
 
-  it("should handle a SET_USER_LOCATION action", function () {
+  it("should handle a SET_USER_LOCATION action", function() {
     const previousState = {
       selectedVenueId: "xyz",
       userLocation: { lat: 2, lng: 4 },
@@ -67,10 +69,12 @@ describe("mapDisplay reducers", function () {
     };
 
     const setUserLocationAction = setUserLocationActionCreator({ lat: 3, lng: 5 });
-    expect(mapDisplayReducer(previousState, setUserLocationAction)).toEqual(expectedResult);
+    expect(mapDisplayReducer(previousState, setUserLocationAction)).toEqual(
+      expectedResult,
+    );
   });
 
-  it("should handle a SET_MAP_CENTER action", function () {
+  it("should handle a SET_MAP_CENTER action", function() {
     const previousState = {
       selectedVenueId: "xyz",
       userLocation: { lat: 2, lng: 4 },
@@ -88,7 +92,7 @@ describe("mapDisplay reducers", function () {
     expect(mapDisplayReducer(previousState, setMapCenterAction)).toEqual(expectedResult);
   });
 
-  it("should only save 7 significant digits for SET_MAP_CENTER", function () {
+  it("should only save 7 significant digits for SET_MAP_CENTER", function() {
     const previousState = {
       selectedVenueId: "xyz",
       userLocation: { lat: 2, lng: 4 },
@@ -96,9 +100,10 @@ describe("mapDisplay reducers", function () {
       zoom: 12,
     };
 
-    const setMapCenterAction = setMapCenterActionCreator(
-      { lat: 32.789008929999, lng: -79.932115011 },
-    );
+    const setMapCenterAction = setMapCenterActionCreator({
+      lat: 32.789008929999,
+      lng: -79.932115011,
+    });
 
     expect(mapDisplayReducer(previousState, setMapCenterAction)).toEqual({
       selectedVenueId: "xyz",
@@ -108,7 +113,7 @@ describe("mapDisplay reducers", function () {
     });
   });
 
-  it("should handle a SET_MAP_ZOOM action", function () {
+  it("should handle a SET_MAP_ZOOM action", function() {
     const previousState = {
       selectedVenueId: "xyz",
       userLocation: { lat: 2, lng: 4 },

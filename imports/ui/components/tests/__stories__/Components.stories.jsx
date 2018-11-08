@@ -6,9 +6,7 @@ import { boolean, text } from "@storybook/addon-knobs";
 import CenterWrapper from "../../../../../.storybook/decorators/CenterWrapper";
 import FilterSection from "../../FilterSection";
 import Pill from "../../Pill";
-import {
-  EAT_DRINK_FILTERS,
-} from "../../../../state/data/defaultFilters";
+import { EAT_DRINK_FILTERS } from "../../../../state/data/defaultFilters";
 
 storiesOf("Components", module)
   .add("FilterSection", () => (
@@ -20,10 +18,7 @@ storiesOf("Components", module)
     />
   ))
   .add("Pill", () => (
-    <CenterWrapper
-      width="50%"
-      height="50%"
-    >
+    <CenterWrapper width="50%" height="50%">
       <Pill
         name="Pill"
         onClick={action("pill clicked")}

@@ -8,7 +8,7 @@ import { mount } from "enzyme";
 import FilterSection from "../FilterSection";
 import type { IEatDrinkFilter } from "../../../state/reducers/eatDrinkFiltersReducers";
 
-describe("<FilterSection />", function () {
+describe("<FilterSection />", function() {
   const testFilterList: Array<IEatDrinkFilter> = [
     { id: "juiceBar1", name: "Juice Bar1", on: true, foursquareCategory: "1" },
     { id: "juiceBar2", name: "Juice Bar2", on: false, foursquareCategory: "2" },
@@ -18,20 +18,22 @@ describe("<FilterSection />", function () {
     { id: "juiceBar6", name: "Juice Bar6", on: false, foursquareCategory: "6" },
   ];
 
-  it("matches render snapshot", function () {
-    const tree = renderer.create(
-      <FilterSection
-        id="testFilter"
-        title="Test Filter Section"
-        filters={testFilterList}
-        setFilter={() => {}}
-      />,
-    ).toJSON();
+  it("matches render snapshot", function() {
+    const tree = renderer
+      .create(
+        <FilterSection
+          id="testFilter"
+          title="Test Filter Section"
+          filters={testFilterList}
+          setFilter={() => {}}
+        />,
+      )
+      .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
-  it("should call setFilter with filter id, when a Pill is clicked", function () {
+  it("should call setFilter with filter id, when a Pill is clicked", function() {
     const props = {
       id: "testFilter",
       title: "Test Filter Section",

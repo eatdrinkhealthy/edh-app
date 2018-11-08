@@ -15,15 +15,20 @@ import {
 } from "../../../../state/data/defaultFilters";
 
 storiesOf("Page Sections", module)
-  .addDecorator((story: () => React$Element<*>): React$Element<*> => (
-    <MemoryRouter>{story()}</MemoryRouter>
-  ))
-  .add("UserMenu", (): React$Element<*> => (
-    <UserMenu
-      userLoggedIn={boolean("userLoggedIn", false)}
-      logout={action("logout clicked")}
-    />
-  ))
+  .addDecorator(
+    (story: () => React$Element<*>): React$Element<*> => (
+      <MemoryRouter>{story()}</MemoryRouter>
+    ),
+  )
+  .add(
+    "UserMenu",
+    (): React$Element<*> => (
+      <UserMenu
+        userLoggedIn={boolean("userLoggedIn", false)}
+        logout={action("logout clicked")}
+      />
+    ),
+  )
   .add("Navbar", () => {
     window.SHOW_GRID = boolean("show grid", false);
     return (

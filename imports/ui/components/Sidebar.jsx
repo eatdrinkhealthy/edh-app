@@ -4,11 +4,7 @@ import type { RouterHistory, Location } from "react-router-dom";
 import CreateAccountContainer from "../containers/CreateAccountContainer";
 import LoginContainer from "../containers/LoginContainer";
 import { searchProperty } from "../../utils/routeLocation";
-import {
-  Grid,
-  Row,
-  Col,
-} from "./ReactBootstrapLib";
+import { Grid, Row, Col } from "./ReactBootstrapLib";
 import Header from "../components/Header";
 
 /* eslint-disable react/require-default-props */

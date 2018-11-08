@@ -20,7 +20,7 @@ import _ from "lodash";
 const mountFormWithInputs = ( // eslint-disable-line
   formComponent: React$Element<*>,
   inputs: {},
-  store?: Store<*, *>,        // if a store is provided, mount with a <Provider /> and store
+  store?: Store<*, *>, // if a store is provided, mount with a <Provider /> and store
 ): ReactWrapper => {
   //
   // Had a lot of difficulty here, trying to figure out how to set the value of
@@ -41,9 +41,9 @@ const mountFormWithInputs = ( // eslint-disable-line
   // round trip).
   //
 
-  const wrapper = (store)
-    ? mount(<Provider store={store}>{formComponent}</Provider>)   // for redux-form forms
-    : mount(formComponent);                                       // for standard forms
+  const wrapper = store
+    ? mount(<Provider store={store}>{formComponent}</Provider>) // for redux-form forms
+    : mount(formComponent); // for standard forms
 
   _.forIn(inputs, (value, input) => {
     const inputWrapper = wrapper.find(`[name='${input}']`);

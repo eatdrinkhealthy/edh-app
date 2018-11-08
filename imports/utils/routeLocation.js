@@ -2,9 +2,7 @@
 import queryString from "query-string";
 import type { Location } from "react-router-dom";
 
-export const searchObject = (
-  location: ?Location,
-): {} => {
+export const searchObject = (location: ?Location): {} => {
   const searchStr = location && location.search;
   const searchObj = { ...(searchStr && queryString.parse(searchStr)) };
 

@@ -4,5 +4,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import PageNotFound from "../../PageNotFound";
 
-storiesOf("Pages", module)
-  .add("Page Not Found", (): React$Element<*> => (<PageNotFound />));
+storiesOf("Pages", module).add(
+  "Page Not Found",
+  (): React$Element<*> => <PageNotFound />,
+);

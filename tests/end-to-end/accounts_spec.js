@@ -6,14 +6,14 @@
 
 import { elements as els, baseUrl } from "./elements";
 
-describe("User Accounts", function () {
+describe("User Accounts", function() {
   const testUser = {
     username: "testuser",
     email: "testuser@test.com",
     password: "asdfasdf",
   };
 
-  describe("Join - create new user", function () {
+  describe("Join - create new user", function() {
     beforeAll(() => {
       // a user shouldn't be logged in at this point, but in the event
       // tests were run in an order that logged a user in
@@ -26,7 +26,7 @@ describe("User Accounts", function () {
       server.apply("removeUser", [testUser.username]);
     });
 
-    it("should navigate to the join dialog and create a new user", function () {
+    it("should navigate to the join dialog and create a new user", function() {
       // navbar already should be displayed (beforeAll)
       browser.click(els.userMenu.joinLink);
 
@@ -39,22 +39,24 @@ describe("User Accounts", function () {
       browser.click(els.createAccountForm.submitButton);
     });
 
-    it("should display 'Welcome new user!' AlertMessage", function () {
+    it("should display 'Welcome new user!' AlertMessage", function() {
       browser.waitForExist(els.alertMessage, 2000);
-      expect(browser.getHTML(els.alertMessage)).toContain(`Welcome ${testUser.username}!`);
+      expect(browser.getHTML(els.alertMessage)).toContain(
+        `Welcome ${testUser.username}!`,
+      );
     });
 
-    it("should redirect to the landing / map page", function () {
+    it("should redirect to the landing / map page", function() {
       browser.waitForExist(els.homePage.navbar);
     });
 
-    it("should logout the user when logout link clicked (show join button)", function () {
+    it("should logout the user when logout link clicked (show join button)", function() {
       browser.click(els.userMenu.logoutLink);
       expect(browser.waitForExist(els.userMenu.joinLink, 2000)).toBe(true);
     });
   });
 
-  describe("Login / Logout existing user", function () {
+  describe("Login / Logout existing user", function() {
     beforeAll(() => {
       // a user shouldn't be logged in at this point, but in the event
       // tests were run in an order that logged a user in
@@ -62,7 +64,7 @@ describe("User Accounts", function () {
       browser.waitForExist(els.homePage.navbar, 3000); // make sure Meteor is loaded.
     });
 
-    it("should navigate to the sign in dialog and sign in", function () {
+    it("should navigate to the sign in dialog and sign in", function() {
       // navbar already should be displayed (beforeAll)
       browser.click(els.userMenu.loginLink);
 
@@ -73,7 +75,7 @@ describe("User Accounts", function () {
       browser.click(els.loginForm.submitButton);
     });
 
-    it("should redirect to the landing / map page", function () {
+    it("should redirect to the landing / map page", function() {
       browser.waitForExist(els.homePage.navbar, 1500);
     });
 
@@ -87,14 +89,14 @@ describe("User Accounts", function () {
       return navbarUsernameRow1 || navbarUsernameRow2;
     };
 
-    it("should show the logged in username on the navbar", function () {
+    it("should show the logged in username on the navbar", function() {
       browser.waitForExist(els.homePage.navbar);
       const loggedInUsername = getResponsiveLoggedInUser();
 
       expect(loggedInUsername).toEqual(`Welcome, ${testUser.username}!`);
     });
 
-    it("should logout the user when logout link clicked (show join button)", function () {
+    it("should logout the user when logout link clicked (show join button)", function() {
       browser.click(els.userMenu.logoutLink);
       expect(browser.waitForExist(els.userMenu.joinLink, 1000)).toBe(true);
 

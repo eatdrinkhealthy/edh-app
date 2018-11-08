@@ -1,14 +1,58 @@
-# edh-app
+# Eat Drink Healthy (edh-app)
+
+Eat Drink Healthy is a simple map application to help locate, save, and share healthy places to eat and shop.
+
+The project was initially driven by an interest in nutrition's impact on health and wellness. Later, the project was used as a learning experience in forming a startup using Lean Startup principles, and to gain experience with current web development technologies and best practices.
+
+The intended MVP feature set is not complete. Eat Drink Healthy is now occasionally maintained as a side project.
 
 ## Installation
-* TBD when to use yarn vs. `meteor npm install 'package'`
-* NOTE packages that require a binary build step, need to be installed using `meteor npm install`
-* Must install bcrypt using `meteor npm install bcrypt`
-    - this triggers a binary build step needed for Meteor
+* [Install meteor](https://www.meteor.com/install) (OSX / Linux): `curl https://install.meteor.com/ | sh`
+* Install npm packages: `meteor npm install`
+    * NOTE this ensures packages requiring a binary build step, are installed properly
+* Copy `settings.json.sample` to `settings.json`    (note, settings.json is ignored by git)
+    * replace 'your_id_here' and 'your_key_here' with actual API IDs and Keys
+    * APIs Used
+        * Google Maps (required)
+        * FOURSQUARE (required)
+        * Google Analytics (optional)
+        * Mixpanel (optional)
+* For end-to-end testing, the npm [chimp](https://www.npmjs.com/package/chimp) package needs to be installed globally
+
+#### Adding Addtional NPM Packages
+* when installing additional packages: `meteor npm install 'package'`
+    * e.g., install bcrypt using `meteor npm install bcrypt`
+
+## Running
+* `npm start` - starts a local server (then open http://localhost:3000 in a browser)
+* `npm run lint` - runs eslint against code base
+* `npm run flow:check` - runs flow type checking against code base
+* `npm test` - runs all tests (unit, integration, end-to-end)
+* `npm run unit-test` - runs unit tests
+* `npm run integration-test` - runs integration tests
+* `npm run end-to-end-test:standalone` - runs end-to-end tests
+* `npm run storybook` - launches local storybook server (then open http://localhost:9001 in a browser)
+
+NOTE: Most scripts are used for continuous integration build steps (SemaphoreCI was used previously). Some additional scripts exist as a convenience for development.
 
 ## Notes
-### React
-* using React.PureComponent for some map related components
+### Technologies
+* [Meteor](https://www.meteor.com/) / Node
+* JavaScript ES6
+* MongoDB
+* React
+* React Router
+* Redux
+* Redux Form
+
+### Build Packages / Best Practices
+* [eslint](https://eslint.org/) ([meteor & airbnb config setup](https://github.com/eatdrinkhealthy/eslint-meteor))
+* [prettier](https://prettier.io/) (code formatting)
+* [jest](https://jestjs.io/en/) / [enzyme](https://airbnb.io/enzyme/) (unit tests)
+* [meteor test](https://guide.meteor.com/testing.html) (integration tests)
+* [chimp](https://www.npmjs.com/package/chimp) (end-to-end tests)
+* [flow](https://flow.org/) (type checking)
+* [storybook](https://storybook.js.org/) (component design)
 
 ### Styling
 * using less css preprocessor

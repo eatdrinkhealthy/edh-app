@@ -3,10 +3,12 @@
   "plugins": [
     "meteor",
     "react",
+    "prettier",
     "flowtype"
   ],
   "extends": [
     "airbnb",
+    "prettier",
     "plugin:meteor/recommended",
     "plugin:react/recommended",
     "plugin:flowtype/recommended"
@@ -112,6 +114,7 @@
         ]
       }
     ],
+    "import/extensions": "ignorePackages",
     "flowtype/boolean-style": [
       "error",
       "boolean"
@@ -156,6 +159,18 @@
     ],
     "flowtype/use-flow-type": "warn",
     "flowtype/valid-syntax": "warn",
-    "jsx-a11y/no-static-element-interactions": "warn"
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        "arrowParens": "avoid",
+        "bracketSpacing": true,
+        "printWidth": 90,
+        "singleQuote": false,
+        "tabWidth": 2,
+        "trailingComma": "all",
+        "useTabs": false
+      }
+    ]
   }
 }

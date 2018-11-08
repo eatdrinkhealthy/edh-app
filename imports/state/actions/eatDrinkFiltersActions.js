@@ -7,9 +7,7 @@ export type IEatDrinkFilterAction = {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const toggleEatDrinkFilter = (
-  id: string,
-): IEatDrinkFilterAction => ({
+export const toggleEatDrinkFilter = (id: string): IEatDrinkFilterAction => ({
   type: TOGGLE_EAT_DRINK_FILTER,
   id,
 });

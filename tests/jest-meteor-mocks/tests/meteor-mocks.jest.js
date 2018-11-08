@@ -4,9 +4,9 @@
 
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 
-describe("Jest Meteor Mocks", function () {
-  describe("MDG ValidatedMethod", function () {
-    it("returns mock implementation with a .call mock", function () {
+describe("Jest Meteor Mocks", function() {
+  describe("MDG ValidatedMethod", function() {
+    it("returns mock implementation with a .call mock", function() {
       const testValidatedMethod = new ValidatedMethod({
         name: "insert",
       });

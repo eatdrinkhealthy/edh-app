@@ -7,9 +7,9 @@ import * as actions from "../searchResultsActions";
 import sampleVenues from "../../stores/tests/sampleVenueData";
 import { SET_SEARCH_RESULTS } from "../actionTypes";
 
-describe("Search Results Actions", function () {
-  describe("setSearchResults", function () {
-    it("should create a SET_SEARCH_RESULTS action, with no search results", function () {
+describe("Search Results Actions", function() {
+  describe("setSearchResults", function() {
+    it("should create a SET_SEARCH_RESULTS action, with no search results", function() {
       const expectedAction = {
         type: SET_SEARCH_RESULTS,
         searchResults: [],
@@ -18,31 +18,19 @@ describe("Search Results Actions", function () {
       expect(actions.setSearchResults([])).toEqual(expectedAction);
     });
 
-    it("should create a SET_SEARCH_RESULTS action, with search results", function () {
-      const searchResults = [
-        sampleVenues[0],
-        sampleVenues[1],
-        sampleVenues[2],
-      ];
+    it("should create a SET_SEARCH_RESULTS action, with search results", function() {
+      const searchResults = [sampleVenues[0], sampleVenues[1], sampleVenues[2]];
 
       const expectedAction = {
         type: SET_SEARCH_RESULTS,
-        searchResults: [
-          sampleVenues[0],
-          sampleVenues[1],
-          sampleVenues[2],
-        ],
+        searchResults: [sampleVenues[0], sampleVenues[1], sampleVenues[2]],
       };
 
       expect(actions.setSearchResults(searchResults)).toEqual(expectedAction);
     });
 
-    it("should clone, and not reference original search results", function () {
-      const searchResults = [
-        sampleVenues[0],
-        sampleVenues[1],
-        sampleVenues[2],
-      ];
+    it("should clone, and not reference original search results", function() {
+      const searchResults = [sampleVenues[0], sampleVenues[1], sampleVenues[2]];
 
       const expectedAction = {
         type: SET_SEARCH_RESULTS,

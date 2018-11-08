@@ -1,10 +1,7 @@
 // @flow
 import { createStore } from "redux";
 import appReducer from "../reducers";
-import {
-  EAT_DRINK_FILTERS,
-  VENUE_TYPE_FILTERS,
-} from "../data/defaultFilters";
+import { EAT_DRINK_FILTERS, VENUE_TYPE_FILTERS } from "../data/defaultFilters";
 import { defaultMapDisplayState } from "../reducers/mapDisplayReducers";
 
 /* eslint-disable no-duplicate-imports */

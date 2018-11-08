@@ -9,9 +9,7 @@ export type ISearchResultsAction = {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const setSearchResults = (
-  searchResults: Array<IVenue>,
-): ISearchResultsAction => ({
+export const setSearchResults = (searchResults: Array<IVenue>): ISearchResultsAction => ({
   type: SET_SEARCH_RESULTS,
   searchResults: _.cloneDeep(searchResults),
 });

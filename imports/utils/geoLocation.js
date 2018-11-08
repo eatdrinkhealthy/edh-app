@@ -19,15 +19,14 @@ function positionError() {
   }
 }
 
-export const roundedLatLng = (latLng: ILatLng): ILatLng => (
-  {
-    lat: Number(latLng.lat.toFixed(7)),
-    lng: Number(latLng.lng.toFixed(7)),
-  }
-);
+export const roundedLatLng = (latLng: ILatLng): ILatLng => ({
+  lat: Number(latLng.lat.toFixed(7)),
+  lng: Number(latLng.lng.toFixed(7)),
+});
 
 export const sameRoundedLocation = (latLngA: ?ILatLng, latLngB: ?ILatLng): boolean => {
-  if (!latLngA || !latLngB) { // if either are not defined, return false
+  if (!latLngA || !latLngB) {
+    // if either are not defined, return false
     return false;
   }
 

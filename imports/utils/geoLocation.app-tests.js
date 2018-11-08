@@ -7,7 +7,7 @@ if (Meteor.isClient) {
 
   const mockLocation = [32.7890011, -79.932111];
 
-  const mockSuccess = (callback) => {
+  const mockSuccess = callback => {
     callback({
       coords: {
         accuracy: 30,
@@ -23,12 +23,14 @@ if (Meteor.isClient) {
   };
 
   // overwrite / mock navigator.geolocation .getCurrentPosition & .watchPosition
-  navigator.geolocation.getCurrentPosition = (callback) => {
+  navigator.geolocation.getCurrentPosition = callback => {
     mockSuccess(callback);
   };
 
-  navigator.geolocation.watchPosition = (callback) => {
-    const execute = () => { mockSuccess(callback); };
+  navigator.geolocation.watchPosition = callback => {
+    const execute = () => {
+      mockSuccess(callback);
+    };
     setTimeout(execute, 2500);
     setInterval(execute, 30000);
   };

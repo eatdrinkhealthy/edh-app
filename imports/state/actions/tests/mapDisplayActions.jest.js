@@ -15,9 +15,9 @@ import {
   SET_MAP_ZOOM,
 } from "../actionTypes";
 
-describe("Map Display Actions", function () {
-  describe("setSelectedVenue", function () {
-    it("should create a SET_SELECTED_VENUE action", function () {
+describe("Map Display Actions", function() {
+  describe("setSelectedVenue", function() {
+    it("should create a SET_SELECTED_VENUE action", function() {
       const venueId = "abc123";
       const expectedAction = {
         type: SET_SELECTED_VENUE,
@@ -28,8 +28,8 @@ describe("Map Display Actions", function () {
     });
   });
 
-  describe("setUserLocation", function () {
-    it("should create a SET_USER_LOCATION action", function () {
+  describe("setUserLocation", function() {
+    it("should create a SET_USER_LOCATION action", function() {
       const userLocation = {
         lat: 4.5,
         lng: 5.6,
@@ -47,8 +47,8 @@ describe("Map Display Actions", function () {
     });
   });
 
-  describe("setMapCenter", function () {
-    it("should create a SET_MAP_CENTER action", function () {
+  describe("setMapCenter", function() {
+    it("should create a SET_MAP_CENTER action", function() {
       const mapCenter = {
         lat: 2.5,
         lng: 3.6,
@@ -66,8 +66,8 @@ describe("Map Display Actions", function () {
     });
   });
 
-  describe("setMapZoom", function () {
-    it("should create a SET_MAP_ZOOM action", function () {
+  describe("setMapZoom", function() {
+    it("should create a SET_MAP_ZOOM action", function() {
       const expectedAction = {
         type: SET_MAP_ZOOM,
         zoom: 15,

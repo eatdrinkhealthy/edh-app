@@ -29,28 +29,21 @@ export { Jumbotron };
 
 // This HOC takes a component, and will add the additional passed in class
 // to className, if the global variable SHOW_GRID is set.
-const showGridHOC = (
-  WrappedComponent,
-  gridClass,
-) => {
-  const GridHOC = (props) => {
+const showGridHOC = (WrappedComponent, gridClass) => {
+  const GridHOC = props => {
     const { className, ...otherProps } = props;
     const allClasses = classNames(className, { [gridClass]: window.SHOW_GRID });
 
-    return (
-      <WrappedComponent
-        {...otherProps}
-        className={allClasses}
-      />
-    );
+    return <WrappedComponent {...otherProps} className={allClasses} />;
   };
 
   GridHOC.propTypes = {
     className: PropTypes.string,
   };
 
-  GridHOC.displayName =
-    `HOC(${WrappedComponent.displayName || WrappedComponent.name || "Component"})`;
+  GridHOC.displayName = `HOC(${WrappedComponent.displayName ||
+    WrappedComponent.name ||
+    "Component"})`;
 
   return GridHOC;
 };

@@ -10,26 +10,26 @@ import {
   VENUE_TYPE_FILTERS,
 } from "../../imports/state/data/defaultFilters";
 
-describe("Primary Filters", function () {
-  it("has a pill component for each 'Eat / Drink' filter", function () {
+describe("Primary Filters", function() {
+  it("has a pill component for each 'Eat / Drink' filter", function() {
     browser.url(baseUrl);
     browser.waitForExist(els.homePage.eatDrinkFilters);
 
-    EAT_DRINK_FILTERS.forEach((filter) => {
+    EAT_DRINK_FILTERS.forEach(filter => {
       expect(browser.waitForExist(`[name='${filter.id}']`)).toBe(true);
     });
   });
 
-  it("has a pill component for each 'Venue Type' filter", function () {
+  it("has a pill component for each 'Venue Type' filter", function() {
     browser.url(baseUrl);
     browser.waitForExist(els.homePage.venueTypeFilters);
 
-    VENUE_TYPE_FILTERS.forEach((filter) => {
+    VENUE_TYPE_FILTERS.forEach(filter => {
       expect(browser.waitForExist(`[name='${filter.id}']`)).toBe(true);
     });
   });
 
-  it("shows more map markers when more search criteria are selected - NOTE may fail based on location", function () {
+  it("shows more map markers when more search criteria are selected - NOTE may fail based on location", function() {
     browser.url(baseUrl);
     browser.waitForExist(els.homePage.eatDrinkFilters);
 
@@ -50,7 +50,7 @@ describe("Primary Filters", function () {
     expect(markerArray.length).toBeGreaterThan(5);
   });
 
-  it("shows no map markers when no search criteria are selected", function () {
+  it("shows no map markers when no search criteria are selected", function() {
     browser.url(baseUrl);
     browser.waitForExist(els.homePage.eatDrinkFilters);
 

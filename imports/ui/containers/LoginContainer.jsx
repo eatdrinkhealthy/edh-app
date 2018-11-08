@@ -1,7 +1,5 @@
 // @flow
-import React, {
-  Component,
-} from "react";
+import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import type { RouterHistory } from "react-router-dom";
 import AlertMessage from "../components/AlertMessage";
@@ -18,19 +16,16 @@ class LoginContainer extends Component {
   login = (formValues: ILoginFormValues) => {
     const { usernameEmail, loginPassword } = formValues;
 
-    Meteor.loginWithPassword(
-      usernameEmail,
-      loginPassword,
-      (error) => {
-        if (error) {
-          AlertMessage.warning(lookupErrorMessage(error));
-        } else {
-          AlertMessage.success(`Welcome ${usernameEmail}!`);
-          if (this.props.routerHistory) {
-            this.props.routerHistory.push("/");
-          }
+    Meteor.loginWithPassword(usernameEmail, loginPassword, error => {
+      if (error) {
+        AlertMessage.warning(lookupErrorMessage(error));
+      } else {
+        AlertMessage.success(`Welcome ${usernameEmail}!`);
+        if (this.props.routerHistory) {
+          this.props.routerHistory.push("/");
         }
-      });
+      }
+    });
   };
 
   render() {

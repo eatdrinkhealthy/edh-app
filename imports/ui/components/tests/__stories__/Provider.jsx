@@ -11,10 +11,8 @@ type IProps = {
   story: React$Element<*>,
 };
 
-const Provider = ({
-  story,
-}: IProps): React$Element<*> => (
-  <ReduxProvider store={store} >{story}</ReduxProvider>
+const Provider = ({ story }: IProps): React$Element<*> => (
+  <ReduxProvider store={store}>{story}</ReduxProvider>
 );
 
 export default Provider;

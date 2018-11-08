@@ -18,11 +18,7 @@ const Header = () => (
         </Col>
         <Col xs={6}>
           <span className="header_menu">
-            <Link
-              id="homeLink"
-              className="btn solid_button"
-              to="/"
-            >
+            <Link id="homeLink" className="btn solid_button" to="/">
               Search
             </Link>
           </span>

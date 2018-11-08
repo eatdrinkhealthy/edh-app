@@ -4,7 +4,8 @@ import { Field, reduxForm } from "redux-form";
 import { Button, Panel } from "./ReactBootstrapLib";
 import FormInput from "./FormInput";
 
-const requiredUsername = value => (value ? undefined : `Username / Email is a required field.`);
+const requiredUsername = value =>
+  value ? undefined : `Username / Email is a required field.`;
 const requiredPassword = value => (value ? undefined : `Password is a required field.`);
 
 export type ILoginFormValues = {
@@ -13,7 +14,7 @@ export type ILoginFormValues = {
 };
 
 type ILoginFormProps = {
-  handleSubmit: (ILoginFormValues) => void,
+  handleSubmit: ILoginFormValues => void,
   invalid: boolean,
 };
 
@@ -39,7 +40,9 @@ const LoginFormComponent = ({ handleSubmit, invalid }: ILoginFormProps) => (
         component={FormInput}
         validate={requiredPassword}
       />
-      <Button id="loginSubmit" type="submit" disabled={invalid}>Sign In</Button>
+      <Button id="loginSubmit" type="submit" disabled={invalid}>
+        Sign In
+      </Button>
     </form>
   </Panel>
 );
@@ -47,7 +50,7 @@ const LoginFormComponent = ({ handleSubmit, invalid }: ILoginFormProps) => (
 const onSubmitSuccess = (result, dispatch, props) => {
   // on successful submit, clear the password fields
   props.change("loginPassword", "");
-  props.untouch("loginPassword");     // prevents showing validation error
+  props.untouch("loginPassword"); // prevents showing validation error
 
   // set focus on usernameEmail field
   // NOTE: using document.querySelector is not a React standard (works here, not in jest)

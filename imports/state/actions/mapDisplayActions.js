@@ -16,30 +16,22 @@ export type IMapDisplayAction = {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const setSelectedVenue = (
-  venueId: ?string,
-): IMapDisplayAction => ({
+export const setSelectedVenue = (venueId: ?string): IMapDisplayAction => ({
   type: SET_SELECTED_VENUE,
   venueId,
 });
 
-export const setUserLocation = (
-  userLocation: ?ILatLng,
-) => ({
+export const setUserLocation = (userLocation: ?ILatLng) => ({
   type: SET_USER_LOCATION,
   userLocation,
 });
 
-export const setMapCenter = (
-  mapCenter: ILatLng,
-) => ({
+export const setMapCenter = (mapCenter: ILatLng) => ({
   type: SET_MAP_CENTER,
   mapCenter,
 });
 
-export const setMapZoom = (
-  zoom: number,
-) => ({
+export const setMapZoom = (zoom: number) => ({
   type: SET_MAP_ZOOM,
   zoom,
 });

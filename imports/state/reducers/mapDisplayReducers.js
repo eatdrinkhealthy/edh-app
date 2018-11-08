@@ -19,9 +19,10 @@ export type IMapDisplayState = {
 export const defaultMapDisplayState = {
   selectedVenueId: null,
   userLocation: null,
-  mapCenter: {          // Charleston, SC
+  mapCenter: {
+    // Charleston, SC
     lat: 32.789008,
-    lng: -79.932115,    // also, lat lng action truncates decimal beyond precision of 7
+    lng: -79.932115, // also, lat lng action truncates decimal beyond precision of 7
   },
   zoom: 3,
 };

@@ -23,10 +23,13 @@ type IDispatchPrimaryFilterProps = {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchPrimaryFilterProps => ({
-  toggleEatDrinkFilterHandler: id => (dispatch(toggleEatDrinkFilter(id))),
-  toggleVenueTypeFilterHandler: id => (dispatch(toggleVenueTypeFilter(id))),
+  toggleEatDrinkFilterHandler: id => dispatch(toggleEatDrinkFilter(id)),
+  toggleVenueTypeFilterHandler: id => dispatch(toggleVenueTypeFilter(id)),
 });
 
-const PrimaryFilterContainer = connect(mapStateToProps, mapDispatchToProps)(PrimaryFilter);
+const PrimaryFilterContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PrimaryFilter);
 
 export default PrimaryFilterContainer;

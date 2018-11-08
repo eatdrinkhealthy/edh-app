@@ -2,10 +2,9 @@
 import { Meteor } from "meteor/meteor";
 import { createContainer } from "meteor/react-meteor-data";
 
-const userHOC = (
-  WrappedComponent: React$Component<*, *, *>,
-) => {
-  const displayName = WrappedComponent.displayName || WrappedComponent.name || "Component";
+const userHOC = (WrappedComponent: React$Component<*, *, *>) => {
+  const displayName =
+    WrappedComponent.displayName || WrappedComponent.name || "Component";
 
   const userContainer = createContainer(() => {
     const user = Meteor.user();

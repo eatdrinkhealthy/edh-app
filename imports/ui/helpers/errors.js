@@ -62,14 +62,19 @@ const lookupErrorMessage = (error: {}): string => {
   let errorCode;
 
   // determine error type (ValidationError or not [Meteor.Error , JS Error])
-  if (error.error === "validation-error" && error.details && Array.isArray(error.details)) {
+  if (
+    error.error === "validation-error" &&
+    error.details &&
+    Array.isArray(error.details)
+  ) {
     // $FlowFixMe
     errorCode = error.details[0].message || "unknown code";
   } else {
     errorCode = error.reason || "unknown code";
   }
 
-  const defaultMessage = "Unable to fulfill request at this time. Please try again later.";
+  const defaultMessage =
+    "Unable to fulfill request at this time. Please try again later.";
   const matchedError = _.find(accountErrorMessages, { errorCode });
 
   return matchedError ? matchedError.clientMessage : defaultMessage;

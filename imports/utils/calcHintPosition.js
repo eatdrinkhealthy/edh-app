@@ -11,14 +11,12 @@ export type IDivSpacing = {
   paddingLeft: number,
 };
 
-export const getDivSpacing = (
-  elementRef: HTMLDivElement,
-): IDivSpacing => {
+export const getDivSpacing = (elementRef: HTMLDivElement): IDivSpacing => {
   const {
     paddingBottom: hintPaddingBottom,
     paddingLeft: hintPaddingLeft,
     paddingRight: hintPaddingRight,
-  } = window.getComputedStyle(elementRef, null);  // TODO (TBD) confirm px, if not, convert
+  } = window.getComputedStyle(elementRef, null); // TODO (TBD) confirm px, if not, convert
 
   return {
     width: elementRef.getBoundingClientRect().width,
@@ -38,8 +36,8 @@ export const calcHintPosition = (
 
   if (hintViewArea) {
     // center connotes horizontal, middle connotes vertical
-    const markerCenter = markerRect.left + (markerRect.width / 2);
-    const markerMiddle = markerRect.top + (markerRect.height / 2);
+    const markerCenter = markerRect.left + markerRect.width / 2;
+    const markerMiddle = markerRect.top + markerRect.height / 2;
 
     const fitsTop = markerRect.top - hint.height > hintViewArea.top;
     const fitsMiddle = markerMiddle - hint.paddingBottom - hint.height > hintViewArea.top;
@@ -50,14 +48,17 @@ export const calcHintPosition = (
 
     // when centering, html-hint offsets the center by that sides padding amount
 
-    const fitsRightCenter = (markerCenter - hint.paddingLeft) + hint.width < hintViewArea.right &&
+    const fitsRightCenter =
+      markerCenter - hint.paddingLeft + hint.width < hintViewArea.right &&
       markerCenter - hint.paddingLeft > hintViewArea.left;
 
-    const fitsLeftCenter = (markerCenter + hint.paddingRight) - hint.width > hintViewArea.left &&
+    const fitsLeftCenter =
+      markerCenter + hint.paddingRight - hint.width > hintViewArea.left &&
       markerCenter + hint.paddingRight < hintViewArea.right;
 
-    const fitsCenter = markerCenter - (hint.width / 2) > hintViewArea.left &&
-      markerCenter + (hint.width / 2) < hintViewArea.right;
+    const fitsCenter =
+      markerCenter - hint.width / 2 > hintViewArea.left &&
+      markerCenter + hint.width / 2 < hintViewArea.right;
 
     if (fitsBottom) {
       if (fitsCenter) {

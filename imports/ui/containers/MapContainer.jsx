@@ -1,7 +1,5 @@
 // @flow
-import React, {
-  Component,
-} from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Meteor } from "meteor/meteor";
 import _ from "lodash";
@@ -54,14 +52,15 @@ export class MapWrapper extends Component {
     mapCenter: ILatLng,
   ) => {
     const selectedEatDrinkFilters = eatDrinkFilters.filter(
-      (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
+      (filterItem: IEatDrinkFilter): boolean => filterItem.on,
     );
 
     const selectedVenueTypeFilters = venueTypeFilters.filter(
-      (filterItem: IVenueTypeFilter): boolean => (filterItem.on),
+      (filterItem: IVenueTypeFilter): boolean => filterItem.on,
     );
 
-    Meteor.call("getNearbyPlaces",
+    Meteor.call(
+      "getNearbyPlaces",
       {
         latitude: mapCenter.lat,
         longitude: mapCenter.lng,
@@ -74,7 +73,10 @@ export class MapWrapper extends Component {
 
   filterHasChanged = (nextProps: IMapWrapperProps): boolean => {
     const edfChanged = !_.isEqual(this.props.eatDrinkFilters, nextProps.eatDrinkFilters);
-    const vtfChanged = !_.isEqual(this.props.venueTypeFilters, nextProps.venueTypeFilters);
+    const vtfChanged = !_.isEqual(
+      this.props.venueTypeFilters,
+      nextProps.venueTypeFilters,
+    );
     const mapChanged = !_.isEqual(this.props.mapCenter, nextProps.mapCenter);
 
     return edfChanged || vtfChanged || mapChanged;
@@ -90,11 +92,11 @@ export class MapWrapper extends Component {
         // TODO consider only storing selected filters in state (instead of all
         //      filters) starting to repeat code to get which filters are selected
         const selectedEdFilters = this.props.eatDrinkFilters.filter(
-          (filterItem: IEatDrinkFilter): boolean => (filterItem.on),
+          (filterItem: IEatDrinkFilter): boolean => filterItem.on,
         );
 
         const selectedVtFilters = this.props.venueTypeFilters.filter(
-          (filterItem: IVenueTypeFilter): boolean => (filterItem.on),
+          (filterItem: IVenueTypeFilter): boolean => filterItem.on,
         );
 
         if (selectedEdFilters.length || selectedVtFilters.length) {
@@ -116,7 +118,8 @@ export class MapWrapper extends Component {
     }
   };
 
-  render() { // eslint-disable-line flowtype/require-return-type
+  render() {
+    // eslint-disable-line flowtype/require-return-type
     return (
       <Map
         center={this.props.mapCenter}
@@ -160,20 +163,17 @@ type IDispatchProps = {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
-  setSearchResultsHandler: (searchResults: Array<IVenue>): void => (
-    dispatch(setSearchResults(searchResults))
-  ),
-  setSelectedVenueHandler: (venueId: ?string): void => (
-    dispatch(setSelectedVenue(venueId))
-  ),
-  setMapCenterHandler: (mapCenter: ILatLng): void => (
-    dispatch(setMapCenter(mapCenter))
-  ),
-  setMapZoomHandler: (zoom: number): void => (
-    dispatch(setMapZoom(zoom))
-  ),
+  setSearchResultsHandler: (searchResults: Array<IVenue>): void =>
+    dispatch(setSearchResults(searchResults)),
+  setSelectedVenueHandler: (venueId: ?string): void =>
+    dispatch(setSelectedVenue(venueId)),
+  setMapCenterHandler: (mapCenter: ILatLng): void => dispatch(setMapCenter(mapCenter)),
+  setMapZoomHandler: (zoom: number): void => dispatch(setMapZoom(zoom)),
 });
 
-const MapContainer = connect(mapStateToProps, mapDispatchToProps)(MapWrapper);
+const MapContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MapWrapper);
 
 export default MapContainer;
