@@ -33,7 +33,7 @@ describe("<Navbar />", function() {
     expect(tree).toMatchSnapshot();
   });
 
-  it("when user logged in should show username", function() {
+  it("should show username, when user logged in", function() {
     const wrapper = shallow(
       <Navbar userLoggedIn username="testuser" logout={jest.fn()} />,
     );
@@ -42,7 +42,7 @@ describe("<Navbar />", function() {
     );
   });
 
-  it("when user not logged in should not show username", function() {
+  it("should not show username, when user not logged in", function() {
     const wrapper = shallow(<Navbar username="" logout={jest.fn()} />);
     expect(wrapper.find(es.navbar.username).prop("children")).toEqual(""); // no username
   });
