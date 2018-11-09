@@ -11,6 +11,7 @@ exports[`<Pill /> matches render snapshot - active 1`] = `
       "borderColor": "#5e2ca5",
     }
   }
+  type="button"
 >
   Test Pill Button
 </button>
@@ -27,6 +28,7 @@ exports[`<Pill /> matches render snapshot - inactive 1`] = `
       "borderColor": "#ccc",
     }
   }
+  type="button"
 >
   Test Pill Button
 </button>

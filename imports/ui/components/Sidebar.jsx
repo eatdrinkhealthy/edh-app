@@ -5,7 +5,7 @@ import CreateAccountContainer from "../containers/CreateAccountContainer";
 import LoginContainer from "../containers/LoginContainer";
 import { searchProperty } from "../../utils/routeLocation";
 import { Grid, Row, Col } from "./ReactBootstrapLib";
-import Header from "../components/Header";
+import Header from "./Header";
 
 /* eslint-disable react/require-default-props */
 

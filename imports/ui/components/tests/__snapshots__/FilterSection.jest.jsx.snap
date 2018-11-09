@@ -43,6 +43,7 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
             "borderColor": "#5e2ca5",
           }
         }
+        type="button"
       >
         Juice Bar1
       </button>
@@ -56,6 +57,7 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
             "borderColor": "#ccc",
           }
         }
+        type="button"
       >
         Juice Bar2
       </button>
@@ -69,6 +71,7 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
             "borderColor": "#ccc",
           }
         }
+        type="button"
       >
         Juice Bar3
       </button>
@@ -90,6 +93,7 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
             "borderColor": "#5e2ca5",
           }
         }
+        type="button"
       >
         Juice Bar4
       </button>
@@ -103,6 +107,7 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
             "borderColor": "#ccc",
           }
         }
+        type="button"
       >
         Juice Bar5
       </button>
@@ -116,6 +121,7 @@ exports[`<FilterSection /> matches render snapshot 1`] = `
             "borderColor": "#ccc",
           }
         }
+        type="button"
       >
         Juice Bar6
       </button>

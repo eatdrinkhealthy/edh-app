@@ -75,11 +75,11 @@ class Marker extends PureComponent {
 
     const hintClasses = classNames("hint__content", "hintContainer");
 
-    const venue = this.props.venue;
+    const { venue } = this.props;
 
     const altStr = `${venue.name} map marker`;
 
-    /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+    /* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
     return (
       <div
         className={markerContainerClasses}
@@ -95,7 +95,7 @@ class Marker extends PureComponent {
         </div>
       </div>
     );
-    /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */
+    /* eslint-enable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
   }
 }
 
