@@ -4,7 +4,7 @@ import GoogleMap from "google-map-react";
 import Marker from "./Marker";
 import Pin from "./Pin";
 
-// eslint-disable-next-line no-duplicate-imports, import/first
+// eslint-disable-next-line no-duplicate-imports, import/order
 import type { ILatLng, IGoogleMapDisplay } from "google-map-react";
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
 
@@ -35,7 +35,6 @@ export default class Map extends PureComponent {
 
   static defaultProps = {
     zoom: 15,
-    venues: [],
     onMapChange: mapChange => {}, // eslint-disable-line no-unused-vars
   };
 
@@ -65,7 +64,7 @@ export default class Map extends PureComponent {
 
   render() {
     // eslint-disable-line flowtype/require-return-type
-    const userLocation = this.props.userLocation;
+    const { userLocation } = this.props;
 
     return (
       <div className="map-holder" ref={this.setMapHolderRef}>

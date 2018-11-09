@@ -21,8 +21,10 @@ class LoginContainer extends Component {
         AlertMessage.warning(lookupErrorMessage(error));
       } else {
         AlertMessage.success(`Welcome ${usernameEmail}!`);
-        if (this.props.routerHistory) {
-          this.props.routerHistory.push("/");
+        const { routerHistory } = this.props;
+
+        if (routerHistory) {
+          routerHistory.push("/");
         }
       }
     });

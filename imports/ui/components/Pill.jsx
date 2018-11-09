@@ -24,6 +24,7 @@ const Pill = ({
 
   return (
     <button
+      type="button"
       style={colorStyle}
       className={classNames("pill", { pill_selected: active })}
       {...props}

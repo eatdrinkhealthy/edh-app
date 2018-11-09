@@ -30,6 +30,7 @@ class UserMenu extends Component {
     );
   }
 
+  /* eslint-disable jsx-a11y/anchor-is-valid */
   renderLoggedIn = () => (
     <a
       id="logoutLink"
@@ -40,6 +41,7 @@ class UserMenu extends Component {
       LOG OUT
     </a>
   );
+  /* eslint-enable jsx-a11y/anchor-is-valid */
 
   render() {
     return this.props.userLoggedIn ? this.renderLoggedIn() : this.renderLoggedOut();
