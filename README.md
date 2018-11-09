@@ -7,7 +7,7 @@ The project was initially driven by an interest in nutrition's impact on health 
 The intended MVP feature set is not complete. Eat Drink Healthy is now occasionally maintained as a side project.
 
 
-> NOTE: A test / staging version of this application can be found on <a href="https://edh-app-staging.herokuapp.com/" target="_blank" rel="noopener noreferrer">Heroku</a>. The browser must be given access to location (and sometimes reloaded) to be able to center the map based on current location.
+> NOTE: A test / staging version of this application can be found on [Heroku](https://edh-app-staging.herokuapp.com/). The browser must be given access to location (and sometimes reloaded) to be able to center the map based on current location.
 
 ## Installation
 * [Install meteor](https://www.meteor.com/install) (OSX / Linux): `curl https://install.meteor.com/ | sh`
