@@ -8,6 +8,7 @@ jest.mock(
   () =>
     class AlertMessage {
       static success = jest.fn();
+
       static warning = jest.fn();
     },
 );
