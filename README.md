@@ -48,9 +48,11 @@ NOTE: Most scripts are used for continuous integration build steps (SemaphoreCI 
 ### Build Packages / Best Practices
 * [eslint](https://eslint.org/) ([meteor & airbnb config setup](https://github.com/eatdrinkhealthy/eslint-meteor))
 * [prettier](https://prettier.io/) (code formatting)
-* [jest](https://jestjs.io/en/) / [enzyme](https://airbnb.io/enzyme/) (unit tests)
-* [meteor test](https://guide.meteor.com/testing.html) (integration tests)
-* [chimp](https://www.npmjs.com/package/chimp) (end-to-end tests)
+* Testing
+    * [jest](https://jestjs.io/en/) / [enzyme](https://airbnb.io/enzyme/) (unit tests)
+    * [meteor test](https://guide.meteor.com/testing.html) (integration tests)
+    * [chimp](https://www.npmjs.com/package/chimp) (end-to-end tests)
+    * see [Testing section](#testing) for details on setup
 * [flow](https://flow.org/) (type checking)
 * [storybook](https://storybook.js.org/) (component design)
 
