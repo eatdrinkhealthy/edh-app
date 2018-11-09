@@ -16,6 +16,7 @@ describe("<Map />", function() {
     const wrapper = shallow(
       <Map
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
+        venues={[]}
         setSelectedVenueHandler={() => {}}
         selectedVenueId={null}
         center={{ lat: 32.789008, lng: -79.932115 }}
@@ -28,6 +29,7 @@ describe("<Map />", function() {
     const wrapper = shallow(
       <Map
         googleMapsApiKey={Meteor.settings.public.googleMapsApiKey}
+        venues={[]}
         setSelectedVenueHandler={() => {}}
         selectedVenueId={null}
         userLocation={{ lat: 32.789008, lng: -79.932115 }}

@@ -13,7 +13,7 @@ import {
 } from "../../state/actions/mapDisplayActions";
 import { sameRoundedLocation } from "../../utils/geoLocation";
 
-import type { IGoogleMapDisplay, ILatLng } from "google-map-react"; // eslint-disable-line import/first
+import type { IGoogleMapDisplay, ILatLng } from "google-map-react"; // eslint-disable-line import/order
 import type { IVenue } from "../../state/reducers/searchResultsReducers";
 import type { IState } from "../../state/stores/store";
 import type { IEatDrinkFilter } from "../../state/reducers/eatDrinkFiltersReducers";

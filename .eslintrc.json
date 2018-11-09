@@ -81,6 +81,7 @@
       }
     ],
     "react/no-danger": "warn",
+    "react/destructuring-assignment": "off",
     "react/require-default-props": "warn",
     "react/sort-comp": [
       "warn",

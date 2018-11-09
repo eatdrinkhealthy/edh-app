@@ -14,6 +14,7 @@ storiesOf("Map", module)
     (): React$Element<*> => (
       <Map
         googleMapsApiKey={Window.Meteor.settings.public.googleMapsApiKey}
+        venues={[]}
         setSelectedVenueHandler={action("clicked")}
         selectedVenueId={null}
         userLocation={{ lat: 32.789008, lng: -79.932115 }}
