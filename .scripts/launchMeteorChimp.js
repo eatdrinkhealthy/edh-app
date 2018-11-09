@@ -1,6 +1,6 @@
 // Referenced from: https://github.com/xolvio/chimp/issues/485
 // Inspired from: https://github.com/xolvio/qualityfaster/blob/master/.scripts/
-const { exec } = require("child_process");
+const exec = require("child_process").exec;
 
 const meteorCommand = process.argv[2];
 const chimpCommand = process.argv[3];

@@ -17,7 +17,6 @@ The intended MVP feature set is not complete. Eat Drink Healthy is now occasiona
         * FOURSQUARE (required)
         * Google Analytics (optional)
         * Mixpanel (optional)
-* For end-to-end testing, the npm [chimp](https://www.npmjs.com/package/chimp) package needs to be installed globally
 
 #### Adding Addtional NPM Packages
 * when installing additional packages: `meteor npm install 'package'`
@@ -48,9 +47,11 @@ NOTE: Most scripts are used for continuous integration build steps (SemaphoreCI 
 ### Build Packages / Best Practices
 * [eslint](https://eslint.org/) ([meteor & airbnb config setup](https://github.com/eatdrinkhealthy/eslint-meteor))
 * [prettier](https://prettier.io/) (code formatting)
-* [jest](https://jestjs.io/en/) / [enzyme](https://airbnb.io/enzyme/) (unit tests)
-* [meteor test](https://guide.meteor.com/testing.html) (integration tests)
-* [chimp](https://www.npmjs.com/package/chimp) (end-to-end tests)
+* Testing
+    * [jest](https://jestjs.io/en/) / [enzyme](https://airbnb.io/enzyme/) (unit tests)
+    * [meteor test](https://guide.meteor.com/testing.html) (integration tests)
+    * [chimp](https://www.npmjs.com/package/chimp) (end-to-end tests)
+    * see [Testing section](#testing) for details on setup
 * [flow](https://flow.org/) (type checking)
 * [storybook](https://storybook.js.org/) (component design)
 
@@ -128,6 +129,7 @@ NOTE: Most scripts are used for continuous integration build steps (SemaphoreCI 
     
 > NOTE: It is more common or advantageous to run integration tests using 'meteor test --full-app'. Although load time is slightly slower, it does allow tests to be run across the client server divide. At this time, there is not a known significant benefit for running non '--full-app' integration tests in addition to running the '--full-app' integration tests. (running both, takes significantly longer)
 
+> NOTE: chimp is being replaced. the package is no longer supported, and install fails when using recent versions of npm / node.
 ### Test Runner File Naming Conventions
 
 #### Default test file names / locations for Jest, Meteor, and Chimp
@@ -185,7 +187,7 @@ Each testing framework comes with a default, or set of available assertion libra
 * snapshot files are to be kept in the default location, a `__snapshots__` subdirectory
     
 ### Chimp
-* Install chimp globally
+* Install chimp globally __[DO NOT INSTALL chimp, it fails on install, is no longer supported and is being replaced]__
     - this prevents an in issue sometimes arising when deploying to galaxy (an error installing chromedriver)
     - also, as of 10/19/17, yarn was failing on chimp install (so easier to install globally using 'npm')
 * Continuous Integration

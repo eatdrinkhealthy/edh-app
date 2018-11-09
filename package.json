@@ -15,7 +15,7 @@
     "integration-test-w": "TEST_WATCH=1 TEST_BROWSER_DRIVER=nightmare meteor test --full-app --settings settings.json --driver-package meteortesting:mocha",
     "meteor-test-server": "meteor test --full-app --settings settings.json --driver-package tmeasday:acceptance-test-driver",
     "end-to-end-test": "chimp --jasmine --ddp=http://localhost:3000 --path=tests/end-to-end/",
-    "end-to-end-test:standalone": "node .scripts/launchMeteorChimp.js 'npm run meteor-test-server' 'npm run end-to-end-test'",
+    "end-to-end-test:standalone": "node .scripts/launchMeteorChimp.js 'meteor npm run meteor-test-server' 'meteor npm run end-to-end-test'",
     "storybook": "start-storybook -s ./public -p 9001 -c .storybook"
   },
   "dependencies": {
